@@ -49,10 +49,6 @@ AkiraDocs Template is an open-source, AI-powered documentation generator built w
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-## Usage
-
-(Provide instructions on how to use the template, customize it, and generate documentation)
-
 ## Contributing
 
 We welcome contributions to AkiraDocs Template! Please see our [Contributing Guide](CONTRIBUTING.md) for more details on how to get started.
