@@ -9,11 +9,13 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { motion, AnimatePresence } from "framer-motion"
+import { useRouter } from 'next/navigation'
 
 export default function DocSearch() {
   const [query, setQuery] = useState('')
   const [aiResponse, setAiResponse] = useState('')
   const [showTraditionalDocs, setShowTraditionalDocs] = useState(false)
+  const router = useRouter()
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -22,6 +24,13 @@ export default function DocSearch() {
 
   const handleBack = () => {
     setAiResponse('')
+  }
+
+  const handleToggleChange = (checked: boolean) => {
+    setShowTraditionalDocs(checked)
+    if (checked) {
+      router.push('/legacy')
+    }
   }
 
   const recommendedArticles = [
@@ -73,7 +82,7 @@ export default function DocSearch() {
               <Switch
                 id="show-docs"
                 checked={showTraditionalDocs}
-                onCheckedChange={setShowTraditionalDocs}
+                onCheckedChange={handleToggleChange}
                 className="data-[state=checked]:bg-indigo-600"
               />
               <Label

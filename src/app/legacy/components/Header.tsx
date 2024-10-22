@@ -7,8 +7,11 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useTheme } from "next-themes"
-import { Moon, Sun, Menu, Github, Twitter, Linkedin, Search } from 'lucide-react'
+import { Moon, Sun, Menu, Github, Twitter, Linkedin, Search, Sparkles } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useRouter } from 'next/navigation'
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
 
 interface HeaderProps {
   logo?: string
@@ -20,6 +23,7 @@ interface HeaderProps {
     twitter?: string
     linkedin?: string
   }
+  showAIToggle?: boolean
 }
 
 export function HeaderComponent({
@@ -36,11 +40,14 @@ export function HeaderComponent({
     github: 'https://github.com',
     twitter: 'https://twitter.com',
     linkedin: 'https://linkedin.com',
-  }
+  },
+  showAIToggle = true,
 }: HeaderProps = {}) {
   const [isMounted, setIsMounted] = useState(false)
   const { theme, setTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+  const [showAI, setShowAI] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -49,6 +56,13 @@ export function HeaderComponent({
   const toggleTheme = () => {
     if (isMounted) {
       setTheme(theme === "light" ? "dark" : "light")
+    }
+  }
+
+  const handleAIToggle = (checked: boolean) => {
+    setShowAI(checked)
+    if (checked) {
+      router.push('/')
     }
   }
 
@@ -152,6 +166,23 @@ export function HeaderComponent({
                 )}
               </SheetContent>
             </Sheet>
+            {showAIToggle && (
+              <div className="flex items-center space-x-2">
+                <Switch
+                  id="show-ai"
+                  checked={showAI}
+                  onCheckedChange={handleAIToggle}
+                  className="data-[state=checked]:bg-indigo-600"
+                />
+                <Label
+                  htmlFor="show-ai"
+                  className="text-sm font-medium text-muted-foreground flex items-center cursor-pointer"
+                >
+                  <Sparkles className="h-5 w-5 mr-1 text-indigo-600 dark:text-indigo-400" />
+                  AI View
+                </Label>
+              </div>
+            )}
           </div>
         </div>
       </div>
