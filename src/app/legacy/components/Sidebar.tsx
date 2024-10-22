@@ -68,51 +68,55 @@ const dummyItems: DocItem[] = [
   },
 ]
 
+const renderItems = (items: DocItem[], pathname: string, depth = 0) => {
+  return items.map((item) => (
+    <motion.div 
+      key={item.href} 
+      className={cn("mb-1", depth > 0 && "ml-4")}
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      {item.subItems && item.subItems.length > 0 ? (
+        <ExpandableItem item={item} depth={depth} pathname={pathname} renderItems={renderItems}/>
+      ) : (
+        <Link href={item.href} passHref>
+          <Button
+            variant="ghost"
+            className={cn(
+              "w-full justify-start text-left font-normal hover:bg-muted/50 transition-all",
+              pathname === item.href && "bg-primary/10 text-primary font-medium",
+              "rounded-lg"
+            )}
+          >
+            <FileText className="mr-2 h-4 w-4" />
+            {item.title}
+          </Button>
+        </Link>
+      )}
+    </motion.div>
+  ))
+}
+
 const DocSidebar: React.FC<DocSidebarProps> = ({ items = dummyItems }) => {
   const pathname = usePathname()
-
-  const renderItems = (items: DocItem[], depth = 0) => {
-    return items.map((item) => (
-      <motion.div 
-        key={item.href} 
-        className={cn("mb-1", depth > 0 && "ml-4")}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        {item.subItems && item.subItems.length > 0 ? (
-          <ExpandableItem item={item} depth={depth} />
-        ) : (
-          <Link href={item.href} passHref>
-            <Button
-              variant="ghost"
-              className={cn(
-                "w-full justify-start text-left font-normal hover:bg-muted/50 transition-all",
-                pathname === item.href && "bg-primary/10 text-primary font-medium",
-                "rounded-lg"
-              )}
-            >
-              <FileText className="mr-2 h-4 w-4" />
-              {item.title}
-            </Button>
-          </Link>
-        )}
-      </motion.div>
-    ))
-  }
 
   return (
     <aside className="w-64 bg-background/80 backdrop-blur-xl border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
       <ScrollArea className="h-full py-6 px-4">
-        <nav>{renderItems(items)}</nav>
+        <nav>{renderItems(items, pathname)}</nav>
       </ScrollArea>
     </aside>
   )
 }
 
-const ExpandableItem: React.FC<{ item: DocItem; depth: number }> = ({ item, depth }) => {
+const ExpandableItem: React.FC<{ 
+  item: DocItem; 
+  depth: number; 
+  pathname: string;
+  renderItems: (items: DocItem[], pathname: string, depth: number) => React.ReactNode;
+}> = ({ item, depth, pathname, renderItems }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
 
   const isActive = pathname.startsWith(item.href)
 
@@ -144,7 +148,7 @@ const ExpandableItem: React.FC<{ item: DocItem; depth: number }> = ({ item, dept
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {item.subItems && renderItems(item.subItems, depth + 1)}
+            {item.subItems && renderItems(item.subItems, pathname, depth + 1)}
           </motion.div>
         )}
       </AnimatePresence>
