@@ -72,7 +72,7 @@ const renderItems = (items: DocItem[], pathname: string, depth = 0) => {
   return items.map((item) => (
     <motion.div 
       key={item.href} 
-      className={cn("mb-1", depth > 0 && "ml-4")}
+      className={cn("mb-1", `ml-${depth * 4}`)} // Increase indentation based on depth
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
