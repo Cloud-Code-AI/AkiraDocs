@@ -161,7 +161,7 @@ export default function DocSearch() {
             </motion.div>
           )}
 
-          {!aiResponse && !showTraditionalDocs && (
+          {!aiResponse && (
             <motion.div
               key="recommended-articles"
               initial={{ opacity: 0 }}
@@ -195,29 +195,6 @@ export default function DocSearch() {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
-          )}
-
-          {showTraditionalDocs && (
-            <motion.div
-              key="traditional-docs"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="mt-12"
-            >
-              <h2 className="text-3xl font-semibold mb-6 text-center text-indigo-800 dark:text-indigo-200">Traditional Documentation</h2>
-              <Card className="prose dark:prose-invert max-w-none shadow-lg border-indigo-200 dark:border-indigo-800">
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-semibold mb-4 text-indigo-700 dark:text-indigo-300">Introduction</h3>
-                  <p>Welcome to AkiraDocs. This guide will help you understand and integrate our services into your applications.</p>
-                  <h3 className="text-2xl font-semibold mb-4 mt-8 text-indigo-700 dark:text-indigo-300">Getting Started</h3>
-                  <p>To use AkiraDocs, you'll need to set up your environment and understand the basic concepts.</p>
-                  <h3 className="text-2xl font-semibold mb-4 mt-8 text-indigo-700 dark:text-indigo-300">Features</h3>
-                  <p>AkiraDocs provides several features for efficient documentation management and searching. Each feature is explained in detail in our comprehensive guide.</p>
-                </CardContent>
-              </Card>
             </motion.div>
           )}
         </AnimatePresence>
