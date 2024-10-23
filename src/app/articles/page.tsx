@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { TitleBar } from '@/components/articles/layout/TitleBar'
-import { ArticleHeaders } from '@/components/articles/layout/ArticleHeaders'
-import { TextBlocks } from '@/components/articles/layout/TextBlocks'
+import { TitleBar } from '@/components/content/articles/TitleBar'
+import { ArticleHeaders } from '@/components/content/articles/ArticleHeaders'
+import { ContentBlocks } from '@/components/content/articles/ContentBlocks'
 
 type Block = {
   id: string
@@ -29,7 +29,7 @@ export default function Article() {
             setSubtitle={setSubtitle}
             showPreview={showPreview}
           />
-          <TextBlocks blocks={blocks} setBlocks={setBlocks} showPreview={showPreview} />
+          <ContentBlocks blocks={blocks} setBlocks={setBlocks} showPreview={showPreview} />
         </div>
       </div>
     </div>

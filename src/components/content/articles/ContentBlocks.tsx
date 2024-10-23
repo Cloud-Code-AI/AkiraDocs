@@ -20,7 +20,7 @@ interface TextBlocksProps {
   showPreview: boolean
 }
 
-export function TextBlocks({ blocks, setBlocks, showPreview }: TextBlocksProps) {
+export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksProps) {
   const [focusedBlockId, setFocusedBlockId] = useState<string | null>(null);
   const blockRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 

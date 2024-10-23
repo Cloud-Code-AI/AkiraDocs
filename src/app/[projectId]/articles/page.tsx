@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { TitleBar } from '@/components/articles/layout/TitleBar'
+import { TitleBar } from '@/components/content/articles/TitleBar'
 import { ArticleHeaders } from '@/components/articles/layout/ArticleHeaders'
-import { TextBlocks } from '@/components/articles/layout/TextBlocks'
+import { TextBlocks } from '@/components/content/articles/TextBlocks'
 
 type Block = {
   id: string

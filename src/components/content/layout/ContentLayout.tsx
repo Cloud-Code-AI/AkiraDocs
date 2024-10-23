@@ -1,5 +1,5 @@
 import { TableOfContents } from './TableOfContents';
-import { Navigation } from './Navigation';
+import Navigation from './Navigation';
 
 interface ContentLayoutProps {
   children: React.ReactNode;
