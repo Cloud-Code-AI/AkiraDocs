@@ -1,4 +1,5 @@
 "use client"
+
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { SearchHeader } from '@/components/content/search/SearchHeader'
