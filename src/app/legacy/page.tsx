@@ -1,7 +1,8 @@
 import { Header } from '@/components/content/layout/Header';
-import DocumentationView from '@/app/legacy/components/DocsView';
 import Footer from '@/components/content/layout/Footer';
 import Navigation from '@/components/content/layout/Navigation';
+import MainContent from '@/app/legacy/MainContent';
+import TableOfContents from '@/components/content/layout/TableOfContents';
 
 export default function LegacyDocs() {
 
@@ -90,18 +91,6 @@ myProduct.doSomethingCool();
 </table>
 `
 
-const dummyTableOfContents = [
-  { id: 'getting-started', title: 'Getting Started' },
-  { id: 'installation', title: 'Installation' },
-  { id: 'basic-usage', title: 'Basic Usage' },
-  { id: 'advanced-features', title: 'Advanced Features' },
-  { id: 'custom-plugins', title: 'Custom Plugins' },
-  { id: 'api-integration', title: 'API Integration' },
-  { id: 'troubleshooting', title: 'Troubleshooting' },
-  { id: 'faq', title: 'Frequently Asked Questions' },
-  { id: 'changelog', title: 'Changelog' },
-]
-
 const navigationItems = {
   gettingStarted: {
     title: "Getting Started",
@@ -145,9 +134,10 @@ const footerData = {
       <Header searchPlaceholder='Search documentation...'/>
       <div className="flex flex-grow">
         <Navigation items={navigationItems} />
-        <main className="flex-grow p-8">
-            <DocumentationView content={dummyContent} tableOfContents={dummyTableOfContents} />
-        </main>
+        <div className="flex-1 flex">
+          <MainContent content={dummyContent} />
+          <TableOfContents />
+        </div>
       </div>
       <Footer {...footerData} />
     </div>

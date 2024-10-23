@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 export function TableOfContents() {
   const [headings, setHeadings] = useState<HTMLHeadingElement[]>([]);
   const [activeId, setActiveId] = useState<string>();
 
   useEffect(() => {
-    const elements = Array.from(document.querySelectorAll('h2, h3, h4'));
+    const elements = Array.from(document.querySelectorAll('h2:not([data-toc-ignore]), h3:not([data-toc-ignore]), h4:not([data-toc-ignore])'));
     setHeadings(elements as HTMLHeadingElement[]);
 
     const observer = new IntersectionObserver(
@@ -24,25 +27,37 @@ export function TableOfContents() {
   }, []);
 
   return (
-    <nav className="sticky top-16 p-4 space-y-2">
-      <h4 className="text-sm font-semibold mb-4">On this page</h4>
-      {headings.map((heading) => {
-        const level = parseInt(heading.tagName[1]) - 2;
-        return (
-          <a
-            key={heading.id}
-            href={`#${heading.id}`}
-            className={`
-              block text-sm py-1
-              ${level > 0 ? 'pl-' + (level * 4) : ''}
-              ${activeId === heading.id ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-400'}
-              hover:text-blue-600 dark:hover:text-blue-400
-            `}
-          >
-            {heading.textContent}
-          </a>
-        );
-      })}
-    </nav>
-  );
+    <div className="w-64 border-l border-gray-200 dark:border-gray-700 sticky top-16 h-[calc(100vh-4rem)] hidden xl:block">
+      <ScrollArea className="h-full py-6 px-4">
+        <nav>
+          <h4 className="text-sm font-semibold mb-4 text-gray-900 dark:text-white" data-toc-ignore>On This Page</h4>
+          <ul className="space-y-2">
+            {headings.map((heading) => {
+              const level = parseInt(heading.tagName[1]) - 2;
+              return (
+                <li key={heading.id}>
+                  <a
+                    href={`#${heading.id}`}
+                    className={`
+                      text-sm block py-1 transition-colors duration-200
+                      ${level > 0 ? 'pl-' + (level * 4) : ''}
+                      ${
+                        activeId === heading.id
+                          ? 'text-blue-600 dark:text-blue-400 font-medium'
+                          : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                      }
+                    `}
+                  >
+                    {heading.textContent}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </ScrollArea>
+    </div>
+  )
 }
+
+export default TableOfContents;
