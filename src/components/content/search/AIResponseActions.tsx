@@ -1,7 +1,7 @@
 import { ThumbsUp, ThumbsDown, Copy, Share } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-function AIResponseActions() {
+export function AIResponseActions() {
     return (
       <div className="flex items-center space-x-4 w-full">
         <div className="flex items-center space-x-2">

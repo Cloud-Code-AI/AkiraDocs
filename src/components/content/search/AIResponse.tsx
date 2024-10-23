@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { motion } from "framer-motion"
+import { AIResponseActions } from "./AIResponseActions"
+import { AIResponseSources } from "./AIResponseSources"
 
 interface Source {
   title: string

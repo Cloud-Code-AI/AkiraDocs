@@ -1,4 +1,5 @@
 "use client"
+
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { SearchHeader } from '@/components/content/search/SearchHeader'
@@ -7,6 +8,7 @@ import { LegacyDocsToggle } from '@/components/content/search/LegacyDocsToggle'
 import { AIResponse } from '@/components/content/search/AIResponse'
 import { RecommendedArticles } from '@/components/content/search/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
+import { Article } from '@/types/Article'
 
 export default function DocSearch() {
   const [query, setQuery] = useState('')
@@ -30,10 +32,10 @@ export default function DocSearch() {
     }
   }
 
-  const recommendedArticles = [
-    { title: 'Getting Started with AkiraDocs', description: 'Learn the basics of using AkiraDocs for your project.' },
-    { title: 'Advanced Search Techniques', description: 'Master the art of efficient document searching.' },
-    { title: 'Integrating AkiraDocs with Your Workflow', description: 'Seamlessly incorporate AkiraDocs into your development process.' },
+  const recommendedArticles: Article[] = [
+    { id: '1', title: 'Getting Started with AkiraDocs', description: 'Learn the basics of using AkiraDocs for your project.', content: '', author: '', publishDate: new Date() },
+    { id: '2', title: 'Advanced Search Techniques', description: 'Master the art of efficient document searching.', content: '', author: '', publishDate: new Date() },
+    { id: '3', title: 'Integrating AkiraDocs with Your Workflow', description: 'Seamlessly incorporate AkiraDocs into your development process.', content: '', author: '', publishDate: new Date() },
   ]
 
   const sources = [
@@ -45,7 +47,7 @@ export default function DocSearch() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <SearchHeader />
-        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center items-center mb-12">
           <SearchBar
             query={query}
             onQueryChange={setQuery}
