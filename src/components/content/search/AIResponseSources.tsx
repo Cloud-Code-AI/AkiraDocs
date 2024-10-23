@@ -4,7 +4,7 @@ interface AIResponseSourcesProps {
     sources: Source[]
 }
 
-function AIResponseSources({ sources }: AIResponseSourcesProps) {
+export function AIResponseSources({ sources }: AIResponseSourcesProps) {
     return (
         <div className="w-full">
             <h4 className="text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Sources</h4>
