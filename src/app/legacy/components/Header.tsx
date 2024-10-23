@@ -33,7 +33,7 @@ export function HeaderComponent({
     { label: 'Home', href: '/' },
     { label: 'Docs', href: '/docs' },
     { label: 'API', href: '/api' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'Articles', href: '/articles' },
   ],
   showSearch = true,
   socialLinks = {
