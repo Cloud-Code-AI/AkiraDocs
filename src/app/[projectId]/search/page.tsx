@@ -7,6 +7,7 @@ import { LegacyDocsToggle } from '@/components/content/search/LegacyDocsToggle'
 import { AIResponse } from '@/components/content/search/AIResponse'
 import { RecommendedArticles } from '@/components/content/search/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
+import { Article } from '@/types/Article' // Adjust the import path as needed
 
 export default function DocSearch() {
   const [query, setQuery] = useState('')
@@ -30,10 +31,10 @@ export default function DocSearch() {
     }
   }
 
-  const recommendedArticles = [
-    { title: 'Getting Started with AkiraDocs', description: 'Learn the basics of using AkiraDocs for your project.' },
-    { title: 'Advanced Search Techniques', description: 'Master the art of efficient document searching.' },
-    { title: 'Integrating AkiraDocs with Your Workflow', description: 'Seamlessly incorporate AkiraDocs into your development process.' },
+  const recommendedArticles: Article[] = [
+    { id: '1', title: 'Getting Started with AkiraDocs', description: 'Learn the basics of using AkiraDocs for your project.', content: '', author: '', publishDate: new Date() },
+    { id: '2', title: 'Advanced Search Techniques', description: 'Master the art of efficient document searching.', content: '', author: '', publishDate: new Date() },
+    { id: '3', title: 'Integrating AkiraDocs with Your Workflow', description: 'Seamlessly incorporate AkiraDocs into your development process.', content: '', author: '', publishDate: new Date() },
   ]
 
   const sources = [
