@@ -1,7 +1,7 @@
-import Footer from './components/Footer';
-import { HeaderComponent } from './components/Header';
-import Sidebar from '@/app/legacy/components/Sidebar';
+import { Header } from '@/components/content/layout/Header';
 import DocumentationView from '@/app/legacy/components/DocsView';
+import Footer from '@/components/content/layout/Footer';
+import Navigation from '@/components/content/layout/Navigation';
 
 export default function LegacyDocs() {
 
@@ -101,16 +101,55 @@ const dummyTableOfContents = [
   { id: 'faq', title: 'Frequently Asked Questions' },
   { id: 'changelog', title: 'Changelog' },
 ]
+
+const navigationItems = {
+  gettingStarted: {
+    title: "Getting Started",
+    path: "/docs/getting-started",
+    items: {
+      installation: { title: "Installation", path: "/docs/getting-started/installation" },
+      configuration: { title: "Configuration", path: "/docs/getting-started/configuration" },
+      projectStructure: { title: "Project Structure", path: "/docs/getting-started/project-structure" },
+    },
+  },
+  coreConcepts: {
+    title: "Core Concepts",
+    path: "/docs/core-concepts",
+    items: {
+      routing: { title: "Routing", path: "/docs/core-concepts/routing" },
+      dataFetching: { 
+        title: "Data Fetching", 
+        path: "/docs/core-concepts/data-fetching",
+        items: {
+          serverSide: { title: "Server-side", path: "/docs/core-concepts/data-fetching/server-side" },
+          clientSide: { title: "Client-side", path: "/docs/core-concepts/data-fetching/client-side" },
+        }
+      },
+      // ... other items
+    },
+  },
+  // ... other top-level items
+};
+
+const footerData = {
+  companyName: "Cloud Code AI",
+  socialLinks: [
+    { name: "GitHub", url: "https://github.com/your-repo", icon: "/github.svg" },
+    { name: "Twitter", url: "https://twitter.com/your-account", icon: "/twitter.svg" },
+    { name: "LinkedIn", url: "https://linkedin.com/company/your-company", icon: "/linkedin.svg" },
+  ],
+  madeWithLove: true
+}
   return (
     <div className="flex flex-col h-screen">
-      <HeaderComponent />
+      <Header searchPlaceholder='Search documentation...'/>
       <div className="flex flex-grow">
-        <Sidebar />
+        <Navigation items={navigationItems} />
         <main className="flex-grow p-8">
             <DocumentationView content={dummyContent} tableOfContents={dummyTableOfContents} />
         </main>
       </div>
-      <Footer />
+      <Footer {...footerData} />
     </div>
   );
 }

@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { SearchHeader } from '@/components/content/search/SearchHeader'
-import { SearchBar } from '@/components/content/search/SearchBar'
-import { LegacyDocsToggle } from '@/components/content/search/LegacyDocsToggle'
-import { AIResponse } from '@/components/content/search/AIResponse'
-import { RecommendedArticles } from '@/components/content/search/RecommendedArticles'
+import { SearchHeader } from '@/components/content/aiSearch/SearchHeader'
+import { SearchBar } from '@/components/content/aiSearch/SearchBar'
+import { LegacyDocsToggle } from '@/components/content/aiSearch/LegacyDocsToggle'
+import { AIResponse } from '@/components/content/aiSearch/AIResponse'
+import { RecommendedArticles } from '@/components/content/aiSearch/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
 import { Article } from '@/types/Article'
 
