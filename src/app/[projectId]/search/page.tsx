@@ -7,7 +7,7 @@ import { LegacyDocsToggle } from '@/components/content/search/LegacyDocsToggle'
 import { AIResponse } from '@/components/content/search/AIResponse'
 import { RecommendedArticles } from '@/components/content/search/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
-import { Article } from '@/types/Article' // Adjust the import path as needed
+import { Article } from '@/types/Article'
 
 export default function DocSearch() {
   const [query, setQuery] = useState('')
