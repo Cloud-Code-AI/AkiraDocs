@@ -76,8 +76,3 @@ export default function Home() {
     </div>
   )
 }
-
-export async function fetchStaticProps() {
-  const posts = getAllDocs()
-  return { props: { posts } }
-}

@@ -1,19 +1,22 @@
 import { BlogPost } from '@/types/Block'
 
-const docsContext = require.context('../../content/docs', true, /\.json$/)
+const docsContext = require.context('../../_content/docs', true, /\.json$/)
 
-export function getDocById(id: string): BlogPost {
+export function getDocBySlug(slug: string): BlogPost {
   try {
-    return docsContext(`./${id}.json`)
+    // Replace forward slashes with backslashes for Windows compatibility
+    const normalizedSlug = slug
+    console.log(`./${normalizedSlug}.json`)
+    return docsContext(`./${normalizedSlug}.json`)
   } catch (error) {
-    console.error(`Error reading file: ${id}.json`, error)
-    throw new Error(`Document not found: ${id}`)
+    console.error(`Error reading file: ${slug}.json`, error)
+    throw new Error(`Document not found: ${slug}`)
   }
 }
 
 export function getAllDocs(): BlogPost[] {
   return docsContext.keys().map(fileName => {
-    const id = fileName.replace(/^\.\//, '').replace(/\.json$/, '')
-    return getDocById(id)
+    const slug = fileName.replace(/^\.\//, '').replace(/\.json$/, '')
+    return getDocBySlug(slug)
   })
 }

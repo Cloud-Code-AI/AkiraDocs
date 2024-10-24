@@ -1,0 +1,30 @@
+{
+    "id": "installation",
+    "title": "Installing Our Framework",
+    "description": "Step-by-step guide to install our framework on your system.",
+    "author": "Bob Johnson",
+    "date": "2023-05-02",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Installation Guide",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "Follow these steps to install our framework on your development machine."
+      },
+      {
+        "id": "3",
+        "type": "code",
+        "content": "npm install our-framework",
+        "metadata": {
+          "language": "bash"
+        }
+      }
+    ]
+  }
