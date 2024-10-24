@@ -8,7 +8,7 @@ interface CheckListProps {
 export function CheckList({ items, align = 'left' }: CheckListProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <ul className={`mb-6 ${alignClass}`}>
+    <ul className={`mb-6 py-1 ${alignClass}`}>
       {items.map((item, index) => (
         <li key={index} className="flex items-center mb-1">
           <input

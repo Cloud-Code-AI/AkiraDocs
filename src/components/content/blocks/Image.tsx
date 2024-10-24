@@ -24,14 +24,14 @@ export function Image({ src, alt, caption, size = 'medium', position = 'center',
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
 
   return (
-    <figure className={`my-8 ${positionClasses[position]} ${alignClass}`}>
+    <figure className={`my-8 py-1 ${positionClasses[position]} ${alignClass}`}>
       <img
         src={src}
         alt={alt}
-        className={`rounded-lg ${sizeClasses[size]}`}
+        className={`rounded-lg ${sizeClasses[size]} ${alignClass}`}
       />
       {caption && (
-        <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
+        <figcaption className={`mt-2 text-sm text-${align} text-gray-500 dark:text-gray-400`}>
           {caption}
         </figcaption>
       )}

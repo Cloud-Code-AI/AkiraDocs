@@ -9,7 +9,7 @@ interface AudioProps {
 export function Audio({ src, caption, align = 'left' }: AudioProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <div className={`mb-6 ${alignClass}`}>
+    <div className={`mb-6 py-1 ${alignClass}`}>
       <audio controls className="w-full">
         <source src={src} type="audio/mpeg" />
         Your browser does not support the audio element.

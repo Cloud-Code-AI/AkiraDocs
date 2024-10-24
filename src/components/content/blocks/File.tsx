@@ -9,7 +9,7 @@ interface FileProps {
 export function File({ url, name, align = 'left' }: FileProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <div className={`mb-6 ${alignClass}`}>
+    <div className={`mb-6 py-1 ${alignClass}`}>
       <a href={url} download className="text-blue-500 hover:underline">
         {name}
       </a>

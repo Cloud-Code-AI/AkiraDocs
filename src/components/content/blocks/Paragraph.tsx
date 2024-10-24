@@ -7,5 +7,5 @@ interface ParagraphProps {
 
 export function Paragraph({ children, align = 'left' }: ParagraphProps) {
   const alignClass = align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : '';
-  return <p className={`mb-6 text-base leading-relaxed ${alignClass}`}>{children}</p>;
+  return <p className={`mb-6 text-base leading-relaxed py-1 ${alignClass}`}>{children}</p>;
 }

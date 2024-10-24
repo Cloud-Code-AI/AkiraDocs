@@ -28,7 +28,7 @@ export function CodeBlock({
   };
 
   return (
-    <div className={`relative group rounded-lg overflow-hidden ${alignClass}`}>
+    <div className={`relative group rounded-lg overflow-hidden py-1 ${alignClass}`}>
       {filename && (
         <div className="bg-gray-800 px-4 py-2 text-sm text-gray-200">
           {filename}

@@ -8,7 +8,7 @@ interface ToggleListProps {
 export function ToggleList({ items, align = 'left' }: ToggleListProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <div className={`mb-6 ${alignClass}`}>
+    <div className={`mb-6 py-1 ${alignClass}`}>
       {items.map((item, index) => {
         const [isOpen, setIsOpen] = useState(false);
         return (

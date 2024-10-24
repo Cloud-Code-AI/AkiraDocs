@@ -48,7 +48,7 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
       <Header searchPlaceholder='Search documentation...'/>
       <div className="flex flex-grow">
         <Navigation items={navigationItems} />
-        <div className="flex-1 flex">
+        <div className="flex-1 flex py-4">
           <PostContainer>
             <Title>{post.title}</Title>
             <Metadata>By {post.author} on {post.date}</Metadata>

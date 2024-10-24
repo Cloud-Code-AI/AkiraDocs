@@ -22,7 +22,7 @@ export function Callout({ type, title, children, align = 'left' }: CalloutProps)
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
 
   return (
-    <Alert className={`${className} ${alignClass}`}>
+    <Alert className={`${className} ${alignClass} py-1`}>
       <Icon className="h-4 w-4" />
       {title && <AlertTitle>{title}</AlertTitle>}
       <AlertDescription>{children}</AlertDescription>
