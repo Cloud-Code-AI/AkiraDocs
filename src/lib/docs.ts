@@ -1,6 +1,6 @@
 import { BlogPost } from '@/types/Block'
 
-const docsContext = require.context('../../content/docs', true, /\.json$/)
+const docsContext = require.context('../../_content/docs', true, /\.json$/)
 
 export function getDocById(id: string): BlogPost {
   try {
