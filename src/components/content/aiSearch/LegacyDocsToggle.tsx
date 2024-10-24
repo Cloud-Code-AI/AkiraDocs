@@ -22,7 +22,7 @@ export function LegacyDocsToggle({ checked, onCheckedChange }: LegacyDocsToggleP
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center cursor-pointer"
             >
                 <BookOpen className="h-5 w-5 mr-1 text-indigo-600 dark:text-indigo-400" />
-                Legacy Docs
+                Legacy View
             </Label>
         </div>
     )
