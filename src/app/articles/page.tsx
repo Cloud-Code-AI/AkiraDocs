@@ -4,18 +4,24 @@ import { useState } from 'react'
 import { TitleBar } from '@/components/content/articles/TitleBar'
 import { ArticleHeaders } from '@/components/content/articles/ArticleHeaders'
 import { ContentBlocks } from '@/components/content/articles/ContentBlocks'
-
-type Block = {
-  id: string
-  type: 'text' | 'heading' | 'image'
-  content: string
-}
+import { AddBlockButton } from '@/components/content/articles/AddBlockButton'
+import { Block, BlockType } from '@/types/Block'
 
 export default function Article() {
-  const [blocks, setBlocks] = useState<Block[]>([{ id: '1', type: 'text', content: '' }])
+  const [blocks, setBlocks] = useState<Block[]>([{ id: '1', type: 'paragraph', content: '' }])
   const [title, setTitle] = useState('')
   const [subtitle, setSubtitle] = useState('')
   const [showPreview, setShowPreview] = useState(false)
+
+  const addBlock = (type: BlockType) => {
+    const newBlock: Block = {
+      id: Date.now().toString(),
+      type,
+      content: '',
+      metadata: {}
+    }
+    setBlocks([...blocks, newBlock])
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -30,6 +36,11 @@ export default function Article() {
             showPreview={showPreview}
           />
           <ContentBlocks blocks={blocks} setBlocks={setBlocks} showPreview={showPreview} />
+          {!showPreview && (
+            <div className="mt-4">
+              <AddBlockButton onAddBlock={addBlock} />
+            </div>
+          )}
         </div>
       </div>
     </div>

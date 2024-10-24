@@ -7,6 +7,7 @@ interface CalloutProps {
   type: CalloutType;
   title?: string;
   children: React.ReactNode;
+  align?: 'left' | 'center' | 'right'; // Add align prop
 }
 
 const calloutStyles = {
@@ -16,11 +17,12 @@ const calloutStyles = {
   error: { icon: XCircle, className: 'border-red-200 dark:border-red-800' }
 };
 
-export function Callout({ type, title, children }: CalloutProps) {
+export function Callout({ type, title, children, align = 'left' }: CalloutProps) {
   const { icon: Icon, className } = calloutStyles[type];
+  const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
 
   return (
-    <Alert className={className}>
+    <Alert className={`${className} ${alignClass} py-1`}>
       <Icon className="h-4 w-4" />
       {title && <AlertTitle>{title}</AlertTitle>}
       <AlertDescription>{children}</AlertDescription>
