@@ -9,6 +9,8 @@ import { AIResponse } from '@/components/content/aiSearch/AIResponse'
 import { RecommendedArticles } from '@/components/content/aiSearch/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
 import { Article } from '@/types/Article'
+import { getAllDocs } from '@/lib/docs'
+
 
 export default function Home() {
   const [query, setQuery] = useState('')
@@ -73,4 +75,9 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const posts = getAllDocs()
+  return { props: { posts } }
 }

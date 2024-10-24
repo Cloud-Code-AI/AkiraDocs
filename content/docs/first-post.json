@@ -1,0 +1,47 @@
+{
+    "id": "first-post",
+    "title": "My First Blog Post",
+    "description": "This is my first blog post using the new block-based system.",
+    "author": "John Doe",
+    "date": "2023-04-15",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Welcome to my blog",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "This is the first paragraph of my blog post. I'm excited to share my thoughts with you!"
+      },
+      {
+        "id": "3",
+        "type": "code",
+        "content": "console.log('Hello, World!');",
+        "metadata": {
+          "language": "javascript"
+        }
+      },
+      {
+        "id": "4",
+        "type": "image",
+        "content": "/images/blog-image.jpg",
+        "metadata": {
+          "alt": "A beautiful landscape",
+          "caption": "This is a caption for the image"
+        }
+      },
+      {
+        "id": "5",
+        "type": "list",
+        "content": "First item\nSecond item\nThird item",
+        "metadata": {
+          "listType": "unordered"
+        }
+      }
+    ]
+  }
