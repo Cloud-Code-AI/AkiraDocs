@@ -3,11 +3,13 @@ import React from 'react';
 interface TableProps {
   headers: string[];
   rows: string[][];
+  align?: 'left' | 'center' | 'right'; // Add align prop
 }
 
-export function Table({ headers, rows }: TableProps) {
+export function Table({ headers, rows, align = 'left' }: TableProps) {
+  const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <table className="min-w-full bg-white border border-gray-200">
+    <table className={`min-w-full bg-white border border-gray-200 ${alignClass}`}>
       <thead>
         <tr>
           {headers.map((header, index) => (

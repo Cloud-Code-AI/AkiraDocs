@@ -15,6 +15,7 @@ import { Video } from '../blocks/Video'
 import { Audio } from '../blocks/Audio'
 import { File } from '../blocks/File'
 import { Emoji } from '../blocks/Emoji'
+import { Callout } from '../blocks/Callout'
 
 interface BlockRendererProps {
   block: Block
@@ -22,15 +23,17 @@ interface BlockRendererProps {
 
 export function BlockRenderer({ block }: BlockRendererProps) {
   const renderBlock = (block: Block) => {
+    const align = block.metadata?.align || 'left';
+
     switch (block.type) {
       case 'paragraph':
-        return <Paragraph>{block.content}</Paragraph>
+        return <Paragraph align={align}>{block.content}</Paragraph>
       case 'heading':
-        const level = block.metadata?.level || 1
+        const level = block.metadata?.level || 1;
         return level === 1 ? (
-          <MainTitle>{block.content}</MainTitle>
+          <MainTitle align={align}>{block.content}</MainTitle>
         ) : (
-          <Heading level={level}>{block.content}</Heading>
+          <Heading level={level} align={align}>{block.content}</Heading>
         )
       case 'code':
         return (
@@ -39,6 +42,7 @@ export function BlockRenderer({ block }: BlockRendererProps) {
             language={block.metadata?.language || 'text'}
             filename={block.metadata?.filename}
             showLineNumbers={block.metadata?.showLineNumbers}
+            align={align}
           />
         )
       case 'image':
@@ -49,6 +53,7 @@ export function BlockRenderer({ block }: BlockRendererProps) {
             caption={block.metadata?.caption}
             size={block.metadata?.size}
             position={block.metadata?.position}
+            align={align}
           />
         )
       case 'list':
@@ -56,26 +61,33 @@ export function BlockRenderer({ block }: BlockRendererProps) {
           <List
             items={block.content.split('\n')}
             ordered={block.metadata?.listType === 'ordered'}
+            align={align}
           />
         )
       case 'blockquote':
-        return <Blockquote>{block.content}</Blockquote>
+        return <Blockquote align={align}>{block.content}</Blockquote>
       case 'divider':
-        return <Divider />
+        return <Divider align={align} />
       case 'table':
-        return <Table headers={block.metadata?.headers || []} rows={block.metadata?.rows || []} />
+        return <Table headers={block.metadata?.headers || []} rows={block.metadata?.rows || []} align={align} />
       case 'toggleList':
-        return <ToggleList items={block.metadata?.items || []} />
+        return <ToggleList items={block.metadata?.items || []} align={align} />
       case 'checkList':
-        return <CheckList items={block.metadata?.checkedItems || []} />
+        return <CheckList items={block.metadata?.checkedItems || []} align={align} />
       case 'video':
-        return <Video src={block.content} caption={block.metadata?.caption} />
+        return <Video src={block.content} caption={block.metadata?.caption} align={align} />
       case 'audio':
-        return <Audio src={block.content} caption={block.metadata?.caption} />
+        return <Audio src={block.content} caption={block.metadata?.caption} align={align} />
       case 'file':
-        return <File url={block.content} name={block.metadata?.name || 'Download'} />
+        return <File url={block.content} name={block.metadata?.name || 'Download'} align={align} /> 
       case 'emoji':
-        return <Emoji symbol={block.content} label={block.metadata?.label} />
+        return <Emoji symbol={block.content} label={block.metadata?.label} align={align} />
+      case 'callout':
+        return (
+          <Callout type={block.metadata?.type || 'info'} title={block.metadata?.title} align={align}>
+            {block.content}
+          </Callout>
+        )
       default:
         return null
     }

@@ -120,7 +120,15 @@
       "metadata": {
         "label": "smiling face"
       }
+    },
+    {
+      "id": "15",
+      "type": "callout",
+      "content": "This is an important callout message.",
+      "metadata": {
+        "type": "info",
+        "title": "Important"
+      }
     }
   ]
 }
-

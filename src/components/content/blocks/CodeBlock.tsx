@@ -8,15 +8,18 @@ interface CodeBlockProps {
   language?: string;
   filename?: string;
   showLineNumbers?: boolean;
+  align?: 'left' | 'center' | 'right'; // Add align prop
 }
 
 export function CodeBlock({
   code,
   language = 'typescript',
   filename,
-  showLineNumbers = true
+  showLineNumbers = true,
+  align = 'left'
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(code);
@@ -25,7 +28,7 @@ export function CodeBlock({
   };
 
   return (
-    <div className="relative group rounded-lg overflow-hidden">
+    <div className={`relative group rounded-lg overflow-hidden ${alignClass}`}>
       {filename && (
         <div className="bg-gray-800 px-4 py-2 text-sm text-gray-200">
           {filename}

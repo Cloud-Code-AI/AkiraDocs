@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 
 interface ToggleListProps {
   items: { title: string; content: string }[];
+  align?: 'left' | 'center' | 'right'; // Add align prop
 }
 
-export function ToggleList({ items }: ToggleListProps) {
+export function ToggleList({ items, align = 'left' }: ToggleListProps) {
+  const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <div className="mb-6">
+    <div className={`mb-6 ${alignClass}`}>
       {items.map((item, index) => {
         const [isOpen, setIsOpen] = useState(false);
         return (

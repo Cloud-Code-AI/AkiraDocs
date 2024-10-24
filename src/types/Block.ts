@@ -12,7 +12,8 @@ export type BlockType =
   | 'video' 
   | 'audio' 
   | 'file' 
-  | 'emoji';
+  | 'emoji'
+  | 'callout';
 
 export interface Block {
   id: string;
@@ -34,6 +35,9 @@ export interface Block {
     label?: string; // For emojis
     filename?: string; // For code blocks
     showLineNumbers?: boolean; // For code blocks
+    align?: 'left' | 'center' | 'right'; // For alignment
+    type?: 'info' | 'warning' | 'success' | 'error'; // For callouts
+    title?: string; // For callouts
   };
 }
 
