@@ -1,0 +1,30 @@
+{
+    "id": "getting-started",
+    "title": "Getting Started with Our Framework",
+    "description": "Learn how to get started with our powerful web development framework.",
+    "author": "Jane Smith",
+    "date": "2023-05-01",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Welcome to Our Framework",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "This guide will help you get started with our framework quickly and efficiently."
+      },
+      {
+        "id": "3",
+        "type": "list",
+        "content": "Installation\nConfiguration\nProject Structure",
+        "metadata": {
+          "listType": "unordered"
+        }
+      }
+    ]
+  }

@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { getDocById } from '@/lib/docs'
+import { getDocBySlug } from '@/lib/docs'
 import { BlockRenderer } from '@/components/content/renderers/BlockRenderer'
 import styled from 'styled-components'
 import { Header } from '@/components/content/layout/Header'
@@ -30,9 +30,11 @@ const Metadata = styled.p`
   margin-bottom: 2em;
 `
 
-export default function DocPage({ params }: { params: Promise<{ id: string }> }) {
+export default function DocPage({ params }: { params: Promise<{ slug: string }> }) {
   const unwrappedParams = React.use(params)
-  const post = getDocById(unwrappedParams.id)
+  const slug = unwrappedParams.slug.join('/')
+  const post = getDocBySlug(slug)
+  // const post = getDocById(slug)
 
   // You might want to fetch these from a central configuration or API
   const navigationItems = {
