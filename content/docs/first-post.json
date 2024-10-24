@@ -29,10 +29,12 @@
       {
         "id": "4",
         "type": "image",
-        "content": "/images/blog-image.jpg",
+        "content": "/cloudcode_logo.png",
         "metadata": {
           "alt": "A beautiful landscape",
-          "caption": "This is a caption for the image"
+          "caption": "This is a caption for the image",
+          "size": "small",
+          "position": "center"
         }
       },
       {

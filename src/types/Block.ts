@@ -10,6 +10,8 @@ export interface Block {
     alt?: string;
     caption?: string;
     listType?: 'ordered' | 'unordered';
+    size?: 'small';
+    position?: 'left';
   };
 }
 

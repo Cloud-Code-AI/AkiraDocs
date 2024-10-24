@@ -1,24 +1,19 @@
-import fs from 'fs'
-import path from 'path'
 import { BlogPost } from '@/types/Block'
 
-const docsDirectory = path.join(process.cwd(), 'content/docs')
+const docsContext = require.context('../../content/docs', true, /\.json$/)
 
 export function getDocById(id: string): BlogPost {
-  const fullPath = path.join(docsDirectory, `${id}.json`)
   try {
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    return JSON.parse(fileContents)
+    return docsContext(`./${id}.json`)
   } catch (error) {
-    console.error(`Error reading file: ${fullPath}`, error)
+    console.error(`Error reading file: ${id}.json`, error)
     throw new Error(`Document not found: ${id}`)
   }
 }
 
 export function getAllDocs(): BlogPost[] {
-  const fileNames = fs.readdirSync(docsDirectory)
-  return fileNames.map(fileName => {
-    const id = fileName.replace(/\.json$/, '')
+  return docsContext.keys().map(fileName => {
+    const id = fileName.replace(/^\.\//, '').replace(/\.json$/, '')
     return getDocById(id)
   })
 }
