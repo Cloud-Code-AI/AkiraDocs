@@ -9,9 +9,9 @@ import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'
 
 const PostContainer = styled.div`
-  max-width: 740px;
+  max-width: 56rem; // This is equivalent to max-w-4xl
   margin: 0 auto;
-  padding: 20px;
+  padding: 1rem 1.5rem; // Equivalent to px-4 sm:px-6
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.6;
 `
