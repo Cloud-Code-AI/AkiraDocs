@@ -7,6 +7,7 @@ import { Header } from '@/components/content/layout/Header'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'
+import { getDocsNavigation, getFooterData } from '@/lib/getNavigation'
 
 const PostContainer = styled.div`
   max-width: 56rem; // This is equivalent to max-w-4xl
@@ -30,51 +31,17 @@ const Metadata = styled.p`
   margin-bottom: 2em;
 `
 
-export default function DocPage({ params }: { params: Promise<{ slug: string }> }) {
-  const unwrappedParams = React.use(params)
-  const slug = unwrappedParams.slug.join('/')
+export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
+  const resolvedParams = React.use(params)
+  const slug = resolvedParams.slug.join('/')
   const post = getDocBySlug(slug)
   // const post = getDocById(slug)
 
-  // You might want to fetch these from a central configuration or API
-  const navigationItems = {
-    gettingStarted: {
-      title: "Getting Started",
-      path: "/docs/getting-started",
-      items: {
-        installation: { title: "Installation", path: "/docs/getting-started/installation" },
-        configuration: { title: "Configuration", path: "/docs/getting-started/configuration" },
-        projectStructure: { title: "Project Structure", path: "/docs/getting-started/project-structure" },
-      },
-    },
-    coreConcepts: {
-      title: "Core Concepts",
-      path: "/docs/core-concepts",
-      items: {
-        routing: { title: "Routing", path: "/docs/core-concepts/routing" },
-        dataFetching: { 
-          title: "Data Fetching", 
-          path: "/docs/core-concepts/data-fetching",
-          items: {
-            serverSide: { title: "Server-side", path: "/docs/core-concepts/data-fetching/server-side" },
-            clientSide: { title: "Client-side", path: "/docs/core-concepts/data-fetching/client-side" },
-          }
-        },
-        // ... other items
-      },
-    },
-    // ... other top-level items
-  };
+  // Load navigation items from _meta.json
+  const navigationItems = getDocsNavigation({})
 
-  const footerData = {
-    companyName: "Cloud Code AI Inc.",
-    socialLinks: [
-      { name: "GitHub", url: "https://github.com/your-repo", icon: "/github.svg" },
-      { name: "Twitter", url: "https://twitter.com/your-account", icon: "/twitter.svg" },
-      { name: "LinkedIn", url: "https://linkedin.com/company/your-company", icon: "/linkedin.svg" },
-    ],
-    madeWithLove: true
-  }
+  // You might want to fetch these from a central configuration or API
+  const footerData = getFooterData({})
 
   return (
     <div className="flex flex-col h-screen">
