@@ -12,8 +12,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Divider } from '../blocks/Divider'
 import { Checkbox } from "@/components/ui/checkbox"
 import EmojiPicker, { EmojiClickData } from 'emoji-picker-react'
-import { Table } from '../blocks/Table'
-import { Callout } from '../blocks/Callout'
 
 interface ContentBlocksProps {
   blocks: Block[]
@@ -458,6 +456,48 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                 placeholder="Caption (optional)"
                 value={block.metadata?.caption || ''}
                 onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
+              />
+            </div>
+          ) : block.type === 'video' ? (
+            <div className="space-y-2">
+              <Input
+                placeholder="Enter video URL"
+                value={block.content}
+                onChange={(e) => updateBlockContent(block.id, e.target.value)}
+                className="flex-grow"
+              />
+              <Input
+                placeholder="Caption (optional)"
+                value={block.metadata?.caption || ''}
+                onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
+              />
+            </div>
+          ) : block.type === 'audio' ? (
+            <div className="space-y-2">
+              <Input
+                placeholder="Enter audio URL"
+                value={block.content}
+                onChange={(e) => updateBlockContent(block.id, e.target.value)}
+                className="flex-grow"
+              />
+              <Input
+                placeholder="Caption (optional)"
+                value={block.metadata?.caption || ''}
+                onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
+              />
+            </div>
+          ) : block.type === 'file' ? (
+            <div className="space-y-2">
+              <Input
+                placeholder="Enter file URL"
+                value={block.content}
+                onChange={(e) => updateBlockContent(block.id, e.target.value)}
+                className="flex-grow"
+              />
+              <Input
+                placeholder="File name"
+                value={block.metadata?.name || ''}
+                onChange={(e) => updateBlockMetadata(block.id, { name: e.target.value })}
               />
             </div>
           ) : (
