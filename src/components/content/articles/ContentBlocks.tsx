@@ -154,25 +154,32 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                 {block.type.charAt(0).toUpperCase() + block.type.slice(1)}
               </Label>
               <div className="flex items-center space-x-2">
-                {block.type === 'emoji' && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => toggleEmojiPicker(block.id)}
-                  >
-                    <Smile className="h-4 w-4 mr-2" />
-                    {showEmojiPicker === block.id ? 'Close' : 'Choose Emoji'}
-                  </Button>
-                )}
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => removeBlock(block.id)}
-                  className="h-8 w-8 text-destructive hover:text-destructive"
+              {block.type === 'heading' && (
+                <Select
+                  value={String(block.metadata?.level || 1)}
+                  onValueChange={(value) => updateBlockMetadata(block.id, { level: parseInt(value) })}
                 >
-                  <Trash2 className="h-4 w-4" />
-                  <span className="sr-only">Remove block</span>
-                </Button>
+                  <SelectTrigger className="w-[100px]">
+                    <SelectValue placeholder="Select level" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[1, 2, 3, 4, 5, 6].map((level) => (
+                      <SelectItem key={level} value={String(level)}>
+                        H{level}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => removeBlock(block.id)}
+                className="h-8 w-8 text-destructive hover:text-destructive"
+              >
+                <Trash2 className="h-4 w-4" />
+                <span className="sr-only">Remove block</span>
+              </Button>
               </div>
             </div>
           )}
@@ -365,6 +372,51 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                 onChange={(e) => updateBlockContent(block.id, e.target.value)}
                 placeholder="Enter callout content..."
                 className="w-full min-h-[100px] resize-y"
+              />
+            </div>
+          ) : block.type === 'image' ? (
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2">
+                <Select
+                  value={block.metadata?.size || 'default'}
+                  onValueChange={(value) => updateBlockMetadata(block.id, { size: value === 'default' ? undefined : value })}
+                >
+                  <SelectTrigger className="w-[120px]">
+                    <SelectValue placeholder="Size" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="default">Default</SelectItem>
+                    <SelectItem value="small">Small</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select
+                  value={block.metadata?.position || 'default'}
+                  onValueChange={(value) => updateBlockMetadata(block.id, { position: value === 'default' ? undefined : value })}
+                >
+                  <SelectTrigger className="w-[120px]">
+                    <SelectValue placeholder="Position" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="default">Default</SelectItem>
+                    <SelectItem value="left">Left</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <Input
+                placeholder="Enter image URL"
+                value={block.content}
+                onChange={(e) => updateBlockContent(block.id, e.target.value)}
+                className="flex-grow"
+              />
+              <Input
+                placeholder="Alt text (optional)"
+                value={block.metadata?.alt || ''}
+                onChange={(e) => updateBlockMetadata(block.id, { alt: e.target.value })}
+              />
+              <Input
+                placeholder="Caption (optional)"
+                value={block.metadata?.caption || ''}
+                onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
               />
             </div>
           ) : (
