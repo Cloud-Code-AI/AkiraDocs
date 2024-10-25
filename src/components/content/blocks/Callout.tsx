@@ -9,6 +9,11 @@ interface CalloutProps {
   title?: string
   children: React.ReactNode
   align?: 'left' | 'center' | 'right'
+  styles?: {
+    bold?: boolean;
+    italic?: boolean;
+    underline?: boolean;
+  };
 }
 
 const calloutStyles: Record<CalloutType, { icon: React.ElementType; className: string }> = {
@@ -18,7 +23,7 @@ const calloutStyles: Record<CalloutType, { icon: React.ElementType; className: s
   error: { icon: XCircle, className: 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950' }
 }
 
-export function Callout({ type, title, children, align = 'left' }: CalloutProps) {
+export function Callout({ type, title, children, align = 'left', styles }: CalloutProps) {
   const { icon: Icon, className } = calloutStyles[type]
 
   return (
@@ -29,7 +34,10 @@ export function Callout({ type, title, children, align = 'left' }: CalloutProps)
         'text-left': align === 'left',
         'text-center sm:text-left': align === 'center',
         'text-right sm:text-left': align === 'right'
-      }
+      },
+      styles?.bold && 'font-bold',
+      styles?.italic && 'italic',
+      styles?.underline && 'underline'
     )}>
       <div className={cn(
         'flex items-center justify-center w-8 h-8 rounded-full shrink-0',

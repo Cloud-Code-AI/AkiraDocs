@@ -21,6 +21,11 @@ export interface Block {
   content: string;
   metadata?: {
     level?: number; // For headings
+    styles?: {
+      bold?: boolean;
+      italic?: boolean;
+      underline?: boolean;
+    };
     language?: string; // For code blocks
     alt?: string; // For images
     caption?: string; // For images, videos, and audio

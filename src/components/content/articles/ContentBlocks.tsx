@@ -12,6 +12,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Divider } from '../blocks/Divider'
 import { Checkbox } from "@/components/ui/checkbox"
 import EmojiPicker, { EmojiClickData } from 'emoji-picker-react'
+import { Card } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 
 interface ContentBlocksProps {
   blocks: Block[]
@@ -43,8 +45,9 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
     if (selectedBlockId) {
       const block = blocks.find(b => b.id === selectedBlockId)
       if (block) {
-        const newContent = `<${style}>${block.content}</${style}>`
-        updateBlockContent(selectedBlockId, newContent)
+        updateBlockMetadata(selectedBlockId, { 
+          styles: { ...block.metadata?.styles, [style]: !block.metadata?.styles?.[style] }
+        })
       }
     }
   }
@@ -144,6 +147,45 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
 
   return (
     <div className="space-y-4">
+      {!showPreview && (
+        <Card className="p-2 mb-4 inline-flex">
+          <div className="flex space-x-1">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => applyStyle('bold')}
+              className={cn(selectedBlockId && blocks.find(b => b.id === selectedBlockId)?.metadata?.styles?.bold && "bg-secondary")}
+            >
+              <Bold className="h-4 w-4" />
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => applyStyle('italic')}
+              className={cn(selectedBlockId && blocks.find(b => b.id === selectedBlockId)?.metadata?.styles?.italic && "bg-secondary")}
+            >
+              <Italic className="h-4 w-4" />
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => applyStyle('underline')}
+              className={cn(selectedBlockId && blocks.find(b => b.id === selectedBlockId)?.metadata?.styles?.underline && "bg-secondary")}
+            >
+              <Underline className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => applyAlignment('left')}>
+              <AlignLeft className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => applyAlignment('center')}>
+              <AlignCenter className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => applyAlignment('right')}>
+              <AlignRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </Card>
+      )}
       {blocks.map((block) => (
         <div key={block.id} className="relative">
           {!showPreview && (
@@ -276,7 +318,12 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
               onChange={(e) => updateBlockContent(block.id, e.target.value)}
               onFocus={() => setSelectedBlockId(block.id)}
               placeholder={`Enter heading content...`}
-              className={`w-full text-${block.metadata?.align || 'left'}`}
+              className={cn(
+                `w-full text-${block.metadata?.align || 'left'}`,
+                block.metadata?.styles?.bold && "font-bold",
+                block.metadata?.styles?.italic && "italic",
+                block.metadata?.styles?.underline && "underline"
+              )}
             />
           ) : block.type === 'list' ? (
             <Textarea
@@ -285,7 +332,12 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
               onChange={(e) => updateBlockContent(block.id, e.target.value)}
               onFocus={() => setSelectedBlockId(block.id)}
               placeholder="Enter list items (one per line)"
-              className={`w-full min-h-[100px] resize-y text-${block.metadata?.align || 'left'}`}
+              className={cn(
+                `w-full min-h-[100px] resize-y text-${block.metadata?.align || 'left'}`,
+                block.metadata?.styles?.bold && "font-bold",
+                block.metadata?.styles?.italic && "italic",
+                block.metadata?.styles?.underline && "underline"
+              )}
             />
           ) : block.type === 'checkList' ? (
             <div className="space-y-2">
@@ -507,7 +559,12 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
               onChange={(e) => updateBlockContent(block.id, e.target.value)}
               onFocus={() => setSelectedBlockId(block.id)}
               placeholder={`Enter ${block.type} content...`}
-              className={`w-full min-h-[100px] resize-y text-${block.metadata?.align || 'left'}`}
+              className={cn(
+                `w-full min-h-[100px] resize-y text-${block.metadata?.align || 'left'}`,
+                block.metadata?.styles?.bold && "font-bold",
+                block.metadata?.styles?.italic && "italic",
+                block.metadata?.styles?.underline && "underline"
+              )}
             />
           )}
         </div>
