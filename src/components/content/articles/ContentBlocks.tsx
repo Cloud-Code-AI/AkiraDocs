@@ -220,6 +220,24 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                   {showEmojiPicker === block.id ? 'Close' : 'Choose Emoji'}
                 </Button>
               )}
+              {block.type === 'image' && (
+                <div className="flex items-center space-x-2">
+                  <Select
+                    value={block.metadata?.size || 'medium'}
+                    onValueChange={(value) => updateBlockMetadata(block.id, { size: value === 'medium' ? undefined : value as 'small' | 'large' | 'full' })}
+                  >
+                    <SelectTrigger className="w-[120px]">
+                      <SelectValue placeholder="Size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="small">Small</SelectItem>
+                      <SelectItem value="medium">Medium</SelectItem>
+                      <SelectItem value="large">Large</SelectItem>
+                      <SelectItem value="full">Full</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
               <Button
                 variant="ghost"
                 size="icon"
@@ -425,32 +443,6 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
             </div>
           ) : block.type === 'image' ? (
             <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <Select
-                  value={block.metadata?.size || 'default'}
-                  onValueChange={(value) => updateBlockMetadata(block.id, { size: value === 'default' ? undefined : value })}
-                >
-                  <SelectTrigger className="w-[120px]">
-                    <SelectValue placeholder="Size" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="default">Default</SelectItem>
-                    <SelectItem value="small">Small</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Select
-                  value={block.metadata?.position || 'default'}
-                  onValueChange={(value) => updateBlockMetadata(block.id, { position: value === 'default' ? undefined : value })}
-                >
-                  <SelectTrigger className="w-[120px]">
-                    <SelectValue placeholder="Position" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="default">Default</SelectItem>
-                    <SelectItem value="left">Left</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
               <Input
                 placeholder="Enter image URL"
                 value={block.content}

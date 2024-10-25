@@ -25,8 +25,8 @@ export interface Block {
     alt?: string; // For images
     caption?: string; // For images, videos, and audio
     listType?: 'ordered' | 'unordered'; // For lists
-    size?: 'small'; // For images
-    position?: 'left'; // For images
+    size?: 'small' | 'medium' | 'large' | 'full'; // for images
+    position?: 'left' | 'center' | 'right'; // for images
     headers?: string[]; // For tables
     rows?: string[][]; // For tables
     items?: { title: string; content: string }[]; // For toggle lists
