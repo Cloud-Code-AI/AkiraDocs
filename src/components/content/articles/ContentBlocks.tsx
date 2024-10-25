@@ -171,6 +171,55 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                   </SelectContent>
                 </Select>
               )}
+              {block.type === 'list' && (
+                <Select
+                  value={block.metadata?.listType || 'unordered'}
+                  onValueChange={(value) => updateBlockMetadata(block.id, { listType: value as 'ordered' | 'unordered' })}
+                >
+                  <SelectTrigger className="w-[120px]">
+                    <SelectValue placeholder="List type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="unordered">Unordered</SelectItem>
+                    <SelectItem value="ordered">Ordered</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
+              {block.type === 'code' && (
+                <>
+                  <Input
+                    placeholder="Language"
+                    value={block.metadata?.language || ''}
+                    onChange={(e) => updateBlockMetadata(block.id, { language: e.target.value })}
+                    className="w-28"
+                  />
+                  <Input
+                    placeholder="Filename"
+                    value={block.metadata?.filename || ''}
+                    onChange={(e) => updateBlockMetadata(block.id, { filename: e.target.value })}
+                    className="w-38"
+                  />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => updateBlockMetadata(block.id, { showLineNumbers: !block.metadata?.showLineNumbers })}
+                    className={block.metadata?.showLineNumbers ? 'bg-primary text-primary-foreground' : ''}
+                  >
+                    {block.metadata?.showLineNumbers ? <Check className="h-4 w-4" /> : <X className="h-4 w-4" />}
+                    <span>Show Line Numbers</span>
+                  </Button>
+                </>
+              )}
+              {block.type === 'emoji' && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toggleEmojiPicker(block.id)}
+                >
+                  <Smile className="h-4 w-4 mr-2" />
+                  {showEmojiPicker === block.id ? 'Close' : 'Choose Emoji'}
+                </Button>
+              )}
               <Button
                 variant="ghost"
                 size="icon"
