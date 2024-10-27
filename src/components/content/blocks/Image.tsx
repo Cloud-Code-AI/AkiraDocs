@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 
 interface ImageBlockProps {
+  id?: string;
   src: string;
   alt: string;
   caption?: string;
@@ -14,7 +15,7 @@ interface ImageBlockProps {
   };
 }
 
-export function Image({ src, alt, caption, size = 'medium', position = 'center', align = 'left', styles }: ImageBlockProps) {
+export function Image({ id, src, alt, caption, size = 'medium', position = 'center', align = 'left', styles }: ImageBlockProps) {
   const sizeClasses = {
     small: 'w-1/3',
     medium: 'w-2/3',
@@ -31,7 +32,7 @@ export function Image({ src, alt, caption, size = 'medium', position = 'center',
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
 
   return (
-    <figure className={`my-8 py-1 ${positionClasses[position]} ${alignClass}`}>
+    <figure id={id} className={`my-8 py-1 ${positionClasses[position]} ${alignClass}`}>
       <img
         src={src}
         alt={alt}

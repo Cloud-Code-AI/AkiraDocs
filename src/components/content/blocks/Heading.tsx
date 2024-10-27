@@ -2,6 +2,7 @@ import React from 'react';
 import { cn } from "@/lib/utils";
 
 interface HeadingProps {
+  id?: string;
   level: number;
   children: React.ReactNode;
   align?: 'left' | 'center' | 'right';
@@ -12,7 +13,7 @@ interface HeadingProps {
   };
 }
 
-export function Heading({ level, children, align = 'left', styles }: HeadingProps) {
+export function Heading({ id, level, children, align = 'left', styles }: HeadingProps) {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   const sizeClasses = {
     1: 'text-4xl',
@@ -25,7 +26,7 @@ export function Heading({ level, children, align = 'left', styles }: HeadingProp
   const alignClass = align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : '';
 
   return (
-    <Tag className={cn(
+    <Tag id={id} className={cn(
       `font-bold mt-6 mb-2 py-4 ${sizeClasses[level as keyof typeof sizeClasses]} ${alignClass}`,
       styles?.italic && 'italic',
       styles?.underline && 'underline'
@@ -35,10 +36,17 @@ export function Heading({ level, children, align = 'left', styles }: HeadingProp
   );
 }
 
-export function MainTitle({ children, align = 'left', styles }: { children: React.ReactNode, align?: 'left' | 'center' | 'right', styles?: { bold?: boolean; italic?: boolean; underline?: boolean; } }) {
+interface MainTitleProps {
+  id?: string;
+  children: React.ReactNode;
+  align?: 'left' | 'center' | 'right';
+  styles?: { bold?: boolean; italic?: boolean; underline?: boolean; };
+}
+
+export function MainTitle({ id, children, align = 'left', styles }: MainTitleProps) {
   const alignClass = align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : '';
   return (
-    <h1 className={cn(
+    <h1 id={id} className={cn(
       `text-4xl font-bold text-gray-800 mb-1 py-1 ${alignClass}`,
       styles?.italic && 'italic',
       styles?.underline && 'underline'

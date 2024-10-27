@@ -2,6 +2,7 @@ import React from 'react';
 import { cn } from "@/lib/utils";
 
 interface AudioProps {
+  id?: string;
   src: string;
   caption?: string;
   align?: 'left' | 'center' | 'right';
@@ -12,10 +13,10 @@ interface AudioProps {
   };
 }
 
-export function Audio({ src, caption, align = 'left', styles }: AudioProps) {
+export function Audio({ id, src, caption, align = 'left', styles }: AudioProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <div className={`mb-6 py-1 ${alignClass}`}>
+    <div id={id} className={`mb-6 py-1 ${alignClass}`}>
       <audio controls className="w-full">
         <source src={src} type="audio/mpeg" />
         Your browser does not support the audio element.

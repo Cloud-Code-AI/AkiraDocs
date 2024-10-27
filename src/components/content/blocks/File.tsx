@@ -2,6 +2,7 @@ import React from 'react';
 import { cn } from "@/lib/utils";
 
 interface FileProps {
+  id?: string;
   url: string;
   name: string;
   align?: 'left' | 'center' | 'right';
@@ -12,10 +13,10 @@ interface FileProps {
   };
 }
 
-export function File({ url, name, align = 'left', styles }: FileProps) {
+export function File({ id, url, name, align = 'left', styles }: FileProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <div className={`mb-6 py-1 ${alignClass}`}>
+    <div id={id} className={`mb-6 py-1 ${alignClass}`}>
       <a href={url} download className={cn(
         "text-blue-500 hover:underline",
         styles?.bold && 'font-bold',
