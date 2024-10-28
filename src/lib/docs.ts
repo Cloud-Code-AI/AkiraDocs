@@ -4,8 +4,8 @@ const docsContext = require.context('../../_content/docs', true, /\.json$/)
 
 export function getDocBySlug(slug: string): BlogPost {
   try {
-    // Replace forward slashes with backslashes for Windows compatibility
-    const normalizedSlug = slug
+    // If slug is empty, use 'index'
+    const normalizedSlug = slug || 'index'
     console.log(`./${normalizedSlug}.json`)
     return docsContext(`./${normalizedSlug}.json`)
   } catch (error) {

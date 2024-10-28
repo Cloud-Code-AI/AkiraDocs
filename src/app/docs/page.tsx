@@ -21,7 +21,7 @@ const PostContainer = styled.div`
 
 export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
-  const slug = resolvedParams.slug.join('/')
+  const slug = resolvedParams.slug?.length ? resolvedParams.slug.join('/') : ''
   const post = getDocBySlug(slug)
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
