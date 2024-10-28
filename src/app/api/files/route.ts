@@ -1,4 +1,4 @@
-import { writeFile, mkdir, rm, unlink } from 'fs/promises'
+import { writeFile, mkdir, rm, unlink, readFile } from 'fs/promises'
 import { NextResponse } from 'next/server'
 import path from 'path'
 
@@ -39,6 +39,32 @@ export async function DELETE(request: Request) {
     console.error('Error deleting item:', error)
     return NextResponse.json(
       { error: 'Failed to delete item' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const filePath = searchParams.get('path')
+    
+    if (!filePath) {
+      return NextResponse.json(
+        { error: 'No file path provided' },
+        { status: 400 }
+      )
+    }
+
+    const fullPath = path.join(process.cwd(), '_content', filePath)
+    const fileContent = await readFile(fullPath, 'utf-8')
+    const parsedContent = JSON.parse(fileContent)
+    
+    return NextResponse.json(parsedContent)
+  } catch (error) {
+    console.error('Error reading file:', error)
+    return NextResponse.json(
+      { error: 'Failed to read file' },
       { status: 500 }
     )
   }

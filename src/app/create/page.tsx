@@ -58,8 +58,17 @@ export default function ImprovedFileTreeUI() {
     })
   }
 
-  const handleFileClick = (filePath: string) => {
-    router.push(`/editor/${filePath}`)
+  const handleFileClick = (node: FileNode) => {
+    // Get the full path for the file
+    const fullPath = getNodeFullPath(fileTree, node.id)
+    if (!fullPath) {
+      console.error('Could not find full path for node')
+      return
+    }
+
+    // Encode the file path to handle special characters in URLs
+    const encodedPath = encodeURIComponent(fullPath)
+    router.push(`/articles?file=${encodedPath}`)
   }
 
   const startNewItem = (parentId: string, type: 'file' | 'folder') => {
@@ -174,7 +183,7 @@ export default function ImprovedFileTreeUI() {
                 </div>
                 <span 
                   className={`text-sm ${node.type === 'folder' ? 'font-semibold' : ''} text-gray-700 hover:text-gray-900 transition-colors duration-200 cursor-pointer`}
-                  onClick={() => node.type === 'file' ? handleFileClick(node.name) : toggleFolder(node.id)}
+                  onClick={() => node.type === 'file' ? handleFileClick(node) : toggleFolder(node.id)}
                 >
                   {node.name}
                 </span>
