@@ -3,19 +3,15 @@ import { BlogPost } from '@/types/Block'
 const articlesContext = require.context('../../_content/articles', true, /\.json$/)
 
 export function getArticleBySlug(slug: string): BlogPost {
-  console.log(slug)
   const normalizedSlug = slug || ''
-  console.log(normalizedSlug)
   
   try {
     if (!normalizedSlug) {
       // Get all articles and sort by date to find the latest
       const articles = getAllArticles()
-      console.log("articles: ", articles)
       const sortedArticles = articles.sort((a, b) => 
         new Date(b.date).getTime() - new Date(a.date).getTime()
       )
-      console.log("sortedArticles: ", sortedArticles)
       if (sortedArticles.length > 0) {
         return sortedArticles[0]
       }

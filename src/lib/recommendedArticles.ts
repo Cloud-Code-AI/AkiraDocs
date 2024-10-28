@@ -67,7 +67,7 @@ export function getRecommendedArticles(): Article[] | null {
       
       for (const { context, id } of sortedFiles) {
         if (context === 'articles') {
-          const articleFile = `./articles/${id}.json`
+          const articleFile = `./${id}.json`
           if (articlesContext.keys().includes(articleFile)) {
             const article = articlesContext(articleFile)
             articles.push({
@@ -75,7 +75,8 @@ export function getRecommendedArticles(): Article[] | null {
               title: article.title,
               description: article.description,
               author: article.author,
-              publishDate: new Date(article.date)
+              publishDate: new Date(article.date),
+              context: context
             })
           }
         } else {
@@ -87,7 +88,8 @@ export function getRecommendedArticles(): Article[] | null {
               title: doc.title,
               description: doc.description,
               author: doc.author,
-              publishDate: new Date(doc.date)
+              publishDate: new Date(doc.date),
+              context: context
             })
           }
         }
