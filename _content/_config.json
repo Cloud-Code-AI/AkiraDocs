@@ -30,5 +30,5 @@
         { "name": "GitHub", "url": "https://github.com/Cloud-Code-AI/akiradocs-template", "icon": "/github.svg" },
         { "name": "Twitter", "url": "https://twitter.com/your-account", "icon": "/twitter.svg" },
         { "name": "LinkedIn", "url": "https://linkedin.com/company/your-company", "icon": "/linkedin.svg" }
-    ],
+    ]
 }
