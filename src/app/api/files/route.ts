@@ -1,24 +1,44 @@
-import { writeFile, mkdir } from 'fs/promises'
+import { writeFile, mkdir, rm, unlink } from 'fs/promises'
 import { NextResponse } from 'next/server'
 import path from 'path'
 
 export async function POST(request: Request) {
   try {
-    const { type, name, parentPath } = await request.json()
+    const { path: filePath, content } = await request.json()
     
-    const fullPath = path.join(process.cwd(), 'content', parentPath, name)
+    // Ensure the directory exists
+    const fullPath = path.join(process.cwd(), '_content', filePath)
+    await mkdir(path.dirname(fullPath), { recursive: true })
+    
+    // Write the file
+    await writeFile(fullPath, JSON.stringify(content, null, 2))
+    
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error('Error creating file:', error)
+    return NextResponse.json(
+      { error: 'Failed to create file' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { path: itemPath, type } = await request.json()
+    const fullPath = path.join(process.cwd(), '_content', itemPath)
 
     if (type === 'folder') {
-      await mkdir(fullPath, { recursive: true })
+      await rm(fullPath, { recursive: true, force: true })
     } else {
-      await writeFile(fullPath, JSON.stringify({}, null, 2))
+      await unlink(fullPath)
     }
 
-    return NextResponse.json({ success: true, path: fullPath })
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error creating file/folder:', error)
+    console.error('Error deleting item:', error)
     return NextResponse.json(
-      { error: 'Failed to create file/folder' },
+      { error: 'Failed to delete item' },
       { status: 500 }
     )
   }
