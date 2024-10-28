@@ -8,14 +8,13 @@ import { LegacyDocsToggle } from '@/components/content/aiSearch/LegacyDocsToggle
 import { AIResponse } from '@/components/content/aiSearch/AIResponse'
 import { RecommendedArticles } from '@/components/content/aiSearch/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
-import { Article } from '@/types/Article'
-import { getAllDocs } from '@/lib/docs'
+import { getRecommendedArticles } from '@/lib/recommendedArticles'
 
 
 export default function Home() {
   const [query, setQuery] = useState('')
   const [aiResponse, setAiResponse] = useState('')
-  const [showTraditionalDocs, setShowTraditionalDocs] = useState(false)
+  const recommendedArticles = getRecommendedArticles()
   const router = useRouter()
 
   const handleSearch = (e: React.FormEvent) => {
@@ -26,19 +25,6 @@ export default function Home() {
   const handleBack = () => {
     setAiResponse('')
   }
-
-  const handleToggleChange = (checked: boolean) => {
-    setShowTraditionalDocs(checked)
-    if (checked) {
-      router.push('/legacy')
-    }
-  }
-
-  const recommendedArticles: Article[] = [
-    { id: '1', title: 'Getting Started with AkiraDocs', description: 'Learn the basics of using AkiraDocs for your project.', content: '', author: '', publishDate: new Date() },
-    { id: '2', title: 'Advanced Search Techniques', description: 'Master the art of efficient document searching.', content: '', author: '', publishDate: new Date() },
-    { id: '3', title: 'Integrating AkiraDocs with Your Workflow', description: 'Seamlessly incorporate AkiraDocs into your development process.', content: '', author: '', publishDate: new Date() },
-  ]
 
   const sources = [
     { title: 'AkiraDocs Official Documentation', url: 'https://docs.akiradocs.com' },
@@ -55,10 +41,7 @@ export default function Home() {
             onQueryChange={setQuery}
             onSubmit={handleSearch}
           />
-          <LegacyDocsToggle
-            checked={showTraditionalDocs}
-            onCheckedChange={handleToggleChange}
-          />
+          <LegacyDocsToggle />
         </div>
 
         <AnimatePresence>
@@ -68,7 +51,7 @@ export default function Home() {
               sources={sources}
               onBack={handleBack}
             />
-          ) : (
+          ) : recommendedArticles && (
             <RecommendedArticles articles={recommendedArticles} />
           )}
         </AnimatePresence>
