@@ -49,8 +49,8 @@ export function Header({
     height: 30
   },
   title = {
-    text: '',
-    show: false
+    text: 'Okay',
+    show: true
   },
   navItems,
   showSearch = true,

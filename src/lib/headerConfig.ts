@@ -8,6 +8,7 @@ type HeaderConfig = {
     text: string;
     show: boolean;
   };
+  searchPlaceholder?: string;
 };
 
 export function getHeaderConfig(): HeaderConfig {
@@ -18,7 +19,8 @@ export function getHeaderConfig(): HeaderConfig {
 
   // Return only the header-related config
   return {
-    logo: config.logo,
-    title: config.title,
+    logo: config.header?.logo,
+    title: config.header?.title,
+    searchPlaceholder: config.header?.searchPlaceholder,
   };
 }

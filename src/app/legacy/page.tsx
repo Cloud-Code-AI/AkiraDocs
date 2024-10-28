@@ -135,7 +135,7 @@ const footerData = {
     return (
         <div className="flex flex-col h-screen">
             <Header 
-                searchPlaceholder='Search documentation...'
+                searchPlaceholder={headerConfig.searchPlaceholder}
                 logo={headerConfig.logo}
                 title={headerConfig.title}
             />

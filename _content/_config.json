@@ -17,14 +17,17 @@
             "show": true
         }
     },
-    "logo": {
-        "path": "/akiradocs_logo.png",
-        "width": 120,
-        "height": 30
-    },
-    "title": {
-        "text": "",
-        "show": false
+    "header": {
+        "logo": {
+            "path": "/akiradocs_logo.png",
+            "width": 120,
+            "height": 30
+        },
+        "title": {
+            "text": "",
+            "show": false
+        },
+        "searchPlaceholder": "Search Akira..."
     },
     "socialLinks": [
         { "name": "GitHub", "url": "https://github.com/Cloud-Code-AI/akiradocs-template", "icon": "/github.svg" },
