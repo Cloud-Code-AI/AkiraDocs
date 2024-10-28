@@ -1,23 +1,24 @@
 "use client"
 
-const navigationContext = require.context('../../_content', true, /_meta\.json$/)
-const footerContext = require.context('../../_content', true, /_config\.json$/)
-export function getNavigation<T>(defaultValue: T): T {
+const docsContext = require.context('../../_content/docs', true, /_meta\.json$/)
+const articlesContext = require.context('../../_content/articles', true, /_meta\.json$/)
+
+export function getDocsNavigation<T>(defaultValue: T): T {
   try {
-    const navigationFile = navigationContext.keys()[0]
-    return navigationContext(navigationFile) as T
+    const navigationFile = docsContext.keys()[0]
+    return docsContext(navigationFile) as T
   } catch (error) {
-    console.warn(`Failed to read _meta.json file. Using default value.`)
+    console.warn(`Failed to read docs _meta.json file. Using default value.`)
     return defaultValue
   }
 }
 
-export function getFooterData<T>(defaultValue: T): T {
+export function getArticlesNavigation<T>(defaultValue: T): T {
   try {
-    const footerFile = footerContext.keys()[0]
-    return footerContext(footerFile) as T
+    const navigationFile = articlesContext.keys()[0]
+    return articlesContext(navigationFile) as T
   } catch (error) {
-    console.warn(`Failed to read config.json file. Using default value.`)
+    console.warn(`Failed to read articles _meta.json file. Using default value.`)
     return defaultValue
   }
 }

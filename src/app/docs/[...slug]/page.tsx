@@ -7,7 +7,7 @@ import { Header } from '@/components/content/layout/Header'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'
-import { getNavigation, getFooterData } from '@/lib/getNavigation'
+import { getDocsNavigation} from '@/lib/getNavigation'
 import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 
@@ -25,7 +25,7 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
   const post = getDocBySlug(slug)
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
-  const navigationItems = getNavigation({})
+  const navigationItems = getDocsNavigation({})
 
 
   return (

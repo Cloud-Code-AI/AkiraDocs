@@ -7,7 +7,7 @@ import { Header } from '@/components/content/layout/Header'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'
-import { getNavigation } from '@/lib/getNavigation'
+import { getArticlesNavigation } from '@/lib/getNavigation'
 import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 
@@ -25,7 +25,7 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
   const post = getArticleBySlug(slug)
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
-  const navigationItems = getNavigation({})
+  const navigationItems = getArticlesNavigation({})
 
 
   return (
