@@ -68,7 +68,7 @@ export default function ImprovedFileTreeUI() {
 
     // Encode the file path to handle special characters in URLs
     const encodedPath = encodeURIComponent(fullPath)
-    router.push(`/articles?file=${encodedPath}`)
+    router.push(`/editor?file=${encodedPath}`)
   }
 
   const startNewItem = (parentId: string, type: 'file' | 'folder') => {

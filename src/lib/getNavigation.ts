@@ -2,7 +2,7 @@
 
 const navigationContext = require.context('../../_content', true, /_meta\.json$/)
 const footerContext = require.context('../../_content', true, /_config\.json$/)
-export function getDocsNavigation<T>(defaultValue: T): T {
+export function getNavigation<T>(defaultValue: T): T {
   try {
     const navigationFile = navigationContext.keys()[0]
     return navigationContext(navigationFile) as T
