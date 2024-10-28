@@ -15,12 +15,34 @@ interface SocialLink {
 
 // Define the props for the Footer component
 interface FooterProps {
-  companyName: string;
-  socialLinks: SocialLink[];
-  madeWithLove?: boolean;
+  companyName?: string;
+  socialLinks?: SocialLink[];
+  madeWithLove?: {
+    show?: boolean;
+    team?: string;
+  };
 }
 
-const Footer: React.FC<FooterProps> = ({ companyName, socialLinks, madeWithLove = true }) => {
+const defaultProps = {
+  companyName: "Your Company",
+  socialLinks: [
+    {
+      name: "GitHub",
+      url: "https://github.com",
+      icon: "/github.svg"
+    }
+  ],
+  madeWithLove: {
+    show: true,
+    team: "Development"
+  }
+} as const;
+
+const Footer: React.FC<FooterProps> = ({ 
+  companyName = defaultProps.companyName,
+  socialLinks = defaultProps.socialLinks,
+  madeWithLove = defaultProps.madeWithLove
+}) => {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -35,10 +57,10 @@ const Footer: React.FC<FooterProps> = ({ companyName, socialLinks, madeWithLove 
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <span>© {currentYear} {companyName}. All rights reserved.</span>
-              {madeWithLove && (
+              {madeWithLove.show && (
                 <>
                   <span>|</span>
-                  <span>Made with <Heart className="inline-block w-4 h-4 text-red-500" /> by the {companyName} team</span>
+                  <span>Made with <Heart className="inline-block w-4 h-4 text-red-500" /> by the {madeWithLove.team} team</span>
                 </>
               )}
             </div>

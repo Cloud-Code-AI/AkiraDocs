@@ -7,7 +7,9 @@ import { Header } from '@/components/content/layout/Header'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'
-import { getNavigation, getFooterData } from '@/lib/getNavigation'
+import { getDocsNavigation} from '@/lib/getNavigation'
+import { getHeaderConfig } from '@/lib/headerConfig'
+import { getFooterConfig } from '@/lib/footerConfig'
 
 const PostContainer = styled.div`
   max-width: 56rem; // This is equivalent to max-w-4xl
@@ -17,41 +19,22 @@ const PostContainer = styled.div`
   line-height: 1.6;
 `
 
-const Title = styled.h1`
-  text-align: center;
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 0.3em;
-`
-
-const Metadata = styled.p`
-  text-align: center;
-  color: #666;
-  font-size: 0.9em;
-  margin-bottom: 2em;
-`
-
 export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
   const slug = resolvedParams.slug.join('/')
   const post = getDocBySlug(slug)
-  // const post = getDocById(slug)
+  const headerConfig = getHeaderConfig();
+  const footerConfig = getFooterConfig();
+  const navigationItems = getDocsNavigation({})
 
-  // Load navigation items from _meta.json
-  const navigationItems = getNavigation({})
-
-  // You might want to fetch these from a central configuration or API
-  const footerData = getFooterData({})
 
   return (
     <div className="flex flex-col h-screen">
-      <Header searchPlaceholder='Search documentation...'/>
+      <Header {...headerConfig} />
       <div className="flex flex-grow">
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4">
           <PostContainer>
-            <Title>{post.title}</Title>
-            <Metadata>By {post.author} on {post.date}</Metadata>
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
             ))}
@@ -59,7 +42,7 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
           <TableOfContents />
         </div>
       </div>
-      <Footer {...footerData} />
+      <Footer {...footerConfig} />
     </div>
   )
 }

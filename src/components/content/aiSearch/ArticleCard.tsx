@@ -10,6 +10,10 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, index }: ArticleCardProps) {
+    const handleReadMore = () => {
+        window.location.href = `/${article.context}/${article.id}`
+    }
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -25,7 +29,7 @@ export function ArticleCard({ article, index }: ArticleCardProps) {
                 </CardHeader>
                 <CardContent className="flex-grow"></CardContent>
                 <CardContent className="pt-0">
-                    <Button variant="link" className="p-0 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200">
+                    <Button variant="link" className="p-0 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200" onClick={handleReadMore}>
                         Read More <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1 duration-300" />
                     </Button>
                 </CardContent>

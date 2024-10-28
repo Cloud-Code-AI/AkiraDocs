@@ -2,6 +2,8 @@
 import { motion } from "framer-motion"
 import { Article } from "@/types/Article"
 import { ArticleCard } from "./ArticleCard"
+import Link from "next/link"
+
 interface RecommendedArticlesProps {
     articles: Article[]
 }
@@ -21,6 +23,14 @@ export function RecommendedArticles({ articles }: RecommendedArticlesProps) {
                 {articles.map((article, index) => (
                     <ArticleCard key={index} article={article} index={index} />
                 ))}
+            </div>
+            <div className="mt-6 text-center">
+                <Link 
+                    href="/articles" 
+                    className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-200"
+                >
+                    View all articles →
+                </Link>
             </div>
         </motion.div>
     )

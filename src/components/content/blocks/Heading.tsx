@@ -27,7 +27,7 @@ export function Heading({ id, level, children, align = 'left', styles }: Heading
 
   return (
     <Tag id={id} className={cn(
-      `font-bold mt-6 mb-2 py-4 ${sizeClasses[level as keyof typeof sizeClasses]} ${alignClass}`,
+      `font-bold mb-2 py-4 ${sizeClasses[level as keyof typeof sizeClasses]} ${alignClass}`,
       styles?.italic && 'italic',
       styles?.underline && 'underline'
     )}>

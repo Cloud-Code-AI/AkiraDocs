@@ -7,49 +7,58 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useTheme } from "next-themes"
-import { Moon, Sun, Menu, Search, Sparkles } from 'lucide-react'
+import { Moon, Sun, Menu, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+import { usePathname } from 'next/navigation'
 
 interface NavItem {
   label: string;
   href: string;
+  icon?: string;
 }
 
 interface SocialLink {
   name: string;
   url: string;
-  icon: string; // Path to PNG file
+  icon: string;
 }
 
 interface HeaderProps {
-  logo?: string;
-  title?: string;
+  logo?: {
+    path: string;
+    width: number;
+    height: number;
+  };
+  title?: {
+    text: string;
+    show: boolean;
+  };
   navItems?: NavItem[];
   showSearch?: boolean;
   searchPlaceholder?: string;
   socialLinks?: SocialLink[];
-  showAIToggle?: boolean;
-  onAIToggle?: (enabled: boolean) => void;
-  customSearchComponent?: React.ReactNode;
 }
 
 export function Header({
-  logo = '/cloudcode_logo.png',
-  title = 'AkiraDocs',
+  logo = {
+    path: '/akiradocs_logo.png',
+    width: 120,
+    height: 30
+  },
+  title = {
+    text: '',
+    show: false
+  },
   navItems,
   showSearch = true,
   searchPlaceholder = 'Search...',
   socialLinks,
-  showAIToggle = true,
-  onAIToggle,
-  customSearchComponent,
 }: HeaderProps) {
   const [isMounted, setIsMounted] = useState(false)
+  const [activeItem, setActiveItem] = useState('')
+  const [hoveredItem, setHoveredItem] = useState('')
   const { theme, setTheme } = useTheme()
-  const [isOpen, setIsOpen] = useState(false)
-  const [showAI, setShowAI] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     setIsMounted(true)
@@ -58,13 +67,6 @@ export function Header({
   const toggleTheme = () => {
     if (isMounted) {
       setTheme(theme === "light" ? "dark" : "light")
-    }
-  }
-
-  const handleAIToggle = (checked: boolean) => {
-    setShowAI(checked)
-    if (onAIToggle) {
-      onAIToggle(checked)
     }
   }
 
@@ -84,13 +86,21 @@ export function Header({
           >
             <div className="relative">
               <div className="absolute rounded-full"></div>
-              <Image src={logo} alt={`${title} logo`} width={30} height={30} className="relative rounded-full" />
+              <Image 
+                src={logo.path} 
+                alt={`${title.text} logo`} 
+                width={logo.width} 
+                height={logo.height} 
+                className="relative rounded-full" 
+              />
             </div>
-            <h1 className="text-xl font-bold text-foreground">{title}</h1>
+            {title.show && (
+              <h1 className="text-xl font-bold text-foreground">{title.text}</h1>
+            )}
           </motion.div>
           
           {navItems && (
-            <nav className="hidden md:flex space-x-1">
+            <nav className="hidden md:flex space-x-2">
               <AnimatePresence>
                 {navItems.map((item, index) => (
                   <motion.div
@@ -102,9 +112,18 @@ export function Header({
                   >
                     <Link 
                       href={item.href}
-                      className="text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-md hover:bg-muted"
+                      className={`group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md
+                        ${pathname === item.href 
+                          ? 'text-foreground bg-muted' 
+                          : 'text-muted-foreground hover:text-foreground'
+                        }`}
                     >
+                      {item.icon && <Image src={item.icon} alt={item.label} width={16} height={16} />}
                       {item.label}
+                      <span 
+                        className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
+                          ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
+                      />
                     </Link>
                   </motion.div>
                 ))}
@@ -114,16 +133,14 @@ export function Header({
           
           <div className="flex items-center space-x-4">
             {showSearch && (
-              customSearchComponent || (
-                <div className="relative hidden md:block">
-                  <Input 
-                    type="search" 
-                    placeholder={searchPlaceholder}
-                    className="w-64 pr-8"
-                  />
-                  <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
-                </div>
-              )
+              <div className="relative hidden md:block">
+                <Input 
+                  type="search" 
+                  placeholder={searchPlaceholder}
+                  className="w-64 pr-8 rounded-md"
+                />
+                <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+              </div>
             )}
             <Button variant="ghost" size="icon" onClick={toggleTheme} className="rounded-full hover:bg-muted">
               {isMounted && theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
@@ -161,38 +178,29 @@ export function Header({
                       >
                         <Link 
                           href={item.href}
-                          className="text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-md hover:bg-muted block"
-                          onClick={() => setIsOpen(false)}
+                          className={`group relative flex items-center gap-x-2 transition-colors px-3 py-2 rounded-md
+                            ${pathname === item.href 
+                              ? 'text-foreground bg-muted' 
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                            }`}
                         >
+                          {item.icon && <Image src={item.icon} alt={item.label} width={16} height={16} />}
                           {item.label}
+                          <span 
+                            className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
+                              ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
+                          />
                         </Link>
                       </motion.div>
                     ))}
                   </nav>
-                  {showSearch && !customSearchComponent && (
+                  {showSearch && (
                     <div className="mt-4">
                       <Input type="search" placeholder={searchPlaceholder} className="w-full rounded-full bg-muted/50 focus:bg-background transition-colors" />
                     </div>
                   )}
                 </SheetContent>
               </Sheet>
-            )}
-            {showAIToggle && (
-              <div className="flex items-center space-x-2">
-                <Switch
-                  id="show-ai"
-                  checked={showAI}
-                  onCheckedChange={handleAIToggle}
-                  className="data-[state=checked]:bg-indigo-600"
-                />
-                <Label
-                  htmlFor="show-ai"
-                  className="text-sm font-medium text-muted-foreground flex items-center cursor-pointer"
-                >
-                  <Sparkles className="h-5 w-5 mr-1 text-indigo-600 dark:text-indigo-400" />
-                  AI View
-                </Label>
-              </div>
             )}
           </div>
         </div>

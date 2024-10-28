@@ -8,15 +8,15 @@ import { LegacyDocsToggle } from '@/components/content/aiSearch/LegacyDocsToggle
 import { AIResponse } from '@/components/content/aiSearch/AIResponse'
 import { RecommendedArticles } from '@/components/content/aiSearch/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
-import { Article } from '@/types/Article'
-import { getAllDocs } from '@/lib/docs'
+import { getRecommendedArticles } from '@/lib/recommendedArticles'
+import { getSearchConfig } from '@/lib/searchConfig'
 
 
 export default function Home() {
   const [query, setQuery] = useState('')
   const [aiResponse, setAiResponse] = useState('')
-  const [showTraditionalDocs, setShowTraditionalDocs] = useState(false)
-  const router = useRouter()
+  const recommendedArticles = getRecommendedArticles()
+  const searchConfig = getSearchConfig()
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -27,19 +27,6 @@ export default function Home() {
     setAiResponse('')
   }
 
-  const handleToggleChange = (checked: boolean) => {
-    setShowTraditionalDocs(checked)
-    if (checked) {
-      router.push('/legacy')
-    }
-  }
-
-  const recommendedArticles: Article[] = [
-    { id: '1', title: 'Getting Started with AkiraDocs', description: 'Learn the basics of using AkiraDocs for your project.', content: '', author: '', publishDate: new Date() },
-    { id: '2', title: 'Advanced Search Techniques', description: 'Master the art of efficient document searching.', content: '', author: '', publishDate: new Date() },
-    { id: '3', title: 'Integrating AkiraDocs with Your Workflow', description: 'Seamlessly incorporate AkiraDocs into your development process.', content: '', author: '', publishDate: new Date() },
-  ]
-
   const sources = [
     { title: 'AkiraDocs Official Documentation', url: 'https://docs.akiradocs.com' },
     { title: 'AI-Powered Documentation Best Practices', url: 'https://aibest.practices.com' },
@@ -48,17 +35,18 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <SearchHeader />
+        <SearchHeader 
+          logo={searchConfig.logo}
+          title={searchConfig.title}
+          description={searchConfig.description}
+        />
         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center items-center mb-12">
           <SearchBar
             query={query}
             onQueryChange={setQuery}
             onSubmit={handleSearch}
           />
-          <LegacyDocsToggle
-            checked={showTraditionalDocs}
-            onCheckedChange={handleToggleChange}
-          />
+          <LegacyDocsToggle />
         </div>
 
         <AnimatePresence>
@@ -68,7 +56,7 @@ export default function Home() {
               sources={sources}
               onBack={handleBack}
             />
-          ) : (
+          ) : recommendedArticles && (
             <RecommendedArticles articles={recommendedArticles} />
           )}
         </AnimatePresence>
