@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { getDocBySlug } from '@/lib/docs'
+import { getArticleBySlug } from '@/lib/articles'
 import { BlockRenderer } from '@/components/content/renderers/BlockRenderer'
 import styled from 'styled-components'
 import { Header } from '@/components/content/layout/Header'
@@ -31,10 +31,10 @@ const Metadata = styled.p`
   margin-bottom: 2em;
 `
 
-export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
+export default function ArticlePage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
   const slug = resolvedParams.slug.join('/')
-  const post = getDocBySlug(slug)
+  const post = getArticleBySlug(slug)
   // const post = getDocById(slug)
 
   // Load navigation items from _meta.json
@@ -45,7 +45,7 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
 
   return (
     <div className="flex flex-col h-screen">
-      <Header searchPlaceholder='Search documentation...'/>
+      <Header searchPlaceholder='Search articles...'/>
       <div className="flex flex-grow">
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4">
