@@ -3,9 +3,11 @@ import Footer from '@/components/content/layout/Footer';
 import Navigation from '@/components/content/layout/Navigation';
 import MainContent from '@/app/legacy/MainContent';
 import TableOfContents from '@/components/content/layout/TableOfContents';
+import { getHeaderConfig } from '@/lib/headerConfig';
 
 export default function LegacyDocs() {
-
+    const headerConfig = getHeaderConfig();
+    
     const dummyContent = `
 <h1>Welcome to Our Documentation</h1>
 
@@ -129,17 +131,22 @@ const footerData = {
   ],
   madeWithLove: true
 }
-  return (
-    <div className="flex flex-col h-screen">
-      <Header searchPlaceholder='Search documentation...'/>
-      <div className="flex flex-grow">
-        <Navigation items={navigationItems} />
-        <div className="flex-1 flex">
-          <MainContent content={dummyContent} />
-          <TableOfContents />
+
+    return (
+        <div className="flex flex-col h-screen">
+            <Header 
+                searchPlaceholder='Search documentation...'
+                logo={headerConfig.logo}
+                title={headerConfig.title}
+            />
+            <div className="flex flex-grow">
+                <Navigation items={navigationItems} />
+                <div className="flex-1 flex">
+                    <MainContent content={dummyContent} />
+                    <TableOfContents />
+                </div>
+            </div>
+            <Footer {...footerData} />
         </div>
-      </div>
-      <Footer {...footerData} />
-    </div>
-  );
+    );
 }

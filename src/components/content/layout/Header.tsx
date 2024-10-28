@@ -24,8 +24,15 @@ interface SocialLink {
 }
 
 interface HeaderProps {
-  logo?: string;
-  title?: string;
+  logo?: {
+    path: string;
+    width: number;
+    height: number;
+  };
+  title?: {
+    text: string;
+    show: boolean;
+  };
   navItems?: NavItem[];
   showSearch?: boolean;
   searchPlaceholder?: string;
@@ -36,8 +43,15 @@ interface HeaderProps {
 }
 
 export function Header({
-  logo = '/cloudcode_logo.png',
-  title = 'AkiraDocs',
+  logo = {
+    path: '/akiradocs_logo.png',
+    width: 120,
+    height: 30
+  },
+  title = {
+    text: '',
+    show: false
+  },
   navItems,
   showSearch = true,
   searchPlaceholder = 'Search...',
@@ -84,9 +98,17 @@ export function Header({
           >
             <div className="relative">
               <div className="absolute rounded-full"></div>
-              <Image src={logo} alt={`${title} logo`} width={30} height={30} className="relative rounded-full" />
+              <Image 
+                src={logo.path} 
+                alt={`${title.text} logo`} 
+                width={logo.width} 
+                height={logo.height} 
+                className="relative rounded-full" 
+              />
             </div>
-            <h1 className="text-xl font-bold text-foreground">{title}</h1>
+            {title.show && (
+              <h1 className="text-xl font-bold text-foreground">{title.text}</h1>
+            )}
           </motion.div>
           
           {navItems && (
