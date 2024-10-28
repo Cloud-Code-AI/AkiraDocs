@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 
 interface NavItem {
   label: string;
@@ -57,6 +58,7 @@ export function Header({
   const [activeItem, setActiveItem] = useState('')
   const [hoveredItem, setHoveredItem] = useState('')
   const { theme, setTheme } = useTheme()
+  const pathname = usePathname()
 
   useEffect(() => {
     setIsMounted(true)
@@ -110,11 +112,18 @@ export function Header({
                   >
                     <Link 
                       href={item.href}
-                      className="group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md text-muted-foreground hover:text-foreground"
+                      className={`group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md
+                        ${pathname === item.href 
+                          ? 'text-foreground bg-muted' 
+                          : 'text-muted-foreground hover:text-foreground'
+                        }`}
                     >
                       {item.icon && <Image src={item.icon} alt={item.label} width={16} height={16} />}
                       {item.label}
-                      <span className="absolute inset-x-0 -bottom-px h-px bg-primary scale-x-0 transition-transform group-hover:scale-x-100" />
+                      <span 
+                        className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
+                          ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
+                      />
                     </Link>
                   </motion.div>
                 ))}
@@ -169,10 +178,18 @@ export function Header({
                       >
                         <Link 
                           href={item.href}
-                          className="flex items-center gap-x-2 text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-md hover:bg-muted"
+                          className={`group relative flex items-center gap-x-2 transition-colors px-3 py-2 rounded-md
+                            ${pathname === item.href 
+                              ? 'text-foreground bg-muted' 
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                            }`}
                         >
                           {item.icon && <Image src={item.icon} alt={item.label} width={16} height={16} />}
                           {item.label}
+                          <span 
+                            className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
+                              ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
+                          />
                         </Link>
                       </motion.div>
                     ))}
