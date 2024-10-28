@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface CodeBlockProps {
+  id?: string;
   code: string;
   language?: string;
   filename?: string;
@@ -12,6 +13,7 @@ interface CodeBlockProps {
 }
 
 export function CodeBlock({
+  id,
   code,
   language = 'typescript',
   filename,
@@ -28,7 +30,7 @@ export function CodeBlock({
   };
 
   return (
-    <div className={`relative group rounded-lg overflow-hidden py-1 ${alignClass}`}>
+    <div id={id} className={`relative group rounded-lg overflow-hidden py-1 ${alignClass}`}>
       {filename && (
         <div className="bg-gray-800 px-4 py-2 text-sm text-gray-200">
           {filename}

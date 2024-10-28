@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 type CalloutType = 'info' | 'warning' | 'success' | 'error'
 
 interface CalloutProps {
+  id?: string;
   type: CalloutType
   title?: string
   children: React.ReactNode
@@ -23,11 +24,11 @@ const calloutStyles: Record<CalloutType, { icon: React.ElementType; className: s
   error: { icon: XCircle, className: 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950' }
 }
 
-export function Callout({ type, title, children, align = 'left', styles }: CalloutProps) {
+export function Callout({ id, type, title, children, align = 'left', styles }: CalloutProps) {
   const { icon: Icon, className } = calloutStyles[type]
 
   return (
-    <Alert className={cn(
+    <Alert id={id} className={cn(
       'flex flex-col sm:flex-row items-start gap-4 p-4 my-4 rounded-lg border-2',
       className,
       {

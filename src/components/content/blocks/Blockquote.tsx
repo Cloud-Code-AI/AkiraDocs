@@ -2,6 +2,7 @@ import React from 'react';
 import { cn } from "@/lib/utils";
 
 interface BlockquoteProps {
+  id?: string;
   children: React.ReactNode;
   align?: 'left' | 'center' | 'right';
   styles?: {
@@ -11,10 +12,10 @@ interface BlockquoteProps {
   };
 }
 
-export function Blockquote({ children, align = 'left', styles }: BlockquoteProps) {
+export function Blockquote({ id, children, align = 'left', styles }: BlockquoteProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <blockquote className={cn(
+    <blockquote id={id} className={cn(
       `border-l-4 border-gray-300 pl-4 text-gray-600 mb-6 py-1 ${alignClass}`,
       styles?.bold && 'font-bold',
       styles?.italic && 'italic',

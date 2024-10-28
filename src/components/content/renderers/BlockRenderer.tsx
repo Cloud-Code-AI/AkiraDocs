@@ -25,6 +25,7 @@ export function BlockRenderer({ block }: BlockRendererProps) {
   const commonProps = {
     align: block.metadata?.align,
     styles: block.metadata?.styles,
+    id: block.id,
   };
 
   switch (block.type) {

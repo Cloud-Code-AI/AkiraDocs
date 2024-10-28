@@ -2,6 +2,7 @@ import React from 'react';
 import { cn } from "@/lib/utils";
 
 interface TableProps {
+  id?: string;
   headers: string[];
   rows: string[][];
   align?: 'left' | 'center' | 'right';
@@ -12,10 +13,10 @@ interface TableProps {
   };
 }
 
-export function Table({ headers, rows, align = 'left', styles }: TableProps) {
+export function Table({ id, headers, rows, align = 'left', styles }: TableProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <div className={`py-1 ${alignClass}`}>
+    <div id={id} className={`py-1 ${alignClass}`}>
       <table className={cn(
         "min-w-full bg-white border border-gray-200",
         styles?.bold && 'font-bold',

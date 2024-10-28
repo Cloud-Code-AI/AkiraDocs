@@ -3,6 +3,7 @@ import { ChevronRight, ChevronDown } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 interface ToggleListProps {
+  id?: string;
   items: { title: string; content: string }[];
   align?: 'left' | 'center' | 'right';
   styles?: {
@@ -12,10 +13,10 @@ interface ToggleListProps {
   };
 }
 
-export function ToggleList({ items, align = 'left', styles }: ToggleListProps) {
+export function ToggleList({ id, items, align = 'left', styles }: ToggleListProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
-    <div className={`mb-6 py-1 ${alignClass}`}>
+    <div id={id} className={`mb-6 py-1 ${alignClass}`}>
       {items.map((item, index) => {
         const [isOpen, setIsOpen] = useState(false);
         return (
