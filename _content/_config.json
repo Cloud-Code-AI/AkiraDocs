@@ -1,6 +1,4 @@
 {
-    "companyName": "Cloud Code AI Inc.",
-    "madeWithLove": true,
     "title": "Akira Docs",
     "description": "Next-gen documentation powered by AI",
     "search": {
@@ -36,9 +34,16 @@
             { "label": "Articles", "href": "/articles", "icon": "/articles.svg" }
         ]
     },
-    "socialLinks": [
-        { "name": "GitHub", "url": "https://github.com/Cloud-Code-AI/akiradocs-template", "icon": "/github.svg" },
-        { "name": "Twitter", "url": "https://twitter.com/your-account", "icon": "/twitter.svg" },
-        { "name": "LinkedIn", "url": "https://linkedin.com/company/your-company", "icon": "/linkedin.svg" }
-    ]
+    "footer": { 
+        "companyName": "Cloud Code AI",
+        "socialLinks": [
+            { "name": "GitHub", "url": "https://github.com/Cloud-Code-AI/akiradocs-template", "icon": "/github.svg" },
+            { "name": "Twitter", "url": "https://x.com/CloudCodeAI", "icon": "/twitter.svg" },
+            { "name": "LinkedIn", "url": "https://www.linkedin.com/company/cloudcode-ai", "icon": "/linkedin.svg" }
+        ],
+        "madeWithLove": {
+            "show": true,
+            "team": "Akira Docs"
+        }
+    }
 }

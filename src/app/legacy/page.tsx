@@ -4,9 +4,11 @@ import Navigation from '@/components/content/layout/Navigation';
 import MainContent from '@/app/legacy/MainContent';
 import TableOfContents from '@/components/content/layout/TableOfContents';
 import { getHeaderConfig } from '@/lib/headerConfig';
+import { getFooterConfig } from '@/lib/footerConfig';
 
 export default function LegacyDocs() {
     const headerConfig = getHeaderConfig();
+    const footerConfig = getFooterConfig();
     
     const dummyContent = `
 <h1>Welcome to Our Documentation</h1>
@@ -122,16 +124,6 @@ const navigationItems = {
   // ... other top-level items
 };
 
-const footerData = {
-  companyName: "Cloud Code AI",
-  socialLinks: [
-    { name: "GitHub", url: "https://github.com/your-repo", icon: "/github.svg" },
-    { name: "Twitter", url: "https://twitter.com/your-account", icon: "/twitter.svg" },
-    { name: "LinkedIn", url: "https://linkedin.com/company/your-company", icon: "/linkedin.svg" },
-  ],
-  madeWithLove: true
-}
-
     return (
         <div className="flex flex-col h-screen">
             <Header 
@@ -149,7 +141,7 @@ const footerData = {
                     <TableOfContents />
                 </div>
             </div>
-            <Footer {...footerData} />
+            <Footer {...footerConfig} />
         </div>
     );
 }
