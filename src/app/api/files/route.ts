@@ -69,3 +69,31 @@ export async function GET(request: Request) {
     )
   }
 }
+
+export async function PUT(request: Request) {
+  try {
+    const { path: filePath, content } = await request.json()
+    
+    if (!filePath) {
+      return NextResponse.json(
+        { error: 'No file path provided' },
+        { status: 400 }
+      )
+    }
+
+    const fullPath = path.join(process.cwd(), '_content', filePath)
+    
+    // Prettify the JSON for better readability
+    const jsonContent = JSON.stringify(content, null, 2)
+    
+    await writeFile(fullPath, jsonContent, 'utf-8')
+    
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error('Error writing file:', error)
+    return NextResponse.json(
+      { error: 'Failed to write file' },
+      { status: 500 }
+    )
+  }
+}

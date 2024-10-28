@@ -1,31 +1,43 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft, Eye, EyeOff } from 'lucide-react'
+import { ArrowLeft, Eye, EyeOff, Save } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { useRouter } from 'next/navigation'
 
 interface TitleBarProps {
   showPreview: boolean
   setShowPreview: (show: boolean) => void
+  onSave: () => void
+  isSaving?: boolean
 }
 
-export function TitleBar({ showPreview, setShowPreview }: TitleBarProps) {
+export function TitleBar({ showPreview, setShowPreview, onSave, isSaving = false }: TitleBarProps) {
   const router = useRouter()
 
   return (
-    <div className="flex items-center mb-6">
-      <Button variant="ghost" onClick={() => router.back()} className="mr-4">
-        <ArrowLeft className="w-6 h-6" />
-      </Button>
-      <h1 className="text-xl font-semibold">Draft article</h1>
+    <div className="flex justify-between items-center mb-8">
+      <div className="flex space-x-2">
+        <Button
+          variant={showPreview ? "outline" : "default"}
+          onClick={() => setShowPreview(false)}
+        >
+          Edit
+        </Button>
+        <Button
+          variant={showPreview ? "default" : "outline"}
+          onClick={() => setShowPreview(true)}
+        >
+          Preview
+        </Button>
+      </div>
       <Button 
-        variant="ghost" 
-        size="icon" 
-        className="ml-auto"
-        onClick={() => setShowPreview(!showPreview)}
+        onClick={onSave}
+        disabled={isSaving}
+        className="flex items-center space-x-2"
       >
-        {showPreview ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+        <Save className="w-4 h-4" />
+        <span>{isSaving ? 'Saving...' : 'Save'}</span>
       </Button>
     </div>
   )
