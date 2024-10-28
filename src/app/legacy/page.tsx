@@ -135,9 +135,12 @@ const footerData = {
     return (
         <div className="flex flex-col h-screen">
             <Header 
-                searchPlaceholder={headerConfig.searchPlaceholder}
                 logo={headerConfig.logo}
                 title={headerConfig.title}
+                showSearch={headerConfig.showSearch}
+                searchPlaceholder={headerConfig.searchPlaceholder}
+                navItems={headerConfig.navItems}
+                socialLinks={headerConfig.socialLinks}
             />
             <div className="flex flex-grow">
                 <Navigation items={navigationItems} />

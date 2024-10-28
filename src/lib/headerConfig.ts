@@ -1,3 +1,14 @@
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface SocialLink {
+  name: string;
+  url: string;
+  icon: string;
+}
+
 type HeaderConfig = {
   logo?: {
     path: string;
@@ -8,7 +19,10 @@ type HeaderConfig = {
     text: string;
     show: boolean;
   };
+  showSearch?: boolean;
   searchPlaceholder?: string;
+  navItems?: NavItem[];
+  socialLinks?: SocialLink[];
 };
 
 export function getHeaderConfig(): HeaderConfig {
@@ -21,6 +35,9 @@ export function getHeaderConfig(): HeaderConfig {
   return {
     logo: config.header?.logo,
     title: config.header?.title,
+    showSearch: config.header?.showSearch,
     searchPlaceholder: config.header?.searchPlaceholder,
+    navItems: config.header?.navItems,
+    socialLinks: config.header?.socialLinks,
   };
 }

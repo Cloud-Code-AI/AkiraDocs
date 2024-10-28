@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "sonner"
+import { getMetadata } from "@/lib/getMetadata";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,9 +15,11 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const metadataValues = getMetadata();
+
 export const metadata: Metadata = {
-  title: "Akira Docs",
-  description: "Next-Gen Documentation",
+  title: metadataValues.title,
+  description: metadataValues.description,
 };
 
 export default function RootLayout({
