@@ -10,14 +10,14 @@ import TableOfContents from '@/components/content/layout/TableOfContents'
 import { getDocsNavigation } from '@/lib/getNavigation'
 import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
+import { Button } from '@/components/ui/button'
+import { Edit2 } from 'lucide-react'
 
-const PostContainer = styled.div`
-  max-width: 56rem; // This is equivalent to max-w-4xl
-  margin: 0 auto;
-  padding: 1rem 1.5rem; // Equivalent to px-4 sm:px-6
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-`
+const PostContainer = ({ children }: { children: React.ReactNode }) => (
+    <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
+      {children}
+    </div>
+)
 
 export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
@@ -27,6 +27,11 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
   const footerConfig = getFooterConfig();
   const navigationItems = getDocsNavigation({})
 
+  const handleEdit = () => {
+    const docSlug = slug !== '' ? slug : post.id
+    const filePath = `docs/${docSlug}.json`
+    window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
+  }
 
   return (
     <div className="flex flex-col h-screen">
@@ -35,6 +40,15 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4">
           <PostContainer>
+                <Button
+                    onClick={handleEdit}
+                    variant="outline"
+                    size="sm"
+                    className="absolute top-0 right-6 flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                >
+                    <Edit2 className="w-4 h-4" />
+                    Edit
+                </Button>
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
             ))}
