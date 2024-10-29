@@ -29,7 +29,7 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
   console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
 
   const handleEdit = () => {
-    const articleSlug = slug !== '' ? slug : post.id
+    const articleSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
     const filePath = `articles/${articleSlug}.json`
     window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
   }

@@ -28,10 +28,13 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
   const navigationItems = getArticlesNavigation({})
 
   const handleEdit = () => {
-    const articleSlug = slug !== '' ? slug : post.id
+    
+    const articleSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
     const filePath = `articles/${articleSlug}.json`
     window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
   }
+
+  console.log('Editing article:', post)
 
   return (
     <div className="flex flex-col min-h-screen">

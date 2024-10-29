@@ -30,7 +30,7 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
   console.log('Dev mode 1:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
 
   const handleEdit = () => {
-    const docSlug = slug !== '' ? slug : post.id
+    const docSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
     const filePath = `docs/${docSlug}.json`
     window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
   }
