@@ -26,6 +26,7 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const navigationItems = getDocsNavigation({})
+  console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
 
   const handleEdit = () => {
     const docSlug = slug !== '' ? slug : post.id
@@ -40,6 +41,8 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4">
           <PostContainer>
+          {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
+               
                 <Button
                     onClick={handleEdit}
                     variant="outline"
@@ -49,6 +52,7 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
                     <Edit2 className="w-4 h-4" />
                     Edit
                 </Button>
+              )}
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
             ))}

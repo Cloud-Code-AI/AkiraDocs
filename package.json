@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=true && next dev",
+    "build": "set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=false && next build",
+    "start": "set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=false && next start",
     "lint": "next lint"
   },
   "dependencies": {

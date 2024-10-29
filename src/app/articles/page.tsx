@@ -40,15 +40,17 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4">
           <PostContainer>
-              <Button
-                onClick={handleEdit}
-                variant="outline"
-                size="sm"
-                className="absolute top-0 right-6 flex items-center gap-2 text-muted-foreground hover:text-foreground"
-              >
-                <Edit2 className="w-4 h-4" />
-                Edit
-              </Button>
+              {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
+                <Button
+                  onClick={handleEdit}
+                  variant="outline"
+                  size="sm"
+                  className="absolute top-0 right-6 flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                >
+                  <Edit2 className="w-4 h-4" />
+                  Edit
+                </Button>
+              )}
            
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />

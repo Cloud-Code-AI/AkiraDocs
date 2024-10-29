@@ -1,16 +1,19 @@
 {
-  "id": "blocks-test",
   "title": "Test Blog Post",
   "description": "A test blog post to demonstrate all block types.",
-  "author": "Jane Doe",
-  "date": "2023-10-01",
+  "author": "Anonymous",
+  "date": "2024-10-29",
   "blocks": [
     {
       "id": "1",
       "type": "heading",
-      "content": "Test Blog Post",
+      "content": "Example Heading",
       "metadata": {
-        "level": 1
+        "level": 1,
+        "styles": {
+          "italic": true,
+          "underline": true
+        }
       }
     },
     {
@@ -23,7 +26,8 @@
       "type": "code",
       "content": "console.log('Testing all blocks');",
       "metadata": {
-        "language": "javascript"
+        "language": "javascript",
+        "showLineNumbers": true
       }
     },
     {
@@ -55,10 +59,19 @@
       "type": "table",
       "content": "",
       "metadata": {
-        "headers": ["Column 1", "Column 2"],
+        "headers": [
+          "Column 1",
+          "Column 2"
+        ],
         "rows": [
-          ["Row 1, Cell 1", "Row 1, Cell 2"],
-          ["Row 2, Cell 1", "Row 2, Cell 2"]
+          [
+            "Row 1, Cell 1",
+            "Row 1, Cell 2"
+          ],
+          [
+            "Row 2, Cell 1",
+            "Row 2, Cell 2"
+          ]
         ]
       }
     },
@@ -73,8 +86,14 @@
       "content": "",
       "metadata": {
         "items": [
-          { "title": "Toggle Item 1", "content": "Content for toggle item 1" },
-          { "title": "Toggle Item 2", "content": "Content for toggle item 2" }
+          {
+            "title": "Toggle Item 1",
+            "content": "Content for toggle item 1"
+          },
+          {
+            "title": "Toggle Item 2",
+            "content": "Content for toggle item 2"
+          }
         ]
       }
     },
@@ -84,8 +103,14 @@
       "content": "",
       "metadata": {
         "checkedItems": [
-          { "text": "Check Item 1", "checked": true },
-          { "text": "Check Item 2", "checked": false }
+          {
+            "text": "Check Item 1",
+            "checked": true
+          },
+          {
+            "text": "Check Item 2",
+            "checked": false
+          }
         ]
       }
     },

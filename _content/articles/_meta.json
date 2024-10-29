@@ -1,10 +1,6 @@
 {
   "gettingStarted": {
-    "title": "Getting Started",
-    "path": "/docs/getting-started"
-  },
-  "coreConcepts": {
-    "title": "Core Concepts",
-    "path": "/docs/core-concepts"
+    "title": "First Article",
+    "path": "/articles/first-post"
   }
 }

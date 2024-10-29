@@ -34,6 +34,8 @@ const getNodeFullPath = (tree: FileNode[], nodeId: string, parentPath: string = 
 export default function ImprovedFileTreeUI() {
   const [fileTree, setFileTree] = useState<FileNode[]>([])
   const router = useRouter()
+  const isDevPage = process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true'
+  console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
 
   useEffect(() => {
     const content = fetchAllContent()
@@ -377,6 +379,11 @@ export default function ImprovedFileTreeUI() {
       }
       return true;
     });
+  }
+
+  if (isDevPage) {
+    router.push('/docs')
+    return null
   }
 
   return (
