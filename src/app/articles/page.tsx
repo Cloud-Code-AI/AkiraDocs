@@ -34,8 +34,6 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
     window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
   }
 
-  console.log('Editing article:', post)
-
   return (
     <div className="flex flex-col min-h-screen">
       <Header {...headerConfig} />
