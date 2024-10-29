@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const { path: filePath, content } = await request.json()
     
     // Ensure the directory exists
-    const fullPath = path.join(process.cwd(), '_content', filePath)
+    const fullPath = path.join(process.cwd(), '_contents', filePath)
     await mkdir(path.dirname(fullPath), { recursive: true })
     
     // Write the file
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 export async function DELETE(request: Request) {
   try {
     const { path: itemPath, type } = await request.json()
-    const fullPath = path.join(process.cwd(), '_content', itemPath)
+    const fullPath = path.join(process.cwd(), '_contents', itemPath)
 
     if (type === 'folder') {
       await rm(fullPath, { recursive: true, force: true })
@@ -56,7 +56,7 @@ export async function GET(request: Request) {
       )
     }
 
-    const fullPath = path.join(process.cwd(), '_content', filePath)
+    const fullPath = path.join(process.cwd(), '_contents', filePath)
     const fileContent = await readFile(fullPath, 'utf-8')
     const parsedContent = JSON.parse(fileContent)
     
@@ -81,7 +81,7 @@ export async function PUT(request: Request) {
       )
     }
 
-    const fullPath = path.join(process.cwd(), '_content', filePath)
+    const fullPath = path.join(process.cwd(), '_contents', filePath)
     
     // Prettify the JSON for better readability
     const jsonContent = JSON.stringify(content, null, 2)

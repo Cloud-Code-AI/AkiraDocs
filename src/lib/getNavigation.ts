@@ -1,7 +1,7 @@
 "use client"
 
-const docsContext = require.context('../../_content/docs', true, /_meta\.json$/)
-const articlesContext = require.context('../../_content/articles', true, /_meta\.json$/)
+const docsContext = require.context('../../_contents/docs', true, /_meta\.json$/)
+const articlesContext = require.context('../../_contents/articles', true, /_meta\.json$/)
 
 export function getDocsNavigation<T>(defaultValue: T): T {
   try {

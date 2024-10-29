@@ -1,6 +1,6 @@
-// Use require.context to get all files in the _content folder
+// Use require.context to get all files in the _contents folder
 const contentContext = require.context(
-    '../../_content', // Assuming _content is in the parent directory
+    '../../_contents', // Assuming _contents is in the parent directory
     true, // Include subdirectories
     /^\.\/(?:articles|docs)\/.*\.json$/ // Only include .json files from articles and docs folders
 );

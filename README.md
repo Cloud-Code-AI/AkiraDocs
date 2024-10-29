@@ -1,70 +1,151 @@
-# AkiraDocs Template
+# AkiraDocs
 
-AkiraDocs Template is an open-source, AI-powered documentation generator built with Next.js. It aims to provide a flexible and powerful alternative to Nextra Docs for creating beautiful, responsive documentation websites.
+<div align="center">
 
-## Features
+🚀 A modern, AI-powered documentation platform with dynamic UI and in-app editing capabilities.
 
-- **Next.js Based**: Leverage the power and flexibility of Next.js for your documentation needs.
-- **AI-Powered**: Utilize AI to enhance your documentation workflow (specifics to be detailed).
-- **Customizable**: Easily adapt the template to fit your project's branding and requirements.
-- **Responsive Design**: Ensure your documentation looks great on all devices.
-- **Performance Focused**: Built with performance in mind to provide a smooth user experience.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Built%20with-Next.js-black)](https://nextjs.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-## Getting Started
+</div>
+
+## ✨ Features
+
+### Core Features
+- 📝 **In-App Content Editor**: Edit documentation directly in the browser with real-time preview
+- 🎨 **Dynamic UI Components**: Interactive components that bring your documentation to life
+- 🤖 **AI-Powered Assistance**: Smart suggestions and content improvements
+- 🎯 **Live Preview**: See changes instantly as you edit
+- 📱 **Responsive Design**: Perfect viewing experience across all devices
+
+### Coming Soon
+- 🔄 **Version Control**: Built-in documentation versioning
+- 👥 **Multi-User Collaboration**: Real-time collaborative editing
+- 🔍 **Smart Search**: AI-enhanced documentation search
+- 🎨 **Theme Studio**: Visual theme customization interface
+- 🔌 **Plugin System**: Extend functionality with custom plugins
+- 📊 **Analytics Dashboard**: Track documentation usage and engagement
+- 🌐 **Internationalization**: Built-in translation management
+
+## 🚀 Quick Start
 
 ### Prerequisites
-
-- Node.js (version 18 or later)
+- Node.js ≥ 18
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/akiradocs-template.git
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/akiradocs.git
 
-2. Navigate to the project directory:
-   ```
-   cd akiradocs-template
-   ```
+# Navigate to project
+cd akiradocs
 
-3. Install dependencies:
-   ```
-   npm install
-   ```
-   or
-   ```
-   yarn install
-   ```
+# Install dependencies
+npm install
 
-4. Start the development server:
-   ```
-   npm run dev
-   ```
-   or
-   ```
-   yarn dev
-   ```
+# Start development server
+npm run dev
+```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+Visit `http://localhost:3000` to see your documentation site.
 
-## Contributing
+## 📖 Documentation
 
-We welcome contributions to AkiraDocs Template! Please see our [Contributing Guide](CONTRIBUTING.md) for more details on how to get started.
+For detailed documentation, visit our [official docs](https://docs.akiradocs.com).
 
-## License
+## 🛠️ Tech Stack
 
-This project is licensed under the [MIT License](LICENSE).
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **Content**: MDX
+- **Database**: [Your DB choice]
+- **AI Integration**: [AI Platform]
 
-## Acknowledgements
+## 🤝 Contributing
 
-- Next.js
+We love our contributors! Check out our [Contributing Guide](CONTRIBUTING.md) to get started.
 
-## Contact
+### Development Process
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-For questions and support, please open an issue in the GitHub repository.
+## 📜 License
+
+AkiraDocs is [MIT licensed](LICENSE).
+
+## 💖 Support
+
+If you find AkiraDocs helpful, please consider:
+- Starring the repository
+- Sharing it with others
+- Contributing to the project
+
+## 🔗 Links
+
+- [Website](https://akiradocs.com)
+- [Documentation](https://docs.akiradocs.com)
+- [GitHub](https://github.com/yourusername/akiradocs)
+- [Discord Community](https://discord.gg/akiradocs)
+
+## Content Migration
+
+### Migrating Existing Content
+
+You can easily migrate content from existing blogs or documentation sites using our built-in scraper utility. The scraper will:
+- Download and process your content
+- Extract structured data including title, description, and content blocks
+- Download and organize associated images
+- Generate a `_meta.json` file for navigation
+- Save content in the proper format for this platform
+
+#### Usage
+
+Run the scraper using `tsx`:
+
+```bash
+tsx src/utils/scraper.ts [options]
+
+Options:
+  -l, --urls   Array of specific URLs to scrape
+  -t, --type   Content type (e.g., 'articles', 'docs')
+```
+
+#### Example
+
+To migrate a single blog post:
+
+```bash
+tsx src/utils/scraper.ts \
+  -l https://blogs.cloudcode.ai/posts/UnderstandingQ4GGUFModelCompression \
+  -t articles 
+```
+
+This will:
+1. Scrape the specified blog post
+2. Save the content to `_contents/articles/`
+3. Download images to `public/images/`
+4. Update the meta file at `_contents/articles/_meta.json`
+
+#### Multiple URLs
+
+You can scrape multiple URLs by passing them as a space-separated list:
+
+```bash
+tsx src/utils/scraper.ts \
+  -l "https://blogs.cloudcode.ai/post1 https://blogs.cloudcode.ai/post2" \
+  -t articles
+```
+
+The scraped content will maintain its original structure while being converted to the platform's format, making it ready to use immediately.
 
 ---
 
-Happy documenting with AkiraDocs Template!
+<div align="center">
+Made with ❤️ by the Cloud Code AI Team
+</div>

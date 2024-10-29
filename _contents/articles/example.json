@@ -2,6 +2,8 @@
   "title": "My First Blog Post",
   "description": "This is my first blog post using the new block-based system.",
   "author": "Anonymous",
+  "filename": "example.json",
+  "keyname": "gettingStarted",
   "date": "2024-10-29",
   "blocks": [
     {

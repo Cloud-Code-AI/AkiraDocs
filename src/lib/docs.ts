@@ -1,6 +1,6 @@
 import { BlogPost } from '@/types/Block'
 
-const docsContext = require.context('../../_content/docs', true, /\.json$/)
+const docsContext = require.context('../../_contents/docs', true, /\.json$/)
 
 export function getDocBySlug(slug: string): BlogPost {
   const normalizedSlug = slug || 'index'
