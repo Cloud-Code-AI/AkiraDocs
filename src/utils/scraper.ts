@@ -37,17 +37,17 @@ class DocScraper {
     private visited = new Set<string>();
     private metaStructure: Record<string, MetaItem> = {};
     private urlList?: string[];
-    private outputDir?: string;
+    private outputDir: string;
     private imageCache = new Set<string>();
-
-    constructor(private baseUrl: string, urls?: string[], outputDir: string = "_contents/articles") {
-        // if (!this.baseUrl) {
-        //     throw new Error("Base URL must be provided and cannot be empty.");
-        // }
+    private baseUrl: string;
+    private imageUrlMap: Map<string, string> = new Map();
+    constructor(private url: string, urls?: string[], contentType: string = "docs") {
         console.log("urls", urls);
-        // this.urlList = urls?.map(url => new URL(url, this.baseUrl).toString());
+        const urlObject = new URL(urls[0]);
+        this.baseUrl = `${urlObject.protocol}//${urlObject.hostname}`;
+        
         this.urlList = urls;
-        this.outputDir = outputDir;
+        this.outputDir = `_contents/${contentType}`;
     }
 
     private async fetchPage(url: string) {
@@ -86,7 +86,7 @@ class DocScraper {
         
         const jsonContent = text.substring(firstBrace, lastBrace + 1);
         const parsed = JSON.parse(jsonContent);
-        const outputDir = path.join(process.cwd(), this.outputDir || '_contents/articles');
+        const outputDir = path.join(process.cwd(), this.outputDir);
         if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir);
         }
@@ -101,17 +101,20 @@ class DocScraper {
         try {
             const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
             const urlPath = new URL(imageUrl).pathname;
-            const filename = path.basename(urlPath);
+            // Remove leading slash and create directory structure
+            const relativePath = urlPath.replace(/^\//, '');
             const publicDir = path.join(process.cwd(), 'public/images');
             
-            // Create directory if it doesn't exist
-            await fsPromises.mkdir(publicDir, { recursive: true });
+            // Create full directory path including subdirectories
+            const fullPath = path.join(publicDir, path.dirname(relativePath));
+            await fsPromises.mkdir(fullPath, { recursive: true });
             
-            const localPath = path.join(publicDir, filename);
+            // Save file with original path structure
+            const localPath = path.join(publicDir, relativePath);
             await fsPromises.writeFile(localPath, response.data);
             
-            // Return the new public path
-            return `/images/${filename}`;
+            // Return the new public path maintaining the original structure
+            return `/images/${relativePath}`;
         } catch (error) {
             console.error(`Failed to download image ${imageUrl}:`, error);
             return null;
@@ -132,6 +135,7 @@ class DocScraper {
                         .then(newPath => {
                             if (newPath) {
                                 $(element).attr('src', newPath);
+                                this.imageUrlMap.set(imgSrc, newPath);
                             }
                         })
                 );
@@ -141,7 +145,9 @@ class DocScraper {
         // Wait for all images to be downloaded
         await Promise.all(imagePromises);
         
-        const rawContent = $('body').text().trim();
+        // Get the updated HTML content with new image paths
+        const updatedHtml = $('body').text().trim();
+        // const rawContent = $('body').text().trim();
         
         const exampleArticle = JSON.parse(
             await fsPromises.readFile(
@@ -160,16 +166,19 @@ class DocScraper {
           - keyname: The keyname of the article, default to the url path if not found
           - blocks: Break down the content into structured blocks, where each block has:
             - id: A unique identifier
-            - type: The type of content (heading, paragraph, code, list, etc.)
+            - type: The type of content (heading, paragraph, code, list, image, etc.)
             - content: The actual content
             - metadata: Any relevant metadata for the block
 
           Content to analyze:
-          ${rawContent}
+          ${updatedHtml}
 
           And output the JSON only, no other text.
           Here is an example of the JSON format:
           ${JSON.stringify(exampleArticle, null, 2)}
+
+          For image paths, use this following mapping:
+          ${JSON.stringify(this.imageUrlMap, null, 2)}
         `;
 
         const { text } = await generateText({
@@ -184,6 +193,18 @@ class DocScraper {
             if (!article.date) {
                 article.date = new Date().toISOString().split('T')[0];
             }
+            
+            // Add '/images/' prefix to image block content
+            article.blocks = article.blocks.map(block => {
+                if (block.type === 'image' && block.content && !block.content.startsWith('/images/')) {
+                    return {
+                        ...block,
+                        content: `/images${block.content}`
+                    };
+                }
+                return block;
+            });
+            
             return article;
         } catch (error) {
             console.error('Failed to parse LLM response:', error);
@@ -227,7 +248,7 @@ class DocScraper {
 
         this.metaStructure[article.keyname || url] = {
             title: article.title,
-            path: this.outputDir + "/" + (article.filename || url),
+            path: this.outputDir.replace("_contents/", "") + "/" + (article.filename || url),
         };
         // const links = await this.getDocLinks(html);
         // for (const link of links) {
@@ -280,20 +301,20 @@ async function main() {
             description: 'List of specific URLs to scrape',
             default: undefined
         })
-        .option('output', {
-            alias: 'o',
+        .option('type', {
+            alias: 't',
             type: 'string',
-            description: 'Output directory for _meta.json',
-            default: '_contents/docs'
+            description: 'Content type (docs, blogs, etc.)',
+            default: 'docs'
         })
         .help()
         .parseAsync();
 
-    const scraper = new DocScraper(argv.url, argv.urls as string[] | undefined, argv.output);
+    const scraper = new DocScraper(argv.url, argv.urls as string[] | undefined, argv.type);
     console.log(`Starting scrape of: ${argv.url}`);
-    await scraper.buildMetaStructure(`${argv.url}`, argv.output);
+    await scraper.buildMetaStructure(`${argv.url}`, `_contents/${argv.type}`);
     await scraper.saveMetaJson();
-    console.log(`Scraping complete. Meta file saved to: ${argv.output}/_meta.json`);
+    console.log(`Scraping complete. Meta file saved to: _contents/${argv.type}/_meta.json`);
 }
 
 main().catch(console.error);

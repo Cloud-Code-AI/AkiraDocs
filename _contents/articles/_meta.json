@@ -5,10 +5,6 @@
   },
   "UnderstandingQ4GGUFModelCompression": {
     "title": "Understanding Q4 GGUF Model Compression: A Data-Driven Analysis",
-    "path": "_contents/articles/UnderstandingQ4GGUFModelCompression"
-  },
-  "/posts/UnderstandingQ4GGUFModelCompression": {
-    "title": "Understanding Q4 GGUF Model Compression: A Data-Driven Analysis | Next.js Blog Example with Cloud Code AI",
-    "path": "_contents/articles//posts/UnderstandingQ4GGUFModelCompression"
+    "path": "articles/UnderstandingQ4GGUFModelCompression"
   }
 }

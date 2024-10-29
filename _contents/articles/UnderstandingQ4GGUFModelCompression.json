@@ -51,7 +51,7 @@
     {
       "id": "7",
       "type": "image",
-      "content": "/assets/blog/Q4GGUFAnalysis/Storage_efficiency.png",
+      "content": "/images/assets/blog/Q4GGUFAnalysis/Storage_efficiency.png",
       "metadata": {
         "alt": "Storage Efficiency"
       }
@@ -59,7 +59,7 @@
     {
       "id": "8",
       "type": "image",
-      "content": "/assets/blog/Q4GGUFAnalysis/model_size_to_parameter.png",
+      "content": "/images/assets/blog/Q4GGUFAnalysis/model_size_to_parameter.png",
       "metadata": {
         "alt": "Model Size to Parameter"
       }
