@@ -1,9 +1,9 @@
 "use client"
 
 // Exclude _meta.json files from articles and docs context
-const articlesContext = require.context('../../_content/articles', false, /^(?!.*_meta\.json$).*\.json$/)
-const docsContext = require.context('../../_content/docs', false, /^(?!.*_meta\.json$).*\.json$/)
-const configContext = require.context('../../_content', false, /_config\.json$/)
+const articlesContext = require.context('../../_contents/articles', false, /^(?!.*_meta\.json$).*\.json$/)
+const docsContext = require.context('../../_contents/docs', false, /^(?!.*_meta\.json$).*\.json$/)
+const configContext = require.context('../../_contents', false, /_config\.json$/)
 
 export function getRecommendedArticles(): Article[] | null {
   try {

@@ -1,6 +1,6 @@
 import { BlogPost } from '@/types/Block'
 
-const articlesContext = require.context('../../_content/articles', true, /\.json$/)
+const articlesContext = require.context('../../_contents/articles', true, /\.json$/)
 
 export function getArticleBySlug(slug: string): BlogPost {
   const normalizedSlug = slug || ''

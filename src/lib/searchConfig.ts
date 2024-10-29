@@ -16,7 +16,7 @@ type SearchConfig = {
 };
 
 export function getSearchConfig(): SearchConfig {
-    const context = require.context('../../_content', false, /_config\.json$/);
+    const context = require.context('../../_contents', false, /_config\.json$/);
     const configPath = context.keys()[0];
     const config = context(configPath);
 

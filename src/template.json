@@ -1,0 +1,50 @@
+{
+    "title": "My First Blog Post",
+    "description": "This is my first blog post using the new block-based system.",
+    "author": "Anonymous",
+    "filename": "example.json",
+    "keyname": "gettingStarted",
+    "date": "2024-10-29",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Welcome to my blog",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "This is the first paragraph of my blog post. I'm excited to share my thoughts with you!"
+      },
+      {
+        "id": "3",
+        "type": "code",
+        "content": "console.log('Hello, Devs!');",
+        "metadata": {
+          "language": "javascript"
+        }
+      },
+      {
+        "id": "4",
+        "type": "image",
+        "content": "/akiradocs_logo.png",
+        "metadata": {
+          "alt": "A beautiful landscape",
+          "caption": "This is a caption for the image",
+          "size": "small",
+          "position": "center"
+        }
+      },
+      {
+        "id": "5",
+        "type": "list",
+        "content": "First item\nSecond item\nThird item",
+        "metadata": {
+          "listType": "unordered"
+        }
+      }
+    ]
+  }
