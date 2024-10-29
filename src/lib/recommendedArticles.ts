@@ -58,6 +58,7 @@ export function getRecommendedArticles(): Article[] | null {
             : docsContext(key)
           return {
             context,
+            key,
             id: content.id,
             date: new Date(content.date)
           }
@@ -65,31 +66,36 @@ export function getRecommendedArticles(): Article[] | null {
         .sort((a, b) => b.date.getTime() - a.date.getTime())
         .slice(0, 3)
       
-      for (const { context, id } of sortedFiles) {
-        if (context === 'articles') {
-          const articleFile = `./${id}.json`
+      for (const file of sortedFiles) {
+        // Set id from key if undefined
+        if (!file.id) {
+          file.id = file.key.split('/').pop()?.replace('.json', '')
+        }
+
+        if (file.context === 'articles') {
+          const articleFile = `./${file.id}.json`
           if (articlesContext.keys().includes(articleFile)) {
             const article = articlesContext(articleFile)
             articles.push({
-              id: article.id,
+              id: file.id,
               title: article.title,
               description: article.description,
               author: article.author,
               publishDate: new Date(article.date),
-              context: context
+              context: file.context
             })
           }
         } else {
-          const docFile = `./${id}.json`
+          const docFile = `./${file.id}.json`
           if (docsContext.keys().includes(docFile)) {
             const doc = docsContext(docFile)
             articles.push({
-              id: doc.id,
+              id: file.id,
               title: doc.title,
               description: doc.description,
               author: doc.author,
               publishDate: new Date(doc.date),
-              context: context
+              context: file.context
             })
           }
         }
