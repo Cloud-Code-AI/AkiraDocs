@@ -21,7 +21,7 @@ interface SearchHeaderProps {
 
 export function SearchHeader({
   logo = {
-    path: '/akiradocs_logo.png',
+    path: '/akiradocs_logo.svg',
     width: 200,
     height: 50,
     show: true
