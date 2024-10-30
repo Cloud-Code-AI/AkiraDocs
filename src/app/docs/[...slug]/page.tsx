@@ -12,6 +12,7 @@ import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 import { Button } from '@/components/ui/button'
 import { Edit2 } from 'lucide-react'
+import { PageBreadcrumb } from '@/components/content/layout/Breadcrumb'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
@@ -41,8 +42,8 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4">
           <PostContainer>
+            <PageBreadcrumb type="docs" slug={slug} />
             {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
-
               <Button
                 onClick={handleEdit}
                 variant="outline"
