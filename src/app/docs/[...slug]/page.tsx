@@ -1,8 +1,8 @@
-"use client"
+'use client'
+
 import React from 'react'
 import { getDocBySlug } from '@/lib/docs'
 import { BlockRenderer } from '@/components/content/renderers/BlockRenderer'
-import styled from 'styled-components'
 import { Header } from '@/components/content/layout/Header'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
@@ -12,22 +12,21 @@ import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 import { Button } from '@/components/ui/button'
 import { Edit2 } from 'lucide-react'
-const PostContainer = styled.div`
-  max-width: 56rem; // This is equivalent to max-w-4xl
-  margin: 0 auto;
-  padding: 1rem 1.5rem; // Equivalent to px-4 sm:px-6
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-`
 
-export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
+const PostContainer = ({ children }: { children: React.ReactNode }) => (
+  <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
+    {children}
+  </div>
+)
+
+export default function ArticlesPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
-  const slug = resolvedParams.slug.join('/')
+  const slug = resolvedParams.slug?.length ? resolvedParams.slug.join('/') : ''
   const post = getDocBySlug(slug)
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const navigationItems = getDocsNavigation({})
-  console.log('Dev mode 1:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
+  console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
 
   const handleEdit = () => {
     const docSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
@@ -35,9 +34,8 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
     window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
   }
 
-
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col min-h-screen">
       <Header {...headerConfig} />
       <div className="flex flex-grow">
         <Navigation items={navigationItems} />
@@ -55,7 +53,6 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
                 Edit
               </Button>
             )}
-
 
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
