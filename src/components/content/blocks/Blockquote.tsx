@@ -16,7 +16,7 @@ export function Blockquote({ id, children, align = 'left', styles }: BlockquoteP
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
     <blockquote id={id} className={cn(
-      `border-l-4 border-gray-300 pl-4 text-gray-600 mb-6 py-1 ${alignClass}`,
+      `border-l-4 border-border pl-4 text-muted-foreground mb-6 py-1 ${alignClass}`,
       styles?.bold && 'font-bold',
       styles?.italic && 'italic',
       styles?.underline && 'underline'

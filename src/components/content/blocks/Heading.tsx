@@ -47,7 +47,7 @@ export function MainTitle({ id, children, align = 'left', styles }: MainTitlePro
   const alignClass = align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : '';
   return (
     <h1 id={id} className={cn(
-      `text-4xl font-bold text-gray-800 mb-1 py-1 ${alignClass}`,
+      `text-4xl font-bold text-foreground mb-1 py-1 ${alignClass}`,
       styles?.italic && 'italic',
       styles?.underline && 'underline'
     )}>

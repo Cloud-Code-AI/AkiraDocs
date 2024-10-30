@@ -27,10 +27,12 @@ export function TableOfContents() {
   }, []);
 
   return (
-    <div className="w-64 border-l border-gray-200 dark:border-gray-700 sticky top-16 h-[calc(100vh-4rem)] hidden xl:block">
+    <div className="w-64 border-l border-border sticky top-16 h-[calc(100vh-4rem)] hidden xl:block">
       <ScrollArea className="h-full py-6 px-4">
         <nav>
-          <h4 className="text-sm font-semibold mb-4 text-gray-900 dark:text-white" data-toc-ignore>On This Page</h4>
+          <h4 className="text-sm font-semibold mb-4 text-foreground" data-toc-ignore>
+            On This Page
+          </h4>
           <ul className="space-y-2">
             {headings.map((heading) => {
               const level = parseInt(heading.tagName[1]) - 2;
@@ -43,8 +45,8 @@ export function TableOfContents() {
                       ${level > 0 ? 'pl-' + (level * 4) : ''}
                       ${
                         activeId === heading.id
-                          ? 'text-blue-600 dark:text-blue-400 font-medium'
-                          : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                          ? 'text-primary font-medium'
+                          : 'text-muted-foreground hover:text-foreground'
                       }
                     `}
                   >

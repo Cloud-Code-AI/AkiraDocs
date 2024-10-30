@@ -18,10 +18,10 @@ interface CalloutProps {
 }
 
 const calloutStyles: Record<CalloutType, { icon: React.ElementType; className: string }> = {
-  info: { icon: Info, className: 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950' },
-  warning: { icon: AlertTriangle, className: 'border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-950' },
-  success: { icon: CheckCircle, className: 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950' },
-  error: { icon: XCircle, className: 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950' }
+  info: { icon: Info, className: 'border-primary/20 bg-primary/5' },
+  warning: { icon: AlertTriangle, className: 'border-yellow-500/20 bg-yellow-500/5' },
+  success: { icon: CheckCircle, className: 'border-green-500/20 bg-green-500/5' },
+  error: { icon: XCircle, className: 'border-destructive/20 bg-destructive/5' }
 }
 
 export function Callout({ id, type, title, children, align = 'left', styles }: CalloutProps) {
@@ -43,10 +43,10 @@ export function Callout({ id, type, title, children, align = 'left', styles }: C
       <div className={cn(
         'flex items-center justify-center w-8 h-8 rounded-full shrink-0',
         {
-          'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300': type === 'info',
-          'bg-yellow-100 text-yellow-600 dark:bg-yellow-900 dark:text-yellow-300': type === 'warning',
-          'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300': type === 'success',
-          'bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300': type === 'error'
+          'bg-primary/10 text-primary': type === 'info',
+          'bg-yellow-500/10 text-yellow-500': type === 'warning',
+          'bg-green-500/10 text-green-500': type === 'success',
+          'bg-destructive/10 text-destructive': type === 'error'
         }
       )}>
         <Icon className="h-5 w-5" />

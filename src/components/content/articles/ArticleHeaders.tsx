@@ -1,8 +1,6 @@
 'use client'
 
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Image } from 'lucide-react'
 
 interface ArticleHeadersProps {
   title: string
@@ -36,10 +34,6 @@ export function ArticleHeaders({ title, setTitle, subtitle, setSubtitle, showPre
         placeholder="Add a subtitle"
         className="text-xl mb-4 border-none px-0"
       />
-      {/* <Button variant="outline" className="mb-4">
-        <Image className="w-4 h-4 mr-2" />
-        Add featured image (1200x630px)
-      </Button> */}
     </>
   )
 }

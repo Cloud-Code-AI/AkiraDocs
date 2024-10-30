@@ -20,11 +20,11 @@ interface NavigationSidebarProps {
   items: Record<string, NavItem>;
 }
 
-const Navigation: React.FC<NavigationSidebarProps> = ({ items }) => {
+export function Navigation({ items }: NavigationSidebarProps) {
   const pathname = usePathname()
 
   return (
-    <aside className="w-64 bg-background/80 backdrop-blur-xl border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
+    <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
       <ScrollArea className="h-full py-6 px-4">
         <nav>
           {Object.entries(items).map(([key, item]) => (
@@ -57,9 +57,11 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
       <Button
         variant="ghost"
         className={cn(
-          "w-full justify-start text-left font-normal hover:bg-muted/50 transition-all",
-          isActive && "bg-primary/10 text-primary font-medium",
-          "rounded-lg"
+          "w-full justify-start text-left font-normal",
+          "hover:bg-accent hover:text-accent-foreground",
+          "data-[state=open]:bg-accent/50",
+          isActive && "bg-accent/50 text-accent-foreground font-medium",
+          "rounded-lg transition-colors",
         )}
         onClick={() => hasChildren && setIsOpen(!isOpen)}
       >
@@ -82,7 +84,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
           <span className="flex-1">{item.title}</span>
         )}
         {item.badge && (
-          <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
+          <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-accent text-accent-foreground">
             {item.badge}
           </span>
         )}
@@ -104,5 +106,5 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
     </motion.div>
   )
 }
-
 export default Navigation
+

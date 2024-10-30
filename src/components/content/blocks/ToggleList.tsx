@@ -24,7 +24,7 @@ export function ToggleList({ id, items, align = 'left', styles }: ToggleListProp
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={cn(
-                "w-full text-left font-bold text-gray-700 flex items-center",
+                "w-full text-left font-bold text-foreground flex items-center",
                 styles?.italic && 'italic',
                 styles?.underline && 'underline'
               )}
@@ -36,7 +36,7 @@ export function ToggleList({ id, items, align = 'left', styles }: ToggleListProp
             </button>
             {isOpen && (
               <div className={cn(
-                "mt-2 ml-7 text-gray-600",
+                "mt-2 ml-7 text-muted-foreground",
                 styles?.bold && 'font-bold',
                 styles?.italic && 'italic',
                 styles?.underline && 'underline'

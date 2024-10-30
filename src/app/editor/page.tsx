@@ -105,11 +105,11 @@ export default function Article() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
-            <div className="text-gray-500">Loading...</div>
+            <div className="text-muted-foreground">Loading...</div>
           </div>
         ) : (
           <>
@@ -119,7 +119,7 @@ export default function Article() {
               onSave={handleSave}
               isSaving={isSaving}
             />
-            <div className="prose prose-lg max-w-none">
+            <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-foreground prose-p:text-foreground">
               <ArticleHeaders
                 title={title}
                 setTitle={setTitle}
@@ -127,7 +127,11 @@ export default function Article() {
                 setSubtitle={setSubtitle}
                 showPreview={showPreview}
               />
-              <ContentBlocks blocks={blocks} setBlocks={setBlocks} showPreview={showPreview} />
+              <ContentBlocks 
+                blocks={blocks} 
+                setBlocks={setBlocks} 
+                showPreview={showPreview} 
+              />
               {!showPreview && (
                 <div className="mt-4">
                   <AddBlockButton onAddBlock={addBlock} />
