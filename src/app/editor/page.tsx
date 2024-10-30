@@ -7,7 +7,7 @@ import { ArticleHeaders } from '@/components/content/articles/ArticleHeaders'
 import { ContentBlocks } from '@/components/content/articles/ContentBlocks'
 import { AddBlockButton } from '@/components/content/articles/AddBlockButton'
 import { Block, BlockType } from '@/types/Block'
-import { toast } from "sonner" // Add toast notifications (optional)
+import { toast } from "sonner"
 
 export default function Article() {
   const searchParams = useSearchParams()
