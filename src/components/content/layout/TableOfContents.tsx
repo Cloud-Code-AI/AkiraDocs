@@ -26,6 +26,15 @@ export function TableOfContents() {
     return () => observer.disconnect();
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.pageYOffset - 72;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="w-64 border-l border-border sticky top-16 h-[calc(100vh-4rem)] hidden xl:block">
       <ScrollArea className="h-full py-6 px-4">
@@ -40,6 +49,7 @@ export function TableOfContents() {
                 <li key={heading.id}>
                   <a
                     href={`#${heading.id}`}
+                    onClick={(e) => handleClick(e, heading.id)}
                     className={`
                       text-sm block py-1 transition-colors duration-200
                       ${level > 0 ? 'pl-' + (level * 4) : ''}

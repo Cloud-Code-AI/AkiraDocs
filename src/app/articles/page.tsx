@@ -12,6 +12,9 @@ import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 import { Button } from '@/components/ui/button'
 import { Edit2 } from 'lucide-react'
+import { PageBreadcrumb } from '@/components/content/layout/Breadcrumb'
+import { PageNavigation } from '@/components/content/layout/PageNavigation'
+import { getNextPrevPages } from '@/utils/navigationUtils'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
@@ -34,6 +37,8 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
     window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
   }
 
+  const { prev, next } = getNextPrevPages(navigationItems, `/articles/${slug}`);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header {...headerConfig} />
@@ -41,21 +46,22 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4">
           <PostContainer>
-              {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
-                <Button
-                  onClick={handleEdit}
-                  variant="outline"
-                  size="sm"
-                  className="absolute top-0 right-6 flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Edit2 className="w-4 h-4" />
-                  Edit
-                </Button>
-              )}
-           
+            <PageBreadcrumb type="articles" slug={slug} />
+            {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
+              <Button
+                onClick={handleEdit}
+                variant="outline"
+                size="sm"
+                className="absolute top-0 right-6 flex items-center gap-2 text-muted-foreground hover:text-foreground"
+              >
+                <Edit2 className="w-4 h-4" />
+                Edit
+              </Button>
+            )}
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
             ))}
+            <PageNavigation prev={prev} next={next} />
           </PostContainer>
           <TableOfContents />
         </div>

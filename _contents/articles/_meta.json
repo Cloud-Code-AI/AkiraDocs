@@ -5,6 +5,6 @@
   },
   "UnderstandingQ4GGUFModelCompression": {
     "title": "Understanding Q4 GGUF Model Compression: A Data-Driven Analysis",
-    "path": "articles/UnderstandingQ4GGUFModelCompression"
+    "path": "/articles/UnderstandingQ4GGUFModelCompression"
   }
 }

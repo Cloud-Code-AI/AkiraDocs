@@ -12,6 +12,9 @@ import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 import { Button } from '@/components/ui/button'
 import { Edit2 } from 'lucide-react'
+import { PageBreadcrumb } from '@/components/content/layout/Breadcrumb'
+import { getNextPrevPages } from '@/utils/navigationUtils'
+import { PageNavigation } from '@/components/content/layout/PageNavigation'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
@@ -28,6 +31,8 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
   const navigationItems = getArticlesNavigation({})
   console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
 
+  const { prev, next } = getNextPrevPages(navigationItems, `/articles/${slug}`);
+
   const handleEdit = () => {
     const articleSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
     const filePath = `articles/${articleSlug}.json`
@@ -41,8 +46,8 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4">
           <PostContainer>
+            <PageBreadcrumb type="articles" slug={slug} />
             {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
-
               <Button
                 onClick={handleEdit}
                 variant="outline"
@@ -57,6 +62,7 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
             ))}
+            <PageNavigation prev={prev} next={next} />
           </PostContainer>
           <TableOfContents />
         </div>
