@@ -26,13 +26,13 @@ export function AIResponse({ response, sources, onBack }: AIResponseProps) {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="mt-8 shadow-lg border-indigo-200 dark:border-indigo-800">
-        <CardHeader className="bg-indigo-50 dark:bg-indigo-900/50 flex flex-row items-center justify-between">
-          <CardTitle className="flex items-center text-2xl text-indigo-700 dark:text-indigo-300">
+      <Card className="mt-8 shadow-lg border-border">
+        <CardHeader className="bg-accent/50 flex flex-row items-center justify-between">
+          <CardTitle className="flex items-center text-2xl text-primary">
             <Sparkles className="mr-2 h-6 w-6" />
             AI Guide
           </CardTitle>
-          <Button variant="ghost" size="sm" onClick={onBack} className="text-indigo-600 dark:text-indigo-400">
+          <Button variant="ghost" size="sm" onClick={onBack} className="text-primary hover:text-primary/80">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
