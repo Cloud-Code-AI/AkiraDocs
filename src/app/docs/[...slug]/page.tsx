@@ -13,6 +13,8 @@ import { getFooterConfig } from '@/lib/footerConfig'
 import { Button } from '@/components/ui/button'
 import { Edit2 } from 'lucide-react'
 import { PageBreadcrumb } from '@/components/content/layout/Breadcrumb'
+import { PageNavigation } from '@/components/content/layout/PageNavigation'
+import { getNextPrevPages } from '@/utils/navigationUtils'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
@@ -20,7 +22,7 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
-export default function ArticlesPage({ params }: { params: Promise<{ slug: string[] }> }) {
+export default function DocsPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
   const slug = resolvedParams.slug?.length ? resolvedParams.slug.join('/') : ''
   const post = getDocBySlug(slug)
@@ -28,6 +30,8 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
   const footerConfig = getFooterConfig();
   const navigationItems = getDocsNavigation({})
   console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
+
+  const { prev, next } = getNextPrevPages(navigationItems, `/docs/${slug}`);
 
   const handleEdit = () => {
     const docSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
@@ -58,6 +62,8 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
             ))}
+
+            <PageNavigation prev={prev} next={next} />
           </PostContainer>
           <TableOfContents />
         </div>
