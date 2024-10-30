@@ -47,6 +47,8 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
   const hasChildren = item.items && Object.keys(item.items).length > 0
   const isActive = item.path ? pathname === item.path : pathname.startsWith(item.path || '')
 
+  const absolutePath = item.path?.startsWith('/') ? item.path : `/${item.path}`
+
   return (
     <motion.div 
       className={cn("mb-1", `ml-${depth * 4}`)}
@@ -77,7 +79,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
           <FileText className="mr-2 h-4 w-4" />
         )}
         {item.path ? (
-          <Link href={item.path} className="flex-1">
+          <Link href={absolutePath} className="flex-1">
             {item.title}
           </Link>
         ) : (
