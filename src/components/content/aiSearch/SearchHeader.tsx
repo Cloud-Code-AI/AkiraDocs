@@ -1,4 +1,5 @@
 "use client"
+import IconSVG from "@/components/ui/iconSVG";
 import { motion } from "framer-motion"
 import Image from "next/image"
 
@@ -44,13 +45,13 @@ export function SearchHeader({
     >
       <div className="mb-4">
         {logo.show && (
-          <Image 
-            src={logo.path}
-            alt="Logo"
+          <IconSVG 
+            src={logo.path} 
+            alt={`${title.text} logo`}
             width={logo.width}
             height={logo.height}
-            className="mx-auto"
-          />
+            className="relative rounded-full" 
+       />
         )}
         {title.show && (
           <h1 className="text-5xl font-extrabold text-primary">
