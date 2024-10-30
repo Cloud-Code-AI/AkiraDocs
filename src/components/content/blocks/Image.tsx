@@ -40,7 +40,7 @@ export function Image({ id, src, alt, caption, size = 'medium', position = 'cent
       />
       {caption && (
         <figcaption className={cn(
-          `mt-2 text-sm text-${align} text-gray-500 dark:text-gray-400`,
+          `mt-2 text-sm text-${align} text-muted-foreground`,
           styles?.bold && 'font-bold',
           styles?.italic && 'italic',
           styles?.underline && 'underline'

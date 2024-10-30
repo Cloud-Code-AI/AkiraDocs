@@ -18,7 +18,7 @@ export function File({ id, url, name, align = 'left', styles }: FileProps) {
   return (
     <div id={id} className={`mb-6 py-1 ${alignClass}`}>
       <a href={url} download className={cn(
-        "text-blue-500 hover:underline",
+        "text-primary hover:text-primary/80 hover:underline",
         styles?.bold && 'font-bold',
         styles?.italic && 'italic',
         styles?.underline && 'underline'

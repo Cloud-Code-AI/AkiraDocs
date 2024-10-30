@@ -18,7 +18,7 @@ export function CheckList({ id, items, align = 'left' }: CheckListProps) {
             readOnly
             className="mr-2"
           />
-          <span className={item.checked ? 'line-through text-gray-500' : ''}>
+          <span className={item.checked ? 'line-through text-muted-foreground' : 'text-foreground'}>
             {item.text}
           </span>
         </li>

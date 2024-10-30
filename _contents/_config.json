@@ -3,7 +3,7 @@
     "description": "Next-gen documentation powered by AI",
     "search": {
         "logo": {
-            "path": "/akiradocs_logo.png",
+            "path": "/akiradocs_logo.svg",
             "width": 200,
             "height": 50,
             "show": true
@@ -19,7 +19,7 @@
     },
     "header": {
         "logo": {
-            "path": "/akiradocs_logo.png",
+            "path": "/akiradocs_logo.svg",
             "width": 120,
             "height": 30
         },

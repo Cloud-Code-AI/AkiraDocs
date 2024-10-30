@@ -22,7 +22,7 @@ export function Video({ id, src, caption, align = 'left', styles }: VideoProps) 
         Your browser does not support the video tag.
       </video>
       {caption && <p className={cn(
-        "text-sm text-gray-500",
+        "mt-2 text-sm text-muted-foreground",
         styles?.bold && 'font-bold',
         styles?.italic && 'italic',
         styles?.underline && 'underline'

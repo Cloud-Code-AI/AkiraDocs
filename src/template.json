@@ -30,7 +30,7 @@
       {
         "id": "4",
         "type": "image",
-        "content": "/akiradocs_logo.png",
+        "content": "/akiradocs_logo.svg",
         "metadata": {
           "alt": "A beautiful landscape",
           "caption": "This is a caption for the image",

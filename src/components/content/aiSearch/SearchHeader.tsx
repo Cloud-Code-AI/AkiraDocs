@@ -21,7 +21,7 @@ interface SearchHeaderProps {
 
 export function SearchHeader({
   logo = {
-    path: '/akiradocs_logo.png',
+    path: '/akiradocs_logo.svg',
     width: 200,
     height: 50,
     show: true
@@ -53,7 +53,7 @@ export function SearchHeader({
           />
         )}
         {title.show && (
-          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">
+          <h1 className="text-5xl font-extrabold text-primary">
             {title.text}
           </h1>
         )}

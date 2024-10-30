@@ -18,7 +18,7 @@ export function Table({ id, headers, rows, align = 'left', styles }: TableProps)
   return (
     <div id={id} className={`py-1 ${alignClass}`}>
       <table className={cn(
-        "min-w-full bg-white border border-gray-200",
+        "min-w-full bg-background border border-border",
         styles?.bold && 'font-bold',
         styles?.italic && 'italic',
         styles?.underline && 'underline'
@@ -26,7 +26,7 @@ export function Table({ id, headers, rows, align = 'left', styles }: TableProps)
         <thead>
           <tr>
             {headers.map((header, index) => (
-              <th key={index} className="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left">
+              <th key={index} className="py-2 px-4 border-b border-border bg-muted text-left text-muted-foreground">
                 {header}
               </th>
             ))}
@@ -36,7 +36,7 @@ export function Table({ id, headers, rows, align = 'left', styles }: TableProps)
           {rows.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
-                <td key={cellIndex} className="py-2 px-4 border-b border-gray-200">
+                <td key={cellIndex} className="py-2 px-4 border-b border-border text-foreground">
                   {cell}
                 </td>
               ))}

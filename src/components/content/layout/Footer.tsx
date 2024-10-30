@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import IconSVG from '@/components/ui/iconSVG'
 
 // Define the structure for social links
 interface SocialLink {
@@ -69,11 +70,12 @@ const Footer: React.FC<FooterProps> = ({
                 <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Button variant="ghost" size="icon" asChild className="rounded-full bg-muted/50 hover:bg-muted transition-colors">
                     <a href={link.url} target="_blank" rel="noopener noreferrer">
-                      <Image 
+                      <IconSVG 
                         src={link.icon} 
-                        alt={link.name} 
-                        width={20} 
-                        height={20}
+                        alt={`${link.name} icon`}
+                        width={16}
+                        height={16}
+                        className="text-current" 
                       />
                       <span className="sr-only">{link.name}</span>
                     </a>

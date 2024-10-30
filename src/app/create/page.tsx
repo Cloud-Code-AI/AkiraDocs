@@ -157,7 +157,7 @@ export default function ImprovedFileTreeUI() {
 
   const renderFileTree = (nodes: FileNode[], level: number = 0) => {
     return (
-      <ul className={`space-y-1 ${level > 0 ? 'border-l border-gray-300 ml-4 pl-4' : ''}`}>
+      <ul className={`space-y-1 ${level > 0 ? 'border-l border-border ml-4 pl-4' : ''}`}>
         {nodes.map((node) => (
           <li key={node.id} className="relative">
             <div className="flex items-center justify-between py-1">
@@ -169,22 +169,21 @@ export default function ImprovedFileTreeUI() {
                     aria-label={expandedFolders.has(node.id) ? "Collapse folder" : "Expand folder"}
                   >
                     {expandedFolders.has(node.id) ? (
-                      <ChevronDown className="w-4 h-4 text-gray-500" />
+                      <ChevronDown className="w-4 h-4 text-muted-foreground" />
                     ) : (
-                      <ChevronRight className="w-4 h-4 text-gray-500" />
+                      <ChevronRight className="w-4 h-4 text-muted-foreground" />
                     )}
                   </button>
                 )}
-                {/* File/Folder indicator moved here */}
                 <div className="h-4 w-4 mr-1">
                   {node.type === 'folder' ? (
-                    <Folder className="h-4 w-4 text-gray-400" />
+                    <Folder className="h-4 w-4 text-muted-foreground" />
                   ) : (
-                    <File className="h-4 w-4 text-gray-400" />
+                    <File className="h-4 w-4 text-muted-foreground" />
                   )}
                 </div>
                 <span 
-                  className={`text-sm ${node.type === 'folder' ? 'font-semibold' : ''} text-gray-700 hover:text-gray-900 transition-colors duration-200 cursor-pointer`}
+                  className={`text-sm ${node.type === 'folder' ? 'font-semibold' : ''} text-foreground hover:text-primary transition-colors duration-200 cursor-pointer`}
                   onClick={() => node.type === 'file' ? handleFileClick(node) : toggleFolder(node.id)}
                 >
                   {node.name}
@@ -193,59 +192,32 @@ export default function ImprovedFileTreeUI() {
               <div className="flex items-center space-x-2">
                 {node.type === 'folder' && (
                   <>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <Button
-                            size="icon"
-                            variant="ghost"
-                            className="h-6 w-6 p-0 hover:bg-gray-200"
-                            onClick={() => startNewItem(node.id, 'file')}
-                          >
-                            <File className="h-4 w-4" />
-                          </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>New File</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <Button
-                            size="icon"
-                            variant="ghost"
-                            className="h-6 w-6 p-0 hover:bg-gray-200"
-                            onClick={() => startNewItem(node.id, 'folder')}
-                          >
-                            <Folder className="h-4 w-4" />
-                          </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>New Folder</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 hover:bg-accent"
+                      onClick={() => startNewItem(node.id, 'file')}
+                    >
+                      <File className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 hover:bg-accent"
+                      onClick={() => startNewItem(node.id, 'folder')}
+                    >
+                      <Folder className="h-4 w-4" />
+                    </Button>
                   </>
                 )}
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="h-6 w-6 p-0 hover:bg-red-100 hover:text-red-600"
-                        onClick={() => deleteItem(node.id, node.name, node.type)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Delete</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="h-6 w-6 p-0 hover:bg-destructive/10 hover:text-destructive"
+                  onClick={() => deleteItem(node.id, node.name, node.type)}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
               </div>
             </div>
             {node.type === 'folder' && node.children && (
@@ -272,12 +244,12 @@ export default function ImprovedFileTreeUI() {
                   onChange={(e) => setNewItemName(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder={`New ${newItemType}`}
-                  className="h-8 text-sm bg-white border-gray-300 text-gray-700 flex-grow"
+                  className="h-8 text-sm bg-background text-foreground flex-grow"
                 />
-                <Button onClick={addNewItem} size="sm" className="ml-2 bg-gray-200 hover:bg-gray-300 text-gray-700">
+                <Button onClick={addNewItem} size="sm" className="ml-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground">
                   <Plus className="w-4 h-4" />
                 </Button>
-                <Button onClick={cancelNewItem} size="sm" variant="ghost" className="ml-1 text-gray-700">
+                <Button onClick={cancelNewItem} size="sm" variant="ghost" className="ml-1 text-muted-foreground">
                   <X className="w-4 h-4" />
                 </Button>
               </div>
@@ -381,17 +353,17 @@ export default function ImprovedFileTreeUI() {
     });
   }
 
-  if (isDevPage) {
+  if (!isDevPage) {
     router.push('/docs')
     return null
   }
 
   return (
-    <div className="p-6 bg-white min-h-screen text-gray-900">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">
+    <div className="p-6 bg-background min-h-screen text-foreground">
+      <h1 className="text-3xl font-bold mb-6 text-foreground">
         Project Explorer
       </h1>
-      <div className="bg-gray-100 rounded-lg shadow-xl p-6 border border-gray-200">
+      <div className="bg-card rounded-lg shadow-xl p-6 border">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

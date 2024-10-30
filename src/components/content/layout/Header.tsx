@@ -10,6 +10,7 @@ import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
+import IconSVG from '@/components/ui/iconSVG'
 
 interface NavItem {
   label: string;
@@ -41,7 +42,7 @@ interface HeaderProps {
 
 export function Header({
   logo = {
-    path: '/akiradocs_logo.png',
+    path: '/akiradocs_logo.svg',
     width: 120,
     height: 30
   },
@@ -86,11 +87,11 @@ export function Header({
           >
             <div className="relative">
               <div className="absolute rounded-full"></div>
-              <Image 
+              <IconSVG 
                 src={logo.path} 
-                alt={`${title.text} logo`} 
-                width={logo.width} 
-                height={logo.height} 
+                alt={`${title.text} logo`}
+                width={logo.width}
+                height={logo.height}
                 className="relative rounded-full" 
               />
             </div>
@@ -118,7 +119,15 @@ export function Header({
                           : 'text-muted-foreground hover:text-foreground'
                         }`}
                     >
-                      {item.icon && <Image src={item.icon} alt={item.label} width={16} height={16} />}
+                      {item.icon && (
+                        <IconSVG 
+                          src={item.icon} 
+                          alt={`${item.label} icon`}
+                          width={16}
+                          height={16}
+                          className="text-current" 
+                        />
+                      )}
                       {item.label}
                       <span 
                         className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
@@ -149,12 +158,15 @@ export function Header({
             {socialLinks && socialLinks.map((link, index) => (
               <Button key={index} variant="ghost" size="icon" asChild className="rounded-full hover:bg-muted hidden md:flex">
                 <Link href={link.url}>
-                  <Image 
-                    src={link.icon} 
-                    alt={link.name} 
-                    width={20} 
-                    height={20}
-                  />
+                  {link.icon && (
+                    <IconSVG 
+                      src={link.icon} 
+                      alt={`${link.name} icon`}
+                      width={16}
+                      height={16}
+                      className="text-current" 
+                    />
+                  )}
                   <span className="sr-only">{link.name}</span>
                 </Link>
               </Button>
@@ -184,7 +196,15 @@ export function Header({
                               : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                             }`}
                         >
-                          {item.icon && <Image src={item.icon} alt={item.label} width={16} height={16} />}
+                          {item.icon && (
+                            <IconSVG 
+                              src={item.icon} 
+                              alt={`${item.label} icon`}
+                              width={16}
+                              height={16}
+                              className="text-current" 
+                            />
+                          )}
                           {item.label}
                           <span 
                             className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out

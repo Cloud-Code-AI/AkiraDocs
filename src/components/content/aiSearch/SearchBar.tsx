@@ -19,12 +19,12 @@ export function SearchBar({ query, onQueryChange, onSubmit }: SearchBarProps) {
                     placeholder="What do you want to learn?"
                     value={query}
                     onChange={(e) => onQueryChange(e.target.value)}
-                    className="pl-12 pr-20 py-6 w-full text-lg rounded-full focus-visible:ring-2 focus-visible:ring-indigo-500 shadow-lg"
+                    className="pl-12 pr-20 py-6 w-full text-lg rounded-full focus-visible:ring-2 focus-visible:ring-primary shadow-lg"
                 />
                 <Button
                     type="submit"
                     size="sm"
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full px-4 py-2 bg-accent hover:bg-accent/80 text-accent-foreground"
                 >
                     <Sparkles className="h-5 w-5 mr-2" />
                     Search
