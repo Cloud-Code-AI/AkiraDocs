@@ -17,6 +17,10 @@
       }
     }
   },
+  "blocks": {
+    "title": "Example Blocks",
+    "path": "/docs/blocks"
+  },
   "coreConcepts": {
     "title": "Core Concepts",
     "path": "/docs/core-concepts",

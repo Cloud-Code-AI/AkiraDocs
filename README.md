@@ -1,8 +1,8 @@
-# AkiraDocs
+# AkiraDocs Template
 
 <div align="center">
 
-🚀 A modern, AI-powered documentation platform with dynamic UI and in-app editing capabilities.
+🚀 A modern, AI-powered documentation platform frontend with dynamic UI and in-app editing capabilities.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Built%20with-Next.js-black)](https://nextjs.org)
@@ -15,29 +15,27 @@
 ### Core Features
 - 📝 **In-App Content Editor**: Edit documentation directly in the browser with real-time preview
 - 🎨 **Dynamic UI Components**: Interactive components that bring your documentation to life
-- 🤖 **AI-Powered Assistance**: Smart suggestions and content improvements
 - 🎯 **Live Preview**: See changes instantly as you edit
 - 📱 **Responsive Design**: Perfect viewing experience across all devices
+- 🔗 **Backend Integration**: Seamless integration with AkiraDocs Backend for advanced features [Coming Soon]
 
 ### Coming Soon
 - 🔄 **Version Control**: Built-in documentation versioning
 - 👥 **Multi-User Collaboration**: Real-time collaborative editing
-- 🔍 **Smart Search**: AI-enhanced documentation search
 - 🎨 **Theme Studio**: Visual theme customization interface
 - 🔌 **Plugin System**: Extend functionality with custom plugins
-- 📊 **Analytics Dashboard**: Track documentation usage and engagement
-- 🌐 **Internationalization**: Built-in translation management
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js ≥ 18
 - npm or yarn
+- AkiraDocs Backend (for full functionality)
 
 ### Installation
 
 ```bash
-# Clone the repository
+# Clone the template repository
 git clone https://github.com/yourusername/akiradocs.git
 
 # Navigate to project
@@ -46,23 +44,61 @@ cd akiradocs
 # Install dependencies
 npm install
 
+# Configure environment variables
+cp .env.example .env.local
+# Edit .env.local with your backend API URL
+
 # Start development server
 npm run dev
 ```
 
 Visit `http://localhost:3000` to see your documentation site.
 
-## 📖 Documentation
+## 📖 Project Structure
 
-For detailed documentation, visit our [official docs](https://docs.akiradocs.com).
+```
+akiradocs/
+├── _contents/               # Example documentation
+├── src/
+│   ├── app/                # Next.js app directory
+│   ├── components/         # React components
+│   │   ├── content/        # Content-related components
+│   │   └── ui/            # UI components
+│   ├── lib/               # Frontend utilities
+│   ├── types/             # Frontend type definitions
+│   └── config/           # Frontend configuration
+├── public/
+└── package.json
+```
 
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js
 - **Styling**: Tailwind CSS
 - **Content**: MDX
-- **Database**: [Your DB choice]
-- **AI Integration**: [AI Platform]
+- **Backend Integration**: REST API with TypeScript interfaces
+
+## 🔗 Backend Integration [Optional]
+
+This is a standalone template like nextradocs but if you want to enable more features you can use our backend repo.
+This template is designed to work with [AkiraDocs Backend](https://github.com/Cloud-Code-AI/akiradocs-backend) for full functionality. The integration includes:
+
+- Smart content recommendations
+- Automated content summarization
+- Question-answering capabilities
+- Document similarity analysis
+- Pre-configured API interfaces
+- Type-safe API communication
+- Analytics integration
+- Search functionality
+
+### Environment Variables [OPTIONAL]
+
+Required environment variables for backend integration:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000  # Your backend API URL
+```
 
 ## 🤝 Contributing
 
@@ -88,10 +124,10 @@ If you find AkiraDocs helpful, please consider:
 
 ## 🔗 Links
 
-- [Website](https://akiradocs.com)
-- [Documentation](https://docs.akiradocs.com)
-- [GitHub](https://github.com/yourusername/akiradocs)
-- [Discord Community](https://discord.gg/akiradocs)
+- [Website](https://akiradocs.ai)
+- [Documentation](https://docs.akiradocs.ai)
+- [Backend Repository](https://github.com/Cloud-Code-AI/akiradocs-backend)
+- [Discord Community](https://discord.gg/6qfmtSUMdb)
 
 ## Content Migration
 
@@ -115,34 +151,6 @@ Options:
   -l, --urls   Array of specific URLs to scrape
   -t, --type   Content type (e.g., 'articles', 'docs')
 ```
-
-#### Example
-
-To migrate a single blog post:
-
-```bash
-tsx src/utils/scraper.ts \
-  -l https://blogs.cloudcode.ai/posts/UnderstandingQ4GGUFModelCompression \
-  -t articles 
-```
-
-This will:
-1. Scrape the specified blog post
-2. Save the content to `_contents/articles/`
-3. Download images to `public/images/`
-4. Update the meta file at `_contents/articles/_meta.json`
-
-#### Multiple URLs
-
-You can scrape multiple URLs by passing them as a space-separated list:
-
-```bash
-tsx src/utils/scraper.ts \
-  -l "https://blogs.cloudcode.ai/post1 https://blogs.cloudcode.ai/post2" \
-  -t articles
-```
-
-The scraped content will maintain its original structure while being converted to the platform's format, making it ready to use immediately.
 
 ---
 
