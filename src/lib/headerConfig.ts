@@ -26,18 +26,24 @@ type HeaderConfig = {
 };
 
 export function getHeaderConfig(): HeaderConfig {
-  // Using require.context to get the config file
   const context = require.context('../../_contents', false, /_config\.json$/);
   const configPath = context.keys()[0];
   const config = context(configPath);
 
-  // Return only the header-related config
+  // Filter out AI Search from nav items if disabled
+  const filteredNavItems = config.header?.navItems?.filter(item => {
+    if (item.href === '/aiSearch') {
+      return config.aiSearch === true;
+    }
+    return true;
+  });
+
   return {
     logo: config.header?.logo,
     title: config.header?.title,
     showSearch: config.header?.showSearch,
     searchPlaceholder: config.header?.searchPlaceholder,
-    navItems: config.header?.navItems,
+    navItems: filteredNavItems,
     socialLinks: config.header?.socialLinks,
   };
 }

@@ -1,6 +1,7 @@
 {
     "title": "Akira Docs",
     "description": "Next-gen documentation powered by AI",
+    "aiSearch": true,
     "search": {
         "logo": {
             "path": "/akiradocs_logo.svg",

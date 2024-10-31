@@ -10,6 +10,8 @@ import { RecommendedArticles } from '@/components/content/aiSearch/RecommendedAr
 import { AnimatePresence } from 'framer-motion'
 import { getRecommendedArticles } from '@/lib/recommendedArticles'
 import { getSearchConfig } from '@/lib/searchConfig'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 
 export default function Home() {
@@ -17,6 +19,24 @@ export default function Home() {
   const [aiResponse, setAiResponse] = useState('')
   const recommendedArticles = getRecommendedArticles()
   const searchConfig = getSearchConfig()
+  const config = require('../../../_contents/_config.json')
+
+  // If AI Search is disabled, show the disabled message
+  if (!config.aiSearch) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-4">
+        <div className="text-center space-y-4 max-w-md">
+          <h1 className="text-3xl font-bold">AI Search is Disabled</h1>
+          <p className="text-muted-foreground">
+            AI Search is currently disabled. To enable this feature, set "aiSearch": true in your configuration file.
+          </p>
+          <Button asChild>
+            <Link href="/docs">Go to Documentation</Link>
+          </Button>
+        </div>
+      </div>
+    )
+  }
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
