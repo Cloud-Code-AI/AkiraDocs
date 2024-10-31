@@ -11,6 +11,9 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { ArticleHeaders } from '@/components/content/articles/ArticleHeaders'
 import { TitleBar } from '@/components/content/articles/TitleBar'
 import { BlockRenderer } from '@/components/content/renderers/BlockRenderer'
+import { DndContext, DragEndEvent, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
+import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { SortableBlock } from '@/components/content/articles/SortableBlock'
 
 type Block = {
   id: string
@@ -119,6 +122,33 @@ export default function ArticleEditor() {
     setBlocks(blocks.filter(block => block.id !== id))
   }
 
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 200,
+        tolerance: 8,
+      },
+    })
+  )
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event
+    
+    if (over && active.id !== over.id) {
+      setBlocks((blocks) => {
+        const oldIndex = blocks.findIndex((block) => block.id === active.id)
+        const newIndex = blocks.findIndex((block) => block.id === over.id)
+        
+        return arrayMove(blocks, oldIndex, newIndex)
+      })
+    }
+  }
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -144,19 +174,23 @@ export default function ArticleEditor() {
             setSubtitle={setSubtitle}
             showPreview={showPreview}
           />
-          {blocks.map((block, index) => (
-            <BlockComponent
-              key={block.id}
-              block={block}
-              updateBlock={updateBlock}
-              changeBlockType={changeBlockType}
-              addBlock={addBlock}
-              deleteBlock={deleteBlock}
-              showPreview={showPreview}
-              isChangeTypeActive={activeChangeTypeId === block.id}
-              setActiveChangeTypeId={setActiveChangeTypeId}
-            />
-          ))}
+          <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
+            <SortableContext items={blocks} strategy={verticalListSortingStrategy}>
+              {blocks.map((block) => (
+                <SortableBlock
+                  key={block.id}
+                  block={block}
+                  updateBlock={updateBlock}
+                  changeBlockType={changeBlockType}
+                  addBlock={addBlock}
+                  deleteBlock={deleteBlock}
+                  showPreview={showPreview}
+                  isChangeTypeActive={activeChangeTypeId === block.id}
+                  setActiveChangeTypeId={setActiveChangeTypeId}
+                />
+              ))}
+            </SortableContext>
+          </DndContext>
           {blocks.length === 0 && !showPreview && (
             <div className="flex justify-center my-8">
               <Button
@@ -171,93 +205,6 @@ export default function ArticleEditor() {
           )}
         </div>
       </div>
-    </div>
-  )
-}
-
-type BlockComponentProps = {
-  block: Block
-  updateBlock: (id: string, content: string) => void
-  changeBlockType: (id: string, newType: BlockType) => void
-  addBlock: (afterId: string) => void
-  deleteBlock: (id: string) => void
-  showPreview: boolean
-  isChangeTypeActive: boolean
-  setActiveChangeTypeId: (id: string | null) => void
-}
-
-function BlockComponent({ 
-  block, 
-  updateBlock, 
-  changeBlockType, 
-  addBlock, 
-  deleteBlock,
-  showPreview,
-  isChangeTypeActive,
-  setActiveChangeTypeId
-}: BlockComponentProps) {
-  const inputRef = useRef<HTMLDivElement>(null)
-
-  if (showPreview) {
-    return <BlockRenderer block={block} />
-  }
-
-  return (
-    <div className="group relative mb-4 flex items-start">
-      <div className="flex items-center space-x-1 mr-2">
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8"
-          onClick={() => addBlock(block.id)}
-        >
-          <Plus size={16} />
-          <span className="sr-only">Add Block</span>
-        </Button>
-        <AddBlockButton 
-          onChangeType={(type) => changeBlockType(block.id, type)} 
-          mode="change"
-          isActive={isChangeTypeActive}
-          onOpenChange={(open) => {
-            if (open) {
-              setActiveChangeTypeId(block.id)
-            } else {
-              setActiveChangeTypeId(null)
-            }
-          }}
-          type={block.type}
-        />
-      </div>
-      <div className="flex-grow">
-        <div
-          ref={inputRef}
-          contentEditable
-          suppressContentEditableWarning
-          onBlur={(e) => updateBlock(block.id, e.currentTarget.textContent || '')}
-          className={`w-full p-2 focus:outline-none border border-transparent focus:border-gray-300 rounded-md ${
-            block.type === 'heading' ? 'font-bold text-2xl' : ''
-          }`}
-        >
-          {block.content}
-        </div>
-      </div>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity ml-2"
-          >
-            <MoreHorizontal className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem onClick={() => deleteBlock(block.id)}>
-            <Trash2 className="mr-2 h-4 w-4" />
-            <span>Delete block</span>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
     </div>
   )
 }
