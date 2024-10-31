@@ -4,22 +4,20 @@ const docsContext = require.context('../../_contents/docs', true, /\.json$/)
 
 export function getDocBySlug(slug: string): BlogPost {
   const normalizedSlug = slug || 'index'
-  
+  console.log("normalizedSlug", normalizedSlug);
   try {
     if (normalizedSlug === 'index') {
       try {
         // First try to get index.json
-        return docsContext('./index.json')
-      } catch {
+        // return docsContext('./index.json')
         // If index.json doesn't exist, get all docs and use the first one
         const docs = getAllDocs()
           .filter(doc => doc.id !== 'index') // Exclude index to avoid potential circular reference
           .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
-        if (docs.length > 0) {
           return docs[0]
-        }
-
+  
+      } catch {
         // If no docs found, return placeholder content
         return {
           id: 'index',
@@ -51,8 +49,8 @@ export function getDocBySlug(slug: string): BlogPost {
     
     return docsContext(`./${normalizedSlug}.json`)
   } catch (error) {
-    console.error(`Error reading file: ${slug}.json`, error)
-    throw new Error(`Document not found: ${slug}`)
+    console.error(`Error reading file: ${normalizedSlug}.json`, error)
+    throw new Error(`Document not found: ${normalizedSlug}`)
   }
 }
 
