@@ -1,6 +1,7 @@
 {
     "title": "Akira Docs",
     "description": "Next-gen documentation powered by AI",
+    "aiSearch": true,
     "search": {
         "logo": {
             "path": "/akiradocs_logo.svg",
@@ -29,7 +30,7 @@
         },
         "searchPlaceholder": "Search Akira...",
         "navItems": [
-            { "label": "AI Search", "href": "/", "icon": "/sparkles.svg" },
+            { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg" },
             { "label": "Legacy View", "href": "/docs", "icon": "/legacy.svg" },
             { "label": "Articles", "href": "/articles", "icon": "/articles.svg" }
         ]
