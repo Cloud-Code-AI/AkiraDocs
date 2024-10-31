@@ -225,6 +225,7 @@ function BlockComponent({
               setActiveChangeTypeId(null)
             }
           }}
+          type={block.type}
         />
       </div>
       <div className="flex-grow">

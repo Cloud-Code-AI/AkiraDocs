@@ -31,6 +31,9 @@ interface AddBlockButtonProps {
   onAddBlock?: (type: BlockType) => void
   onChangeType?: (type: BlockType) => void
   mode: 'add' | 'change'
+  isActive?: boolean
+  onOpenChange?: (open: boolean) => void
+  type?: BlockType
 }
 
 interface BlockOption {
@@ -41,7 +44,7 @@ interface BlockOption {
   group: 'Basic' | 'Media' | 'Advanced'
 }
 
-export function AddBlockButton({ onAddBlock, onChangeType, mode }: AddBlockButtonProps) {
+export function AddBlockButton({ onAddBlock, onChangeType, mode, isActive, onOpenChange, type }: AddBlockButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -85,11 +88,19 @@ export function AddBlockButton({ onAddBlock, onChangeType, mode }: AddBlockButto
     setIsOpen(false)
   }
 
+  const getCurrentIcon = (type: BlockType) => {
+    const option = blockOptions.find(opt => opt.type === type)
+    return option?.icon || <Type size={16} />
+  }
+
   return (
-    <Popover open={isOpen} onOpenChange={setIsOpen}>
+    <Popover open={isOpen} onOpenChange={(open) => {
+      setIsOpen(open)
+      onOpenChange?.(open)
+    }}>
       <PopoverTrigger asChild>
         <Button variant="outline" size="icon" className="h-8 w-8">
-          {mode === 'add' ? <Plus size={16} /> : <Type size={16} />}
+          {mode === 'add' ? <Plus size={16} /> : getCurrentIcon(type)}
           <span className="sr-only">{mode === 'add' ? 'Add Block' : 'Change Block Type'}</span>
         </Button>
       </PopoverTrigger>
