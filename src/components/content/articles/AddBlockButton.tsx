@@ -28,7 +28,9 @@ import {
 } from 'lucide-react'
 
 interface AddBlockButtonProps {
-  onAddBlock: (type: BlockType) => void
+  onAddBlock?: (type: BlockType) => void
+  onChangeType?: (type: BlockType) => void
+  mode: 'add' | 'change'
 }
 
 interface BlockOption {
@@ -39,7 +41,7 @@ interface BlockOption {
   group: 'Basic' | 'Media' | 'Advanced'
 }
 
-export function AddBlockButton({ onAddBlock }: AddBlockButtonProps) {
+export function AddBlockButton({ onAddBlock, onChangeType, mode }: AddBlockButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -74,17 +76,26 @@ export function AddBlockButton({ onAddBlock }: AddBlockButtonProps) {
     return acc
   }, {} as Record<string, BlockOption[]>)
 
+  const handleOptionClick = (type: BlockType) => {
+    if (mode === 'add' && onAddBlock) {
+      onAddBlock(type)
+    } else if (mode === 'change' && onChangeType) {
+      onChangeType(type)
+    }
+    setIsOpen(false)
+  }
+
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline" size="icon" className="h-8 w-8">
-          <Plus size={16} />
-          <span className="sr-only">Add Block</span>
+          {mode === 'add' ? <Plus size={16} /> : <Type size={16} />}
+          <span className="sr-only">{mode === 'add' ? 'Add Block' : 'Change Block Type'}</span>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80 p-0" align="start">
         <div className="p-4 pb-2">
-          <h2 className="text-lg font-semibold mb-2">Add a block</h2>
+          <h2 className="text-lg font-semibold mb-2">{mode === 'add' ? 'Add a block' : 'Change block type'}</h2>
           <Input
             type="text"
             placeholder="Search for a block type"
@@ -103,10 +114,7 @@ export function AddBlockButton({ onAddBlock }: AddBlockButtonProps) {
                     key={option.type}
                     variant="ghost"
                     className="w-full justify-start h-auto py-2 px-4 mb-1 hover:bg-accent"
-                    onClick={() => {
-                      onAddBlock(option.type)
-                      setIsOpen(false)
-                    }}
+                    onClick={() => handleOptionClick(option.type)}
                   >
                     <div className="flex items-start">
                       <span className="mr-3 mt-0.5 text-muted-foreground">{option.icon}</span>
