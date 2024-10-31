@@ -60,74 +60,87 @@ export function SortableBlock({
       ref={setNodeRef}
       style={style}
       className={cn(
-        'group relative mb-4 flex items-start rounded-md',
+        'group relative mb-4',
         isDragging && 'z-50 bg-background/50 backdrop-blur-sm'
       )}
     >
-      <Button
-        variant="ghost"
-        size="icon"
-        className="h-full px-1 cursor-grab active:cursor-grabbing"
-        {...attributes}
-        {...listeners}
-      >
-        <GripVertical className="h-4 w-4 text-muted-foreground" />
-        <span className="sr-only">Drag handle</span>
-      </Button>
-      <div className="flex items-center space-x-1 mr-2">
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8"
-          onClick={() => addBlock(block.id)}
-        >
-          <Plus size={16} />
-          <span className="sr-only">Add Block</span>
-        </Button>
-        <AddBlockButton 
-          onChangeType={(type) => changeBlockType(block.id, type)} 
-          mode="change"
-          isActive={isChangeTypeActive}
-          onOpenChange={(open) => {
-            if (open) {
-              setActiveChangeTypeId(block.id)
-            } else {
-              setActiveChangeTypeId(null)
-            }
-          }}
-          type={block.type}
-        />
-      </div>
-      <div className="flex-grow">
+      <div className="flex items-center gap-2">
+        {/* Drag Handle */}
         <div
-          ref={inputRef}
-          contentEditable
-          suppressContentEditableWarning
-          onBlur={(e) => updateBlock(block.id, e.currentTarget.textContent || '')}
-          className={`w-full p-2 focus:outline-none border border-transparent focus:border-gray-300 rounded-md ${
-            block.type === 'heading' ? 'font-bold text-2xl' : ''
-          }`}
+          className="flex-shrink-0 cursor-grab active:cursor-grabbing"
+          {...attributes}
+          {...listeners}
         >
-          {block.content}
-        </div>
-      </div>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity ml-2"
+            className="h-8 w-8 text-muted-foreground"
           >
-            <MoreHorizontal className="h-4 w-4" />
+            <GripVertical className="h-4 w-4" />
+            <span className="sr-only">Drag handle</span>
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem onClick={() => deleteBlock(block.id)}>
-            <Trash2 className="mr-2 h-4 w-4" />
-            <span>Delete block</span>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+        </div>
+
+        {/* Block Controls */}
+        <div className="flex items-center gap-1">
+          <AddBlockButton 
+            onChangeType={(type) => changeBlockType(block.id, type)} 
+            mode="change"
+            isActive={isChangeTypeActive}
+            onOpenChange={(open) => {
+              if (open) {
+                setActiveChangeTypeId(block.id)
+              } else {
+                setActiveChangeTypeId(null)
+              }
+            }}
+            type={block.type}
+          />
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8"
+            onClick={() => addBlock(block.id)}
+          >
+            <Plus size={16} />
+            <span className="sr-only">Add Block</span>
+          </Button>
+        </div>
+
+        {/* Content Editor */}
+        <div className="flex-grow">
+          <div
+            ref={inputRef}
+            contentEditable
+            suppressContentEditableWarning
+            onBlur={(e) => updateBlock(block.id, e.currentTarget.textContent || '')}
+            className={`w-full p-2 focus:outline-none border border-transparent focus:border-gray-300 rounded-md ${
+              block.type === 'heading' ? 'font-bold text-2xl' : ''
+            }`}
+          >
+            {block.content}
+          </div>
+        </div>
+
+        {/* Block Menu */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => deleteBlock(block.id)}>
+              <Trash2 className="mr-2 h-4 w-4" />
+              <span>Delete block</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </div>
   )
 } 
