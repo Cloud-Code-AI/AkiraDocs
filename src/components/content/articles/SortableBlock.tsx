@@ -68,21 +68,22 @@ export function SortableBlock({
 
     const content = target.textContent || ''
     const lastTwoChars = content.slice(-2)
+    
     if (lastTwoChars.length === 2 && lastTwoChars[0] === '/' && lastTwoChars[1] !== '/') {
-      setActiveChangeTypeId(null)
       setIsDropdownOpen(false)
-      requestAnimationFrame(() => {
-        const selection = window.getSelection()
-        const range = document.createRange()
-        
+      setActiveChangeTypeId(null)
+      
+      setTimeout(() => {
         if (inputRef.current) {
+          inputRef.current.focus()
+          const selection = window.getSelection()
+          const range = document.createRange()
           range.selectNodeContents(inputRef.current)
           range.collapse(false)
           selection?.removeAllRanges()
           selection?.addRange(range)
-          inputRef.current.focus()
         }
-      })
+      }, 0)
     }
   }, [setActiveChangeTypeId])
 

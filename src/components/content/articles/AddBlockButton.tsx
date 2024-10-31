@@ -126,6 +126,9 @@ export const AddBlockButton = forwardRef<
         onOpenAutoFocus={(e) => {
           e.preventDefault()
         }}
+        onCloseAutoFocus={(e) => {
+          e.preventDefault()
+        }}
       >
         <div className="p-4 pb-2">
           <h2 className="text-lg font-semibold mb-2">{mode === 'add' ? 'Add a block' : 'Change block type'}</h2>
