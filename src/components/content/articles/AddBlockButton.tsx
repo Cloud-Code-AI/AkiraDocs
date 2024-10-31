@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, forwardRef, useRef, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Input } from '@/components/ui/input'
@@ -34,6 +34,7 @@ interface AddBlockButtonProps {
   isActive?: boolean
   onOpenChange?: (open: boolean) => void
   type?: BlockType
+  open?: boolean
 }
 
 interface BlockOption {
@@ -44,9 +45,18 @@ interface BlockOption {
   group: 'Basic' | 'Media' | 'Advanced'
 }
 
-export function AddBlockButton({ onAddBlock, onChangeType, mode, isActive, onOpenChange, type }: AddBlockButtonProps) {
-  const [isOpen, setIsOpen] = useState(false)
+export const AddBlockButton = forwardRef<
+  HTMLButtonElement,
+  AddBlockButtonProps
+>(({ onAddBlock, onChangeType, mode, isActive, onOpenChange, type, open }, ref) => {
   const [searchTerm, setSearchTerm] = useState('')
+  const searchInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (searchInputRef.current) {
+      searchInputRef.current.tabIndex = -1
+    }
+  }, [open])
 
   const blockOptions: BlockOption[] = [
     { type: 'paragraph', icon: <Type size={18} />, label: 'Text', description: 'Just start writing with plain text.', group: 'Basic' },
@@ -85,7 +95,7 @@ export function AddBlockButton({ onAddBlock, onChangeType, mode, isActive, onOpe
     } else if (mode === 'change' && onChangeType) {
       onChangeType(type)
     }
-    setIsOpen(false)
+    onOpenChange?.(false)
   }
 
   const getCurrentIcon = (type: BlockType) => {
@@ -93,26 +103,41 @@ export function AddBlockButton({ onAddBlock, onChangeType, mode, isActive, onOpe
     return option?.icon || <Type size={16} />
   }
 
+  const handleSearchInput = (value: string) => {
+    if (value !== '/') {
+      setSearchTerm(value)
+    }
+  }
+
   return (
-    <Popover open={isOpen} onOpenChange={(open) => {
-      setIsOpen(open)
-      onOpenChange?.(open)
-    }}>
+    <Popover 
+      open={open} 
+      onOpenChange={onOpenChange}
+    >
       <PopoverTrigger asChild>
-        <Button variant="outline" size="icon" className="h-8 w-8">
+        <Button ref={ref} variant="outline" size="icon" className="h-8 w-8">
           {mode === 'add' ? <Plus size={16} /> : getCurrentIcon(type)}
           <span className="sr-only">{mode === 'add' ? 'Add Block' : 'Change Block Type'}</span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 p-0" align="start">
+      <PopoverContent 
+        className="w-80 p-0" 
+        align="start"
+        onOpenAutoFocus={(e) => {
+          e.preventDefault()
+        }}
+      >
         <div className="p-4 pb-2">
           <h2 className="text-lg font-semibold mb-2">{mode === 'add' ? 'Add a block' : 'Change block type'}</h2>
           <Input
+            ref={searchInputRef}
             type="text"
             placeholder="Search for a block type"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="h-9"
+            className="h-9 pointer-events-none bg-muted"
+            tabIndex={-1}
+            autoFocus={false}
           />
         </div>
         <ScrollArea className="h-[300px]">
@@ -144,4 +169,5 @@ export function AddBlockButton({ onAddBlock, onChangeType, mode, isActive, onOpe
       </PopoverContent>
     </Popover>
   )
-}
+})
+AddBlockButton.displayName = 'AddBlockButton'

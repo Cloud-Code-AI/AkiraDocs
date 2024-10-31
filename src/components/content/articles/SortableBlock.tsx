@@ -8,7 +8,7 @@ import { AddBlockButton } from './AddBlockButton'
 import { BlockRenderer } from '../renderers/BlockRenderer'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Plus, MoreHorizontal, Trash2 } from 'lucide-react'
-import { useRef } from 'react'
+import { useRef, useCallback, useState } from 'react'
 
 interface SortableBlockProps {
   block: {
@@ -45,11 +45,56 @@ export function SortableBlock({
   } = useSortable({ id: block.id })
 
   const inputRef = useRef<HTMLDivElement>(null)
+  const addBlockButtonRef = useRef<HTMLButtonElement>(null)
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
   }
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === '/') {
+      requestAnimationFrame(() => {
+        setActiveChangeTypeId(block.id)
+        addBlockButtonRef.current?.click()
+        inputRef.current?.focus()
+      })
+    }
+  }, [block.id, setActiveChangeTypeId])
+
+  const handleInput = useCallback((e: React.FormEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement
+    if (!target) return
+
+    const content = target.textContent || ''
+    const lastTwoChars = content.slice(-2)
+    if (lastTwoChars.length === 2 && lastTwoChars[0] === '/' && lastTwoChars[1] !== '/') {
+      setActiveChangeTypeId(null)
+      setIsDropdownOpen(false)
+      requestAnimationFrame(() => {
+        const selection = window.getSelection()
+        const range = document.createRange()
+        
+        if (inputRef.current) {
+          range.selectNodeContents(inputRef.current)
+          range.collapse(false)
+          selection?.removeAllRanges()
+          selection?.addRange(range)
+          inputRef.current.focus()
+        }
+      })
+    }
+  }, [setActiveChangeTypeId])
+
+  const handleOpenChange = (open: boolean) => {
+    if (open) {
+      setActiveChangeTypeId(block.id)
+    } else {
+      setActiveChangeTypeId(null)
+    }
+  }
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   if (showPreview) {
     return <BlockRenderer block={block} />
@@ -84,16 +129,21 @@ export function SortableBlock({
         {/* Block Controls */}
         <div className="flex items-center gap-1">
           <AddBlockButton 
-            onChangeType={(type) => changeBlockType(block.id, type)} 
+            ref={addBlockButtonRef}
+            onChangeType={(type) => {
+              changeBlockType(block.id, type)
+              if (inputRef.current) {
+                inputRef.current.textContent = ''
+                inputRef.current.focus()
+              }
+            }} 
             mode="change"
             isActive={isChangeTypeActive}
             onOpenChange={(open) => {
-              if (open) {
-                setActiveChangeTypeId(block.id)
-              } else {
-                setActiveChangeTypeId(null)
-              }
+              setIsDropdownOpen(open)
+              handleOpenChange(open)
             }}
+            open={isDropdownOpen}
             type={block.type}
           />
           <Button
@@ -113,10 +163,20 @@ export function SortableBlock({
             ref={inputRef}
             contentEditable
             suppressContentEditableWarning
-            onBlur={(e) => updateBlock(block.id, e.currentTarget.textContent || '')}
-            className={`w-full p-2 focus:outline-none border border-transparent focus:border-gray-300 rounded-md ${
-              block.type === 'heading' ? 'font-bold text-2xl' : ''
-            }`}
+            onKeyDown={handleKeyDown}
+            onInput={handleInput}
+            onBlur={(e) => {
+              const target = e.target as HTMLElement
+              if (!target) return
+
+              setTimeout(() => {
+                updateBlock(block.id, target.textContent || '')
+              }, 100)
+            }}
+            className={cn(
+              "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md",
+              block.type === 'heading' && "font-bold text-2xl"
+            )}
           >
             {block.content}
           </div>
