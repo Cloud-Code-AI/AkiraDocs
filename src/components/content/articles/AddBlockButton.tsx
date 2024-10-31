@@ -138,8 +138,7 @@ export const AddBlockButton = forwardRef<
             placeholder="Search for a block type"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="h-9 pointer-events-none bg-muted"
-            tabIndex={-1}
+            className="h-9"
             autoFocus={false}
           />
         </div>
