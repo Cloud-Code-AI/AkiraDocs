@@ -16,6 +16,14 @@ import { Audio } from '../blocks/Audio'
 import { File } from '../blocks/File'
 import { Emoji } from '../blocks/Emoji'
 import { Callout } from '../blocks/Callout'
+import { cn } from '@/lib/utils'
+
+interface ImageBlockContent {
+  url: string;
+  alt?: string;
+  caption?: string;
+  alignment?: 'left' | 'center' | 'right';
+}
 
 interface BlockRendererProps {
   block: Block
@@ -27,6 +35,37 @@ export function BlockRenderer({ block }: BlockRendererProps) {
     styles: block.metadata?.styles,
     id: block.id,
   };
+
+  if (block.type === 'image') {
+    try {
+      const imageContent: ImageBlockContent = typeof block.content === 'string' 
+        ? JSON.parse(block.content)
+        : block.content;
+
+      return (
+        <figure className={cn(
+          "my-4",
+          imageContent.alignment === 'left' && "text-left",
+          imageContent.alignment === 'center' && "text-center",
+          imageContent.alignment === 'right' && "text-right",
+        )}>
+          <img 
+            src={imageContent.url} 
+            alt={imageContent.alt} 
+            className="max-w-full h-auto rounded-lg inline-block"
+          />
+          {imageContent.caption && (
+            <figcaption className="mt-2 text-sm text-muted-foreground italic">
+              {imageContent.caption}
+            </figcaption>
+          )}
+        </figure>
+      )
+    } catch {
+      // Fallback for old format or invalid JSON
+      return <img src={block.content as string} alt="" className="max-w-full h-auto my-4" />
+    }
+  }
 
   switch (block.type) {
     case 'paragraph':
