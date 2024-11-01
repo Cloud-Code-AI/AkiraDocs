@@ -97,29 +97,7 @@ class DocScraper {
         return parsed;
     }
 
-    private async downloadImage(imageUrl: string): Promise<string | null> {
-        try {
-            const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-            const urlPath = new URL(imageUrl).pathname;
-            // Remove leading slash and create directory structure
-            const relativePath = urlPath.replace(/^\//, '');
-            const publicDir = path.join(process.cwd(), 'public/images');
-            
-            // Create full directory path including subdirectories
-            const fullPath = path.join(publicDir, path.dirname(relativePath));
-            await fsPromises.mkdir(fullPath, { recursive: true });
-            
-            // Save file with original path structure
-            const localPath = path.join(publicDir, relativePath);
-            await fsPromises.writeFile(localPath, response.data);
-            
-            // Return the new public path maintaining the original structure
-            return `/images/${relativePath}`;
-        } catch (error) {
-            console.error(`Failed to download image ${imageUrl}:`, error);
-            return null;
-        }
-    }
+    
 
     private async processContentWithLLM(html: string): Promise<ArticleContent> {
         const $ = cheerio.load(html);

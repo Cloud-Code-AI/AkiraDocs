@@ -3,21 +3,28 @@ import { BlogPost } from '@/types/Block'
 const docsContext = require.context('../../_contents/docs', true, /\.json$/)
 
 export function getDocBySlug(slug: string): BlogPost {
-  const normalizedSlug = slug || 'index'
-  console.log("normalizedSlug", normalizedSlug);
-  try {
-    if (normalizedSlug === 'index') {
-      try {
-        // First try to get index.json
-        // return docsContext('./index.json')
-        // If index.json doesn't exist, get all docs and use the first one
-        const docs = getAllDocs()
-          .filter(doc => doc.id !== 'index') // Exclude index to avoid potential circular reference
-          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  let normalizedSlug: string
+  if (slug.includes('_contents/docs')) {
+    normalizedSlug = slug.split('/').slice(2).join('/') || ''
+  } else {
+    normalizedSlug = slug || ''
+  }
 
-          return docs[0]
+
+  try {
+    if (normalizedSlug === '') {
+      // Get all articles and sort by date to find the latest
+      const docs = getAllDocs()
+      .filter(doc => doc.id !== 'index') // Exclude index to avoid potential circular reference
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   
-      } catch {
+    if (docs.length > 0) {
+        return docs[0]
+      }
+    } else {
+      return docsContext(`./${normalizedSlug}.json`)
+    }
+
         // If no docs found, return placeholder content
         return {
           id: 'index',
@@ -44,10 +51,6 @@ export function getDocBySlug(slug: string): BlogPost {
             }
           ]
         }
-      }
-    }
-    
-    return docsContext(`./${normalizedSlug}.json`)
   } catch (error) {
     console.error(`Error reading file: ${normalizedSlug}.json`, error)
     throw new Error(`Document not found: ${normalizedSlug}`)
