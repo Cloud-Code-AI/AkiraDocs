@@ -13,7 +13,7 @@
     {
       "id": "1730432262534",
       "type": "heading",
-      "content": "This is how the heading looks like",
+      "content": "",
       "metadata": {}
     },
     {
@@ -31,7 +31,7 @@
     {
       "id": "1730437864797",
       "type": "list",
-      "content": "[]",
+      "content": "[\"- Block Content\",\"- Sample Output\"]",
       "metadata": {}
     },
     {

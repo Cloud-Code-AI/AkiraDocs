@@ -90,17 +90,17 @@ export default function ArticleEditor() {
   }
 
   const addBlock = (afterId: string) => {
-    const newBlock: Block = { 
-      id: Date.now().toString(), 
-      type: 'paragraph', 
+    const newBlock: Block = {
+      id: Date.now().toString(),
+      type: 'paragraph',
       content: '',
       metadata: {}
     }
-    
+
     if (newBlock.type === 'list') {
-      newBlock.content = JSON.stringify([''])
+      newBlock.content = '[]'
     }
-    
+
     if (afterId === 'new') {
       setBlocks([newBlock])
     } else {
@@ -111,7 +111,20 @@ export default function ArticleEditor() {
   }
 
   const updateBlock = (id: string, content: string) => {
-    setBlocks(blocks.map(block => block.id === id ? { ...block, content } : block))
+    setBlocks(blocks.map(block => {
+      if (block.id === id) {
+        if (block.type === 'list') {
+          try {
+            const parsed = JSON.parse(content)
+            return { ...block, content: JSON.stringify(Array.isArray(parsed) ? parsed : [parsed]) }
+          } catch {
+            return { ...block, content: JSON.stringify([content]) }
+          }
+        }
+        return { ...block, content }
+      }
+      return block
+    }))
   }
 
   const changeBlockType = (id: string, newType: BlockType) => {
@@ -139,12 +152,12 @@ export default function ArticleEditor() {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event
-    
+
     if (over && active.id !== over.id) {
       setBlocks((blocks) => {
         const oldIndex = blocks.findIndex((block) => block.id === active.id)
         const newIndex = blocks.findIndex((block) => block.id === over.id)
-        
+
         return arrayMove(blocks, oldIndex, newIndex)
       })
     }
@@ -162,7 +175,7 @@ export default function ArticleEditor() {
     <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <TitleBar
-          showPreview={showPreview} 
+          showPreview={showPreview}
           setShowPreview={setShowPreview}
           onSave={handleSave}
           isSaving={isSaving}
