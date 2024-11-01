@@ -29,8 +29,6 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const navigationItems = getArticlesNavigation({})
-  console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
-
   const { prev, next } = getNextPrevPages(navigationItems, `/articles/${slug}`);
 
   const handleEdit = () => {

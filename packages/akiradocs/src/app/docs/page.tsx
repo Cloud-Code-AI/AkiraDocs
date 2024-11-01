@@ -29,7 +29,6 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const navigationItems = getDocsNavigation({})
-  console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
 
   const { prev, next } = getNextPrevPages(navigationItems, `/docs/${slug}`);
 

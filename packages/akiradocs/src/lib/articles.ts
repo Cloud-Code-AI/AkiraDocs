@@ -14,16 +14,13 @@ export function getArticleBySlug(slug: string): BlogPost {
     if (normalizedSlug === '') {
       // Get all articles and sort by date to find the latest
       const articles = getAllArticles()
-      console.log("articles", articles);
       const sortedArticles = articles.sort((a, b) => 
         new Date(b.date).getTime() - new Date(a.date).getTime()
       )
-      console.log("sortedArticles", sortedArticles);
       if (sortedArticles.length > 0) {
         return sortedArticles[0]
       }
     } else {
-      console.log("normalizedSlug", normalizedSlug);
       return articlesContext(`./${normalizedSlug}.json`)
     }
 
