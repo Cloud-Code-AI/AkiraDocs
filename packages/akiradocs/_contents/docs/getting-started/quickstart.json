@@ -6,14 +6,6 @@
     "date": "2024-01-01",
     "blocks": [
       {
-        "id": "1",
-        "type": "heading",
-        "content": "Quickstart Guide",
-        "metadata": {
-          "level": 1
-        }
-      },
-      {
         "id": "2",
         "type": "paragraph",
         "content": "Follow these steps to start using Akira Docs for your documentation needs."

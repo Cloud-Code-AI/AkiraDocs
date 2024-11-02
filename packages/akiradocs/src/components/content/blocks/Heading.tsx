@@ -55,3 +55,24 @@ export function MainTitle({ id, children, align = 'left', styles }: MainTitlePro
     </h1>
   );
 }
+
+
+interface SubTitleProps {
+  id?: string;
+  children: React.ReactNode;
+  align?: 'left' | 'center' | 'right';
+  styles?: { bold?: boolean; italic?: boolean; underline?: boolean; };
+}
+
+export function SubTitle({ id, children, align = 'left', styles }: SubTitleProps) {
+  const alignClass = align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : '';
+  return (
+    <p id={id} className={cn(
+      `text-xl font-bold text-foreground mb-1 py-1 ${alignClass}`,
+      styles?.italic && 'italic',
+      styles?.underline && 'underline'
+    )}>
+      {children}
+    </p>
+  );
+}

@@ -12,7 +12,6 @@ import { useRef, useCallback, useState, useEffect } from 'react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { debounce } from 'lodash'
 
 interface SortableBlockProps {
   block: {
@@ -103,7 +102,7 @@ export function SortableBlock({
         }
       }, 0)
     }
-  }, [setActiveChangeTypeId])
+  }, [setActiveChangeTypeId, block.type])
 
   const handleOpenChange = (open: boolean) => {
     if (open) {
@@ -165,76 +164,6 @@ export function SortableBlock({
       ...metadata
     }
     updateBlock(block.id, JSON.stringify(updatedContent))
-  }
-
-  const renderListContent = (content: string) => {
-    try {
-      const items = JSON.parse(content)
-      return items.map((item: string, index: number) => (
-        <li key={index}>{item}</li>
-      ))
-    } catch {
-      // If not valid JSON, treat as single item
-      return <li>{content}</li>
-    }
-  }
-
-  const [listItems, setListItems] = useState<string[]>(() => {
-    if (block.type !== 'list') return []
-    try {
-      return JSON.parse(block.content)
-    } catch {
-      return [block.content || '']
-    }
-  })
-
-  const debouncedUpdate = useCallback(
-    debounce((items: string[]) => {
-      updateBlock(block.id, JSON.stringify(items))
-    }, 300),
-    [block.id, updateBlock]
-  )
-
-  useEffect(() => {
-    if (block.type === 'list') {
-      debouncedUpdate(listItems)
-    }
-    return () => debouncedUpdate.cancel()
-  }, [listItems, debouncedUpdate])
-
-  const handleListKeyDown = (e: React.KeyboardEvent<HTMLDivElement>, index: number) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      setListItems(prev => {
-        const newItems = [...prev]
-        newItems.splice(index + 1, 0, '')
-        return newItems
-      })
-      
-      // Focus the new item after render
-      setTimeout(() => {
-        const nextInput = document.querySelector(`[data-list-index="${index + 1}"]`) as HTMLElement
-        nextInput?.focus()
-      }, 0)
-    } else if (e.key === 'Backspace' && listItems[index] === '' && listItems.length > 1) {
-      e.preventDefault()
-      setListItems(prev => prev.filter((_, i) => i !== index))
-      
-      // Focus the previous item
-      setTimeout(() => {
-        const prevInput = document.querySelector(`[data-list-index="${index - 1}"]`) as HTMLElement
-        prevInput?.focus()
-      }, 0)
-    }
-  }
-
-  const handleListItemInput = (e: React.FormEvent<HTMLDivElement>, index: number) => {
-    const newContent = e.currentTarget.textContent || ''
-    setListItems(prev => {
-      const newItems = [...prev]
-      newItems[index] = newContent
-      return newItems
-    })
   }
 
   if (showPreview) {
@@ -300,7 +229,7 @@ export function SortableBlock({
 
         {/* Content Editor */}
         <div className="flex-grow">
-          {block.type === 'image' ? (
+          { block.type === 'image' ? (
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
               {getImageContent().url ? (
                 <div className="space-y-4">
@@ -425,23 +354,6 @@ export function SortableBlock({
             <div className="py-2">
               <hr className="border-t border-border" />
             </div>
-          ) : block.type === 'list' ? (
-            <ul className="list-disc ml-8 space-y-1">
-              {listItems.map((item, index) => (
-                <li key={`${block.id}-${index}`}>
-                  <div
-                    data-list-index={index}
-                    contentEditable
-                    suppressContentEditableWarning
-                    onKeyDown={(e) => handleListKeyDown(e, index)}
-                    onInput={(e) => handleListItemInput(e, index)}
-                    className="focus:outline-none px-2 rounded focus:bg-accent/10"
-                  >
-                    {item}
-                  </div>
-                </li>
-              ))}
-            </ul>
           ) : (
             <div
               ref={inputRef}
@@ -458,13 +370,12 @@ export function SortableBlock({
                 }, 100)
               }}
               className={cn(
-                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md",
+                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-gray-800",
                 block.type === 'heading' && "font-bold text-2xl",
-                block.type === 'list' && "list-disc ml-8",
                 block.type === 'code' && "font-mono bg-muted p-4"
               )}
               style={{
-                display: block.type === 'list' ? 'list-item' : 'block',
+                display: 'block',
                 whiteSpace: block.type === 'code' ? 'pre-wrap' : 'normal'
               }}
             >

@@ -23,6 +23,7 @@ interface ImageBlockContent {
   alt?: string;
   caption?: string;
   alignment?: 'left' | 'center' | 'right';
+  size?: 'small' | 'medium' | 'large' | 'full';
 }
 
 interface BlockRendererProps {
@@ -37,6 +38,7 @@ export function BlockRenderer({ block }: BlockRendererProps) {
   };
 
   if (block.type === 'image') {
+    console.log(block.content)
     try {
       const imageContent: ImageBlockContent = typeof block.content === 'string' 
         ? JSON.parse(block.content)
@@ -52,7 +54,13 @@ export function BlockRenderer({ block }: BlockRendererProps) {
           <img 
             src={imageContent.url} 
             alt={imageContent.alt} 
-            className="max-w-full h-auto rounded-lg inline-block"
+            className={cn(
+              "h-auto rounded-lg inline-block",
+              imageContent.size === 'small' && "max-w-[300px]",
+              imageContent.size === 'medium' && "max-w-[500px]",
+              imageContent.size === 'large' && "max-w-[800px]",
+              imageContent.size === 'full' && "max-w-full",
+            )}
           />
           {imageContent.caption && (
             <figcaption className="mt-2 text-sm text-muted-foreground italic">
@@ -76,24 +84,22 @@ export function BlockRenderer({ block }: BlockRendererProps) {
       return <List items={block.content.split('\n')} ordered={block.metadata?.listType === 'ordered'} {...commonProps} />;
     case 'code':
       return <CodeBlock code={block.content} language={block.metadata?.language} filename={block.metadata?.filename} showLineNumbers={block.metadata?.showLineNumbers} {...commonProps} />;
-    case 'image':
-      return <Image src={block.content} alt={block.metadata?.alt || ''} caption={block.metadata?.caption} size={block.metadata?.size} position={block.metadata?.position} {...commonProps} />;
     case 'blockquote':
       return <Blockquote {...commonProps}>{block.content}</Blockquote>;
-    case 'table':
-      return <Table headers={block.metadata?.headers || []} rows={block.metadata?.rows || []} {...commonProps} />;
-    case 'toggleList':
-      return <ToggleList items={block.metadata?.items || []} {...commonProps} />;
-    case 'checkList':
-      return <CheckList items={block.metadata?.checkedItems || []} {...commonProps} />;
-    case 'video':
-      return <Video src={block.content} caption={block.metadata?.caption} {...commonProps} />;
-    case 'audio':
-      return <Audio src={block.content} caption={block.metadata?.caption} {...commonProps} />;
-    case 'file':
-      return <File url={block.content} name={block.metadata?.name || ''} {...commonProps} />;
-    case 'emoji':
-      return <Emoji symbol={block.content} label={block.metadata?.label} {...commonProps} />;
+    // case 'table':
+    //   return <Table headers={block.metadata?.headers || []} rows={block.metadata?.rows || []} {...commonProps} />;
+    // case 'toggleList':
+    //   return <ToggleList items={block.metadata?.items || []} {...commonProps} />;
+    // case 'checkList':
+    //   return <CheckList items={block.metadata?.checkedItems || []} {...commonProps} />;
+    // case 'video':
+    //   return <Video src={block.content} caption={block.metadata?.caption} {...commonProps} />;
+    // case 'audio':
+    //   return <Audio src={block.content} caption={block.metadata?.caption} {...commonProps} />;
+    // case 'file':
+    //   return <File url={block.content} name={block.metadata?.name || ''} {...commonProps} />;
+    // case 'emoji':
+    //   return <Emoji symbol={block.content} label={block.metadata?.label} {...commonProps} />;
     case 'callout':
       return <Callout type={block.metadata?.type || 'info'} title={block.metadata?.title} {...commonProps}>{block.content}</Callout>;
     case 'divider':

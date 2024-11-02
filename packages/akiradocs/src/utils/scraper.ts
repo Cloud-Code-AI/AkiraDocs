@@ -42,7 +42,6 @@ class DocScraper {
     private baseUrl: string;
     private imageUrlMap: Map<string, string> = new Map();
     constructor(private url: string, urls?: string[], contentType: string = "docs") {
-        console.log("urls", urls);
         const urlObject = new URL(urls[0]);
         this.baseUrl = `${urlObject.protocol}//${urlObject.hostname}`;
         
@@ -52,7 +51,6 @@ class DocScraper {
 
     private async fetchPage(url: string) {
         try {
-            console.log("fetching", url);
             const response = await axios.get(url);
             return response.data;
         } catch (error) {
@@ -93,7 +91,6 @@ class DocScraper {
         const filename = parsed.filename || 'default.json';
         const filePath = path.join(outputDir, filename);
         // fs.writeFileSync(filePath, JSON.stringify(parsed, null, 2));
-        console.log(`File saved to ${filePath}`);
         return parsed;
     }
 
@@ -163,8 +160,6 @@ class DocScraper {
             model: google('gemini-1.5-flash'),
             prompt,
         });
-
-        console.log("text", text);
 
         try {
             const article: ArticleContent = this.extractJsonContent(text);
@@ -248,7 +243,7 @@ class DocScraper {
             existingMeta = JSON.parse(existingContent);
         } catch (error) {
             // File doesn't exist or is invalid, start with empty object
-            console.log("No existing meta.json found, starting with empty object");
+            console.error("No existing meta.json found, starting with empty object");
         }
 
         // Merge existing meta with new meta structure

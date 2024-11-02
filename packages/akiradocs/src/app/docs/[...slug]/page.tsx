@@ -15,9 +15,10 @@ import { Edit2 } from 'lucide-react'
 import { PageBreadcrumb } from '@/components/content/layout/Breadcrumb'
 import { PageNavigation } from '@/components/content/layout/PageNavigation'
 import { getNextPrevPages } from '@/utils/navigationUtils'
+import { MainTitle, SubTitle } from '@/components/content/blocks/Heading'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
-  <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
+  <div className="flex-1 min-w-0 px-8 py-6 mx-4 font-sans leading-relaxed relative">
     {children}
   </div>
 )
@@ -29,7 +30,6 @@ export default function DocsPage({ params }: { params: Promise<{ slug: string[] 
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const navigationItems = getDocsNavigation({})
-  console.log('Dev mode:', process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE) // Debug log
 
   const { prev, next } = getNextPrevPages(navigationItems, `/docs/${slug}`);
 
@@ -58,6 +58,10 @@ export default function DocsPage({ params }: { params: Promise<{ slug: string[] 
                 Edit
               </Button>
             )}
+
+            <MainTitle>{post.title}</MainTitle>
+            <SubTitle>{post.description}</SubTitle>
+            <br></br>
 
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />

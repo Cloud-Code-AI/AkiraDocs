@@ -4,15 +4,15 @@ export type BlockType =
   | 'code' 
   | 'image' 
   | 'list' 
-  | 'divider' 
-  | 'table'
   | 'blockquote' 
-  | 'toggleList' 
-  | 'checkList' 
-  | 'video' 
-  | 'audio' 
-  | 'file' 
-  | 'emoji'
+  | 'divider' 
+  // | 'table'
+  // | 'toggleList' 
+  // | 'checkList' 
+  // | 'video' 
+  // | 'audio' 
+  // | 'file' 
+  // | 'emoji'
   | 'callout';
 
 export interface Block {

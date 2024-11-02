@@ -15,6 +15,7 @@
 ### Core Features
 - 📝 **In-App Content Editor**: Edit documentation directly in the browser with real-time preview
 - 🎨 **Dynamic UI Components**: Interactive components that bring your documentation to life
+- 🔄 **Drag-and-Drop Interface**: Intuitive content organization using dnd-kit
 - 🎯 **Live Preview**: See changes instantly as you edit
 - 📱 **Responsive Design**: Perfect viewing experience across all devices
 - 🔗 **Backend Integration**: Seamless integration with AkiraDocs Backend for advanced features [Coming Soon]
@@ -76,6 +77,7 @@ akiradocs/
 - **Framework**: Next.js
 - **Styling**: Tailwind CSS
 - **Content**: MDX
+- **DnD**: dnd-kit for drag-and-drop functionality
 - **Backend Integration**: REST API with TypeScript interfaces
 
 ## 🔗 Backend Integration [Optional]
