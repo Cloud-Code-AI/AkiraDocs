@@ -1,13 +1,13 @@
 'use client'
 
 import React from 'react'
-import { getArticleBySlug } from '@/lib/articles'
+import { getContentBySlug, getContentNavigation } from '@/lib/content'
 import { BlockRenderer } from '@/components/content/renderers/BlockRenderer'
 import { Header } from '@/components/content/layout/Header'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'
-import { getArticlesNavigation } from '@/lib/getNavigation'
+// import { getArticlesNavigation } from '@/lib/getNavigation'
 import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 import { Button } from '@/components/ui/button'
@@ -15,7 +15,7 @@ import { Edit2 } from 'lucide-react'
 import { PageBreadcrumb } from '@/components/content/layout/Breadcrumb'
 import { getNextPrevPages } from '@/utils/navigationUtils'
 import { PageNavigation } from '@/components/content/layout/PageNavigation'
-import { SubTitle, MainTitle } from '@/components/content/blocks/Heading'
+import { MainTitle, SubTitle } from '@/components/content/blocks/Heading'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="flex-1 min-w-0 px-8 py-6 mx-4 font-sans leading-relaxed relative">
@@ -23,18 +23,19 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
-export default function ArticlesPage({ params }: { params: Promise<{ slug: string[] }> }) {
+export default function ContentPage({ params }: { params: Promise<{ type: string, slug: string[] }> }) {
   const resolvedParams = React.use(params)
+  const type = resolvedParams.type
   const slug = resolvedParams.slug?.length ? resolvedParams.slug.join('/') : ''
-  const post = getArticleBySlug(slug)
+  const post = getContentBySlug(type, slug)
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
-  const navigationItems = getArticlesNavigation({})
-  const { prev, next } = getNextPrevPages(navigationItems, `/articles/${slug}`);
+  const navigationItems = getContentNavigation({}, type)
+  const { prev, next } = getNextPrevPages(navigationItems, `/${type}/${slug}`);
 
   const handleEdit = () => {
-    const articleSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
-    const filePath = `articles/${articleSlug}.json`
+    const fileSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
+    const filePath = `${type}/${fileSlug}.json`
     window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
   }
 
@@ -45,7 +46,7 @@ export default function ArticlesPage({ params }: { params: Promise<{ slug: strin
         <Navigation items={navigationItems} />
         <div className="flex-1 flex py-4 w-full">
           <PostContainer>
-            <PageBreadcrumb type="articles" slug={slug} />
+            <PageBreadcrumb type={type} slug={slug} />
             {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
               <Button
                 onClick={handleEdit}
