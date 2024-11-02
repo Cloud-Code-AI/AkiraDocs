@@ -62,11 +62,6 @@
     "typescript": "^5.6.3"
   },
   "optionalDependencies": {
-    "@ai-sdk/google": "^0.0.55",
-    "@types/yargs": "^17.0.33",
-    "ai": "^3.4.23",
-    "axios": "^1.7.7",
-    "cheerio": "^1.0.0",
-    "yargs": "^17.7.2"
+
   }
 }

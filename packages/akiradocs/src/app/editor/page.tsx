@@ -1,234 +1,376 @@
 'use client'
 
-import React, { useState, useEffect, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useState, KeyboardEvent, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-import { toast } from "sonner"
-import { BlockType } from '@/types/Block'
-import { Plus } from 'lucide-react'
-import { ArticleHeaders } from '@/components/content/articles/ArticleHeaders'
-import { TitleBar } from '@/components/content/articles/TitleBar'
-import { DndContext, DragEndEvent, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
-import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import { SortableBlock } from '@/components/content/articles/SortableBlock'
+import { Input } from "@/components/ui/input"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Folder, File, Plus, X, ChevronRight, ChevronDown, Trash2 } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { fetchAllContent } from '@/lib/getContents'
 
-type Block = {
+type FileNode = {
   id: string
-  type: BlockType
-  content: string
-  metadata?: Record<string, any>
+  name: string
+  type: 'file' | 'folder'
+  children?: FileNode[]
 }
 
-function ArticleEditorContent() {
-  const searchParams = useSearchParams()
-  const [blocks, setBlocks] = useState<Block[]>([])
-  const [title, setTitle] = useState('')
-  const [subtitle, setSubtitle] = useState('')
-  const [showPreview, setShowPreview] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [isSaving, setIsSaving] = useState(false)
-  const [activeChangeTypeId, setActiveChangeTypeId] = useState<string | null>(null)
+// Add this function to track the full path of each node
+const getNodeFullPath = (tree: FileNode[], nodeId: string, parentPath: string = ''): string | null => {
+  for (const node of tree) {
+    const currentPath = parentPath ? `${parentPath}/${node.name}` : node.name
+    if (node.id === nodeId) {
+      return currentPath
+    }
+    if (node.children) {
+      const foundPath = getNodeFullPath(node.children, nodeId, currentPath)
+      if (foundPath) return foundPath
+    }
+  }
+  return null
+}
+
+export default function ImprovedFileTreeUI() {
+  const [fileTree, setFileTree] = useState<FileNode[]>([])
+  const router = useRouter()
+  const isDevPage = process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true'
 
   useEffect(() => {
-    const loadFileContent = async () => {
-      const filePath = searchParams.get('file')
-      if (!filePath) {
-        setBlocks([{ id: '1', type: 'paragraph', content: '', metadata: {} }])
-        setIsLoading(false)
-        return
+    const content = fetchAllContent()
+    const transformedTree = transformContentToFileTree(content)
+    setFileTree(transformedTree)
+  }, [])
+
+  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set(['1', '4']))
+  const [newItemParent, setNewItemParent] = useState<string | null>(null)
+  const [newItemType, setNewItemType] = useState<'file' | 'folder' | null>(null)
+  const [newItemName, setNewItemName] = useState('')
+
+  const toggleFolder = (folderId: string) => {
+    setExpandedFolders(prev => {
+      const newSet = new Set(prev)
+      if (newSet.has(folderId)) {
+        newSet.delete(folderId)
+      } else {
+        newSet.add(folderId)
       }
+      return newSet
+    })
+  }
 
-      try {
-        const response = await fetch(`/api/files?path=${encodeURIComponent(filePath)}`)
-        if (!response.ok) throw new Error('Failed to load file')
-        const data = await response.json()
-        setTitle(data.title || '')
-        setSubtitle(data.description || '')
-        setBlocks(data.blocks || [{ id: '1', type: 'paragraph', content: '', metadata: {} }])
-      } catch (error) {
-        console.error('Error loading file:', error)
-        setBlocks([{ id: '1', type: 'paragraph', content: '', metadata: {} }])
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    loadFileContent()
-  }, [searchParams])
-
-  const handleSave = async () => {
-    const filePath = searchParams.get('file')
-    if (!filePath) {
-      console.error('No file path specified')
+  const handleFileClick = (node: FileNode) => {
+    // Get the full path for the file
+    const fullPath = getNodeFullPath(fileTree, node.id)
+    if (!fullPath) {
+      console.error('Could not find full path for node')
       return
     }
 
-    setIsSaving(true)
-    try {
-      const content = {
-        title,
-        description: subtitle,
-        author: "Anonymous", // You might want to make this dynamic
-        date: new Date().toISOString().split('T')[0],
-        blocks
-      }
-
-      const response = await fetch('/api/files', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ path: filePath, content })
-      })
-
-      if (!response.ok) throw new Error('Failed to save file')
-      toast.success('Changes saved successfully')
-    } catch (error) {
-      console.error('Error saving file:', error)
-      toast.error('Failed to save changes')
-    } finally {
-      setIsSaving(false)
-    }
+    // Encode the file path to handle special characters in URLs
+    const encodedPath = encodeURIComponent(fullPath)
+    router.push(`/editor?file=${encodedPath}`)
   }
 
-  const addBlock = (afterId: string) => {
-    const newBlock: Block = {
+  const startNewItem = (parentId: string, type: 'file' | 'folder') => {
+    setNewItemParent(parentId)
+    setNewItemType(type)
+    setNewItemName('')
+  }
+
+  const cancelNewItem = () => {
+    setNewItemParent(null)
+    setNewItemType(null)
+    setNewItemName('')
+  }
+
+  const addNewItem = async () => {
+    if (!newItemParent || !newItemType || !newItemName) return
+
+    const newItem: FileNode = {
       id: Date.now().toString(),
-      type: 'paragraph',
-      content: '',
-      metadata: {}
+      name: newItemName,
+      type: newItemType,
+      children: newItemType === 'folder' ? [] : undefined
     }
 
-    if (newBlock.type === 'list') {
-      newBlock.content = '[]'
-    }
-
-    if (afterId === 'new') {
-      setBlocks([newBlock])
-    } else {
-      const index = blocks.findIndex(block => block.id === afterId)
-      setBlocks([...blocks.slice(0, index + 1), newBlock, ...blocks.slice(index + 1)])
-    }
-    setActiveChangeTypeId(newBlock.id)
-  }
-
-  const updateBlock = (id: string, content: string) => {
-    setBlocks(blocks.map(block => {
-      if (block.id === id) {
-        if (block.type === 'list') {
-          try {
-            const parsed = JSON.parse(content)
-            return { ...block, content: JSON.stringify(Array.isArray(parsed) ? parsed : [parsed]) }
-          } catch {
-            return { ...block, content: JSON.stringify([content]) }
-          }
+    // Create the actual file/folder in the local directory
+    if (newItemType === 'file') {
+      try {
+        const defaultContent = {
+          id: newItemName.replace('.json', ''),
+          title: "New Article",
+          description: "Add your description here",
+          author: "Anonymous",
+          date: new Date().toISOString().split('T')[0],
+          blocks: []  // Empty blocks array
         }
-        return { ...block, content }
+
+        const response = await fetch('/api/files', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            path: `${getNodeFullPath(fileTree, newItemParent)}/${newItemName}`,
+            content: defaultContent
+          })
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to create file');
+        }
+      } catch (error) {
+        console.error('Error creating file:', error);
+        return;
       }
-      return block
-    }))
+    }
+
+    const updatedTree = addItemToTree(fileTree, newItemParent, newItem)
+    setFileTree(updatedTree)
+
+    if (newItemType === 'folder') {
+      setExpandedFolders(prev => new Set(prev).add(newItem.id))
+    }
+
+    cancelNewItem()
   }
 
-  const changeBlockType = (id: string, newType: BlockType) => {
-    setBlocks(blocks.map(block => block.id === id ? { ...block, type: newType } : block))
-    setActiveChangeTypeId(null)
-  }
-
-  const deleteBlock = (id: string) => {
-    setBlocks(blocks.filter(block => block.id !== id))
-  }
-
-  const sensors = useSensors(
-    useSensor(MouseSensor, {
-      activationConstraint: {
-        distance: 8,
-      },
-    }),
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 200,
-        tolerance: 8,
-      },
+  const addItemToTree = (tree: FileNode[], parentId: string, newItem: FileNode): FileNode[] => {
+    return tree.map(node => {
+      if (node.id === parentId) {
+        return { ...node, children: [...(node.children || []), newItem] }
+      }
+      if (node.children) {
+        return { ...node, children: addItemToTree(node.children, parentId, newItem) }
+      }
+      return node
     })
-  )
+  }
 
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event
-
-    if (over && active.id !== over.id) {
-      setBlocks((blocks) => {
-        const oldIndex = blocks.findIndex((block) => block.id === active.id)
-        const newIndex = blocks.findIndex((block) => block.id === over.id)
-
-        return arrayMove(blocks, oldIndex, newIndex)
-      })
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      addNewItem()
     }
   }
 
-  if (isLoading) {
+  const renderFileTree = (nodes: FileNode[], level: number = 0) => {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-gray-500">Loading...</div>
-      </div>
+      <ul className={`space-y-1 ${level > 0 ? 'border-l border-border ml-4 pl-4' : ''}`}>
+        {nodes.map((node) => (
+          <li key={node.id} className="relative">
+            <div className="flex items-center justify-between py-1">
+              <div className="flex items-center flex-grow">
+                {node.type === 'folder' && (
+                  <button
+                    onClick={() => toggleFolder(node.id)}
+                    className="mr-1 focus:outline-none"
+                    aria-label={expandedFolders.has(node.id) ? "Collapse folder" : "Expand folder"}
+                  >
+                    {expandedFolders.has(node.id) ? (
+                      <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                    )}
+                  </button>
+                )}
+                <div className="h-4 w-4 mr-1">
+                  {node.type === 'folder' ? (
+                    <Folder className="h-4 w-4 text-muted-foreground" />
+                  ) : (
+                    <File className="h-4 w-4 text-muted-foreground" />
+                  )}
+                </div>
+                <span 
+                  className={`text-sm ${node.type === 'folder' ? 'font-semibold' : ''} text-foreground hover:text-primary transition-colors duration-200 cursor-pointer`}
+                  onClick={() => node.type === 'file' ? handleFileClick(node) : toggleFolder(node.id)}
+                >
+                  {node.name}
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                {node.type === 'folder' && (
+                  <>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 hover:bg-accent"
+                      onClick={() => startNewItem(node.id, 'file')}
+                    >
+                      <File className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 hover:bg-accent"
+                      onClick={() => startNewItem(node.id, 'folder')}
+                    >
+                      <Folder className="h-4 w-4" />
+                    </Button>
+                  </>
+                )}
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="h-6 w-6 p-0 hover:bg-destructive/10 hover:text-destructive"
+                  onClick={() => deleteItem(node.id, node.name, node.type)}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+            {node.type === 'folder' && node.children && (
+              <AnimatePresence>
+                {expandedFolders.has(node.id) && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="mt-1">
+                      {renderFileTree(node.children, level + 1)}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            )}
+            {newItemParent === node.id && (
+              <div className="flex items-center mt-2 pr-8">
+                <Input
+                  type="text"
+                  value={newItemName}
+                  onChange={(e) => setNewItemName(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder={`New ${newItemType}`}
+                  className="h-8 text-sm bg-background text-foreground flex-grow"
+                />
+                <Button onClick={addNewItem} size="sm" className="ml-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground">
+                  <Plus className="w-4 h-4" />
+                </Button>
+                <Button onClick={cancelNewItem} size="sm" variant="ghost" className="ml-1 text-muted-foreground">
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
     )
   }
 
-  return (      
-    <div className="min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <TitleBar
-          showPreview={showPreview}
-          setShowPreview={setShowPreview}
-          onSave={handleSave}
-          isSaving={isSaving}
-        />
-        <div className="prose prose-lg max-w-none">
-          <ArticleHeaders
-            title={title}
-            setTitle={setTitle}
-            subtitle={subtitle}
-            setSubtitle={setSubtitle}
-            showPreview={showPreview}
-          />
-          <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-            <SortableContext items={blocks} strategy={verticalListSortingStrategy}>
-              {blocks.map((block) => (
-                <SortableBlock
-                  key={block.id}
-                  block={block}
-                  updateBlock={updateBlock}
-                  changeBlockType={changeBlockType}
-                  addBlock={addBlock}
-                  deleteBlock={deleteBlock}
-                  showPreview={showPreview}
-                  isChangeTypeActive={activeChangeTypeId === block.id}
-                  setActiveChangeTypeId={setActiveChangeTypeId}
-                />
-              ))}
-            </SortableContext>
-          </DndContext>
-          {blocks.length === 0 && !showPreview && (
-            <div className="flex justify-center my-8">
-              <Button
-                onClick={() => addBlock('new')}
-                variant="outline"
-                className="flex items-center gap-2"
-              >
-                <Plus size={16} />
-                Add Block
-              </Button>
-            </div>
-          )}
-        </div>
+  const transformContentToFileTree = (content: { [key: string]: any }): FileNode[] => {
+    const tree: { [key: string]: FileNode } = {}
+    let rootNodes: FileNode[] = []
+
+    // Create nodes for each path
+    Object.keys(content).forEach(path => {
+      const parts = path.split('/')
+      let currentPath = ''
+      
+      parts.forEach((part, index) => {
+        const isFile = index === parts.length - 1
+        const fullPath = currentPath ? `${currentPath}/${part}` : part
+        const nodeId = fullPath.replace(/[/.]/g, '_')
+
+        if (!tree[fullPath]) {
+          tree[fullPath] = {
+            id: nodeId,
+            name: part,
+            type: isFile ? 'file' : 'folder',
+            children: isFile ? undefined : []
+          }
+        }
+
+        if (index === 0) {
+          if (!rootNodes.find(node => node.id === nodeId)) {
+            rootNodes.push(tree[fullPath])
+          }
+        } else {
+          const parentPath = currentPath
+          const parent = tree[parentPath]
+          if (parent && parent.children && !parent.children.find(child => child.id === nodeId)) {
+            parent.children.push(tree[fullPath])
+          }
+        }
+
+        currentPath = fullPath
+      })
+    })
+
+    return rootNodes
+  }
+
+  const deleteItem = async (nodeId: string, nodeName: string, nodeType: 'file' | 'folder') => {
+    // Add confirmation dialog
+    const confirmMessage = `Are you sure you want to delete this ${nodeType}${nodeType === 'folder' ? ' and all its contents' : ''}?`
+    if (!confirm(confirmMessage)) {
+      return
+    }
+
+    // Get the full path of the node
+    const fullPath = getNodeFullPath(fileTree, nodeId)
+    if (!fullPath) {
+      console.error('Could not find full path for node')
+      return
+    }
+
+    try {
+      const response = await fetch('/api/files', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          path: fullPath,  // Use the full path instead of just the node name
+          type: nodeType
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete item');
+      }
+
+      // Update the file tree by filtering out the deleted item
+      const updatedTree = deleteItemFromTree(fileTree, nodeId);
+      setFileTree(updatedTree);
+
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
+  }
+
+  const deleteItemFromTree = (tree: FileNode[], nodeId: string): FileNode[] => {
+    return tree.filter(node => {
+      if (node.id === nodeId) {
+        return false;
+      }
+      if (node.children) {
+        node.children = deleteItemFromTree(node.children, nodeId);
+      }
+      return true;
+    });
+  }
+
+  if (!isDevPage) {
+    router.push('/docs')
+    return null
+  }
+
+  return (
+    <div className="p-6 bg-background min-h-screen text-foreground">
+      <h1 className="text-3xl font-bold mb-6 text-foreground">
+        Project Explorer
+      </h1>
+      <div className="bg-card rounded-lg shadow-xl p-6 border">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {renderFileTree(fileTree)}
+        </motion.div>
       </div>
     </div>
-  )
-}
-
-export default function ArticleEditor() {
-  return (
-    <Suspense fallback={<div className="flex justify-center items-center h-screen">
-      <div className="text-gray-500">Loading...</div>
-    </div>}>
-      <ArticleEditorContent />
-    </Suspense>
   )
 }

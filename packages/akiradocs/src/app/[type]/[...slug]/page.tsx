@@ -34,7 +34,7 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
   const handleEdit = () => {
     const fileSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
     const filePath = `${type}/${fileSlug}.json`
-    window.location.href = `/editor?file=${encodeURIComponent(filePath)}`
+    window.location.href = `/editor/${filePath}`
   }
 
   return (
