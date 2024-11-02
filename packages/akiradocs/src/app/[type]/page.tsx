@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { redirect } from 'next/navigation'
 import { getRecentContent } from '@/lib/content'
 
+
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
     {children}
@@ -16,6 +17,7 @@ export default function Page({ params }: { params: Promise<{ type: string }> }) 
   const type = resolvedParams.type || ''
   const recentContent = getRecentContent(type)
   if (recentContent) {
+
     redirect(`/${type}/${recentContent.slug}`)
   }
 

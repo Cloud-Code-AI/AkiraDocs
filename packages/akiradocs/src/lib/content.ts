@@ -16,6 +16,7 @@ export function getContentBySlug(type: string, slug: string): BlogPost {
   } else {
     normalizedSlug = slug || ''
   }
+  console.log(normalizedSlug, type)
   try {
       if (normalizedSlug === '') {
         // Get all articles and sort by date to find the latest
@@ -24,14 +25,14 @@ export function getContentBySlug(type: string, slug: string): BlogPost {
           const sortedArticles = articles.sort((a, b) =>
             new Date(b.date).getTime() - new Date(a.date).getTime()
           )
+          console.log(sortedArticles)
           if (sortedArticles.length > 0) {
             return sortedArticles[0]
         }
-      } else {
-        return contentContext(`./${type}/${normalizedSlug}.json`)
       }
 
     }
+    return contentContext(`./${type}/${normalizedSlug}.json`)
 
 
     // If no articles found or error occurs, return under construction content
@@ -86,12 +87,11 @@ export function getContentNavigation<T>(defaultValue: T, type: string): T {
   }
 }
 
-
 export function getRecentContent(folderPath: string) {
   try {
     // Get all matching files using require.context
     const files = contentContext.keys()
-      .filter((key: string) => key.startsWith(`./${folderPath}/`) && key.endsWith('.json'))
+      .filter((key: string) => key.startsWith(`./${folderPath}/`) && key.endsWith('.json') && !key.endsWith('/_meta.json'))
 
     if (files.length === 0) {
       return null
