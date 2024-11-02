@@ -2,7 +2,11 @@
   "title": "Test Blog Post",
   "description": "A test blog post to demonstrate all block types.",
   "author": "Anonymous",
-  "date": "2024-10-29",
+  "ogImage": "/og-image.png",
+  "publishDate": "2024-10-29",
+  "modifiedDate": "2024-10-29",
+  "category": "Test Category",
+  "keywords": ["test", "blog", "post"],
   "blocks": [
     {
       "id": "1",

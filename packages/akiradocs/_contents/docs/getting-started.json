@@ -3,7 +3,10 @@
     "title": "Getting Started with Our Framework",
     "description": "Learn how to get started with our powerful web development framework.",
     "author": "Jane Smith",
-    "date": "2023-05-01",
+    "publishDate": "2023-05-01",
+    "modifiedDate": "2023-05-01",
+    "category": "Getting Started",
+    "keywords": ["Akira Docs", "Documentation", "AI"],
     "blocks": [
       {
         "id": "2",

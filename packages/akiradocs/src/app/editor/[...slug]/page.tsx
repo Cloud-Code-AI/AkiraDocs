@@ -11,6 +11,7 @@ import { TitleBar } from '@/components/content/articles/TitleBar'
 import { DndContext, DragEndEvent, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { SortableBlock } from '@/components/content/articles/SortableBlock'
+import { SEO } from '@/components/content/SEO'
 
 type Block = {
   id: string
@@ -29,6 +30,7 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
   const [activeChangeTypeId, setActiveChangeTypeId] = useState<string | null>(null)
+
 
   useEffect(() => {
     const loadFileContent = async () => {
@@ -175,9 +177,16 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
     )
   }
 
-  return (      
+  return (
+    
     <div className="min-h-screen bg-background">
+
       <div className="max-w-4xl mx-auto px-4 py-8">
+        <SEO 
+          title={`${title} | Editor`}
+          description={subtitle}
+          noIndex={true}
+        />
         <TitleBar
           showPreview={showPreview}
           setShowPreview={setShowPreview}

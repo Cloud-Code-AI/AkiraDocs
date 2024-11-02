@@ -3,7 +3,10 @@
     "title": "Introduction to Akira Docs",
     "description": "Learn about Akira Docs and its core features",
     "author": "Akira Team",
-    "date": "2024-01-01",
+    "publishDate": "2024-01-01",
+    "modifiedDate": "2024-01-01",
+    "category": "Getting Started",
+    "keywords": ["Akira Docs", "Documentation", "AI"],
     "blocks": [
         {
             "id": "2",

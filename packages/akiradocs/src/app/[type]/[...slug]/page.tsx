@@ -15,7 +15,7 @@ import { PageBreadcrumb } from '@/components/content/layout/Breadcrumb'
 import { getNextPrevPages } from '@/utils/navigationUtils'
 import { PageNavigation } from '@/components/content/layout/PageNavigation'
 import { MainTitle, SubTitle } from '@/components/content/blocks/Heading'
-
+import { SEO } from '@/components/content/SEO'
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="flex-1 min-w-0 px-8 py-6 mx-4 font-sans leading-relaxed relative">
     {children}
@@ -31,6 +31,10 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
   const footerConfig = getFooterConfig();
   const navigationItems = getContentNavigation({}, type)
   const { prev, next } = getNextPrevPages(navigationItems, `/${type}/${slug}`);
+  const pageTitle = post.title || 'Documentation'
+  const pageDescription = post.description || 'Documentation content'
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${type}/${slug}`
+
   const handleEdit = () => {
     const fileSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
     const filePath = `${type}/${fileSlug}.json`
@@ -39,6 +43,11 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO 
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonicalUrl}
+      />
       <Header {...headerConfig} />
       <div className="flex flex-grow">
         <Navigation key={type} items={navigationItems} />
@@ -65,7 +74,7 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
             ))}
             <PageNavigation prev={prev} next={next} />
           </PostContainer>
-          <TableOfContents />
+          <TableOfContents publishDate={post.publishDate} modifiedDate={post.modifiedDate} author={post.author} />
         </div>
       </div>
       <Footer {...footerConfig} />
