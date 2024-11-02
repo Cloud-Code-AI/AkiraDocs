@@ -58,30 +58,30 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
     }
   }
 
-  const addChecklistItem = (blockId: string) => {
-    const block = blocks.find(b => b.id === blockId);
-    if (block && block.type === 'checkList') {
-      const newItems = [...(block.metadata?.checkedItems || []), { text: '', checked: false }];
-      updateBlockMetadata(blockId, { checkedItems: newItems });
-    }
-  };
+  // const addChecklistItem = (blockId: string) => {
+  //   const block = blocks.find(b => b.id === blockId);
+  //   if (block && block.type === 'checkList') {
+  //     const newItems = [...(block.metadata?.checkedItems || []), { text: '', checked: false }];
+  //     updateBlockMetadata(blockId, { checkedItems: newItems });
+  //   }
+  // };
 
-  const updateChecklistItem = (blockId: string, index: number, text: string, checked: boolean) => {
-    const block = blocks.find(b => b.id === blockId);
-    if (block && block.type === 'checkList') {
-      const newItems = [...(block.metadata?.checkedItems || [])];
-      newItems[index] = { text, checked };
-      updateBlockMetadata(blockId, { checkedItems: newItems });
-    }
-  };
+  // const updateChecklistItem = (blockId: string, index: number, text: string, checked: boolean) => {
+  //   const block = blocks.find(b => b.id === blockId);
+  //   if (block && block.type === 'checkList') {
+  //     const newItems = [...(block.metadata?.checkedItems || [])];
+  //     newItems[index] = { text, checked };
+  //     updateBlockMetadata(blockId, { checkedItems: newItems });
+  //   }
+  // };
 
-  const removeChecklistItem = (blockId: string, index: number) => {
-    const block = blocks.find(b => b.id === blockId);
-    if (block && block.type === 'checkList') {
-      const newItems = (block.metadata?.checkedItems || []).filter((_, i) => i !== index);
-      updateBlockMetadata(blockId, { checkedItems: newItems });
-    }
-  };
+  // const removeChecklistItem = (blockId: string, index: number) => {
+  //   const block = blocks.find(b => b.id === blockId);
+  //   if (block && block.type === 'checkList') {
+  //     const newItems = (block.metadata?.checkedItems || []).filter((_, i) => i !== index);
+  //     updateBlockMetadata(blockId, { checkedItems: newItems });
+  //   }
+  // };
 
   const toggleEmojiPicker = (blockId: string) => {
     setShowEmojiPicker(prevId => prevId === blockId ? null : blockId);
@@ -96,47 +96,47 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
     updateBlockMetadata(blockId, { headers, rows });
   };
 
-  const addTableRow = (blockId: string) => {
-    const block = blocks.find(b => b.id === blockId);
-    if (block && block.type === 'table') {
-      const currentRows = block.metadata?.rows || [];
-      const newRow = Array(block.metadata?.headers?.length || 0).fill('');
-      updateBlockMetadata(blockId, { rows: [...currentRows, newRow] });
-    }
-  };
+  // const addTableRow = (blockId: string) => {
+  //   const block = blocks.find(b => b.id === blockId);
+  //   if (block && block.type === 'table') {
+  //     const currentRows = block.metadata?.rows || [];
+  //     const newRow = Array(block.metadata?.headers?.length || 0).fill('');
+  //     updateBlockMetadata(blockId, { rows: [...currentRows, newRow] });
+  //   }
+  // };
 
-  const removeTableRow = (blockId: string, rowIndex: number) => {
-    const block = blocks.find(b => b.id === blockId);
-    if (block && block.type === 'table') {
-      const newRows = (block.metadata?.rows || []).filter((_, i) => i !== rowIndex);
-      updateBlockMetadata(blockId, { rows: newRows });
-    }
-  };
+  // const removeTableRow = (blockId: string, rowIndex: number) => {
+  //   const block = blocks.find(b => b.id === blockId);
+  //   if (block && block.type === 'table') {
+  //     const newRows = (block.metadata?.rows || []).filter((_, i) => i !== rowIndex);
+  //     updateBlockMetadata(blockId, { rows: newRows });
+  //   }
+  // };
 
-  const addToggleListItem = (blockId: string) => {
-    const block = blocks.find(b => b.id === blockId);
-    if (block && block.type === 'toggleList') {
-      const newItems = [...(block.metadata?.items || []), { title: '', content: '' }];
-      updateBlockMetadata(blockId, { items: newItems });
-    }
-  };
+  // const addToggleListItem = (blockId: string) => {
+  //   const block = blocks.find(b => b.id === blockId);
+  //   if (block && block.type === 'toggleList') {
+  //     const newItems = [...(block.metadata?.items || []), { title: '', content: '' }];
+  //     updateBlockMetadata(blockId, { items: newItems });
+  //   }
+  // };
 
-  const updateToggleListItem = (blockId: string, index: number, field: 'title' | 'content', value: string) => {
-    const block = blocks.find(b => b.id === blockId);
-    if (block && block.type === 'toggleList') {
-      const newItems = [...(block.metadata?.items || [])];
-      newItems[index] = { ...newItems[index], [field]: value };
-      updateBlockMetadata(blockId, { items: newItems });
-    }
-  };
+  // const updateToggleListItem = (blockId: string, index: number, field: 'title' | 'content', value: string) => {
+  //   const block = blocks.find(b => b.id === blockId);
+  //   if (block && block.type === 'toggleList') {
+  //     const newItems = [...(block.metadata?.items || [])];
+  //     newItems[index] = { ...newItems[index], [field]: value };
+  //     updateBlockMetadata(blockId, { items: newItems });
+  //   }
+  // };
 
-  const removeToggleListItem = (blockId: string, index: number) => {
-    const block = blocks.find(b => b.id === blockId);
-    if (block && block.type === 'toggleList') {
-      const newItems = (block.metadata?.items || []).filter((_, i) => i !== index);
-      updateBlockMetadata(blockId, { items: newItems });
-    }
-  };
+  // const removeToggleListItem = (blockId: string, index: number) => {
+  //   const block = blocks.find(b => b.id === blockId);
+  //   if (block && block.type === 'toggleList') {
+  //     const newItems = (block.metadata?.items || []).filter((_, i) => i !== index);
+  //     updateBlockMetadata(blockId, { items: newItems });
+  //   }
+  // };
 
   const calloutIcons = {
     info: Info,
@@ -250,7 +250,7 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                   </Button>
                 </>
               )}
-              {block.type === 'emoji' && (
+              {/* {block.type === 'emoji' && (
                 <Button
                   variant="outline"
                   size="sm"
@@ -259,7 +259,7 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                   <Smile className="h-4 w-4 mr-2" />
                   {showEmojiPicker === block.id ? 'Close' : 'Choose Emoji'}
                 </Button>
-              )}
+              )} */}
               {block.type === 'image' && (
                 <div className="flex items-center space-x-2">
                   <Select
@@ -292,39 +292,39 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
           )}
           {showPreview ? (
             <BlockRenderer block={block} />
-          ) : block.type === 'emoji' ? (
-            <div>
-              <div>
-                {block.content || (
-                  <span className="text-gray-400">
-                    Click "Choose Emoji" to select an emoji
-                  </span>
-                )}
-              </div>
-              {showEmojiPicker === block.id && (
-                <div className="z-10 mt-2">
-                  <EmojiPicker onEmojiClick={handleEmojiClick(block.id)} />
-                </div>
-              )}
-            </div>
-          ) : block.type === 'divider' ? (
-            <div>
-              <Divider />
-            </div>
-          ) : block.type === 'heading' ? (
-            <Input
-              id={`block-${block.id}`}
-              value={block.content}
-              onChange={(e) => updateBlockContent(block.id, e.target.value)}
-              onFocus={() => setSelectedBlockId(block.id)}
-              placeholder={`Enter heading content...`}
-              className={cn(
-                `w-full text-${block.metadata?.align || 'left'}`,
-                block.metadata?.styles?.bold && "font-bold",
-                block.metadata?.styles?.italic && "italic",
-                block.metadata?.styles?.underline && "underline"
-              )}
-            />
+          // ) : block.type === 'emoji' ? (
+          //   <div>
+          //     <div>
+          //       {block.content || (
+          //         <span className="text-gray-400">
+          //           Click "Choose Emoji" to select an emoji
+          //         </span>
+          //       )}
+          //     </div>
+          //     {showEmojiPicker === block.id && (
+          //       <div className="z-10 mt-2">
+          //         <EmojiPicker onEmojiClick={handleEmojiClick(block.id)} />
+          //       </div>
+          //     )}
+          //   </div>
+          // ) : block.type === 'divider' ? (
+          //   <div>
+          //     <Divider />
+          //   </div>
+          // ) : block.type === 'heading' ? (
+          //   <Input
+          //     id={`block-${block.id}`}
+          //     value={block.content}
+          //     onChange={(e) => updateBlockContent(block.id, e.target.value)}
+          //     onFocus={() => setSelectedBlockId(block.id)}
+          //     placeholder={`Enter heading content...`}
+          //     className={cn(
+          //       `w-full text-${block.metadata?.align || 'left'}`,
+          //       block.metadata?.styles?.bold && "font-bold",
+          //       block.metadata?.styles?.italic && "italic",
+          //       block.metadata?.styles?.underline && "underline"
+          //     )}
+          //   />
           ) : block.type === 'list' ? (
             <Textarea
               id={`block-${block.id}`}
@@ -339,127 +339,127 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                 block.metadata?.styles?.underline && "underline"
               )}
             />
-          ) : block.type === 'checkList' ? (
-            <div className="space-y-2">
-              {block.metadata?.checkedItems?.map((item, index) => (
-                <div key={index} className="flex items-center space-x-2">
-                  <Checkbox
-                    checked={item.checked}
-                    onCheckedChange={(checked) => 
-                      updateChecklistItem(block.id, index, item.text, checked as boolean)
-                    }
-                  />
-                  <Input
-                    value={item.text}
-                    onChange={(e) => updateChecklistItem(block.id, index, e.target.value, item.checked)}
-                    placeholder="List item"
-                    className="flex-grow"
-                  />
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => removeChecklistItem(block.id, index)}
-                    className="h-8 w-8 text-destructive hover:text-destructive"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </div>
-              ))}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => addChecklistItem(block.id)}
-                className="mt-2"
-              >
-                <Plus className="h-4 w-4 mr-2" />
-                Add Item
-              </Button>
-            </div>
-          ) : block.type === 'table' ? (
-            <div className="space-y-2">
-              <div className="flex space-x-2">
-                <Input
-                  placeholder="Enter headers (comma-separated)"
-                  value={block.metadata?.headers?.join(', ') || ''}
-                  onChange={(e) => {
-                    const headers = e.target.value.split(',').map(h => h.trim());
-                    updateTableData(block.id, headers, block.metadata?.rows || []);
-                  }}
-                  className="flex-grow"
-                />
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => addTableRow(block.id)}
-                >
-                  <Plus className="h-4 w-4 mr-2" />
-                  Add Row
-                </Button>
-              </div>
-              {block.metadata?.rows?.map((row, rowIndex) => (
-                <div key={rowIndex} className="flex items-center space-x-2">
-                  {row.map((cell, cellIndex) => (
-                    <Input
-                      key={cellIndex}
-                      value={cell}
-                      onChange={(e) => {
-                        const newRows = [...(block.metadata?.rows || [])];
-                        newRows[rowIndex][cellIndex] = e.target.value;
-                        updateTableData(block.id, block.metadata?.headers || [], newRows);
-                      }}
-                      placeholder={`Cell ${cellIndex + 1}`}
-                      className="flex-grow"
-                    />
-                  ))}
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => removeTableRow(block.id, rowIndex)}
-                    className="h-8 w-8 text-destructive hover:text-destructive"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </div>
-              ))}
-            </div>
-          ) : block.type === 'toggleList' ? (
-            <div className="space-y-2">
-              {block.metadata?.items?.map((item, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Input
-                      value={item.title}
-                      onChange={(e) => updateToggleListItem(block.id, index, 'title', e.target.value)}
-                      placeholder="Toggle title"
-                      className="flex-grow"
-                    />
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => removeToggleListItem(block.id, index)}
-                      className="h-8 w-8 text-destructive hover:text-destructive"
-                    >
-                      <Minus className="h-4 w-4" />
-                    </Button>
-                  </div>
-                  <Textarea
-                    value={item.content}
-                    onChange={(e) => updateToggleListItem(block.id, index, 'content', e.target.value)}
-                    placeholder="Toggle content"
-                    className="w-full min-h-[100px] resize-y"
-                  />
-                </div>
-              ))}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => addToggleListItem(block.id)}
-                className="mt-2"
-              >
-                <Plus className="h-4 w-4 mr-2" />
-                Add Toggle Item
-              </Button>
-            </div>
+          // ) : block.type === 'checkList' ? (
+          //   <div className="space-y-2">
+          //     {block.metadata?.checkedItems?.map((item, index) => (
+          //       <div key={index} className="flex items-center space-x-2">
+          //         <Checkbox
+          //           checked={item.checked}
+          //           onCheckedChange={(checked) => 
+          //             updateChecklistItem(block.id, index, item.text, checked as boolean)
+          //           }
+          //         />
+          //         <Input
+          //           value={item.text}
+          //           onChange={(e) => updateChecklistItem(block.id, index, e.target.value, item.checked)}
+          //           placeholder="List item"
+          //           className="flex-grow"
+          //         />
+          //         <Button
+          //           variant="ghost"
+          //           size="icon"
+          //           onClick={() => removeChecklistItem(block.id, index)}
+          //           className="h-8 w-8 text-destructive hover:text-destructive"
+          //         >
+          //           <Trash2 className="h-4 w-4" />
+          //         </Button>
+          //       </div>
+          //     ))}
+          //     <Button
+          //       variant="outline"
+          //       size="sm"
+          //       onClick={() => addChecklistItem(block.id)}
+          //       className="mt-2"
+          //     >
+          //       <Plus className="h-4 w-4 mr-2" />
+          //       Add Item
+          //     </Button>
+          //   </div>
+          // ) : block.type === 'table' ? (
+          //   <div className="space-y-2">
+          //     <div className="flex space-x-2">
+          //       <Input
+          //         placeholder="Enter headers (comma-separated)"
+          //         value={block.metadata?.headers?.join(', ') || ''}
+          //         onChange={(e) => {
+          //           const headers = e.target.value.split(',').map(h => h.trim());
+          //           updateTableData(block.id, headers, block.metadata?.rows || []);
+          //         }}
+          //         className="flex-grow"
+          //       />
+          //       <Button
+          //         variant="outline"
+          //         size="sm"
+          //         onClick={() => addTableRow(block.id)}
+          //       >
+          //         <Plus className="h-4 w-4 mr-2" />
+          //         Add Row
+          //       </Button>
+          //     </div>
+          //     {block.metadata?.rows?.map((row, rowIndex) => (
+          //       <div key={rowIndex} className="flex items-center space-x-2">
+          //         {row.map((cell, cellIndex) => (
+          //           <Input
+          //             key={cellIndex}
+          //             value={cell}
+          //             onChange={(e) => {
+          //               const newRows = [...(block.metadata?.rows || [])];
+          //               newRows[rowIndex][cellIndex] = e.target.value;
+          //               updateTableData(block.id, block.metadata?.headers || [], newRows);
+          //             }}
+          //             placeholder={`Cell ${cellIndex + 1}`}
+          //             className="flex-grow"
+          //           />
+          //         ))}
+          //         <Button
+          //           variant="ghost"
+          //           size="icon"
+          //           onClick={() => removeTableRow(block.id, rowIndex)}
+          //           className="h-8 w-8 text-destructive hover:text-destructive"
+          //         >
+          //           <Trash2 className="h-4 w-4" />
+          //         </Button>
+          //       </div>
+          //     ))}
+          //   </div>
+          // ) : block.type === 'toggleList' ? (
+          //   <div className="space-y-2">
+          //     {block.metadata?.items?.map((item, index) => (
+          //       <div key={index} className="space-y-2">
+          //         <div className="flex items-center space-x-2">
+          //           <Input
+          //             value={item.title}
+          //             onChange={(e) => updateToggleListItem(block.id, index, 'title', e.target.value)}
+          //             placeholder="Toggle title"
+          //             className="flex-grow"
+          //           />
+          //           <Button
+          //             variant="ghost"
+          //             size="icon"
+          //             onClick={() => removeToggleListItem(block.id, index)}
+          //             className="h-8 w-8 text-destructive hover:text-destructive"
+          //           >
+          //             <Minus className="h-4 w-4" />
+          //           </Button>
+          //         </div>
+          //         <Textarea
+          //           value={item.content}
+          //           onChange={(e) => updateToggleListItem(block.id, index, 'content', e.target.value)}
+          //           placeholder="Toggle content"
+          //           className="w-full min-h-[100px] resize-y"
+          //         />
+          //       </div>
+          //     ))}
+          //     <Button
+          //       variant="outline"
+          //       size="sm"
+          //       onClick={() => addToggleListItem(block.id)}
+          //       className="mt-2"
+          //     >
+          //       <Plus className="h-4 w-4 mr-2" />
+          //       Add Toggle Item
+          //     </Button>
+          //   </div>
           ) : block.type === 'callout' ? (
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
@@ -510,48 +510,48 @@ export function ContentBlocks({ blocks, setBlocks, showPreview }: ContentBlocksP
                 onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
               />
             </div>
-          ) : block.type === 'video' ? (
-            <div className="space-y-2">
-              <Input
-                placeholder="Enter video URL"
-                value={block.content}
-                onChange={(e) => updateBlockContent(block.id, e.target.value)}
-                className="flex-grow"
-              />
-              <Input
-                placeholder="Caption (optional)"
-                value={block.metadata?.caption || ''}
-                onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
-              />
-            </div>
-          ) : block.type === 'audio' ? (
-            <div className="space-y-2">
-              <Input
-                placeholder="Enter audio URL"
-                value={block.content}
-                onChange={(e) => updateBlockContent(block.id, e.target.value)}
-                className="flex-grow"
-              />
-              <Input
-                placeholder="Caption (optional)"
-                value={block.metadata?.caption || ''}
-                onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
-              />
-            </div>
-          ) : block.type === 'file' ? (
-            <div className="space-y-2">
-              <Input
-                placeholder="Enter file URL"
-                value={block.content}
-                onChange={(e) => updateBlockContent(block.id, e.target.value)}
-                className="flex-grow"
-              />
-              <Input
-                placeholder="File name"
-                value={block.metadata?.name || ''}
-                onChange={(e) => updateBlockMetadata(block.id, { name: e.target.value })}
-              />
-            </div>
+          // ) : block.type === 'video' ? (
+          //   <div className="space-y-2">
+          //     <Input
+          //       placeholder="Enter video URL"
+          //       value={block.content}
+          //       onChange={(e) => updateBlockContent(block.id, e.target.value)}
+          //       className="flex-grow"
+          //     />
+          //     <Input
+          //       placeholder="Caption (optional)"
+          //       value={block.metadata?.caption || ''}
+          //       onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
+          //     />
+          //   </div>
+          // ) : block.type === 'audio' ? (
+          //   <div className="space-y-2">
+          //     <Input
+          //       placeholder="Enter audio URL"
+          //       value={block.content}
+          //       onChange={(e) => updateBlockContent(block.id, e.target.value)}
+          //       className="flex-grow"
+          //     />
+          //     <Input
+          //       placeholder="Caption (optional)"
+          //       value={block.metadata?.caption || ''}
+          //       onChange={(e) => updateBlockMetadata(block.id, { caption: e.target.value })}
+          //     />
+          //   </div>
+          // ) : block.type === 'file' ? (
+          //   <div className="space-y-2">
+          //     <Input
+          //       placeholder="Enter file URL"
+          //       value={block.content}
+          //       onChange={(e) => updateBlockContent(block.id, e.target.value)}
+          //       className="flex-grow"
+          //     />
+          //     <Input
+          //       placeholder="File name"
+          //       value={block.metadata?.name || ''}
+          //       onChange={(e) => updateBlockMetadata(block.id, { name: e.target.value })}
+          //     />
+          //   </div>
           ) : (
             <Textarea
               id={`block-${block.id}`}

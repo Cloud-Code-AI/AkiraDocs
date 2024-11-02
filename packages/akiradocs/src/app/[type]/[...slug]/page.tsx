@@ -7,7 +7,6 @@ import { Header } from '@/components/content/layout/Header'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'
-// import { getArticlesNavigation } from '@/lib/getNavigation'
 import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 import { Button } from '@/components/ui/button'
@@ -32,7 +31,6 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
   const footerConfig = getFooterConfig();
   const navigationItems = getContentNavigation({}, type)
   const { prev, next } = getNextPrevPages(navigationItems, `/${type}/${slug}`);
-
   const handleEdit = () => {
     const fileSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
     const filePath = `${type}/${fileSlug}.json`
@@ -43,7 +41,7 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
     <div className="flex flex-col min-h-screen">
       <Header {...headerConfig} />
       <div className="flex flex-grow">
-        <Navigation items={navigationItems} />
+        <Navigation key={type} items={navigationItems} />
         <div className="flex-1 flex py-4 w-full">
           <PostContainer>
             <PageBreadcrumb type={type} slug={slug} />

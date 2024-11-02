@@ -51,6 +51,7 @@ export interface BlogPost {
   title: string;
   description: string;
   author: string;
+  filename: string;
   date: string;
   blocks: Block[];
 }

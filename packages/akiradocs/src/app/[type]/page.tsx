@@ -3,7 +3,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { redirect } from 'next/navigation'
-import { getRecentContent } from '@/lib/content' // You'll need to create this function
+import { getRecentContent } from '@/lib/content'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
@@ -14,11 +14,8 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
 export default function Page({ params }: { params: Promise<{ type: string }> }) {
   const resolvedParams = React.use(params)
   const type = resolvedParams.type || ''
-  console.log(type)
   const recentContent = getRecentContent(type)
   if (recentContent) {
-    console.log(recentContent)
-    console.log(`/${type}/${recentContent.slug}`)
     redirect(`/${type}/${recentContent.slug}`)
   }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
@@ -19,7 +19,7 @@ type Block = {
   metadata?: Record<string, any>
 }
 
-export default function ArticleEditor() {
+function ArticleEditorContent() {
   const searchParams = useSearchParams()
   const [blocks, setBlocks] = useState<Block[]>([])
   const [title, setTitle] = useState('')
@@ -171,7 +171,7 @@ export default function ArticleEditor() {
     )
   }
 
-  return (
+  return (      
     <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <TitleBar
@@ -220,5 +220,15 @@ export default function ArticleEditor() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ArticleEditor() {
+  return (
+    <Suspense fallback={<div className="flex justify-center items-center h-screen">
+      <div className="text-gray-500">Loading...</div>
+    </div>}>
+      <ArticleEditorContent />
+    </Suspense>
   )
 }

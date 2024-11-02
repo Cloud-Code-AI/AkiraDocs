@@ -49,6 +49,15 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
 
   const absolutePath = item.path?.startsWith('/') ? item.path : `/${item.path}`
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (item.path === pathname) {
+      e.preventDefault()
+    }
+    if (hasChildren) {
+      setIsOpen(!isOpen)
+    }
+  }
+
   return (
     <motion.div 
       className={cn("mb-1", `ml-${depth * 4}`)}
@@ -65,7 +74,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
           isActive && "bg-accent/50 text-accent-foreground font-medium",
           "rounded-lg transition-colors",
         )}
-        onClick={() => hasChildren && setIsOpen(!isOpen)}
+        onClick={handleClick}
       >
         {hasChildren ? (
           <motion.div
@@ -79,7 +88,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
           <FileText className="mr-2 h-4 w-4" />
         )}
         {item.path ? (
-          <Link href={absolutePath} className="flex-1">
+          <Link href={absolutePath} className="flex-1" onClick={handleClick}>
             {item.title}
           </Link>
         ) : (

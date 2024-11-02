@@ -116,7 +116,7 @@ export const AddBlockButton = forwardRef<
     >
       <PopoverTrigger asChild>
         <Button ref={ref} variant="outline" size="icon" className="h-8 w-8">
-          {mode === 'add' ? <Plus size={16} /> : getCurrentIcon(type)}
+          {mode === 'add' ? <Plus size={16} /> : getCurrentIcon(type || 'paragraph')}
           <span className="sr-only">{mode === 'add' ? 'Add Block' : 'Change Block Type'}</span>
         </Button>
       </PopoverTrigger>

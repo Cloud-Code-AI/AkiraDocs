@@ -11,7 +11,7 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article, index }: ArticleCardProps) {
     const handleReadMore = () => {
-        window.location.href = `/${article.context}/${article.id}`
+        window.location.href = `/${article}/${article.id}`
     }
 
     return (

@@ -28,7 +28,7 @@ export function Callout({ id, type, title, children, align = 'left', styles }: C
   const { icon: Icon, className } = calloutStyles[type]
 
   return (
-    <Alert id={id} className={cn(
+    <Alert className={cn(
       'flex flex-col sm:flex-row items-start gap-4 p-4 my-4 rounded-lg border-2',
       className,
       {

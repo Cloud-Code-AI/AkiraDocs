@@ -1,5 +1,14 @@
 "use client"
 
+import { Article } from "@/types/Article"
+
+declare var require: {
+  context(
+    directory: string,
+    useSubdirectories: boolean,
+    regExp: RegExp
+  ): any;
+};
 // Exclude _meta.json files from articles and docs context
 const articlesContext = require.context('../../_contents/articles', false, /^(?!.*_meta\.json$).*\.json$/)
 const docsContext = require.context('../../_contents/docs', false, /^(?!.*_meta\.json$).*\.json$/)
@@ -28,7 +37,8 @@ export function getRecommendedArticles(): Article[] | null {
             title: article.title,
             description: article.description,
             author: article.author,
-            publishDate: new Date(article.date)
+            publishDate: new Date(article.date),
+            content: article.content
           })
         }
         
@@ -41,14 +51,15 @@ export function getRecommendedArticles(): Article[] | null {
             title: doc.title,
             description: doc.description,
             author: doc.author,
-            publishDate: new Date(doc.date)
+            publishDate: new Date(doc.date),
+            content: doc.content
           })
         }
       }
     } else {
       const allFiles = [
-        ...articlesContext.keys().map(key => ({ key, context: 'articles' })),
-        ...docsContext.keys().map(key => ({ key, context: 'docs' }))
+        ...articlesContext.keys().map((key: string) => ({ key, context: 'articles' })),
+        ...docsContext.keys().map((key: string) => ({ key, context: 'docs' }))
       ]
       
       const sortedFiles = allFiles
@@ -82,7 +93,7 @@ export function getRecommendedArticles(): Article[] | null {
               description: article.description,
               author: article.author,
               publishDate: new Date(article.date),
-              context: file.context
+              content: article.content
             })
           }
         } else {
@@ -95,7 +106,7 @@ export function getRecommendedArticles(): Article[] | null {
               description: doc.description,
               author: doc.author,
               publishDate: new Date(doc.date),
-              context: file.context
+              content: doc.content
             })
           }
         }
