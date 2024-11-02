@@ -52,6 +52,9 @@ export interface BlogPost {
   description: string;
   author: string;
   filename: string;
-  date: string;
+  publishDate: string;
+  modifiedDate: string;
+  category: string;
+  keywords: string[];
   blocks: Block[];
 }

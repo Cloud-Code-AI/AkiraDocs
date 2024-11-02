@@ -74,7 +74,7 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
             ))}
             <PageNavigation prev={prev} next={next} />
           </PostContainer>
-          <TableOfContents />
+          <TableOfContents publishDate={post.publishDate} modifiedDate={post.modifiedDate} author={post.author} />
         </div>
       </div>
       <Footer {...footerConfig} />
