@@ -42,7 +42,7 @@ class DocScraper {
     private baseUrl: string;
     private imageUrlMap: Map<string, string> = new Map();
     constructor(private url: string, urls?: string[], contentType: string = "docs") {
-        const urlObject = new URL(urls[0]);
+        const urlObject = new URL(url);
         this.baseUrl = `${urlObject.protocol}//${urlObject.hostname}`;
         
         this.urlList = urls;
@@ -103,18 +103,18 @@ class DocScraper {
         const imagePromises: Promise<void>[] = [];
         $('img').each((_, element) => {
             const imgSrc = $(element).attr('src');
-            if (imgSrc && !this.imageCache.has(imgSrc)) {
-                this.imageCache.add(imgSrc);
-                imagePromises.push(
-                    this.downloadImage(new URL(imgSrc, this.baseUrl).toString())
-                        .then(newPath => {
-                            if (newPath) {
-                                $(element).attr('src', newPath);
-                                this.imageUrlMap.set(imgSrc, newPath);
-                            }
-                        })
-                );
-            }
+            // if (imgSrc && !this.imageCache.has(imgSrc)) {
+            //     this.imageCache.add(imgSrc);
+            //     imagePromises.push(
+            //         this.downloadImage(new URL(imgSrc, this.baseUrl).toString())
+            //             .then((newPath: string) => {
+            //                 if (newPath) {
+            //                     $(element).attr('src', newPath);
+            //                     this.imageUrlMap.set(imgSrc, newPath);
+            //                 }
+            //             })
+            //     );
+            // }
         });
 
         // Wait for all images to be downloaded

@@ -12,7 +12,13 @@
       team: string;
     };
   };
-  
+  declare var require: {
+    context(
+      directory: string,
+      useSubdirectories: boolean,
+      regExp: RegExp
+    ): any;
+  };
   export function getFooterConfig(): FooterConfig {
     // Using require.context to get the config file
     const context = require.context('../../_contents', false, /_config\.json$/);

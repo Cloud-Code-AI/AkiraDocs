@@ -15,6 +15,14 @@ type SearchConfig = {
     };
 };
 
+declare var require: {
+  context(
+    directory: string,
+    useSubdirectories: boolean,
+    regExp: RegExp
+  ): any;
+};
+
 export function getSearchConfig(): SearchConfig {
     const context = require.context('../../_contents', false, /_config\.json$/);
     const configPath = context.keys()[0];

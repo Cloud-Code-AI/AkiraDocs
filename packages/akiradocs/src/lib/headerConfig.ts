@@ -25,13 +25,21 @@ type HeaderConfig = {
   socialLinks?: SocialLink[];
 };
 
+declare var require: {
+  context(
+    directory: string,
+    useSubdirectories: boolean,
+    regExp: RegExp
+  ): any;
+};
+
 export function getHeaderConfig(): HeaderConfig {
   const context = require.context('../../_contents', false, /_config\.json$/);
   const configPath = context.keys()[0];
   const config = context(configPath);
 
   // Filter out AI Search from nav items if disabled
-  const filteredNavItems = config.header?.navItems?.filter(item => {
+  const filteredNavItems = config.header?.navItems?.filter((item: NavItem) => {
     if (item.href === '/aiSearch') {
       return config.aiSearch === true;
     }

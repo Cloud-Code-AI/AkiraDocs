@@ -13,7 +13,7 @@ import {
 import { ChevronRight, Home } from "lucide-react"
 
 interface BreadcrumbProps {
-  type: 'docs' | 'articles'
+  type: string
   slug: string
 }
 

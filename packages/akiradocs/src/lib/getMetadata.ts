@@ -3,6 +3,14 @@ type Metadata = {
     description?: string
 };
 
+declare var require: {
+    context(
+      directory: string,
+      useSubdirectories: boolean,
+      regExp: RegExp
+    ): any;
+  };
+
 export function getMetadata(): Metadata {
     const context = require.context('../../_contents', false, /_config\.json$/);
     const configPath = context.keys()[0];
