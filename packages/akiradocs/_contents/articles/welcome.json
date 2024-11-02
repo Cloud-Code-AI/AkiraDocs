@@ -1,26 +1,18 @@
 {
   "title": "Welcome to Akira Docs",
   "description": "Get started with Akira Docs - Next-gen documentation powered by AI",
-  "author": "Akira Team",
+  "author": "Akiradocs Team",
   "filename": "welcome.json",
   "keyname": "welcome",
   "date": "2024-01-01",
   "blocks": [
     {
       "id": "1",
-      "type": "heading",
-      "content": "Welcome to Akira Docs",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "2",
       "type": "paragraph",
       "content": "Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation."
     },
     {
-      "id": "3",
+      "id": "2",
       "type": "list",
       "content": "Easy to customize\nAI-powered search\nBlock-based content system\nResponsive design",
       "metadata": {
@@ -28,7 +20,7 @@
       }
     },
     {
-      "id": "4",
+      "id": "3",
       "type": "callout",
       "content": "Start by customizing this template to match your project's needs!",
       "metadata": {
