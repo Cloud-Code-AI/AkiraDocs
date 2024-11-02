@@ -1,10 +1,8 @@
 {
-  "title": "Welcome to Akira Docs",
+  "title": "Welcome to Akira Doc",
   "description": "Get started with Akira Docs - Next-gen documentation powered by AI",
-  "author": "Akiradocs Team",
-  "filename": "welcome.json",
-  "keyname": "welcome",
-  "date": "2024-01-01",
+  "author": "Anonymous",
+  "date": "2024-11-02",
   "blocks": [
     {
       "id": "1",

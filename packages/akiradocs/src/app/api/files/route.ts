@@ -12,7 +12,6 @@ export async function POST(request: Request) {
     
     // Write the file
     await writeFile(fullPath, JSON.stringify(content, null, 2))
-    
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Error creating file:', error)
