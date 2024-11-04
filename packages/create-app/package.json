@@ -1,8 +1,8 @@
 {
   "name": "create-akiradocs",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "Create Akira Docs documentation sites with one command",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "type": "module",
   "bin": {
     "create-akiradocs": "./dist/index.js"
@@ -10,12 +10,26 @@
   "scripts": {
     "prepare-template": "tsx scripts/prepare-template.ts",
     "build": "npm run prepare-template && tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build",
+    "version": "npm run build"
   },
   "files": [
     "dist",
-    "template"
+    "template",
+    "README.md",
+    "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cloud-Code-AI/akiradocs"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "keywords": [
     "documentation",
     "docs",
@@ -26,16 +40,20 @@
   "author": "Saurav Panda",
   "license": "MIT",
   "dependencies": {
+    "cac": "^6.7.14",
     "chalk": "^5.3.0",
-    "commander": "^12.0.0",
-    "fs-extra": "^11.2.0",
     "ora": "^8.1.1",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
   }
 }
