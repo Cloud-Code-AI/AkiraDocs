@@ -1,12 +1,41 @@
 {
   "name": "create-akiradocs",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Create Akira Docs documentation sites with one command",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "type": "module",
+  "bin": {
+    "create-akiradocs": "./dist/index.js"
   },
+  "scripts": {
+    "prepare-template": "tsx scripts/prepare-template.ts",
+    "build": "npm run prepare-template && tsup",
+    "dev": "tsup --watch"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "keywords": [
+    "documentation",
+    "docs",
+    "nextjs",
+    "ai",
+    "template"
+  ],
   "author": "Saurav Panda",
-  "license": "ISC"
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "fs-extra": "^11.2.0",
+    "ora": "^8.1.1",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  }
 }
-  
