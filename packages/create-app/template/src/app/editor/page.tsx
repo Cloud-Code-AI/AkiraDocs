@@ -1,110 +1,131 @@
-'use client'
+'use client';
 
-import { useState, KeyboardEvent, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Folder, File, Plus, X, ChevronRight, ChevronDown, Trash2 } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import { fetchAllContent } from '@/lib/getContents'
+import { useState, KeyboardEvent, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import {
+  Folder,
+  File,
+  Plus,
+  X,
+  ChevronRight,
+  ChevronDown,
+  Trash2,
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { fetchAllContent } from '@/lib/getContents';
 
 type FileNode = {
-  id: string
-  name: string
-  type: 'file' | 'folder'
-  children?: FileNode[]
-}
+  id: string;
+  name: string;
+  type: 'file' | 'folder';
+  children?: FileNode[];
+};
 
 // Add this function to track the full path of each node
-const getNodeFullPath = (tree: FileNode[], nodeId: string, parentPath: string = ''): string | null => {
+const getNodeFullPath = (
+  tree: FileNode[],
+  nodeId: string,
+  parentPath: string = ''
+): string | null => {
   for (const node of tree) {
-    const currentPath = parentPath ? `${parentPath}/${node.name}` : node.name
+    const currentPath = parentPath ? `${parentPath}/${node.name}` : node.name;
     if (node.id === nodeId) {
-      return currentPath
+      return currentPath;
     }
     if (node.children) {
-      const foundPath = getNodeFullPath(node.children, nodeId, currentPath)
-      if (foundPath) return foundPath
+      const foundPath = getNodeFullPath(node.children, nodeId, currentPath);
+      if (foundPath) return foundPath;
     }
   }
-  return null
-}
+  return null;
+};
 
 export default function ImprovedFileTreeUI() {
-  const [fileTree, setFileTree] = useState<FileNode[]>([])
-  const router = useRouter()
-  const isDevPage = process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true'
+  const [fileTree, setFileTree] = useState<FileNode[]>([]);
+  const router = useRouter();
+  const isDevPage = process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true';
 
   useEffect(() => {
-    const content = fetchAllContent()
-    const transformedTree = transformContentToFileTree(content)
-    setFileTree(transformedTree)
-  }, [])
+    const content = fetchAllContent();
+    const transformedTree = transformContentToFileTree(content);
+    setFileTree(transformedTree);
+  }, []);
 
-  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set(['1', '4']))
-  const [newItemParent, setNewItemParent] = useState<string | null>(null)
-  const [newItemType, setNewItemType] = useState<'file' | 'folder' | null>(null)
-  const [newItemName, setNewItemName] = useState('')
+  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
+    new Set(['1', '4'])
+  );
+  const [newItemParent, setNewItemParent] = useState<string | null>(null);
+  const [newItemType, setNewItemType] = useState<'file' | 'folder' | null>(
+    null
+  );
+  const [newItemName, setNewItemName] = useState('');
 
   const toggleFolder = (folderId: string) => {
-    setExpandedFolders(prev => {
-      const newSet = new Set(prev)
+    setExpandedFolders((prev) => {
+      const newSet = new Set(prev);
       if (newSet.has(folderId)) {
-        newSet.delete(folderId)
+        newSet.delete(folderId);
       } else {
-        newSet.add(folderId)
+        newSet.add(folderId);
       }
-      return newSet
-    })
-  }
+      return newSet;
+    });
+  };
 
   const handleFileClick = (node: FileNode) => {
     // Get the full path for the file
-    const fullPath = getNodeFullPath(fileTree, node.id)
+    const fullPath = getNodeFullPath(fileTree, node.id);
     if (!fullPath) {
-      console.error('Could not find full path for node')
-      return
+      console.error('Could not find full path for node');
+      return;
     }
 
     // Encode the file path to handle special characters in URLs
-    const encodedPath = encodeURIComponent(fullPath)
-    router.push(`/editor?file=${encodedPath}`)
-  }
+    const encodedPath = encodeURIComponent(fullPath);
+    router.push(`/editor?file=${encodedPath}`);
+  };
 
   const startNewItem = (parentId: string, type: 'file' | 'folder') => {
-    setNewItemParent(parentId)
-    setNewItemType(type)
-    setNewItemName('')
-  }
+    setNewItemParent(parentId);
+    setNewItemType(type);
+    setNewItemName('');
+  };
 
   const cancelNewItem = () => {
-    setNewItemParent(null)
-    setNewItemType(null)
-    setNewItemName('')
-  }
+    setNewItemParent(null);
+    setNewItemType(null);
+    setNewItemName('');
+  };
 
   const addNewItem = async () => {
-    if (!newItemParent || !newItemType || !newItemName) return
+    if (!newItemParent || !newItemType || !newItemName) return;
 
     const newItem: FileNode = {
       id: Date.now().toString(),
       name: newItemName,
       type: newItemType,
-      children: newItemType === 'folder' ? [] : undefined
-    }
+      children: newItemType === 'folder' ? [] : undefined,
+    };
 
     // Create the actual file/folder in the local directory
     if (newItemType === 'file') {
       try {
         const defaultContent = {
           id: newItemName.replace('.json', ''),
-          title: "New Article",
-          description: "Add your description here",
-          author: "Anonymous",
+          title: 'New Article',
+          description: 'Add your description here',
+          author: 'Anonymous',
           date: new Date().toISOString().split('T')[0],
-          blocks: []  // Empty blocks array
-        }
+          blocks: [], // Empty blocks array
+        };
 
         const response = await fetch('/api/files', {
           method: 'POST',
@@ -113,10 +134,10 @@ export default function ImprovedFileTreeUI() {
           },
           body: JSON.stringify({
             path: `${getNodeFullPath(fileTree, newItemParent)}/${newItemName}`,
-            content: defaultContent
-          })
+            content: defaultContent,
+          }),
         });
-        
+
         if (!response.ok) {
           throw new Error('Failed to create file');
         }
@@ -126,37 +147,46 @@ export default function ImprovedFileTreeUI() {
       }
     }
 
-    const updatedTree = addItemToTree(fileTree, newItemParent, newItem)
-    setFileTree(updatedTree)
+    const updatedTree = addItemToTree(fileTree, newItemParent, newItem);
+    setFileTree(updatedTree);
 
     if (newItemType === 'folder') {
-      setExpandedFolders(prev => new Set(prev).add(newItem.id))
+      setExpandedFolders((prev) => new Set(prev).add(newItem.id));
     }
 
-    cancelNewItem()
-  }
+    cancelNewItem();
+  };
 
-  const addItemToTree = (tree: FileNode[], parentId: string, newItem: FileNode): FileNode[] => {
-    return tree.map(node => {
+  const addItemToTree = (
+    tree: FileNode[],
+    parentId: string,
+    newItem: FileNode
+  ): FileNode[] => {
+    return tree.map((node) => {
       if (node.id === parentId) {
-        return { ...node, children: [...(node.children || []), newItem] }
+        return { ...node, children: [...(node.children || []), newItem] };
       }
       if (node.children) {
-        return { ...node, children: addItemToTree(node.children, parentId, newItem) }
+        return {
+          ...node,
+          children: addItemToTree(node.children, parentId, newItem),
+        };
       }
-      return node
-    })
-  }
+      return node;
+    });
+  };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      addNewItem()
+      addNewItem();
     }
-  }
+  };
 
   const renderFileTree = (nodes: FileNode[], level: number = 0) => {
     return (
-      <ul className={`space-y-1 ${level > 0 ? 'border-l border-border ml-4 pl-4' : ''}`}>
+      <ul
+        className={`space-y-1 ${level > 0 ? 'border-l border-border ml-4 pl-4' : ''}`}
+      >
         {nodes.map((node) => (
           <li key={node.id} className="relative">
             <div className="flex items-center justify-between py-1">
@@ -165,7 +195,11 @@ export default function ImprovedFileTreeUI() {
                   <button
                     onClick={() => toggleFolder(node.id)}
                     className="mr-1 focus:outline-none"
-                    aria-label={expandedFolders.has(node.id) ? "Collapse folder" : "Expand folder"}
+                    aria-label={
+                      expandedFolders.has(node.id)
+                        ? 'Collapse folder'
+                        : 'Expand folder'
+                    }
                   >
                     {expandedFolders.has(node.id) ? (
                       <ChevronDown className="w-4 h-4 text-muted-foreground" />
@@ -181,9 +215,13 @@ export default function ImprovedFileTreeUI() {
                     <File className="h-4 w-4 text-muted-foreground" />
                   )}
                 </div>
-                <span 
+                <span
                   className={`text-sm ${node.type === 'folder' ? 'font-semibold' : ''} text-foreground hover:text-primary transition-colors duration-200 cursor-pointer`}
-                  onClick={() => node.type === 'file' ? handleFileClick(node) : toggleFolder(node.id)}
+                  onClick={() =>
+                    node.type === 'file'
+                      ? handleFileClick(node)
+                      : toggleFolder(node.id)
+                  }
                 >
                   {node.name}
                 </span>
@@ -245,10 +283,19 @@ export default function ImprovedFileTreeUI() {
                   placeholder={`New ${newItemType}`}
                   className="h-8 text-sm bg-background text-foreground flex-grow"
                 />
-                <Button onClick={addNewItem} size="sm" className="ml-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground">
+                <Button
+                  onClick={addNewItem}
+                  size="sm"
+                  className="ml-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground"
+                >
                   <Plus className="w-4 h-4" />
                 </Button>
-                <Button onClick={cancelNewItem} size="sm" variant="ghost" className="ml-1 text-muted-foreground">
+                <Button
+                  onClick={cancelNewItem}
+                  size="sm"
+                  variant="ghost"
+                  className="ml-1 text-muted-foreground"
+                >
                   <X className="w-4 h-4" />
                 </Button>
               </div>
@@ -256,63 +303,73 @@ export default function ImprovedFileTreeUI() {
           </li>
         ))}
       </ul>
-    )
-  }
+    );
+  };
 
-  const transformContentToFileTree = (content: { [key: string]: any }): FileNode[] => {
-    const tree: { [key: string]: FileNode } = {}
-    let rootNodes: FileNode[] = []
+  const transformContentToFileTree = (content: {
+    [key: string]: any;
+  }): FileNode[] => {
+    const tree: { [key: string]: FileNode } = {};
+    const rootNodes: FileNode[] = [];
 
     // Create nodes for each path
-    Object.keys(content).forEach(path => {
-      const parts = path.split('/')
-      let currentPath = ''
-      
+    Object.keys(content).forEach((path) => {
+      const parts = path.split('/');
+      let currentPath = '';
+
       parts.forEach((part, index) => {
-        const isFile = index === parts.length - 1
-        const fullPath = currentPath ? `${currentPath}/${part}` : part
-        const nodeId = fullPath.replace(/[/.]/g, '_')
+        const isFile = index === parts.length - 1;
+        const fullPath = currentPath ? `${currentPath}/${part}` : part;
+        const nodeId = fullPath.replace(/[/.]/g, '_');
 
         if (!tree[fullPath]) {
           tree[fullPath] = {
             id: nodeId,
             name: part,
             type: isFile ? 'file' : 'folder',
-            children: isFile ? undefined : []
-          }
+            children: isFile ? undefined : [],
+          };
         }
 
         if (index === 0) {
-          if (!rootNodes.find(node => node.id === nodeId)) {
-            rootNodes.push(tree[fullPath])
+          if (!rootNodes.find((node) => node.id === nodeId)) {
+            rootNodes.push(tree[fullPath]);
           }
         } else {
-          const parentPath = currentPath
-          const parent = tree[parentPath]
-          if (parent && parent.children && !parent.children.find(child => child.id === nodeId)) {
-            parent.children.push(tree[fullPath])
+          const parentPath = currentPath;
+          const parent = tree[parentPath];
+          if (
+            parent &&
+            parent.children &&
+            !parent.children.find((child) => child.id === nodeId)
+          ) {
+            parent.children.push(tree[fullPath]);
           }
         }
 
-        currentPath = fullPath
-      })
-    })
+        currentPath = fullPath;
+      });
+    });
 
-    return rootNodes
-  }
+    return rootNodes;
+  };
 
-  const deleteItem = async (nodeId: string, nodeName: string, nodeType: 'file' | 'folder') => {
+  const deleteItem = async (
+    nodeId: string,
+    nodeName: string,
+    nodeType: 'file' | 'folder'
+  ) => {
     // Add confirmation dialog
-    const confirmMessage = `Are you sure you want to delete this ${nodeType}${nodeType === 'folder' ? ' and all its contents' : ''}?`
+    const confirmMessage = `Are you sure you want to delete this ${nodeType}${nodeType === 'folder' ? ' and all its contents' : ''}?`;
     if (!confirm(confirmMessage)) {
-      return
+      return;
     }
 
     // Get the full path of the node
-    const fullPath = getNodeFullPath(fileTree, nodeId)
+    const fullPath = getNodeFullPath(fileTree, nodeId);
     if (!fullPath) {
-      console.error('Could not find full path for node')
-      return
+      console.error('Could not find full path for node');
+      return;
     }
 
     try {
@@ -322,9 +379,9 @@ export default function ImprovedFileTreeUI() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          path: fullPath,  // Use the full path instead of just the node name
-          type: nodeType
-        })
+          path: fullPath, // Use the full path instead of just the node name
+          type: nodeType,
+        }),
       });
 
       if (!response.ok) {
@@ -334,14 +391,13 @@ export default function ImprovedFileTreeUI() {
       // Update the file tree by filtering out the deleted item
       const updatedTree = deleteItemFromTree(fileTree, nodeId);
       setFileTree(updatedTree);
-
     } catch (error) {
       console.error('Error deleting item:', error);
     }
-  }
+  };
 
   const deleteItemFromTree = (tree: FileNode[], nodeId: string): FileNode[] => {
-    return tree.filter(node => {
+    return tree.filter((node) => {
       if (node.id === nodeId) {
         return false;
       }
@@ -350,11 +406,11 @@ export default function ImprovedFileTreeUI() {
       }
       return true;
     });
-  }
+  };
 
   if (!isDevPage) {
-    router.push('/docs')
-    return null
+    router.push('/docs');
+    return null;
   }
 
   return (
@@ -372,5 +428,5 @@ export default function ImprovedFileTreeUI() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

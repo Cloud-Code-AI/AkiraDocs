@@ -1,25 +1,23 @@
-"use client"
+'use client';
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { SearchHeader } from '@/components/content/aiSearch/SearchHeader'
-import { SearchBar } from '@/components/content/aiSearch/SearchBar'
-import { LegacyDocsToggle } from '@/components/content/aiSearch/LegacyDocsToggle'
-import { AIResponse } from '@/components/content/aiSearch/AIResponse'
-import { RecommendedArticles } from '@/components/content/aiSearch/RecommendedArticles'
-import { AnimatePresence } from 'framer-motion'
-import { getRecommendedArticles } from '@/lib/recommendedArticles'
-import { getSearchConfig } from '@/lib/searchConfig'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-
+import { useState } from 'react';
+import { SearchHeader } from '@/components/content/aiSearch/SearchHeader';
+import { SearchBar } from '@/components/content/aiSearch/SearchBar';
+import { LegacyDocsToggle } from '@/components/content/aiSearch/LegacyDocsToggle';
+import { AIResponse } from '@/components/content/aiSearch/AIResponse';
+import { RecommendedArticles } from '@/components/content/aiSearch/RecommendedArticles';
+import { AnimatePresence } from 'framer-motion';
+import { getRecommendedArticles } from '@/lib/recommendedArticles';
+import { getSearchConfig } from '@/lib/searchConfig';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import config from '../../../_contents/_config.json';
 
 export default function Home() {
-  const [query, setQuery] = useState('')
-  const [aiResponse, setAiResponse] = useState('')
-  const recommendedArticles = getRecommendedArticles()
-  const searchConfig = getSearchConfig()
-  const config = require('../../../_contents/_config.json')
+  const [query, setQuery] = useState('');
+  const [aiResponse, setAiResponse] = useState('');
+  const recommendedArticles = getRecommendedArticles();
+  const searchConfig = getSearchConfig();
 
   // If AI Search is disabled, show the disabled message
   if (!config.aiSearch) {
@@ -28,34 +26,43 @@ export default function Home() {
         <div className="text-center space-y-4 max-w-md">
           <h1 className="text-3xl font-bold">AI Search is Disabled</h1>
           <p className="text-muted-foreground">
-            AI Search is currently disabled. To enable this feature, set "aiSearch": true in your configuration file.
+            AI Search is currently disabled. To enable this feature, set
+            "aiSearch": true in your configuration file.
           </p>
           <Button asChild>
             <Link href="/docs">Go to Documentation</Link>
           </Button>
         </div>
       </div>
-    )
+    );
   }
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    setAiResponse('This is a placeholder AI response. Implement actual AI search here.')
-  }
+    e.preventDefault();
+    setAiResponse(
+      'This is a placeholder AI response. Implement actual AI search here.'
+    );
+  };
 
   const handleBack = () => {
-    setAiResponse('')
-  }
+    setAiResponse('');
+  };
 
   const sources = [
-    { title: 'AkiraDocs Official Documentation', url: 'https://docs.akiradocs.com' },
-    { title: 'AI-Powered Documentation Best Practices', url: 'https://aibest.practices.com' },
-  ]
+    {
+      title: 'AkiraDocs Official Documentation',
+      url: 'https://docs.akiradocs.com',
+    },
+    {
+      title: 'AI-Powered Documentation Best Practices',
+      url: 'https://aibest.practices.com',
+    },
+  ];
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <SearchHeader 
+        <SearchHeader
           logo={searchConfig.logo}
           title={searchConfig.title}
           description={searchConfig.description}
@@ -76,11 +83,13 @@ export default function Home() {
               sources={sources}
               onBack={handleBack}
             />
-          ) : recommendedArticles && (
-            <RecommendedArticles articles={recommendedArticles} />
+          ) : (
+            recommendedArticles && (
+              <RecommendedArticles articles={recommendedArticles} />
+            )
           )}
         </AnimatePresence>
       </div>
     </div>
-  )
+  );
 }

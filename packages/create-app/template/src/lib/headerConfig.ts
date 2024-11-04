@@ -25,12 +25,8 @@ type HeaderConfig = {
   socialLinks?: SocialLink[];
 };
 
-declare var require: {
-  context(
-    directory: string,
-    useSubdirectories: boolean,
-    regExp: RegExp
-  ): any;
+declare let require: {
+  context(directory: string, useSubdirectories: boolean, regExp: RegExp): any;
 };
 
 export function getHeaderConfig(): HeaderConfig {

@@ -1,5 +1,5 @@
-import { defineConfig } from 'tsup'
-import { chmod } from 'fs/promises'
+import { defineConfig } from 'tsup';
+import { chmod } from 'fs/promises';
 
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -10,16 +10,11 @@ export default defineConfig({
   clean: true,
   target: 'node16',
   platform: 'node',
-  noExternal: [
-    'cac',
-    'chalk',
-    'prompts',
-    'ora'
-  ],
+  noExternal: ['cac', 'chalk', 'prompts', 'ora'],
   banner: {
     js: '#!/usr/bin/env node',
   },
   async onSuccess() {
-    await chmod('dist/index.js', 0o755)
+    await chmod('dist/index.js', 0o755);
   },
-}) 
+});

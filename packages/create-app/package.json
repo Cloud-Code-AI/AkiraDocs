@@ -8,9 +8,12 @@
     "create-akiradocs": "./dist/index.js"
   },
   "scripts": {
-    "prepare-template": "tsx scripts/prepare-template.ts",
-    "build": "npm run prepare-template && tsup",
+    "build": "tsup",
     "dev": "tsup --watch",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build",
     "version": "npm run build"
   },
@@ -47,6 +50,12 @@
   },
   "devDependencies": {
     "@types/prompts": "^2.4.9",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3",
     "tsx": "^4.7.0"
