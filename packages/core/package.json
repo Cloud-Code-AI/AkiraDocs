@@ -1,6 +1,6 @@
 {
   "name": "akiradocs-core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Core Components for Akiradocs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,6 +22,7 @@
   "author": "Cloud Code AI Inc",
   "license": "MIT",
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "remark": "^15.0.1",
     "remark-parse": "^11.0.0"
   },

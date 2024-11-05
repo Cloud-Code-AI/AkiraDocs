@@ -1,6 +1,6 @@
 {
   "name": "akiradocs",
-  "version": "0.1.0",
+  "version": "1.0.9",
   "private": true,
   "scripts": {
     "dev": "set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=true && next dev",
@@ -31,7 +31,7 @@
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.3",
     "akiradocs-core": "^1.0.1",
-    "akiradocs-ui": "^1.0.0",
+    "akiradocs-ui": "^1.0.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "emoji-picker-react": "^4.12.0",
@@ -52,6 +52,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "akiradocs-core": "file:../core",
+    "akiradocs-ui": "file:../ui",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.17.0",
     "@types/react": "^18.3.12",

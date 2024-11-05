@@ -1,6 +1,6 @@
 {
   "name": "create-akiradocs",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Create Akira Docs documentation sites with one command",
   "main": "./dist/index.js",
   "type": "module",
