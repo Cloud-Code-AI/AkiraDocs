@@ -2,20 +2,20 @@
 
 import React from 'react'
 import { getContentBySlug, getContentNavigation } from '@/lib/content'
-import { BlockRenderer } from '@/components/content/renderers/BlockRenderer'
-import { Header } from '@/components/content/layout/Header'
+import { BlockRenderer } from 'akiradocs-ui'
+import { Header } from 'akiradocs-ui'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'
 import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
-import { Button } from '@/components/ui/button'
+import { Button } from 'akiradocs-ui'
 import { Edit2 } from 'lucide-react'
-import { PageBreadcrumb } from '@/components/content/layout/Breadcrumb'
+import { PageBreadcrumb } from 'akiradocs-ui'
 import { getNextPrevPages } from '@/utils/navigationUtils'
-import { PageNavigation } from '@/components/content/layout/PageNavigation'
-import { MainTitle, SubTitle } from '@/components/content/blocks/Heading'
-import { SEO } from '@/components/content/SEO'
+import { PageNavigation } from 'akiradocs-ui'
+import { MainTitle, SubTitle } from 'akiradocs-ui'
+import { SEO } from 'akiradocs-ui'
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="flex-1 min-w-0 px-8 py-6 mx-4 font-sans leading-relaxed relative">
     {children}
@@ -43,7 +43,7 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
 
   return (
     <div className="flex flex-col min-h-screen">
-      <SEO 
+      <SEO
         title={pageTitle}
         description={pageDescription}
         canonical={canonicalUrl}
@@ -70,7 +70,7 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
             <SubTitle>{post.description}</SubTitle>
             <br></br>
             {post.blocks.map((block) => (
-              <BlockRenderer key={block.id} block={block}/>
+              <BlockRenderer key={block.id} block={block} />
             ))}
             <PageNavigation prev={prev} next={next} />
           </PostContainer>

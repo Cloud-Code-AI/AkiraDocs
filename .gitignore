@@ -41,4 +41,5 @@ next-env.d.ts
 
 .turbo/
 .next/
-node_modules/
+**/node_modules/
+**/dist/

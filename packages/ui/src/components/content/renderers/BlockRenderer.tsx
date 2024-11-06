@@ -1,7 +1,7 @@
 "use client"
 import { Block } from '../../types/Block'
 import { Paragraph } from '../blocks/Paragraph'
-import { Heading } from '../blocks/Heading'
+import { HeadingTitle } from '../blocks/Heading'
 import { List } from '../blocks/List'
 import { Blockquote } from '../blocks/Blockquote'
 import { Divider } from '../blocks/Divider'
@@ -78,7 +78,7 @@ export function BlockRenderer({ block }: BlockRendererProps) {
     case 'paragraph':
       return <Paragraph {...commonProps}>{block.content}</Paragraph>;
     case 'heading':
-      return <Heading level={block.metadata?.level || 1} {...commonProps}>{block.content}</Heading>;
+      return <HeadingTitle level={block.metadata?.level || 1} {...commonProps}>{block.content}</HeadingTitle>;
     case 'list':
       return <List items={block.content.split('\n')} ordered={block.metadata?.listType === 'ordered'} {...commonProps} />;
     case 'code':

@@ -4,8 +4,8 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import IconSVG from '@/components/ui/iconSVG'
+import { Button } from "akiradocs-ui"
+import IconSVG from "@/components/ui/iconSVG"
 
 // Define the structure for social links
 interface SocialLink {
@@ -39,7 +39,7 @@ const defaultProps = {
   }
 } as const;
 
-const Footer: React.FC<FooterProps> = ({ 
+export const Footer: React.FC<FooterProps> = ({ 
   companyName = defaultProps.companyName,
   socialLinks = defaultProps.socialLinks,
   madeWithLove = defaultProps.madeWithLove

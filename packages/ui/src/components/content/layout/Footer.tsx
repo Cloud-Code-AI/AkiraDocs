@@ -38,7 +38,7 @@ const defaultProps = {
   }
 } as const;
 
-const Footer: React.FC<FooterProps> = ({ 
+export const Footer: React.FC<FooterProps> = ({ 
   companyName = defaultProps.companyName,
   socialLinks = defaultProps.socialLinks,
   madeWithLove = defaultProps.madeWithLove

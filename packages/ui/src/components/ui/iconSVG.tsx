@@ -8,7 +8,7 @@ interface IconSVGProps {
   className?: string;
 }
 
-const IconSVG: React.FC<IconSVGProps> = ({ src, alt, width = 24, height = 24, className }) => {
+export const IconSVG: React.FC<IconSVGProps> = ({ src, alt, width = 24, height = 24, className }) => {
   const [svgContent, setSvgContent] = React.useState<string>('');
 
   React.useEffect(() => {

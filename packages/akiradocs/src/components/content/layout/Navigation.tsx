@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, ChevronRight, FileText } from 'lucide-react'
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { Button } from "akiradocs-ui"
+import { ScrollArea } from "akiradocs-ui"
 
 type NavItem = {
   title: string;

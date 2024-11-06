@@ -35,6 +35,11 @@ interface ButtonProps extends React$1.ButtonHTMLAttributes<HTMLButtonElement>, V
 declare const Button: React$1.ForwardRefExoticComponent<ButtonProps & React$1.RefAttributes<HTMLButtonElement>>;
 
 declare const Card: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLDivElement> & React$1.RefAttributes<HTMLDivElement>>;
+declare const CardHeader: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLDivElement> & React$1.RefAttributes<HTMLDivElement>>;
+declare const CardTitle: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLHeadingElement> & React$1.RefAttributes<HTMLParagraphElement>>;
+declare const CardDescription: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLParagraphElement> & React$1.RefAttributes<HTMLParagraphElement>>;
+declare const CardContent: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLDivElement> & React$1.RefAttributes<HTMLDivElement>>;
+declare const CardFooter: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLDivElement> & React$1.RefAttributes<HTMLDivElement>>;
 
 declare const Checkbox: React$1.ForwardRefExoticComponent<Omit<CheckboxPrimitive.CheckboxProps & React$1.RefAttributes<HTMLButtonElement>, "ref"> & React$1.RefAttributes<HTMLButtonElement>>;
 
@@ -316,7 +321,29 @@ interface HeadingProps {
         underline?: boolean;
     };
 }
-declare function Heading({ id, level, children, align, styles }: HeadingProps): react_jsx_runtime.JSX.Element;
+declare function HeadingTitle({ id, level, children, align, styles }: HeadingProps): react_jsx_runtime.JSX.Element;
+interface MainTitleProps {
+    id?: string;
+    children: React__default.ReactNode;
+    align?: 'left' | 'center' | 'right';
+    styles?: {
+        bold?: boolean;
+        italic?: boolean;
+        underline?: boolean;
+    };
+}
+declare function MainTitle({ id, children, align, styles }: MainTitleProps): react_jsx_runtime.JSX.Element;
+interface SubTitleProps {
+    id?: string;
+    children: React__default.ReactNode;
+    align?: 'left' | 'center' | 'right';
+    styles?: {
+        bold?: boolean;
+        italic?: boolean;
+        underline?: boolean;
+    };
+}
+declare function SubTitle({ id, children, align, styles }: SubTitleProps): react_jsx_runtime.JSX.Element;
 
 interface ImageBlockProps {
     id?: string;
@@ -491,4 +518,4 @@ declare function BlockRenderer({ block }: BlockRendererProps): react_jsx_runtime
 
 declare function cn(...inputs: ClassValue[]): string;
 
-export { AIResponse, Accordion, AddBlockButton, Alert, ArticleHeaders, Audio, BlockRenderer, Blockquote, Button, Callout, Card, CheckList, Checkbox, CodeBlock, Collapsible, Divider, DropdownMenu, Emoji, File, Footer, Header, Heading, Image, Input, Label, LegacyDocsToggle, List, Navigation, PageBreadcrumb, PageNavigation, Paragraph, Popover, RecommendedArticles, SEO, ScrollArea, SearchBar, SearchHeader, Select, Sheet, Sidebar, SortableBlock, Switch, Table, TableOfContents, Textarea, ThemeProvider, TitleBar, ToggleList, Tooltip, Video, cn };
+export { AIResponse, Accordion, AddBlockButton, Alert, ArticleHeaders, Audio, BlockRenderer, Blockquote, Button, Callout, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, CheckList, Checkbox, CodeBlock, Collapsible, Divider, DropdownMenu, Emoji, File, Footer, Header, HeadingTitle, Image, Input, Label, LegacyDocsToggle, List, MainTitle, Navigation, PageBreadcrumb, PageNavigation, Paragraph, Popover, RecommendedArticles, SEO, ScrollArea, SearchBar, SearchHeader, Select, Sheet, Sidebar, SortableBlock, SubTitle, Switch, Table, TableOfContents, Textarea, ThemeProvider, TitleBar, ToggleList, Tooltip, Video, cn };

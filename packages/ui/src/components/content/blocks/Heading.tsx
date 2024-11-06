@@ -13,7 +13,7 @@ interface HeadingProps {
   };
 }
 
-export function Heading({ id, level, children, align = 'left', styles }: HeadingProps) {
+export function HeadingTitle({ id, level, children, align = 'left', styles }: HeadingProps) {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   const sizeClasses = {
     1: 'text-4xl',

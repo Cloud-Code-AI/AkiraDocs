@@ -2,9 +2,8 @@
 
 import { useState, KeyboardEvent, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Button } from "akiradocs-ui"
+import { Input } from "akiradocs-ui"
 import { Folder, File, Plus, X, ChevronRight, ChevronDown, Trash2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { fetchAllContent } from '@/lib/getContents'
