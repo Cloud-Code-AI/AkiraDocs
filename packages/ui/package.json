@@ -1,6 +1,6 @@
 {
   "name": "akiradocs-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "AKiradocs UI components",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

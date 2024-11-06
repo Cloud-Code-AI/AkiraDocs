@@ -3,7 +3,7 @@
 import React from 'react'
 import { getContentBySlug, getContentNavigation } from '@/lib/content'
 import { BlockRenderer } from '@/components/content/renderers/BlockRenderer'
-import { Header } from 'akiradocs-ui'
+import { Header } from '@/components/content/layout/Header'
 import Footer from '@/components/content/layout/Footer'
 import Navigation from '@/components/content/layout/Navigation'
 import TableOfContents from '@/components/content/layout/TableOfContents'

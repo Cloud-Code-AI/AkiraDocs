@@ -23,7 +23,7 @@ export function getContentBySlug(type: string, slug: string): BlogPost {
         if (type === 'articles') {
           const articles = getAllPosts(type)
           const sortedArticles = articles.sort((a, b) =>
-            new Date(b.date).getTime() - new Date(a.date).getTime()
+            new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
           )
           console.log(sortedArticles)
           if (sortedArticles.length > 0) {

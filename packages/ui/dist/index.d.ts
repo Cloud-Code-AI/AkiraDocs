@@ -58,7 +58,13 @@ declare const ScrollArea: React$1.ForwardRefExoticComponent<Omit<ScrollAreaPrimi
 
 declare const Select: React$1.FC<SelectPrimitive.SelectProps>;
 
-declare const Sheet: React$1.FC<SheetPrimitive.DialogProps>;
+declare const SheetTrigger: React$1.ForwardRefExoticComponent<SheetPrimitive.DialogTriggerProps & React$1.RefAttributes<HTMLButtonElement>>;
+declare const sheetVariants: (props?: ({
+    side?: "top" | "right" | "bottom" | "left" | null | undefined;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string;
+interface SheetContentProps extends React$1.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>, VariantProps<typeof sheetVariants> {
+}
+declare const SheetContent: React$1.ForwardRefExoticComponent<SheetContentProps & React$1.RefAttributes<HTMLDivElement>>;
 
 declare const Tooltip: React$1.FC<TooltipPrimitive.TooltipProps>;
 
@@ -518,4 +524,4 @@ declare function BlockRenderer({ block }: BlockRendererProps): react_jsx_runtime
 
 declare function cn(...inputs: ClassValue[]): string;
 
-export { AIResponse, Accordion, AddBlockButton, Alert, ArticleHeaders, Audio, BlockRenderer, Blockquote, Button, Callout, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, CheckList, Checkbox, CodeBlock, Collapsible, Divider, DropdownMenu, Emoji, File, Footer, Header, HeadingTitle, Image, Input, Label, LegacyDocsToggle, List, MainTitle, Navigation, PageBreadcrumb, PageNavigation, Paragraph, Popover, RecommendedArticles, SEO, ScrollArea, SearchBar, SearchHeader, Select, Sheet, Sidebar, SortableBlock, SubTitle, Switch, Table, TableOfContents, Textarea, ThemeProvider, TitleBar, ToggleList, Tooltip, Video, cn };
+export { AIResponse, Accordion, AddBlockButton, Alert, ArticleHeaders, Audio, BlockRenderer, Blockquote, Button, Callout, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, CheckList, Checkbox, CodeBlock, Collapsible, Divider, DropdownMenu, Emoji, File, Footer, Header, HeadingTitle, Image, Input, Label, LegacyDocsToggle, List, MainTitle, Navigation, PageBreadcrumb, PageNavigation, Paragraph, Popover, RecommendedArticles, SEO, ScrollArea, SearchBar, SearchHeader, Select, SheetContent, SheetTrigger, Sidebar, SortableBlock, SubTitle, Switch, Table, TableOfContents, Textarea, ThemeProvider, TitleBar, ToggleList, Tooltip, Video, cn };

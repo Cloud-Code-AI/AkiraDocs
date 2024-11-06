@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from 'akiradocs-ui'
 import { getRecentContent } from '@/lib/content'
 import { redirect } from 'next/navigation'
 
