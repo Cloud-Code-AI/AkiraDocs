@@ -17,7 +17,7 @@ export default defineConfig({
   },
   async onSuccess() {
     // Copy template before making the dist executable
-    await copyDir('../template', './template');
+    await copyDir('../akiradocs', './template');
     await chmod('dist/index.js', 0o755);
   },
 });
