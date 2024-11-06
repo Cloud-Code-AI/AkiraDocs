@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { getContentBySlug, getContentNavigation } from 'akiradocs-core';
+import { getContentBySlug, getContentNavigation } from '@/contents/content';
 import { BlockRenderer } from 'akiradocs-ui';
 import { Header } from 'akiradocs-ui';
 import Footer from 'akiradocs-ui';

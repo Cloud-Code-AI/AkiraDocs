@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from 'akiradocs-ui';
 import { redirect } from 'next/navigation';
-import { getRecentContent } from 'akiradocs-core';
+import { getRecentContent } from '@/contents/content';
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">

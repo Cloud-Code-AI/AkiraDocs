@@ -20,7 +20,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { fetchAllContent } from 'akiradocs-core';
+import { fetchAllContent } from '@/contents/getContents';
 
 type FileNode = {
   id: string;

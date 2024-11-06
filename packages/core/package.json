@@ -1,6 +1,6 @@
 {
   "name": "akiradocs-core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Core Components for Akiradocs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,12 +24,14 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "remark": "^15.0.1",
-    "remark-parse": "^11.0.0"
+    "remark-parse": "^11.0.0",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.0.0",
     "@types/mdast": "^4.0.4",
     "@types/node": "^20.0.0",
+    "@types/unist": "^3.0.3",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.0.0",

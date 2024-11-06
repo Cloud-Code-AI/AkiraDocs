@@ -1,5 +1,5 @@
 "use client"
-import { Block } from 'akiradocs-core'
+import { Block } from '../../types/Block'
 import { Paragraph } from '../blocks/Paragraph'
 import { Heading } from '../blocks/Heading'
 import { List } from '../blocks/List'

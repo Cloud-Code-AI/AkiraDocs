@@ -11,6 +11,8 @@
     "create-akiradocs": "^1.0.8"
   },
   "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/unist": "^3.0.3",
     "turbo": "^2.2.3"
   }
 }

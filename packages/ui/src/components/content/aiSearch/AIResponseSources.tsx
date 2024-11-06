@@ -1,4 +1,4 @@
-import { Source } from "akiradocs-core"
+import { Source } from "../../types/Source"
 
 interface AIResponseSourcesProps {
     sources: Source[]

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Button } from 'akiradocs-ui';
-import { getRecentContent } from 'akiradocs-core';
+import { getRecentContent } from '@/contents/content';
 import { redirect } from 'next/navigation';
 import '../../_contents'
 
