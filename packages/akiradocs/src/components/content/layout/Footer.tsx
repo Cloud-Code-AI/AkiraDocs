@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({
                         alt={`${link.name} icon`}
                         width={16}
                         height={16}
-                        className="text-current" 
+                        className="text-current inline-flex items-center justify-center" 
                       />
                       <span className="sr-only">{link.name}</span>
                     </a>
