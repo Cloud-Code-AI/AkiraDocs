@@ -62,9 +62,3 @@ export * from './components/content/renderers/BlockRenderer'
 // Utils
 export * from './components/utils'
 
-// globals.css
-export * from './globals.css'
-
-
-// fonts
-export * from './fonts'

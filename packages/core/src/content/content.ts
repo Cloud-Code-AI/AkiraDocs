@@ -3,20 +3,8 @@ import { BlogPost } from '@/types/Block'
 import { parseMarkdown } from './markdown'
 import path from 'path'
 
-let contentContext: any
-let config: any
-
-export function initializeContent(context: any, configData: any) {
-  contentContext = context
-  config = configData
-}
-
+const contentContext = require.context('../../_contents', false, /_config\.json$/);
 export function getContentBySlug(type: string, slug: string) {
-  if (!contentContext || !config) {
-    throw new Error('Content not initialized. Call initializeContent first.')
-  }
-
-  const format = config.format === "both" ? "markdown" : config.format
   let normalizedSlug
 
   if (slug.includes("_contents/".concat(type))) {

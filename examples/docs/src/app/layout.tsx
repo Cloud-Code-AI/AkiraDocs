@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import '../styles/globals.css';
+import './globals.css';
 import { Toaster } from 'sonner';
 import { getMetadata } from 'akiradocs-core';
 import { ThemeProvider } from 'akiradocs-ui';
 
 const geistSans = localFont({
-  src: '../styles/GeistVF.woff',
+  src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
   weight: '100 900',
 });
 const geistMono = localFont({
-  src: '../styles/GeistMonoVF.woff',
+  src: './fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
   weight: '100 900',
 });

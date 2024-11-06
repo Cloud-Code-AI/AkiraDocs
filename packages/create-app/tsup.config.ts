@@ -1,5 +1,6 @@
 import { defineConfig } from 'tsup';
 import { chmod } from 'fs/promises';
+import { copyDir } from './scripts/copyTemplate';
 
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -15,6 +16,8 @@ export default defineConfig({
     js: '#!/usr/bin/env node',
   },
   async onSuccess() {
+    // Copy template before making the dist executable
+    await copyDir('../template', './template');
     await chmod('dist/index.js', 0o755);
   },
 });

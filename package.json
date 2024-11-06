@@ -1,0 +1,16 @@
+{
+  "name": "akiradocs-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9.12.3",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test"
+  },
+  "dependencies": {
+    "create-akiradocs": "^1.0.8"
+  },
+  "devDependencies": {
+    "turbo": "^2.2.3"
+  }
+}
