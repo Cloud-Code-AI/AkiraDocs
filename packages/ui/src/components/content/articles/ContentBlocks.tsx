@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { BlockRenderer } from '../renderers/BlockRenderer'
-import { Block } from 'akiradocs-core'
+import { Block } from '../../types/Block'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'

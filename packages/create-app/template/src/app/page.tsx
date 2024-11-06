@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { getRecentContent } from '@/lib/content';
+import { Button } from 'akiradocs-ui';
+import { getRecentContent } from 'akiradocs-core';
 import { redirect } from 'next/navigation';
+import '../../_contents'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">

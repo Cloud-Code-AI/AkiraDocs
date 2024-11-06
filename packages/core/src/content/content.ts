@@ -3,23 +3,11 @@ import { BlogPost } from '@/types/Block'
 import { parseMarkdown } from './markdown'
 import path from 'path'
 
-declare let require: {
-  context(
-    directory: string,
-    useSubdirectories: boolean,
-    regExp: RegExp
-  ): any;
-};
+const contentContext = require.context('../../_contents', false, /_config\.json$/);
+export function getContentBySlug(type: string, slug: string) {
+  let normalizedSlug
 
-const contentContext = require.context('../../_contents/', true, /\.(json|md)$/)
-const config = contentContext('./_config.json')
-
-
-export function getContentBySlug(type: string, slug: string): BlogPost {
-
-  const format = config.format === "both" ? "markdown" : config.format
-  let normalizedSlug: string
-  if (slug.includes(`_contents/${type}`)) {
+  if (slug.includes("_contents/".concat(type))) {
     normalizedSlug = slug.split('/').slice(2).join('/') || ''
   } else {
     normalizedSlug = slug || ''
@@ -27,10 +15,9 @@ export function getContentBySlug(type: string, slug: string): BlogPost {
 
   try {
     if (normalizedSlug === '') {
-      // Handle empty slug case as before
       if (type === 'articles') {
         const articles = getAllPosts(type)
-        const sortedArticles = articles.sort((a, b) =>
+        const sortedArticles = articles.sort((a, b) => 
           new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
         )
         if (sortedArticles.length > 0) {
@@ -39,37 +26,16 @@ export function getContentBySlug(type: string, slug: string): BlogPost {
       }
     }
 
-    // Try loading JSON first
     try {
-      
-      return contentContext(`./${config.format}/${type}/${normalizedSlug}.json`)
+      return contentContext("./".concat(config.format, "/").concat(type, "/").concat(normalizedSlug, ".json"))
     } catch (jsonError) {
-      // If JSON not found and markdown is enabled, try markdown
       if (config.format === 'markdown') {
-        const mdPath = `./${config.format}/${type}/${normalizedSlug}.md`
-        
-        // Read and parse markdown
+        const mdPath = "./".concat(config.format, "/").concat(type, "/").concat(normalizedSlug, ".md")
         const mdContent = contentContext(mdPath)
         const parsedContent = parseMarkdown(mdContent)
-        console.log(mdPath)
-        // Store as JSON using API call
-        fetch('/api/files', {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
-            path: `./${type}/${normalizedSlug}.json`,
-            content: parsedContent,
-            format: 'json'
-          })
-        }).catch(err => console.error('Failed to cache JSON:', err))
-        
         return parsedContent
-      }
-      else if (config.format === 'json' || config.format === 'both') {
+      } else if (config.format === 'json' || config.format === 'both') {
         const jsonPath = path.join(process.cwd(), '_contents', format, type, `${normalizedSlug}.json`)
-        
-        // Read and parse markdown
-        
         return contentContext(jsonPath)
       }
       throw jsonError

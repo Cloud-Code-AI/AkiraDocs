@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BlogPost } from 'akiradocs-core'
+import { BlogPost } from '../../types/BlogPost'
 import { MarkdownRenderer } from '../renderers/MarkdownRenderer'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'

@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { Article } from "akiradocs-core"
+import { Article } from "../../types/Article"
 import { ArticleCard } from "./ArticleCard"
 import Link from "next/link"
 

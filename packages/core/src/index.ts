@@ -3,6 +3,7 @@ export { getContentBySlug, getAllPosts, getContentNavigation, getRecentContent, 
 export { parseMarkdown } from './content/markdown'
 export { getMetadata } from './content/getMetadata'
 export { fetchAllContent } from './content/getContents'
+export { FileSystemContentProvider, createContentProvider } from './content/fileSystemContentProvider'
 
 // Types
 export type { Article } from './types/Article'
@@ -12,3 +13,4 @@ export type { Block, BlockType, BlogPost } from './types/Block'
 // Utils
 export { convertMarkdownToJson, ensureJsonExists } from './utils/fileConverter'
 export { getNextPrevPages } from './utils/navigationUtils'
+
