@@ -1,3 +1,5 @@
+import { getAkiradocsConfig } from "./getAkiradocsConfig";
+
 interface NavItem {
   label: string;
   href: string;
@@ -34,9 +36,7 @@ declare var require: {
 };
 
 export function getHeaderConfig(): HeaderConfig {
-  const context = require.context('../../_contents', false, /_config\.json$/);
-  const configPath = context.keys()[0];
-  const config = context(configPath);
+  const config = getAkiradocsConfig();
 
   // Filter out AI Search from nav items if disabled
   const filteredNavItems = config.header?.navItems?.filter((item: NavItem) => {

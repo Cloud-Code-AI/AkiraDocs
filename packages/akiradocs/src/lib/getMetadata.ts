@@ -1,3 +1,5 @@
+import { getAkiradocsConfig } from "./getAkiradocsConfig";
+
 type Metadata = {
     title?: string,
     description?: string
@@ -12,9 +14,7 @@ declare var require: {
   };
 
 export function getMetadata(): Metadata {
-    const context = require.context('../../_contents', false, /_config\.json$/);
-    const configPath = context.keys()[0];
-    const config = context(configPath);
+    const config = getAkiradocsConfig();
 
     return {
         title: config.title ?? "Akira Docs",

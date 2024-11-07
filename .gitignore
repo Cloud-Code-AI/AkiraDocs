@@ -1,17 +1,16 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
+# Dependencies
+node_modules
+.pnp
 .pnp.js
 .yarn/install-state.gz
 
-# testing
-/coverage
+# Build
+dist
+.next
+out
 
-# next.js
-/.next/
-/out/
+# Testing
+coverage
 
 # production
 /build
@@ -36,10 +35,21 @@ yarn-error.log*
 next-env.d.ts
 
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-/dist
+# IDE
+.idea
+.vscode
+*.sublime-workspace
 
 .turbo/
 .next/
 **/node_modules/
 **/dist/
+**/dist/
+
+.DS_Store
+Thumbs.db
