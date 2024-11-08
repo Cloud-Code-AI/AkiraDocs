@@ -17,9 +17,9 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile]
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build and Publish
         run: |
