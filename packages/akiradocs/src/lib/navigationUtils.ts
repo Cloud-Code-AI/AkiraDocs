@@ -1,8 +1,4 @@
-type NavItem = {
-  title: string;
-  path?: string;
-  items?: Record<string, NavItem>;
-};
+import { NavItem } from "../types/navigation";
 
 function flattenNavigation(items: Record<string, NavItem>): { title: string; path: string }[] {
   const flattened: { title: string; path: string }[] = [];

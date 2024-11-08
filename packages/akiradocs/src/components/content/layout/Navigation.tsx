@@ -17,18 +17,19 @@ type NavItem = {
 };
 
 interface NavigationSidebarProps {
+  locale: string;
   items: Record<string, NavItem>;
 }
 
-export function Navigation({ items }: NavigationSidebarProps) {
+export function Navigation({ locale, items }: NavigationSidebarProps) {
   const pathname = usePathname()
-
+  console.log("locale", locale)
   return (
     <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
       <ScrollArea className="h-full py-6 px-4">
         <nav>
           {Object.entries(items).map(([key, item]) => (
-            <NavItem key={key} item={item} pathname={pathname} />
+            <NavItem key={key} locale={locale} item={item} pathname={pathname} />
           ))}
         </nav>
       </ScrollArea>
@@ -37,27 +38,27 @@ export function Navigation({ items }: NavigationSidebarProps) {
 }
 
 interface NavItemProps {
+  locale: string;
   item: NavItem;
   pathname: string;
   depth?: number;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
+const NavItem: React.FC<NavItemProps> = ({ locale, item, pathname, depth = 0 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const hasChildren = item.items && Object.keys(item.items).length > 0
-  const isActive = item.path ? pathname === item.path : pathname.startsWith(item.path || '')
+  const isActive = item.path ? pathname === `/${locale}${item.path}` : false
 
-  const absolutePath = item.path?.startsWith('/') ? item.path : `/${item.path}`
-
+  const absolutePath = item.path ? `/${locale}${item.path}` : '#'
   const handleClick = (e: React.MouseEvent) => {
-    if (item.path === pathname) {
+    if (item.path && pathname === `/${locale}${item.path}`) {
       e.preventDefault()
     }
     if (hasChildren) {
       setIsOpen(!isOpen)
     }
   }
-
+  console.log("absolutePath", absolutePath)
   return (
     <motion.div 
       className={cn("mb-1", `ml-${depth * 4}`)}
@@ -109,7 +110,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, pathname, depth = 0 }) => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             {Object.entries(item.items!).map(([key, child]) => (
-              <NavItem key={key} item={child} pathname={pathname} depth={depth + 1} />
+              <NavItem locale={locale} key={key} item={child} pathname={pathname} depth={depth + 1} />
             ))}
           </motion.div>
         )}

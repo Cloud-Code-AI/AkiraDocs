@@ -10,8 +10,8 @@ declare var require: {
   ): any;
 };
 // Exclude _meta.json files from articles and docs context
-const articlesContext = require.context('../../_contents/articles', false, /^(?!.*_meta\.json$).*\.json$/)
-const docsContext = require.context('../../_contents/docs', false, /^(?!.*_meta\.json$).*\.json$/)
+const articlesContext = require.context('../../compiled/articles', false, /^(?!.*_meta\.json$).*\.json$/)
+const docsContext = require.context('../../compiled/docs', false, /^(?!.*_meta\.json$).*\.json$/)
 
 export function getRecommendedArticles(): Article[] | null {
   try {

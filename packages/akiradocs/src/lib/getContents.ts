@@ -1,4 +1,5 @@
-// Use require.context to get all files in the _contents folder
+import { getAkiradocsConfig } from "./getAkiradocsConfig";
+const config = getAkiradocsConfig();
 declare var require: {
   context(
     directory: string,
@@ -6,17 +7,17 @@ declare var require: {
     regExp: RegExp
   ): any;
 };
-
 const contentContext = require.context(
-    '../../_contents', // Assuming _contents is in the parent directory
+    `../../compiled/`, 
     true, // Include subdirectories
-    /^\.\/(?:articles|docs)\/.*\.json$/ // Only include .json files from articles and docs folders
+    /^\.\/.*\.json$/ // Update this regex to be more specific
 );
   
 export function fetchAllContent() {
   const content: { [key: string]: any } = {};
   
   contentContext.keys().forEach((key: string) => {
+    console.log(key)
     const fileName = key.replace(/^\.\//, '');
     const fileContent = contentContext(key);
     content[fileName] = fileContent;

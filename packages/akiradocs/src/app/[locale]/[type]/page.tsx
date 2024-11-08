@@ -12,13 +12,13 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
-export default function Page({ params }: { params: Promise<{ type: string }> }) {
+export default function Page({ params }: { params: Promise<{ locale: string, type: string }> }) {
   const resolvedParams = React.use(params)
+  const locale = resolvedParams.locale || ''
   const type = resolvedParams.type || ''
-  const recentContent = getRecentContent(type)
+  const recentContent = getRecentContent(`${locale}/${type}`)
   if (recentContent) {
-
-    redirect(`/${type}/${recentContent.slug}`)
+    redirect(`/${locale}/${type}/${recentContent.slug}`)
   }
 
   return (

@@ -12,7 +12,7 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
 
 export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
-  const recentContent = getRecentContent('docs')
+  const recentContent = getRecentContent('en/docs')
   if (recentContent) {
     redirect(`/docs/${recentContent.slug}`)
   }

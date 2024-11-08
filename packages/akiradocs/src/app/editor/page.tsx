@@ -351,10 +351,10 @@ export default function ImprovedFileTreeUI() {
     });
   }
 
-  if (!isDevPage) {
-    router.push('/docs')
-    return null
-  }
+  // if (!isDevPage) {
+  //   router.push('/docs')
+  //   return null
+  // }
 
   return (
     <div className="p-6 bg-background min-h-screen text-foreground">

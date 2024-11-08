@@ -1,21 +1,6 @@
   import { getAkiradocsConfig } from "./getAkiradocsConfig";
-  interface SocialLink {
-    name: string;
-    url: string;
-    icon: string;
-  }
-  
-  type FooterConfig = {
-    companyName: string;
-    socialLinks: SocialLink[];
-  };
-  declare var require: {
-    context(
-      directory: string,
-      useSubdirectories: boolean,
-      regExp: RegExp
-    ): any;
-  };
+  import { FooterConfig } from '../types/config';
+
   export function getFooterConfig(): FooterConfig {
     // Using require.context to get the config file
     const config = getAkiradocsConfig();

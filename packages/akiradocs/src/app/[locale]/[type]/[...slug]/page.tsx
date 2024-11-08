@@ -10,7 +10,7 @@ import TableOfContents from '@/components/content/layout/TableOfContents'
 import { getHeaderConfig } from '@/lib/headerConfig'
 import { getFooterConfig } from '@/lib/footerConfig'
 import { Button } from 'akiradocs-ui'
-import { Edit2 } from 'lucide-react'
+import { Edit2, LucideOctagonAlert } from 'lucide-react'
 import { PageBreadcrumb } from 'akiradocs-ui'
 import { getNextPrevPages } from '@/lib/navigationUtils'
 import { PageNavigation } from 'akiradocs-ui'
@@ -22,22 +22,22 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
-export default function ContentPage({ params }: { params: Promise<{ type: string, slug: string[] }> }) {
+export default function ContentPage({ params }: { params: Promise<{ locale: string, type: string, slug: string[] }> }) {
   const resolvedParams = React.use(params)
+  const locale = resolvedParams.locale
   const type = resolvedParams.type
   const slug = resolvedParams.slug?.length ? resolvedParams.slug.join('/') : ''
-  const post = getContentBySlug(type, slug)
+  const post = getContentBySlug(locale, type, slug)
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
-  const navigationItems = getContentNavigation({}, type)
-  const { prev, next } = getNextPrevPages(navigationItems, `/${type}/${slug}`);
+  const navigationItems = getContentNavigation({}, locale, type)
+  const { prev, next } = getNextPrevPages(navigationItems, `/${locale}/${type}/${slug}`);
   const pageTitle = post.title || 'Documentation'
   const pageDescription = post.description || 'Documentation content'
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${type}/${slug}`
-
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/${type}/${slug}`
   const handleEdit = () => {
     const fileSlug = slug !== '' ? slug : post.id || post.filename?.replace('.json', '')
-    const filePath = `${type}/${fileSlug}.json`
+    const filePath = `${locale}/${type}/${fileSlug}.json`
     window.location.href = `/editor/${filePath}`
   }
 
@@ -50,7 +50,7 @@ export default function ContentPage({ params }: { params: Promise<{ type: string
       />
       <Header {...headerConfig} />
       <div className="flex flex-grow">
-        <Navigation key={type} items={navigationItems} />
+        <Navigation key={type} locale={locale} items={navigationItems} />
         <div className="flex-1 flex py-4 w-full">
           <PostContainer>
             <PageBreadcrumb type={type} slug={slug} />

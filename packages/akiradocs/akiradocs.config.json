@@ -31,8 +31,8 @@
         "searchPlaceholder": "Search Akira...",
         "navItems": [
             { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg" },
-            { "label": "Docs", "href": "/docs", "icon": "/legacy.svg" },
-            { "label": "Articles", "href": "/articles", "icon": "/articles.svg" }
+            { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg" },
+            { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg" }
         ]
     },
     "footer": { 
@@ -42,5 +42,26 @@
             { "name": "Twitter", "url": "https://x.com/CloudCodeAI", "icon": "/twitter.svg" },
             { "name": "LinkedIn", "url": "https://www.linkedin.com/company/cloudcode-ai", "icon": "/linkedin.svg" }
         ]
+    },
+    "languages": {
+        "defaultLocale": "en",
+        "locales": [
+            {
+                "code": "en",
+                "name": "English",
+                "flag": "🇺🇸"
+            },
+            {
+                "code": "es",
+                "name": "Español",
+                "flag": "🇪🇸"
+            },
+            {
+                "code": "fr",
+                "name": "Français",
+                "flag": "🇫🇷"
+            }
+        ],
+        "fallbackLocale": "en"
     }
 }
