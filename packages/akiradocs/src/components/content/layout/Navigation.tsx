@@ -1,64 +1,65 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, ChevronRight, FileText } from 'lucide-react'
+import { ChevronRight, FileText } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { Button } from "akiradocs-ui"
 import { ScrollArea } from "akiradocs-ui"
+import { NavigationProps, NavItemProps } from "@/types/navigation"
+import { ErrorBoundary } from 'react-error-boundary'
 
-type NavItem = {
-  title: string;
-  path?: string;
-  badge?: string;
-  items?: Record<string, NavItem>;
-};
-
-interface NavigationSidebarProps {
-  locale: string;
-  items: Record<string, NavItem>;
+const buttonStyles = {
+  base: "w-full justify-start text-left font-normal rounded-lg transition-colors",
+  hover: "hover:bg-accent hover:text-accent-foreground",
+  active: "bg-accent/50 text-accent-foreground font-medium",
+  state: "data-[state=open]:bg-accent/50",
 }
 
-export function Navigation({ locale, items }: NavigationSidebarProps) {
-  const pathname = usePathname()
-  console.log("locale", locale)
+function ErrorFallback({ error }: { error: Error }) {
   return (
-    <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
-      <ScrollArea className="h-full py-6 px-4">
-        <nav>
-          {Object.entries(items).map(([key, item]) => (
-            <NavItem key={key} locale={locale} item={item} pathname={pathname} />
-          ))}
-        </nav>
-      </ScrollArea>
-    </aside>
+    <div className="w-64 p-4 text-sm text-red-500">
+      <h2 className="font-semibold">Navigation Error</h2>
+      <p>Something went wrong loading the navigation.</p>
+    </div>
   )
 }
 
-interface NavItemProps {
-  locale: string;
-  item: NavItem;
-  pathname: string;
-  depth?: number;
+export function Navigation({ locale, items }: NavigationProps) {
+  const pathname = usePathname()
+  
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
+        <ScrollArea className="h-full py-6 px-4">
+          <nav>
+            {Object.entries(items).map(([key, item]) => (
+              <NavItem key={key} locale={locale} item={item} pathname={pathname} />
+            ))}
+          </nav>
+        </ScrollArea>
+      </aside>
+    </ErrorBoundary>
+  )
 }
 
-const NavItem: React.FC<NavItemProps> = ({ locale, item, pathname, depth = 0 }) => {
+const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const hasChildren = item.items && Object.keys(item.items).length > 0
   const isActive = item.path ? pathname === `/${locale}${item.path}` : false
-
   const absolutePath = item.path ? `/${locale}${item.path}` : '#'
-  const handleClick = (e: React.MouseEvent) => {
+
+  const handleClick = useCallback((e: React.MouseEvent) => {
     if (item.path && pathname === `/${locale}${item.path}`) {
       e.preventDefault()
     }
     if (hasChildren) {
-      setIsOpen(!isOpen)
+      setIsOpen(prev => !prev)
     }
-  }
-  console.log("absolutePath", absolutePath)
+  }, [hasChildren, item.path, locale, pathname])
+
   return (
     <motion.div 
       className={cn("mb-1", `ml-${depth * 4}`)}
@@ -69,11 +70,10 @@ const NavItem: React.FC<NavItemProps> = ({ locale, item, pathname, depth = 0 }) 
       <Button
         variant="ghost"
         className={cn(
-          "w-full justify-start text-left font-normal",
-          "hover:bg-accent hover:text-accent-foreground",
-          "data-[state=open]:bg-accent/50",
-          isActive && "bg-accent/50 text-accent-foreground font-medium",
-          "rounded-lg transition-colors",
+          buttonStyles.base,
+          buttonStyles.hover,
+          buttonStyles.state,
+          isActive && buttonStyles.active,
         )}
         onClick={handleClick}
       >
@@ -117,6 +117,8 @@ const NavItem: React.FC<NavItemProps> = ({ locale, item, pathname, depth = 0 }) 
       </AnimatePresence>
     </motion.div>
   )
-}
-export default Navigation
+})
 
+NavItem.displayName = 'NavItem'
+
+export default Navigation

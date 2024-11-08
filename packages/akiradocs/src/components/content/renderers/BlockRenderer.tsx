@@ -16,6 +16,7 @@ import { CodeBlock } from 'akiradocs-ui'
 // import { Emoji } from '../blocks/Emoji'
 import { Callout } from 'akiradocs-ui'
 import { cn } from '@/lib/utils'
+import { ErrorBoundary } from 'react-error-boundary'
 
 interface ImageBlockContent {
   url: string;
@@ -27,6 +28,14 @@ interface ImageBlockContent {
 
 interface BlockRendererProps {
   block: Block
+}
+
+function BlockErrorFallback({ error }: { error: Error }) {
+  return (
+    <div className="p-4 border border-red-200 rounded-md bg-red-50 dark:bg-red-900/10">
+      <p className="text-sm text-red-600 dark:text-red-400">Failed to render block content</p>
+    </div>
+  )
 }
 
 export function BlockRenderer({ block }: BlockRendererProps) {
