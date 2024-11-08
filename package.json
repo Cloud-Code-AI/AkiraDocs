@@ -5,7 +5,9 @@
     "scripts": {
       "dev": "turbo run dev",
       "build": "turbo run build",
-      "test": "turbo run test"
+      "test": "turbo run test",
+      "lint": "turbo run lint",
+      "typecheck": "turbo run typecheck"
     },
     "dependencies": {
       "create-akiradocs": "^1.0.8"

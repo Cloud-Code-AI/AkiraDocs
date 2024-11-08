@@ -12,7 +12,7 @@ const ignoredPaths = [
   '.turbo',
   '_contents',
   'compiled',
-  'akiradocs.config.json'
+  'akiradocs.config.json',
 ];
 
 export async function updateDir(src: string, dest: string) {
@@ -34,4 +34,4 @@ export async function updateDir(src: string, dest: string) {
       await copyFile(srcPath, destPath);
     }
   }
-} 
+}

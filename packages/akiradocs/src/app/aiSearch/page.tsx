@@ -27,7 +27,7 @@ export default function Home() {
         <div className="text-center space-y-4 max-w-md">
           <h1 className="text-3xl font-bold">AI Search is Disabled</h1>
           <p className="text-muted-foreground">
-            AI Search is currently disabled. To enable this feature, set "aiSearch": true in your configuration file.
+            AI Search is currently disabled. To enable this feature, set &quot;aiSearch&quot;: true in your configuration file.
           </p>
           <Button asChild>
             <Link href="/docs">Go to Documentation</Link>
