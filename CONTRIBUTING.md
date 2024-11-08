@@ -1,129 +1,88 @@
 # Contributing to AkiraDocs
 
-First off, thank you for considering contributing to AkiraDocs! It's people like you that make AkiraDocs such a great tool.
+Thank you for considering contributing to AkiraDocs! This document will guide you through the contribution process.
 
 ## 📋 Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
+- [Legal Requirements](#legal-requirements)
 - [Getting Started](#getting-started)
-- [Development Process](#development-process)
-- [Pull Request Process](#pull-request-process)
-- [Style Guidelines](#style-guidelines)
-- [Community](#community)
+- [Development Guidelines](#development-guidelines)
+- [Contributing Process](#contributing-process)
+- [Community and Support](#community-and-support)
 
-## 🤝 Code of Conduct
+## Code of Conduct
 
-This project and everyone participating in it is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+This project follows our [Code of Conduct](CODE_OF_CONDUCT.md). All contributors are expected to uphold these guidelines.
 
-## 🚀 Getting Started
+## Legal Requirements
 
-1. **Fork the Repository**
+### Licensing Structure
+This project uses a dual-license model:
+
+1. **MIT License**
+   - Applies to all code NOT in folders named 'enterprise' or prefixed with 'enterprise-'
+   - Allows free use, modification, and distribution
+   - Your contributions to MIT-licensed portions will be licensed under MIT
+
+2. **Commercial License**
+   - Applies to all code in folders named 'enterprise' or prefixed with 'enterprise-'
+   - Owned by Cloud Code AI Inc.
+   - See LICENSE-ENTERPRISE.md for terms
+   - Contributions to enterprise portions require additional agreements
+
+Directory Structure:
+```
+*/enterprise/* -> Commercial License
+*/enterprise-*/* -> Commercial License
+All other directories -> MIT License
+```
+
+For licensing questions, contact licensing@akiradocs.ai
+
+### Contribution License Agreement (CLA)
+- All contributors must sign our CLA at [cla-akiradocs](https://gist.github.com/sauravpanda/e2277e2c7be0c677922bde6328d2ad57)
+- We offer Individual CLA
+- The CLA is required regardless of contribution size
+- For corporate contributions, have your legal representative reach out to licensing@akiradocs.ai
+
+## Getting Started
+
+1. **Fork and Clone**
    ```bash
    git clone https://github.com/your-username/akiradocs.git
    cd akiradocs
    ```
 
-2. **Set Up Development Environment**
+2. **Setup Environment**
    ```bash
-   # Install dependencies
    npm install
-
-   # Start development server
    npm run dev
    ```
 
-3. **Create a Branch**
+3. **Create Branch**
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
-## 💻 Development Process
+## Development Guidelines
 
 ### Project Structure
 ```
 akiradocs/
-├── components/        # React components
-├── pages/            # Next.js pages
-├── styles/           # CSS/styling files
-├── lib/              # Utility functions
-├── public/           # Static assets
-└── tests/            # Test files
+├── components/     # React components
+├── pages/         # Next.js pages
+├── styles/        # CSS files
+├── lib/           # Utilities
+├── public/        # Static assets
+└── tests/         # Test files
 ```
 
-### Key Areas for Contribution
+### Coding Standards
 
-1. **Dynamic UI Components**
-   - Enhance existing components
-   - Create new interactive elements
-   - Improve accessibility
-
-2. **In-App Editor**
-   - Editor features and improvements
-   - Real-time preview enhancements
-   - Content validation
-
-3. **Documentation**
-   - Technical documentation
-   - User guides
-   - API documentation
-
-4. **Testing**
-   - Unit tests
-   - Integration tests
-   - E2E tests
-
-## 📝 Pull Request Process
-
-1. **Before Starting**
-   - Check existing issues and PRs
-   - Discuss major changes in an issue first
-   - Update documentation as needed
-
-2. **Making Changes**
-   - Write clear, descriptive commit messages
-   - Keep changes focused and atomic
-   - Add tests for new features
-
-3. **Submitting PR**
-   - Fill out the PR template completely
-   - Link related issues
-   - Add screenshots for UI changes
-
-4. **PR Review**
-   - Address review comments
-   - Keep discussions constructive
-   - Be patient during review process
-
-## 🎨 Style Guidelines
-
-### Code Style
-
-- Use TypeScript for new components
-- Follow existing code formatting
-- Use meaningful variable/function names
-- Comment complex logic
-
-### JavaScript/TypeScript
+#### TypeScript/React
 ```typescript
-// Good
-const getUserData = async (userId: string): Promise<UserData> => {
-  try {
-    return await fetchUser(userId);
-  } catch (error) {
-    console.error('Error fetching user:', error);
-    throw error;
-  }
-}
-
-// Avoid
-const getData = async (id) => {
-  return await fetch(id);
-}
-```
-
-### React Components
-```typescript
-// Good
+// Component Example
 interface ButtonProps {
   label: string;
   onClick: () => void;
@@ -141,41 +100,41 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, disabled }) => {
     </button>
   );
 };
-
-// Avoid
-const Button = (props) => {
-  return <button onClick={props.onClick}>{props.label}</button>;
-};
 ```
 
-### CSS/Styling
-- Use Tailwind CSS classes when possible
-- Follow BEM naming convention for custom CSS
-- Maintain responsive design principles
+#### Style Guidelines
+- Use TypeScript for new components
+- Follow existing code formatting
+- Use Tailwind CSS where possible
+- Write meaningful variable/function names
+- Add comments for complex logic
 
-## 👥 Community
+## Contributing Process
 
-### Getting Help
+1. **Before Starting**
+   - Check existing issues and PRs
+   - Discuss major changes in an issue
+   - Ensure CLA is signed
+
+2. **Development**
+   - Write clear commit messages
+   - Add necessary tests
+   - Update documentation
+   - Follow style guidelines
+
+3. **Pull Request**
+   - Fill out PR template
+   - Link related issues
+   - Add screenshots for UI changes
+   - Be responsive to review comments
+
+## Community and Support
+
 - Join our [Discord](https://discord.gg/6qfmtSUMdb)
-- Check our [Documentation](https://docs.akiradocs.ai)
-- Ask in GitHub Discussions
-
-### Communication Channels
-- GitHub Issues: Bug reports and feature requests
-- GitHub Discussions: General questions and discussions
-- Discord: Real-time chat and community interaction
-
-## 🎉 Recognition
-
-Contributors are recognized in several ways:
-- Listed in our [CONTRIBUTORS.md](CONTRIBUTORS.md)
-- Mentioned in release notes
-- Featured on our website
-
-## ⚖️ License
-
-By contributing to AkiraDocs, you agree that your contributions will be licensed under its MIT License.
+- Read our [Documentation](https://docs.akiradocs.ai)
+- Use GitHub Discussions for questions
+- Report bugs via GitHub Issues
 
 ---
 
-Remember: The best way to contribute is to start small and grow with the project. Don't hesitate to ask questions!
+Contributors are recognized in [CONTRIBUTORS.md](CONTRIBUTORS.md) and release notes.
