@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from 'akiradocs-ui'
 import { getRecentContent } from '@/lib/content'
 import { redirect } from 'next/navigation'
 
@@ -12,7 +12,7 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
 
 export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
-  const recentContent = getRecentContent('docs')
+  const recentContent = getRecentContent('en/docs')
   if (recentContent) {
     redirect(`/docs/${recentContent.slug}`)
   }

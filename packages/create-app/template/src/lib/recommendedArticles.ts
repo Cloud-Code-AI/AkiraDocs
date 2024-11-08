@@ -1,7 +1,7 @@
 "use client"
 
 import { Article } from "@/types/Article"
-
+import { getAkiradocsConfig } from "@/lib/getAkiradocsConfig"
 declare var require: {
   context(
     directory: string,
@@ -10,15 +10,13 @@ declare var require: {
   ): any;
 };
 // Exclude _meta.json files from articles and docs context
-const articlesContext = require.context('../../_contents/articles', false, /^(?!.*_meta\.json$).*\.json$/)
-const docsContext = require.context('../../_contents/docs', false, /^(?!.*_meta\.json$).*\.json$/)
-const configContext = require.context('../../_contents', false, /_config\.json$/)
+const articlesContext = require.context('../../compiled/articles', false, /^(?!.*_meta\.json$).*\.json$/)
+const docsContext = require.context('../../compiled/docs', false, /^(?!.*_meta\.json$).*\.json$/)
 
 export function getRecommendedArticles(): Article[] | null {
   try {
     // Get config file
-    const configFile = configContext.keys()[0]
-    const config = configContext(configFile)
+    const config = getAkiradocsConfig()
     
     if (config.recommendedArticles === false) {
       return null

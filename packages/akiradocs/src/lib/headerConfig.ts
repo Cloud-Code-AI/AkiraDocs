@@ -5,7 +5,7 @@ import { HeaderConfig } from "../types/config";
 
 export function getHeaderConfig(): HeaderConfig {
   const config = getAkiradocsConfig();
-
+  const languages = config.languages;
   // Filter out AI Search from nav items if disabled
   const filteredNavItems = config.header?.navItems?.filter((item: NavItem) => {
     if (item.path === '/aiSearch') {
@@ -21,5 +21,7 @@ export function getHeaderConfig(): HeaderConfig {
     searchPlaceholder: config.header?.searchPlaceholder,
     navItems: filteredNavItems,
     socialLinks: config.header?.socialLinks,
+    languages: languages,
+    currentLocale: config.languages?.defaultLocale,
   };
 }

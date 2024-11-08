@@ -11,6 +11,14 @@ import { Moon, Sun, Menu, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import IconSVG from '@/components/ui/iconSVG'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "akiradocs-ui"
+import { useRouter } from 'next/navigation'
 
 interface NavItem {
   label: string;
@@ -38,6 +46,15 @@ interface HeaderProps {
   showSearch?: boolean;
   searchPlaceholder?: string;
   socialLinks?: SocialLink[];
+  languages?: {
+    defaultLocale: string;
+    locales: {
+      code: string;
+      name: string;
+      flag: string;
+    }[];
+  };
+  currentLocale?: string;
 }
 
 export function Header({
@@ -54,10 +71,13 @@ export function Header({
   showSearch = true,
   searchPlaceholder = 'Search...',
   socialLinks,
+  languages,
+  currentLocale = 'en',
 }: HeaderProps) {
   const [isMounted, setIsMounted] = useState(false)
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     setIsMounted(true)
@@ -69,6 +89,12 @@ export function Header({
     }
   }
 
+  const handleLanguageChange = (value: string) => {
+    const currentPath = window.location.pathname
+    const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${value}`)
+    router.push(newPath)
+  }
+
   return (
     <motion.header 
       initial={{ y: -100 }}
@@ -78,8 +104,10 @@ export function Header({
     >
       <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+
           <motion.div 
-            className="flex items-center space-x-4"
+            className="relative"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -93,10 +121,36 @@ export function Header({
                 className="relative rounded-full" 
               />
             </div>
+            </motion.div>
             {title.show && (
               <h1 className="text-xl font-bold text-foreground">{title.text}</h1>
             )}
-          </motion.div>
+            
+            {languages && languages.locales.length > 1 && (
+              <Select
+                value={currentLocale}
+                onValueChange={handleLanguageChange}
+              >
+                <SelectTrigger className="w-[140px] h-8 text-sm">
+                  <SelectValue>
+                    {languages.locales.find(l => l.code === currentLocale)?.flag}&nbsp;
+                    {languages.locales.find(l => l.code === currentLocale)?.name}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {languages.locales.map((locale) => (
+                    <SelectItem 
+                      key={locale.code} 
+                      value={locale.code}
+                      className="text-sm"
+                    >
+                      {locale.flag}&nbsp;{locale.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
           
           {navItems && (
             <nav className="hidden md:flex space-x-2">

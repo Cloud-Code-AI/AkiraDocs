@@ -1,5 +1,4 @@
 import React from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 
 interface IconSVGProps {
   src: string;
@@ -7,12 +6,6 @@ interface IconSVGProps {
   width?: number;
   height?: number;
   className?: string;
-}
-
-function IconErrorFallback({ error }: { error: Error }) {
-  return (
-    <span className="inline-block bg-muted rounded-sm" style={{ width: '24px', height: '24px' }} />
-  )
 }
 
 const IconSVG: React.FC<IconSVGProps> = ({ src, alt, width = 24, height = 24, className }) => {
@@ -38,15 +31,13 @@ const IconSVG: React.FC<IconSVGProps> = ({ src, alt, width = 24, height = 24, cl
   }, [src, width, height]);
 
   return (
-    <ErrorBoundary FallbackComponent={IconErrorFallback}>
-      <span 
-        className={className}
-        dangerouslySetInnerHTML={{ __html: svgContent }}
-        role="img"
-        aria-label={alt}
-        style={{ display: 'inline-block', width: `${width}px`, height: `${height}px` }}
-      />
-    </ErrorBoundary>
+    <span 
+      className={className}
+      dangerouslySetInnerHTML={{ __html: svgContent }}
+      role="img"
+      aria-label={alt}
+      style={{ display: 'inline-block', width: `${width}px`, height: `${height}px` }}
+    />
   );
 };
 

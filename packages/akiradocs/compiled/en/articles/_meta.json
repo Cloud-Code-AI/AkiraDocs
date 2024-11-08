@@ -2,5 +2,9 @@
   "welcome": {
     "title": "Welcome to Akira Docs",
     "path": "/articles/welcome"
+  },
+  "template": {
+    "title": "Template",
+    "path": "/articles/template"
   }
 }

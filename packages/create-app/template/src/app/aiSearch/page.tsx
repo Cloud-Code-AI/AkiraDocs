@@ -1,25 +1,24 @@
 "use client"
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { SearchHeader } from '@/components/content/aiSearch/SearchHeader'
-import { SearchBar } from '@/components/content/aiSearch/SearchBar'
-import { LegacyDocsToggle } from '@/components/content/aiSearch/LegacyDocsToggle'
-import { AIResponse } from '@/components/content/aiSearch/AIResponse'
-import { RecommendedArticles } from '@/components/content/aiSearch/RecommendedArticles'
+import { SearchHeader } from 'akiradocs-ui'
+import { SearchBar } from 'akiradocs-ui'
+import { LegacyDocsToggle } from 'akiradocs-ui'
+import { AIResponse } from 'akiradocs-ui'
+import { RecommendedArticles } from 'akiradocs-ui'
 import { AnimatePresence } from 'framer-motion'
 import { getRecommendedArticles } from '@/lib/recommendedArticles'
 import { getSearchConfig } from '@/lib/searchConfig'
-import { Button } from '@/components/ui/button'
+import { Button } from 'akiradocs-ui'
 import Link from 'next/link'
-
+import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
 
 export default function Home() {
   const [query, setQuery] = useState('')
   const [aiResponse, setAiResponse] = useState('')
   const recommendedArticles = getRecommendedArticles()
   const searchConfig = getSearchConfig()
-  const config = require('../../../_contents/_config.json')
+  const config = getAkiradocsConfig()
 
   // If AI Search is disabled, show the disabled message
   if (!config.aiSearch) {

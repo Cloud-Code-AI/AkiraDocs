@@ -33,6 +33,15 @@ interface NavItem {
     searchPlaceholder?: string;
     navItems?: NavItem[];
     socialLinks?: SocialLink[];
+    languages?: {
+      defaultLocale: string;
+      locales: {
+        code: string;
+        name: string;
+        flag: string;
+      }[];
+    };
+    currentLocale?: string;
   }
   
   export interface FooterConfig {

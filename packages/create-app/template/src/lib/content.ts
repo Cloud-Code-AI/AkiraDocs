@@ -6,13 +6,14 @@ declare var require: {
     regExp: RegExp
   ): any;
 };
-const contentContext = require.context(`../../_contents/`, true, /\.json$/)
+const contentContext = require.context(`../../compiled/`, true, /\.json$/)
 
-export function getContentBySlug(type: string, slug: string): BlogPost {
+export function getContentBySlug(locale: string, type: string, slug: string): BlogPost {
 
   let normalizedSlug: string
-  if (slug.includes(`_contents/${type}`)) {
-    normalizedSlug = slug.split('/').slice(2).join('/') || ''
+  if (slug.includes(`compiled/${locale}/${type}`)) {
+    normalizedSlug = slug.split('/').slice(3).join('/') || ''
+    console.log(normalizedSlug)
   } else {
     normalizedSlug = slug || ''
   }
@@ -21,9 +22,9 @@ export function getContentBySlug(type: string, slug: string): BlogPost {
       if (normalizedSlug === '') {
         // Get all articles and sort by date to find the latest
         if (type === 'articles') {
-          const articles = getAllPosts(type)
+          const articles = getAllPosts(locale, type)
           const sortedArticles = articles.sort((a, b) =>
-            new Date(b.date).getTime() - new Date(a.date).getTime()
+            new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
           )
           console.log(sortedArticles)
           if (sortedArticles.length > 0) {
@@ -32,7 +33,7 @@ export function getContentBySlug(type: string, slug: string): BlogPost {
       }
 
     }
-    return contentContext(`./${type}/${normalizedSlug}.json`)
+    return contentContext(`./${locale}/${type}/${normalizedSlug}.json`)
 
   } catch (error) {
     console.error(`Error reading file: ${normalizedSlug}.json`, error)
@@ -40,18 +41,18 @@ export function getContentBySlug(type: string, slug: string): BlogPost {
   }
 }
 
-export function getAllPosts(type: string): BlogPost[] {
+export function getAllPosts(locale: string, type: string): BlogPost[] {
   return contentContext.keys()
-    .filter((fileName: string) => fileName !== `./${type}/_meta.json`)
+    .filter((fileName: string) => fileName !== `./${locale}/${type}/_meta.json`)
     .map((fileName: string) => {
       const slug = fileName.replace(/^\.\//, '').replace(/\.json$/, '')
-      return getContentBySlug(type, slug)
+      return getContentBySlug(locale, type, slug)
     })
 }
 
-export function getContentNavigation<T>(defaultValue: T, type: string): T {
+export function getContentNavigation<T>(defaultValue: T, locale: string, type: string): T {
   try {
-    const navigationFile = `./${type}/_meta.json`
+    const navigationFile = `./${locale}/${type}/_meta.json`
     return contentContext(navigationFile) as T
   } catch (error) {
     console.warn(`Failed to read ${type} _meta.json file. Using default value.`)

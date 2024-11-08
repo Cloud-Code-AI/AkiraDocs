@@ -2,9 +2,8 @@
 
 import { useState, KeyboardEvent, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Button } from "akiradocs-ui"
+import { Input } from "akiradocs-ui"
 import { Folder, File, Plus, X, ChevronRight, ChevronDown, Trash2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { fetchAllContent } from '@/lib/getContents'
@@ -352,10 +351,10 @@ export default function ImprovedFileTreeUI() {
     });
   }
 
-  if (!isDevPage) {
-    router.push('/docs')
-    return null
-  }
+  // if (!isDevPage) {
+  //   router.push('/docs')
+  //   return null
+  // }
 
   return (
     <div className="p-6 bg-background min-h-screen text-foreground">

@@ -1,35 +1,14 @@
-  interface SocialLink {
-    name: string;
-    url: string;
-    icon: string;
-  }
-  
-  type FooterConfig = {
-    companyName: string;
-    socialLinks: SocialLink[];
-    madeWithLove: {
-      show: boolean;
-      team: string;
-    };
-  };
-  declare var require: {
-    context(
-      directory: string,
-      useSubdirectories: boolean,
-      regExp: RegExp
-    ): any;
-  };
+  import { getAkiradocsConfig } from "./getAkiradocsConfig";
+  import { FooterConfig } from '../types/config';
+
   export function getFooterConfig(): FooterConfig {
     // Using require.context to get the config file
-    const context = require.context('../../_contents', false, /_config\.json$/);
-    const configPath = context.keys()[0];
-    const config = context(configPath);
+    const config = getAkiradocsConfig();
   
     // Return only the header-related config
     return {
         companyName: config.footer?.companyName,
         socialLinks: config.footer?.socialLinks,
-        madeWithLove: config.footer?.madeWithLove,
     };
   }
   

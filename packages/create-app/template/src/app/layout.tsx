@@ -3,7 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "sonner"
 import { getMetadata } from "@/lib/getMetadata";
-import { ThemeProvider } from "@/components/ui/theme-provider"
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+import { type ThemeProviderProps } from "next-themes/dist/types"
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -49,6 +52,10 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
+function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
 
 export default function RootLayout({
   children,
