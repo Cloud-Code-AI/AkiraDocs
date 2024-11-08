@@ -31,4 +31,4 @@ export async function copyDir(src: string, dest: string) {
       await copyFile(srcPath, destPath);
     }
   }
-} 
+}

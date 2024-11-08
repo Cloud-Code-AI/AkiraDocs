@@ -11,6 +11,9 @@
     },
     "test": {
       "dependsOn": ["build"]
+    },
+    "lint": {
+      "outputs": []
     }
   }
 } 
