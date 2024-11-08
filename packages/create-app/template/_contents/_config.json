@@ -2,8 +2,6 @@
     "title": "Akira Docs",
     "description": "Next-gen documentation powered by AI",
     "aiSearch": false,
-    "author": "Akira Team",
-    "format": "json",
     "search": {
         "logo": {
             "path": "/akiradocs_logo.svg",

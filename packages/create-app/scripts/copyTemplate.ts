@@ -9,6 +9,7 @@ const ignoredPaths = [
   '.env',
   '.env.local',
   '.DS_Store',
+  '.turbo',
 ];
 
 export async function copyDir(src: string, dest: string) {

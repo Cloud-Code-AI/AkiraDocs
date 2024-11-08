@@ -44,6 +44,31 @@ npx create-akiradocs mydocs
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Updating a Project
+
+To update an existing Akira Docs site to the latest version:
+
+```bash
+npx update-akiradocs
+```
+
+This will update your project while preserving your content and configuration files.
+```
+
+Now users can update their existing Akira Docs sites using:
+```bash
+npx update-akiradocs
+```
+
+This implementation:
+1. Preserves user content by ignoring `_contents`, `contents`, and `akiradocs.config.json`
+2. Updates all other files with the latest template
+3. Provides a simple command-line interface
+4. Shows progress with a spinner and clear success/error messages
+5. Maintains the same code style and structure as the existing codebase
+
+The update command will copy the latest template files while preserving user-specific content and configuration files.
+
 ## Documentation
 
 For detailed documentation, visit [docs.akiradocs.com](https://docs.akiradocs.com)
