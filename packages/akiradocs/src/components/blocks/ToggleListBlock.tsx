@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronRight, ChevronDown } from 'lucide-react';
-import { cn } from "@/components/utils";
+import { cn } from "@/lib/utils";
 
 interface ToggleListProps {
   id?: string;

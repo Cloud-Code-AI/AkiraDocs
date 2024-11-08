@@ -46,7 +46,7 @@ export interface Block {
   };
 }
 
-export interface BlogPost {
+export interface Post {
   id: string;
   title: string;
   description: string;

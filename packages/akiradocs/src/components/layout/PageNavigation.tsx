@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from 'akiradocs-ui';
+import { Button } from "@/components/ui/button"
 
 interface PageNavigationProps {
   prev: { title: string; path: string } | null;

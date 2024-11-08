@@ -1,11 +1,11 @@
 "use client"
 import { Block } from '@/types/Block'
-import { Paragraph } from 'akiradocs-ui'
-import { HeadingTitle } from 'akiradocs-ui'
-import { List } from 'akiradocs-ui'
-import { Blockquote } from 'akiradocs-ui'
-import { Divider } from 'akiradocs-ui'
-import { CodeBlock } from 'akiradocs-ui'
+import { Paragraph } from "@/components/blocks/ParagraphBlock"
+import { HeadingTitle } from "@/components/blocks/HeadingBlock"
+import { List } from "@/components/blocks/ListBlock"
+import { Blockquote } from "@/components/blocks/BlockquoteBlock"
+import { Divider } from "@/components/blocks/DividerBlock"
+import { CodeBlock } from "@/components/blocks/CodeBlock"
 // import { Image } from '../blocks/Image'
 // import { Table } from '../blocks/Table'
 // import { ToggleList } from '../blocks/ToggleList'
@@ -14,7 +14,7 @@ import { CodeBlock } from 'akiradocs-ui'
 // import { Audio } from '../blocks/Audio'
 // import { File } from '../blocks/File'
 // import { Emoji } from '../blocks/Emoji'
-import { Callout } from 'akiradocs-ui'
+import { Callout } from "@/components/blocks/CalloutBlock"
 import { cn } from '@/lib/utils'
 import { ErrorBoundary } from 'react-error-boundary'
 

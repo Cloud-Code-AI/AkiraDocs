@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from "@/components/utils";
+import { cn } from "@/lib/utils";
 
 interface BlockquoteProps {
   id?: string;

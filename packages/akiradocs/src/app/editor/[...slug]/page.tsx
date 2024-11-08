@@ -1,16 +1,16 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Button } from "akiradocs-ui"
+import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 import { BlockType } from '@/types/Block'
 import { Plus } from 'lucide-react'
-import { ArticleHeaders } from 'akiradocs-ui'
-import { TitleBar } from 'akiradocs-ui'
+import { ArticleHeaders } from '@/components/blocks/ArticleHeaders'
+import { TitleBar } from '@/components/layout/TitleBar'
 import { DndContext, DragEndEvent, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import { SortableBlock } from 'akiradocs-ui'
-import { SEO } from 'akiradocs-ui'
+import { SortableBlock } from '@/components/blocks/SortableBlock'
+import { SEO } from '@/components/layout/SEO'
 
 type Block = {
   id: string

@@ -1,10 +1,10 @@
 import React from 'react';
-import { cn } from "@/components/utils";
+import { cn } from "@/lib/utils";
 
-interface VideoProps {
+interface FileProps {
   id?: string;
-  src: string;
-  caption?: string;
+  url: string;
+  name: string;
   align?: 'left' | 'center' | 'right';
   styles?: {
     bold?: boolean;
@@ -13,20 +13,18 @@ interface VideoProps {
   };
 }
 
-export function Video({ id, src, caption, align = 'left', styles }: VideoProps) {
+export function File({ id, url, name, align = 'left', styles }: FileProps) {
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
   return (
     <div id={id} className={`mb-6 py-1 ${alignClass}`}>
-      <video controls className="w-full">
-        <source src={src} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      {caption && <p className={cn(
-        "mt-2 text-sm text-muted-foreground",
+      <a href={url} download className={cn(
+        "text-primary hover:text-primary/80 hover:underline",
         styles?.bold && 'font-bold',
         styles?.italic && 'italic',
         styles?.underline && 'underline'
-      )}>{caption}</p>}
+      )}>
+        {name}
+      </a>
     </div>
   );
 }

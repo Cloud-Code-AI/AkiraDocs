@@ -80,18 +80,38 @@ export async function PUT(request: Request) {
       )
     }
 
+    // Validate content
+    if (!content) {
+      return NextResponse.json(
+        { error: 'No content provided' },
+        { status: 400 }
+      )
+    }
+
     const fullPath = path.join(process.cwd(), 'compiled', filePath)
     
-    // Prettify the JSON for better readability
-    const jsonContent = JSON.stringify(content, null, 2)
+    // Check if directory exists, if not create it
+    await mkdir(path.dirname(fullPath), { recursive: true })
     
-    await writeFile(fullPath, jsonContent, 'utf-8')
-    
-    return NextResponse.json({ success: true })
+    // Add retry logic
+    const maxRetries = 3;
+    for (let i = 0; i < maxRetries; i++) {
+      try {
+        const jsonContent = JSON.stringify(content, null, 2)
+        await writeFile(fullPath, jsonContent, 'utf-8')
+        return NextResponse.json({ success: true })
+      } catch (writeError) {
+        if (i === maxRetries - 1) throw writeError;
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1s before retry
+      }
+    }
   } catch (error) {
     console.error('Error writing file:', error)
     return NextResponse.json(
-      { error: 'Failed to write file' },
+      { 
+        error: 'Failed to write file',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     )
   }

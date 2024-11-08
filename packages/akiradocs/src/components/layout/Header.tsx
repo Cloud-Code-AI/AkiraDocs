@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 // import Image from 'next/image'
-import { Input } from "akiradocs-ui"
-import { Button } from "akiradocs-ui"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, Search } from 'lucide-react'
@@ -17,7 +17,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "akiradocs-ui"
+} from "@/components/ui/select"
 import { useRouter } from 'next/navigation'
 
 interface NavItem {

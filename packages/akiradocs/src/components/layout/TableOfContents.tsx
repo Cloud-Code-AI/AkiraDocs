@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { ScrollArea } from 'akiradocs-ui'
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface TableOfContentsProps {
   publishDate?: string;

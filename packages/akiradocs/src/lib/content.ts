@@ -1,4 +1,4 @@
-import { BlogPost } from '@/types/Block'
+import { Post } from '@/types/Block'
 declare var require: {
   context(
     directory: string,
@@ -8,7 +8,7 @@ declare var require: {
 };
 const contentContext = require.context(`../../compiled/`, true, /\.json$/)
 
-export function getContentBySlug(locale: string, type: string, slug: string): BlogPost {
+export function getContentBySlug(locale: string, type: string, slug: string): Post {
 
   let normalizedSlug: string
   if (slug.includes(`compiled/${locale}/${type}`)) {
@@ -41,7 +41,7 @@ export function getContentBySlug(locale: string, type: string, slug: string): Bl
   }
 }
 
-export function getAllPosts(locale: string, type: string): BlogPost[] {
+export function getAllPosts(locale: string, type: string): Post[] {
   return contentContext.keys()
     .filter((fileName: string) => fileName !== `./${locale}/${type}/_meta.json`)
     .map((fileName: string) => {

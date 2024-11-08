@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Image } from 'akiradocs-ui';
+import { Image } from '@/components/blocks/ImageBlock';
 import { ErrorBoundary } from 'react-error-boundary';
 
 interface MarkdownRendererProps {

@@ -1,6 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Info, AlertTriangle, CheckCircle, XCircle } from 'lucide-react'
-import { cn } from '@/components/utils'
+import { cn } from '@/lib/utils'
 
 type CalloutType = 'info' | 'warning' | 'success' | 'error'
 

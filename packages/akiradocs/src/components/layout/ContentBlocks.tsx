@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { BlockRenderer } from '../renderers/BlockRenderer'
+import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
 import { Block } from '../../types/Block'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 // import { Checkbox } from "@/components/ui/checkbox"
 // import { EmojiClickData } from 'emoji-picker-react'
 import { Card } from "@/components/ui/card"
-import { cn } from "@/components/utils"
+import { cn } from "@/lib/utils"
 
 interface ContentBlocksProps {
   blocks: Block[]

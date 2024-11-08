@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
-import { BlogPost } from '../../types/BlogPost'
-import { MarkdownRenderer } from '../renderers/MarkdownRenderer'
+import { Post } from '@/types/Block'
+import { MarkdownRenderer } from '@/lib/renderers/MarkdownRenderer'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Eye, EyeOff } from 'lucide-react'
 import matter from 'gray-matter'
 
 interface MarkdownEditorProps {
-  content: BlogPost
-  onChange: (content: BlogPost) => void
+  content: Post
+  onChange: (content: Post) => void
 }
 
 export function MarkdownEditor({ content, onChange }: MarkdownEditorProps) {
@@ -16,7 +16,7 @@ export function MarkdownEditor({ content, onChange }: MarkdownEditorProps) {
   const [showPreview, setShowPreview] = useState(false)
 
   useEffect(() => {
-    // Convert BlogPost to markdown format
+    // Convert Post to markdown format
     const frontmatter = {
       title: content.title,
       description: content.description,

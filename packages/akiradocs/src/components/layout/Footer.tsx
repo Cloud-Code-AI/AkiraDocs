@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
-import { Button } from "akiradocs-ui"
+import { Button } from "@/components/ui/button"
 import IconSVG from "@/components/ui/iconSVG"
 
 // Define the structure for social links
