@@ -9,9 +9,9 @@ declare var require: {
     regExp: RegExp
   ): any;
 };
-// Exclude _meta.json files from articles and docs context
-const articlesContext = require.context('../../compiled/articles', false, /^(?!.*_meta\.json$).*\.json$/)
-const docsContext = require.context('../../compiled/docs', false, /^(?!.*_meta\.json$).*\.json$/)
+// Match files in locale subdirectories that contain 'article' or 'docs', excluding _meta.json
+const articlesContext = require.context('../../compiled', true, /^\.\/[^/]+\/(article|docs)\/(?!.*_meta\.json$).*\.json$/)
+const docsContext = require.context('../../compiled', true, /^\.\/[^/]+\/(article|docs)\/(?!.*_meta\.json$).*\.json$/)
 
 export function getRecommendedArticles(): Article[] | null {
   try {

@@ -1,11 +1,12 @@
 {
   "name": "create-akiradocs",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Create Akira Docs documentation sites with one command",
   "main": "./dist/index.js",
   "type": "module",
   "bin": {
-    "create-akiradocs": "./dist/index.js"
+    "create-akiradocs": "./dist/index.js",
+    "update-akiradocs": "./dist/index.js"
   },
   "scripts": {
     "build": "tsup",

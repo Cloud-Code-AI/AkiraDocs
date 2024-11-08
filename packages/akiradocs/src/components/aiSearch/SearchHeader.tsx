@@ -1,23 +1,8 @@
 "use client"
 import IconSVG from "@/components/ui/iconSVG";
 import { motion } from "framer-motion"
+import { SearchConfig } from "@/types/config";
 
-interface SearchHeaderProps {
-  logo?: {
-    path: string;
-    width: number;
-    height: number;
-    show: boolean;
-  };
-  title?: {
-    text: string;
-    show: boolean;
-  };
-  description?: {
-    text: string;
-    show: boolean;
-  };
-}
 
 export function SearchHeader({
   logo = {
@@ -34,7 +19,7 @@ export function SearchHeader({
     text: 'Next-gen documentation powered by AI',
     show: true
   }
-}: SearchHeaderProps) {
+}: SearchConfig) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: -20 }}

@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
-import { Button } from 'akiradocs-ui'
+import { Button } from '@/components/ui/button'
 import { getRecentContent } from '@/lib/content'
 import { redirect } from 'next/navigation'
-
+import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
     <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
       {children}
@@ -13,8 +13,9 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
 export default function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = React.use(params)
   const recentContent = getRecentContent('en/docs')
+  const config = getAkiradocsConfig()
   if (recentContent) {
-    redirect(`/docs/${recentContent.slug}`)
+    redirect(`${config.languages.defaultLocale}/docs/${recentContent.slug}`)
   }
 
 

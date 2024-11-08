@@ -4,6 +4,7 @@ import { mkdir, readFile, copyFile, readdir } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import ora from 'ora';
+import { updateDir } from '../scripts/updateTemplate';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -59,6 +60,26 @@ async function main() {
         console.log(chalk.cyan('  npm run dev'));
       } catch (error) {
         spinner.fail(chalk.red('Failed to create project'));
+        console.error(error);
+        process.exit(1);
+      }
+    });
+
+  cli
+    .command('update', 'Update an existing Akira Docs site')
+    .action(async () => {
+      const spinner = ora('Updating project...').start();
+
+      try {
+        const templateDir = path.join(__dirname, '../template');
+        await updateDir(templateDir, '.');
+
+        spinner.succeed(chalk.green('Project updated successfully!'));
+        console.log('\nNext steps:');
+        console.log(chalk.cyan('  npm install'));
+        console.log(chalk.cyan('  npm run dev'));
+      } catch (error) {
+        spinner.fail(chalk.red('Failed to update project'));
         console.error(error);
         process.exit(1);
       }

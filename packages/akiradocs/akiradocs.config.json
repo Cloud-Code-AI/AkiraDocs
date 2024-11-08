@@ -22,7 +22,8 @@
         "logo": {
             "path": "/akiradocs_logo.svg",
             "width": 120,
-            "height": 30
+            "height": 30,
+            "show": true
         },
         "title": {
             "text": "Akira Docs",

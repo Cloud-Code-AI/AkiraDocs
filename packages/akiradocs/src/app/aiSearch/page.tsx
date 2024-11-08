@@ -1,15 +1,15 @@
 "use client"
 
 import { useState } from 'react'
-import { SearchHeader } from 'akiradocs-ui'
-import { SearchBar } from 'akiradocs-ui'
-import { LegacyDocsToggle } from 'akiradocs-ui'
-import { AIResponse } from 'akiradocs-ui'
-import { RecommendedArticles } from 'akiradocs-ui'
+import { SearchHeader } from '@/components/aiSearch/SearchHeader'
+import { SearchBar } from '@/components/aiSearch/SearchBar'
+import { LegacyDocsToggle } from '@/components/aiSearch/LegacyDocsToggle'
+import { AIResponse } from '@/components/aiSearch/AIResponse'
+import { RecommendedArticles } from '@/components/aiSearch/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
 import { getRecommendedArticles } from '@/lib/recommendedArticles'
 import { getSearchConfig } from '@/lib/searchConfig'
-import { Button } from 'akiradocs-ui'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
 
