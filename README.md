@@ -160,7 +160,7 @@ npx create-akiradocs@latest mydocs
 
 ## 🤝 Join Our Community
 
-- [Discord Community](https://discord.gg/zvYZukgeH2))
+- [Discord Community](https://discord.gg/zvYZukgeH2)
 - [GitHub Discussions](https://github.com/akiradocs/discussions)
 - [Documentation](https://docs.akiradocs.com)
 - [Enterprise Support (Coming Q1 2025)](https://akiradocs.com/enterprise)
