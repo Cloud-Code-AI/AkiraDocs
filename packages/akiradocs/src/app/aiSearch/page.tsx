@@ -19,9 +19,8 @@ export default function Home() {
   const recommendedArticles = getRecommendedArticles()
   const searchConfig = getSearchConfig()
   const config = getAkiradocsConfig()
-
   // If AI Search is disabled, show the disabled message
-  if (!config.aiSearch) {
+  if (!config.navigation.header.items.find((item: any) => item.label === 'AI Search')?.show) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4">
         <div className="text-center space-y-4 max-w-md">
@@ -30,7 +29,7 @@ export default function Home() {
             AI Search is currently disabled. To enable this feature, set &quot;aiSearch&quot;: true in your configuration file.
           </p>
           <Button asChild>
-            <Link href="/docs">Go to Documentation</Link>
+            <Link href="/">Go to Home</Link>
           </Button>
         </div>
       </div>
@@ -65,7 +64,7 @@ export default function Home() {
             onQueryChange={setQuery}
             onSubmit={handleSearch}
           />
-          <LegacyDocsToggle />
+          <LegacyDocsToggle/>
         </div>
 
         <AnimatePresence>

@@ -11,9 +11,52 @@ async function convertMarkdownToBlocks(content) {
 
   const lines = content.split('\n');
   
+  let listItems = [];
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     
+    // Handle list items
+    if (line.trim().startsWith('-')) {
+      if (currentBlock.length > 0) {
+        blocks.push({
+          id: String(blockId++),
+          type: 'paragraph',
+          content: currentBlock.join('\n').trim()
+        });
+        currentBlock = [];
+      }
+      
+      listItems.push(line.trim().substring(1).trim());
+      
+      // Check if next line is not a list item or if this is the last line
+      if (i === lines.length - 1 || !lines[i + 1].trim().startsWith('-')) {
+        blocks.push({
+          id: String(blockId++),
+          type: 'list',
+          content: listItems.join('\n'),
+          metadata: {
+            listType: 'unordered'
+          }
+        });
+        listItems = [];
+      }
+      continue;
+    }
+
+    // If we reach here and have pending list items, add them as a block
+    if (listItems.length > 0) {
+      blocks.push({
+        id: String(blockId++),
+        type: 'list',
+        content: listItems.join('\n'),
+        metadata: {
+          listType: 'unordered'
+        }
+      });
+      listItems = [];
+    }
+
     // Handle code blocks
     if (line.startsWith('```')) {
       if (currentBlock.length > 0) {
@@ -129,6 +172,7 @@ async function updateMetaFile(folderPath, newFile) {
   if (existsSync(metaPath)) {
     const content = await readFile(metaPath, 'utf-8');
     meta = JSON.parse(content);
+    console.log('Found existing meta file:', metaPath);
   }
 
   // Get the file name without extension
@@ -138,10 +182,12 @@ async function updateMetaFile(folderPath, newFile) {
   const compiledContent = JSON.parse(await readFile(newFile, 'utf-8'));
   const title = compiledContent.title || fileName;
   
-  // Get the relative path without the 'compiled' prefix and '.json' extension
+  // Get the relative path without the 'compiled' prefix, language code, and '.json' extension
   const relativePath = path.dirname(newFile)
     .split('compiled/')[1]
-    .replace(/^\//, '');
+    .split('/')
+    .slice(1) // Skip the language code part
+    .join('/');
     
   // Add or update the entry
   meta[fileName] = {

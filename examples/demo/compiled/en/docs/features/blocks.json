@@ -1,0 +1,39 @@
+{
+    "title": "Content Blocks",
+    "description": "Understanding and using Akira's content block system",
+    "author": "Akira Team",
+    "publishDate": "2024-01-15T00:00:00.000Z",
+    "modifiedDate": "2024-01-20T00:00:00.000Z",
+    "category": "Features",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Content Blocks",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "Content blocks are the fundamental building units of Akira documentation. They provide a flexible way to structure and present information."
+      },
+      {
+        "id": "3",
+        "type": "heading",
+        "content": "Available Block Types",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "4",
+        "type": "list",
+        "content": "Text blocks\nCode blocks\nImage blocks\nCallout blocks\nTable blocks\nCustom blocks",
+        "metadata": {
+          "listType": "unordered"
+        }
+      }
+    ]
+  }

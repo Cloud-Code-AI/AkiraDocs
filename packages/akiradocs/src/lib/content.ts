@@ -8,16 +8,14 @@ declare var require: {
 };
 const contentContext = require.context(`../../compiled/`, true, /\.json$/)
 
-export function getContentBySlug(locale: string, type: string, slug: string): Post {
+export function getContentBySlug(locale: string, type: string, slug: string): Post | null {
 
   let normalizedSlug: string
   if (slug.includes(`compiled/${locale}/${type}`)) {
     normalizedSlug = slug.split('/').slice(3).join('/') || ''
-    console.log(normalizedSlug)
   } else {
     normalizedSlug = slug || ''
   }
-  console.log(normalizedSlug, type)
   try {
       if (normalizedSlug === '') {
         // Get all articles and sort by date to find the latest
@@ -26,7 +24,6 @@ export function getContentBySlug(locale: string, type: string, slug: string): Po
           const sortedArticles = articles.sort((a, b) =>
             new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
           )
-          console.log(sortedArticles)
           if (sortedArticles.length > 0) {
             return sortedArticles[0]
         }
@@ -37,7 +34,7 @@ export function getContentBySlug(locale: string, type: string, slug: string): Po
 
   } catch (error) {
     console.error(`Error reading file: ${normalizedSlug}.json`, error)
-    throw new Error(`Content not found: ${normalizedSlug}`)
+    return null
   }
 }
 

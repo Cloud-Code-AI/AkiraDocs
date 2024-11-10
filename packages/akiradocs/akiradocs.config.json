@@ -1,42 +1,35 @@
 {
-    "title": "Akira Docs",
-    "description": "Next-gen documentation powered by AI",
-    "aiSearch": false,
-    "search": {
-        "logo": {
-            "path": "/akiradocs_logo.svg",
-            "width": 200,
-            "height": 50,
-            "show": true
-        },
-        "title": {
-            "text": "Akira Docs",
-            "show": false
-        },
-        "description": {
-            "text": "Next-gen documentation powered by AI",
-            "show": true
-        }
+    "site": {
+        "title": "Akira Docs",
+        "description": "Next-gen documentation powered by AI"
     },
-    "header": {
+    "branding": {
         "logo": {
             "path": "/akiradocs_logo.svg",
             "width": 120,
             "height": 30,
             "show": true
         },
-        "title": {
-            "text": "Akira Docs",
-            "show": false
-        },
-        "searchPlaceholder": "Search Akira...",
-        "navItems": [
-            { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg" },
-            { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg" },
-            { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg" }
-        ]
+        "favicon": {
+            "path": "/akira_favicon.png",
+            "show": true
+        }
     },
-    "footer": { 
+    "navigation": {
+        "header": {
+            "title": {
+                "text": "Akira Docs",
+                "show": false
+            },
+            "searchPlaceholder": "Search Akira...",
+            "items": [
+                { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": false },
+                { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg", "show": true },
+                { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg", "show": true }
+            ]
+        }
+    },
+    "footer": {
         "companyName": "Cloud Code AI",
         "socialLinks": [
             { "name": "GitHub", "url": "https://github.com/Cloud-Code-AI/akiradocs-template", "icon": "/github.svg" },
@@ -44,8 +37,9 @@
             { "name": "LinkedIn", "url": "https://www.linkedin.com/company/cloudcode-ai", "icon": "/linkedin.svg" }
         ]
     },
-    "languages": {
+    "localization": {
         "defaultLocale": "en",
+        "fallbackLocale": "en",
         "locales": [
             {
                 "code": "en",
@@ -62,7 +56,6 @@
                 "name": "Français",
                 "flag": "🇫🇷"
             }
-        ],
-        "fallbackLocale": "en"
+        ]
     }
 }

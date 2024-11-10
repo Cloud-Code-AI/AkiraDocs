@@ -1,7 +1,7 @@
 {
   "welcome": {
     "title": "welcome",
-    "path": "/en/articles/welcome"
+    "path": "/articles/welcome"
   },
   "template": {
     "title": "Template",
@@ -9,6 +9,6 @@
   },
   "ai_integration": {
     "title": "ai_integration",
-    "path": "/en/articles/ai_integration"
+    "path": "/articles/ai_integration"
   }
 }
