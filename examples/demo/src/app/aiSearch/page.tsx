@@ -20,7 +20,7 @@ export default function Home() {
   const searchConfig = getSearchConfig()
   const config = getAkiradocsConfig()
   // If AI Search is disabled, show the disabled message
-  if (!config.header.navItems.find((item: any) => item.label === 'AI Search')?.show) {
+  if (!config.navigation.header.items.find((item: any) => item.label === 'AI Search')?.show) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4">
         <div className="text-center space-y-4 max-w-md">
