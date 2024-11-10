@@ -17,7 +17,6 @@ export function fetchAllContent() {
   const content: { [key: string]: any } = {};
   
   contentContext.keys().forEach((key: string) => {
-    console.log(key)
     const fileName = key.replace(/^\.\//, '');
     const fileContent = contentContext(key);
     content[fileName] = fileContent;

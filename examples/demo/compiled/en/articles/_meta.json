@@ -1,0 +1,22 @@
+{
+  "welcome": {
+    "title": "welcome",
+    "path": "/articles/welcome"
+  },
+  "template": {
+    "title": "Template",
+    "path": "/articles/template"
+  },
+  "ai_integration": {
+    "title": "ai_integration",
+    "path": "/articles/ai_integration"
+  },
+  "showcase": { 
+    "title": "showcase",
+    "path": "/articles/showcase"
+  },
+  "test_blog_post": {
+    "title": "test_blog_post",
+    "path": "/articles/test_blog_post"
+  }
+}

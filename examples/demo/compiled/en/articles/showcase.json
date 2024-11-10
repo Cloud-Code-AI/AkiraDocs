@@ -1,0 +1,42 @@
+{
+    "title": "Feature Showcase",
+    "description": "Explore the powerful features of AkiraDocs through interactive examples.",
+    "author": "AkiraDocs Team",
+    "publishDate": "2024-11-09T00:00:00.000Z",
+    "modifiedDate": "2024-11-09T00:00:00.000Z",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Discover AkiraDocs Features",
+        "metadata": {
+          "level": 1,
+          "styles": {
+            "bold": true
+          }
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "AkiraDocs combines powerful documentation features with an intuitive interface. Let's explore what makes it special."
+      },
+      {
+        "id": "3",
+        "type": "list",
+        "content": "Real-time Collaboration\nVersion Control Integration\nAI-Powered Assistance\nCustom Themes\nAPI Documentation Tools",
+        "metadata": {
+          "listType": "unordered"
+        }
+      },
+      {
+        "id": "4",
+        "type": "callout",
+        "content": "Try our interactive demo to experience these features firsthand!",
+        "metadata": {
+          "type": "info",
+          "title": "Get Started"
+        }
+      }
+    ]
+  }

@@ -172,6 +172,7 @@ async function updateMetaFile(folderPath, newFile) {
   if (existsSync(metaPath)) {
     const content = await readFile(metaPath, 'utf-8');
     meta = JSON.parse(content);
+    console.log('Found existing meta file:', metaPath);
   }
 
   // Get the file name without extension
@@ -181,10 +182,12 @@ async function updateMetaFile(folderPath, newFile) {
   const compiledContent = JSON.parse(await readFile(newFile, 'utf-8'));
   const title = compiledContent.title || fileName;
   
-  // Get the relative path without the 'compiled' prefix and '.json' extension
+  // Get the relative path without the 'compiled' prefix, language code, and '.json' extension
   const relativePath = path.dirname(newFile)
     .split('compiled/')[1]
-    .replace(/^\//, '');
+    .split('/')
+    .slice(1) // Skip the language code part
+    .join('/');
     
   // Add or update the entry
   meta[fileName] = {

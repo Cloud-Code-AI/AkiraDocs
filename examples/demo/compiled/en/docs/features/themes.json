@@ -1,0 +1,31 @@
+{
+    "title": "Theming",
+    "description": "Customize the look and feel of your Akira documentation",
+    "author": "Akira Team",
+    "publishDate": "2024-01-15T00:00:00.000Z",
+    "modifiedDate": "2024-01-20T00:00:00.000Z",
+    "category": "Features",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Theming Guide",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "Akira provides powerful theming capabilities to customize your documentation's appearance. You can use pre-built themes or create your own."
+      },
+      {
+        "id": "3",
+        "type": "code",
+        "content": "// theme.config.js\nmodule.exports = {\n  colors: {\n    primary: '#0066cc',\n    secondary: '#4c9aff',\n    background: '#ffffff'\n  },\n  typography: {\n    fontFamily: 'Inter, sans-serif',\n    baseSize: '16px'\n  }\n}",
+        "metadata": {
+          "language": "javascript"
+        }
+      }
+    ]
+  }

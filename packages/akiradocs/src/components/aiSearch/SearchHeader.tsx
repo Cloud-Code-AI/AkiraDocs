@@ -11,14 +11,8 @@ export function SearchHeader({
     height: 50,
     show: true
   },
-  title = {
-    text: '',
-    show: false
-  },
-  description = {
-    text: 'Next-gen documentation powered by AI',
-    show: true
-  }
+  title = 'Akiradocs',
+  description = 'Next-gen documentation powered by AI',
 }: SearchConfig) {
   return (
     <motion.div 
@@ -31,23 +25,22 @@ export function SearchHeader({
         {logo.show && (
           <IconSVG 
             src={logo.path} 
-            alt={`${title.text} logo`}
+            alt={`${title} logo`}
             width={logo.width}
             height={logo.height}
             className="relative rounded-full" 
        />
         )}
-        {title.show && (
+        
           <h1 className="text-5xl font-extrabold text-primary">
-            {title.text}
+            {title}
           </h1>
-        )}
       </div>
-      {description.show && (
+
         <p className="text-xl text-muted-foreground mb-8">
-          {description.text}
+          {description}
         </p>
-      )}
+
     </motion.div>
   )
 }

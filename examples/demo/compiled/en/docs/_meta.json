@@ -1,0 +1,36 @@
+{
+  "introduction": {
+    "title": "introduction",
+    "path": "/docs/introduction"
+  },
+  "gettingStarted": {
+    "title": "Getting Started",
+    "items": {
+      "quickstart": {
+        "title": "Quickstart",
+        "path": "/docs/getting-started/quickstart"
+      },
+      "configuration": {
+        "title": "Configuration",
+        "path": "/docs/getting-started/configuration"
+      }
+    }
+  },
+  "features": {
+    "title": "features",
+    "items": {
+      "blocks": {
+        "title": "Content Blocks",
+        "path": "/docs/features/blocks"
+      },
+      "themes": {
+        "title": "Theming",
+        "path": "/docs/features/themes"
+      }
+    }
+  },
+  "api": {
+    "title": "API Reference",
+    "path": "/docs/api"
+  }
+}

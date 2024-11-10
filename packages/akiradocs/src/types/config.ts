@@ -16,10 +16,6 @@ interface NavItem {
     show?: boolean;
   }
   
-  interface TitleConfig {
-    text: string;
-    show: boolean;
-  }
   
   interface DescriptionConfig {
     text: string;
@@ -28,7 +24,7 @@ interface NavItem {
   
   export interface HeaderConfig {
     logo?: Logo;
-    title?: TitleConfig;
+    title?: string;
     showSearch?: boolean;
     searchPlaceholder?: string;
     navItems?: NavItem[];
@@ -51,8 +47,8 @@ interface NavItem {
   
   export interface SearchConfig {
     logo?: Logo;
-    title?: TitleConfig;
-    description?: DescriptionConfig;
+    title?: string;
+    description?: string;
   }
   
   export interface Metadata {
