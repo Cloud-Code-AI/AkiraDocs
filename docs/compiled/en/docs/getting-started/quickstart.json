@@ -1,0 +1,61 @@
+{
+  "title": "Quickstart Guide",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-01-01T00:00:00.000Z",
+  "modifiedDate": "2024-01-01T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Quickstart Guide",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Get up and running with Akira Docs in minutes\n\nFollow these steps to start using Akira Docs for your documentation needs."
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "bash\ngit clone https://github.com/your-org/akira-docs-template\ncd akira-docs-template\nnpm install\nnpm run dev",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "callout",
+      "content": "Make sure you have Node.js 16 or higher installed on your system.",
+      "metadata": {
+        "type": "warning",
+        "title": "Prerequisites"
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

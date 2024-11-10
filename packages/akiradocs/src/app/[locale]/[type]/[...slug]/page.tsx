@@ -68,7 +68,6 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
 
             <MainTitle>{post.title}</MainTitle>
             <SubTitle>{post.description}</SubTitle>
-            <br></br>
             {post.blocks.map((block) => (
               <BlockRenderer key={block.id} block={block} />
             ))}

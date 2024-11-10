@@ -1,0 +1,14 @@
+{
+  "welcome": {
+    "title": "welcome",
+    "path": "/en/articles/welcome"
+  },
+  "template": {
+    "title": "Template",
+    "path": "/articles/template"
+  },
+  "ai_integration": {
+    "title": "ai_integration",
+    "path": "/en/articles/ai_integration"
+  }
+}

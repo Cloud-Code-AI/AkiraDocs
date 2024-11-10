@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "Introduction to Akira Docs",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "Learn about Akira Docs and its core features\n\nAkira Docs is a modern documentation platform that combines the power of AI with an intuitive block-based content system. This guide will help you understand the core concepts and features."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Key Features",
       "metadata": {
@@ -38,9 +25,22 @@
       }
     },
     {
+      "id": "3",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": "AI-powered search\nBlock-based content editing\nResponsive design\nCustomizable themes\nMarkdown support",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
       "id": "5",
       "type": "paragraph",
-      "content": "- AI-powered search\n- Block-based content editing\n- Responsive design\n- Customizable themes\n- Markdown support"
+      "content": ""
     }
   ]
 }

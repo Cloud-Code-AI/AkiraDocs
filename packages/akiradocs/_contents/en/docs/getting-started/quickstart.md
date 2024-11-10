@@ -10,8 +10,6 @@ keywords:
   - AI
 ---
 
-# Quickstart Guide
-
 Get up and running with Akira Docs in minutes
 
 Follow these steps to start using Akira Docs for your documentation needs.

@@ -11,9 +11,52 @@ async function convertMarkdownToBlocks(content) {
 
   const lines = content.split('\n');
   
+  let listItems = [];
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     
+    // Handle list items
+    if (line.trim().startsWith('-')) {
+      if (currentBlock.length > 0) {
+        blocks.push({
+          id: String(blockId++),
+          type: 'paragraph',
+          content: currentBlock.join('\n').trim()
+        });
+        currentBlock = [];
+      }
+      
+      listItems.push(line.trim().substring(1).trim());
+      
+      // Check if next line is not a list item or if this is the last line
+      if (i === lines.length - 1 || !lines[i + 1].trim().startsWith('-')) {
+        blocks.push({
+          id: String(blockId++),
+          type: 'list',
+          content: listItems.join('\n'),
+          metadata: {
+            listType: 'unordered'
+          }
+        });
+        listItems = [];
+      }
+      continue;
+    }
+
+    // If we reach here and have pending list items, add them as a block
+    if (listItems.length > 0) {
+      blocks.push({
+        id: String(blockId++),
+        type: 'list',
+        content: listItems.join('\n'),
+        metadata: {
+          listType: 'unordered'
+        }
+      });
+      listItems = [];
+    }
+
     // Handle code blocks
     if (line.startsWith('```')) {
       if (currentBlock.length > 0) {

@@ -1,0 +1,15 @@
+{
+  "introduction": {
+    "title": "introduction",
+    "path": "/en/docs/introduction"
+  },
+  "gettingStarted": {
+    "title": "Getting Started",
+    "items": {
+      "quickstart": {
+        "title": "Quickstart",
+        "path": "/docs/getting-started/quickstart"
+      }
+    }
+  }
+}

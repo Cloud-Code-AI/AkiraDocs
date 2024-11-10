@@ -9,8 +9,6 @@ keywords:
   - AI
 ---
 
-# Introduction to Akira Docs
-
 Learn about Akira Docs and its core features
 
 Akira Docs is a modern documentation platform that combines the power of AI with an intuitive block-based content system. This guide will help you understand the core concepts and features.
