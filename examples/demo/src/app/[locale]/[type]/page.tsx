@@ -1,16 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
 import { redirect } from 'next/navigation'
 import { getRecentContent } from '@/lib/content'
 import { NotFound } from '@/components/layout/NotFound'
 
-const PostContainer = ({ children }: { children: React.ReactNode }) => (
-  <div className="max-w-4xl mx-auto px-6 font-sans leading-relaxed relative">
-    {children}
-  </div>
-)
+export const runtime = 'edge'
 
 export default function Page({ params }: { params: Promise<{ locale: string, type: string }> }) {
   const resolvedParams = React.use(params)

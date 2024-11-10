@@ -81,11 +81,11 @@ export function Header({
               </motion.div>
             )}
             
-            {title && (
+            {/* {title && (
               <h1 className="text-xl font-bold text-foreground">
                 {title}
               </h1>
-            )}
+            )} */}
 
             {languages && languages.locales.length > 1 && (
               <Select

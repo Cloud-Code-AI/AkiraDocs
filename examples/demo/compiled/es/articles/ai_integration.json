@@ -1,0 +1,45 @@
+{
+    "title": "",
+    "description": "",
+    "author": "Equipo Akira",
+    "publishDate": "2024-11-10T00:00:00.000Z",
+    "modifiedDate": "2024-11-10T00:00:00.000Z",
+    "category": "Características",
+    "keywords": [
+      "Asistente IA",
+      "Procesamiento de Lenguaje Natural",
+      "Interfaz de Chat",
+      "Generación de Código"
+    ],
+    "blocks": [
+      {
+        "id": "2",
+        "type": "heading",
+        "content": "Integración del Asistente IA",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "3",
+        "type": "paragraph",
+        "content": "Aprende a usar el asistente IA integrado de Akira para mejorar la documentación\n\nEl Asistente IA de Akira es una herramienta poderosa que ayuda a desarrolladores y escritores técnicos a crear, mantener y mejorar la documentación a través de interacciones en lenguaje natural."
+      },
+      {
+        "id": "4",
+        "type": "heading",
+        "content": "Características Principales",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "6",
+        "type": "list",
+        "content": "Generación de documentación en lenguaje natural\nSugerencias de ejemplos de código\nResumen de contenido\nMejoras de gramática y estilo\nSoporte multilingüe",
+        "metadata": {
+          "listType": "unordered"
+        }
+      }
+    ]
+  }

@@ -17,6 +17,9 @@ import { PageNavigation } from '@/components/layout/PageNavigation'
 import { MainTitle, SubTitle } from '@/components/blocks/HeadingBlock'
 import { SEO } from '@/components/layout/SEO'
 import { NotFound } from '@/components/layout/NotFound'
+
+export const runtime = 'edge'
+
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="flex-1 min-w-0 px-8 py-6 mx-4 font-sans leading-relaxed relative">
     {children}

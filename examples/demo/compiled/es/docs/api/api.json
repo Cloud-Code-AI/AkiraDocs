@@ -1,0 +1,39 @@
+{
+    "title": "Referencia de la API",
+    "description": "Documentación completa de la API de Akira",
+    "author": "Equipo Akira",
+    "publishDate": "2024-11-10T00:00:00.000Z",
+    "modifiedDate": "2024-11-10T00:00:00.000Z",
+    "category": "API",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Referencia de la API",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "Esta sección proporciona documentación detallada para las APIs de Akira, incluyendo opciones de configuración, desarrollo de plugins y puntos de integración."
+      },
+      {
+        "id": "3",
+        "type": "heading",
+        "content": "APIs Principales",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "4",
+        "type": "list",
+        "content": "API de Configuración\nAPI de Plugins\nAPI de Temas\nAPI de Contenido\nAPI de Compilación",
+        "metadata": {
+          "listType": "unordered"
+        }
+      }
+    ]
+}

@@ -1,0 +1,159 @@
+{
+  "title": "Entrada de Blog de Prueba",
+  "description": "Una entrada de blog de prueba para demostrar todos los tipos de bloques.",
+  "author": "Anónimo",
+  "date": "2024-11-08",
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Ejemplo de Encabezado Muestra1",
+      "metadata": {
+        "level": 1,
+        "styles": {
+          "italic": true,
+          "underline": true
+        }
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Este párrafo es parte de la entrada de blog de prueba. Demuestra el bloque de párrafo."
+    },
+    {
+      "id": "3",
+      "type": "code",
+      "content": "console.log('Probando todos los bloques');",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "4",
+      "type": "image",
+      "content": "/akiradocs_logo.svg",
+      "metadata": {
+        "alt": "Imagen de Prueba",
+        "caption": "Esta es una imagen de prueba",
+        "size": "small",
+        "position": "center"
+      }
+    },
+    {
+      "id": "5",
+      "type": "list",
+      "content": "Elemento 1\nElemento 2\nElemento 3",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "6",
+      "type": "divider",
+      "content": ""
+    },
+    {
+      "id": "7",
+      "type": "table",
+      "content": "",
+      "metadata": {
+        "headers": [
+          "Columna 1",
+          "Columna 2"
+        ],
+        "rows": [
+          [
+            "Fila 1, Celda 1",
+            "Fila 1, Celda 2"
+          ],
+          [
+            "Fila 2, Celda 1",
+            "Fila 2, Celda 2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "type": "blockquote",
+      "content": "Esta es una cita de prueba."
+    },
+    {
+      "id": "9",
+      "type": "toggleList",
+      "content": "",
+      "metadata": {
+        "items": [
+          {
+            "title": "Elemento Desplegable 1",
+            "content": "Contenido para elemento desplegable 1"
+          },
+          {
+            "title": "Elemento Desplegable 2",
+            "content": "Contenido para elemento desplegable 2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "10",
+      "type": "checkList",
+      "content": "",
+      "metadata": {
+        "checkedItems": [
+          {
+            "text": "Elemento de Verificación 1",
+            "checked": true
+          },
+          {
+            "text": "Elemento de Verificación 2",
+            "checked": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "11",
+      "type": "video",
+      "content": "/test_video.mp4",
+      "metadata": {
+        "caption": "Este es un video de prueba"
+      }
+    },
+    {
+      "id": "12",
+      "type": "audio",
+      "content": "/test_audio.mp3",
+      "metadata": {
+        "caption": "Este es un audio de prueba"
+      }
+    },
+    {
+      "id": "13",
+      "type": "file",
+      "content": "/test_document.pdf",
+      "metadata": {
+        "name": "Documento de Prueba"
+      }
+    },
+    {
+      "id": "14",
+      "type": "emoji",
+      "content": "😊",
+      "metadata": {
+        "label": "cara sonriente"
+      }
+    },
+    {
+      "id": "15",
+      "type": "callout",
+      "content": "Este es un mensaje importante de llamada de atención.",
+      "metadata": {
+        "type": "info",
+        "title": "Importante"
+      }
+    }
+  ]
+}

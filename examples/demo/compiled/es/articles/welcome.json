@@ -1,0 +1,33 @@
+{
+    "title": "Bienvenido a Akira Doc",
+    "description": "Comienza con Akira Docs - Documentación de próxima generación impulsada por IA",
+    "author": "Anónimo",
+    "publishDate": "2024-11-10",
+    "modifiedDate": "2024-11-10",
+    "category": "Primeros Pasos",
+    "keywords": ["Akira Docs", "Documentación", "IA"],
+    "blocks": [
+      {
+        "id": "1",
+        "type": "paragraph",
+        "content": "Bienvenido a Akira Docs, la plataforma de documentación de próxima generación impulsada por IA. Esta plantilla te ayudará a comenzar a crear tu propia documentación."
+      },
+      {
+        "id": "2",
+        "type": "list",
+        "content": "Fácil de personalizar\nBúsqueda impulsada por IA\nSistema de contenido basado en bloques\nDiseño responsivo",
+        "metadata": {
+          "listType": "unordered"
+        }
+      },
+      {
+        "id": "3",
+        "type": "callout",
+        "content": "¡Comienza personalizando esta plantilla para que coincida con las necesidades de tu proyecto!",
+        "metadata": {
+          "type": "info",
+          "title": "Primeros Pasos"
+        }
+      }
+    ]
+  }
