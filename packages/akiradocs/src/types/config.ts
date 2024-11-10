@@ -1,6 +1,7 @@
 interface NavItem {
     label: string;
     href: string;
+    show?: boolean;
   }
   
   interface SocialLink {

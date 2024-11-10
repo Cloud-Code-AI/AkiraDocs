@@ -1,6 +1,6 @@
 {
   "welcome": {
-    "title": "welcome",
+    "title": "Welcome",
     "path": "/articles/welcome"
   },
   "template": {
@@ -8,7 +8,7 @@
     "path": "/articles/template"
   },
   "ai_integration": {
-    "title": "ai_integration",
+    "title": "AI Integration",
     "path": "/articles/ai_integration"
   },
   "test_blog_post": {
