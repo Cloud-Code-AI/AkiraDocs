@@ -1,6 +1,6 @@
 {
   "name": "akiradocs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "compile": "node scripts/compile.js",
@@ -64,5 +64,8 @@
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18.18.0"
   }
 }
