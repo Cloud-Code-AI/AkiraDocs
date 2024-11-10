@@ -5,7 +5,7 @@ export function getMetadata(): Metadata {
     const config = getAkiradocsConfig();
 
     return {
-        title: config.title ?? "Akira Docs",
-        description: config.description ?? "Next-Gen Documentation",
+        title: config.site.title ?? "Akira Docs",
+        description: config.site.description ?? "Next-Gen Documentation",
     };
 }

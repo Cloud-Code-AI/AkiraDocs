@@ -34,27 +34,39 @@ type Logo = {
     flag: string;
   };
   
-  type Languages = {
+  type Localization = {
     defaultLocale: string;
     locales: Locale[];
     fallbackLocale: string;
   };
   
-  type AkiraDocsConfig = {
+  type Site = {
     title: string;
     description: string;
+  };
+  
+  type Branding = {
+    logo: Logo;
+    favicon: Favicon;
+  };
+  
+  type Navigation = {
     header: {
-      logo: Logo;
-      favicon: Favicon;
       title: Title;
       searchPlaceholder: string;
-      navItems: NavItem[];
+      items: NavItem[];
     };
+  };
+  
+  type AkiraDocsConfig = {
+    site: Site;
+    branding: Branding;
+    navigation: Navigation;
     footer: {
       companyName: string;
       socialLinks: SocialLink[];
     };
-    languages: Languages;
+    localization: Localization;
   };
   
   export type { AkiraDocsConfig };

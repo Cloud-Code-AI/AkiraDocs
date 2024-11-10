@@ -1,14 +1,14 @@
 {
   "welcome": {
-    "title": "welcome",
-    "path": "/articles/welcome"
+    "title": "Bienvenido a Akira Doc",
+    "path": "/en/articles/welcome"
   },
   "template": {
-    "title": "Template",
+    "title": "Plantilla",
     "path": "/articles/template"
   },
   "ai_integration": {
-    "title": "ai_integration",
+    "title": "Integración del Asistente IA",
     "path": "/articles/ai_integration"
   },
   "test_blog_post": {
