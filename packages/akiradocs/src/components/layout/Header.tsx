@@ -96,7 +96,7 @@ export function Header({
   }
 
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -104,28 +104,28 @@ export function Header({
     >
       <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4">
 
-          <motion.div 
-            className="relative"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <div className="relative">
-              <div className="absolute rounded-full"></div>
-              <IconSVG 
-                src={logo.path} 
-                alt={`${title.text} logo`}
-                width={logo.width}
-                height={logo.height}
-                className="relative rounded-full" 
-              />
-            </div>
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="relative">
+                <div className="absolute rounded-full"></div>
+                <IconSVG
+                  src={logo.path}
+                  alt={`${title.text} logo`}
+                  width={logo.width}
+                  height={logo.height}
+                  className="relative rounded-full"
+                />
+              </div>
             </motion.div>
             {title.show && (
               <h1 className="text-xl font-bold text-foreground">{title.text}</h1>
             )}
-            
+
             {languages && languages.locales.length > 1 && (
               <Select
                 value={currentLocale}
@@ -139,8 +139,8 @@ export function Header({
                 </SelectTrigger>
                 <SelectContent>
                   {languages.locales.map((locale) => (
-                    <SelectItem 
-                      key={locale.code} 
+                    <SelectItem
+                      key={locale.code}
                       value={locale.code}
                       className="text-sm"
                     >
@@ -151,52 +151,53 @@ export function Header({
               </Select>
             )}
           </div>
-          
+
           {navItems && (
             <nav className="hidden md:flex space-x-2">
               <AnimatePresence>
                 {navItems.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Link 
-                      href={item.href}
-                      className={`group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md
-                        ${pathname === item.href 
-                          ? 'text-foreground bg-muted' 
-                          : 'text-muted-foreground hover:text-foreground'
-                        }`}
+                  item.show && (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ delay: index * 0.1 }}
                     >
-                      {item.icon && (
-                        <IconSVG 
-                          src={item.icon} 
-                          alt={`${item.label} icon`}
-                          width={16}
-                          height={16}
-                          className="text-current" 
+                      <Link
+                        href={item.href}
+                        className={`group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md
+                        ${pathname === item.href
+                            ? 'text-foreground bg-muted'
+                            : 'text-muted-foreground hover:text-foreground'
+                          }`}
+                      >
+                        {item.icon && (
+                          <IconSVG
+                            src={item.icon}
+                            alt={`${item.label} icon`}
+                            width={16}
+                            height={16}
+                            className="text-current"
+                          />
+                        )}
+                        {item.label}
+                        <span
+                          className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
+                          ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
                         />
-                      )}
-                      {item.label}
-                      <span 
-                        className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
-                          ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
-                      />
-                    </Link>
-                  </motion.div>
+                      </Link>
+                    </motion.div>)
                 ))}
               </AnimatePresence>
             </nav>
           )}
-          
+
           <div className="flex items-center space-x-4">
             {showSearch && (
               <div className="relative hidden md:block">
-                <Input 
-                  type="search" 
+                <Input
+                  type="search"
                   placeholder={searchPlaceholder}
                   className="w-64 pr-8 rounded-md"
                 />
@@ -211,12 +212,12 @@ export function Header({
               <Button key={index} variant="ghost" size="icon" asChild className="rounded-full hover:bg-muted hidden md:flex">
                 <Link href={link.url}>
                   {link.icon && (
-                    <IconSVG 
-                      src={link.icon} 
+                    <IconSVG
+                      src={link.icon}
                       alt={`${link.name} icon`}
                       width={16}
                       height={16}
-                      className="text-current" 
+                      className="text-current"
                     />
                   )}
                   <span className="sr-only">{link.name}</span>
@@ -240,27 +241,27 @@ export function Header({
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <Link 
+                        <Link
                           href={item.href}
                           className={`group relative flex items-center gap-x-2 transition-colors px-3 py-2 rounded-md
-                            ${pathname === item.href 
-                              ? 'text-foreground bg-muted' 
+                            ${pathname === item.href
+                              ? 'text-foreground bg-muted'
                               : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                             }`}
                         >
                           {item.icon && (
-                            <IconSVG 
-                              src={item.icon} 
+                            <IconSVG
+                              src={item.icon}
                               alt={`${item.label} icon`}
                               width={16}
                               height={16}
-                              className="text-current" 
+                              className="text-current"
                             />
                           )}
                           {item.label}
-                          <span 
+                          <span
                             className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
-                              ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} 
+                              ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
                           />
                         </Link>
                       </motion.div>

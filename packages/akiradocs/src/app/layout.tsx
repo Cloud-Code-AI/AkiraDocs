@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     template: '%s | ' + (metadataValues.title ?? 'Site Title'),
     default: metadataValues.title ?? 'Site Title',
   },
+  icons: {
+    icon: '/akira_favicon.png',
+  },
   description: metadataValues.description ?? 'Site description',
   openGraph: {
     type: 'website',

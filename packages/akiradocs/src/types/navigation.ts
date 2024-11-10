@@ -3,6 +3,7 @@ export type NavItem = {
     path?: string;
     items?: Record<string, NavItem>;
     badge?: string;
+    show?: boolean;
 }
 
 

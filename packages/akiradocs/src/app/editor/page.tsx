@@ -68,7 +68,7 @@ export default function ImprovedFileTreeUI() {
 
     // Encode the file path to handle special characters in URLs
     const encodedPath = encodeURIComponent(fullPath)
-    router.push(`/editor?file=${encodedPath}`)
+    router.push(`/editor/${fullPath}`)
   }
 
   const startNewItem = (parentId: string, type: 'file' | 'folder') => {
@@ -93,34 +93,81 @@ export default function ImprovedFileTreeUI() {
       children: newItemType === 'folder' ? [] : undefined
     }
 
-    // Create the actual file/folder in the local directory
+    const parentPath = getNodeFullPath(fileTree, newItemParent)
+    if (!parentPath) {
+      console.error('Could not find parent path')
+      return
+    }
+
+    const fullPath = `${parentPath}/${newItemName}`
+
     if (newItemType === 'file') {
       try {
-        const defaultContent = {
-          id: newItemName.replace('.json', ''),
-          title: "New Article",
-          description: "Add your description here",
-          author: "Anonymous",
-          date: new Date().toISOString().split('T')[0],
-          blocks: []  // Empty blocks array
+        // First, read the existing metadata
+        const metaPath = `${parentPath}/_meta.json`
+        const metaResponse = await fetch(`/api/files?path=${encodeURIComponent(metaPath)}`, {
+          method: 'GET'
+        });
+
+        if (!metaResponse.ok) {
+          throw new Error('Failed to read metadata');
         }
 
-        const response = await fetch('/api/files', {
+        const existingMeta = await metaResponse.json();
+        const newFileId = newItemName.replace('.json', '');
+        
+        // Update the metadata with the new file entry
+        const updatedMeta = {
+          ...existingMeta,
+          [newFileId]: {
+            title: newFileId,
+            path: `/articles/${newFileId}`
+          }
+        };
+
+        // Save the updated metadata
+        const updateMetaResponse = await fetch('/api/files', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            path: `${getNodeFullPath(fileTree, newItemParent)}/${newItemName}`,
+            path: metaPath,
+            content: updatedMeta
+          })
+        });
+
+        if (!updateMetaResponse.ok) {
+          throw new Error('Failed to update metadata');
+        }
+
+        // Create the new file with default content
+        const defaultContent = {
+          id: newFileId,
+          title: "New Article",
+          description: "Add your description here",
+          author: "Anonymous",
+          date: new Date().toISOString().split('T')[0],
+          blocks: []
+        }
+
+        // Create the new file
+        const fileResponse = await fetch('/api/files', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            path: fullPath,
             content: defaultContent
           })
         });
         
-        if (!response.ok) {
+        if (!fileResponse.ok) {
           throw new Error('Failed to create file');
         }
       } catch (error) {
-        console.error('Error creating file:', error);
+        console.error('Error creating file or updating metadata:', error);
         return;
       }
     }
