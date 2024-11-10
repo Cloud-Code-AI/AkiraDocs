@@ -46,7 +46,6 @@ export function BlockRenderer({ block }: BlockRendererProps) {
   };
 
   if (block.type === 'image') {
-    console.log(block.content)
     try {
       const imageContent: ImageBlockContent = typeof block.content === 'string' 
         ? JSON.parse(block.content)

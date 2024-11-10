@@ -15,7 +15,7 @@ export default function DocPage({ params }: { params: Promise<{ slug: string[] }
   const recentContent = getRecentContent('en/docs')
   const config = getAkiradocsConfig()
   if (recentContent) {
-    redirect(`${config.languages.defaultLocale}/docs/${recentContent.slug}`)
+    redirect(`${config.localization.defaultLocale}/docs/${recentContent.slug}`)
   }
 
 

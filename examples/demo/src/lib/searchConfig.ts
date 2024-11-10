@@ -4,8 +4,8 @@ import { SearchConfig } from "../types/config";
 export function getSearchConfig(): SearchConfig {
     const config = getAkiradocsConfig();
     return {
-        logo: config.search?.logo,
-        title: config.search?.title,
-        description: config.search?.description,
+        logo: config.branding.logo,
+        title: config.site.title,
+        description: config.site.description,
     };
 }

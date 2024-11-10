@@ -1,7 +1,9 @@
 {
-    "title": "Akira Docs",
-    "description": "Next-gen documentation powered by AI",
-    "header": {
+    "site": {
+        "title": "Akira Docs",
+        "description": "Next-gen documentation powered by AI"
+    },
+    "branding": {
         "logo": {
             "path": "/akiradocs_logo.svg",
             "width": 120,
@@ -11,19 +13,23 @@
         "favicon": {
             "path": "/akira_favicon.png",
             "show": true
-        },
-        "title": {
-            "text": "Akira Docs",
-            "show": false
-        },
-        "searchPlaceholder": "Search Akira...",
-        "navItems": [
-            { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": false },
-            { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg", "show": true },
-            { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg", "show": true }
-        ]
+        }
     },
-    "footer": { 
+    "navigation": {
+        "header": {
+            "title": {
+                "text": "Akira Docs",
+                "show": false
+            },
+            "searchPlaceholder": "Search Akira...",
+            "items": [
+                { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": false },
+                { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg", "show": true },
+                { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg", "show": true }
+            ]
+        }
+    },
+    "footer": {
         "companyName": "Cloud Code AI",
         "socialLinks": [
             { "name": "GitHub", "url": "https://github.com/Cloud-Code-AI/akiradocs-template", "icon": "/github.svg" },
@@ -31,8 +37,9 @@
             { "name": "LinkedIn", "url": "https://www.linkedin.com/company/cloudcode-ai", "icon": "/linkedin.svg" }
         ]
     },
-    "languages": {
+    "localization": {
         "defaultLocale": "en",
+        "fallbackLocale": "en",
         "locales": [
             {
                 "code": "en",
@@ -43,13 +50,7 @@
                 "code": "es",
                 "name": "Español",
                 "flag": "🇪🇸"
-            },
-            {
-                "code": "fr",
-                "name": "Français",
-                "flag": "🇫🇷"
             }
-        ],
-        "fallbackLocale": "en"
+        ]
     }
 }

@@ -1,0 +1,39 @@
+{
+    "title": "Bloques de Contenido",
+    "description": "Entendiendo y usando el sistema de bloques de contenido de Akira",
+    "author": "Equipo Akira",
+    "publishDate": "2024-11-10T00:00:00.000Z",
+    "modifiedDate": "2024-11-10T00:00:00.000Z",
+    "category": "Características",
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Bloques de Contenido",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "Los bloques de contenido son las unidades fundamentales de construcción de la documentación de Akira. Proporcionan una forma flexible de estructurar y presentar información."
+      },
+      {
+        "id": "3",
+        "type": "heading",
+        "content": "Tipos de Bloques Disponibles",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "4",
+        "type": "list",
+        "content": "Bloques de texto\nBloques de código\nBloques de imagen\nBloques de aviso\nBloques de tabla\nBloques personalizados",
+        "metadata": {
+          "listType": "unordered"
+        }
+      }
+    ]
+}

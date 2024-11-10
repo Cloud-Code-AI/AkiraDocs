@@ -1,15 +1,15 @@
 {
-    "title": "Theming",
-    "description": "Customize the look and feel of your Akira documentation",
-    "author": "Akira Team",
+    "title": "Temas",
+    "description": "Personaliza el aspecto y diseño de tu documentación Akira",
+    "author": "Equipo Akira",
     "publishDate": "2024-11-10T00:00:00.000Z",
     "modifiedDate": "2024-11-10T00:00:00.000Z",
-    "category": "Features",
+    "category": "Características",
     "blocks": [
       {
         "id": "1",
         "type": "heading",
-        "content": "Theming Guide",
+        "content": "Guía de Temas",
         "metadata": {
           "level": 1
         }
@@ -17,7 +17,7 @@
       {
         "id": "2",
         "type": "paragraph",
-        "content": "Akira provides powerful theming capabilities to customize your documentation's appearance. You can use pre-built themes or create your own."
+        "content": "Akira proporciona potentes capacidades de tematización para personalizar la apariencia de tu documentación. Puedes usar temas preconfigurados o crear los tuyos propios."
       },
       {
         "id": "3",
@@ -28,4 +28,4 @@
         }
       }
     ]
-  }
+}
