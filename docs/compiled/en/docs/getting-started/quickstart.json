@@ -1,0 +1,84 @@
+{
+  "title": "AkiraDocs Quickstart Guide",
+  "description": "Get started with AkiraDocs in minutes with this quickstart guide",
+  "author": "AkiraDocs Team",
+  "ogImage": "/images/quickstart-banner.png",
+  "publishDate": "2024-03-20",
+  "modifiedDate": "2024-03-20",
+  "category": "Getting Started",
+  "keywords": ["quickstart", "tutorial", "getting-started"],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Creating Your First Documentation",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Follow these steps to create your first documentation project with AkiraDocs."
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Basic Usage",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": "1. Create a new page\n2. Add content blocks\n3. Preview your changes\n4. Publish your documentation",
+      "metadata": {
+        "listType": "ordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "code",
+      "content": "# Create a new page\nnpx akiradocs new page guides/welcome\n\n# Start the development server\nnpm run dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Project Initialization",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "7",
+      "type": "callout",
+      "content": "Make sure you have completed the installation steps before proceeding with project initialization.",
+      "metadata": {
+        "type": "info",
+        "title": "Prerequisites"
+      }
+    },
+    {
+      "id": "8",
+      "type": "list",
+      "content": "1. Initialize your documentation structure\n2. Configure your sidebar navigation\n3. Set up your theme\n4. Add your first content",
+      "metadata": {
+        "listType": "ordered"
+      }
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "# Initialize your documentation\nnpx akiradocs init\n\n# Configure your project\nnpx akiradocs configure",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+    "site": {
+        "title": "Akira Docs",
+        "description": "Next-gen documentation powered by AI"
+    },
+    "branding": {
+        "logo": {
+            "path": "/akiradocs_logo.svg",
+            "width": 120,
+            "height": 30,
+            "show": true
+        },
+        "favicon": {
+            "path": "/akira_favicon.png",
+            "show": true
+        }
+    },
+    "navigation": {
+        "header": {
+            "title": {
+                "text": "Akira Docs",
+                "show": false
+            },
+            "searchPlaceholder": "Search Akira...",
+            "items": [
+                { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": false },
+                { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg", "show": true },
+                { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg", "show": true }
+            ]
+        }
+    },
+    "footer": {
+        "companyName": "Cloud Code AI",
+        "socialLinks": [
+            { "name": "GitHub", "url": "https://github.com/Cloud-Code-AI/akiradocs-template", "icon": "/github.svg" },
+            { "name": "Twitter", "url": "https://x.com/CloudCodeAI", "icon": "/twitter.svg" },
+            { "name": "LinkedIn", "url": "https://www.linkedin.com/company/cloudcode-ai", "icon": "/linkedin.svg" }
+        ]
+    },
+    "localization": {
+        "defaultLocale": "en",
+        "fallbackLocale": "en",
+        "locales": [
+            {
+                "code": "en",
+                "name": "English",
+                "flag": "🇺🇸"
+            },
+            {
+                "code": "es",
+                "name": "Español",
+                "flag": "🇪🇸"
+            },
+            {
+                "code": "fr",
+                "name": "Français",
+                "flag": "🇫🇷"
+            }
+        ]
+    }
+}

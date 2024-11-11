@@ -1,0 +1,59 @@
+{
+  "title": "Welcome to Akira Doc",
+  "description": "Get started with Akira Docs - Next-gen documentation powered by AI",
+  "author": "Anonymous",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Welcome to Akira Doc",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Key Features",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": "Easy to customize\nAI-powered search\nBlock-based content system\nResponsive design",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "> [!info] Getting Started\n> Start by customizing this template to match your project's needs!"
+    }
+  ]
+}

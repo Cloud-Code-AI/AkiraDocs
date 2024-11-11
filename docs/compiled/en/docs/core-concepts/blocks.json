@@ -1,0 +1,117 @@
+{
+    "title": "Content Blocks in AkiraDocs",
+    "description": "Comprehensive guide to all available content block types in AkiraDocs",
+    "author": "AkiraDocs Team",
+    "ogImage": "/images/blocks-overview.png",
+    "publishDate": "2024-03-21",
+    "modifiedDate": "2024-03-21",
+    "category": "Core Concepts",
+    "keywords": ["blocks", "components", "content-types"],
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Available Content Blocks",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "AkiraDocs provides a rich set of content blocks to create engaging documentation. Each block type serves a specific purpose and can be customized through metadata."
+      },
+      {
+        "id": "3",
+        "type": "heading",
+        "content": "Text-Based Blocks",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "4",
+        "type": "list",
+        "content": "- Heading: Section titles with customizable levels\n- Paragraph: Standard text content\n- Blockquote: Highlighted quotes or important text\n- List: Ordered and unordered lists",
+        "metadata": {
+          "listType": "unordered"
+        }
+      },
+      {
+        "id": "5",
+        "type": "heading",
+        "content": "Media Blocks",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "6",
+        "type": "list",
+        "content": "- Image: Images with captions and positioning\n- Video: Video embeds with captions\n- Audio: Audio player with metadata\n- File: Downloadable file attachments",
+        "metadata": {
+          "listType": "unordered"
+        }
+      },
+      {
+        "id": "7",
+        "type": "heading",
+        "content": "Interactive Blocks",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "8",
+        "type": "toggleList",
+        "content": "",
+        "metadata": {
+          "items": [
+            {
+              "title": "Code Blocks",
+              "content": "Syntax-highlighted code with line numbers"
+            },
+            {
+              "title": "Toggle Lists",
+              "content": "Expandable/collapsible content sections"
+            },
+            {
+              "title": "Check Lists",
+              "content": "Interactive task lists with checkboxes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "9",
+        "type": "heading",
+        "content": "Special Blocks",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "10",
+        "type": "table",
+        "content": "",
+        "metadata": {
+          "headers": ["Block Type", "Description"],
+          "rows": [
+            ["Callout", "Highlighted information boxes with custom types"],
+            ["Divider", "Horizontal line separators"],
+            ["Emoji", "Emoji icons with labels"],
+            ["Table", "Structured data in tabular format"]
+          ]
+        }
+      },
+      {
+        "id": "11",
+        "type": "callout",
+        "content": "All blocks support custom metadata for enhanced customization. Refer to individual block documentation for specific metadata options.",
+        "metadata": {
+          "type": "info",
+          "title": "Block Customization"
+        }
+      }
+    ]
+  }
