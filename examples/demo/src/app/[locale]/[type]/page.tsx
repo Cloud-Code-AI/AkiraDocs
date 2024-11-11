@@ -14,8 +14,9 @@ export default function Page({ params }: { params: Promise<{ locale: string, typ
 
   const recentContent = getRecentContent(`${locale}/${type}`)
   if (recentContent) {
-    redirect(`/${locale}/${type}/${recentContent.slug}`)
+    const redirectUrl = `/${locale}/${type}/${recentContent.slug.replace(`${type}/`, '')}`
+    redirect(redirectUrl)
   }
 
-  return <NotFound redirectUrl={`/${locale}/${type}`} />
+  return <NotFound redirectUrl={`/`} />
 }

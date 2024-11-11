@@ -49,8 +49,6 @@
 
   ],
   "exclude": [
-    "node_modules",
-    "app/editor/**/*",
-    "app/api/**/*"
+    "node_modules"
   ]
 }

@@ -50,7 +50,25 @@ export function getAllPosts(locale: string, type: string): Post[] {
 export function getContentNavigation<T>(defaultValue: T, locale: string, type: string): T {
   try {
     const navigationFile = `./${locale}/${type}/_meta.json`
-    return contentContext(navigationFile) as T
+    const navigation = contentContext(navigationFile) as T
+
+    if (type === 'articles') {
+      // Get all articles and their content
+      const articles = contentContext.keys()
+        .filter((key: string) => key.startsWith(`./${locale}/${type}/`) && !key.endsWith('/_meta.json'))
+        .map((key: string) => ({
+          path: key.replace(`./${locale}/${type}/`, '').replace('.json', ''),
+          content: contentContext(key)
+        }))
+        .sort((a: any, b: any) => new Date(b.content.date).getTime() - new Date(a.content.date).getTime())
+
+      // Assuming navigation is an object with a routes property
+      return {
+        ...navigation
+      } as T
+    }
+
+    return navigation
   } catch (error) {
     console.warn(`Failed to read ${type} _meta.json file. Using default value.`)
     return defaultValue
@@ -59,7 +77,17 @@ export function getContentNavigation<T>(defaultValue: T, locale: string, type: s
 
 export function getRecentContent(folderPath: string) {
   try {
-    // Get all matching files using require.context
+    // For non-article paths, get default route from _meta.json
+    if (!folderPath.includes('/articles/')) {
+      const metaContent = contentContext(`./${folderPath}/_meta.json`)
+      if (metaContent?.defaultRoute) {
+        return {
+          slug: metaContent.defaultRoute
+        }
+      }
+    }
+
+    // Existing logic for articles
     const files = contentContext.keys()
       .filter((key: string) => key.startsWith(`./${folderPath}/`) && key.endsWith('.json') && !key.endsWith('/_meta.json'))
 
@@ -75,7 +103,6 @@ export function getRecentContent(folderPath: string) {
       }))
       .sort((a: any, b: any) => new Date(b.content.date).getTime() - new Date(a.content.date).getTime())
 
-    // Return the most recent file's information
     return {
       slug: sortedFiles[0].name.replace(`./${folderPath}/`, '').replace('.json', '')
     }

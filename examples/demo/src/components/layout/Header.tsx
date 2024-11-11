@@ -63,8 +63,9 @@ export function Header({
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             {logo?.show && (
-              <motion.div
-                className="relative"
+              <Link href="/">
+                <motion.div
+                  className="relative"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -78,14 +79,15 @@ export function Header({
                     className="relative rounded-full"
                   />
                 </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             )}
             
-            {/* {title && (
+            {(!logo?.show && title) && (
               <h1 className="text-xl font-bold text-foreground">
                 {title}
               </h1>
-            )} */}
+            )}
 
             {languages && languages.locales.length > 1 && (
               <Select
@@ -116,7 +118,7 @@ export function Header({
           {navItems && (
             <nav className="hidden md:flex space-x-2">
               <AnimatePresence>
-                {navItems.map((item, index) => (
+                {navItems.filter((item) => item.show).map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: -20 }}

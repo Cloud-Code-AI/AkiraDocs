@@ -1,4 +1,5 @@
 {
+  "defaultRoute": "/docs/introduction",
   "introduction": {
     "title": "Introducción",
     "path": "/docs/introduction"

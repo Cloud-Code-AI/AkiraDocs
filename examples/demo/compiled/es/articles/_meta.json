@@ -1,7 +1,8 @@
 {
+  "defaultRoute": "/articles/welcome",
   "welcome": {
     "title": "Bienvenido a Akira Doc",
-    "path": "/en/articles/welcome"
+    "path": "/articles/welcome"
   },
   "template": {
     "title": "Plantilla",

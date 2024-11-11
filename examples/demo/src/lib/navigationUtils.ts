@@ -19,7 +19,7 @@ function flattenNavigation(items: Record<string, NavItem>): { title: string; pat
 export function getNextPrevPages(items: Record<string, NavItem>, currentPath: string) {
   const flattenedPages = flattenNavigation(items);
   const currentIndex = flattenedPages.findIndex(page => page.path === currentPath);
-
+  console.log(flattenedPages, currentIndex)
   return {
     prev: currentIndex > 0 ? flattenedPages[currentIndex - 1] : null,
     next: currentIndex < flattenedPages.length - 1 ? flattenedPages[currentIndex + 1] : null,

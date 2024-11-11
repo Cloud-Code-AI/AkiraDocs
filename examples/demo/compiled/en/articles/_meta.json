@@ -1,4 +1,5 @@
 {
+  "defaultRoute": "/articles/welcome",
   "welcome": {
     "title": "Welcome",
     "path": "/articles/welcome"
