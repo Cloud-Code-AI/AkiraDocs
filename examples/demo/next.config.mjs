@@ -7,14 +7,6 @@ const nextConfig = {
       })
       return config
     },
-    async rewrites() {
-      return process.env.NODE_ENV === 'production'
-        ? []
-        : [
-            { source: '/api/files', destination: '/api/files' },
-            { source: '/editor/:slug*', destination: '/editor/[...slug]' },
-          ];
-    },
   };
 
 export default nextConfig;

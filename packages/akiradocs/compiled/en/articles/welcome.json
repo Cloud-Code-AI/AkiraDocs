@@ -1,16 +1,59 @@
 {
-  "title": "",
-  "description": "",
+  "title": "Welcome to Akira Doc",
+  "description": "Get started with Akira Docs - Next-gen documentation powered by AI",
   "author": "Anonymous",
-  "publishDate": "2024-11-10",
-  "modifiedDate": "2024-11-10",
-  "category": "",
-  "keywords": [],
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
   "blocks": [
     {
       "id": "1",
       "type": "paragraph",
-      "content": "{\n  \"title\": \"Welcome to Akira Doc\",\n  \"description\": \"Get started with Akira Docs - Next-gen documentation powered by AI\",\n  \"author\": \"Anonymous\",\n  \"publishDate\": \"2024-11-02\",\n  \"modifiedDate\": \"2024-11-02\",\n  \"category\": \"Getting Started\",\n  \"keywords\": [\"Akira Docs\", \"Documentation\", \"AI\"],\n  \"blocks\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"paragraph\",\n      \"content\": \"Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation.\"\n    },\n    {\n      \"id\": \"2\",\n      \"type\": \"list\",\n      \"content\": \"Easy to customize\\nAI-powered search\\nBlock-based content system\\nResponsive design\",\n      \"metadata\": {\n        \"listType\": \"unordered\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"type\": \"callout\",\n      \"content\": \"Start by customizing this template to match your project's needs!\",\n      \"metadata\": {\n        \"type\": \"info\",\n        \"title\": \"Getting Started\"\n      }\n    }\n  ]\n}"
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Welcome to Akira Doc",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Key Features",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": "Easy to customize\nAI-powered search\nBlock-based content system\nResponsive design",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "> [!info] Getting Started\n> Start by customizing this template to match your project's needs!"
     }
   ]
 }

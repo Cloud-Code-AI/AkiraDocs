@@ -17,6 +17,9 @@ import { PageNavigation } from '@/components/layout/PageNavigation'
 import { MainTitle, SubTitle } from '@/components/blocks/HeadingBlock'
 import { SEO } from '@/components/layout/SEO'
 import { NotFound } from '@/components/layout/NotFound'
+
+export const runtime = 'edge'
+
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="flex-1 min-w-0 px-8 py-6 mx-4 font-sans leading-relaxed relative">
     {children}
@@ -36,7 +39,7 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const navigationItems = getContentNavigation({}, locale, type)
-  const { prev, next } = getNextPrevPages(navigationItems, `/${locale}/${type}/${slug}`);
+  const { prev, next } = getNextPrevPages(navigationItems, `/${type}/${slug}`);
   const pageTitle = post.title || 'Documentation'
   const pageDescription = post.description || 'Documentation content'
   const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/${type}/${slug}`
@@ -53,7 +56,7 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
         description={pageDescription}
         canonical={canonicalUrl}
       />
-      <Header {...headerConfig} />
+      <Header {...headerConfig} currentLocale={locale} />
       <div className="flex flex-grow">
         <Navigation key={type} locale={locale} items={navigationItems} />
         <div className="flex-1 flex py-4 w-full">
@@ -78,7 +81,7 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
                 <BlockRenderer key={block.id} block={block} />
               )
             ))}
-            <PageNavigation prev={prev} next={next} />
+            <PageNavigation prev={prev} next={next} locale={locale}  />
           </PostContainer>
           <TableOfContents publishDate={post.publishDate} modifiedDate={post.modifiedDate} author={post.author} />
         </div>

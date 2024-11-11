@@ -35,9 +35,11 @@ export function Navigation({ locale, items }: NavigationProps) {
       <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
         <ScrollArea className="h-full py-6 px-4">
           <nav>
-            {Object.entries(items).map(([key, item]) => (
-              <NavItem key={key} locale={locale} item={item} pathname={pathname} />
-            ))}
+            {Object.entries(items)
+              .filter(([key]) => key !== "defaultRoute")
+              .map(([key, item]) => (
+                <NavItem key={key} locale={locale} item={item} pathname={pathname} />
+              ))}
           </nav>
         </ScrollArea>
       </aside>

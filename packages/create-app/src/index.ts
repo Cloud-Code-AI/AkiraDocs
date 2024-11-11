@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import ora from 'ora';
 import { updateDir } from '../scripts/updateTemplate';
+import { copyDir } from '../scripts/copyTemplate';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,22 +15,6 @@ async function readJson(filePath: string) {
   return JSON.parse(content);
 }
 
-// Helper function for recursive directory copying
-async function copyDir(src: string, dest: string) {
-  await mkdir(dest, { recursive: true });
-  const entries = await readdir(src, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-
-    if (entry.isDirectory()) {
-      await copyDir(srcPath, destPath);
-    } else {
-      await copyFile(srcPath, destPath);
-    }
-  }
-}
 
 async function main() {
   const packageJsonPath = path.resolve(__dirname, '../package.json');

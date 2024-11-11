@@ -164,44 +164,44 @@ async function convertMarkdownToBlocks(content) {
   return blocks;
 }
 
+
 async function updateMetaFile(folderPath, newFile) {
   const metaPath = path.join(folderPath, '_meta.json');
   let meta = {};
 
-  // Load existing meta file if it exists
   if (existsSync(metaPath)) {
     const content = await readFile(metaPath, 'utf-8');
     meta = JSON.parse(content);
     console.log('Found existing meta file:', metaPath);
   }
 
-  // Get the file name without extension
   const fileName = path.basename(newFile, '.json');
-  
-  // Read the compiled file to get its title
   const compiledContent = JSON.parse(await readFile(newFile, 'utf-8'));
-  const title = compiledContent.title || fileName;
+  const humanReadableFileName = fileName
+    .split('_')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  const title = compiledContent.title || humanReadableFileName;
   
-  // Get the relative path without the 'compiled' prefix, language code, and '.json' extension
-  const relativePath = path.dirname(newFile)
-    .split('compiled/')[1]
-    .split('/')
-    .slice(1) // Skip the language code part
-    .join('/');
+  // Split the path using platform-specific separator and rejoin using path.join
+  const pathParts = path.dirname(newFile).split(path.sep);
+  const compiledIndex = pathParts.indexOf('compiled');
+  const relativePath = pathParts
+    .slice(compiledIndex + 2) // Skip 'compiled' and language code
+    .join(path.sep);
     
-  // Add or update the entry
   meta[fileName] = {
     title: title,
-    path: `/${relativePath}/${fileName}`
+    path: path.join('/', relativePath, fileName)
   };
 
-  // Write updated meta file
   await writeFile(metaPath, JSON.stringify(meta, null, 2));
 }
 
 async function compileMarkdownFiles() {
   try {
-    const files = await glob('_contents/**/*.md', { cwd: process.cwd() });
+    // Use path.join for the glob pattern
+    const files = await glob(path.join('_contents', '**', '*.md'), { cwd: process.cwd() });
     
     for (const file of files) {
       const content = await readFile(file, 'utf-8');
@@ -220,14 +220,14 @@ async function compileMarkdownFiles() {
         blocks
       };
 
+      // Convert the path using path.join
       const compiledPath = file
-        .replace('_contents/', 'compiled/')
+        .replace(path.join('_contents'), path.join('compiled'))
         .replace('.md', '.json');
       
       await mkdir(path.dirname(compiledPath), { recursive: true });
       await writeFile(compiledPath, JSON.stringify(compiledContent, null, 2));
       
-      // Update _meta.json in the compiled folder
       await updateMetaFile(path.dirname(compiledPath), compiledPath);
       
       console.log(`Compiled ${file} -> ${compiledPath}`);

@@ -1,7 +1,7 @@
 ---
 author: Akira Team
-publishDate: 2024-01-01
-modifiedDate: 2024-01-01
+publishDate: 2024-11-10
+modifiedDate: 2024-11-10
 category: Getting Started
 keywords:
   - Akira Docs
