@@ -16,13 +16,13 @@
 
 ## 🎯 The AkiraDocs Solution
 
-One platform that brings everyone's workflow together:
+One platform that brings everyone's workflow together:  
 
-✓ Developers keep their Markdown/Git workflow
-✓ Content teams get their block-based WYSIWYG editor
-✓ Everyone stays in sync, automatically
-✓ SEO-optimized documentation by default
-✓ Multi-language support with AI-powered translations
+✓ Developers keep their Markdown/Git workflow  
+✓ Content teams get their block-based WYSIWYG editor  
+✓ Everyone stays in sync, automatically  
+✓ SEO-optimized documentation by default  
+✓ Multi-language support with AI-powered translations  
 
 ## 🎭 Perfect For Every Use Case
 
