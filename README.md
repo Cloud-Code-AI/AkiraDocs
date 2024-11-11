@@ -1,9 +1,10 @@
 # AkiraDocs
-> Transform your documentation workflow in minutes, not months
+> Smart documentation platform with AI at its core
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: Commercial](https://img.shields.io/badge/License-Commercial-blue.svg)](https://example.com/commercial)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
+[![PRs Welcome](https://img.shields.io/badge/Demo-Live-color.svg)](https://demo.akiradocs.ai)
 
 ## 😟 Common Documentation Challenges
 
@@ -110,23 +111,6 @@ Reach a global audience effortlessly:
 - 📱 Right-to-left (RTL) support
 - 🎯 Language-specific SEO optimization
 
-## 🔮 Coming Soon
-
-We're constantly improving. Here's what's next:
-
-### Q4 2024
-- 🤖 AI-powered content suggestions
-- 🔄 Advanced version control
-- 🌐 Enhanced translation workflows
-- 📊 Enhanced analytics dashboard
-- 🔄 Translation automation tools
-
-### Q1 2025
-- 👥 Real-time collaboration
-- 🎨 Visual theme editor
-- 🔌 Plugin marketplace
-- 🤝 Third-party integrations
-
 ## 🚀 Get Started
 
 ```bash
@@ -168,8 +152,8 @@ npx create-akiradocs@latest mydocs
 ---
 <div align="center">
 
-**[Get Started](https://docs.akiradocs.com/quickstart)** • 
-**[Live Demo](https://demo.akiradocs.com)** • 
+**[Get Started](https://docs.akiradocs.ai/quickstart)** • 
+**[Live Demo](https://demo.akiradocs.ai)** • 
 **[Enterprise Trial](https://akiradocs.com/enterprise)** (Coming Q1 2025)
 
 </div>
