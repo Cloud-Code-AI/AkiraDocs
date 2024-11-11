@@ -29,9 +29,5 @@
         "path": "/docs/features/themes"
       }
     }
-  },
-  "api": {
-    "title": "API Reference",
-    "path": "/docs/api"
   }
 }
