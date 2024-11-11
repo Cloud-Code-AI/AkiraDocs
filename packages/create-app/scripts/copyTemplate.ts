@@ -1,4 +1,11 @@
-import { mkdir, readdir, copyFile, readFile, writeFile, stat } from 'fs/promises';
+import {
+  mkdir,
+  readdir,
+  copyFile,
+  readFile,
+  writeFile,
+  stat,
+} from 'fs/promises';
 import path from 'path';
 
 const ignoredPaths = [
@@ -11,6 +18,7 @@ const ignoredPaths = [
   '.DS_Store',
   '.turbo',
   '.vercel',
+  '.turbo',
 ];
 
 export async function copyDir(src: string, dest: string) {
@@ -43,15 +51,15 @@ export async function copyDir(src: string, dest: string) {
         const currentPackageJson = JSON.parse(
           await readFile(path.join(process.cwd(), 'package.json'), 'utf-8')
         );
-        
+
         // Read the template package.json
         const templatePackageJson = JSON.parse(
           await readFile(srcPath, 'utf-8')
         );
-        
+
         // Update the version
         templatePackageJson.version = currentPackageJson.version;
-        
+
         // Write the updated package.json to destination
         await writeFile(destPath, JSON.stringify(templatePackageJson, null, 2));
       } else {
