@@ -1,11 +1,11 @@
 {
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:prettier/recommended",
-      "next"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
-    "root": true
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "next"
+  ],
+  "parser": "@typescript-eslint/parser",
+  // Remove the plugins array since @typescript-eslint is already included via the extends
+  "root": true
 }

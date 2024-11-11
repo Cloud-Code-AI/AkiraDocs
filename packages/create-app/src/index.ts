@@ -1,6 +1,6 @@
 import cac from 'cac';
 import chalk from 'chalk';
-import { mkdir, readFile, copyFile, readdir } from 'fs/promises';
+import { mkdir, readFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import ora from 'ora';
@@ -14,7 +14,6 @@ async function readJson(filePath: string) {
   const content = await readFile(filePath, 'utf-8');
   return JSON.parse(content);
 }
-
 
 async function main() {
   const packageJsonPath = path.resolve(__dirname, '../package.json');
