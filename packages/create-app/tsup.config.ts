@@ -1,7 +1,6 @@
 import { defineConfig } from 'tsup';
 import { chmod } from 'fs/promises';
 import { copyDir, updatePackageJsonVersion } from './scripts/copyTemplate';
-import path from 'path';
 import { readFile } from 'fs/promises';
 export default defineConfig({
   entry: ['src/index.ts'],

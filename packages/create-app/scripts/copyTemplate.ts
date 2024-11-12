@@ -51,9 +51,17 @@ export async function copyDir(src: string, dest: string) {
   }
 }
 
-export async function updatePackageJsonVersion(src: string, current_version: string) {
+export async function updatePackageJsonVersion(
+  src: string,
+  current_version: string
+) {
   const templatePackageJsonPath = path.join(src, 'package.json');
-  const templatePackageJson = JSON.parse(await readFile(templatePackageJsonPath, 'utf-8'));
+  const templatePackageJson = JSON.parse(
+    await readFile(templatePackageJsonPath, 'utf-8')
+  );
   templatePackageJson.version = current_version;
-  await writeFile(templatePackageJsonPath, JSON.stringify(templatePackageJson, null, 2));
+  await writeFile(
+    templatePackageJsonPath,
+    JSON.stringify(templatePackageJson, null, 2)
+  );
 }

@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import ora from 'ora';
 import { updateDir } from '../scripts/updateTemplate';
-import { copyDir, updatePackageJsonVersion } from '../scripts/copyTemplate';
+import { copyDir } from '../scripts/copyTemplate';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,7 +34,7 @@ async function main() {
 
         // Copy template files
         const templateDir = path.join(__dirname, '../template');
-        await copyDir(templateDir, targetDir);  
+        await copyDir(templateDir, targetDir);
 
         spinner.succeed(chalk.green('Project created successfully!'));
 
