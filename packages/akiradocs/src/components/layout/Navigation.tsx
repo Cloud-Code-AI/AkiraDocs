@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { NavigationProps, NavItemProps } from "@/types/navigation"
 import { ErrorBoundary } from 'react-error-boundary'
+import { getApiNavigation } from '@/lib/content';
 
 const buttonStyles = {
   base: "w-full justify-start text-left font-normal rounded-lg transition-colors",
@@ -122,5 +123,100 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
 })
 
 NavItem.displayName = 'NavItem'
+
+export function ApiSidebar() {
+  const navigation = getApiNavigation();
+  
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
+        <ScrollArea className="h-full py-6 px-4">
+          <nav>
+            {navigation.map((item, index) => (
+              <ApiNavItem key={index} item={item} />
+            ))}
+          </nav>
+        </ScrollArea>
+      </aside>
+    </ErrorBoundary>
+  );
+}
+
+const ApiNavItem = React.memo(({ item }: { item: any }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const hasChildren = item.children && item.children.length > 0
+  const methodClass = item.method.toLowerCase()
+
+  const handleClick = useCallback(() => {
+    if (hasChildren) {
+      setIsOpen(prev => !prev)
+    }
+  }, [hasChildren])
+
+  return (
+    <motion.div 
+      className="mb-1"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <Button
+        variant="ghost"
+        className={cn(
+          buttonStyles.base,
+          buttonStyles.hover,
+          buttonStyles.state,
+        )}
+        onClick={handleClick}
+      >
+        {hasChildren ? (
+          <motion.div
+            initial={false}
+            animate={{ rotate: isOpen ? 90 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <ChevronRight className="mr-2 h-4 w-4" />
+          </motion.div>
+        ) : (
+          <FileText className="mr-2 h-4 w-4" />
+        )}
+        <Link href={`#${item.path}-${methodClass}`} className="flex-1">
+          <span className={`mr-2 px-2 py-0.5 text-xs rounded-full bg-accent text-accent-foreground`}>
+            {item.method}
+          </span>
+          {item.title}
+        </Link>
+      </Button>
+      <AnimatePresence initial={false}>
+        {hasChildren && isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            {item.children.map((child: any, index: number) => (
+              <Button
+                key={index}
+                variant="ghost"
+                className={cn(
+                  buttonStyles.base,
+                  buttonStyles.hover,
+                  "ml-4"
+                )}
+              >
+                <Link href={child.path} className="flex-1">
+                  {child.title}
+                </Link>
+              </Button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+})
+
+ApiNavItem.displayName = 'ApiNavItem'
 
 export default Navigation
