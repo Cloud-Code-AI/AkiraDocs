@@ -143,15 +143,31 @@ export function ApiSidebar() {
 }
 
 const ApiNavItem = React.memo(({ item }: { item: any }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const hasChildren = item.children && item.children.length > 0
   const methodClass = item.method.toLowerCase()
+  const sectionId = `${methodClass}-${item.path}`
 
-  const handleClick = useCallback(() => {
-    if (hasChildren) {
-      setIsOpen(prev => !prev)
+  const scrollToSection = useCallback((elementId: string) => {
+    const element = document.getElementById(elementId)
+    if (element) {
+      const headerOffset = 64 + 32
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
     }
-  }, [hasChildren])
+  }, [])
+
+  // Define badge colors to match main content
+  const methodColors = {
+    get: 'bg-green-100 text-green-800',
+    post: 'bg-blue-100 text-blue-800',
+    put: 'bg-yellow-100 text-yellow-800',
+    patch: 'bg-orange-100 text-orange-800',
+    delete: 'bg-red-100 text-red-800',
+  }
 
   return (
     <motion.div 
@@ -167,52 +183,15 @@ const ApiNavItem = React.memo(({ item }: { item: any }) => {
           buttonStyles.hover,
           buttonStyles.state,
         )}
-        onClick={handleClick}
+        onClick={() => scrollToSection(sectionId)}
       >
-        {hasChildren ? (
-          <motion.div
-            initial={false}
-            animate={{ rotate: isOpen ? 90 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ChevronRight className="mr-2 h-4 w-4" />
-          </motion.div>
-        ) : (
-          <FileText className="mr-2 h-4 w-4" />
-        )}
-        <Link href={`#${item.path}-${methodClass}`} className="flex-1">
-          <span className={`mr-2 px-2 py-0.5 text-xs rounded-full bg-accent text-accent-foreground`}>
-            {item.method}
+        <div className="flex-1">
+          <span className={`mr-2 px-2 py-1 text-xs font-medium rounded-md ${methodColors[methodClass] || 'bg-gray-100 text-gray-800'}`}>
+            {item.method.toUpperCase()}
           </span>
           {item.title}
-        </Link>
+        </div>
       </Button>
-      <AnimatePresence initial={false}>
-        {hasChildren && isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            {item.children.map((child: any, index: number) => (
-              <Button
-                key={index}
-                variant="ghost"
-                className={cn(
-                  buttonStyles.base,
-                  buttonStyles.hover,
-                  "ml-4"
-                )}
-              >
-                <Link href={child.path} className="flex-1">
-                  {child.title}
-                </Link>
-              </Button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   )
 })

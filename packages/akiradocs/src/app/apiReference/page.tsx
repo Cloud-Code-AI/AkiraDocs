@@ -90,7 +90,7 @@ const Parameter = ({ param }) => {
               collapsed: { opacity: 0, height: 0 }
             }}
             transition={{ duration: 0.3 }}
-            className="px-3 pb-3 text-sm text-muted-foreground"
+            className="px-3 pb-3 text-sm text-gray-600"
           >
             {param.description && <p>{param.description}</p>}
             {param.schema && param.schema.enum && (
