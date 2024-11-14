@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ClipboardIcon, CheckIcon, PlusIcon, MinusIcon } from '@heroicons/react/24/outline';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { useTheme } from 'next-themes';
 
 const generateCode = (language: string, server: any, method: string, path: string, parameters: any[], requestBody: any, includedParams: string[]) => {
   const url = `${server.url}/${path}`;
@@ -112,6 +114,7 @@ const ParameterToggle = ({ param, isIncluded, onToggle }: { param: any, isInclud
 export function ApiUsage({ apiSpec }: { apiSpec: any }) {
   const [activeTab, setActiveTab] = useState('javascript');
   const [includedParams, setIncludedParams] = useState({});
+  const { theme } = useTheme();
 
   if (!apiSpec || !apiSpec.servers || !apiSpec.paths) {
     return null; // Return null if there's no data to display
@@ -152,17 +155,18 @@ export function ApiUsage({ apiSpec }: { apiSpec: any }) {
                       text={generateCode(activeTab, servers[0], method, path, details.parameters, details.requestBody, endpointIncludedParams)}
                     />
                   </div>
-                  <div className="max-w-full mt-4">
+                  <div className="max-w-full">
                     {['javascript', 'python', 'curl'].map(lang => (
                       <TabsContent key={lang} value={lang}>
                         <SyntaxHighlighter 
                           language={lang === 'curl' ? 'bash' : lang}
-                          style={prism} 
+                          style={theme === 'dark' ? oneDark : oneLight}
                           customStyle={{
+                            border: '1px solid hsl(var(--border))',
                             borderRadius: '0.5rem',
                             fontSize: '0.875rem',
                             padding: '1rem',
-                            backgroundColor: 'rgb(246, 248, 250)',
+                            backgroundColor: theme === 'dark' ? 'rgb(40, 44, 52)' : 'rgb(250, 250, 250)',
                           }}
                           wrapLines={true}
                           wrapLongLines={true}

@@ -43,7 +43,7 @@ const Parameter = ({ param }) => {
   
   const renderContent = () => (
     <div className="flex items-center">
-      <strong className="mr-2">{param.name}</strong>
+      <strong className="mr-2 text-foreground">{param.name}</strong>
       <Badge color={param.in === 'query' ? 'bg-green-100 text-green-800' : 'bg-purple-100 text-purple-800'}>
         {param.in}
       </Badge>
@@ -55,7 +55,7 @@ const Parameter = ({ param }) => {
 
   if (!hasDetails) {
     return (
-      <li className="mb-2 border border-gray-200 rounded-md p-3">
+      <li className="mb-2 border rounded-md p-3">
         {renderContent()}
       </li>
     );
@@ -63,20 +63,20 @@ const Parameter = ({ param }) => {
 
   return (
     <motion.li 
-      className="mb-2 border border-gray-200 rounded-md overflow-hidden"
+      className="mb-2 border rounded-md overflow-hidden"
       initial={false}
-      animate={{ backgroundColor: isExpanded ? "rgb(249, 250, 251)" : "white" }}
+      animate={{ backgroundColor: isExpanded ? "hsl(var(--secondary))" : "hsl(var(--background))" }}
       transition={{ duration: 0.3 }}
     >
       <div 
-        className="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50"
+        className="flex items-center justify-between p-3 cursor-pointer hover:bg-secondary"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {renderContent()}
         {isExpanded ? (
-          <ChevronDownIcon className="h-5 w-5 text-gray-500" />
+          <ChevronDownIcon className="h-5 w-5 text-muted-foreground" />
         ) : (
-          <ChevronRightIcon className="h-5 w-5 text-gray-500" />
+          <ChevronRightIcon className="h-5 w-5 text-muted-foreground" />
         )}
       </div>
       <AnimatePresence initial={false}>
@@ -90,7 +90,7 @@ const Parameter = ({ param }) => {
               collapsed: { opacity: 0, height: 0 }
             }}
             transition={{ duration: 0.3 }}
-            className="px-3 pb-3 text-sm text-gray-600"
+            className="px-3 pb-3 text-sm text-muted-foreground"
           >
             {param.description && <p>{param.description}</p>}
             {param.schema && param.schema.enum && (
@@ -120,14 +120,14 @@ const Parameter = ({ param }) => {
 
 const EndpointSection = ({ id, method, servers, path, summary, description, parameters, requestBody, security, isProd, insights, ...rest }) => (
   <section id={id} className="mb-8 flex flex-col lg:flex-row gap-6">
-    <div className="lg:w-[65%] h-full border border-gray-200 rounded-lg overflow-hidden">
-      <div className="bg-gray-50 p-4 border-b border-gray-200">
-        <h3 className="text-xl font-semibold mb-2">{summary}</h3>
+    <div className="lg:w-[65%] h-full border rounded-lg overflow-hidden">
+      <div className="bg-secondary p-4">
+        <h3 className="text-xl text-foreground font-semibold mb-2">{summary}</h3>
         <p className="text-muted-foreground mb-2 flex items-center">
           <MethodBadge method={method} />
-          <code className="ml-2 text-sm bg-gray-200 px-2 py-1 rounded">{path}</code>
+          <code className="ml-2 text-sm bg-foreground/10 px-2 py-1 rounded">{path}</code>
         </p>
-        <p className="text-sm text-gray-600">{description}</p>
+        <p className="text-sm text-muted-foreground">{description}</p>
         {security && security.length > 0 && (
           <p className="mt-2"><Badge color="bg-yellow-100 text-yellow-800">Requires Authentication</Badge></p>
         )}
