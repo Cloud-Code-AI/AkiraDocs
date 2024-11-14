@@ -5,10 +5,10 @@
     "path": "/docs/introduction"
   },
   "gettingStarted": {
-    "title": "Getting Started",
+    "title": "Getting-started",
     "items": {
       "quickstart": {
-        "title": "Quickstart",
+        "title": "Quickstart Guide",
         "path": "/docs/getting-started/quickstart"
       }
     }

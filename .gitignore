@@ -1,5 +1,5 @@
 # Dependencies
-node_modules
+/node_modules/
 .pnp
 .pnp.js
 .yarn/install-state.gz
@@ -55,3 +55,6 @@ next-env.d.ts
 Thumbs.db
 
 template/
+
+*node_modules*
+

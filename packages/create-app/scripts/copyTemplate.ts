@@ -1,4 +1,11 @@
-import { mkdir, readdir, copyFile, readFile, writeFile, stat } from 'fs/promises';
+import {
+  mkdir,
+  readdir,
+  copyFile,
+  readFile,
+  writeFile,
+  stat,
+} from 'fs/promises';
 import path from 'path';
 
 const ignoredPaths = [
@@ -11,6 +18,7 @@ const ignoredPaths = [
   '.DS_Store',
   '.turbo',
   '.vercel',
+  '.turbo',
 ];
 
 export async function copyDir(src: string, dest: string) {
@@ -38,25 +46,22 @@ export async function copyDir(src: string, dest: string) {
     if (entry.isDirectory()) {
       await copyDir(srcPath, destPath);
     } else {
-      if (entry.name === 'package.json') {
-        // Read the current package.json to get its version
-        const currentPackageJson = JSON.parse(
-          await readFile(path.join(process.cwd(), 'package.json'), 'utf-8')
-        );
-        
-        // Read the template package.json
-        const templatePackageJson = JSON.parse(
-          await readFile(srcPath, 'utf-8')
-        );
-        
-        // Update the version
-        templatePackageJson.version = currentPackageJson.version;
-        
-        // Write the updated package.json to destination
-        await writeFile(destPath, JSON.stringify(templatePackageJson, null, 2));
-      } else {
-        await copyFile(srcPath, destPath);
-      }
+      await copyFile(srcPath, destPath);
     }
   }
+}
+
+export async function updatePackageJsonVersion(
+  src: string,
+  current_version: string
+) {
+  const templatePackageJsonPath = path.join(src, 'package.json');
+  const templatePackageJson = JSON.parse(
+    await readFile(templatePackageJsonPath, 'utf-8')
+  );
+  templatePackageJson.version = current_version;
+  await writeFile(
+    templatePackageJsonPath,
+    JSON.stringify(templatePackageJson, null, 2)
+  );
 }

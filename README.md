@@ -6,6 +6,8 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
 [![PRs Welcome](https://img.shields.io/badge/Demo-Live-color.svg)](https://demo.akiradocs.ai)
 
+
+
 ## 😟 Common Documentation Challenges
 
 - **Developer Teams**: "We want to keep using Markdown and Git..."
@@ -16,13 +18,17 @@
 
 ## 🎯 The AkiraDocs Solution
 
-One platform that brings everyone's workflow together:
+One platform that brings everyone's workflow together:  
 
-✓ Developers keep their Markdown/Git workflow
-✓ Content teams get their block-based WYSIWYG editor
-✓ Everyone stays in sync, automatically
-✓ SEO-optimized documentation by default
-✓ Multi-language support with AI-powered translations
+✓ Developers keep their Markdown/Git workflow  
+✓ Content teams get their block-based WYSIWYG editor  
+✓ Everyone stays in sync, automatically  
+✓ SEO-optimized documentation by default  
+✓ Multi-language support with AI-powered translations 
+
+## Early Draft of AkiraDocs features
+[![AkiraDocs First Draft](https://img.youtube.com/vi/_vRqgQAG5K0/0.jpg)](https://www.youtube.com/watch?v=_vRqgQAG5K0)
+
 
 ## 🎭 Perfect For Every Use Case
 

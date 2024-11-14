@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "compile": "node scripts/compile.js",
+    "generate-sitemap": "node scripts/generate-sitemap.mjs",
     "dev": "npm run compile && set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=true && next dev",
-    "build": "npm run compile && set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=false && next build",
+    "build": "npm run compile && npm run generate-sitemap && set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=false && next build",
     "start": "set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=false && next start",
     "lint": "next lint"
   },
