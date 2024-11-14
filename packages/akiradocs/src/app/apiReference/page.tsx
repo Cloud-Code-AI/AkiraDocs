@@ -291,7 +291,7 @@ export function Documentation({ }) {
             <div className="mb-6">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center justify-between gap-4 mb-2">
                     <h1 className="text-2xl font-bold">{apiSpec.info.title}</h1>
                     <Badge color="bg-blue-100 text-blue-800">v{apiSpec.info.version}</Badge>
                   </div>
