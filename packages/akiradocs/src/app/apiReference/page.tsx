@@ -161,16 +161,16 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
       )} */}
       
       {!isProd && insights && (
-        <div className="p-6 border-t border-gray-200 bg-gradient-to-br from-teal-50 to-cyan-50">
-          <h4 className="text-lg font-semibold mb-4 text-teal-700">Development Insights</h4>
+        <div className="p-6 border-t bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-950/30 dark:to-cyan-950/30">
+          <h4 className="text-lg font-semibold mb-4 text-teal-700 dark:text-teal-400">Development Insights</h4>
           
           {insights.performance_insights && (
-            <div className="mb-4 bg-white rounded-lg p-4 shadow-sm border border-teal-100">
-              <h5 className="font-medium text-sm mb-2 flex items-center text-teal-600">
+            <div className="mb-4 bg-background rounded-lg p-4 shadow-sm border border-teal-100 dark:border-teal-900/50">
+              <h5 className="font-medium text-sm mb-2 flex items-center text-teal-600 dark:text-teal-400">
                 <ChartBarIcon className="h-5 w-5 mr-2" />
                 Performance Insights
               </h5>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
                 {insights.performance_insights.map((insight, index) => (
                   <li key={index}>
                     <strong>{insight.insight}:</strong> {insight.recommendation}
@@ -181,12 +181,12 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
           )}
           
           {insights.security_insights && (
-            <div className="mb-4 bg-white rounded-lg p-4 shadow-sm border border-teal-100">
-              <h5 className="font-medium text-sm mb-2 flex items-center text-teal-600">
+            <div className="mb-4 bg-background rounded-lg p-4 shadow-sm border border-teal-100 dark:border-teal-900/50">
+              <h5 className="font-medium text-sm mb-2 flex items-center text-teal-600 dark:text-teal-400">
                 <ShieldCheckIcon className="h-5 w-5 mr-2" />
                 Security Insights
               </h5>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
                 {insights.security_insights.map((insight, index) => (
                   <li key={index}>
                     <strong>{insight.insight}:</strong> {insight.recommendation}
@@ -197,12 +197,12 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
           )}
           
           {insights.optimization_insights && (
-            <div className="mb-4 bg-white rounded-lg p-4 shadow-sm border border-teal-100">
-              <h5 className="font-medium text-sm mb-2 flex items-center text-teal-600">
+            <div className="mb-4 bg-background rounded-lg p-4 shadow-sm border border-teal-100 dark:border-teal-900/50">
+              <h5 className="font-medium text-sm mb-2 flex items-center text-teal-600 dark:text-teal-400">
                 <ArrowTrendingUpIcon className="h-5 w-5 mr-2" />
                 Optimization Insights
               </h5>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
                 {insights.optimization_insights.map((insight, index) => (
                   <li key={index}>
                     <strong>{insight.insight}:</strong> {insight.recommendation}
@@ -213,12 +213,12 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
           )}
           
           {insights.additional_metadata && (
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-teal-100">
-              <h5 className="font-medium text-sm mb-2 flex items-center text-teal-600">
+            <div className="bg-background rounded-lg p-4 shadow-sm border border-teal-100 dark:border-teal-900/50">
+              <h5 className="font-medium text-sm mb-2 flex items-center text-teal-600 dark:text-teal-400">
                 <InformationCircleIcon className="h-5 w-5 mr-2" />
                 Additional Metadata
               </h5>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
                 {Object.entries(insights.additional_metadata).map(([key, value]) => (
                   <li key={key}>
                     <strong>{key}:</strong> {
