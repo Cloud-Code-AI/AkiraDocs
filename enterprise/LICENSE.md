@@ -1,6 +1,6 @@
-AkiraDocs Enterprise License
-
 Copyright (c) 2024 Cloud Code AI Inc.
+
+AkiraDocs Enterprise License
 
 This is a legal agreement ("Agreement") between your organization ("Licensee") and 
 Cloud Code AI Inc regarding the use of the AkiraDocs Enterprise software and related 
