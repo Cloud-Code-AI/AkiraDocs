@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Folder, File, Plus, X, ChevronRight, ChevronDown, Trash2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { fetchAllContent } from '@/lib/getContents'
+
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:8000'
 
 type FileNode = {
   id: string
@@ -35,11 +36,12 @@ export default function ImprovedFileTreeUI() {
   const router = useRouter()
   const isDevPage = process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true'
 
-  useEffect(() => {
-    const content = fetchAllContent()
-    const transformedTree = transformContentToFileTree(content)
-    setFileTree(transformedTree)
-  }, [])
+  // Get this from the backend
+  // useEffect(() => {
+  //   const content = fetchAllContent()
+  //   const transformedTree = transformContentToFileTree(content)
+  //   setFileTree(transformedTree)
+  // }, [])
 
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set(['1', '4']))
   const [newItemParent, setNewItemParent] = useState<string | null>(null)
@@ -105,7 +107,7 @@ export default function ImprovedFileTreeUI() {
       try {
         // First, read the existing metadata
         const metaPath = `${parentPath}/_meta.json`
-        const metaResponse = await fetch(`/api/files?path=${encodeURIComponent(metaPath)}`, {
+        const metaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(metaPath)}`, {
           method: 'GET'
         });
 
@@ -126,7 +128,7 @@ export default function ImprovedFileTreeUI() {
         };
 
         // Save the updated metadata
-        const updateMetaResponse = await fetch('/api/files', {
+        const updateMetaResponse = await fetch(`${API_URL}/api/files`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -152,7 +154,7 @@ export default function ImprovedFileTreeUI() {
         }
 
         // Create the new file
-        const fileResponse = await fetch('/api/files', {
+        const fileResponse = await fetch(`${API_URL}/api/files`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

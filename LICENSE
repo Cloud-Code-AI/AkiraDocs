@@ -1,28 +1,10 @@
-AkiraDocs License Notice
-
-This repository contains both MIT licensed and commercially licensed code:
-
-1. MIT License:
-   - All code NOT in folders named 'enterprise' or prefixed with 'enterprise-'
-   - See below for the full MIT license text
-
-2. Commercial License:
-   - All code in folders named 'enterprise' or prefixed with 'enterprise-'
-   - See LICENSE-ENTERPRISE.md for the full commercial license text
-   - All enterprise code is owned by Cloud Code AI Inc.
-
-Directory Structure:
-- */enterprise/* -> Commercial License
-- */enterprise-*/* -> Commercial License
-- All other directories -> MIT License
-
-Questions? Contact licensing@akiradocs.ai
-
---------------------------------------------------------------------------------
-
-MIT License
-
 Copyright (c) 2024 Cloud Code AI Inc.
+
+Portions of this software are licensed as follows:
+
+* All content that resides under any "enterprise/" directory or begins with "enterprise-" prefix in this repository is licensed under the license defined in "enterprise/LICENSE".
+* All third party components incorporated into the AkiraDocs Software are licensed under the original license provided by the owner of the applicable component.
+* Content outside of the above mentioned directories or restrictions is available under the "MIT" license as defined below.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
