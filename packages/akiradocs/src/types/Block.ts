@@ -13,13 +13,13 @@ export type BlockType =
   // | 'video' 
   // | 'audio' 
   // | 'file' 
-  // | 'emoji'
+  | 'emoji'
   | 'callout';
 
 export interface Block {
   id: string;
   type: BlockType;
-  content: string;
+  content: string | string[];
   metadata?: {
     level?: number; // For headings
     styles?: {

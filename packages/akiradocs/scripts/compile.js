@@ -34,7 +34,7 @@ async function convertMarkdownToBlocks(content) {
         blocks.push({
           id: String(blockId++),
           type: 'list',
-          content: listItems.join('\n'),
+          content: listItems,
           metadata: {
             listType: 'unordered'
           }
@@ -49,7 +49,7 @@ async function convertMarkdownToBlocks(content) {
       blocks.push({
         id: String(blockId++),
         type: 'list',
-        content: listItems.join('\n'),
+        content: listItems,
         metadata: {
           listType: 'unordered'
         }
