@@ -34,7 +34,7 @@ async function convertMarkdownToBlocks(content) {
         blocks.push({
           id: String(blockId++),
           type: 'list',
-          content: listItems.join('\n'),
+          content: listItems,
           metadata: {
             listType: 'unordered'
           }
@@ -49,7 +49,7 @@ async function convertMarkdownToBlocks(content) {
       blocks.push({
         id: String(blockId++),
         type: 'list',
-        content: listItems.join('\n'),
+        content: listItems,
         metadata: {
           listType: 'unordered'
         }
@@ -238,4 +238,100 @@ async function compileMarkdownFiles() {
   }
 }
 
-compileMarkdownFiles();
+async function createMetaFilesForAllFolders() {
+  try {
+    const compiledPath = path.join(process.cwd(), 'compiled');
+    const languageFolders = await readdir(compiledPath);
+
+    for (const langFolder of languageFolders) {
+      const langPath = path.join(compiledPath, langFolder);
+      const mainSections = ['docs', 'articles'];
+      
+      for (const section of mainSections) {
+        const sectionPath = path.join(langPath, section);
+        if (!existsSync(sectionPath)) continue;
+
+        // Check for existing meta file and get defaultRoute if it exists
+        const metaPath = path.join(sectionPath, '_meta.json');
+        let existingDefaultRoute;
+        if (existsSync(metaPath)) {
+          const existingMeta = JSON.parse(await readFile(metaPath, 'utf-8'));
+          existingDefaultRoute = existingMeta.defaultRoute;
+        }
+
+        const jsonFiles = await glob('**/*.json', { 
+          cwd: sectionPath,
+          ignore: '**/_meta.json'
+        });
+
+        // Create nested meta structure using existing defaultRoute if available
+        const meta = {
+          defaultRoute: existingDefaultRoute || (section === 'docs' ? '/docs/introduction' : '/articles/welcome')
+        };
+        
+        for (const jsonFile of jsonFiles) {
+          const fileName = path.basename(jsonFile, '.json');
+          const filePath = path.join(sectionPath, jsonFile);
+          const content = JSON.parse(await readFile(filePath, 'utf-8'));
+          const dirs = path.dirname(jsonFile).split('/').filter(d => d !== '.');
+          
+          // Convert file name to camelCase for the key
+          const fileKey = fileName.replace(/-/g, ' ')
+            .split(' ')
+            .map((word, index) => {
+              const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+              return index === 0 ? capitalized.toLowerCase() : capitalized;
+            })
+            .join('');
+
+          // Create nested structure
+          let current = meta;
+          
+          if (dirs.length > 0) {
+            for (const dir of dirs) {
+              const dirKey = dir.replace(/-/g, ' ')
+                .split(' ')
+                .map((word, index) => {
+                  const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+                  return index === 0 ? capitalized.toLowerCase() : capitalized;
+                })
+                .join('');
+
+              if (!current[dirKey]) {
+                current[dirKey] = {
+                  title: dir.split('_')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' '),
+                  items: {}
+                };
+              }
+              current = current[dirKey].items;
+            }
+          }
+
+          current[fileKey] = {
+            title: content.title || fileName.split('_')
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' '),
+            path: `/${section}/${jsonFile.replace('.json', '')}`
+          };
+        }
+
+        // Write meta file
+        const metaDataPath = path.join(sectionPath, '_meta.json');
+        await writeFile(metaDataPath, JSON.stringify(meta, null, 2));
+        console.log(`Created meta file: ${metaDataPath}`);
+      }
+    }
+  } catch (error) {
+    console.error('Error creating meta files:', error);
+    process.exit(1);
+  }
+}
+
+async function main() {
+  await compileMarkdownFiles();
+  await createMetaFilesForAllFolders();
+}
+
+main();

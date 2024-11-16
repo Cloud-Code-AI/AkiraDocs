@@ -9,7 +9,7 @@ import { RecommendedArticles } from '@/components/aiSearch/RecommendedArticles'
 import { AnimatePresence } from 'framer-motion'
 import { getRecommendedArticles } from '@/lib/recommendedArticles'
 import { getSearchConfig } from '@/lib/searchConfig'
-import { Button } from '@/components/ui/button'
+import { Button } from "akiradocs-ui"
 import Link from 'next/link'
 import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
 

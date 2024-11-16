@@ -1,4 +1,4 @@
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Alert, AlertDescription, AlertTitle } from "akiradocs-ui"
 import { Info, AlertTriangle, CheckCircle, XCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 

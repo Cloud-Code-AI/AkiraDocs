@@ -2,7 +2,7 @@
 
 // import Link from 'next/link'
 import { Save } from 'lucide-react'
-import { Button } from "@/components/ui/button"
+import { Button } from "akiradocs-ui"
 
 interface TitleBarProps {
   showPreview: boolean

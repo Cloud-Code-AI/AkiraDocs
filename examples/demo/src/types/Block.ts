@@ -3,6 +3,7 @@ export type BlockType =
   | 'heading' 
   | 'code' 
   | 'image' 
+  | 'apiReference'
   | 'list' 
   | 'blockquote' 
   | 'divider' 
@@ -12,13 +13,13 @@ export type BlockType =
   // | 'video' 
   // | 'audio' 
   // | 'file' 
-  // | 'emoji'
+  | 'emoji'
   | 'callout';
 
 export interface Block {
   id: string;
   type: BlockType;
-  content: string;
+  content: string | string[];
   metadata?: {
     level?: number; // For headings
     styles?: {
@@ -26,6 +27,8 @@ export interface Block {
       italic?: boolean;
       underline?: boolean;
     };
+    endpoint?: string; // For API reference
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'; // For API reference
     language?: string; // For code blocks
     alt?: string; // For images
     caption?: string; // For images, videos, and audio
@@ -57,4 +60,23 @@ export interface Post {
   category: string;
   keywords: string[];
   blocks: Block[];
+}
+
+export interface APIReferenceBlock extends BaseBlock {
+  type: 'apiReference'
+  metadata: {
+    endpoint: string
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
+    parameters?: {
+      name: string
+      type: string
+      required: boolean
+      description: string
+    }[]
+    responses?: {
+      code: number
+      description: string
+      example?: any
+    }[]
+  }
 }

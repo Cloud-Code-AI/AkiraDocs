@@ -27,7 +27,13 @@
       {
         "id": "3",
         "type": "list",
-        "content": "Búsqueda potenciada por IA\nEdición de contenido basada en bloques\nDiseño responsivo\nTemas personalizables\nSoporte para Markdown",
+        "content": [
+          "Búsqueda potenciada por IA",
+          "Edición de contenido basada en bloques",
+          "Diseño responsivo",
+          "Temas personalizables",
+          "Soporte para Markdown"
+        ],
         "metadata": {
           "listType": "unordered"
         }

@@ -30,7 +30,13 @@
       {
         "id": "4",
         "type": "list",
-        "content": "API de Configuración\nAPI de Plugins\nAPI de Temas\nAPI de Contenido\nAPI de Compilación",
+        "content": [
+          "API de Configuración",
+          "API de Plugins",
+          "API de Temas",
+          "API de Contenido",
+          "API de Compilación"
+        ],
         "metadata": {
           "listType": "unordered"
         }

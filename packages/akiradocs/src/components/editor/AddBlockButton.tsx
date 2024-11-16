@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useState, forwardRef, useRef, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Input } from '@/components/ui/input'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { Separator } from '@/components/ui/separator'
+import { Button } from 'akiradocs-ui'
+import { Popover, PopoverContent, PopoverTrigger } from 'akiradocs-ui'
+import { Input } from 'akiradocs-ui'
+import { ScrollArea } from 'akiradocs-ui'
+import { Separator } from 'akiradocs-ui'
 import { BlockType } from '../../types/Block'
 import {
   Type,

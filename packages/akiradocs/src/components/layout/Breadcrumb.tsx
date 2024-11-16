@@ -8,7 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+} from "akiradocs-ui"
 import { ChevronRight, Home } from "lucide-react"
 
 interface BreadcrumbProps {

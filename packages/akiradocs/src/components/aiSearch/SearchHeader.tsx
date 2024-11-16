@@ -1,5 +1,5 @@
 "use client"
-import IconSVG from "@/components/ui/iconSVG";
+import { IconSVG } from "akiradocs-ui";
 import { motion } from "framer-motion"
 import { SearchConfig } from "@/types/config";
 

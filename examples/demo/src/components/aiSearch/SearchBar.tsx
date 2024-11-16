@@ -1,7 +1,7 @@
 "use client"
 import { Search, Sparkles } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "akiradocs-ui"
+import { Input } from "akiradocs-ui"
 
 interface SearchBarProps {
     query: string

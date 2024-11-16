@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "akiradocs-ui"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "akiradocs-ui"
 import { Bot, Loader2, RefreshCcw, Home } from "lucide-react"
 
 export function NotFound({ redirectUrl = '/' }: { redirectUrl?: string }) {

@@ -1,5 +1,5 @@
 import { ThumbsUp, ThumbsDown, Copy, Share } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "akiradocs-ui"
 
 export function AIResponseActions() {
     return (

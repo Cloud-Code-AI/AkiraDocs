@@ -1,37 +1,38 @@
 {
   "defaultRoute": "/docs/introduction",
   "introduction": {
-    "title": "Introducción",
+    "title": "Introduction",
     "path": "/docs/introduction"
   },
   "gettingStarted": {
-    "title": "Primeros Pasos",
+    "title": "Getting-started",
     "items": {
       "quickstart": {
-        "title": "Inicio Rápido",
+        "title": "Guía de Inicio Rápido",
         "path": "/docs/getting-started/quickstart"
-      },
-      "configuration": {
-        "title": "Configuración",
-        "path": "/docs/getting-started/configuration"
       }
     }
   },
   "features": {
-    "title": "Características",
+    "title": "Features",
     "items": {
-      "blocks": {
-        "title": "Bloques de Contenido",
-        "path": "/docs/features/blocks"
-      },
       "themes": {
         "title": "Temas",
         "path": "/docs/features/themes"
+      },
+      "blocks": {
+        "title": "Bloques de Contenido",
+        "path": "/docs/features/blocks"
       }
     }
   },
   "api": {
-    "title": "Referencia de la API",
-    "path": "/docs/api"
+    "title": "Api",
+    "items": {
+      "api": {
+        "title": "Referencia de la API",
+        "path": "/docs/api/api"
+      }
+    }
   }
 }

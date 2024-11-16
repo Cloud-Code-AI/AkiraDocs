@@ -44,7 +44,11 @@
     {
       "id": "5",
       "type": "list",
-      "content": "Item 1\nItem 2\nItem 3",
+      "content": [
+        "Item 1",
+        "Item 2",
+        "Item 3"
+      ],
       "metadata": {
         "listType": "unordered"
       }

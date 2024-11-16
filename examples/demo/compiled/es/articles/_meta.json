@@ -4,16 +4,16 @@
     "title": "Bienvenido a Akira Doc",
     "path": "/articles/welcome"
   },
+  "test_blog_post": {
+    "title": "Publicación de Blog de Prueba",
+    "path": "/articles/test_blog_post"
+  },
   "template": {
-    "title": "Plantilla",
+    "title": "Entrada de Blog de Prueba",
     "path": "/articles/template"
   },
   "ai_integration": {
-    "title": "Integración del Asistente IA",
+    "title": "Ai Integration",
     "path": "/articles/ai_integration"
-  },
-  "test_blog_post": {
-    "title": "Test Blog Post",
-    "path": "/articles/test_blog_post"
   }
 }

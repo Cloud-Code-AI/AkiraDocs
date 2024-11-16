@@ -3,16 +3,16 @@
 import React, { useState } from 'react'
 import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
 import { Block } from '../../types/Block'
-import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
+import { Button } from 'akiradocs-ui'
+import { Textarea } from 'akiradocs-ui'
+import { Label } from 'akiradocs-ui'
 import { Trash2, Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight, X, Check } from 'lucide-react'
-import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Input } from 'akiradocs-ui'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'akiradocs-ui'
 // import { Divider } from '../blocks/Divider'
 // import { Checkbox } from "@/components/ui/checkbox"
 // import { EmojiClickData } from 'emoji-picker-react'
-import { Card } from "@/components/ui/card"
+import { Card } from 'akiradocs-ui'
 import { cn } from "@/lib/utils"
 
 interface ContentBlocksProps {

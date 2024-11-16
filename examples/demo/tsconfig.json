@@ -46,8 +46,8 @@
     "content/**/*.json",
     "../akiradocs.config.json",
     "compiled/**/*.json"
-
-  ],
+, "../ui/src/elements/sheet.tsx"
+, "../ui/src/theme-provider.tsx", "../ui/src/elements/badge.tsx", "../ui/src/elements/breadcrumb.tsx", "../ui/src/elements/card.tsx", "../ui/src/elements/checkbox.tsx", "../ui/src/elements/collapsible.tsx", "../ui/src/elements/dropdown-menu.tsx", "../ui/src/elements/iconSVG.tsx", "../ui/src/elements/label.tsx", "../ui/src/elements/popover.tsx", "../ui/src/elements/scroll-area.tsx", "../ui/src/elements/select.tsx", "../ui/src/elements/separator.tsx", "../ui/src/elements/sidebar.tsx", "../ui/src/elements/skeleton.tsx", "../ui/src/elements/sonner.tsx", "../ui/src/elements/switch.tsx", "../ui/src/elements/tabs.tsx", "../ui/src/elements/textarea.tsx", "../ui/src/elements/tooltip.tsx", "../ui/src/elements/use-mobile.tsx", "../ui/src/elements/alert.tsx", "../ui/src/elements/accordion.tsx"  ],
   "exclude": [
     "node_modules"
   ]

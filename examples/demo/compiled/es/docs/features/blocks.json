@@ -30,7 +30,14 @@
       {
         "id": "4",
         "type": "list",
-        "content": "Bloques de texto\nBloques de código\nBloques de imagen\nBloques de aviso\nBloques de tabla\nBloques personalizados",
+        "content": [
+          "Bloques de texto",
+          "Bloques de código",
+          "Bloques de imagen",
+          "Bloques de aviso",
+          "Bloques de tabla",
+          "Bloques personalizados"
+        ],
         "metadata": {
           "listType": "unordered"
         }

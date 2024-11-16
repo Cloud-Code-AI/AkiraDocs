@@ -1,17 +1,17 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { GripVertical } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from "akiradocs-ui"
 import { cn } from '@/lib/utils'
 import { BlockType } from '../../types/Block'
 import { AddBlockButton } from '../editor/AddBlockButton'
 import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "akiradocs-ui"
 import { Plus, MoreHorizontal, Trash2, Upload } from 'lucide-react'
 import { useRef, useCallback, useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Input } from "akiradocs-ui"
+import { Label } from "akiradocs-ui"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "akiradocs-ui"
 
 interface SortableBlockProps {
   block: {

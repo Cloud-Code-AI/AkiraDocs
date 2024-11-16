@@ -30,7 +30,14 @@
       {
         "id": "4",
         "type": "list",
-        "content": "Text blocks\nCode blocks\nImage blocks\nCallout blocks\nTable blocks\nCustom blocks",
+        "content": [
+          "Text blocks",
+          "Code blocks",
+          "Image blocks",
+          "Callout blocks",
+          "Table blocks",
+          "Custom blocks"
+        ],
         "metadata": {
           "listType": "unordered"
         }

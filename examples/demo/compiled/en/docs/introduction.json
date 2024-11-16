@@ -32,7 +32,13 @@
     {
       "id": "4",
       "type": "list",
-      "content": "AI-powered search\nBlock-based content editing\nResponsive design\nCustomizable themes\nMarkdown support",
+      "content": [
+        "AI-powered search",
+        "Block-based content editing",
+        "Responsive design",
+        "Customizable themes",
+        "Markdown support"
+      ],
       "metadata": {
         "listType": "unordered"
       }

@@ -1,8 +1,9 @@
 import { ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "akiradocs-ui"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "akiradocs-ui"
 import { motion } from "framer-motion"
 import { Article } from "../../types/Article"
+import { getAkiradocsConfig } from "@/lib/getAkiradocsConfig"
 
 interface ArticleCardProps {
     article: Article

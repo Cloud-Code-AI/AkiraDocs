@@ -2,22 +2,21 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-// import Image from 'next/image'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Input } from "akiradocs-ui"
+import { Button } from "akiradocs-ui"
+import { Sheet, SheetContent, SheetTrigger } from "akiradocs-ui"
 import { useTheme } from "next-themes"
 import { Moon, Sun, Menu, Search } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import IconSVG from '@/components/ui/iconSVG'
+import { IconSVG } from 'akiradocs-ui'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "akiradocs-ui"
 import { useRouter } from 'next/navigation'
 import { HeaderConfig } from '@/types/config'
 

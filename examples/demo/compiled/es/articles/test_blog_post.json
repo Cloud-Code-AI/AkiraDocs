@@ -45,7 +45,11 @@
       {
         "id": "5",
         "type": "list",
-        "content": "Elemento 1\nElemento 2\nElemento 3",
+        "content": [
+          "Elemento 1",
+          "Elemento 2",
+          "Elemento 3"
+        ],
         "metadata": {
           "listType": "unordered"
         }

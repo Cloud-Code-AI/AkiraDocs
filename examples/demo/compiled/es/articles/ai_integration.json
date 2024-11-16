@@ -36,7 +36,13 @@
       {
         "id": "6",
         "type": "list",
-        "content": "Generación de documentación en lenguaje natural\nSugerencias de ejemplos de código\nResumen de contenido\nMejoras de gramática y estilo\nSoporte multilingüe",
+        "content": [
+          "Generación de documentación en lenguaje natural",
+          "Sugerencias de ejemplos de código",
+          "Resumen de contenido",
+          "Mejoras de gramática y estilo",
+          "Soporte multilingüe"
+        ],
         "metadata": {
           "listType": "unordered"
         }

@@ -15,7 +15,12 @@
       {
         "id": "2",
         "type": "list",
-        "content": "Fácil de personalizar\nBúsqueda impulsada por IA\nSistema de contenido basado en bloques\nDiseño responsivo",
+        "content": [
+          "Fácil de personalizar",
+          "Búsqueda impulsada por IA",
+          "Sistema de contenido basado en bloques",
+          "Diseño responsivo"
+        ],
         "metadata": {
           "listType": "unordered"
         }

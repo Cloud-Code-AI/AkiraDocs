@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, FileText } from 'lucide-react'
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { Button } from "akiradocs-ui"
+import { ScrollArea } from "akiradocs-ui"
 import { NavigationProps, NavItemProps } from "@/types/navigation"
 import { ErrorBoundary } from 'react-error-boundary'
 import { getApiNavigation } from '@/lib/content';

@@ -10,11 +10,14 @@
     "typecheck": "turbo run typecheck"
   },
   "dependencies": {
-    "create-akiradocs": "^1.0.8"
+    "create-akiradocs": "^1.0.18"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
     "@types/unist": "^3.0.3",
-    "turbo": "^2.2.3"
-  }
+    "turbo": "^2.3.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
