@@ -1,14 +1,9 @@
 import { ChevronRight } from "lucide-react"
-import { Button } from "akiradocs-ui"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "akiradocs-ui"
+import { Button } from "@/elements/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/elements/card"
 import { motion } from "framer-motion"
-import { Article } from "../../types/Article"
-import { getAkiradocsConfig } from "@/lib/getAkiradocsConfig"
+import { Article, ArticleCardProps } from "akiradocs-types"
 
-interface ArticleCardProps {
-    article: Article
-    index: number
-}
 
 export function ArticleCard({ article, index }: ArticleCardProps) {
     const handleReadMore = () => {

@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "akiradocs-ui"
 import { useRouter } from 'next/navigation'
-import { HeaderConfig } from '@/types/config'
+import { HeaderConfig } from 'akiradocs-types'
 
 export function Header({
   logo,

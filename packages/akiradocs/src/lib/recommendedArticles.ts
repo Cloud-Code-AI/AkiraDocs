@@ -1,6 +1,6 @@
 "use client"
 
-import { Article } from "@/types/Article"
+import { Article } from "akiradocs-types"
 import { getAkiradocsConfig } from "@/lib/getAkiradocsConfig"
 declare var require: {
   context(

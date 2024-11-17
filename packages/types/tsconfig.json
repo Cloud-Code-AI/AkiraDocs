@@ -4,8 +4,8 @@
       "baseUrl": ".",
       "paths": {
         "@/*": ["src/*"],
-        "@/utils/*": ["src/utils/*"],
-        "@/elements/*": ["src/elements/*"]
+        "@/components/*": ["src/components/*"],
+        "@/config/*": ["src/config/*"]
       },
       "target": "es2017",
       "lib": ["dom", "dom.iterable", "esnext"],
@@ -24,8 +24,5 @@
       "outDir": "dist"
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
-    "exclude": ["node_modules", "dist"],
-    "references": [
-      { "path": "../types" }
-    ]
+    "exclude": ["node_modules", "dist"]
   }

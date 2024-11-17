@@ -8,7 +8,7 @@ import { ChevronRight, FileText } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { Button } from "akiradocs-ui"
 import { ScrollArea } from "akiradocs-ui"
-import { NavigationProps, NavItemProps } from "@/types/navigation"
+import { NavigationProps, NavItemProps } from "akiradocs-types"
 import { ErrorBoundary } from 'react-error-boundary'
 import { getApiNavigation } from '@/lib/content';
 

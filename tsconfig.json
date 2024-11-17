@@ -1,0 +1,8 @@
+{
+    "files": [],
+    "references": [
+      { "path": "packages/types" },
+      { "path": "packages/akiradocs" },
+      { "path": "packages/ui" }
+    ]
+  }

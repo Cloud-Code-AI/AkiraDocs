@@ -1,4 +1,4 @@
-import { NavItem } from "../types/navigation";
+import { NavItem } from "akiradocs-types";
 
 function flattenNavigation(items: Record<string, NavItem>): { title: string; path: string }[] {
   const flattened: { title: string; path: string }[] = [];

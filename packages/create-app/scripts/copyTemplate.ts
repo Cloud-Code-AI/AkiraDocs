@@ -7,6 +7,10 @@ import {
   stat,
 } from 'fs/promises';
 import path from 'path';
+import { exec } from 'child_process';
+import { promisify } from 'util';
+
+const execAsync = promisify(exec);
 
 const ignoredPaths = [
   'node_modules',
@@ -24,10 +28,9 @@ const ignoredPaths = [
 export async function copyDir(src: string, dest: string) {
   const stats = await stat(src);
   if (!stats.isDirectory()) {
-    // Skip if it's a socket file
     if (stats.isSocket()) {
       return;
-    }
+    }    
     await copyFile(src, dest);
     return;
   }
@@ -59,9 +62,23 @@ export async function updatePackageJsonVersion(
   const templatePackageJson = JSON.parse(
     await readFile(templatePackageJsonPath, 'utf-8')
   );
+  
+  // Remove workspace dependencies
+  if (templatePackageJson.devDependencies) {
+    delete templatePackageJson.devDependencies['akiradocs-ui'];
+    delete templatePackageJson.devDependencies['akiradocs-types'];
+  }
+  
   templatePackageJson.version = current_version;
   await writeFile(
     templatePackageJsonPath,
     JSON.stringify(templatePackageJson, null, 2)
   );
+
+  // Run npm install in the template directory
+  try {
+    await execAsync('npm install akiradocs-ui@latest akiradocs-types@latest', { cwd: src });
+  } catch (error) {
+    console.error('Failed to run npm install:', error);
+  }
 }

@@ -1,15 +1,12 @@
-import { Source } from "../../types/Source"
+import { Source, AIResponseSourcesProps } from "akiradocs-types"
 
-interface AIResponseSourcesProps {
-    sources: Source[]
-}
 
 export function AIResponseSources({ sources }: AIResponseSourcesProps) {
     return (
         <div className="w-full">
             <h4 className="text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Sources</h4>
             <ul className="space-y-1">
-                {sources.map((source, index) => (
+                {sources.map((source: Source, index: number) => (
                     <li key={index}>
                         <a
                             href={source.url}

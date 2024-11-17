@@ -1,10 +1,10 @@
 "use client"
-import { IconSVG } from "akiradocs-ui";
+import { IconSVG } from "@/elements/iconSVG";
 import { motion } from "framer-motion"
-import { SearchConfig } from "@/types/config";
+import { SearchConfig } from "akiradocs-types";
 
 
-export function SearchHeader({
+function SearchHeader({
   logo = {
     path: '/akiradocs_logo.svg',
     width: 200,
@@ -44,3 +44,5 @@ export function SearchHeader({
     </motion.div>
   )
 }
+
+export { SearchHeader }

@@ -1,5 +1,5 @@
 import { getAkiradocsConfig } from "./getAkiradocsConfig";
-import { HeaderConfig } from "../types/config";
+import { HeaderConfig } from "akiradocs-types";
 
 
 export function getHeaderConfig(): HeaderConfig {

@@ -1,13 +1,9 @@
 "use client"
 import { Search, Sparkles } from "lucide-react"
-import { Button } from "akiradocs-ui"
-import { Input } from "akiradocs-ui"
+import { Button } from "@/elements/button"
+import { Input } from "@/elements/input"
+import { SearchBarProps } from "akiradocs-types"
 
-interface SearchBarProps {
-    query: string
-    onQueryChange: (value: string) => void
-    onSubmit: (e: React.FormEvent) => void
-}
 
 export function SearchBar({ query, onQueryChange, onSubmit }: SearchBarProps) {
     return (

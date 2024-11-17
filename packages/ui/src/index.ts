@@ -70,3 +70,14 @@ export { Tabs, TabsList, TabsTrigger, TabsContent } from '@/elements/tabs'
 export { Textarea } from '@/elements/textarea'
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/elements/tooltip'
 export { useIsMobile } from '@/elements/use-mobile'
+
+
+// Components
+export { AIResponse } from '@/components/aiSearch/AIResponse'
+export { AIResponseActions } from '@/components/aiSearch/AIResponseActions'
+export { AIResponseSources } from '@/components/aiSearch/AIResponseSources'
+export { ArticleCard } from '@/components/aiSearch/ArticleCard'
+export { LegacyDocsToggle } from '@/components/aiSearch/LegacyDocsToggle'
+export { RecommendedArticles } from '@/components/aiSearch/RecommendedArticles'
+export { SearchBar } from '@/components/aiSearch/SearchBar'
+export { SearchHeader } from '@/components/aiSearch/SearchHeader'

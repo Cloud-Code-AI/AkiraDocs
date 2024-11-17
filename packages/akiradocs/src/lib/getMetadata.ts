@@ -1,5 +1,5 @@
 import { getAkiradocsConfig } from "./getAkiradocsConfig";
-import { Metadata } from "../types/config";
+import { Metadata } from "akiradocs-types";
 
 export function getMetadata(): Metadata {
     const config = getAkiradocsConfig();

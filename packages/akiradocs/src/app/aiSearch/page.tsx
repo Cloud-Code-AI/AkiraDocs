@@ -1,11 +1,11 @@
 "use client"
 
 import { useState } from 'react'
-import { SearchHeader } from '@/components/aiSearch/SearchHeader'
-import { SearchBar } from '@/components/aiSearch/SearchBar'
-import { LegacyDocsToggle } from '@/components/aiSearch/LegacyDocsToggle'
-import { AIResponse } from '@/components/aiSearch/AIResponse'
-import { RecommendedArticles } from '@/components/aiSearch/RecommendedArticles'
+import { SearchHeader } from 'akiradocs-ui'
+import { SearchBar } from 'akiradocs-ui'
+import { LegacyDocsToggle } from 'akiradocs-ui'
+import { AIResponse } from 'akiradocs-ui'
+import { RecommendedArticles } from 'akiradocs-ui'
 import { AnimatePresence } from 'framer-motion'
 import { getRecommendedArticles } from '@/lib/recommendedArticles'
 import { getSearchConfig } from '@/lib/searchConfig'
@@ -64,7 +64,7 @@ export default function Home() {
             onQueryChange={setQuery}
             onSubmit={handleSearch}
           />
-          <LegacyDocsToggle/>
+          <LegacyDocsToggle locale={config.localization.defaultLocale}/>
         </div>
 
         <AnimatePresence>

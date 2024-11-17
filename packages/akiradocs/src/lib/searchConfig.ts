@@ -1,5 +1,5 @@
 import { getAkiradocsConfig } from "./getAkiradocsConfig";
-import { SearchConfig } from "../types/config";
+import { SearchConfig } from "akiradocs-types";
 
 export function getSearchConfig(): SearchConfig {
     const config = getAkiradocsConfig();

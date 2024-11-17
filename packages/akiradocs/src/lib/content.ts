@@ -1,4 +1,4 @@
-import { Post } from '@/types/Block'
+import { Post } from 'akiradocs-types'
 declare var require: {
   context(
     directory: string,

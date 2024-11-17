@@ -1,12 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
-import { Article } from "../../types/Article"
 import { ArticleCard } from "./ArticleCard"
 import Link from "next/link"
-
-interface RecommendedArticlesProps {
-    articles: Article[]
-}
+import { Article, RecommendedArticlesProps } from "akiradocs-types"
 
 export function RecommendedArticles({ articles }: RecommendedArticlesProps) {
     return (
@@ -20,7 +16,7 @@ export function RecommendedArticles({ articles }: RecommendedArticlesProps) {
                 Recommended Articles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {articles.map((article, index) => (
+                {articles.map((article: Article, index: number) => (
                     <ArticleCard key={index} article={article} index={index} />
                 ))}
             </div>

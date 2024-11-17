@@ -1,25 +1,14 @@
 "use client"
 import { Sparkles, ArrowLeft } from "lucide-react"
-import { Button } from "akiradocs-ui"
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "akiradocs-ui"
-import { Separator } from "akiradocs-ui"
+import { Button } from "@/elements/button"
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/elements/card"
+import { Separator } from "@/elements/separator"
 import { motion } from "framer-motion"
 import { AIResponseActions } from "./AIResponseActions"
 import { AIResponseSources } from "./AIResponseSources"
-
-interface Source {
-  title: string
-  url: string
-}
-
-interface AIResponseProps {
-  response: string
-  sources: Source[]
-  onBack: () => void
-}
+import type { AIResponseProps } from "akiradocs-types"
 
 export function AIResponse({ response, sources, onBack }: AIResponseProps) {
-  console.debug(sources)
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

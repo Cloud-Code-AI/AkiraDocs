@@ -1,5 +1,5 @@
 "use client"
-import { Block } from '@/types/Block'
+import { Block } from 'akiradocs-types'
 import { Paragraph } from "@/components/blocks/ParagraphBlock"
 import { HeadingTitle } from "@/components/blocks/HeadingBlock"
 import { List } from "@/components/blocks/ListBlock"

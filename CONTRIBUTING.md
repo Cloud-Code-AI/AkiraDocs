@@ -56,8 +56,10 @@ For licensing questions, contact licensing@akiradocs.ai
 
 2. **Setup Environment**
    ```bash
-   npm install
-   npm run dev
+   pnpm install
+   pnpm compile
+   pnpm update --recursive --workspace
+   pnpm run dev
    ```
 
 3. **Create Branch**

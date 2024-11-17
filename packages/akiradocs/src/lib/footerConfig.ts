@@ -1,5 +1,5 @@
   import { getAkiradocsConfig } from "./getAkiradocsConfig";
-  import { FooterConfig } from '../types/config';
+  import { FooterConfig } from 'akiradocs-types';
 
   export function getFooterConfig(): FooterConfig {
     // Using require.context to get the config file

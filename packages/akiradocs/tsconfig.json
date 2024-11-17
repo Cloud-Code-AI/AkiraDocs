@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "composite": true,
     "lib": [
       "dom",
       "dom.iterable",
@@ -38,6 +39,9 @@
     },
     "target": "ES2017"
   },
+  "references": [
+    { "path": "../types" }
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

@@ -52,8 +52,7 @@
     "sonner": "^1.7.0",
     "styled-components": "^6.1.13",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7",
-    "akiradocs-ui": "^1.0.10"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
@@ -61,12 +60,13 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "akiradocs-ui": "workspace:*",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.15",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "akiradocs-types": "workspace:*",
+    "akiradocs-ui": "workspace:*"
   }
 }

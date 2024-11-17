@@ -18,11 +18,6 @@ interface NavItem {
   }
   
   
-  interface DescriptionConfig {
-    text: string;
-    show: boolean;
-  }
-  
   export interface HeaderConfig {
     logo?: Logo;
     title?: string;

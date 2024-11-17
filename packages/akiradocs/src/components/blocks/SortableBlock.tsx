@@ -3,7 +3,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { GripVertical } from 'lucide-react'
 import { Button } from "akiradocs-ui"
 import { cn } from '@/lib/utils'
-import { BlockType } from '../../types/Block'
+import { BlockType } from 'akiradocs-types'
 import { AddBlockButton } from '../editor/AddBlockButton'
 import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "akiradocs-ui"
