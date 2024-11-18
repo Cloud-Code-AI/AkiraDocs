@@ -1,4 +1,5 @@
 "use client"
+import React from 'react';
 import { Search, Sparkles } from "lucide-react"
 import { Button } from "@/elements/button"
 import { Input } from "@/elements/input"

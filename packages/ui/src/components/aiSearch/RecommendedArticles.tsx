@@ -1,4 +1,5 @@
 "use client"
+import React from 'react';
 import { motion } from "framer-motion"
 import { ArticleCard } from "./ArticleCard"
 import Link from "next/link"

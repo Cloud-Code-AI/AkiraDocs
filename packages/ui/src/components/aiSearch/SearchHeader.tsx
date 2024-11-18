@@ -1,4 +1,5 @@
 "use client"
+import React from 'react';
 import { IconSVG } from "@/elements/iconSVG";
 import { motion } from "framer-motion"
 import { SearchConfig } from "akiradocs-types";
