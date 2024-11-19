@@ -365,7 +365,7 @@ export function SortableBlock({
                 }, 100)
               }}
               className={cn(
-                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-gray-800",
+                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-secondary",
                 block.type === 'heading' && "font-bold text-2xl",
                 block.type === 'code' && "font-mono bg-muted p-4"
               )}
