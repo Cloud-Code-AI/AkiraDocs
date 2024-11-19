@@ -168,6 +168,15 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
     }
   }
 
+  const updateBlockMetadata = (id: string, metadata: any) => {
+    setBlocks(blocks.map(block => {
+      if (block.id === id) {
+        return { ...block, metadata: metadata }
+      }
+      return block
+    }))
+  }
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -213,6 +222,7 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
                   showPreview={showPreview}
                   isChangeTypeActive={activeChangeTypeId === block.id}
                   setActiveChangeTypeId={setActiveChangeTypeId}
+                  updateBlockMetadata={updateBlockMetadata}
                 />
               ))}
             </SortableContext>

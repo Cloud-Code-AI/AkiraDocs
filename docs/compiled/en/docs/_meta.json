@@ -29,5 +29,9 @@
         "path": "/docs/core-concepts/blocks"
       }
     }
+  },
+  "trial": {
+    "title": "trial",
+    "path": "/articles/trial"
   }
 }

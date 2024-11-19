@@ -12,12 +12,21 @@ import { useRef, useCallback, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { BlockFormatToolbar } from './BlockFormatToolbar'
 
 interface SortableBlockProps {
   block: {
     id: string
     type: BlockType
     content: string
+    metadata?: {
+      styles?: {
+        bold?: boolean
+        italic?: boolean
+        underline?: boolean
+      }
+      align?: 'left' | 'center' | 'right'
+    }
   }
   updateBlock: (id: string, content: string) => void
   changeBlockType: (id: string, newType: BlockType) => void
@@ -26,6 +35,7 @@ interface SortableBlockProps {
   showPreview: boolean
   isChangeTypeActive: boolean
   setActiveChangeTypeId: (id: string | null) => void
+  updateBlockMetadata: (id: string, metadata: Partial<{ styles?: { bold?: boolean; italic?: boolean; underline?: boolean }; align?: 'left' | 'center' | 'right' }>) => void
 }
 
 interface ImageBlockContent {
@@ -45,7 +55,8 @@ export function SortableBlock({
   deleteBlock,
   showPreview,
   isChangeTypeActive,
-  setActiveChangeTypeId
+  setActiveChangeTypeId,
+  updateBlockMetadata
 }: SortableBlockProps) {
   const {
     attributes,
@@ -223,7 +234,25 @@ export function SortableBlock({
         </div>
 
         {/* Content Editor */}
-        <div className="flex-grow">
+        <div className="flex-grow relative">
+          {!showPreview && (
+            <BlockFormatToolbar
+              styles={block.metadata?.styles}
+              align={block.metadata?.align}
+              onStyleChange={(styles) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  styles
+                })
+              }}
+              onAlignChange={(align) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  align
+                })
+              }}
+            />
+          )}
           { block.type === 'image' ? (
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
               {getImageContent().url ? (
@@ -367,7 +396,12 @@ export function SortableBlock({
               className={cn(
                 "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-secondary",
                 block.type === 'heading' && "font-bold text-2xl",
-                block.type === 'code' && "font-mono bg-muted p-4"
+                block.type === 'code' && "font-mono bg-muted p-4",
+                block.metadata?.styles?.bold && "font-bold",
+                block.metadata?.styles?.italic && "italic",
+                block.metadata?.styles?.underline && "underline",
+                block.metadata?.align === 'center' && "text-center",
+                block.metadata?.align === 'right' && "text-right"
               )}
               style={{
                 display: 'block',
