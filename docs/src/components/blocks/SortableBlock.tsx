@@ -24,6 +24,10 @@ interface SortableBlockProps {
         bold?: boolean
         italic?: boolean
         underline?: boolean
+        headingLevel?: number
+        language?: string
+        filename?: string
+        showLineNumbers?: boolean
       }
       align?: 'left' | 'center' | 'right'
     }
@@ -35,7 +39,7 @@ interface SortableBlockProps {
   showPreview: boolean
   isChangeTypeActive: boolean
   setActiveChangeTypeId: (id: string | null) => void
-  updateBlockMetadata: (id: string, metadata: Partial<{ styles?: { bold?: boolean; italic?: boolean; underline?: boolean }; align?: 'left' | 'center' | 'right' }>) => void
+  updateBlockMetadata: (id: string, metadata: Partial<{ styles?: { bold?: boolean; italic?: boolean; underline?: boolean; headingLevel?: number; language?: string; filename?: string; showLineNumbers?: boolean }; align?: 'left' | 'center' | 'right' }>) => void
 }
 
 interface ImageBlockContent {
@@ -235,130 +239,122 @@ export function SortableBlock({
 
         {/* Content Editor */}
         <div className="flex-grow relative">
-          {!showPreview && (
+          {!showPreview && block.type !== 'divider' && (
             <BlockFormatToolbar
               styles={block.metadata?.styles}
-              align={block.metadata?.align}
+              align={block.type === 'image' ? getImageContent().alignment : block.metadata?.align}
+              level={block.metadata?.level || 1}
+              showLevelSelect={block.type === 'heading'}
+              ordered={block.metadata?.ordered || false}
+              showListControls={block.type === 'list'}
+              language={block.metadata?.language || 'typescript'}
+              filename={block.metadata?.filename}
+              showLineNumbers={block.metadata?.showLineNumbers ?? true}
+              showCodeControls={block.type === 'code'}
               onStyleChange={(styles) => {
                 updateBlockMetadata(block.id, {
                   ...block.metadata,
                   styles
                 })
               }}
-              onAlignChange={(align) => {
+              onAlignChange={(newAlign) => {
+                if (block.type === 'image') {
+                  const currentContent = getImageContent();
+                  const updatedContent = {
+                    ...currentContent,
+                    alignment: newAlign,  // For the image container alignment
+                    position: newAlign,   // For the image position within container
+                  };
+                  updateBlock(block.id, JSON.stringify(updatedContent));
+                } else {
+                  updateBlockMetadata(block.id, {
+                    ...block.metadata,
+                    align: newAlign
+                  });
+                }
+              }}
+              onLevelChange={(level) => {
                 updateBlockMetadata(block.id, {
                   ...block.metadata,
-                  align
+                  level
                 })
+              }}
+              onOrderedChange={(ordered) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  ordered
+                })
+              }}
+              onLanguageChange={(language) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  language
+                })
+              }}
+              onFilenameChange={(filename) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  filename
+                })
+              }}
+              onShowLineNumbersChange={(showLineNumbers) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  showLineNumbers
+                })
+              }}
+              showImageControls={block.type === 'image'}
+              imageContent={block.type === 'image' ? getImageContent() : undefined}
+              onImageMetadataChange={(metadata) => {
+                const currentContent = getImageContent();
+                const updatedContent = {
+                  ...currentContent,
+                  ...metadata
+                };
+                updateBlock(block.id, JSON.stringify(updatedContent));
+              }}
+              showCalloutControls={block.type === 'callout'}
+              calloutType={block.metadata?.type || 'info'}
+              calloutTitle={block.metadata?.title || ''}
+              onCalloutTypeChange={(type) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  type
+                });
+              }}
+              onCalloutTitleChange={(title) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  title
+                });
               }}
             />
           )}
           { block.type === 'image' ? (
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
               {getImageContent().url ? (
-                <div className="space-y-4">
-                  <div className={cn(
-                    "flex flex-col gap-2",
-                    getImageContent().alignment === 'left' && "items-start",
-                    getImageContent().alignment === 'center' && "items-center",
-                    getImageContent().alignment === 'right' && "items-end",
-                  )}>
-                    <img 
-                      src={getImageContent().url} 
-                      alt={getImageContent().alt} 
-                      className={cn(
-                        "h-auto rounded-lg",
-                        getImageContent().size === 'small' && "max-w-[300px]",
-                        getImageContent().size === 'medium' && "max-w-[500px]",
-                        getImageContent().size === 'large' && "max-w-[800px]",
-                        getImageContent().size === 'full' && "max-w-full",
-                      )}
-                    />
-                    {getImageContent().caption && (
-                      <p className="text-sm text-muted-foreground italic">
-                        {getImageContent().caption}
-                      </p>
+                <div className={cn(
+                  "flex flex-col gap-2",
+                  getImageContent().alignment === 'left' && "items-start",
+                  getImageContent().alignment === 'center' && "items-center",
+                  getImageContent().alignment === 'right' && "items-end",
+                )}>
+                  <img 
+                    src={getImageContent().url} 
+                    alt={getImageContent().alt} 
+                    className={cn(
+                      "h-auto rounded-lg",
+                      getImageContent().size === 'small' && "max-w-[300px]",
+                      getImageContent().size === 'medium' && "max-w-[500px]",
+                      getImageContent().size === 'large' && "max-w-[800px]",
+                      getImageContent().size === 'full' && "max-w-full",
                     )}
-                  </div>
-
-                  <div className="space-y-4 pt-4 border-t">
-                    <div className="grid gap-4">
-                      <div className="grid gap-2">
-                        <Label htmlFor="alt-text">Alt Text</Label>
-                        <Input
-                          id="alt-text"
-                          placeholder="Describe the image..."
-                          value={getImageContent().alt}
-                          onChange={(e) => updateImageMetadata({ alt: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="grid gap-2">
-                        <Label htmlFor="caption">Caption</Label>
-                        <Input
-                          id="caption"
-                          placeholder="Add a caption..."
-                          value={getImageContent().caption}
-                          onChange={(e) => updateImageMetadata({ caption: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="grid gap-2">
-                        <Label>Alignment</Label>
-                        <Select
-                          value={getImageContent().alignment}
-                          onValueChange={(value) => 
-                            updateImageMetadata({ 
-                              alignment: value as 'left' | 'center' | 'right' 
-                            })
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select alignment" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="left">Left</SelectItem>
-                            <SelectItem value="center">Center</SelectItem>
-                            <SelectItem value="right">Right</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="grid gap-2">
-                        <Label>Size</Label>
-                        <Select
-                          value={getImageContent().size || 'medium'}
-                          onValueChange={(value) => 
-                            updateImageMetadata({ 
-                              size: value as 'small' | 'medium' | 'large' | 'full' 
-                            })
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select size" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="small">Small</SelectItem>
-                            <SelectItem value="medium">Medium</SelectItem>
-                            <SelectItem value="large">Large</SelectItem>
-                            <SelectItem value="full">Full width</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-center">
-                      <label className="cursor-pointer px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80">
-                        Replace Image
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleImageUpload}
-                          className="hidden"
-                        />
-                      </label>
-                    </div>
-                  </div>
+                  />
+                  {getImageContent().caption && (
+                    <p className="text-sm text-muted-foreground italic">
+                      {getImageContent().caption}
+                    </p>
+                  )}
                 </div>
               ) : (
                 <label className="flex flex-col items-center justify-center cursor-pointer py-8">
@@ -395,7 +391,15 @@ export function SortableBlock({
               }}
               className={cn(
                 "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-secondary",
-                block.type === 'heading' && "font-bold text-2xl",
+                block.type === 'heading' && [
+                  "font-bold",
+                  (!block.metadata?.level || block.metadata?.level === 1) && "text-4xl",
+                  block.metadata?.level === 2 && "text-3xl",
+                  block.metadata?.level === 3 && "text-2xl",
+                  block.metadata?.level === 4 && "text-xl",
+                  block.metadata?.level === 5 && "text-lg",
+                  block.metadata?.level === 6 && "text-base",
+                ],
                 block.type === 'code' && "font-mono bg-muted p-4",
                 block.metadata?.styles?.bold && "font-bold",
                 block.metadata?.styles?.italic && "italic",
