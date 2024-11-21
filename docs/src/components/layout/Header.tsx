@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 // import Image from 'next/image'
 import { Input } from "@/components/ui/input"
@@ -20,6 +20,9 @@ import {
 } from "@/components/ui/select"
 import { useRouter } from 'next/navigation'
 import { HeaderConfig } from '@/types/config'
+import { searchContent, type SearchResult } from '@/lib/search'
+import { useDebounce } from '@/hooks/useDebounce'
+import { useClickOutside } from '@/hooks/useClickOutside'
 
 export function Header({
   logo,
@@ -35,6 +38,10 @@ export function Header({
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const router = useRouter()
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([])
+  const [showResults, setShowResults] = useState(false)
+  const searchRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setIsMounted(true)
@@ -51,6 +58,27 @@ export function Header({
     const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${value}`)
     router.push(newPath)
   }
+
+  const debouncedSearch = useDebounce((query: string) => {
+    if (!query.trim()) {
+      setSearchResults([])
+      setShowResults(false)
+      return
+    }
+    const results = searchContent(query).map(result => ({
+      ...result,
+      path: `/${currentLocale}${result.path}`
+    }))
+    setSearchResults(results)
+    setShowResults(true)
+  }, 300)
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query)
+    debouncedSearch(query)
+  }
+
+  useClickOutside(searchRef, () => setShowResults(false))
 
   return (
     <motion.header
@@ -148,13 +176,41 @@ export function Header({
 
           <div className="flex items-center space-x-4">
             {showSearch && (
-              <div className="relative hidden md:block">
+              <div className="relative hidden md:block" ref={searchRef}>
                 <Input
                   type="search"
                   placeholder={searchPlaceholder}
                   className="w-64 pr-8 rounded-md"
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  onFocus={() => {
+                    if (searchQuery.trim()) setShowResults(true)
+                  }}
                 />
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                
+                {showResults && searchResults.length > 0 && (
+                  <div className="absolute top-full mt-2 w-full bg-background border rounded-md shadow-lg overflow-hidden z-50">
+                    {searchResults.map((result, index) => (
+                      <Link
+                        key={index}
+                        href={result.path}
+                        onClick={() => {
+                          setShowResults(false)
+                          setSearchQuery('')
+                        }}
+                        className="block px-4 py-2 hover:bg-muted transition-colors"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium">{result.title}</span>
+                          <span className="text-xs text-muted-foreground capitalize px-2 py-1 bg-muted rounded">
+                            {result.type}
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
             
