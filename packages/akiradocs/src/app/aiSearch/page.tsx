@@ -12,10 +12,13 @@ import { getSearchConfig } from '@/lib/searchConfig'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
+import { ChatCompletionMessageParam, CreateMLCEngine } from "@mlc-ai/web-llm";
+import { Source } from '@/types/Source'
 
 export default function Home() {
   const [query, setQuery] = useState('')
   const [aiResponse, setAiResponse] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const recommendedArticles = getRecommendedArticles()
   const searchConfig = getSearchConfig()
   const config = getAkiradocsConfig()
@@ -36,19 +39,76 @@ export default function Home() {
     )
   }
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
-    setAiResponse('This is a placeholder AI response. Implement actual AI search here.')
+    setIsLoading(true)
+    try {
+      // Updated fetch path to use absolute URL
+      const contextResponse = await fetch('/context/en_docs.txt');
+      if (!contextResponse.ok) {
+        throw new Error(`Failed to fetch context: ${contextResponse.status}`);
+      }
+      const contextData = await contextResponse.text();
+      const docsContext = contextData;
+
+      // Initialize MLC Engine
+      const engine = await CreateMLCEngine(
+        "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+        { 
+          initProgressCallback: (progress: any) => console.log(progress) 
+        }
+      );
+
+      // Prepare messages for the chat with context
+      const messages = [
+        { 
+          role: "system", 
+          content: `You are a technical documentation assistant specialized in providing accurate, concise answers based on the official documentation. 
+          Your responses should be:
+          1. Direct and to the point
+          2. Based strictly on the provided documentation context
+          3. Include relevant code examples when available
+          4. Written in a technical but clear style
+
+          Documentation context: ${docsContext}`
+        },
+        { 
+          role: "user", 
+          content: `Answer the following question using only the provided documentation context. 
+          Question: ${query}
+
+          Requirements for your response:
+          1. If the answer isn't clearly supported by the documentation, say "I don't have enough information to answer this question accurately."
+          2. Don't make assumptions or provide information not found in the documentation
+          3. If relevant, include short code snippets to illustrate your answer.
+          4. Only answer questions related to the Documentaion Context.
+          5. Try to be concise and to the point.
+          
+          After your answer, if you used any sources from the documentation, list them in this format:
+          -------------
+          Sources:
+          - <title> (<path>)` 
+        }
+      ];
+
+      console.log(messages)
+
+      // Get response from MLC chatbot
+      const reply = await engine.chat.completions.create({ messages: messages as ChatCompletionMessageParam[] });
+      setAiResponse(reply.choices[0].message.content || '');
+    } catch (error) {
+      console.error('Error during AI search:', error);
+      setAiResponse('Sorry, there was an error processing your request.');
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleBack = () => {
     setAiResponse('')
   }
 
-  const sources = [
-    { title: 'AkiraDocs Official Documentation', url: 'https://docs.akiradocs.com' },
-    { title: 'AI-Powered Documentation Best Practices', url: 'https://aibest.practices.com' },
-  ]
+  const sources: Source[] = []
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">

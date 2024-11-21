@@ -6,11 +6,8 @@ import { Separator } from "@/components/ui/separator"
 import { motion } from "framer-motion"
 import { AIResponseActions } from "./AIResponseActions"
 import { AIResponseSources } from "./AIResponseSources"
-
-interface Source {
-  title: string
-  url: string
-}
+import ReactMarkdown from 'react-markdown'
+import { Source } from "@/types/Source"
 
 interface AIResponseProps {
   response: string
@@ -39,14 +36,14 @@ export function AIResponse({ response, sources, onBack }: AIResponseProps) {
           </Button>
         </CardHeader>
         <CardContent className="pt-6">
-          <div className="prose dark:prose-invert max-w-none">
-            <p>{response}</p>
+        <div className="prose dark:prose-invert max-w-none">
+            <ReactMarkdown>{response}</ReactMarkdown>
           </div>
         </CardContent>
         <CardFooter className="flex flex-col items-start space-y-4">
           <AIResponseActions />
           <Separator className="my-4" />
-          <AIResponseSources sources={[]} />
+          <AIResponseSources sources={sources} />
         </CardFooter>
       </Card>
     </motion.div>
