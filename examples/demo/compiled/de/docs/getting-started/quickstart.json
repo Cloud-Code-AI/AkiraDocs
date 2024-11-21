@@ -1,0 +1,48 @@
+{
+  "title": "Leitfaden für einen schnellen Einstieg",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-01-01T00:00:00.000Z",
+  "modifiedDate": "2024-01-01T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Starten Sie mit Akira Docs in wenigen Minuten\n\nFolgen Sie diesen Schritten, um mit der Verwendung von Akira Docs für Ihre Dokumentationsanforderungen zu beginnen."
+    },
+    {
+      "id": "2",
+      "type": "code",
+      "content": "bash\ngit clone https://github.com/tu-org/plantilla-docs-akira\ncd plantilla-docs-akira\nnpm install\nnpm run dev",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "4",
+      "type": "callout",
+      "content": "Stellen Sie sicher, dass Node.js 16 oder eine neuere Version auf Ihrem System installiert ist.",
+      "metadata": {
+        "type": "warning",
+        "title": "Prerequisites"
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

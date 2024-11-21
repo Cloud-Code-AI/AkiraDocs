@@ -1,0 +1,33 @@
+{
+  "defaultRoute": "/docs/introduction",
+  "introduction": {
+    "title": "Introduction",
+    "path": "/docs/introduction"
+  },
+  "gettingStarted": {
+    "title": "Getting-started",
+    "items": {
+      "quickstart": {
+        "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de démarrage rapide",
+        "path": "/docs/getting-started/quickstart"
+      },
+      "configuration": {
+        "title": "Configuration",
+        "path": "/docs/getting-started/configuration"
+      }
+    }
+  },
+  "features": {
+    "title": "Features",
+    "items": {
+      "themes": {
+        "title": "Thématisation",
+        "path": "/docs/features/themes"
+      },
+      "blocks": {
+        "title": "Blocs de contenu",
+        "path": "/docs/features/blocks"
+      }
+    }
+  }
+}

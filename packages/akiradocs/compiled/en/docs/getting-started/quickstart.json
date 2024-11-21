@@ -28,21 +28,7 @@
     {
       "id": "3",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "4",
-      "type": "callout",
-      "content": "Make sure you have Node.js 16 or higher installed on your system.",
-      "metadata": {
-        "type": "warning",
-        "title": "Prerequisites"
-      }
-    },
-    {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
+      "content": ":::warning Prerequisites\nMake sure you have Node.js 16 or higher installed on your system.\n:::"
     }
   ]
 }

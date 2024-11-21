@@ -34,7 +34,7 @@ async function convertMarkdownToBlocks(content) {
         blocks.push({
           id: String(blockId++),
           type: 'list',
-          content: listItems.join('\n'),
+          content: listItems,
           metadata: {
             listType: 'unordered'
           }
@@ -49,7 +49,7 @@ async function convertMarkdownToBlocks(content) {
       blocks.push({
         id: String(blockId++),
         type: 'list',
-        content: listItems.join('\n'),
+        content: listItems,
         metadata: {
           listType: 'unordered'
         }
@@ -113,8 +113,8 @@ async function convertMarkdownToBlocks(content) {
       continue;
     }
 
-    // Handle callouts
-    if (line.startsWith(':::')) {
+    // Handle callouts with > [!type] syntax
+    if (line.trim().startsWith('> [!')) {
       if (currentBlock.length > 0) {
         blocks.push({
           id: String(blockId++),
@@ -124,23 +124,26 @@ async function convertMarkdownToBlocks(content) {
         currentBlock = [];
       }
 
-      const calloutMatch = line.match(/^:::(\w+)\s*(.*)/);
+      const calloutMatch = line.match(/>\s*\[!(\w+)\]\s*(.*)/);
       if (calloutMatch) {
         const [_, type, title] = calloutMatch;
         let calloutContent = [];
         i++;
 
-        while (i < lines.length && !lines[i].startsWith(':::')) {
-          calloutContent.push(lines[i]);
+        // Collect content until we hit a line that doesn't start with >
+        while (i < lines.length && lines[i].trim().startsWith('>')) {
+          // Remove the > prefix and any single leading space
+          calloutContent.push(lines[i].trim().replace(/^>\s?/, ''));
           i++;
         }
+        i--; // Step back one line since we went too far
 
         blocks.push({
           id: String(blockId++),
           type: 'callout',
           content: calloutContent.join('\n').trim(),
           metadata: {
-            type,
+            type: type.toLowerCase(),
             title: title || type.charAt(0).toUpperCase() + type.slice(1)
           }
         });
@@ -177,23 +180,27 @@ async function updateMetaFile(folderPath, newFile) {
 
   const fileName = path.basename(newFile, '.json');
   const compiledContent = JSON.parse(await readFile(newFile, 'utf-8'));
-  const humanReadableFileName = fileName
-    .split('_')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-  const title = compiledContent.title || humanReadableFileName;
   
-  // Split the path using platform-specific separator and rejoin using path.join
-  const pathParts = path.dirname(newFile).split(path.sep);
-  const compiledIndex = pathParts.indexOf('compiled');
-  const relativePath = pathParts
-    .slice(compiledIndex + 2) // Skip 'compiled' and language code
-    .join(path.sep);
-    
-  meta[fileName] = {
-    title: title,
-    path: path.join('/', relativePath, fileName)
-  };
+  // Calculate relative path from compiled directory
+  const relativePath = path.relative(
+    path.join(process.cwd(), 'compiled'),
+    folderPath
+  );
+  
+  // Only set title if the entry doesn't exist in meta
+  if (!meta[fileName]) {
+    const humanReadableFileName = fileName
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+    meta[fileName] = {
+      title: compiledContent.title || humanReadableFileName,
+      path: path.join('/', relativePath, fileName)
+    };
+  } else {
+    // Update only the path, preserve the existing title
+    meta[fileName].path = path.join('/', relativePath, fileName);
+  }
 
   await writeFile(metaPath, JSON.stringify(meta, null, 2));
 }
@@ -238,4 +245,127 @@ async function compileMarkdownFiles() {
   }
 }
 
-compileMarkdownFiles();
+async function createMetaFilesForAllFolders() {
+  try {
+    const compiledPath = path.join(process.cwd(), 'compiled');
+    const languageFolders = await readdir(compiledPath);
+
+    for (const langFolder of languageFolders) {
+      const langPath = path.join(compiledPath, langFolder);
+      const mainSections = ['docs', 'articles'];
+      
+      for (const section of mainSections) {
+        const sectionPath = path.join(langPath, section);
+        if (!existsSync(sectionPath)) continue;
+
+        // Initialize existingMeta and read existing meta file if it exists
+        let existingMeta = {};
+        const metaPath = path.join(sectionPath, '_meta.json');
+        let existingDefaultRoute;
+
+        if (existsSync(metaPath)) {
+          existingMeta = JSON.parse(await readFile(metaPath, 'utf-8'));
+          existingDefaultRoute = existingMeta.defaultRoute;
+        }
+
+        const jsonFiles = await glob('**/*.json', { 
+          cwd: sectionPath,
+          ignore: '**/_meta.json'
+        });
+
+        // Create nested meta structure using existing defaultRoute if available
+        const meta = {
+          defaultRoute: existingDefaultRoute || (section === 'docs' ? '/docs/introduction' : '/articles/welcome')
+        };
+        
+        for (const jsonFile of jsonFiles) {
+          const fileName = path.basename(jsonFile, '.json');
+          const filePath = path.join(sectionPath, jsonFile);
+          const content = JSON.parse(await readFile(filePath, 'utf-8'));
+          const dirs = path.dirname(jsonFile).split('/').filter(d => d !== '.');
+          
+          // Convert file name to camelCase for the key
+          const fileKey = fileName.replace(/-/g, ' ')
+            .split(' ')
+            .map((word, index) => {
+              const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+              return index === 0 ? capitalized.toLowerCase() : capitalized;
+            })
+            .join('');
+
+          // Create nested structure
+          let current = meta;
+          
+          if (dirs.length > 0) {
+            for (const dir of dirs) {
+              const dirKey = dir.replace(/-/g, ' ')
+                .split(' ')
+                .map((word, index) => {
+                  const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+                  return index === 0 ? capitalized.toLowerCase() : capitalized;
+                })
+                .join('');
+
+              if (!current[dirKey]) {
+                current[dirKey] = {
+                  title: dir.split('_')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' '),
+                  items: {}
+                };
+              }
+              current = current[dirKey].items;
+            }
+          }
+
+          // Check if there's an existing entry and preserve its title
+          const existingEntry = findExistingEntry(existingMeta, dirs, fileKey);
+          const title = existingEntry?.title || content.title || fileName.split('_')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+
+          current[fileKey] = {
+            title,
+            path: `/${section}/${jsonFile.replace('.json', '')}`
+          };
+        }
+
+        // Write meta file
+        const metaDataPath = path.join(sectionPath, '_meta.json');
+        await writeFile(metaDataPath, JSON.stringify(meta, null, 2));
+        console.log(`Created meta file: ${metaDataPath}`);
+      }
+    }
+  } catch (error) {
+    console.error('Error creating meta files:', error);
+    process.exit(1);
+  }
+}
+
+// Helper function to find existing entry in nested meta structure
+function findExistingEntry(meta, dirs, fileKey) {
+  let current = meta;
+  
+  // Navigate through directories
+  for (const dir of dirs) {
+    const dirKey = dir.replace(/-/g, ' ')
+      .split(' ')
+      .map((word, index) => {
+        const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+        return index === 0 ? capitalized.toLowerCase() : capitalized;
+      })
+      .join('');
+
+    if (!current[dirKey] || !current[dirKey].items) return null;
+    current = current[dirKey].items;
+  }
+
+  return current[fileKey];
+}
+
+async function main() {
+  await compileMarkdownFiles();
+  await createMetaFilesForAllFolders();
+}
+
+main();

@@ -1,31 +1,31 @@
 {
-    "title": "Temas",
-    "description": "Personaliza el aspecto y diseño de tu documentación Akira",
-    "author": "Equipo Akira",
-    "publishDate": "2024-11-10T00:00:00.000Z",
-    "modifiedDate": "2024-11-10T00:00:00.000Z",
-    "category": "Características",
-    "blocks": [
-      {
-        "id": "1",
-        "type": "heading",
-        "content": "Guía de Temas",
-        "metadata": {
-          "level": 1
-        }
-      },
-      {
-        "id": "2",
-        "type": "paragraph",
-        "content": "Akira proporciona potentes capacidades de tematización para personalizar la apariencia de tu documentación. Puedes usar temas preconfigurados o crear los tuyos propios."
-      },
-      {
-        "id": "3",
-        "type": "code",
-        "content": "// theme.config.js\nmodule.exports = {\n  colors: {\n    primary: '#0066cc',\n    secondary: '#4c9aff',\n    background: '#ffffff'\n  },\n  typography: {\n    fontFamily: 'Inter, sans-serif',\n    baseSize: '16px'\n  }\n}",
-        "metadata": {
-          "language": "javascript"
-        }
+  "title": "Tematización",
+  "description": "Personaliza la apariencia y el aspecto de tu documentación de Akira",
+  "author": "Akira Team",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Features",
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Guía de temas",
+      "metadata": {
+        "level": 1
       }
-    ]
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Akira proporciona potentes capacidades de tematización para personalizar la apariencia de tu documentación. Puedes usar temas preestablecidos o crear los tuyos propios."
+    },
+    {
+      "id": "3",
+      "type": "code",
+      "content": "// theme.config.js\nmodule.exports = {\n  colors: {\n    primary: '#0066cc',\n    secondary: '#4c9aff',\n    background: '#ffffff'\n  },\n  tipografía: {\n    fontFamily: 'Inter, sans-serif',\n    baseSize: '16px'\n  }\n}",
+      "metadata": {
+        "language": "javascript"
+      }
+    }
+  ]
 }

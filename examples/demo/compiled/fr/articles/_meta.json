@@ -1,0 +1,19 @@
+{
+  "defaultRoute": "/articles/welcome",
+  "welcome": {
+    "title": "Welcome",
+    "path": "/articles/welcome"
+  },
+  "test_blog_post": {
+    "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTest de billet de blog",
+    "path": "/articles/test_blog_post"
+  },
+  "template": {
+    "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTest de billet de blog",
+    "path": "/articles/template"
+  },
+  "ai_integration": {
+    "title": "Ai Integration",
+    "path": "/articles/ai_integration"
+  }
+}
