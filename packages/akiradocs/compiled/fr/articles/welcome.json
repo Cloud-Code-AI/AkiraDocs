@@ -1,0 +1,64 @@
+{
+  "title": "Bienvenue sur Akira Doc",
+  "description": "Commencez avec Akira Docs - Documentation de nouvelle génération propulsée par l'IA",
+  "author": "Anonymous",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Bienvenue sur Akira Doc",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Bienvenue sur Akira Docs, la plateforme de documentation de nouvelle génération propulsée par l'IA. Ce modèle vous aidera à commencer à créer votre propre documentation."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nCaractéristiques clés",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "Facile à personnaliser",
+        "Recherche propulsée par l'IA",
+        "Système de contenu basé sur des blocs",
+        "Conception adaptable"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "> [!info] Premiers pas\n> Commencez par personnaliser ce modèle pour qu'il corresponde aux besoins de votre projet !"
+    }
+  ]
+}

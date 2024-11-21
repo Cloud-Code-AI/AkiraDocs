@@ -8,20 +8,33 @@ import { ChevronDownIcon, ChevronRightIcon } from 'lucide-react';
 import { get_api_spec, getApiNavigation } from '@/lib/content';
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { Sidebar } from '@/components/layout/Sidebar'
-import { SEO } from '@/components/layout/SEO'
 import { getFooterConfig } from '@/lib/footerConfig';
 import { getHeaderConfig } from '@/lib/headerConfig';
 import { ApiSidebar } from '@/components/layout/Navigation';
 
-const Badge = ({ children, color }) => (
+
+interface EndpointSectionProps {
+  id: string;
+  method: string;
+  servers: any;
+  path: string;
+  summary: string;
+  description: string;
+  parameters: any;
+  requestBody: any;
+  security: any;
+  isProd: boolean;
+  insights: any;
+}
+
+const Badge = ({ children, color }: { children: React.ReactNode, color: string }) => (
   <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ${color} mr-2`}>
     {children}
   </span>
 );
 
-const MethodBadge = ({ method }) => {
-  const colors = {
+const MethodBadge = ({ method }: { method: string }) => {
+  const colors: Record<string, string> = {
     get: 'bg-green-100 text-green-800',
     post: 'bg-blue-100 text-blue-800',
     put: 'bg-yellow-100 text-yellow-800',
@@ -36,7 +49,7 @@ const MethodBadge = ({ method }) => {
   );
 };
 
-const Parameter = ({ param }) => {
+const Parameter = ({ param }: { param: any }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   const hasDetails = param.description || (param.schema && (param.schema.enum || param.schema.default));
@@ -97,7 +110,7 @@ const Parameter = ({ param }) => {
               <p className="mt-2">
                 <span className="font-semibold">Possible values:</span> 
                 <span className="ml-2">
-                  {param.schema.enum.map((value, index) => (
+                  {param.schema.enum.map((value: string, index: number) => (
                     <Badge key={index} color="bg-blue-100 text-blue-800">{value}</Badge>
                   ))}
                 </span>
@@ -118,7 +131,19 @@ const Parameter = ({ param }) => {
   );
 };
 
-const EndpointSection = ({ id, method, servers, path, summary, description, parameters, requestBody, security, isProd, insights, ...rest }) => (
+const EndpointSection = ({
+  id,
+  method,
+  servers,
+  path,
+  summary,
+  description,
+  parameters,
+  requestBody,
+  security,
+  isProd,
+  insights
+}: EndpointSectionProps) => (
   <section id={id} className="mb-8 flex flex-col lg:flex-row gap-6">
     <div className="lg:w-[65%] h-full border rounded-lg overflow-hidden">
       <div className="bg-secondary p-4">
@@ -137,7 +162,7 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
         <div className="p-4">
           <h4 className="font-semibold mb-3">Parameters:</h4>
           <ul className="space-y-2">
-            {parameters.map((param, index) => (
+            {parameters.map((param: any, index: number) => (
               <Parameter key={index} param={param} />
             ))}
           </ul>
@@ -171,7 +196,7 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
                 Performance Insights
               </h5>
               <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
-                {insights.performance_insights.map((insight, index) => (
+                {insights.performance_insights.map((insight: any, index: number) => (
                   <li key={index}>
                     <strong>{insight.insight}:</strong> {insight.recommendation}
                   </li>
@@ -187,7 +212,7 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
                 Security Insights
               </h5>
               <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
-                {insights.security_insights.map((insight, index) => (
+                {insights.security_insights.map((insight: any, index: number) => (
                   <li key={index}>
                     <strong>{insight.insight}:</strong> {insight.recommendation}
                   </li>
@@ -203,7 +228,7 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
                 Optimization Insights
               </h5>
               <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
-                {insights.optimization_insights.map((insight, index) => (
+                {insights.optimization_insights.map((insight: any, index: number) => (
                   <li key={index}>
                     <strong>{insight.insight}:</strong> {insight.recommendation}
                   </li>
@@ -222,9 +247,9 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
                 {Object.entries(insights.additional_metadata).map(([key, value]) => (
                   <li key={key}>
                     <strong>{key}:</strong> {
-                      typeof value === 'object' 
-                        ? JSON.stringify(value) 
-                        : value
+                      typeof value === 'object' && value !== null
+                        ? JSON.stringify(value)
+                        : String(value)
                     }
                   </li>
                 ))}
@@ -240,10 +265,10 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
   </section>
 );
 
-export function Documentation({ }) {
-  const [apiSpec, setApiSpec] = useState(null)
+export default function Page() {
+  const [apiSpec, setApiSpec] = useState<any>(null)
   const [activeTab, setActiveTab] = useState('formatted');
-  const textareaRef = useRef(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const locale = 'en'
@@ -251,7 +276,7 @@ export function Documentation({ }) {
   const FormattedDocs = useCallback(() => (
     <>
       {Object.entries(apiSpec.paths).map(([path, methods]) => 
-        Object.entries(methods).map(([method, details]) => (
+        Object.entries(methods as Record<string, any>).map(([method, details]) => (
           <EndpointSection 
             key={`${method}-${path}`}
             id={`${method}-${path}`}
@@ -309,5 +334,3 @@ export function Documentation({ }) {
     </div>
   );
 }
-
-export default Documentation;
