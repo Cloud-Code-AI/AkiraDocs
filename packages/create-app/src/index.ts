@@ -1,9 +1,10 @@
 import cac from 'cac';
 import chalk from 'chalk';
-import { mkdir, readFile } from 'fs/promises';
+import { mkdir, readFile, writeFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import ora from 'ora';
+import enquirer from 'enquirer';
 import { updateDir } from '../scripts/updateTemplate';
 import { copyDir } from '../scripts/copyTemplate';
 
@@ -24,24 +25,58 @@ async function main() {
   cli
     .command('[directory]', 'Create a new Akira Docs site')
     .action(async (directory: string = '.') => {
+      const response = await enquirer.prompt<{ includeEditor: boolean }>({
+        type: 'confirm',
+        name: 'includeEditor',
+        message: 'Would you like to include the local editor? (Recommended for development)',
+        initial: true
+      });
+
       const spinner = ora('Creating project...').start();
 
       try {
         const targetDir = path.resolve(directory);
-
-        // Create directory if it doesn't exist
         await mkdir(targetDir, { recursive: true });
 
-        // Copy template files
+        // Copy main template files
         const templateDir = path.join(__dirname, '../template');
         await copyDir(templateDir, targetDir);
+
+        // Copy editor if selected
+        if (response.includeEditor) {
+          const editorDir = path.join(__dirname, '../../editor');
+          const targetEditorDir = path.join(targetDir, 'editor');
+          await copyDir(editorDir, targetEditorDir);
+
+          // Update package.json to include editor scripts
+          const pkgJsonPath = path.join(targetDir, 'package.json');
+          const pkgJson = JSON.parse(await readFile(pkgJsonPath, 'utf-8'));
+          pkgJson.scripts = {
+            ...pkgJson.scripts,
+            'dev:editor': 'cd editor && npm run dev',
+            'dev:docs': 'npm run dev',
+            'dev:all': 'concurrently "npm run dev:docs" "npm run dev:editor"'
+          };
+          pkgJson.devDependencies = {
+            ...pkgJson.devDependencies,
+            'concurrently': '^8.0.0'
+          };
+          await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
+        }
 
         spinner.succeed(chalk.green('Project created successfully!'));
 
         console.log('\nNext steps:');
         console.log(chalk.cyan(`  cd ${directory}`));
         console.log(chalk.cyan('  npm install'));
-        console.log(chalk.cyan('  npm run dev'));
+        if (response.includeEditor) {
+          console.log(chalk.cyan('  cd editor && npm install'));
+          console.log(chalk.cyan('  cd .. && npm run dev:all'));
+          console.log('\nEditor will be available at: http://localhost:3001');
+          console.log('Documentation site will be at: http://localhost:3000');
+        } else {
+          console.log(chalk.cyan('  npm run dev'));
+        }
       } catch (error) {
         spinner.fail(chalk.red('Failed to create project'));
         console.error(error);

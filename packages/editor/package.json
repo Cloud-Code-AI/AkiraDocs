@@ -1,11 +1,11 @@
 {
-  "name": "akiradocs-editor",
+  "name": "@akiradocs/editor",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "NEXT_PUBLIC_IS_TEMPLATE=false next dev --port 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port 3001",
     "lint": "next lint"
   },
   "dependencies": {
