@@ -58,7 +58,16 @@
     {
       "id": "7",
       "type": "paragraph",
-      "content": "> [!info] Getting Started\n> Start by customizing this template to match your project's needs!"
+      "content": ""
+    },
+    {
+      "id": "8",
+      "type": "callout",
+      "content": "Start by customizing this template to match your project's needs!",
+      "metadata": {
+        "type": "info",
+        "title": "Getting Started"
+      }
     }
   ]
 }

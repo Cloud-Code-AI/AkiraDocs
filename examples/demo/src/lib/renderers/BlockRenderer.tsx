@@ -13,7 +13,7 @@ import { CodeBlock } from "@/components/blocks/CodeBlock"
 // import { Video } from '../blocks/Video'
 // import { Audio } from '../blocks/Audio'
 // import { File } from '../blocks/File'
-// import { Emoji } from '../blocks/Emoji'
+import { Emoji } from "@/components/blocks/EmojiBlock"
 import { Callout } from "@/components/blocks/CalloutBlock"
 import { cn } from '@/lib/utils'
 import { ErrorBoundary } from 'react-error-boundary'
@@ -88,9 +88,9 @@ export function BlockRenderer({ block }: BlockRendererProps) {
     case 'heading':
       return <HeadingTitle level={block.metadata?.level || 1} {...commonProps}>{block.content}</HeadingTitle>;
     case 'list':
-      return <List items={block.content.split('\n')} ordered={block.metadata?.listType === 'ordered'} {...commonProps} />;
+      return <List items={Array.isArray(block.content) ? block.content : [block.content]} ordered={block.metadata?.listType === 'ordered'} {...commonProps} />;
     case 'code':
-      return <CodeBlock code={block.content} language={block.metadata?.language} filename={block.metadata?.filename} showLineNumbers={block.metadata?.showLineNumbers} {...commonProps} />;
+      return <CodeBlock code={Array.isArray(block.content) ? block.content.join('\n') : block.content} language={block.metadata?.language} filename={block.metadata?.filename} showLineNumbers={block.metadata?.showLineNumbers} {...commonProps} />;
     case 'blockquote':
       return <Blockquote {...commonProps}>{block.content}</Blockquote>;
     // case 'table':
@@ -105,8 +105,8 @@ export function BlockRenderer({ block }: BlockRendererProps) {
     //   return <Audio src={block.content} caption={block.metadata?.caption} {...commonProps} />;
     // case 'file':
     //   return <File url={block.content} name={block.metadata?.name || ''} {...commonProps} />;
-    // case 'emoji':
-    //   return <Emoji symbol={block.content} label={block.metadata?.label} {...commonProps} />;
+    case 'emoji':
+      return <Emoji symbol={Array.isArray(block.content) ? block.content[0] : block.content} label={block.metadata?.label} {...commonProps} />;
     case 'callout':
       return <Callout type={block.metadata?.type || 'info'} title={block.metadata?.title} {...commonProps}>{block.content}</Callout>;
     case 'divider':

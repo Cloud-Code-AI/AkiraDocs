@@ -1,0 +1,139 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Anonymous",
+  "date": "2024-11-10",
+  "blocks": [
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Integration des KI-Assistenten",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Lernen Sie, den integrierten KI-Assistenten von Akira zu nutzen, um die Dokumentation zu verbessern\n\nDer KI-Assistent von Akira ist ein leistungsstarkes Tool, das Entwicklern und technischen Redakteuren hilft, Dokumentationen durch natürliche Sprachinteraktionen zu erstellen, zu pflegen und zu verbessern. Diese Anleitung behandelt die wichtigsten Funktionen und Best Practices für die effiziente Nutzung des KI-Assistenten."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nHauptmerkmale",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": "Generierung von Dokumentation in natürlicher Sprache\nVorschläge für Codebeispiele\nZusammenfassung des Inhalts\nGrammatikalische und stilistische Verbesserungen\nMehrsprachige Unterstützung",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Beginnend",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nDer KI-Assistent kann über das Befehlsmenü (Strg+Umschlag+P) oder mit dem Befehl `/ai` in jedem Inhaltsblock aufgerufen werden. Er versteht kontextbezogene Anfragen und kann Ihnen bei verschiedenen Dokumentationsaufgaben helfen."
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nGängige Anwendungsfälle",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "1. Code-Beispiele generieren\n2. Technische Konzepte erklären\n3. Inhalte umstrukturieren\n4. Dokumentationsschemata erstellen\n5. Dokumentation übersetzen"
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Voici la traduction en allemand, avec le formatage d'origine conservé :\n\nBeste Praktiken",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": "Geben Sie einen klaren Kontext an, wenn Sie Anfragen formulieren\nÜberprüfen und validieren Sie den von der KI generierten Inhalt\nVerwenden Sie die Vorschläge der KI als Ausgangspunkt\nKombinieren Sie die KI-Unterstützung mit menschlicher Erfahrung\nBehalten Sie einen konsistenten Dokumentationsstil bei",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nKonfigurationsoptionen",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nSie können das Verhalten des KI-Assistenten über die Datei `config.yaml` anpassen:"
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "ai_assistant:\n  Modell: \"advanced-docs-v2\"\n  Temperatur: 0,7\n  max_tokens: 2048\n  Stilhandbuch: \"path/to/style/guide.md\"",
+      "metadata": {
+        "language": "yaml",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nNächste Schritte",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "Erkunden Sie unseren Leitfaden zu den [Erweiterten KI-Funktionen](/advanced-ai-features), um mehr über spezialisierte Anwendungsfälle und Integrationsmöglichkeiten zu erfahren."
+    }
+  ]
+}

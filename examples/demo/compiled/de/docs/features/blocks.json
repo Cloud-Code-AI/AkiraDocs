@@ -1,0 +1,39 @@
+{
+  "title": "Inhaltsbereiche",
+  "description": "Verständnis und Verwendung von Akiras Content-Block-System",
+  "author": "Akira Team",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Features",
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Inhaltsbereiche",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nInhaltsbereiche sind die grundlegenden Bausteine der Akira-Dokumentation. Sie bieten eine flexible Möglichkeit, Informationen zu strukturieren und zu präsentieren."
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nVerfügbare Blocktypen",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": "Textblöcke\nCodeblöcke\nBildblöcke\nAufrufeblöcke\nTabellenblöcke\nBenutzerdefinierte Blöcke",
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

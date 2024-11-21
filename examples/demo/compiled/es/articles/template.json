@@ -1,13 +1,13 @@
 {
-  "title": "Entrada de Blog de Prueba",
-  "description": "Una entrada de blog de prueba para demostrar todos los tipos de bloques.",
-  "author": "Anónimo",
+  "title": "Entrada de prueba del blog",
+  "description": "Una entrada de blog de prueba para demostrar todos los tipos de bloque.",
+  "author": "Anonymous",
   "date": "2024-11-08",
   "blocks": [
     {
       "id": "1",
       "type": "heading",
-      "content": "Ejemplo de Encabezado Muestra1",
+      "content": "Encabezado de ejemplo Muestra1",
       "metadata": {
         "level": 1,
         "styles": {
@@ -19,7 +19,7 @@
     {
       "id": "2",
       "type": "paragraph",
-      "content": "Este párrafo es parte de la entrada de blog de prueba. Demuestra el bloque de párrafo."
+      "content": "Este párrafo es parte de la entrada de prueba del blog. Demuestra el bloque de párrafo."
     },
     {
       "id": "3",
@@ -33,10 +33,10 @@
     {
       "id": "4",
       "type": "image",
-      "content": "/akiradocs_logo.svg",
+      "content": "/logo_akiradocs.svg",
       "metadata": {
-        "alt": "Imagen de Prueba",
-        "caption": "Esta es una imagen de prueba",
+        "alt": "Test Image",
+        "caption": "This is a test image",
         "size": "small",
         "position": "center"
       }
@@ -44,7 +44,7 @@
     {
       "id": "5",
       "type": "list",
-      "content": "Elemento 1\nElemento 2\nElemento 3",
+      "content": "Artículo 1\nArtículo 2\nArtículo 3",
       "metadata": {
         "listType": "unordered"
       }
@@ -60,17 +60,17 @@
       "content": "",
       "metadata": {
         "headers": [
-          "Columna 1",
-          "Columna 2"
+          "Column 1",
+          "Column 2"
         ],
         "rows": [
           [
-            "Fila 1, Celda 1",
-            "Fila 1, Celda 2"
+            "Row 1, Cell 1",
+            "Row 1, Cell 2"
           ],
           [
-            "Fila 2, Celda 1",
-            "Fila 2, Celda 2"
+            "Row 2, Cell 1",
+            "Row 2, Cell 2"
           ]
         ]
       }
@@ -78,7 +78,7 @@
     {
       "id": "8",
       "type": "blockquote",
-      "content": "Esta es una cita de prueba."
+      "content": "Esta es una prueba de cita textual."
     },
     {
       "id": "9",
@@ -87,12 +87,12 @@
       "metadata": {
         "items": [
           {
-            "title": "Elemento Desplegable 1",
-            "content": "Contenido para elemento desplegable 1"
+            "title": "Toggle Item 1",
+            "content": "Content for toggle item 1"
           },
           {
-            "title": "Elemento Desplegable 2",
-            "content": "Contenido para elemento desplegable 2"
+            "title": "Toggle Item 2",
+            "content": "Content for toggle item 2"
           }
         ]
       }
@@ -104,11 +104,11 @@
       "metadata": {
         "checkedItems": [
           {
-            "text": "Elemento de Verificación 1",
+            "text": "Check Item 1",
             "checked": true
           },
           {
-            "text": "Elemento de Verificación 2",
+            "text": "Check Item 2",
             "checked": false
           }
         ]
@@ -117,25 +117,25 @@
     {
       "id": "11",
       "type": "video",
-      "content": "/test_video.mp4",
+      "content": "/video_de_prueba.mp4",
       "metadata": {
-        "caption": "Este es un video de prueba"
+        "caption": "This is a test video"
       }
     },
     {
       "id": "12",
       "type": "audio",
-      "content": "/test_audio.mp3",
+      "content": "/audio_de_prueba.mp3",
       "metadata": {
-        "caption": "Este es un audio de prueba"
+        "caption": "This is a test audio"
       }
     },
     {
       "id": "13",
       "type": "file",
-      "content": "/test_document.pdf",
+      "content": "/documento_de_prueba.pdf",
       "metadata": {
-        "name": "Documento de Prueba"
+        "name": "Test Document"
       }
     },
     {
@@ -143,16 +143,16 @@
       "type": "emoji",
       "content": "😊",
       "metadata": {
-        "label": "cara sonriente"
+        "label": "smiling face"
       }
     },
     {
       "id": "15",
       "type": "callout",
-      "content": "Este es un mensaje importante de llamada de atención.",
+      "content": "Esta es un mensaje de aviso importante.",
       "metadata": {
         "type": "info",
-        "title": "Importante"
+        "title": "Important"
       }
     }
   ]
