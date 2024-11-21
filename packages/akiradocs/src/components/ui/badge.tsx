@@ -27,6 +27,10 @@ function Badge({
   className,
   variant,
   ...props
+}: {
+  className?: string;
+  variant?: "default" | "secondary" | "destructive" | "outline";
+  [key: string]: any;
 }) {
   return (<div className={cn(badgeVariants({ variant }), className)} {...props} />);
 }

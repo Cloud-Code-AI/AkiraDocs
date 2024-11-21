@@ -7,6 +7,10 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useTheme } from 'next-themes';
 
+interface IncludedParamsType {
+  [key: string]: string[];
+}
+
 const generateCode = (language: string, server: any, method: string, path: string, parameters: any[], requestBody: any, includedParams: string[]) => {
   const url = `${server.url}/${path}`;
   const queryParams = parameters
@@ -113,7 +117,7 @@ const ParameterToggle = ({ param, isIncluded, onToggle }: { param: any, isInclud
 
 export function ApiUsage({ apiSpec }: { apiSpec: any }) {
   const [activeTab, setActiveTab] = useState('javascript');
-  const [includedParams, setIncludedParams] = useState({});
+  const [includedParams, setIncludedParams] = useState<IncludedParamsType>({});
   const { theme } = useTheme();
 
   if (!apiSpec || !apiSpec.servers || !apiSpec.paths) {
@@ -135,11 +139,11 @@ export function ApiUsage({ apiSpec }: { apiSpec: any }) {
 
   return (
     <div className="space-y-6">
-      {Object.entries(paths).map(([path, methods]) => 
-        Object.entries(methods).map(([method, details]) => {
+      {Object.entries(paths).map(([path, methods]: [string, any]) => 
+        Object.entries(methods as Record<string, any>).map(([method, details]) => {
           const endpointId = `${method}-${path}`;
           const endpointIncludedParams = includedParams[endpointId] || [];
-          const optionalParameters = details.parameters?.filter(p => !p.required) || [];
+          const optionalParameters = details.parameters?.filter((p: any) => !p.required) || [];
 
           return (
             <Card key={endpointId} className="p-0 m-0 border-none shadow-none">
@@ -182,7 +186,7 @@ export function ApiUsage({ apiSpec }: { apiSpec: any }) {
                   <div className="mt-4">
                     <h4 className="text-sm font-semibold mb-2">Optional Parameters:</h4>
                     <div className="flex flex-wrap gap-2">
-                      {optionalParameters.map(param => (
+                      {optionalParameters.map((param: any) => (
                         <div key={param.name} className="flex items-center space-x-2">
                           <ParameterToggle
                             param={param}
