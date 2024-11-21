@@ -10,6 +10,7 @@ import { TitleBar } from '@/components/layout/TitleBar'
 import { DndContext, DragEndEvent, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { SortableBlock } from '@/components/blocks/SortableBlock'
+import { SEO } from '@/components/layout/SEO'
 
 type Block = {
   id: string
@@ -167,6 +168,15 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
     }
   }
 
+  const updateBlockMetadata = (id: string, metadata: any) => {
+    setBlocks(blocks.map(block => {
+      if (block.id === id) {
+        return { ...block, metadata: metadata }
+      }
+      return block
+    }))
+  }
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -180,6 +190,11 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
     <div className="min-h-screen bg-background">
 
       <div className="max-w-4xl mx-auto px-4 py-8">
+        <SEO 
+          title={`${title} | Editor`}
+          description={subtitle}
+          noIndex={true}
+        />
         <TitleBar
           showPreview={showPreview}
           setShowPreview={setShowPreview}
@@ -207,6 +222,7 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
                   showPreview={showPreview}
                   isChangeTypeActive={activeChangeTypeId === block.id}
                   setActiveChangeTypeId={setActiveChangeTypeId}
+                  updateBlockMetadata={updateBlockMetadata}
                 />
               ))}
             </SortableContext>

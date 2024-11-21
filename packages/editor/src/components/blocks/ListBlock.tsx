@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 interface ListProps {
   id?: string;
   items: string[];
-  ordered?: boolean;
+  listType?: 'ordered' | 'unordered';
   align?: 'left' | 'center' | 'right';
   styles?: {
     bold?: boolean;
@@ -13,9 +13,9 @@ interface ListProps {
   };
 }
 
-export function List({ id, items, ordered = false, align = 'left', styles }: ListProps) {
-  const Tag = ordered ? 'ol' : 'ul';
-  const listStyle = ordered ? 'list-decimal' : 'list-disc';
+export function List({ id, items, listType = 'unordered', align = 'left', styles }: ListProps) {
+  const Tag = listType === 'ordered' ? 'ol' : 'ul';
+  const listStyle = listType === 'ordered' ? 'list-decimal' : 'list-disc';
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
 
   return (
