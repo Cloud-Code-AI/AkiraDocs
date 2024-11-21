@@ -120,3 +120,52 @@ export function folderExists(folderPath: string): boolean {
     return false
   }
 }
+
+export function get_api_spec(): any {
+  try {
+    return contentContext('./en/api/apiSpec.json')
+  } catch (error) {
+    console.error('Error reading API spec file:', error)
+    return null
+  }
+}
+
+interface ApiNavItem {
+  title: string;
+  path: string;
+  method: string;
+  children?: ApiNavItem[];
+}
+
+export function getApiNavigation(): ApiNavItem[] {
+  try {
+    const apiSpec = get_api_spec();
+    if (!apiSpec || !apiSpec.paths) {
+      return [];
+    }
+
+    const navigation: ApiNavItem[] = [];
+
+    // Process each path in the API spec
+    Object.entries(apiSpec.paths).forEach(([path, pathData]: [string, any]) => {
+      // Process each HTTP method for the path
+      Object.entries(pathData).forEach(([method, methodData]: [string, any]) => {
+        navigation.push({
+          title: methodData.summary || `${method.toUpperCase()} ${path}`,
+          path: path,
+          method: method.toUpperCase(),
+          children: methodData.parameters?.map((param: any) => ({
+            title: param.name,
+            path: `${path}#${param.name}`,
+            method: 'PARAM'
+          })) || []
+        });
+      });
+    });
+
+    return navigation;
+  } catch (error) {
+    console.error('Error generating API navigation:', error);
+    return [];
+  }
+}

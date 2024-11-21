@@ -62,7 +62,7 @@ export interface Post {
   blocks: Block[];
 }
 
-export interface APIReferenceBlock extends BaseBlock {
+export interface APIReferenceBlock extends Block {
   type: 'apiReference'
   metadata: {
     endpoint: string

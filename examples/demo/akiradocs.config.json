@@ -50,7 +50,24 @@
                 "code": "es",
                 "name": "Español",
                 "flag": "🇪🇸"
+            },
+            {
+                "code": "fr",
+                "name": "Français",
+                "flag": "🇫🇷"
+            },
+            {
+                "code": "de",
+                "name": "Deutsch",
+                "flag": "🇩🇪"
             }
         ]
+    },
+    "translation": {
+        "auto_translate": true,
+        "provider": "anthropic",
+        "model": "claude-3-sonnet-20240229",
+        "targetLanguages": ["es", "fr", "de"],
+        "excludedPaths": ["_meta.json"]
     }
 }

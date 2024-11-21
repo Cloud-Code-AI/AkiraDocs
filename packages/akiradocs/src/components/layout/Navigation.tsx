@@ -186,7 +186,7 @@ const ApiNavItem = React.memo(({ item }: { item: any }) => {
         onClick={() => scrollToSection(sectionId)}
       >
         <div className="flex-1">
-          <span className={`mr-2 px-2 py-1 text-xs font-medium rounded-md ${methodColors[methodClass] || 'bg-gray-100 text-gray-800'}`}>
+          <span className={`mr-2 px-2 py-1 text-xs font-medium rounded-md ${methodColors[methodClass as keyof typeof methodColors] || 'bg-gray-100 text-gray-800'}`}>
             {item.method.toUpperCase()}
           </span>
           {item.title}

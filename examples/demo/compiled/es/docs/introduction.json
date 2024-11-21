@@ -1,36 +1,46 @@
 {
-    "title": "",
-    "description": "",
-    "author": "Equipo Akira",
-    "publishDate": "2024-11-10T00:00:00.000Z",
-    "modifiedDate": "2024-11-10T00:00:00.000Z",
-    "category": "Primeros Pasos",
-    "keywords": [
-      "Akira Docs",
-      "Documentación",
-      "IA"
-    ],
-    "blocks": [
-      {
-        "id": "1",
-        "type": "paragraph",
-        "content": "Aprende sobre Akira Docs y sus características principales\n\nAkira Docs es una plataforma moderna de documentación que combina el poder de la IA con un sistema intuitivo de contenido basado en bloques. Esta guía te ayudará a entender los conceptos y características principales."
-      },
-      {
-        "id": "2",
-        "type": "heading",
-        "content": "Características Principales",
-        "metadata": {
-          "level": 2
-        }
-      },
-      {
-        "id": "3",
-        "type": "list",
-        "content": "Búsqueda potenciada por IA\nEdición de contenido basada en bloques\nDiseño responsivo\nTemas personalizables\nSoporte para Markdown",
-        "metadata": {
-          "listType": "unordered"
-        }
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-01-01T00:00:00.000Z",
+  "modifiedDate": "2024-01-01T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Conozca Akira Docs y sus funciones principales\n\nAkira Docs es una plataforma de documentación moderna que combina el poder de la IA con un intuitivo sistema de contenido basado en bloques. Esta guía le ayudará a comprender los conceptos y funciones principales."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Características clave",
+      "metadata": {
+        "level": 2
       }
-    ]
-  }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": "Búsqueda con IA\nEdición de contenido basada en bloques\nDiseño adaptable\nTemas personalizables\nCompatibilidad con Markdown",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

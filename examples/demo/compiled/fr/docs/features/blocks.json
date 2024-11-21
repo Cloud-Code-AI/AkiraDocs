@@ -1,0 +1,39 @@
+{
+  "title": "Blocs de contenu",
+  "description": "Comprendre et utiliser le système de blocs de contenu d'Akira",
+  "author": "Akira Team",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Features",
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Blocs de contenu",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nLes blocs de contenu sont les unités de construction fondamentales de la documentation d'Akira. Ils offrent un moyen flexible de structurer et de présenter les informations."
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTypes de blocs disponibles",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": "Blocs de texte\nBlocs de code\nBlocs d'image\nBlocs d'appel\nBlocs de tableau\nBlocs personnalisés",
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

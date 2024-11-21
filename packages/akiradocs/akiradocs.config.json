@@ -23,7 +23,7 @@
             },
             "searchPlaceholder": "Search Akira...",
             "items": [
-                { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": false },
+                { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": true },
                 { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg", "show": true },
                 { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg", "show": true }
             ]
@@ -55,7 +55,19 @@
                 "code": "fr",
                 "name": "Français",
                 "flag": "🇫🇷"
+            },
+            {
+                "code": "de",
+                "name": "Deutsch",
+                "flag": "🇩🇪"
             }
         ]
+    },
+    "translation": {
+        "auto_translate": true,
+        "provider": "anthropic",
+        "model": "claude-3-sonnet-20240229",
+        "targetLanguages": ["es", "fr", "de"],
+        "excludedPaths": ["_meta.json"]
     }
 }

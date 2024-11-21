@@ -1,0 +1,139 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Anonymous",
+  "date": "2024-11-10",
+  "blocks": [
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Intégration de l'Assistant IA",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Apprenez à utiliser l'assistant IA intégré d'Akira pour améliorer la documentation\n\nL'Assistant IA d'Akira est un outil puissant qui aide les développeurs et les rédacteurs techniques à créer, maintenir et améliorer la documentation grâce à des interactions en langage naturel. Ce guide couvre les fonctionnalités essentielles et les meilleures pratiques pour utiliser efficacement l'assistant IA."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nCaractéristiques clés",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": "Génération de documentation en langage naturel\nSuggestions d'exemples de code\nRésumé du contenu\nAméliorations grammaticales et stylistiques\nSupport multilingue",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Commençant",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nL'Assistant IA peut être accédé via le menu des commandes (Ctrl+Maj+P) ou en utilisant la commande `/ai` dans n'importe quel bloc de contenu. Il comprend les demandes contextuelles et peut vous aider dans diverses tâches de documentation."
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nCas d'utilisation courants",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "1. Générer des exemples de code\n2. Expliquer des concepts techniques\n3. Restructurer le contenu\n4. Créer des schémas de documentation\n5. Traduire la documentation"
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Meilleures Pratiques",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": "Fournissez un contexte clair lors de la formulation de demandes\nRévisez et validez le contenu généré par l'IA\nUtilisez les suggestions de l'IA comme point de départ\nCombinez l'assistance de l'IA avec l'expérience humaine\nMaintenez un style de documentation cohérent",
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nOptions de configuration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nVous pouvez personnaliser le comportement de l'Assistant IA via le fichier `config.yaml` :"
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "ai_assistant:\n  modèle: \"advanced-docs-v2\"\n  température: 0,7\n  max_tokens: 2048\n  guide_de_style: \"path/to/style/guide.md\"",
+      "metadata": {
+        "language": "yaml",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nProchaines étapes",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "Explorez notre guide des [Fonctionnalités avancées d'IA](/advanced-ai-features) pour en apprendre davantage sur les cas d'utilisation spécialisés et les possibilités d'intégration."
+    }
+  ]
+}

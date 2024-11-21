@@ -1,0 +1,31 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-09T00:00:00.000Z",
+  "modifiedDate": "2024-11-09T00:00:00.000Z",
+  "category": "Getting Started",
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Guía de configuración",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Akira utiliza un archivo akiradocs.config.json para la configuración de todo el sitio. Esta guía explica todas las opciones disponibles y su uso."
+    },
+    {
+      "id": "3",
+      "type": "code",
+      "content": "{\n  \"title\": \"Documentación de Akira\",\n  \"description\": \"Documentación de última generación impulsada por IA\",\n  \"header\": {\n    \"logo\": {\n      \"path\": \"/akiradocs_logo.svg\",\n      \"width\": 120,\n      \"height\": 30,\n      \"show\": true\n    },\n    \"favicon\": {\n      \"path\": \"/akira_favicon.png\",\n      \"show\": true\n    },\n    \"title\": {\n      \"text\": \"Documentación de Akira\",\n      \"show\": false\n    },\n    \"searchPlaceholder\": \"Buscar en Akira...\",\n    \"navItems\": [\n      { \"label\": \"Búsqueda de IA\", \"href\": \"/aiSearch\", \"icon\": \"/sparkles.svg\", \"show\": false },\n      { \"label\": \"Documentos\", \"href\": \"/en/docs\", \"icon\": \"/legacy.svg\", \"show\": true },\n      { \"label\": \"Artículos\", \"href\": \"/en/articles\", \"icon\": \"/articles.svg\", \"show\": true }\n    ]\n  },\n  \"footer\": {\n    \"companyName\": \"Cloud Code AI\",\n    \"socialLinks\": [\n      { \"name\": \"GitHub\", \"url\": \"https://github.com/Cloud-Code-AI/akiradocs-template\", \"icon\": \"/github.svg\" },\n      { \"name\": \"Twitter\", \"url\": \"https://x.com/CloudCodeAI\", \"icon\": \"/twitter.svg\" },\n      { \"name\": \"LinkedIn\", \"url\": \"https://www.linkedin.com/company/cloudcode-ai\", \"icon\": \"/linkedin.svg\" }\n    ]\n  },\n  \"languages\": {\n    \"defaultLocale\": \"en\",\n    \"locales\": [\n      { \"code\": \"en\", \"name\": \"Inglés\", \"flag\": \"🇺🇸\" },\n      { \"code\": \"es\", \"name\": \"Español\", \"flag\": \"🇪🇸\" },\n      { \"code\": \"fr\", \"name\": \"Francés\", \"flag\": \"🇫🇷\" }\n    ],\n    \"fallbackLocale\": \"en\"\n  }\n}",
+      "metadata": {
+        "language": "json"
+      }
+    }
+  ]
+}
