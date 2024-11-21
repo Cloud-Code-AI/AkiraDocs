@@ -89,7 +89,7 @@ Every page is automatically optimized for search engines:
 - 🔍 Structured data markup
 - 🚀 Blazing-fast performance
 - 🗺️ Automatic sitemap generation
-- 📈 Built-in SEO analytics
+- 📈 Built-in SEO analytics [Coming Soon]
 
 ## ✍️ Modern Block-Based Editor
 
@@ -110,17 +110,36 @@ Reach a global audience effortlessly:
 
 - 🔄 AI-powered translation suggestions
 - 📝 Side-by-side translation editor
-- 🔍 Translation memory & glossaries
-- 🌍 100+ languages supported
-- 📊 Translation progress tracking
-- 🔄 Automatic content sync across languages
-- 📱 Right-to-left (RTL) support
-- 🎯 Language-specific SEO optimization
+- 🌍 Multiple languages supported
+- 🔄 Automatic content sync across languages [Coming Soon]
+- 🎯 Language-specific SEO optimization [Coming Soon]
+- 📱 Right-to-left (RTL) support [Coming Soon]
 
-## 🚀 Get Started
+## 🚀 Setup and Translate
+
+Setup enviorment variables and run the translate command to translate your docs to your target languages.
+
+```
+ANTHROPIC_API_KEY=sk-ant-api03-...
+```
+
+Also make sure to set the target languages in the `akiradocs.config.json` file.
+
+```json
+{  ...,
+  "translation": {
+    "auto_translate": true,
+    "provider": "anthropic",
+    "model": "claude-3-sonnet-20240229",
+    "targetLanguages": ["es", "fr", "de"],
+    "excludedPaths": ["_meta.json"]
+  },
+  ...
+}
+```
 
 ```bash
-npx create-akiradocs@latest mydocs
+npm run translate
 ```
 
 ## 💪 Why Choose AkiraDocs?

@@ -1,0 +1,24 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Anonymous",
+  "publishDate": "2024-11-10",
+  "modifiedDate": "2024-11-10",
+  "category": "",
+  "keywords": [],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Bienvenue sur Akira Docs, la plateforme de documentation de nouvelle génération propulsée par l'IA. Ce modèle vous aidera à commencer à créer votre propre documentation."
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": "Facile à personnaliser\\nRecherche propulsée par l'IA\\nSystème de contenu basé sur des blocs\\nConception adaptative",
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

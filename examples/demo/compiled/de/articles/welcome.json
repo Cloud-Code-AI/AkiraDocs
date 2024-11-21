@@ -1,0 +1,24 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Anonymous",
+  "publishDate": "2024-11-10",
+  "modifiedDate": "2024-11-10",
+  "category": "",
+  "keywords": [],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Willkommen bei Akira Docs, der KI-gestützten Dokumentationsplattform der nächsten Generation. Dieses Modell hilft Ihnen, mit der Erstellung Ihrer eigenen Dokumentation zu beginnen."
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": "Einfach zu personalisieren\\nKI-gestützte Suche\\nBlockbasiertes Content-System\\nResponsives Design",
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

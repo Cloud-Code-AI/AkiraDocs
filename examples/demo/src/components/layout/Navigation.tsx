@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { NavigationProps, NavItemProps } from "@/types/navigation"
 import { ErrorBoundary } from 'react-error-boundary'
+import { getApiNavigation } from '@/lib/content';
 
 const buttonStyles = {
   base: "w-full justify-start text-left font-normal rounded-lg transition-colors",
@@ -122,5 +123,79 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
 })
 
 NavItem.displayName = 'NavItem'
+
+export function ApiSidebar() {
+  const navigation = getApiNavigation();
+  
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
+        <ScrollArea className="h-full py-6 px-4">
+          <nav>
+            {navigation.map((item, index) => (
+              <ApiNavItem key={index} item={item} />
+            ))}
+          </nav>
+        </ScrollArea>
+      </aside>
+    </ErrorBoundary>
+  );
+}
+
+const ApiNavItem = React.memo(({ item }: { item: any }) => {
+  const methodClass = item.method.toLowerCase()
+  const sectionId = `${methodClass}-${item.path}`
+
+  const scrollToSection = useCallback((elementId: string) => {
+    const element = document.getElementById(elementId)
+    if (element) {
+      const headerOffset = 64 + 32
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }, [])
+
+  // Define badge colors to match main content
+  const methodColors = {
+    get: 'bg-green-100 text-green-800',
+    post: 'bg-blue-100 text-blue-800',
+    put: 'bg-yellow-100 text-yellow-800',
+    patch: 'bg-orange-100 text-orange-800',
+    delete: 'bg-red-100 text-red-800',
+  }
+
+  return (
+    <motion.div 
+      className="mb-1"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <Button
+        variant="ghost"
+        className={cn(
+          buttonStyles.base,
+          buttonStyles.hover,
+          buttonStyles.state,
+        )}
+        onClick={() => scrollToSection(sectionId)}
+      >
+        <div className="flex-1">
+          <span className={`mr-2 px-2 py-1 text-xs font-medium rounded-md ${methodColors[methodClass as keyof typeof methodColors] || 'bg-gray-100 text-gray-800'}`}>
+            {item.method.toUpperCase()}
+          </span>
+          {item.title}
+        </div>
+      </Button>
+    </motion.div>
+  )
+})
+
+ApiNavItem.displayName = 'ApiNavItem'
 
 export default Navigation
