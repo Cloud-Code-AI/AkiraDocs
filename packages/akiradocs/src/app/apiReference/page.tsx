@@ -235,12 +235,12 @@ const EndpointSection = ({ id, method, servers, path, summary, description, para
       )}
     </div>
     <div className="lg:w-[35%]">
-      <ApiUsage apiSpec={{ servers: servers, paths: { [path]: { [method]: { parameters, requestBody } } } }} />
+      <ApiUsage apiSpec={{ servers: servers, paths: { [path]: { [method]: { parameters, requestBody } } } }}} />
     </div>
   </section>
 );
 
-export function Documentation({ }) {
+export default function Page() {
   const [apiSpec, setApiSpec] = useState(null)
   const [activeTab, setActiveTab] = useState('formatted');
   const textareaRef = useRef(null);
@@ -309,5 +309,3 @@ export function Documentation({ }) {
     </div>
   );
 }
-
-export default Documentation;
