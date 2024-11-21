@@ -1,0 +1,163 @@
+{
+  "title": "Testblogbeitrag",
+  "description": "Ein Test-Blogbeitrag, um alle Blocktypen zu demonstrieren.",
+  "author": "Anonymous",
+  "date": "2024-11-08",
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wird:\n\nBeispielüberschrift Beispiel1",
+      "metadata": {
+        "level": 1,
+        "styles": {
+          "italic": true,
+          "underline": true
+        }
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wird:\n\nDieser Absatz ist Teil des Blog-Testeintrags. Er zeigt den Absatzblock."
+    },
+    {
+      "id": "3",
+      "type": "code",
+      "content": "console.log('Alle Blöcke werden getestet');",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "4",
+      "type": "image",
+      "content": "/logo_akiradocs.svg",
+      "metadata": {
+        "alt": "Test Image",
+        "caption": "This is a test image",
+        "size": "small",
+        "position": "center"
+      }
+    },
+    {
+      "id": "5",
+      "type": "list",
+      "content": [
+        "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nArtikel 1",
+        "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nArtikel 2",
+        "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nArtikel 3"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "6",
+      "type": "divider",
+      "content": ""
+    },
+    {
+      "id": "7",
+      "type": "table",
+      "content": "",
+      "metadata": {
+        "headers": [
+          "Column 1",
+          "Column 2"
+        ],
+        "rows": [
+          [
+            "Row 1, Cell 1",
+            "Row 1, Cell 2"
+          ],
+          [
+            "Row 2, Cell 1",
+            "Row 2, Cell 2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "type": "blockquote",
+      "content": "Hier ist ein wörtliches Testzitat."
+    },
+    {
+      "id": "9",
+      "type": "toggleList",
+      "content": "",
+      "metadata": {
+        "items": [
+          {
+            "title": "Toggle Item 1",
+            "content": "Content for toggle item 1"
+          },
+          {
+            "title": "Toggle Item 2",
+            "content": "Content for toggle item 2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "10",
+      "type": "checkList",
+      "content": "",
+      "metadata": {
+        "checkedItems": [
+          {
+            "text": "Check Item 1",
+            "checked": true
+          },
+          {
+            "text": "Check Item 2",
+            "checked": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "11",
+      "type": "video",
+      "content": "/test_video.mp4",
+      "metadata": {
+        "caption": "This is a test video"
+      }
+    },
+    {
+      "id": "12",
+      "type": "audio",
+      "content": "/audio_de_test.mp3",
+      "metadata": {
+        "caption": "This is a test audio"
+      }
+    },
+    {
+      "id": "13",
+      "type": "file",
+      "content": "/dokument_de_test.pdf",
+      "metadata": {
+        "name": "Test Document"
+      }
+    },
+    {
+      "id": "14",
+      "type": "emoji",
+      "content": "😊",
+      "metadata": {
+        "label": "smiling face"
+      }
+    },
+    {
+      "id": "15",
+      "type": "callout",
+      "content": "Hier ist eine wichtige Warnmeldung.",
+      "metadata": {
+        "type": "info",
+        "title": "Important"
+      }
+    }
+  ]
+}

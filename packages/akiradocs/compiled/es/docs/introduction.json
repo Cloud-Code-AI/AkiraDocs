@@ -1,0 +1,52 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Conozca Akira Docs y sus funciones principales\n\nAkira Docs es una plataforma de documentación moderna que combina el poder de la IA con un intuitivo sistema de contenido basado en bloques. Esta guía le ayudará a comprender los conceptos y funciones principales."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Características clave",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Búsqueda impulsada por IA",
+        "Edición de contenido basada en bloques",
+        "Diseño adaptable",
+        "Temas personalizables",
+        "Compatibilidad con Markdown"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}
