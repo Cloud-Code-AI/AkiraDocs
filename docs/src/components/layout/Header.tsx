@@ -189,26 +189,32 @@ export function Header({
                 />
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
                 
-                {showResults && searchResults.length > 0 && (
+                {showResults && (
                   <div className="absolute top-full mt-2 w-full bg-background border rounded-md shadow-lg overflow-hidden z-50">
-                    {searchResults.map((result, index) => (
-                      <Link
-                        key={index}
-                        href={result.path}
-                        onClick={() => {
-                          setShowResults(false)
-                          setSearchQuery('')
-                        }}
-                        className="block px-4 py-2 hover:bg-muted transition-colors"
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="font-medium">{result.title}</span>
-                          <span className="text-xs text-muted-foreground capitalize px-2 py-1 bg-muted rounded">
-                            {result.type}
-                          </span>
-                        </div>
-                      </Link>
-                    ))}
+                    {searchResults.length > 0 ? (
+                      searchResults.map((result, index) => (
+                        <Link
+                          key={index}
+                          href={result.path}
+                          onClick={() => {
+                            setShowResults(false)
+                            setSearchQuery('')
+                          }}
+                          className="block px-4 py-2 hover:bg-muted transition-colors"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-medium">{result.title}</span>
+                            <span className="text-xs text-muted-foreground capitalize px-2 py-1 bg-muted rounded">
+                              {result.type}
+                            </span>
+                          </div>
+                        </Link>
+                      ))
+                    ) : (
+                      <div className="px-4 py-3 text-sm text-muted-foreground">
+                        No matching results found
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
