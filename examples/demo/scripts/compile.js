@@ -3,6 +3,7 @@ const { glob } = require('glob');
 const matter = require('gray-matter');
 const path = require('path');
 const { existsSync } = require('fs');
+const { main: extractDocsContext } = require('./extract-docs-context');
 
 async function convertMarkdownToBlocks(content) {
   const blocks = [];
@@ -366,6 +367,7 @@ function findExistingEntry(meta, dirs, fileKey) {
 async function main() {
   await compileMarkdownFiles();
   await createMetaFilesForAllFolders();
+  await extractDocsContext();
 }
 
 main();

@@ -1,0 +1,86 @@
+[Document: docs/introduction.json]
+Learn about Akira Docs and its core features
+
+Akira Docs is a modern documentation platform that combines the power of AI with an intuitive block-based content system. This guide will help you understand the core concepts and features.
+Key Features
+AI-powered search
+Block-based content editing
+Responsive design
+Customizable themes
+Markdown support
+-------------
+[Document: articles/welcome.json]
+Title: Welcome to Akira Doc
+Get started with Akira Docs - Next-gen documentation powered by AI
+Welcome to Akira Doc
+Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation.
+Key Features
+Easy to customize
+AI-powered search
+Block-based content system
+Responsive design
+Getting Started: Start by customizing this template to match your project's needs!
+-------------
+[Document: articles/template.json]
+Title: Test Blog Post
+A test blog post to demonstrate all block types.
+Example Heading Sample1
+This paragraph is part of the test blog post. It demonstrates the paragraph block.
+Code example:
+console.log('Testing all blocks');
+Item 1
+Item 2
+Item 3
+Important: This is an important callout message.
+-------------
+[Document: articles/ai_integration.json]
+AI Assistant Integration
+Learn how to use Akira's built-in AI assistant for documentation enhancement
+
+Akira's AI Assistant is a powerful tool that helps developers and technical writers create, maintain, and improve documentation through natural language interactions. This guide covers the essential features and best practices for utilizing the AI assistant effectively.
+Key Features
+Natural language documentation generation
+Code example suggestions
+Content summarization
+Grammar and style improvements
+Multi-language support
+Getting Started
+The AI Assistant can be accessed through the command palette (Ctrl+Shift+P) or by using the `/ai` command in any content block. It understands context-aware requests and can help with various documentation tasks.
+Common Use Cases
+1. Generating code examples
+2. Explaining technical concepts
+3. Restructuring content
+4. Creating documentation outlines
+5. Translating documentation
+Best Practices
+Provide clear context when making requests
+Review and validate AI-generated content
+Use AI suggestions as a starting point
+Combine AI assistance with human expertise
+Keep documentation style consistent
+Configuration Options
+You can customize the AI Assistant's behavior through the `config.yaml` file:
+Code example:
+ai_assistant:
+  model: "advanced-docs-v2"
+  temperature: 0.7
+  max_tokens: 2048
+  style_guide: "path/to/style/guide.md"
+Next Steps
+Explore our [Advanced AI Features](/advanced-ai-features) guide to learn more about specialized use cases and integration possibilities.
+-------------
+[Document: docs/getting-started/quickstart.json]
+Title: Quickstart Guide
+Get up and running with Akira Docs in minutes
+
+Follow these steps to start using Akira Docs for your documentation needs.
+Code example:
+bash
+git clone https://github.com/your-org/akira-docs-template
+cd akira-docs-template
+npm install
+npm run dev
+:::warning Prerequisites
+Make sure you have Node.js 16 or higher installed on your system.
+:::
+-------------

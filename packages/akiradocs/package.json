@@ -19,6 +19,7 @@
     "@heroicons/react": "^2.1.5",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
+    "@mlc-ai/web-llm": "^0.2.75",
     "@next/mdx": "^15.0.1",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-avatar": "^1.1.1",
@@ -60,6 +61,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.17.0",
     "@types/react": "^18.3.12",
