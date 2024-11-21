@@ -3,15 +3,12 @@ import { CSS } from '@dnd-kit/utilities'
 import { GripVertical } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { BlockType } from '../../types/Block'
+import { Block, BlockType } from '../../types/Block'
 import { AddBlockButton } from '../editor/AddBlockButton'
 import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Plus, MoreHorizontal, Trash2, Upload } from 'lucide-react'
 import { useRef, useCallback, useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { BlockFormatToolbar } from '../editor/BlockFormatToolbar'
 
 interface SortableBlockProps {
@@ -20,16 +17,23 @@ interface SortableBlockProps {
     type: BlockType
     content: string
     metadata?: {
+      level?: number
       styles?: {
         bold?: boolean
         italic?: boolean
         underline?: boolean
-        headingLevel?: number
-        language?: string
-        filename?: string
-        showLineNumbers?: boolean
       }
+      language?: string
+      alt?: string
+      caption?: string
+      ordered?: boolean
+      size?: 'small' | 'medium' | 'large' | 'full'
+      position?: 'left' | 'center' | 'right'
+      filename?: string
+      showLineNumbers?: boolean
       align?: 'left' | 'center' | 'right'
+      type?: 'info' | 'warning' | 'success' | 'error'
+      title?: string
     }
   }
   updateBlock: (id: string, content: string) => void
@@ -39,7 +43,7 @@ interface SortableBlockProps {
   showPreview: boolean
   isChangeTypeActive: boolean
   setActiveChangeTypeId: (id: string | null) => void
-  updateBlockMetadata: (id: string, metadata: Partial<{ styles?: { bold?: boolean; italic?: boolean; underline?: boolean; headingLevel?: number; language?: string; filename?: string; showLineNumbers?: boolean }; align?: 'left' | 'center' | 'right' }>) => void
+  updateBlockMetadata: (id: string, metadata: Partial<Block['metadata']>) => void
 }
 
 interface ImageBlockContent {
