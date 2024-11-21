@@ -29,7 +29,7 @@ export interface Block {
     language?: string; // For code blocks
     alt?: string; // For images
     caption?: string; // For images, videos, and audio
-    ordered?: boolean; // For lists
+    listType?: 'ordered' | 'unordered'; // For lists
     size?: 'small' | 'medium' | 'large' | 'full'; // for images
     position?: 'left' | 'center' | 'right'; // for images
     headers?: string[]; // For tables

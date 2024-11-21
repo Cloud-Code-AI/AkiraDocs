@@ -20,8 +20,8 @@ interface BlockFormatToolbarProps {
   level?: number
   onLevelChange?: (level: number) => void
   showLevelSelect?: boolean
-  ordered?: boolean
-  onOrderedChange?: (ordered: boolean) => void
+  listType?: 'ordered' | 'unordered'
+  onListTypeChange?: (listType: 'ordered' | 'unordered') => void
   showListControls?: boolean
   language?: string
   filename?: string
@@ -64,8 +64,8 @@ export function BlockFormatToolbar({
   level = 1,
   onLevelChange,
   showLevelSelect = false,
-  ordered = false,
-  onOrderedChange,
+  listType = 'unordered',
+  onListTypeChange,
   showListControls = false,
   language = 'typescript',
   filename,
@@ -169,14 +169,14 @@ export function BlockFormatToolbar({
         </>
       )}
 
-      {showListControls && onOrderedChange && (
+      {showListControls && onListTypeChange && (
         <>
           <Separator orientation="vertical" className="mx-0.5 h-7" />
           
           <ToggleGroup 
             type="single" 
-            value={ordered ? 'ordered' : 'unordered'} 
-            onValueChange={(value) => onOrderedChange(value === 'ordered')}
+            value={listType} 
+            onValueChange={(value) => onListTypeChange?.(value as 'ordered' | 'unordered')}
             className="flex gap-0.5"
           >
             <ToggleGroupItem 

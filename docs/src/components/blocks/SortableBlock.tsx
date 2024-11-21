@@ -26,7 +26,7 @@ interface SortableBlockProps {
       language?: string
       alt?: string
       caption?: string
-      ordered?: boolean
+      listType?: 'ordered' | 'unordered'
       size?: 'small' | 'medium' | 'large' | 'full'
       position?: 'left' | 'center' | 'right'
       filename?: string
@@ -249,7 +249,7 @@ export function SortableBlock({
               align={block.type === 'image' ? getImageContent().alignment : block.metadata?.align}
               level={block.metadata?.level || 1}
               showLevelSelect={block.type === 'heading'}
-              ordered={block.metadata?.ordered || false}
+              listType={block.metadata?.listType || 'unordered'}
               showListControls={block.type === 'list'}
               language={block.metadata?.language || 'typescript'}
               filename={block.metadata?.filename}
@@ -283,10 +283,10 @@ export function SortableBlock({
                   level
                 })
               }}
-              onOrderedChange={(ordered) => {
+              onListTypeChange={(listType) => {
                 updateBlockMetadata(block.id, {
                   ...block.metadata,
-                  ordered
+                  listType
                 })
               }}
               onLanguageChange={(language) => {
