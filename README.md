@@ -5,6 +5,7 @@
 [![License: Commercial](https://img.shields.io/badge/License-Commercial-blue.svg)](https://example.com/commercial)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
 [![PRs Welcome](https://img.shields.io/badge/Demo-Live-color.svg)](https://demo.akiradocs.ai)
+[![Join Waitlist](https://img.shields.io/badge/Join-Waitlist-orange.svg)](https://forms.gle/KunU4BGhToH4NJ1t7)
 
 
 
@@ -173,12 +174,14 @@ npm run translate
 - [GitHub Discussions](https://github.com/akiradocs/discussions)
 - [Documentation](https://docs.akiradocs.com)
 - [Enterprise Support (Coming Q1 2025)](https://akiradocs.com/enterprise)
+- [Join the Waitlist](https://forms.gle/KunU4BGhToH4NJ1t7) → Early access to upcoming features
 
 ---
 <div align="center">
 
 **[Get Started](https://docs.akiradocs.ai/quickstart)** • 
 **[Live Demo](https://demo.akiradocs.ai)** • 
+**[Join Waitlist](https://forms.gle/KunU4BGhToH4NJ1t7)** •
 **[Enterprise Trial](https://akiradocs.com/enterprise)** (Coming Q1 2025)
 
 </div>
