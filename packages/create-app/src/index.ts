@@ -29,7 +29,7 @@ async function main() {
         type: 'confirm',
         name: 'includeEditor',
         message: 'Would you like to include the local editor? (Recommended for development)',
-        initial: true
+        initial: true,
       });
 
       const spinner = ora('Creating project...').start();
@@ -55,11 +55,11 @@ async function main() {
             ...pkgJson.scripts,
             'dev:editor': 'cd editor && npm run dev',
             'dev:docs': 'npm run dev',
-            'dev:all': 'concurrently "npm run dev:docs" "npm run dev:editor"'
+            'dev:all': 'concurrently "npm run dev:docs" "npm run dev:editor"',
           };
           pkgJson.devDependencies = {
             ...pkgJson.devDependencies,
-            'concurrently': '^8.0.0'
+            'concurrently': '^8.0.0',
           };
           await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
         }
