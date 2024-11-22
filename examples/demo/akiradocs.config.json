@@ -23,7 +23,7 @@
             },
             "searchPlaceholder": "Search Akira...",
             "items": [
-                { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": false },
+                { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": true },
                 { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg", "show": true },
                 { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg", "show": true }
             ]
