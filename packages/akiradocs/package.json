@@ -20,6 +20,7 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@mlc-ai/web-llm": "^0.2.76",
+    "@million/lint": "^1.0.12",
     "@next/mdx": "^15.0.1",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-avatar": "^1.1.1",

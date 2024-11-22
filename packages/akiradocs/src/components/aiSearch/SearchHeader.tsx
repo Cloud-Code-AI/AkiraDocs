@@ -4,6 +4,12 @@ import { motion } from "framer-motion"
 import { SearchConfig } from "@/types/config";
 
 
+const motionProps = {
+  initial: { opacity: 0, y: -20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 },
+}
+
 export function SearchHeader({
   logo = {
     path: '/akiradocs_logo.svg',
@@ -17,9 +23,7 @@ export function SearchHeader({
 }: SearchConfig) {
   return (
     <motion.div 
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      {...motionProps}
       className="text-center"
     >
       <div className="mb-4">
@@ -30,18 +34,17 @@ export function SearchHeader({
             width={logo.width}
             height={logo.height}
             className="relative rounded-full" 
-       />
+          />
         )}
-        
+
           <h1 className="text-5xl font-extrabold text-primary">
             {showTitle && title}
           </h1>
       </div>
 
-        <p className="text-xl text-muted-foreground mb-8">
-          {description}
-        </p>
-
+      <p className="text-xl text-muted-foreground mb-8">
+        {description}
+      </p>
     </motion.div>
   )
 }

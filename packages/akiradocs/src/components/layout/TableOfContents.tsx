@@ -131,4 +131,4 @@ export function TableOfContents({ publishDate, modifiedDate, author }: TableOfCo
   )
 }
 
-export default TableOfContents;
+export default React.memo(TableOfContents);

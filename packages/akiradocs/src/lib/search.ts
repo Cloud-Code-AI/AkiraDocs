@@ -110,7 +110,7 @@ export class ContentSearch {
             // Search in metadata fields
             if (searchInText(content.title)) matchScore += 50;
             if (searchInText(content.description)) matchScore += 30;
-            if (content.keywords?.some(k => searchInText(k))) matchScore += 30;
+            if (content.keywords?.some((k: string) => searchInText(k))) matchScore += 30;
 
             if (matchScore > 0) {
               results.push({
