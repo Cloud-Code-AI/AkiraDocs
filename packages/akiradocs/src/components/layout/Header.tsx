@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo, memo } from 'react'
 import Link from 'next/link'
 // import Image from 'next/image'
 import { Input } from "@/components/ui/input"
@@ -24,7 +24,7 @@ import { searchContent, type SearchResult } from '@/lib/search'
 import { useDebounce } from '@/hooks/useDebounce'
 import { useClickOutside } from '@/hooks/useClickOutside'
 
-export function Header({
+export const Header = memo(function Header({
   logo,
   title,
   showSearch = true,
@@ -80,6 +80,44 @@ export function Header({
 
   useClickOutside(searchRef, () => setShowResults(false))
 
+  // Memoize the selected locale display
+  const selectedLocaleDisplay = useMemo(() => {
+    const selectedLocale = languages?.locales.find(l => l.code === currentLocale)
+    return selectedLocale ? (
+      <>
+        {selectedLocale.flag}&nbsp;{selectedLocale.name}
+      </>
+    ) : null
+  }, [languages?.locales, currentLocale])
+
+  // Memoize the navigation items
+  const navigationItems = useMemo(() => {
+    return navItems?.filter((item) => item.show).map((item, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ delay: index * 0.1 }}
+      >
+        <Link
+          href={item.href}
+          className={`group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md
+          ${pathname === item.href
+              ? 'text-foreground bg-muted'
+              : 'text-muted-foreground hover:text-foreground'
+            }`}
+        >
+          {item.label}
+          <span
+            className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
+            ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
+          />
+        </Link>
+      </motion.div>
+    ))
+  }, [navItems, pathname])
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -94,19 +132,19 @@ export function Header({
               <Link href="/">
                 <motion.div
                   className="relative"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="relative">
-                  <div className="absolute rounded-full"></div>
-                  <IconSVG
-                    src={logo.path}
-                    alt={`${title} logo`}
-                    width={logo.width}
-                    height={logo.height}
-                    className="relative rounded-full"
-                  />
-                </div>
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="relative">
+                    <div className="absolute rounded-full"></div>
+                    <IconSVG
+                      src={logo.path}
+                      alt={`${title} logo`}
+                      width={logo.width}
+                      height={logo.height}
+                      className="relative rounded-full"
+                    />
+                  </div>
                 </motion.div>
               </Link>
             )}
@@ -124,8 +162,7 @@ export function Header({
               >
                 <SelectTrigger className="w-[140px] h-8 text-sm">
                   <SelectValue>
-                    {languages.locales.find(l => l.code === currentLocale)?.flag}&nbsp;
-                    {languages.locales.find(l => l.code === currentLocale)?.name}
+                    {selectedLocaleDisplay}
                   </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
@@ -146,30 +183,7 @@ export function Header({
           {navItems && (
             <nav className="hidden md:flex space-x-2">
               <AnimatePresence>
-                {navItems.filter((item) => item.show).map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Link
-                      href={item.href}
-                      className={`group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md
-                      ${pathname === item.href
-                          ? 'text-foreground bg-muted'
-                          : 'text-muted-foreground hover:text-foreground'
-                        }`}
-                    >
-                      {item.label}
-                      <span
-                        className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
-                        ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
-                      />
-                    </Link>
-                  </motion.div>
-                ))}
+                {navigationItems}
               </AnimatePresence>
             </nav>
           )}
@@ -293,4 +307,4 @@ export function Header({
       </div>
     </motion.header>
   )
-}
+})
