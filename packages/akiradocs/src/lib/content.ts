@@ -40,11 +40,22 @@ export function getContentBySlug(locale: string, type: string, slug: string): Po
 
 export function getAllPosts(locale: string, type: string): Post[] {
   return contentContext.keys()
-    .filter((fileName: string) => fileName !== `./${locale}/${type}/_meta.json`)
+    .filter((fileName: string) => 
+      fileName.startsWith(`./${locale}/${type}/`) && 
+      !fileName.endsWith('/_meta.json')
+    )
     .map((fileName: string) => {
-      const slug = fileName.replace(/^\.\//, '').replace(/\.json$/, '')
-      return getContentBySlug(locale, type, slug)
+      const content = contentContext(fileName)
+      return {
+        slug: fileName.replace(`./${locale}/${type}/`, '').replace('.json', ''),
+        title: content.title,
+        description: content.description,
+        author: content.author,
+        publishDate: content.publishDate,
+        // Include any other fields needed by ArticleCard
+      }
     })
+    .sort((a: any, b: any) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
 }
 
 export function getContentNavigation<T>(defaultValue: T, locale: string, type: string): T {
