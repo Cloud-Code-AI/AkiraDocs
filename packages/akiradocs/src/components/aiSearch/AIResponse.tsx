@@ -41,7 +41,7 @@ export function AIResponse({ response, sources, onBack }: AIResponseProps) {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col items-start space-y-4">
-          <AIResponseActions />
+          <AIResponseActions response={response} />
           <Separator className="my-4" />
           <AIResponseSources sources={sources} />
         </CardFooter>

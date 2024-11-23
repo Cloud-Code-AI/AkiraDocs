@@ -14,14 +14,18 @@ import Link from 'next/link'
 import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
 import { ChatCompletionMessageParam, CreateMLCEngine } from "@mlc-ai/web-llm";
 import { Source } from '@/types/Source'
+import AILoader from '@/components/aiSearch/AILoader'
 
 export default function Home() {
   const [query, setQuery] = useState('')
   const [aiResponse, setAiResponse] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const recommendedArticles = getRecommendedArticles()
   const searchConfig = getSearchConfig()
   const config = getAkiradocsConfig()
+  const [sources, setSources] = useState<Source[]>([])
+
   // If AI Search is disabled, show the disabled message
   if (!config.navigation.header.items.find((item: any) => item.href === '/aiSearch')?.show) {
     return (
@@ -39,9 +43,34 @@ export default function Home() {
     )
   }
 
+  const extractSources = (response: string): { cleanResponse: string, sources: Source[] } => {
+    // Split the response into parts
+    const parts = response.split('Sources:');
+    if (parts.length < 2) {
+      return { cleanResponse: response, sources: [] };
+    }
+
+    const cleanResponse = parts[0].trim();
+    const sourcesText = parts[1].trim();
+
+    // Extract sources from the text
+    const sources: Source[] = sourcesText
+      .split('\n')
+      .filter(line => line.trim().length > 0 && line.includes('.json')) // Only process non-empty lines containing .json
+      .map(line => ({
+        title: line.trim().split('/').pop()?.replace('.json', '') || '', // Get the filename without extension
+        url: line.trim()
+      }));
+
+    return { cleanResponse, sources };
+  };
+
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setError(null)
+    setSources([]) // Reset sources
+    
     try {
       // Updated fetch path to use absolute URL
       const contextResponse = await fetch('/context/en_docs.txt');
@@ -95,10 +124,24 @@ export default function Home() {
 
       // Get response from MLC chatbot
       const reply = await engine.chat.completions.create({ messages: messages as ChatCompletionMessageParam[] });
-      setAiResponse(reply.choices[0].message.content || '');
+      const aiContent = reply.choices[0].message.content || '';
+      
+      // Extract sources and clean response
+      const { cleanResponse, sources } = extractSources(aiContent);
+      
+      setAiResponse(cleanResponse);
+      setSources(sources);
+      
     } catch (error) {
       console.error('Error during AI search:', error);
-      setAiResponse('Sorry, there was an error processing your request.');
+      
+      // Check for WebGPU error
+      if (error instanceof Error && error.name === 'WebGPUNotAvailableError') {
+        setError('WebGPU is not yet supported on this browser. Please try using another browser.');
+      } else {
+        setError('Sorry, there was an error processing your request.');
+      }
+      setAiResponse('');
     } finally {
       setIsLoading(false)
     }
@@ -107,8 +150,6 @@ export default function Home() {
   const handleBack = () => {
     setAiResponse('')
   }
-
-  const sources: Source[] = []
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
@@ -128,7 +169,19 @@ export default function Home() {
         </div>
 
         <AnimatePresence>
-          {aiResponse ? (
+          {isLoading ? (
+            <div className="flex flex-col justify-center items-center space-y-4 py-12">
+              <AILoader />
+              <p className="text-muted-foreground text-sm animate-pulse">
+                Loading AI response...
+              </p>
+            </div>
+          ) : error ? (
+            <div className="text-center p-4 rounded-lg bg-red-50 text-red-800">
+              <p className="text-lg font-medium mb-2">Error</p>
+              <p>{error}</p>
+            </div>
+          ) : aiResponse ? (
             <AIResponse
               response={aiResponse}
               sources={sources}

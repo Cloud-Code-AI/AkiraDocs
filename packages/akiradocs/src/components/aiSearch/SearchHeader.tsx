@@ -18,6 +18,7 @@ export function SearchHeader({
     show: true
   },
   title = 'Akiradocs',
+  showTitle = false,
   description = 'Next-gen documentation powered by AI',
 }: SearchConfig) {
   return (
@@ -35,10 +36,10 @@ export function SearchHeader({
             className="relative rounded-full" 
           />
         )}
-        
-        <h1 className="text-5xl font-extrabold text-primary">
-          {title}
-        </h1>
+
+          <h1 className="text-5xl font-extrabold text-primary">
+            {showTitle && title}
+          </h1>
       </div>
 
       <p className="text-xl text-muted-foreground mb-8">

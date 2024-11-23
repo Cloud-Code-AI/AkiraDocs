@@ -12,6 +12,7 @@ export function SearchHeader({
     show: true
   },
   title = 'Akiradocs',
+  showTitle = false,
   description = 'Next-gen documentation powered by AI',
 }: SearchConfig) {
   return (
@@ -33,7 +34,7 @@ export function SearchHeader({
         )}
         
           <h1 className="text-5xl font-extrabold text-primary">
-            {title}
+            {showTitle && title}
           </h1>
       </div>
 
