@@ -51,6 +51,7 @@ export interface Block {
 
 export interface Post {
   id: string;
+  slug?: string;
   title: string;
   description: string;
   author: string;
@@ -60,6 +61,7 @@ export interface Post {
   category: string;
   keywords: string[];
   blocks: Block[];
+  imageUrl?: string;
 }
 
 export interface APIReferenceBlock extends Block {
