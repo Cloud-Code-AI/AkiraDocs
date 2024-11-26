@@ -192,7 +192,8 @@ export function SortableBlock({
         isDragging && 'z-50 bg-background/50 backdrop-blur-sm'
       )}
     >
-      <div className="flex items-center gap-2">
+      {/* Left Controls Container */}
+      <div className="absolute -left-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
         {/* Drag Handle */}
         <div
           className="flex-shrink-0 cursor-grab active:cursor-grabbing"
@@ -202,7 +203,7 @@ export function SortableBlock({
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 text-muted-foreground"
+            className="h-8 w-8 text-muted-foreground hover:text-foreground"
           >
             <GripVertical className="h-4 w-4" />
             <span className="sr-only">Drag handle</span>
@@ -210,7 +211,7 @@ export function SortableBlock({
         </div>
 
         {/* Block Controls */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <AddBlockButton 
             ref={addBlockButtonRef}
             onChangeType={(type) => {
@@ -239,7 +240,10 @@ export function SortableBlock({
             <span className="sr-only">Add Block</span>
           </Button>
         </div>
+      </div>
 
+      {/* Main Content */}
+      <div className="flex items-center gap-4">
         {/* Content Editor */}
         <div className="flex-grow relative">
           {!showPreview && block.type !== 'divider' && (
@@ -420,15 +424,18 @@ export function SortableBlock({
           )}
         </div>
 
-        {/* Block Menu */}        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
-          onClick={() => deleteBlock(block.id)}
-        >
-          <Trash2 className="h-4 w-4" />
-          <span className="sr-only">Delete block</span>
-        </Button>
+        {/* Delete Button */}
+        <div className="flex-shrink-0">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
+            onClick={() => deleteBlock(block.id)}
+          >
+            <Trash2 className="h-4 w-4" />
+            <span className="sr-only">Delete block</span>
+          </Button>
+        </div>
       </div>
     </div>
   )
