@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useMemo, memo } from 'react'
+import { useTranslation } from '@/hooks/useTranslation'
 import Link from 'next/link'
 // import Image from 'next/image'
 import { Input } from "@/components/ui/input"
@@ -23,6 +24,7 @@ import { HeaderConfig } from '@/types/config'
 import { searchContent, type SearchResult } from '@/lib/search'
 import { useDebounce } from '@/hooks/useDebounce'
 import { useClickOutside } from '@/hooks/useClickOutside'
+import type { locales } from '@/hooks/useTranslation'
 
 export const Header = memo(function Header({
   logo,
@@ -42,6 +44,8 @@ export const Header = memo(function Header({
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
   const [showResults, setShowResults] = useState(false)
   const searchRef = useRef<HTMLDivElement>(null)
+  const { t, setLocale } = useTranslation();
+
 
   useEffect(() => {
     setIsMounted(true)
@@ -53,10 +57,13 @@ export const Header = memo(function Header({
     }
   }
 
-  const handleLanguageChange = (value: string) => {
-    const currentPath = window.location.pathname
-    const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${value}`)
-    router.push(newPath)
+  const handleLanguageChange = (value: keyof typeof locales) => {
+    console.log('Language change requested:', value);
+    const currentPath = window.location.pathname;
+    setLocale(value);
+    const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${value}`);
+    console.log('Redirecting to:', newPath);
+    router.push(newPath);
   }
 
   const debouncedSearch = useDebounce((query: string) => {
@@ -108,7 +115,7 @@ export const Header = memo(function Header({
               : 'text-muted-foreground hover:text-foreground'
             }`}
         >
-          {item.label}
+          {t(item.label as string)}
           <span
             className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
             ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
@@ -193,7 +200,7 @@ export const Header = memo(function Header({
               <div className="relative hidden md:block" ref={searchRef}>
                 <Input
                   type="search"
-                  placeholder={searchPlaceholder}
+                  placeholder={t('common.labels.search')}
                   className="w-64 pr-8 rounded-md"
                   value={searchQuery}
                   onChange={(e) => handleSearch(e.target.value)}
@@ -281,7 +288,7 @@ export const Header = memo(function Header({
                               : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                             }`}
                         >
-                          {item.label}
+                          {t(item.label as string)}
                           <span
                             className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
                               ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}

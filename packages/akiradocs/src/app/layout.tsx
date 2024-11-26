@@ -6,6 +6,7 @@ import { getMetadata } from "@/lib/getMetadata";
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import { type ThemeProviderProps } from "next-themes/dist/types"
+import { TranslationProvider } from '@/contexts/TranslationContext';
 
 
 const geistSans = localFont({
@@ -77,7 +78,9 @@ export default function RootLayout({
           enableSystem 
           disableTransitionOnChange
         >
-          {children}
+          <TranslationProvider>
+            {children}
+          </TranslationProvider>
         </ThemeProvider>
         <Toaster />
       </body>
