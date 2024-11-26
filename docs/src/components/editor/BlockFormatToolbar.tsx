@@ -93,7 +93,18 @@ export function BlockFormatToolbar({
     )}>
       {!showImageControls && (
         <>
-          <ToggleGroup type="multiple" value={Object.entries(styles).filter(([_, value]) => value).map(([key]) => key)} className="flex gap-0.5">
+          <ToggleGroup 
+            type="multiple" 
+            value={Object.entries(styles || {}).filter(([_, value]) => value).map(([key]) => key)} 
+            onValueChange={(values) => {
+              onStyleChange({
+                bold: values.includes('bold'),
+                italic: values.includes('italic'),
+                underline: values.includes('underline')
+              })
+            }}
+            className="flex gap-0.5"
+          >
             <ToggleGroupItem value="bold" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
               <Bold className="h-3.5 w-3.5" />
             </ToggleGroupItem>

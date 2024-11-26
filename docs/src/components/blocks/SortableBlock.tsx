@@ -391,10 +391,7 @@ export function SortableBlock({
               onBlur={(e) => {
                 const target = e.target as HTMLElement
                 if (!target) return
-
-                setTimeout(() => {
-                  updateBlock(block.id, target.textContent || '')
-                }, 100)
+                updateBlock(block.id, target.textContent || '')
               }}
               className={cn(
                 "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-secondary",
