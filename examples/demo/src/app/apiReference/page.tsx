@@ -1,5 +1,7 @@
 "use client"
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Suspense } from 'react'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import { Tabs} from '@/components/ui/tabs';
 import { ChartBarIcon, ArrowTrendingUpIcon, ShieldCheckIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -307,6 +309,8 @@ export default function Page() {
   }
 
   return (
+    <Suspense fallback={<LoadingSpinner />}>
+
     <div className="flex flex-col min-h-screen">
       <Header {...headerConfig} currentLocale={locale} />
       <div className="flex flex-1">
@@ -330,7 +334,8 @@ export default function Page() {
           </Tabs>
         </main>
       </div>
-      <Footer {...footerConfig} />
-    </div>
+        <Footer {...footerConfig} />
+      </div>
+    </Suspense>
   );
 }

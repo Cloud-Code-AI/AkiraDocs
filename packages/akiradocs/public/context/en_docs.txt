@@ -69,6 +69,56 @@ ai_assistant:
 Next Steps
 Explore our [Advanced AI Features](/advanced-ai-features) guide to learn more about specialized use cases and integration possibilities.
 -------------
+[Document: docs/guides/analytics.json]
+Title: Analytics Integration
+Learn how to add analytics tracking to your documentation
+Analytics Integration
+AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
+Setting up Google Analytics
+1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
+2. Get your Measurement ID (starts with "G-")
+3. Add the ID to your `akiradocs.config.json`:
+Code example:
+{
+"analytics": {
+"google": {
+"measurementId": "G-XXXXXXXXXX",
+"enabled": true
+},
+"debug": false
+}
+}
+What's Tracked Automatically
+Page views
+Navigation between pages
+Time on page
+User language preferences
+Device and browser information
+Custom Event Tracking
+You can track custom events using the `useAnalytics` hook:
+Code example:
+import { useAnalytics } from '@/hooks/useAnalytics'
+function MyComponent() {
+    const { track } = useAnalytics()
+    const handleClick = () => {
+        track('doc_rating', {
+            rating: 5,
+            page: 'getting-started',
+            helpful: true
+        })
+    }
+    return <button onClick={handleClick}>This was helpful</button>
+}
+Debug Mode
+Enable debug mode to see analytics events in the console during development:
+Code example:
+{
+"analytics": {
+"debug": true
+}
+}
+This provides a complete analytics integration that's easy for users to set up and extend as needed.
+-------------
 [Document: docs/getting-started/quickstart.json]
 Title: Quickstart Guide
 Get up and running with Akira Docs in minutes

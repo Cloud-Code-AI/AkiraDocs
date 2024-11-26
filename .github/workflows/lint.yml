@@ -24,6 +24,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      # Add Husky installation
+      - name: Setup Husky
+        run: pnpm run prepare
+
       - name: Lint and Type Check
         run: |
           pnpm run -r lint

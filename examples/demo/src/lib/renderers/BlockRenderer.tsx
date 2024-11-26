@@ -88,7 +88,7 @@ export function BlockRenderer({ block }: BlockRendererProps) {
     case 'heading':
       return <HeadingTitle level={block.metadata?.level || 1} {...commonProps}>{block.content}</HeadingTitle>;
     case 'list':
-      return <List items={block.content.split('\n')} listType={block.metadata?.listType || 'unordered'} {...commonProps} />;
+      return <List items={Array.isArray(block.content) ? block.content : [block.content]} listType={block.metadata?.listType || 'unordered'} {...commonProps} />;
     case 'code':
       return <CodeBlock code={Array.isArray(block.content) ? block.content.join('\n') : block.content} language={block.metadata?.language} filename={block.metadata?.filename} showLineNumbers={block.metadata?.showLineNumbers} {...commonProps} />;
     case 'blockquote':

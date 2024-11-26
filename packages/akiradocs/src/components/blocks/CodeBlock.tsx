@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Check, Copy } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface CodeBlockProps {
   id?: string;
@@ -22,8 +23,13 @@ export function CodeBlock({
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
   const alignClass = align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : '';
+  const { track } = useAnalytics()
 
-  const copyToClipboard = async () => {
+  const copyToClipboard = async () => { 
+    track('copy_code_button_click', {
+      code_type: 'code_block',
+      code_text: code
+    })
     await navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

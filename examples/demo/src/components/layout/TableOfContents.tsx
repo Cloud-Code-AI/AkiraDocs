@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { formatDistanceToNow, format, parseISO, isAfter, subDays } from 'date-fns';
-
+import { useTranslation } from '@/hooks/useTranslation';
 interface TableOfContentsProps {
   publishDate?: string;
   modifiedDate?: string;
@@ -13,6 +13,7 @@ interface TableOfContentsProps {
 export function TableOfContents({ publishDate, modifiedDate, author }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<HTMLHeadingElement[]>([]);
   const [activeId, setActiveId] = useState<string>();
+  const { t, locale } = useTranslation();
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll('h2:not([data-toc-ignore]), h3:not([data-toc-ignore]), h4:not([data-toc-ignore])'));
@@ -55,7 +56,7 @@ export function TableOfContents({ publishDate, modifiedDate, author }: TableOfCo
 
   return (
     <div className="w-64 border-l border-border sticky top-16 h-[calc(100vh-4rem)] hidden xl:block">
-      <ScrollArea className="h-full py-6 px-4">
+      <ScrollArea className="h-full py-2 px-4">
         <nav>
           
           {(publishDate || modifiedDate || author) && (
@@ -81,24 +82,24 @@ export function TableOfContents({ publishDate, modifiedDate, author }: TableOfCo
                       <line x1="8" y1="2" x2="8" y2="6"/>
                       <line x1="3" y1="10" x2="21" y2="10"/>
                     </svg>
-                    Published: {formatDate(publishDate)}
+                    {t('common.labels.publishedAt')}: {formatDate(publishDate)}
                   </time>
                 )}
                 
-                {modifiedDate && (
+                {/* {modifiedDate && (
                   <time className="flex items-center gap-1.5" dateTime={modifiedDate}>
                     <svg className="w-3.5 h-3.5 text-muted-foreground/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
                     </svg>
-                    Updated:  {formatDate(modifiedDate)}
+                    {t('common.labels.updatedAt')}: {formatDate(modifiedDate)}
                   </time>
-                )}
+                )} */}
               </div>
             </div>
           )}
 
           <h4 className="text-sm font-semibold mb-4 text-foreground" data-toc-ignore>
-            On This Page
+            {t('common.labels.onThisPage')}
           </h4>
 
           <ul className="space-y-2">
@@ -131,4 +132,4 @@ export function TableOfContents({ publishDate, modifiedDate, author }: TableOfCo
   )
 }
 
-export default TableOfContents;
+export default React.memo(TableOfContents);

@@ -11,7 +11,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { NavigationProps, NavItemProps } from "@/types/navigation"
 import { ErrorBoundary } from 'react-error-boundary'
 import { getApiNavigation } from '@/lib/content';
-
+import { useAnalytics } from '@/hooks/useAnalytics';
 const buttonStyles = {
   base: "w-full justify-start text-left font-normal rounded-lg transition-colors",
   hover: "hover:bg-accent hover:text-accent-foreground",
@@ -53,8 +53,13 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
   const hasChildren = item.items && Object.keys(item.items).length > 0
   const isActive = item.path ? pathname === `/${locale}${item.path}` : false
   const absolutePath = item.path ? `/${locale}${item.path}` : '#'
+  const { track } = useAnalytics()
 
   const handleClick = useCallback((e: React.MouseEvent) => {
+    track('navigation_click', {
+      page_path: pathname,
+      navigation_item: item.title
+    })
     if (item.path && pathname === `/${locale}${item.path}`) {
       e.preventDefault()
     }

@@ -6,6 +6,7 @@ import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useTheme } from 'next-themes';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface IncludedParamsType {
   [key: string]: string[];
@@ -81,8 +82,12 @@ const generateCurlCode = (url: string, method: string, requestBody: any) => {
 
 const CopyButton = ({ text }: { text: string }) => {
   const [copied, setCopied] = useState(false);
-
+  const { track } = useAnalytics()
   const handleCopy = async () => {
+    track('copy_code_button_click', {
+      code_type: 'api_usage',
+      code_text: text
+    })
     await navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

@@ -4,6 +4,15 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Analytics Integration",
+        "path": "/docs/guides/analytics"
+      }
+    }
+  },
   "gettingStarted": {
     "title": "Getting-started",
     "items": {

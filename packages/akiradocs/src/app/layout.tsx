@@ -7,6 +7,7 @@ import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import { type ThemeProviderProps } from "next-themes/dist/types"
 import { TranslationProvider } from '@/contexts/TranslationContext';
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
 
 
 const geistSans = localFont({
@@ -78,6 +79,7 @@ export default function RootLayout({
           enableSystem 
           disableTransitionOnChange
         >
+          <GoogleAnalytics />
           <TranslationProvider>
             {children}
           </TranslationProvider>
