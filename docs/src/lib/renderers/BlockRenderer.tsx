@@ -122,7 +122,15 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
         />
       );
     case 'blockquote':
-      return <Blockquote {...commonProps}>{block.content}</Blockquote>;
+      return (
+        <Blockquote 
+          {...commonProps}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        >
+          {block.content}
+        </Blockquote>
+      );
     // case 'table':
     //   return <Table headers={block.metadata?.headers || []} rows={block.metadata?.rows || []} {...commonProps} />;
     // case 'toggleList':
