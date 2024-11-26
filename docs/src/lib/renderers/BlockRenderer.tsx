@@ -28,6 +28,8 @@ interface ImageBlockContent {
 
 interface BlockRendererProps {
   block: Block
+  isEditing?: boolean
+  onUpdate?: (id: string, content: string) => void
 }
 
 function BlockErrorFallback({ error }: { error: Error }) {
@@ -38,7 +40,7 @@ function BlockErrorFallback({ error }: { error: Error }) {
   )
 }
 
-export function BlockRenderer({ block }: BlockRendererProps) {
+export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps) {
   const commonProps = {
     align: block.metadata?.align,
     styles: block.metadata?.styles,
@@ -84,13 +86,41 @@ export function BlockRenderer({ block }: BlockRendererProps) {
 
   switch (block.type) {
     case 'paragraph':
-      return <Paragraph {...commonProps}>{block.content}</Paragraph>;
+      return (
+        <Paragraph 
+          {...commonProps} 
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        >
+          {block.content}
+        </Paragraph>
+      );
     case 'heading':
-      return <HeadingTitle level={block.metadata?.level || 1} {...commonProps}>{block.content}</HeadingTitle>;
+      return (
+        <HeadingTitle
+          level={block.metadata?.level || 1}
+          align={block.metadata?.align}
+          styles={block.metadata?.styles}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        >
+          {block.content}
+        </HeadingTitle>
+      );
     case 'list':
       return <List items={block.content.split('\n')} listType={block.metadata?.listType || 'unordered'} {...commonProps} />;
     case 'code':
-      return <CodeBlock code={block.content} language={block.metadata?.language} filename={block.metadata?.filename} showLineNumbers={block.metadata?.showLineNumbers} {...commonProps} />;
+      return (
+        <CodeBlock
+          code={block.content}
+          language={block.metadata?.language}
+          filename={block.metadata?.filename}
+          showLineNumbers={block.metadata?.showLineNumbers}
+          align={block.metadata?.align}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
     case 'blockquote':
       return <Blockquote {...commonProps}>{block.content}</Blockquote>;
     // case 'table':

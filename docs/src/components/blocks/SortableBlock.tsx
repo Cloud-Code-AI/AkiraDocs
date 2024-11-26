@@ -179,16 +179,14 @@ export function SortableBlock({
     updateBlock(block.id, JSON.stringify(updatedContent))
   }
 
-  if (showPreview) {
-    return <BlockRenderer block={block} />
-  }
-
-  return (
+  return showPreview ? (
+    <BlockRenderer block={block} />
+  ) : (
     <div
       ref={setNodeRef}
       style={style}
       className={cn(
-        'group relative mb-4',
+        'group relative',
         isDragging && 'z-50 bg-background/50 backdrop-blur-sm'
       )}
     >
@@ -337,105 +335,11 @@ export function SortableBlock({
               }}
             />
           )}
-          { block.type === 'image' ? (
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
-              {getImageContent().url ? (
-                <div className={cn(
-                  "flex flex-col gap-2",
-                  getImageContent().alignment === 'left' && "items-start",
-                  getImageContent().alignment === 'center' && "items-center",
-                  getImageContent().alignment === 'right' && "items-end",
-                )}>
-                  <img 
-                    src={getImageContent().url} 
-                    alt={getImageContent().alt} 
-                    className={cn(
-                      "h-auto rounded-lg",
-                      getImageContent().size === 'small' && "max-w-[300px]",
-                      getImageContent().size === 'medium' && "max-w-[500px]",
-                      getImageContent().size === 'large' && "max-w-[800px]",
-                      getImageContent().size === 'full' && "max-w-full",
-                    )}
-                  />
-                  {getImageContent().caption && (
-                    <p className="text-sm text-muted-foreground italic">
-                      {getImageContent().caption}
-                    </p>
-                  )}
-                </div>
-              ) : (
-                <label className="flex flex-col items-center justify-center cursor-pointer py-8">
-                  <Upload className="w-12 h-12 text-muted-foreground" />
-                  <span className="mt-2 text-sm text-muted-foreground">Click to upload an image</span>
-                  <span className="mt-1 text-xs text-muted-foreground">(or drag and drop)</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                  />
-                </label>
-              )}
-            </div>
-          ) : block.type === 'divider' ? (
-            <div className="py-2">
-              <hr className="border-t border-border" />
-            </div>
-          ) : (
-            <div
-              ref={inputRef}
-              contentEditable
-              suppressContentEditableWarning
-              onKeyDown={handleKeyDown}
-              onInput={handleInput}
-              onBlur={(e) => {
-                const target = e.target as HTMLElement
-                if (!target) return
-                
-                // Preserve newlines by getting the raw HTML and converting it properly
-                let content = target.innerHTML
-                
-                // First, normalize all possible line break representations
-                content = content.replace(/<div><br><\/div>/g, '\n') // Empty lines
-                content = content.replace(/<div>/g, '\n')
-                content = content.replace(/<\/div>/g, '')
-                content = content.replace(/<br>/g, '\n')
-                content = content.replace(/<br\/>/g, '\n')
-                content = content.replace(/&nbsp;/g, ' ')
-                
-                // Remove any double newlines that might have been created
-                content = content.replace(/\n\n+/g, '\n\n')
-                
-                // Remove leading/trailing newlines
-                content = content.trim()
-                
-                updateBlock(block.id, content)
-              }}
-              dangerouslySetInnerHTML={{ __html: block.content.replace(/\n/g, '<br>') }}
-              className={cn(
-                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-secondary whitespace-pre-wrap",
-                block.type === 'heading' && [
-                  "font-bold",
-                  (!block.metadata?.level || block.metadata?.level === 1) && "text-4xl",
-                  block.metadata?.level === 2 && "text-3xl",
-                  block.metadata?.level === 3 && "text-2xl",
-                  block.metadata?.level === 4 && "text-xl",
-                  block.metadata?.level === 5 && "text-lg",
-                  block.metadata?.level === 6 && "text-base",
-                ],
-                block.type === 'code' && "font-mono bg-muted p-4",
-                block.metadata?.styles?.bold && "font-bold",
-                block.metadata?.styles?.italic && "italic",
-                block.metadata?.styles?.underline && "underline",
-                block.metadata?.align === 'center' && "text-center",
-                block.metadata?.align === 'right' && "text-right"
-              )}
-              style={{
-                display: 'block',
-                whiteSpace: block.type === 'code' ? 'pre-wrap' : 'normal'
-              }}
-            />
-          )}
+          <BlockRenderer 
+            block={block} 
+            isEditing={true}
+            onUpdate={(id, content) => updateBlock(id, content)}
+          />
         </div>
 
         {/* Delete Button */}
