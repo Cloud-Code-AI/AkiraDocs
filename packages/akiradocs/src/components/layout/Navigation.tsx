@@ -49,7 +49,7 @@ export function Navigation({ locale, items }: NavigationProps) {
 }
 
 const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
   const hasChildren = item.items && Object.keys(item.items).length > 0
   const isActive = item.path ? pathname === `/${locale}${item.path}` : false
   const absolutePath = item.path ? `/${locale}${item.path}` : '#'
