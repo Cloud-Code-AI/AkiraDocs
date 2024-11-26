@@ -17,6 +17,7 @@ import { CodeBlock } from "@/components/blocks/CodeBlock"
 import { Callout } from "@/components/blocks/CalloutBlock"
 import { cn } from '@/lib/utils'
 import { ErrorBoundary } from 'react-error-boundary'
+import { ImageBlock } from "@/components/blocks/ImageBlock"
 
 interface ImageBlockContent {
   url: string;
@@ -46,43 +47,6 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
     styles: block.metadata?.styles,
     id: block.id,
   };
-
-  if (block.type === 'image') {
-    try {
-      const imageContent: ImageBlockContent = typeof block.content === 'string' 
-        ? JSON.parse(block.content)
-        : block.content;
-
-      return (
-        <figure className={cn(
-          "my-4",
-          imageContent.alignment === 'left' && "text-left",
-          imageContent.alignment === 'center' && "text-center",
-          imageContent.alignment === 'right' && "text-right",
-        )}>
-          <img 
-            src={imageContent.url} 
-            alt={imageContent.alt} 
-            className={cn(
-              "h-auto rounded-lg inline-block",
-              imageContent.size === 'small' && "max-w-[300px]",
-              imageContent.size === 'medium' && "max-w-[500px]",
-              imageContent.size === 'large' && "max-w-[800px]",
-              imageContent.size === 'full' && "max-w-full",
-            )}
-          />
-          {imageContent.caption && (
-            <figcaption className="mt-2 text-sm text-muted-foreground italic">
-              {imageContent.caption}
-            </figcaption>
-          )}
-        </figure>
-      )
-    } catch {
-      // Fallback for old format or invalid JSON
-      return <img src={block.content as string} alt="" className="max-w-full h-auto my-4" />
-    }
-  }
 
   switch (block.type) {
     case 'paragraph':
@@ -130,6 +94,16 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
         >
           {block.content}
         </Blockquote>
+      );
+    case 'image':
+      return (
+        <ImageBlock
+          content={block.content}
+          id={block.id}
+          metadata={block.metadata}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
       );
     // case 'table':
     //   return <Table headers={block.metadata?.headers || []} rows={block.metadata?.rows || []} {...commonProps} />;
