@@ -391,10 +391,29 @@ export function SortableBlock({
               onBlur={(e) => {
                 const target = e.target as HTMLElement
                 if (!target) return
-                updateBlock(block.id, target.textContent || '')
+                
+                // Preserve newlines by getting the raw HTML and converting it properly
+                let content = target.innerHTML
+                
+                // First, normalize all possible line break representations
+                content = content.replace(/<div><br><\/div>/g, '\n') // Empty lines
+                content = content.replace(/<div>/g, '\n')
+                content = content.replace(/<\/div>/g, '')
+                content = content.replace(/<br>/g, '\n')
+                content = content.replace(/<br\/>/g, '\n')
+                content = content.replace(/&nbsp;/g, ' ')
+                
+                // Remove any double newlines that might have been created
+                content = content.replace(/\n\n+/g, '\n\n')
+                
+                // Remove leading/trailing newlines
+                content = content.trim()
+                
+                updateBlock(block.id, content)
               }}
+              dangerouslySetInnerHTML={{ __html: block.content.replace(/\n/g, '<br>') }}
               className={cn(
-                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-secondary",
+                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-secondary whitespace-pre-wrap",
                 block.type === 'heading' && [
                   "font-bold",
                   (!block.metadata?.level || block.metadata?.level === 1) && "text-4xl",
@@ -415,9 +434,7 @@ export function SortableBlock({
                 display: 'block',
                 whiteSpace: block.type === 'code' ? 'pre-wrap' : 'normal'
               }}
-            >
-              {block.content}
-            </div>
+            />
           )}
         </div>
 
