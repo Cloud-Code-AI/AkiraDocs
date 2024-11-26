@@ -179,6 +179,18 @@ export function SortableBlock({
     updateBlock(block.id, JSON.stringify(updatedContent))
   }
 
+  const [isFocused, setIsFocused] = useState(false)
+
+  const handleFocus = () => {
+    setIsFocused(true)
+  }
+
+  const handleBlur = (e: React.FocusEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setIsFocused(false)
+    }
+  }
+
   return showPreview ? (
     <BlockRenderer block={block} />
   ) : (
@@ -189,6 +201,9 @@ export function SortableBlock({
         'group relative',
         isDragging && 'z-50 bg-background/50 backdrop-blur-sm'
       )}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      tabIndex={0}
     >
       {/* Left Controls Container */}
       <div className="absolute -left-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
@@ -246,6 +261,7 @@ export function SortableBlock({
         <div className="flex-grow relative">
           {!showPreview && block.type !== 'divider' && (
             <BlockFormatToolbar
+              isVisible={isFocused}
               styles={block.metadata?.styles}
               align={block.type === 'image' ? getImageContent().alignment : block.metadata?.align}
               level={block.metadata?.level || 1}
