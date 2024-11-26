@@ -146,7 +146,17 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
     // case 'emoji':
     //   return <Emoji symbol={block.content} label={block.metadata?.label} {...commonProps} />;
     case 'callout':
-      return <Callout type={block.metadata?.type || 'info'} title={block.metadata?.title} {...commonProps}>{block.content}</Callout>;
+      return (
+        <Callout 
+          type={block.metadata?.type || 'info'} 
+          title={block.metadata?.title} 
+          {...commonProps}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        >
+          {block.content}
+        </Callout>
+      );
     case 'divider':
       return <Divider align={block.metadata?.align} />;
     default:
