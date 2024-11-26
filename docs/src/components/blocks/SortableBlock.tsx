@@ -6,8 +6,7 @@ import { cn } from '@/lib/utils'
 import { Block, BlockType } from '../../types/Block'
 import { AddBlockButton } from '../editor/AddBlockButton'
 import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Plus, MoreHorizontal, Trash2, Upload } from 'lucide-react'
+import { Plus, Trash2, Upload } from 'lucide-react'
 import { useRef, useCallback, useState } from 'react'
 import { BlockFormatToolbar } from '../editor/BlockFormatToolbar'
 
@@ -421,24 +420,15 @@ export function SortableBlock({
           )}
         </div>
 
-        {/* Block Menu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => deleteBlock(block.id)}>
-              <Trash2 className="mr-2 h-4 w-4" />
-              <span>Delete block</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {/* Block Menu */}        <Button
+          variant="ghost"
+          size="icon"
+          className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
+          onClick={() => deleteBlock(block.id)}
+        >
+          <Trash2 className="h-4 w-4" />
+          <span className="sr-only">Delete block</span>
+        </Button>
       </div>
     </div>
   )
