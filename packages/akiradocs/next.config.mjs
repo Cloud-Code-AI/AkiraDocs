@@ -9,6 +9,11 @@ const nextConfig = {
       })
       return config
     },
+    // i18n: {
+    //   locales: ['en', 'es', 'fr', 'de'],
+    //   defaultLocale: 'en',
+    //   localeDetection: false
+    // },
   };
 
 export default nextConfig;
