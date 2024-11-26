@@ -12,5 +12,14 @@
         "path": "/docs/getting-started/quickstart"
       }
     }
+  },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Analytics Integration",
+        "path": "/docs/guides/analytics"
+      }
+    }
   }
 }

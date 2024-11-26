@@ -1,0 +1,146 @@
+{
+  "title": "Analytics Integration",
+  "description": "Learn how to add analytics tracking to your documentation",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Guides",
+  "keywords": [
+    "Akira Docs",
+    "Analytics",
+    "Google Analytics"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Analytics Integration",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Setting up Google Analytics",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": "1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)\n2. Get your Measurement ID (starts with \"G-\")\n3. Add the ID to your `akiradocs.config.json`:"
+    },
+    {
+      "id": "6",
+      "type": "code",
+      "content": "{\n\"analytics\": {\n\"google\": {\n\"measurementId\": \"G-XXXXXXXXXX\",\n\"enabled\": true\n},\n\"debug\": false\n}\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "What's Tracked Automatically",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "10",
+      "type": "list",
+      "content": [
+        "Page views",
+        "Navigation between pages",
+        "Time on page",
+        "User language preferences",
+        "Device and browser information"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Custom Event Tracking",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": "You can track custom events using the `useAnalytics` hook:"
+    },
+    {
+      "id": "14",
+      "type": "code",
+      "content": "typescript\nimport { useAnalytics } from '@/hooks/useAnalytics'\nfunction MyComponent() {\n    const { track } = useAnalytics()\n    const handleClick = () => {\n        track('doc_rating', {\n            rating: 5,\n            page: 'getting-started',\n            helpful: true\n        })\n    }\n    return <button onClick={handleClick}>This was helpful</button>\n}",
+      "metadata": {
+        "language": "typescript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Debug Mode",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "Enable debug mode to see analytics events in the console during development:"
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "{\n\"analytics\": {\n\"debug\": true\n}\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": "This provides a complete analytics integration that's easy for users to set up and extend as needed."
+    }
+  ]
+}

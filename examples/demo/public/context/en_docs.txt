@@ -10,20 +10,16 @@ Customizable themes
 Markdown support
 -------------
 [Document: articles/welcome.json]
+Title: Welcome to Akira Doc
+Get started with Akira Docs - Next-gen documentation powered by AI
+Welcome to Akira Doc
 Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation.
-Easy to customize\nAI-powered search\nBlock-based content system\nResponsive design
--------------
-[Document: articles/test_blog_post.json]
-Title: Test Blog Post
-A test blog post to demonstrate all block types.
-Example Heading Sample1
-This paragraph is part of the test blog post. It demonstrates the paragraph block.
-Code example:
-console.log('Testing all blocks');
-Item 1
-Item 2
-Item 3
-Important: This is an important callout message.
+Key Features
+Easy to customize
+AI-powered search
+Block-based content system
+Responsive design
+Getting Started: Start by customizing this template to match your project's needs!
 -------------
 [Document: articles/template.json]
 Title: Test Blog Post
@@ -38,7 +34,7 @@ Item 3
 Important: This is an important callout message.
 -------------
 [Document: articles/ai_integration.json]
-AI Assistant Integration 
+AI Assistant Integration
 Learn how to use Akira's built-in AI assistant for documentation enhancement
 
 Akira's AI Assistant is a powerful tool that helps developers and technical writers create, maintain, and improve documentation through natural language interactions. This guide covers the essential features and best practices for utilizing the AI assistant effectively.
@@ -73,6 +69,57 @@ ai_assistant:
 Next Steps
 Explore our [Advanced AI Features](/advanced-ai-features) guide to learn more about specialized use cases and integration possibilities.
 -------------
+[Document: docs/guides/analytics.json]
+Title: Analytics Integration
+Learn how to add analytics tracking to your documentation
+Analytics Integration
+AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
+Setting up Google Analytics
+1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
+2. Get your Measurement ID (starts with "G-")
+3. Add the ID to your `akiradocs.config.json`:
+Code example:
+{
+"analytics": {
+"google": {
+"measurementId": "G-XXXXXXXXXX",
+"enabled": true
+},
+"debug": false
+}
+}
+What's Tracked Automatically
+Page views
+Navigation between pages
+Time on page
+User language preferences
+Device and browser information
+Custom Event Tracking
+You can track custom events using the `useAnalytics` hook:
+Code example:
+typescript
+import { useAnalytics } from '@/hooks/useAnalytics'
+function MyComponent() {
+    const { track } = useAnalytics()
+    const handleClick = () => {
+        track('doc_rating', {
+            rating: 5,
+            page: 'getting-started',
+            helpful: true
+        })
+    }
+    return <button onClick={handleClick}>This was helpful</button>
+}
+Debug Mode
+Enable debug mode to see analytics events in the console during development:
+Code example:
+{
+"analytics": {
+"debug": true
+}
+}
+This provides a complete analytics integration that's easy for users to set up and extend as needed.
+-------------
 [Document: docs/getting-started/quickstart.json]
 Title: Quickstart Guide
 Get up and running with Akira Docs in minutes
@@ -84,85 +131,7 @@ git clone https://github.com/your-org/akira-docs-template
 cd akira-docs-template
 npm install
 npm run dev
-Prerequisites: Make sure you have Node.js 16 or higher installed on your system.
--------------
-[Document: docs/getting-started/configuration.json]
-Configuration Guide
-Akira uses a akiradocs.config.json file for site-wide configuration. This guide explains all available options and their usage.
-Code example:
-{
-  "title": "Akira Docs",
-  "description": "Next-gen documentation powered by AI",
-  "header": {
-    "logo": {
-      "path": "/akiradocs_logo.svg",
-      "width": 120,
-      "height": 30,
-      "show": true
-    },
-    "favicon": {
-      "path": "/akira_favicon.png",
-      "show": true
-    },
-    "title": {
-      "text": "Akira Docs",
-      "show": false
-    },
-    "searchPlaceholder": "Search Akira...",
-    "navItems": [
-      { "label": "AI Search", "href": "/aiSearch", "icon": "/sparkles.svg", "show": false },
-      { "label": "Docs", "href": "/en/docs", "icon": "/legacy.svg", "show": true },
-      { "label": "Articles", "href": "/en/articles", "icon": "/articles.svg", "show": true }
-    ]
-  },
-  "footer": {
-    "companyName": "Cloud Code AI",
-    "socialLinks": [
-      { "name": "GitHub", "url": "https://github.com/Cloud-Code-AI/akiradocs-template", "icon": "/github.svg" },
-      { "name": "Twitter", "url": "https://x.com/CloudCodeAI", "icon": "/twitter.svg" },
-      { "name": "LinkedIn", "url": "https://www.linkedin.com/company/cloudcode-ai", "icon": "/linkedin.svg" }
-    ]
-  },
-  "languages": {
-    "defaultLocale": "en",
-    "locales": [
-      { "code": "en", "name": "English", "flag": "🇺🇸" },
-      { "code": "es", "name": "Español", "flag": "🇪🇸" },
-      { "code": "fr", "name": "Français", "flag": "🇫🇷" }
-    ],
-    "fallbackLocale": "en"
-  }
-}
--------------
-[Document: docs/features/themes.json]
-Title: Theming
-Customize the look and feel of your Akira documentation
-Theming Guide
-Akira provides powerful theming capabilities to customize your documentation's appearance. You can use pre-built themes or create your own.
-Code example:
-// theme.config.js
-module.exports = {
-  colors: {
-    primary: '#0066cc',
-    secondary: '#4c9aff',
-    background: '#ffffff'
-  },
-  typography: {
-    fontFamily: 'Inter, sans-serif',
-    baseSize: '16px'
-  }
-}
--------------
-[Document: docs/features/blocks.json]
-Title: Content Blocks
-Understanding and using Akira's content block system
-Content Blocks
-Content blocks are the fundamental building units of Akira documentation. They provide a flexible way to structure and present information.
-Available Block Types
-Text blocks
-Code blocks
-Image blocks
-Callout blocks
-Table blocks
-Custom blocks
+:::warning Prerequisites
+Make sure you have Node.js 16 or higher installed on your system.
+:::
 -------------

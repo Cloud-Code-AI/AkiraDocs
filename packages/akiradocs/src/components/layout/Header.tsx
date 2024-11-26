@@ -25,6 +25,7 @@ import { searchContent, type SearchResult } from '@/lib/search'
 import { useDebounce } from '@/hooks/useDebounce'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import type { locales } from '@/hooks/useTranslation'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 export const Header = memo(function Header({
   logo,
@@ -45,7 +46,7 @@ export const Header = memo(function Header({
   const [showResults, setShowResults] = useState(false)
   const searchRef = useRef<HTMLDivElement>(null)
   const { t, setLocale } = useTranslation();
-
+  const { track } = useAnalytics()
 
   useEffect(() => {
     setIsMounted(true)
@@ -58,12 +59,18 @@ export const Header = memo(function Header({
   }
 
   const handleLanguageChange = (value: keyof typeof locales) => {
-    console.log('Language change requested:', value);
+    console.debug('Language change requested:', value);
     const currentPath = window.location.pathname;
+    track('language_switch', {
+      from_language: currentLocale,
+      to_language: value,
+      page_path: currentPath
+    })
     setLocale(value);
     const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${value}`);
-    console.log('Redirecting to:', newPath);
+    console.debug('Redirecting to:', newPath);
     router.push(newPath);
+
   }
 
   const debouncedSearch = useDebounce((query: string) => {
@@ -218,6 +225,11 @@ export const Header = memo(function Header({
                           key={index}
                           href={result.path}
                           onClick={() => {
+                            track('search_result_click', {
+                              result_path: result.path,
+                              result_title: result.title,
+                              result_type: result.type
+                            })
                             setShowResults(false)
                             setSearchQuery('')
                           }}

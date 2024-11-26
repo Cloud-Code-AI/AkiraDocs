@@ -70,5 +70,12 @@
         "model": "claude-3-sonnet-20240229",
         "targetLanguages": ["es", "fr", "de"],
         "excludedPaths": ["_meta.json"]
+    },
+    "analytics": {
+        "google": {
+            "measurementId": "",
+            "enabled": false
+        },
+        "debug": false
     }
 }
