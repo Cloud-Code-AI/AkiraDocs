@@ -200,7 +200,7 @@ export const Header = memo(function Header({
               <div className="relative hidden md:block" ref={searchRef}>
                 <Input
                   type="search"
-                  placeholder={searchPlaceholder}
+                  placeholder={t('common.labels.search')}
                   className="w-64 pr-8 rounded-md"
                   value={searchQuery}
                   onChange={(e) => handleSearch(e.target.value)}
