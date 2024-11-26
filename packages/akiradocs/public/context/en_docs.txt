@@ -97,7 +97,6 @@ Device and browser information
 Custom Event Tracking
 You can track custom events using the `useAnalytics` hook:
 Code example:
-typescript
 import { useAnalytics } from '@/hooks/useAnalytics'
 function MyComponent() {
     const { track } = useAnalytics()

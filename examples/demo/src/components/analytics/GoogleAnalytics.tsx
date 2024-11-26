@@ -2,7 +2,7 @@
 
 import Script from 'next/script'
 import { useEffect } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { getConfig } from '@/lib/config'
 
 declare global {
@@ -13,18 +13,17 @@ declare global {
 
 export function GoogleAnalytics() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
   const config = getConfig()
   const measurementId = config.analytics?.google?.measurementId
 
   useEffect(() => {
     if (!measurementId) return
 
-    const url = pathname + searchParams.toString()
+    const url = pathname + window.location.search
     window.gtag('config', measurementId, {
       page_path: url,
     })
-  }, [pathname, searchParams, measurementId])
+  }, [pathname, measurementId])
 
   if (!measurementId || !config.analytics?.google?.enabled) {
     return null

@@ -14,7 +14,23 @@
     </url>
   
     <url>
+      <loc>https://your-domain.com/fr/docs/getting-started/configuration</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/fr/docs/features/themes</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/fr/docs/features/blocks</loc>
+    </url>
+  
+    <url>
       <loc>https://your-domain.com/fr/articles/welcome</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/fr/articles/test_blog_post</loc>
     </url>
   
     <url>
@@ -30,10 +46,6 @@
     </url>
   
     <url>
-      <loc>https://your-domain.com/fr/api/apiSpec</loc>
-    </url>
-  
-    <url>
       <loc>https://your-domain.com/es/docs/introduction</loc>
     </url>
   
@@ -46,7 +58,27 @@
     </url>
   
     <url>
+      <loc>https://your-domain.com/es/docs/getting-started/configuration</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/es/docs/features/themes</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/es/docs/features/blocks</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/es/docs/api/api</loc>
+    </url>
+  
+    <url>
       <loc>https://your-domain.com/es/articles/welcome</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/es/articles/test_blog_post</loc>
     </url>
   
     <url>
@@ -62,10 +94,6 @@
     </url>
   
     <url>
-      <loc>https://your-domain.com/es/api/apiSpec</loc>
-    </url>
-  
-    <url>
       <loc>https://your-domain.com/en/docs/introduction</loc>
     </url>
   
@@ -78,11 +106,27 @@
     </url>
   
     <url>
+      <loc>https://your-domain.com/en/docs/getting-started/configuration</loc>
+    </url>
+  
+    <url>
       <loc>https://your-domain.com/en/docs/getting-started/_meta</loc>
     </url>
   
     <url>
+      <loc>https://your-domain.com/en/docs/features/themes</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/en/docs/features/blocks</loc>
+    </url>
+  
+    <url>
       <loc>https://your-domain.com/en/articles/welcome</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/en/articles/test_blog_post</loc>
     </url>
   
     <url>
@@ -98,10 +142,6 @@
     </url>
   
     <url>
-      <loc>https://your-domain.com/en/api/apiSpec</loc>
-    </url>
-  
-    <url>
       <loc>https://your-domain.com/de/docs/introduction</loc>
     </url>
   
@@ -114,7 +154,23 @@
     </url>
   
     <url>
+      <loc>https://your-domain.com/de/docs/getting-started/configuration</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/de/docs/features/themes</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/de/docs/features/blocks</loc>
+    </url>
+  
+    <url>
       <loc>https://your-domain.com/de/articles/welcome</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/de/articles/test_blog_post</loc>
     </url>
   
     <url>
@@ -127,10 +183,6 @@
   
     <url>
       <loc>https://your-domain.com/de/articles/_meta</loc>
-    </url>
-  
-    <url>
-      <loc>https://your-domain.com/de/api/apiSpec</loc>
     </url>
   
 </urlset>

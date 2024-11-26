@@ -17,15 +17,6 @@
       }
     }
   },
-  "api": {
-    "title": "Api",
-    "items": {
-      "api": {
-        "title": "Referencia de la API",
-        "path": "/docs/api/api"
-      }
-    }
-  },
   "features": {
     "title": "Features",
     "items": {
@@ -36,6 +27,15 @@
       "blocks": {
         "title": "Bloques de Contenido",
         "path": "/docs/features/blocks"
+      }
+    }
+  },
+  "api": {
+    "title": "Api",
+    "items": {
+      "api": {
+        "title": "Referencia de la API",
+        "path": "/docs/api/api"
       }
     }
   }

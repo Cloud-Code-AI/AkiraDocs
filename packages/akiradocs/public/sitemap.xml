@@ -74,6 +74,14 @@
     </url>
   
     <url>
+      <loc>https://your-domain.com/en/docs/guides/analytics</loc>
+    </url>
+  
+    <url>
+      <loc>https://your-domain.com/en/docs/guides/_meta</loc>
+    </url>
+  
+    <url>
       <loc>https://your-domain.com/en/docs/getting-started/quickstart</loc>
     </url>
   
