@@ -5,9 +5,8 @@ import { cn } from '@/lib/utils'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
 import { ListIcon, ListOrdered } from 'lucide-react'
 import { Input } from '@/components/ui/input'
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover'
-import { Button } from '@/components/ui/button'
 import { BlockType } from '@/types/Block'
+import { AIRewriteButton } from '@/components/editor/AIRewriteButton'
 
 interface BlockFormatToolbarProps {
   styles?: {
@@ -285,61 +284,16 @@ export function BlockFormatToolbar({
       )}
        <Separator orientation="vertical" className="mx-0.5 h-7" />
           
-          <div className="ml-auto flex items-center">
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="h-7 px-2 flex items-center gap-2"
-                  disabled={isAiRewriting}
-                >
-                  <Wand2 className="h-3.5 w-3.5" />
-                  <span className="text-sm">Rewrite with AI</span>
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-56" align="end">
-                <div className="space-y-4">
-                  <p className="font-medium">Rewrite with AI</p>
-                  <Select 
-                    onValueChange={(value) => onAiRewrite?.(value)}
-                    disabled={isAiRewriting}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select style" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {blockType === 'heading' ? (
-                        <>
-                          <SelectItem value="concise">Concise</SelectItem>
-                          <SelectItem value="descriptive">Descriptive</SelectItem>
-                          <SelectItem value="engaging">Engaging</SelectItem>
-                        </>
-                      ) : blockType === 'blockquote' ? (
-                        <>
-                          <SelectItem value="inspirational">Inspirational</SelectItem>
-                          <SelectItem value="thoughtful">Thoughtful</SelectItem>
-                          <SelectItem value="powerful">Powerful</SelectItem>
-                        </>
-                      ) : (
-                        <>
-                          <SelectItem value="professional">Professional</SelectItem>
-                          <SelectItem value="casual">Casual</SelectItem>
-                          <SelectItem value="academic">Academic</SelectItem>
-                          <SelectItem value="creative">Creative</SelectItem>
-                        </>
-                      )}
-                    </SelectContent>
-                  </Select>
-                  {isAiRewriting && (
-                    <div className="text-sm text-muted-foreground">
-                      Rewriting...
-                    </div>
-                  )}
-                </div>
-              </PopoverContent>
-            </Popover>
-          </div>
+          {/* Only show AI rewrite button if not an image block */}
+          {!showImageControls && (
+            <div className="ml-auto">
+              <AIRewriteButton
+                blockType={blockType || 'paragraph'}
+                onRewrite={onAiRewrite || (async () => {})}
+                isRewriting={isAiRewriting}
+              />
+            </div>
+          )}
     </div>
   );
 }
