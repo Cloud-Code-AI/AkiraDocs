@@ -18,7 +18,8 @@ export async function rewriteBlockContent(
   })
 
   if (!response.ok) {
-    throw new Error('Failed to rewrite content')
+    const data = await response.json()
+    throw new Error(data.error)
   }
 
   const data = await response.json()

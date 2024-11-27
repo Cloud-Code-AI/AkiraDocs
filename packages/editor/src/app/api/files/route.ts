@@ -1,122 +1,90 @@
-import { writeFile, mkdir, rm, unlink, readFile } from 'fs/promises'
-import { NextResponse } from 'next/server'
-import path from 'path'
+import { NextResponse } from 'next/server';
+import OpenAI from 'openai';
 
-function getBasePath() {
-  return path.join(process.cwd(), '..', 'compiled')
-}
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY || '',
+});
+
+// Define block-specific system prompts
+const blockPrompts = {
+  paragraph: {
+    system: "You are an expert content editor. Maintain paragraph structure and formatting. Output only the rewritten paragraph text without any markdown or HTML.",
+    format: "Plain text paragraph"
+  },
+  heading: {
+    system: "You are a headline optimization expert. Create impactful, concise headings. Output only the heading text without any formatting.",
+    format: "Single line heading text"
+  },
+  code: {
+    system: "You are an expert code optimizer. Maintain the exact programming language syntax and structure. Output only valid code without any explanations.",
+    format: "Valid code in the original language"
+  },
+  list: {
+    system: "You are a list organization expert. Maintain the list structure with one item per line. Do not include bullets or numbers.",
+    format: "One item per line, no bullets/numbers"
+  },
+  blockquote: {
+    system: "You are a quote refinement expert. Maintain the quote's core message and emotional impact. Output only the quote text.",
+    format: "Single quote text without quotation marks"
+  },
+  callout: {
+    system: "You are a technical documentation expert. Maintain the callout's type (info/warning/success/error) and structure. Output only the callout content.",
+    format: "Callout content preserving type indicators"
+  },
+  image: {
+    system: "You are an image description expert. Optimize image alt text and captions. Output in JSON format with alt and caption fields.",
+    format: '{ "alt": "...", "caption": "..." }'
+  }
+};
 
 export async function POST(request: Request) {
-  try {
-    const { path: filePath, content } = await request.json()
-    const fullPath = path.join(getBasePath(), filePath)
-    
-    // Ensure the directory exists
-    await mkdir(path.dirname(fullPath), { recursive: true })
-    
-    // Write the file
-    await writeFile(fullPath, JSON.stringify(content, null, 2))
-    return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error('Error creating file:', error)
+  if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json(
-      { error: 'Failed to create file' },
+      { error: 'OpenAI API key is missing. Please configure it in your environment variables.' },
       { status: 500 }
-    )
+    );
   }
-}
 
-export async function DELETE(request: Request) {
   try {
-    const { path: itemPath, type } = await request.json()
-    const fullPath = path.join(getBasePath(), itemPath)
+    const { content, blockType, style } = await request.json();
 
-    if (type === 'folder') {
-      await rm(fullPath, { recursive: true, force: true })
-    } else {
-      await unlink(fullPath)
-    }
-
-    return NextResponse.json({ success: true })
-  } catch (error) {
-    console.error('Error deleting item:', error)
-    return NextResponse.json(
-      { error: 'Failed to delete item' },
-      { status: 500 }
-    )
-  }
-}
-
-export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url)
-    const filePath = searchParams.get('path')
-    
-    if (!filePath) {
+    if (!content || !blockType || !style) {
       return NextResponse.json(
-        { error: 'No file path provided' },
+        { error: 'Missing required fields: content, blockType, or style' },
         { status: 400 }
-      )
+      );
     }
 
-    const fullPath = path.join(getBasePath(), filePath)
-    const fileContent = await readFile(fullPath, 'utf-8')
-    const parsedContent = JSON.parse(fileContent)
-    
-    return NextResponse.json(parsedContent)
-  } catch (error) {
-    console.error('Error reading file:', error)
-    return NextResponse.json(
-      { error: 'Failed to read file' },
-      { status: 500 }
-    )
-  }
-}
-
-export async function PUT(request: Request) {
-  try {
-    const { path: filePath, content } = await request.json()
-    
-    if (!filePath) {
+    const blockPrompt = blockPrompts[blockType as keyof typeof blockPrompts];
+    if (!blockPrompt) {
       return NextResponse.json(
-        { error: 'No file path provided' },
+        { error: 'Invalid block type' },
         { status: 400 }
-      )
+      );
     }
 
-    // Validate content
-    if (!content) {
-      return NextResponse.json(
-        { error: 'No content provided' },
-        { status: 400 }
-      )
-    }
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        {
+          role: "system",
+          content: `${blockPrompt.system}\n\nExpected output format: ${blockPrompt.format}\n\nDo not include any explanations or markdown formatting in the response.`
+        },
+        {
+          role: "user",
+          content: `Rewrite the following ${blockType} content in a ${style} style while maintaining its structure:\n\n${content}`
+        }
+      ],
+    });
 
-    const fullPath = path.join(getBasePath(), filePath)
-    
-    // Check if directory exists, if not create it
-    await mkdir(path.dirname(fullPath), { recursive: true })
-    
-    // Add retry logic
-    const maxRetries = 3;
-    for (let i = 0; i < maxRetries; i++) {
-      try {
-        const jsonContent = JSON.stringify(content, null, 2)
-        await writeFile(fullPath, jsonContent, 'utf-8')
-        return NextResponse.json({ success: true })
-      } catch (writeError) {
-        if (i === maxRetries - 1) throw writeError;
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1s before retry
-      }
-    }
+    const rewrittenContent = completion.choices[0].message.content || '';
+
+    return NextResponse.json({ content: rewrittenContent });
   } catch (error) {
-    console.error('Error writing file:', error)
+    console.error('OpenAI API error:', error);
     return NextResponse.json(
-      { 
-        error: 'Failed to write file',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      },
+      { error: 'Failed to generate AI content' },
       { status: 500 }
-    )
+    );
   }
 }

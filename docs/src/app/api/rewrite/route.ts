@@ -40,7 +40,7 @@ const blockPrompts = {
 export async function POST(request: Request) {
   if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json(
-      { error: 'OpenAI API key not configured' },
+      { error: 'OpenAI API key is missing. Please configure it in your environment variables.' },
       { status: 500 }
     );
   }
