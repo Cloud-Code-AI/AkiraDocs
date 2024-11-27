@@ -11,6 +11,116 @@ import { copyDir } from '../scripts/copyTemplate';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+interface ConfigAnswers {
+  siteTitle: string;
+  siteDescription: string;
+  companyName: string;
+  githubUrl: string;
+  twitterUrl: string;
+  linkedinUrl: string;
+  googleAnalyticsId?: string;
+  enableAnalytics: boolean;
+  enableAutoTranslate: boolean;
+}
+
+async function promptConfigQuestions() {
+  const response = await enquirer.prompt<ConfigAnswers>([
+    {
+      type: 'input',
+      name: 'siteTitle',
+      message: 'What is your site title?',
+      initial: 'My Documentation',
+    },
+    {
+      type: 'input',
+      name: 'siteDescription',
+      message: 'Enter a brief description of your site:',
+      initial: 'Documentation powered by Akira Docs',
+    },
+    {
+      type: 'input',
+      name: 'companyName',
+      message: 'What is your company name?',
+      initial: 'My Company',
+    },
+    {
+      type: 'input',
+      name: 'githubUrl',
+      message: 'Enter your GitHub repository URL (optional):',
+      initial: '',
+    },
+    {
+      type: 'input',
+      name: 'twitterUrl',
+      message: 'Enter your Twitter/X profile URL (optional):',
+      initial: '',
+    },
+    {
+      type: 'input',
+      name: 'linkedinUrl',
+      message: 'Enter your LinkedIn company URL (optional):',
+      initial: '',
+    },
+    {
+      type: 'confirm',
+      name: 'enableAnalytics',
+      message: 'Would you like to enable Google Analytics?',
+      initial: false,
+    },
+    {
+      type: 'input',
+      name: 'googleAnalyticsId',
+      message: 'Enter your Google Analytics Measurement ID:',
+      initial: '',
+      skip: (answers: Partial<ConfigAnswers>) => !answers.enableAnalytics,
+    },
+    {
+      type: 'confirm',
+      name: 'enableAutoTranslate',
+      message: 'Would you like to enable automatic translation of content?',
+      initial: true,
+    },
+  ]);
+
+  return response;
+}
+
+async function updateConfig(targetDir: string, answers: ConfigAnswers) {
+  const configPath = path.join(targetDir, 'akiradocs.config.json');
+  const config = JSON.parse(await readFile(configPath, 'utf-8'));
+
+  config.site.title = answers.siteTitle;
+  config.site.description = answers.siteDescription;
+  config.footer.companyName = answers.companyName;
+
+  config.footer.socialLinks = [
+    ...(answers.githubUrl ? [{
+      name: 'GitHub',
+      url: answers.githubUrl,
+      icon: '/github.svg'
+    }] : []),
+    ...(answers.twitterUrl ? [{
+      name: 'Twitter',
+      url: answers.twitterUrl,
+      icon: '/twitter.svg'
+    }] : []),
+    ...(answers.linkedinUrl ? [{
+      name: 'LinkedIn',
+      url: answers.linkedinUrl,
+      icon: '/linkedin.svg'
+    }] : [])
+  ];
+
+  config.analytics.google.enabled = answers.enableAnalytics;
+  if (answers.enableAnalytics) {
+    config.analytics.google.measurementId = answers.googleAnalyticsId;
+  }
+
+  config.translation.auto_translate = answers.enableAutoTranslate;
+
+  await writeFile(configPath, JSON.stringify(config, null, 2));
+}
+
 async function readJson(filePath: string) {
   const content = await readFile(filePath, 'utf-8');
   return JSON.parse(content);
@@ -25,30 +135,29 @@ async function main() {
   cli
     .command('[directory]', 'Create a new Akira Docs site')
     .action(async (directory: string = '.') => {
-      const response = await enquirer.prompt<{ includeEditor: boolean }>({
-        type: 'confirm',
-        name: 'includeEditor',
-        message: 'Would you like to include the local editor? (Recommended for development)',
-        initial: true,
-      });
-
-      const spinner = ora('Creating project...').start();
-
       try {
+        const editorResponse = await enquirer.prompt<{ includeEditor: boolean }>({
+          type: 'confirm',
+          name: 'includeEditor',
+          message: 'Would you like to include the local editor? (Recommended for development)',
+          initial: true,
+        });
+
+        const configAnswers = await promptConfigQuestions();
+
+        const spinner = ora('Creating project...').start();
+
         const targetDir = path.resolve(directory);
         await mkdir(targetDir, { recursive: true });
 
-        // Copy main template files
-        const templateDir = path.join(__dirname, '../template');
-        await copyDir(templateDir, targetDir);
+        await copyDir(path.join(__dirname, '../template'), targetDir);
+        await updateConfig(targetDir, configAnswers);
 
-        // Copy editor if selected
-        if (response.includeEditor) {
+        if (editorResponse.includeEditor) {
           const editorDir = path.join(__dirname, '../../editor');
           const targetEditorDir = path.join(targetDir, 'editor');
           await copyDir(editorDir, targetEditorDir);
 
-          // Update package.json to include editor scripts
           const pkgJsonPath = path.join(targetDir, 'package.json');
           const pkgJson = JSON.parse(await readFile(pkgJsonPath, 'utf-8'));
           pkgJson.scripts = {
@@ -69,7 +178,7 @@ async function main() {
         console.log('\nNext steps:');
         console.log(chalk.cyan(`  cd ${directory}`));
         console.log(chalk.cyan('  npm install'));
-        if (response.includeEditor) {
+        if (editorResponse.includeEditor) {
           console.log(chalk.cyan('  cd editor && npm install'));
           console.log(chalk.cyan('  cd .. && npm run dev:all'));
           console.log('\nEditor will be available at: http://localhost:3001');
@@ -77,8 +186,10 @@ async function main() {
         } else {
           console.log(chalk.cyan('  npm run dev'));
         }
+
+        console.log('\nNote: You can update your site configuration anytime by editing akiradocs.config.json');
       } catch (error) {
-        spinner.fail(chalk.red('Failed to create project'));
+        console.error(chalk.red('Failed to create project'));
         console.error(error);
         process.exit(1);
       }

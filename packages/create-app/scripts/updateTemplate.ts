@@ -13,6 +13,7 @@ const ignoredPaths = [
   '_contents',
   'compiled',
   'akiradocs.config.json',
+  '.million',
 ];
 
 export async function updateDir(src: string, dest: string) {
