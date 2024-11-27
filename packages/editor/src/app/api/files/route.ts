@@ -2,12 +2,16 @@ import { writeFile, mkdir, rm, unlink, readFile } from 'fs/promises'
 import { NextResponse } from 'next/server'
 import path from 'path'
 
+function getBasePath() {
+  return path.join(process.cwd(), '..', 'compiled')
+}
+
 export async function POST(request: Request) {
   try {
     const { path: filePath, content } = await request.json()
+    const fullPath = path.join(getBasePath(), filePath)
     
     // Ensure the directory exists
-    const fullPath = path.join(process.cwd(), 'compiled', filePath)
     await mkdir(path.dirname(fullPath), { recursive: true })
     
     // Write the file
@@ -25,7 +29,7 @@ export async function POST(request: Request) {
 export async function DELETE(request: Request) {
   try {
     const { path: itemPath, type } = await request.json()
-    const fullPath = path.join(process.cwd(), 'compiled', itemPath)
+    const fullPath = path.join(getBasePath(), itemPath)
 
     if (type === 'folder') {
       await rm(fullPath, { recursive: true, force: true })
@@ -55,7 +59,7 @@ export async function GET(request: Request) {
       )
     }
 
-    const fullPath = path.join(process.cwd(), 'compiled', filePath)
+    const fullPath = path.join(getBasePath(), filePath)
     const fileContent = await readFile(fullPath, 'utf-8')
     const parsedContent = JSON.parse(fileContent)
     
@@ -88,7 +92,7 @@ export async function PUT(request: Request) {
       )
     }
 
-    const fullPath = path.join(process.cwd(), 'compiled', filePath)
+    const fullPath = path.join(getBasePath(), filePath)
     
     // Check if directory exists, if not create it
     await mkdir(path.dirname(fullPath), { recursive: true })
