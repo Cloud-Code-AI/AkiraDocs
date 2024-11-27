@@ -19,6 +19,7 @@ const ignoredPaths = [
   '.turbo',
   '.vercel',
   '.turbo',
+  '.million',
 ];
 
 export async function copyDir(src: string, dest: string) {
