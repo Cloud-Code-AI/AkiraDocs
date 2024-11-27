@@ -25,7 +25,7 @@ export function TitleBar({ onSave, isSaving = false }: TitleBarProps) {
   return (
     <div className="flex justify-between items-center mb-8">
       <div className="flex items-center gap-3">
-        <Link href="/editor">
+        <Link href="/editMode">
           <Button variant="ghost" size="icon" className="hover:bg-accent">
             <ArrowLeft className="w-4 h-4" />
             <span className="sr-only">Back to editor</span>
