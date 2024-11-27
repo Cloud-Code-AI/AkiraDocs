@@ -1,11 +1,12 @@
-import { Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight } from 'lucide-react'
+import { Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight, Wand2 } from 'lucide-react'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
 import { ListIcon, ListOrdered } from 'lucide-react'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { BlockType } from '@/types/Block'
+import { AIRewriteButton } from '@/components/editor/AIRewriteButton'
 
 interface BlockFormatToolbarProps {
   styles?: {
@@ -50,6 +51,9 @@ interface BlockFormatToolbarProps {
   onCalloutTypeChange?: (type: 'info' | 'warning' | 'success' | 'error') => void;
   onCalloutTitleChange?: (title: string) => void;
   isVisible?: boolean;
+  onAiRewrite?: (style: string) => Promise<void>
+  isAiRewriting?: boolean
+  blockType?: BlockType
 }
 
 export function BlockFormatToolbar({ 
@@ -84,6 +88,9 @@ export function BlockFormatToolbar({
   onCalloutTypeChange,
   onCalloutTitleChange,
   isVisible = false,
+  onAiRewrite,
+  isAiRewriting,
+  blockType,
 }: BlockFormatToolbarProps) {
   return (
     <div className={cn(
@@ -275,6 +282,18 @@ export function BlockFormatToolbar({
           />
         </>
       )}
+       <Separator orientation="vertical" className="mx-0.5 h-7" />
+          
+          {/* Only show AI rewrite button if not an image block */}
+          {!showImageControls && (
+            <div className="ml-auto">
+              <AIRewriteButton
+                blockType={blockType || 'paragraph'}
+                onRewrite={onAiRewrite || (async () => {})}
+                isRewriting={isAiRewriting}
+              />
+            </div>
+          )}
     </div>
   );
 }
