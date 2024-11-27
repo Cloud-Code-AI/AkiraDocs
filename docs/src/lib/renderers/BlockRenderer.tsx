@@ -72,7 +72,18 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
         </HeadingTitle>
       );
     case 'list':
-      return <List items={block.content.split('\n')} listType={block.metadata?.listType || 'unordered'} {...commonProps} />;
+      return (
+        <List 
+          content={typeof block.content === 'string' ? block.content : block.content.join('\n')}
+          listType={block.metadata?.listType || 'unordered'} 
+          {...commonProps}
+          isEditing={isEditing}
+          onUpdate={(content) => {
+            // Ensure we're passing a plain string, not an array
+            onUpdate?.(block.id, content);
+          }}
+        />
+      );
     case 'code':
       return (
         <CodeBlock
