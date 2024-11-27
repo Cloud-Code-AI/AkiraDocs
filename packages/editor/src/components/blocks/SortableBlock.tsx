@@ -6,8 +6,7 @@ import { cn } from '@/lib/utils'
 import { Block, BlockType } from '../../types/Block'
 import { AddBlockButton } from '../editor/AddBlockButton'
 import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Plus, MoreHorizontal, Trash2, Upload } from 'lucide-react'
+import { Plus, Trash2, Upload } from 'lucide-react'
 import { useRef, useCallback, useState } from 'react'
 import { BlockFormatToolbar } from '../editor/BlockFormatToolbar'
 
@@ -180,20 +179,34 @@ export function SortableBlock({
     updateBlock(block.id, JSON.stringify(updatedContent))
   }
 
-  if (showPreview) {
-    return <BlockRenderer block={block} />
+  const [isFocused, setIsFocused] = useState(false)
+
+  const handleFocus = () => {
+    setIsFocused(true)
   }
 
-  return (
+  const handleBlur = (e: React.FocusEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setIsFocused(false)
+    }
+  }
+
+  return showPreview ? (
+    <BlockRenderer block={block} />
+  ) : (
     <div
       ref={setNodeRef}
       style={style}
       className={cn(
-        'group relative mb-4',
+        'group relative',
         isDragging && 'z-50 bg-background/50 backdrop-blur-sm'
       )}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      tabIndex={0}
     >
-      <div className="flex items-center gap-2">
+      {/* Left Controls Container */}
+      <div className="absolute -left-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
         {/* Drag Handle */}
         <div
           className="flex-shrink-0 cursor-grab active:cursor-grabbing"
@@ -203,7 +216,7 @@ export function SortableBlock({
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 text-muted-foreground"
+            className="h-8 w-8 text-muted-foreground hover:text-foreground"
           >
             <GripVertical className="h-4 w-4" />
             <span className="sr-only">Drag handle</span>
@@ -211,7 +224,7 @@ export function SortableBlock({
         </div>
 
         {/* Block Controls */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <AddBlockButton 
             ref={addBlockButtonRef}
             onChangeType={(type) => {
@@ -240,11 +253,15 @@ export function SortableBlock({
             <span className="sr-only">Add Block</span>
           </Button>
         </div>
+      </div>
 
+      {/* Main Content */}
+      <div className="flex items-center gap-4">
         {/* Content Editor */}
         <div className="flex-grow relative">
           {!showPreview && block.type !== 'divider' && (
             <BlockFormatToolbar
+              isVisible={isFocused}
               styles={block.metadata?.styles}
               align={block.type === 'image' ? getImageContent().alignment : block.metadata?.align}
               level={block.metadata?.level || 1}
@@ -334,111 +351,25 @@ export function SortableBlock({
               }}
             />
           )}
-          { block.type === 'image' ? (
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
-              {getImageContent().url ? (
-                <div className={cn(
-                  "flex flex-col gap-2",
-                  getImageContent().alignment === 'left' && "items-start",
-                  getImageContent().alignment === 'center' && "items-center",
-                  getImageContent().alignment === 'right' && "items-end",
-                )}>
-                  <img 
-                    src={getImageContent().url} 
-                    alt={getImageContent().alt} 
-                    className={cn(
-                      "h-auto rounded-lg",
-                      getImageContent().size === 'small' && "max-w-[300px]",
-                      getImageContent().size === 'medium' && "max-w-[500px]",
-                      getImageContent().size === 'large' && "max-w-[800px]",
-                      getImageContent().size === 'full' && "max-w-full",
-                    )}
-                  />
-                  {getImageContent().caption && (
-                    <p className="text-sm text-muted-foreground italic">
-                      {getImageContent().caption}
-                    </p>
-                  )}
-                </div>
-              ) : (
-                <label className="flex flex-col items-center justify-center cursor-pointer py-8">
-                  <Upload className="w-12 h-12 text-muted-foreground" />
-                  <span className="mt-2 text-sm text-muted-foreground">Click to upload an image</span>
-                  <span className="mt-1 text-xs text-muted-foreground">(or drag and drop)</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                  />
-                </label>
-              )}
-            </div>
-          ) : block.type === 'divider' ? (
-            <div className="py-2">
-              <hr className="border-t border-border" />
-            </div>
-          ) : (
-            <div
-              ref={inputRef}
-              contentEditable
-              suppressContentEditableWarning
-              onKeyDown={handleKeyDown}
-              onInput={handleInput}
-              onBlur={(e) => {
-                const target = e.target as HTMLElement
-                if (!target) return
-
-                setTimeout(() => {
-                  updateBlock(block.id, target.textContent || '')
-                }, 100)
-              }}
-              className={cn(
-                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-secondary",
-                block.type === 'heading' && [
-                  "font-bold",
-                  (!block.metadata?.level || block.metadata?.level === 1) && "text-4xl",
-                  block.metadata?.level === 2 && "text-3xl",
-                  block.metadata?.level === 3 && "text-2xl",
-                  block.metadata?.level === 4 && "text-xl",
-                  block.metadata?.level === 5 && "text-lg",
-                  block.metadata?.level === 6 && "text-base",
-                ],
-                block.type === 'code' && "font-mono bg-muted p-4",
-                block.metadata?.styles?.bold && "font-bold",
-                block.metadata?.styles?.italic && "italic",
-                block.metadata?.styles?.underline && "underline",
-                block.metadata?.align === 'center' && "text-center",
-                block.metadata?.align === 'right' && "text-right"
-              )}
-              style={{
-                display: 'block',
-                whiteSpace: block.type === 'code' ? 'pre-wrap' : 'normal'
-              }}
-            >
-              {block.content}
-            </div>
-          )}
+          <BlockRenderer 
+            block={block} 
+            isEditing={true}
+            onUpdate={(id, content) => updateBlock(id, content)}
+          />
         </div>
 
-        {/* Block Menu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => deleteBlock(block.id)}>
-              <Trash2 className="mr-2 h-4 w-4" />
-              <span>Delete block</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {/* Delete Button */}
+        <div className="flex-shrink-0">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
+            onClick={() => deleteBlock(block.id)}
+          >
+            <Trash2 className="h-4 w-4" />
+            <span className="sr-only">Delete block</span>
+          </Button>
+        </div>
       </div>
     </div>
   )
