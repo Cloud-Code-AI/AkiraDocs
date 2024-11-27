@@ -62,6 +62,7 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
     case 'heading':
       return (
         <HeadingTitle
+          {...commonProps}
           level={block.metadata?.level || 1}
           align={block.metadata?.align}
           styles={block.metadata?.styles}
@@ -74,9 +75,9 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
     case 'list':
       return (
         <List 
+          {...commonProps}
           content={Array.isArray(block.content) ? block.content.join('\n') : block.content}
           listType={block.metadata?.listType || 'unordered'} 
-          {...commonProps}
           isEditing={isEditing}
           onUpdate={(content) => {
             // Ensure we're passing a plain string, not an array
@@ -87,6 +88,7 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
     case 'code':
       return (
         <CodeBlock
+          {...commonProps}
           code={block.content}
           language={block.metadata?.language}
           filename={block.metadata?.filename}
@@ -109,6 +111,7 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
     case 'image':
       return (
         <ImageBlock
+          {...commonProps}
           content={block.content}
           id={block.id}
           metadata={block.metadata}
@@ -133,9 +136,9 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
     case 'callout':
       return (
         <Callout 
+          {...commonProps}
           type={block.metadata?.type || 'info'} 
           title={block.metadata?.title} 
-          {...commonProps}
           isEditing={isEditing}
           onUpdate={(content) => onUpdate?.(block.id, content)}
         >
@@ -143,7 +146,7 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
         </Callout>
       );
     case 'divider':
-      return <Divider align={block.metadata?.align} />;
+      return <Divider {...commonProps} />;
     default:
       return null
   }
