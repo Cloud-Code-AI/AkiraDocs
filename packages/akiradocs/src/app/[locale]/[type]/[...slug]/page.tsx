@@ -17,6 +17,7 @@ import { PageNavigation } from '@/components/layout/PageNavigation'
 import { MainTitle, SubTitle } from '@/components/blocks/HeadingBlock'
 import { SEO } from '@/components/layout/SEO'
 import { NotFound } from '@/components/layout/NotFound'
+import { TextToSpeech } from '@/components/tts/TextToSpeech'
 
 export const runtime = 'edge'
 
@@ -61,27 +62,31 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
         <Navigation key={type} locale={locale} items={navigationItems} />
         <div className="flex-1 flex py-4 w-full">
           <PostContainer>
-            <PageBreadcrumb type={type} slug={slug} locale={locale} />
-            {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
-              <Button
-                onClick={handleEdit}
-                variant="outline"
-                size="sm"
-                className="absolute top-0 right-6 flex items-center gap-2 text-muted-foreground hover:text-foreground"
-              >
-                <Edit2 className="w-4 h-4" />
-                Edit
-              </Button>
-            )}
-
-            <MainTitle>{post.title}</MainTitle>
-            <SubTitle>{post.description}</SubTitle>
-            {post.blocks.map((block) => (
-              block.content !== post.title && (
-                <BlockRenderer key={block.id} block={block} />
-              )
-            ))}
-            <PageNavigation prev={prev} next={next} locale={locale}  />
+            <div className="relative">
+              <PageBreadcrumb type={type} slug={slug} locale={locale} />
+              <div className="absolute top-0 right-0 flex gap-2">
+                {process.env.NEXT_PUBLIC_AKIRADOCS_EDIT_MODE === 'true' && (
+                  <Button
+                    onClick={handleEdit}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                  >
+                    <Edit2 className="w-4 h-4" />
+                    Edit
+                  </Button>
+                )}
+                <TextToSpeech blocks={post.blocks} />
+              </div>
+              <MainTitle>{post.title}</MainTitle>
+              <SubTitle>{post.description}</SubTitle>
+              {post.blocks.map((block) => (
+                block.content !== post.title && (
+                  <BlockRenderer key={block.id} block={block} />
+                )
+              ))}
+              <PageNavigation prev={prev} next={next} locale={locale}  />
+            </div>
           </PostContainer>
           <TableOfContents publishDate={post.publishDate} modifiedDate={post.modifiedDate} author={post.author} />
         </div>

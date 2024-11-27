@@ -3,21 +3,39 @@ import { CSS } from '@dnd-kit/utilities'
 import { GripVertical } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { BlockType } from '../../types/Block'
+import { Block, BlockType } from '../../types/Block'
 import { AddBlockButton } from '../editor/AddBlockButton'
 import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Plus, MoreHorizontal, Trash2, Upload } from 'lucide-react'
+import { Plus, Trash2 } from 'lucide-react'
 import { useRef, useCallback, useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { BlockFormatToolbar } from '../editor/BlockFormatToolbar'
+import { toast } from 'sonner'
+import { rewriteBlockContent } from '@/lib/aiRewrite'
 
 interface SortableBlockProps {
   block: {
     id: string
     type: BlockType
     content: string
+    metadata?: {
+      level?: number
+      styles?: {
+        bold?: boolean
+        italic?: boolean
+        underline?: boolean
+      }
+      language?: string
+      alt?: string
+      caption?: string
+      listType?: 'ordered' | 'unordered'
+      size?: 'small' | 'medium' | 'large' | 'full'
+      position?: 'left' | 'center' | 'right'
+      filename?: string
+      showLineNumbers?: boolean
+      align?: 'left' | 'center' | 'right'
+      type?: 'info' | 'warning' | 'success' | 'error'
+      title?: string
+    }
   }
   updateBlock: (id: string, content: string) => void
   changeBlockType: (id: string, newType: BlockType) => void
@@ -26,6 +44,7 @@ interface SortableBlockProps {
   showPreview: boolean
   isChangeTypeActive: boolean
   setActiveChangeTypeId: (id: string | null) => void
+  updateBlockMetadata: (id: string, metadata: Partial<Block['metadata']>) => void
 }
 
 interface ImageBlockContent {
@@ -45,7 +64,8 @@ export function SortableBlock({
   deleteBlock,
   showPreview,
   isChangeTypeActive,
-  setActiveChangeTypeId
+  setActiveChangeTypeId,
+  updateBlockMetadata
 }: SortableBlockProps) {
   const {
     attributes,
@@ -161,20 +181,36 @@ export function SortableBlock({
     updateBlock(block.id, JSON.stringify(updatedContent))
   }
 
-  if (showPreview) {
-    return <BlockRenderer block={block} />
+  const [isFocused, setIsFocused] = useState(false)
+
+  const handleFocus = () => {
+    setIsFocused(true)
   }
 
-  return (
+  const handleBlur = (e: React.FocusEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setIsFocused(false)
+    }
+  }
+
+  const [isRewriting, setIsRewriting] = useState(false)
+
+  return showPreview ? (
+    <BlockRenderer block={block} />
+  ) : (
     <div
       ref={setNodeRef}
       style={style}
       className={cn(
-        'group relative mb-4',
+        'group relative',
         isDragging && 'z-50 bg-background/50 backdrop-blur-sm'
       )}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      tabIndex={0}
     >
-      <div className="flex items-center gap-2">
+      {/* Left Controls Container */}
+      <div className="absolute -left-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
         {/* Drag Handle */}
         <div
           className="flex-shrink-0 cursor-grab active:cursor-grabbing"
@@ -184,7 +220,7 @@ export function SortableBlock({
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 text-muted-foreground"
+            className="h-8 w-8 text-muted-foreground hover:text-foreground"
           >
             <GripVertical className="h-4 w-4" />
             <span className="sr-only">Drag handle</span>
@@ -192,7 +228,7 @@ export function SortableBlock({
         </div>
 
         {/* Block Controls */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <AddBlockButton 
             ref={addBlockButtonRef}
             onChangeType={(type) => {
@@ -221,182 +257,138 @@ export function SortableBlock({
             <span className="sr-only">Add Block</span>
           </Button>
         </div>
+      </div>
 
+      {/* Main Content */}
+      <div className="flex items-center gap-4">
         {/* Content Editor */}
-        <div className="flex-grow">
-          { block.type === 'image' ? (
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
-              {getImageContent().url ? (
-                <div className="space-y-4">
-                  <div className={cn(
-                    "flex flex-col gap-2",
-                    getImageContent().alignment === 'left' && "items-start",
-                    getImageContent().alignment === 'center' && "items-center",
-                    getImageContent().alignment === 'right' && "items-end",
-                  )}>
-                    <img 
-                      src={getImageContent().url} 
-                      alt={getImageContent().alt} 
-                      className={cn(
-                        "h-auto rounded-lg",
-                        getImageContent().size === 'small' && "max-w-[300px]",
-                        getImageContent().size === 'medium' && "max-w-[500px]",
-                        getImageContent().size === 'large' && "max-w-[800px]",
-                        getImageContent().size === 'full' && "max-w-full",
-                      )}
-                    />
-                    {getImageContent().caption && (
-                      <p className="text-sm text-muted-foreground italic">
-                        {getImageContent().caption}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="space-y-4 pt-4 border-t">
-                    <div className="grid gap-4">
-                      <div className="grid gap-2">
-                        <Label htmlFor="alt-text">Alt Text</Label>
-                        <Input
-                          id="alt-text"
-                          placeholder="Describe the image..."
-                          value={getImageContent().alt}
-                          onChange={(e) => updateImageMetadata({ alt: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="grid gap-2">
-                        <Label htmlFor="caption">Caption</Label>
-                        <Input
-                          id="caption"
-                          placeholder="Add a caption..."
-                          value={getImageContent().caption}
-                          onChange={(e) => updateImageMetadata({ caption: e.target.value })}
-                        />
-                      </div>
-
-                      <div className="grid gap-2">
-                        <Label>Alignment</Label>
-                        <Select
-                          value={getImageContent().alignment}
-                          onValueChange={(value) => 
-                            updateImageMetadata({ 
-                              alignment: value as 'left' | 'center' | 'right' 
-                            })
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select alignment" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="left">Left</SelectItem>
-                            <SelectItem value="center">Center</SelectItem>
-                            <SelectItem value="right">Right</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="grid gap-2">
-                        <Label>Size</Label>
-                        <Select
-                          value={getImageContent().size || 'medium'}
-                          onValueChange={(value) => 
-                            updateImageMetadata({ 
-                              size: value as 'small' | 'medium' | 'large' | 'full' 
-                            })
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select size" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="small">Small</SelectItem>
-                            <SelectItem value="medium">Medium</SelectItem>
-                            <SelectItem value="large">Large</SelectItem>
-                            <SelectItem value="full">Full width</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-center">
-                      <label className="cursor-pointer px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80">
-                        Replace Image
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleImageUpload}
-                          className="hidden"
-                        />
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <label className="flex flex-col items-center justify-center cursor-pointer py-8">
-                  <Upload className="w-12 h-12 text-muted-foreground" />
-                  <span className="mt-2 text-sm text-muted-foreground">Click to upload an image</span>
-                  <span className="mt-1 text-xs text-muted-foreground">(or drag and drop)</span>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                  />
-                </label>
-              )}
-            </div>
-          ) : block.type === 'divider' ? (
-            <div className="py-2">
-              <hr className="border-t border-border" />
-            </div>
-          ) : (
-            <div
-              ref={inputRef}
-              contentEditable
-              suppressContentEditableWarning
-              onKeyDown={handleKeyDown}
-              onInput={handleInput}
-              onBlur={(e) => {
-                const target = e.target as HTMLElement
-                if (!target) return
-
-                setTimeout(() => {
-                  updateBlock(block.id, target.textContent || '')
-                }, 100)
+        <div className="flex-grow relative">
+          {!showPreview && block.type !== 'divider' && (
+            <BlockFormatToolbar
+              isVisible={isFocused}
+              styles={block.metadata?.styles}
+              align={block.type === 'image' ? getImageContent().alignment : block.metadata?.align}
+              level={block.metadata?.level || 1}
+              showLevelSelect={block.type === 'heading'}
+              listType={block.metadata?.listType || 'unordered'}
+              showListControls={block.type === 'list'}
+              language={block.metadata?.language || 'typescript'}
+              filename={block.metadata?.filename}
+              showLineNumbers={block.metadata?.showLineNumbers ?? true}
+              showCodeControls={block.type === 'code'}
+              onStyleChange={(styles) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  styles
+                })
               }}
-              className={cn(
-                "w-full p-2 focus:outline-none border border-transparent focus:border-border rounded-md bg-gray-800",
-                block.type === 'heading' && "font-bold text-2xl",
-                block.type === 'code' && "font-mono bg-muted p-4"
-              )}
-              style={{
-                display: 'block',
-                whiteSpace: block.type === 'code' ? 'pre-wrap' : 'normal'
+              onAlignChange={(newAlign) => {
+                if (block.type === 'image') {
+                  const currentContent = getImageContent();
+                  const updatedContent = {
+                    ...currentContent,
+                    alignment: newAlign,  // For the image container alignment
+                    position: newAlign,   // For the image position within container
+                  };
+                  updateBlock(block.id, JSON.stringify(updatedContent));
+                } else {
+                  updateBlockMetadata(block.id, {
+                    ...block.metadata,
+                    align: newAlign
+                  });
+                }
               }}
-            >
-              {block.content}
-            </div>
+              onLevelChange={(level) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  level
+                })
+              }}
+              onListTypeChange={(listType) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  listType
+                })
+              }}
+              onLanguageChange={(language) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  language
+                })
+              }}
+              onFilenameChange={(filename) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  filename
+                })
+              }}
+              onShowLineNumbersChange={(showLineNumbers) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  showLineNumbers
+                })
+              }}
+              showImageControls={block.type === 'image'}
+              imageContent={block.type === 'image' ? getImageContent() : undefined}
+              onImageMetadataChange={(metadata) => {
+                const currentContent = getImageContent();
+                const updatedContent = {
+                  ...currentContent,
+                  ...metadata
+                };
+                updateBlock(block.id, JSON.stringify(updatedContent));
+              }}
+              showCalloutControls={block.type === 'callout'}
+              calloutType={block.metadata?.type || 'info'}
+              calloutTitle={block.metadata?.title || ''}
+              onCalloutTypeChange={(type) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  type
+                });
+              }}
+              onCalloutTitleChange={(title) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  title
+                });
+              }}
+              blockType={block.type}
+              onAiRewrite={async (style) => {
+                setIsRewriting(true);
+                try {
+                  const newContent = await rewriteBlockContent(block.content, block.type, style);
+                  updateBlock(block.id, newContent);
+                  toast.success('Content rewritten successfully');
+                } catch (error) {
+                  console.error('Error rewriting content:', error);
+                  toast.error(error instanceof Error ? error.message : 'Failed to rewrite content');
+                } finally {
+                  setIsRewriting(false);
+                }
+              }}
+              isAiRewriting={isRewriting}
+            />
           )}
+          <BlockRenderer 
+            block={block} 
+            isEditing={true}
+            onUpdate={(id, content) => updateBlock(id, content)}
+          />
         </div>
 
-        {/* Block Menu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => deleteBlock(block.id)}>
-              <Trash2 className="mr-2 h-4 w-4" />
-              <span>Delete block</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {/* Delete Button */}
+        <div className="flex-shrink-0">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
+            onClick={() => deleteBlock(block.id)}
+          >
+            <Trash2 className="h-4 w-4" />
+            <span className="sr-only">Delete block</span>
+          </Button>
+        </div>
       </div>
     </div>
   )

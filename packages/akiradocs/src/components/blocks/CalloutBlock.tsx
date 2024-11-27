@@ -1,6 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Info, AlertTriangle, CheckCircle, XCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useEffect, useRef } from 'react'
 
 type CalloutType = 'info' | 'warning' | 'success' | 'error'
 
@@ -15,6 +16,8 @@ interface CalloutProps {
     italic?: boolean;
     underline?: boolean;
   };
+  isEditing?: boolean;
+  onUpdate?: (content: string) => void;
 }
 
 const calloutStyles: Record<CalloutType, { icon: React.ElementType; className: string }> = {
@@ -24,9 +27,23 @@ const calloutStyles: Record<CalloutType, { icon: React.ElementType; className: s
   error: { icon: XCircle, className: 'border-destructive/20 bg-destructive/5' }
 }
 
-export function Callout({ id, type, title, children, align = 'left', styles }: CalloutProps) {
+export function Callout({ id, type, title, children, align = 'left', styles, isEditing, onUpdate }: CalloutProps) {
   const { icon: Icon, className } = calloutStyles[type]
-  console.debug(id)
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const adjustHeight = () => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = '0px';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  };
+
+  useEffect(() => {
+    if (isEditing) {
+      adjustHeight();
+    }
+  }, [isEditing, children]);
 
   return (
     <Alert className={cn(
@@ -54,7 +71,25 @@ export function Callout({ id, type, title, children, align = 'left', styles }: C
       </div>
       <div className="flex-1">
         {title && <AlertTitle>{title}</AlertTitle>}
-        <AlertDescription>{children}</AlertDescription>
+        <AlertDescription>
+          {isEditing ? (
+            <textarea
+              ref={textareaRef}
+              value={children as string}
+              onChange={(e) => {
+                onUpdate?.(e.target.value);
+                adjustHeight();
+              }}
+              className={cn(
+                "w-full bg-transparent resize-none focus:outline-none",
+                "block p-0 m-0",
+                "leading-[inherit]"
+              )}
+            />
+          ) : (
+            children
+          )}
+        </AlertDescription>
       </div>
     </Alert>
   )
