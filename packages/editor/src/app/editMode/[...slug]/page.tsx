@@ -196,8 +196,6 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
           noIndex={true}
         />
         <TitleBar
-          showPreview={showPreview}
-          setShowPreview={setShowPreview}
           onSave={handleSave}
           isSaving={isSaving}
         />

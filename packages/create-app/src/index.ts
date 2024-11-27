@@ -126,6 +126,21 @@ async function readJson(filePath: string) {
   return JSON.parse(content);
 }
 
+async function updateEditorDependencies(targetDir: string) {
+  const pkgJsonPath = path.join(targetDir, 'editor/package.json');
+  const pkgJson = JSON.parse(await readFile(pkgJsonPath, 'utf-8'));
+  
+  // Ensure required dependencies are present
+  pkgJson.dependencies = {
+    ...pkgJson.dependencies,
+    "openai": "^4.73.1",
+    "next": "15.0.3",
+    "sonner": "^1.7.0",
+  };
+
+  await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
+}
+
 async function main() {
   const packageJsonPath = path.resolve(__dirname, '../package.json');
   const packageJson = await readJson(packageJsonPath);
@@ -157,6 +172,8 @@ async function main() {
           const editorDir = path.join(__dirname, '../../editor');
           const targetEditorDir = path.join(targetDir, 'editor');
           await copyDir(editorDir, targetEditorDir);
+
+          await updateEditorDependencies(targetDir);
 
           const pkgJsonPath = path.join(targetDir, 'package.json');
           const pkgJson = JSON.parse(await readFile(pkgJsonPath, 'utf-8'));
