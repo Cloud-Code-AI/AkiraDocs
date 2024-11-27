@@ -11,9 +11,11 @@ interface HeadingProps {
     italic?: boolean;
     underline?: boolean;
   };
+  isEditing?: boolean;
+  onUpdate?: (content: string) => void;
 }
 
-export function HeadingTitle({ id, level, children, align = 'left', styles }: HeadingProps) {
+export function HeadingTitle({ id, level, children, align = 'left', styles, isEditing, onUpdate }: HeadingProps) {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   const sizeClasses = {
     1: 'text-4xl',
@@ -24,6 +26,28 @@ export function HeadingTitle({ id, level, children, align = 'left', styles }: He
     6: 'text-base',
   };
   const alignClass = align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : '';
+
+  if (isEditing) {
+    return (
+      <div
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={(e) => {
+          const target = e.target as HTMLElement;
+          if (!target) return;
+          onUpdate?.(target.textContent || '');
+        }}
+        className={cn(
+          `font-bold mb-2 py-4 ${sizeClasses[level as keyof typeof sizeClasses]} ${alignClass}`,
+          'focus:outline-none rounded-md',
+          styles?.italic && 'italic',
+          styles?.underline && 'underline'
+        )}
+      >
+        {children}
+      </div>
+    );
+  }
 
   return (
     <Tag id={id} className={cn(
