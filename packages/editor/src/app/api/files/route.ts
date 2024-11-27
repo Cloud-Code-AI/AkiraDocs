@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import path from 'path'
 
 function getBasePath() {
-  return path.join(process.cwd(), '..', '..', 'editor_trial', 'compiled')
+  return path.join(process.cwd(), '..', 'compiled')
 }
 
 export async function POST(request: Request) {

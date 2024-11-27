@@ -6,9 +6,11 @@ import { cn } from '@/lib/utils'
 import { Block, BlockType } from '../../types/Block'
 import { AddBlockButton } from '../editor/AddBlockButton'
 import { BlockRenderer } from '@/lib/renderers/BlockRenderer'
-import { Plus, Trash2, Upload } from 'lucide-react'
+import { Plus, Trash2 } from 'lucide-react'
 import { useRef, useCallback, useState } from 'react'
 import { BlockFormatToolbar } from '../editor/BlockFormatToolbar'
+import { toast } from 'sonner'
+import { rewriteBlockContent } from '@/lib/aiRewrite'
 
 interface SortableBlockProps {
   block: {
@@ -191,6 +193,8 @@ export function SortableBlock({
     }
   }
 
+  const [isRewriting, setIsRewriting] = useState(false)
+
   return showPreview ? (
     <BlockRenderer block={block} />
   ) : (
@@ -349,6 +353,21 @@ export function SortableBlock({
                   title
                 });
               }}
+              blockType={block.type}
+              onAiRewrite={async (style) => {
+                setIsRewriting(true);
+                try {
+                  const newContent = await rewriteBlockContent(block.content, block.type, style);
+                  updateBlock(block.id, newContent);
+                  toast.success('Content rewritten successfully');
+                } catch (error) {
+                  console.error('Error rewriting content:', error);
+                  toast.error(error instanceof Error ? error.message : 'Failed to rewrite content');
+                } finally {
+                  setIsRewriting(false);
+                }
+              }}
+              isAiRewriting={isRewriting}
             />
           )}
           <BlockRenderer 
