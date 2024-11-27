@@ -74,7 +74,7 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
     case 'list':
       return (
         <List 
-          content={typeof block.content === 'string' ? block.content : block.content.join('\n')}
+          content={Array.isArray(block.content) ? block.content.join('\n') : block.content}
           listType={block.metadata?.listType || 'unordered'} 
           {...commonProps}
           isEditing={isEditing}
