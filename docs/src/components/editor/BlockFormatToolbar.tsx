@@ -49,6 +49,7 @@ interface BlockFormatToolbarProps {
   calloutTitle?: string;
   onCalloutTypeChange?: (type: 'info' | 'warning' | 'success' | 'error') => void;
   onCalloutTitleChange?: (title: string) => void;
+  isVisible?: boolean;
 }
 
 export function BlockFormatToolbar({ 
@@ -82,18 +83,31 @@ export function BlockFormatToolbar({
   calloutTitle = '',
   onCalloutTypeChange,
   onCalloutTitleChange,
+  isVisible = false,
 }: BlockFormatToolbarProps) {
   return (
     <div className={cn(
       "absolute -top-10 left-1/2 -translate-x-1/2 z-50",
-      "opacity-0 group-hover:opacity-100 transition-opacity",
+      isVisible ? "opacity-100" : "opacity-0",
+      "transition-opacity",
       "flex items-center gap-1 p-1",
       "bg-popover border shadow-md rounded-md",
       className
     )}>
       {!showImageControls && (
         <>
-          <ToggleGroup type="multiple" value={Object.entries(styles).filter(([_, value]) => value).map(([key]) => key)} className="flex gap-0.5">
+          <ToggleGroup 
+            type="multiple" 
+            value={Object.entries(styles || {}).filter(([_, value]) => value).map(([key]) => key)} 
+            onValueChange={(values) => {
+              onStyleChange({
+                bold: values.includes('bold'),
+                italic: values.includes('italic'),
+                underline: values.includes('underline')
+              })
+            }}
+            className="flex gap-0.5"
+          >
             <ToggleGroupItem value="bold" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
               <Bold className="h-3.5 w-3.5" />
             </ToggleGroupItem>
