@@ -210,7 +210,8 @@ async function main() {
         console.log(chalk.cyan(`  cd ${directory}`));
         console.log(chalk.cyan('  npm install'));
         if (editorResponse.includeEditor) {
-          console.log(chalk.cyan('  cd editor && npm install'));
+          console.log(chalk.cyan(`  cd ${path.join(__dirname, '../../editor')}`));
+          console.log(chalk.cyan('  npm install')); 
           console.log(chalk.cyan('  cd .. && npm run dev:all'));
           console.log('\nEditor will be available at: http://localhost:3001');
           console.log('Documentation site will be at: http://localhost:3000');
