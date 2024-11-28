@@ -1,0 +1,58 @@
+name: Trigger Template Repository Update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/create-app/package.json'
+
+jobs:
+  trigger-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Extract Package Version
+      id: get-version
+      run: |
+        VERSION=$(jq -r .version packages/create-app/package.json)
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Check Latest Release
+      id: check-release
+      run: |
+        LATEST_RELEASE=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name | sed 's/^v//')
+        CURRENT_VERSION=${{ steps.get-version.outputs.version }}
+        if [ "$LATEST_RELEASE" == "$CURRENT_VERSION" ]; then
+          echo "No version change detected. Skipping release."
+          echo "skip=true" >> $GITHUB_OUTPUT
+        else
+          echo "New version detected. Proceeding with release."
+          echo "skip=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create Release
+      if: steps.check-release.outputs.skip != 'true'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.get-version.outputs.version }}
+        name: Release v${{ steps.get-version.outputs.version }}
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Repository Dispatch
+      if: steps.check-release.outputs.skip != 'true'
+      uses: peter-evans/repository-dispatch@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository_owner }}/akiradocs-template
+        event-type: update-template
+        client-payload: '{"ref": "${{ github.ref }}","sha": "${{ github.sha }}","version": "${{ steps.get-version.outputs.version }}"}'
