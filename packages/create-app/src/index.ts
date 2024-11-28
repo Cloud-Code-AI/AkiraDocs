@@ -77,8 +77,8 @@ async function promptConfigQuestions() {
     {
       type: 'confirm',
       name: 'enableAutoTranslate',
-      message: 'Would you like to enable automatic translation of content?',
-      initial: true,
+      message: 'Would you like to enable automatic translation of content? (SETUP ENV for this)',
+      initial: false,
     },
   ]);
 
@@ -141,6 +141,20 @@ async function updateEditorDependencies(targetDir: string) {
   await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
 }
 
+async function copyEditor(targetDir: string) {
+  const editorDir = path.join(__dirname, '../../editor');
+  const targetEditorDir = path.join(targetDir, 'editor');
+  
+  try {
+    await copyDir(editorDir, targetEditorDir);
+    return true;
+  } catch (error) {
+    console.warn(chalk.yellow('\nWarning: Editor files not found. Skipping editor installation.'));
+    console.warn(chalk.yellow('You can install the editor later by following the documentation.\n'));
+    return false;
+  }
+}
+
 async function main() {
   const packageJsonPath = path.resolve(__dirname, '../package.json');
   const packageJson = await readJson(packageJsonPath);
@@ -169,25 +183,25 @@ async function main() {
         await updateConfig(targetDir, configAnswers);
 
         if (editorResponse.includeEditor) {
-          const editorDir = path.join(__dirname, '../../editor');
-          const targetEditorDir = path.join(targetDir, 'editor');
-          await copyDir(editorDir, targetEditorDir);
+          const editorCopied = await copyEditor(targetDir);
+          
+          if (editorCopied) {
+            await updateEditorDependencies(targetDir);
 
-          await updateEditorDependencies(targetDir);
-
-          const pkgJsonPath = path.join(targetDir, 'package.json');
-          const pkgJson = JSON.parse(await readFile(pkgJsonPath, 'utf-8'));
-          pkgJson.scripts = {
-            ...pkgJson.scripts,
-            'dev:editor': 'cd editor && npm run dev',
-            'dev:docs': 'npm run dev',
-            'dev:all': 'concurrently "npm run dev:docs" "npm run dev:editor"',
-          };
-          pkgJson.devDependencies = {
-            ...pkgJson.devDependencies,
-            'concurrently': '^8.0.0',
-          };
-          await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
+            const pkgJsonPath = path.join(targetDir, 'package.json');
+            const pkgJson = JSON.parse(await readFile(pkgJsonPath, 'utf-8'));
+            pkgJson.scripts = {
+              ...pkgJson.scripts,
+              'dev:editor': 'cd editor && npm run dev',
+              'dev:docs': 'npm run dev',
+              'dev:all': 'concurrently "npm run dev:docs" "npm run dev:editor"',
+            };
+            pkgJson.devDependencies = {
+              ...pkgJson.devDependencies,
+              'concurrently': '^8.0.0',
+            };
+            await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
+          }
         }
 
         spinner.succeed(chalk.green('Project created successfully!'));
