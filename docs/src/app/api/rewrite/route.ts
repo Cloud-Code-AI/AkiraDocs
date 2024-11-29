@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || '',
-});
+import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig';
+import { validateConfig, getProviderConfig, isAzureProvider } from '@/lib/AIConfig';
+import type { SupportedProvider } from '@/types/AkiraConfigType';
 
 // Define block-specific system prompts
 const blockPrompts = {
@@ -37,15 +38,83 @@ const blockPrompts = {
   }
 };
 
-export async function POST(request: Request) {
-  if (!process.env.OPENAI_API_KEY) {
-    return NextResponse.json(
-      { error: 'OpenAI API key is missing. Please configure it in your environment variables.' },
-      { status: 500 }
-    );
-  }
+// Provider-specific implementations
+const providers = {
+  openai: async (config: any, messages: any[]) => {
+    const openai = new OpenAI({
+      apiKey: config.apiKey || '',
+    });
 
+    const completion = await openai.chat.completions.create({
+      model: config.model || 'gpt-4',
+      temperature: config.temperature || 0.7,
+      messages,
+    });
+
+    return completion.choices[0].message.content || '';
+  },
+
+  azure: async (config: any, messages: any[]) => {
+    const openai = new OpenAI({
+      apiKey: config.apiKey || '',
+      baseURL: config.endpoint,
+      defaultQuery: { 'api-version': '2024-02-15-preview' },
+      defaultHeaders: { 'api-key': config.apiKey || '' },
+    });
+
+    const completion = await openai.chat.completions.create({
+      model: config.deploymentName,
+      temperature: config.temperature || 0.7,
+      messages
+    });
+
+    return completion.choices[0].message.content || '';
+  },
+
+  anthropic: async (config: any, messages: any[]) => {
+    const anthropic = new Anthropic({
+      apiKey: config.apiKey || '',
+    });
+
+    // Convert messages format to Anthropic's format
+    const systemMessage = messages.find(m => m.role === 'system')?.content || '';
+    const userMessage = messages.find(m => m.role === 'user')?.content || '';
+
+    const message = await anthropic.messages.create({
+      model: config.model || 'claude-3-sonnet',
+      max_tokens: 1024,
+      temperature: config.temperature || 0.7,
+      system: systemMessage,
+      messages: [{ role: 'user', content: userMessage }],
+    });
+
+    return message.content[0].text;
+  },
+
+  google: async (config: any, messages: any[]) => {
+    const genAI = new GoogleGenerativeAI(config.apiKey || '');
+    const model = genAI.getGenerativeModel({ 
+      model: config.model || 'gemini-pro',
+    });
+
+    // Convert messages format to Google's format
+    const systemMessage = messages.find(m => m.role === 'system')?.content || '';
+    const userMessage = messages.find(m => m.role === 'user')?.content || '';
+    const prompt = `${systemMessage}\n\n${userMessage}`;
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    return response.text();
+  },
+};
+
+export async function POST(request: Request) {
   try {
+    validateConfig();
+    const config = getProviderConfig();
+    const akiraConfig = getAkiradocsConfig();
+    const provider = akiraConfig.rewrite?.provider || 'openai';
+
     const { content, blockType, style } = await request.json();
 
     if (!content || !blockType || !style) {
@@ -63,27 +132,54 @@ export async function POST(request: Request) {
       );
     }
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [
-        {
-          role: "system",
-          content: `${blockPrompt.system}\n\nExpected output format: ${blockPrompt.format}\n\nDo not include any explanations or markdown formatting in the response.`
+    const messages = [
+      {
+        role: "system",
+        content: `${blockPrompt.system}\n\nExpected output format: ${blockPrompt.format}\n\nDo not include any explanations or markdown formatting in the response.`
+      },
+      {
+        role: "user",
+        content: `Rewrite the following ${blockType} content in a ${style} style while maintaining its structure:\n\n${content}`
+      }
+    ];
+
+    const providerImpl = providers[provider as SupportedProvider];
+    if (!providerImpl) {
+      return NextResponse.json(
+        { error: `Unsupported AI provider: ${provider}` },
+        { status: 400 }
+      );
+    }
+
+    try {
+      const rewrittenContent = await providerImpl(config, messages);
+      return NextResponse.json({ content: rewrittenContent });
+    } catch (providerError: any) {
+      console.error('Provider API error:', providerError);
+      return NextResponse.json(
+        { 
+          error: providerError.message || 'Provider API error',
+          details: providerError.response?.data || providerError.response || providerError
         },
-        {
-          role: "user",
-          content: `Rewrite the following ${blockType} content in a ${style} style while maintaining its structure:\n\n${content}`
-        }
-      ],
-    });
+        { status: 500 }
+      );
+    }
 
-    const rewrittenContent = completion.choices[0].message.content || '';
+  } catch (error: any) {
+    console.error('AI API error:', error);
 
-    return NextResponse.json({ content: rewrittenContent });
-  } catch (error) {
-    console.error('OpenAI API error:', error);
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { 
+          error: error.message,
+          details: error
+        },
+        { status: error.message.includes('API key') ? 400 : 500 }
+      );
+    }
+
     return NextResponse.json(
-      { error: 'Failed to generate AI content' },
+      { error: 'Failed to generate AI content', details: error },
       { status: 500 }
     );
   }
