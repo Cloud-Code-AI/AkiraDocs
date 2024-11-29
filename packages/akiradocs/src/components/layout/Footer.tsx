@@ -49,9 +49,9 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <span>© {currentYear} {companyName}. All rights reserved.</span>
-              <span>Made with <Heart className="inline-block w-4 h-4 text-red-500" /> by the Akiradocs team</span>
             </div>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 items-center">
+              <span className="text-sm text-muted-foreground pr-2">Made with <Heart className="inline-block w-4 h-4 text-red-500" /> by the Akiradocs team</span>
               {socialLinks.map((link, index) => (
                 <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Button variant="ghost" size="icon" asChild className="rounded-full bg-muted/50 hover:bg-muted transition-colors">
