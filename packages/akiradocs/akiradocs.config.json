@@ -77,5 +77,8 @@
             "enabled": false
         },
         "debug": false
+    },
+    "features": {
+        "textToSpeech": true
     }
 }

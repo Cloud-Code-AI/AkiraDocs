@@ -67,6 +67,9 @@ type Logo = {
       socialLinks: SocialLink[];
     };
     localization: Localization;
+    features: {
+      textToSpeech: boolean;
+    };
   };
   
   export type { AkiraDocsConfig };

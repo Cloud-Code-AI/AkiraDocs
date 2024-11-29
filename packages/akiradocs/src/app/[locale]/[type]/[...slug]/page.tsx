@@ -18,6 +18,8 @@ import { MainTitle, SubTitle } from '@/components/blocks/HeadingBlock'
 import { SEO } from '@/components/layout/SEO'
 import { NotFound } from '@/components/layout/NotFound'
 import { TextToSpeech } from '@/components/tts/TextToSpeech'
+import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
+
 
 export const runtime = 'edge'
 
@@ -29,6 +31,7 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
 
 export default function ContentPage({ params }: { params: Promise<{ locale: string, type: string, slug: string[] }> }) {
   const resolvedParams = React.use(params)
+  const config = getAkiradocsConfig()
   const locale = resolvedParams.locale
   const type = resolvedParams.type
   const slug = resolvedParams.slug?.length ? resolvedParams.slug.join('/') : ''
@@ -76,7 +79,7 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
                     Edit
                   </Button>
                 )}
-                <TextToSpeech blocks={post.blocks} />
+                {config.features?.textToSpeech && <TextToSpeech blocks={post.blocks} />}
               </div>
               <MainTitle>{post.title}</MainTitle>
               <SubTitle>{post.description}</SubTitle>
