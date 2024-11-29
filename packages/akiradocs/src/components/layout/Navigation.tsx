@@ -70,7 +70,10 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
 
   return (
     <motion.div 
-      className={cn("mb-1", `ml-${depth * 4}`)}
+      className={cn(
+        "mb-1",
+        depth > 0 && "ml-4 border-l border-border pl-2"
+      )}
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
@@ -82,6 +85,7 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
           buttonStyles.hover,
           buttonStyles.state,
           isActive && buttonStyles.active,
+          depth > 0 && "text-sm"
         )}
         onClick={handleClick}
       >
