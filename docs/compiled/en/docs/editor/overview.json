@@ -1,0 +1,243 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Editor",
+    "Notion-like",
+    "Interface"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Editor Overview",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "AkiraDocs features a modern, Notion-like editor that combines the simplicity of block-based editing with the power of Markdown."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Editor Interface",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Main Components",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "**Toolbar**: Quick access to formatting options and block types",
+        "**Content Area**: Block-based editing space",
+        "**Sidebar**: Navigation and document structure",
+        "**Command Palette**: Quick commands (Ctrl/Cmd + P)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Block Structure",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "Each content element is a block that can be:"
+    },
+    {
+      "id": "11",
+      "type": "list",
+      "content": [
+        "Dragged and dropped to reorganize",
+        "Converted between different types",
+        "Duplicated or deleted",
+        "Nested within other blocks"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Getting Started",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Creating Content",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "paragraph",
+      "content": "1. Click the '+' button or press '/' to add a new block\n2. Choose block type from the popup menu\n3. Start typing or add content"
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Basic Operations",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "/ → Open block menu\n⌘/Ctrl + P → Command palette\n⌘/Ctrl + / → Show keyboard shortcuts\n↑↓ → Navigate between blocks",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Block Types",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "22",
+      "type": "heading",
+      "content": "Text Blocks",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "23",
+      "type": "list",
+      "content": [
+        "Paragraphs",
+        "Headings (H1-H6)",
+        "Lists (Bulleted, Numbered)",
+        "Quotes",
+        "Callouts"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "24",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "25",
+      "type": "heading",
+      "content": "Rich Media",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "26",
+      "type": "list",
+      "content": [
+        "Images",
+        "Videos",
+        "Embeds",
+        "Files",
+        "Code blocks"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "27",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "28",
+      "type": "heading",
+      "content": "Special Blocks",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "29",
+      "type": "list",
+      "content": [
+        "Tables (Coming Soon)",
+        "Dividers",
+        "Custom components (Coming Soon)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "30",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

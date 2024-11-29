@@ -1,0 +1,195 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Content Management",
+  "keywords": [
+    "Content Creation",
+    "Pages",
+    "Organization"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Creating and Organizing Pages",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Learn how to create, structure, and organize your documentation pages in AkiraDocs. You can create markdown pages or just use the editor UI. Note in _contents folder, you will only see markdown content created by you. If you use Editor UI, the content will be saved in the compiled folder and will be automatically translated to other languages."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Page Structure",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Basic Page Template",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "---\ntitle: Your Page Title\ndescription: Brief description of the page\nauthor: Your Name\npublishDate: 2024-11-26\nmodifiedDate: 2024-11-26\ncategory: Category Name\nkeywords:\n  - keyword1\n  - keyword2\n---\n\n# Main Title\n\nContent starts here...",
+      "metadata": {
+        "language": "markdown",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Directory Structure",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "code",
+      "content": "folder_name/\n├── _contents/\n│   ├── en/\n│   │   ├── getting-started/\n│   │   ├── guides/\n│   │   └── api/",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "You can just create pages for default language (en) and AkiraDocs will automatically translate them to other languages."
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Creating New Pages",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Method 1: Using the UI",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": "1. Click \"New Page\" in the sidebar\n2. Start adding content"
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Method 2: Direct File Creation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "1. Create a new `.md` file in the appropriate directory\n2. Add required frontmatter\n3. Write content using Markdown\n4. Save and compile"
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Page Organization",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Categories and Tags",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "21",
+      "type": "list",
+      "content": [
+        "Use consistent categories",
+        "Apply relevant tags",
+        "Organize by topic",
+        "Create logical hierarchies"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "22",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "23",
+      "type": "heading",
+      "content": "Navigation Structure",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "24",
+      "type": "paragraph",
+      "content": "This is automatically generated from the folder structure. You can customize it by editing the `_meta.json` file inside compiled folder."
+    },
+    {
+      "id": "25",
+      "type": "code",
+      "content": "{\n  \"docs\": {\n    \"getting-started\": {\n      \"title\": \"Getting Started\",\n      \"items\": {\n        \"introduction\": {\n          \"title\": \"Introduction\",\n          \"path\": \"/docs/getting-started/introduction\"\n        }\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "26",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

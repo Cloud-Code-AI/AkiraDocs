@@ -142,7 +142,7 @@ async function updateEditorDependencies(targetDir: string) {
 }
 
 async function copyEditor(targetDir: string) {
-  const editorDir = path.join(__dirname, '../../editor');
+  const editorDir = path.join(__dirname, '../template/editor');
   const targetEditorDir = path.join(targetDir, 'editor');
   
   try {
@@ -179,7 +179,7 @@ async function main() {
         const targetDir = path.resolve(directory);
         await mkdir(targetDir, { recursive: true });
 
-        await copyDir(path.join(__dirname, '../template'), targetDir);
+        await copyDir(path.join(__dirname, '../template/default'), targetDir);
         await updateConfig(targetDir, configAnswers);
 
         if (editorResponse.includeEditor) {
@@ -232,7 +232,7 @@ async function main() {
       const spinner = ora('Updating project...').start();
 
       try {
-        const templateDir = path.join(__dirname, '../template');
+        const templateDir = path.join(__dirname, '../template/default');
         await updateDir(templateDir, '.');
 
         spinner.succeed(chalk.green('Project updated successfully!'));
