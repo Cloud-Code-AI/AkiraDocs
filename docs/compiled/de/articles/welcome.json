@@ -1,0 +1,64 @@
+{
+  "title": "Willkommen bei Akira Doc",
+  "description": "Beginnen Sie mit Akira Docs - Nextgen-Dokumentation mit KI-Unterstützung",
+  "author": "Anonymous",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Willkommen bei Akira Doc",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Willkommen bei Akira Docs, der KI-gestützten Dokumentationsplattform der nächsten Generation. Dieses Modell hilft Ihnen, mit der Erstellung Ihrer eigenen Dokumentation zu beginnen."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nHauptmerkmale",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "Einfach zu personalisieren",
+        "KI-gestützte Suche",
+        "Blocksystem für Inhalte",
+        "Anpassungsfähiges Konzept"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "> [!info] Erste Schritte\n> Passen Sie diese Vorlage zunächst an die Bedürfnisse Ihres Projekts an!"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "defaultRoute": "/docs/introduction",
+  "introduction": {
+    "title": "Introduction",
+    "path": "/docs/introduction"
+  },
+  "gettingStarted": {
+    "title": "Getting-started",
+    "items": {
+      "quickstart": {
+        "title": "Guía de inicio rápido",
+        "path": "/docs/getting-started/quickstart"
+      }
+    }
+  }
+}

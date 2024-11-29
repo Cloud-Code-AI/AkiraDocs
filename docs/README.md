@@ -1,175 +1,114 @@
-# AkiraDocs
-> Transform your documentation workflow in minutes, not months
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![License: Commercial](https://img.shields.io/badge/License-Commercial-blue.svg)](https://example.com/commercial)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
+<p align="center">
+  <h1 align="center">AkiraDocs</h1>
+</p>
 
-## 😟 Common Documentation Challenges
+<p align="center">
+  <h4 align="center"><strong>Beautiful docs that write, translate, and optimize themselves</strong></h4>
+</p>
 
-- **Developer Teams**: "We want to keep using Markdown and Git..."
-- **Content Teams**: "We need a user-friendly editor..."
-- **Technical Writers**: "Managing multiple doc versions is a nightmare..."
-- **Product Managers**: "Our docs are always out of sync..."
-- **Enterprise Leaders**: "We need better documentation analytics..."
+<p align="center">
+  <img src="gifs/star_the_repo.gif" alt="Star the Repo" width="100%">
+</p>
 
-## 🎯 The AkiraDocs Solution
+<p align="center">
+  If you find AkiraDocs useful, please consider giving it a star! ⭐️<br>
+  Your support helps us continue improving the platform.
+</p>
 
-One platform that brings everyone's workflow together:
 
-✓ Developers keep their Markdown/Git workflow
-✓ Content teams get their block-based WYSIWYG editor
-✓ Everyone stays in sync, automatically
-✓ SEO-optimized documentation by default
-✓ Multi-language support with AI-powered translations
+<p align="center">
+  <a href="https://demo.akiradocs.ai">
+    <img src="https://img.shields.io/badge/Try_Demo-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
+  </a>
+  <a href="https://forms.gle/KunU4BGhToH4NJ1t7">
+    <img src="https://img.shields.io/badge/Join_Waitlist_For_Cloud_Hosting-FF6B6B?style=for-the-badge&logo=googleforms&logoColor=white" alt="Join Waitlist for Cloud Hosting">
+  </a>
+</p>
 
-## 🎭 Perfect For Every Use Case
+## 🚀 What is AkiraDocs?
+AkiraDocs is a modern documentation platform that combines the power of AI with a Notion-like editing experience. Create, translate, and optimize your documentation automatically while maintaining complete control over the content. Perfect for teams who want to focus on their ideas rather than the complexities of documentation management.
 
-### Developer Documentation
-- API References
-- SDK Guides
-- Technical Specifications
-- Implementation Examples
-- Architecture Docs
 
-### Product Documentation
-- User Guides
-- Feature Documentation
-- Release Notes
-- Tutorials
-- FAQs
-- Interactive Components
-- Embedded Media Blocks
+## ⚡️ Quick Deploy
+Get started in seconds:
 
-### Enterprise Knowledge
-- Internal Wikis
-- Process Documentation
-- Training Materials
-- Compliance Docs
-- Best Practices
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCloud-Code-AI%2Fakiradocs-template)
 
-## 🚀 Migrate Existing Docs in Minutes (Coming Soon)
-
-Bring your existing documentation from anywhere:
-
+Or via CLI:
 ```bash
-# Migrate your docs with a single command
+npx create-akiradocs <optional folder name>
+```
+
+## 🎯 Perfect For
+- **Developers**: API docs, SDK guides, implementation examples
+- **Product Teams**: User guides, release notes, tutorials
+- **Enterprises**: Internal wikis, process documentation, knowledge bases
+
+## ✨ Key Features
+
+### 🔍 AI-Generated SEO Optimization
+- Automatically optimize your documentation for search engines with AI-driven SEO
+- Improve discoverability and reach without manual SEO adjustments
+- AI recommendations for keywords and metadata
+
+### 🛠 Developer-Friendly
+- Keep your existing Markdown/Git workflow
+- Full Markdown/MDX support
+- Easy custom component development
+- SEO optimization out of the box
+
+### 📝 Content Creator-Friendly
+- Modern block-based WYSIWYG editor
+- Real-time previews
+- Rich media support
+- Reusable content blocks
+
+### 🏢 Enterprise-Ready
+- SSO/SAML integration
+- Audit logs
+- Custom deployment options
+- Version control
+
+## 🌍 Going Global
+Built-in AI-powered translation. Just add API keys:
+```json
+{
+  "translation": {
+    "auto_translate": true,
+    "provider": "anthropic",
+    "targetLanguages": ["es", "fr", "de"]
+  }
+}
+```
+
+### 🤖 Upcoming Features
+- **AI-Powered Documentation Generation**
+  - Automatically generate comprehensive documentation from your codebase
+  - AI-assisted content updates to keep your docs current with minimal effort
+  - Intelligent suggestions for content improvements and expansions
+
+
+## 🔄 Easy Migration (Coming Soon)
+Import your existing docs:
+```bash
 npx akiradocs-migrate import --from=source --to=mydocs
-
-# Sources we support:
-✓ Markdown/MDX files
-✓ GitBook
-✓ Docusaurus
-✓ ReadTheDocs
-✓ Confluence
-✓ Notion
+# Supports: GitBook, Docusaurus, ReadTheDocs, Confluence, Notion
 ```
-
-### Migration Features
-- 🔄 Automatic content structuring
-- 🖼️ Image and asset handling
-- 🔗 URL redirects setup
-- 📱 Responsive optimization
-- 🔍 SEO meta generation
-
-## 🎯 SEO-Optimized by Default
-
-Every page is automatically optimized for search engines:
-
-- 📊 SEO-friendly URL structures
-- 🏷️ Auto-generated meta tags
-- 📱 Mobile-first indexing ready
-- 🔍 Structured data markup
-- 🚀 Blazing-fast performance
-- 🗺️ Automatic sitemap generation
-- 📈 Built-in SEO analytics
-
-## ✍️ Modern Block-Based Editor
-
-Write documentation the modern way:
-
-- 📝 Rich Text Blocks
-- 🖼️ Image & Media Blocks
-- 📊 Diagrams & Charts
-- 💻 Code Blocks with Syntax Highlighting
-- 📑 Collapsible Sections
-- 📋 Tables & Lists
-- 🔲 Custom Component Blocks
-- 🔄 Reusable Content Blocks
-
-## 🌐 Powerful Language Support
-
-Reach a global audience effortlessly:
-
-- 🔄 AI-powered translation suggestions
-- 📝 Side-by-side translation editor
-- 🔍 Translation memory & glossaries
-- 🌍 100+ languages supported
-- 📊 Translation progress tracking
-- 🔄 Automatic content sync across languages
-- 📱 Right-to-left (RTL) support
-- 🎯 Language-specific SEO optimization
-
-## 🔮 Coming Soon
-
-We're constantly improving. Here's what's next:
-
-### Q4 2024
-- 🤖 AI-powered content suggestions
-- 🔄 Advanced version control
-- 🌐 Enhanced translation workflows
-- 📊 Enhanced analytics dashboard
-- 🔄 Translation automation tools
-
-### Q1 2025
-- 👥 Real-time collaboration
-- 🎨 Visual theme editor
-- 🔌 Plugin marketplace
-- 🤝 Third-party integrations
-
-## 🚀 Get Started
-
-```bash
-npx create-akiradocs@latest mydocs
-```
-
-## 💪 Why Choose AkiraDocs?
-
-- **For Developers**
-  - Keep your existing Git workflow
-  - Full Markdown/MDX support
-  - Custom component development
-  - API-first architecture
-
-- **For Content Teams**
-  - Modern WYSIWYG editor
-  - Real-time previews
-  - No coding required
-  - Version control made easy
-
-- **For Enterprise**
-  - SSO/SAML integration
-  - Audit logs
-  - Custom deployment options
-  - Priority support
-
-## 📄 Licensing
-
-- **MIT License**: Free for open source and personal projects except for enterprise features (see below)
-- **Commercial License**: Enterprise features and support
 
 ## 🤝 Join Our Community
-
-- [Discord Community](https://discord.gg/akiradocs)
-- [GitHub Discussions](https://github.com/akiradocs/discussions)
+- [Live Demo](https://demo.akiradocs.ai)
 - [Documentation](https://docs.akiradocs.com)
-- [Enterprise Support (Coming Q1 2025)](https://akiradocs.com/enterprise)
+- [Discord Community](https://discord.gg/zvYZukgeH2)
+- [GitHub Discussions](https://github.com/akiradocs/discussions)
+- [Join Waitlist](https://forms.gle/KunU4BGhToH4NJ1t7) for early access
+
+## 📄 Licensing
+- Open Source (MIT License)
+- Commercial License available for enterprise features
 
 ---
-<div align="center">
 
-**[Get Started](https://docs.akiradocs.com/quickstart)** • 
-**[Live Demo](https://demo.akiradocs.com)** • 
-**[Enterprise Trial](https://akiradocs.com/enterprise)** (Coming Q1 2025)
-
-</div>
+[Get Started](https://docs.akiradocs.ai/quickstart) •
+[Live Demo](https://demo.akiradocs.ai) •
+[Enterprise Trial](https://akiradocs.com/enterprise) (Coming Q1 2025)

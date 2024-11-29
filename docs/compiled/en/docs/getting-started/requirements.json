@@ -1,0 +1,382 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "System Requirements",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Before installing AkiraDocs, ensure your environment meets the following requirements."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Minimum Requirements",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Node.js",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "Version: 16.x or higher",
+        "Recommended: Latest LTS version"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "System Memory",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "list",
+      "content": [
+        "Minimum: 4GB RAM",
+        "Recommended: 8GB RAM or more"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Storage",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "13",
+      "type": "list",
+      "content": [
+        "Minimum: 1GB free space",
+        "Recommended: 5GB+ for larger documentation projects"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Software Dependencies",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "16",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Required",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "18",
+      "type": "list",
+      "content": [
+        "Git (latest version recommended)",
+        "npm or yarn package manager",
+        "Modern web browser (Chrome, Firefox, Safari, Edge)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Optional",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "21",
+      "type": "list",
+      "content": [
+        "Docker (for containerized deployment)",
+        "PostgreSQL (for enterprise features)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "22",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "23",
+      "type": "heading",
+      "content": "Development Environment",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "24",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "25",
+      "type": "heading",
+      "content": "Supported Operating Systems",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "26",
+      "type": "list",
+      "content": [
+        "macOS (10.15 or later)",
+        "Windows 10/11",
+        "Linux (Ubuntu 20.04 or later recommended)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "27",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "28",
+      "type": "heading",
+      "content": "IDE/Editor Support",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "29",
+      "type": "list",
+      "content": [
+        "VS Code (recommended)",
+        "WebStorm",
+        "Any text editor with Markdown support"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "30",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "31",
+      "type": "heading",
+      "content": "Network Requirements",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "32",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "33",
+      "type": "heading",
+      "content": "Cloud Features",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "34",
+      "type": "list",
+      "content": [
+        "Stable internet connection",
+        "Access to npm registry",
+        "Access to GitHub (for version control)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "35",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "36",
+      "type": "heading",
+      "content": "Enterprise Features",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "37",
+      "type": "list",
+      "content": [
+        "Outbound HTTPS (443) access",
+        "WebSocket support",
+        "Custom domain (optional)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "38",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "39",
+      "type": "heading",
+      "content": "Browser Support",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "40",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "41",
+      "type": "heading",
+      "content": "Desktop Browsers",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "42",
+      "type": "list",
+      "content": [
+        "Chrome (last 2 versions)",
+        "Firefox (last 2 versions)",
+        "Safari (last 2 versions)",
+        "Edge (last 2 versions)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "43",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "44",
+      "type": "heading",
+      "content": "Mobile Browsers",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "45",
+      "type": "list",
+      "content": [
+        "iOS Safari",
+        "Android Chrome"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "46",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "47",
+      "type": "heading",
+      "content": "Verification",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "48",
+      "type": "paragraph",
+      "content": "Run the following command to check if your environment is ready:"
+    }
+  ]
+}

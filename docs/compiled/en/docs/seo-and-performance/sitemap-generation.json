@@ -1,0 +1,219 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "SEO & Performance",
+  "keywords": [
+    "SEO",
+    "Sitemap",
+    "XML"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Automatic Sitemap Generation",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Learn how AkiraDocs automatically generates and manages your documentation sitemap."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Overview",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": "AkiraDocs automatically generates a sitemap.xml file during the build process, ensuring search engines can efficiently crawl your documentation."
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Default Configuration",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "{\n  \"seo\": {\n    \"sitemap\": {\n      \"enabled\": true,\n      \"autoGenerate\": true,\n      \"changefreq\": \"weekly\",\n      \"priority\": 0.7\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Generated Sitemap Structure",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Example Output",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://yourdocs.com/</loc>\n    <lastmod>2024-11-26</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>https://yourdocs.com/docs/getting-started</loc>\n    <lastmod>2024-11-26</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n</urlset>",
+      "metadata": {
+        "language": "xml",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Customization Options",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Priority Settings",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "code",
+      "content": "{\n  \"seo\": {\n    \"sitemap\": {\n      \"priorities\": {\n        \"home\": 1.0,\n        \"docs\": 0.8,\n        \"blog\": 0.6,\n        \"other\": 0.5\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "18",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "19",
+      "type": "heading",
+      "content": "Update Frequency",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "20",
+      "type": "code",
+      "content": "{\n  \"seo\": {\n    \"sitemap\": {\n      \"changefreq\": {\n        \"home\": \"daily\",\n        \"docs\": \"weekly\",\n        \"blog\": \"monthly\"\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "22",
+      "type": "heading",
+      "content": "Best Practices",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "23",
+      "type": "paragraph",
+      "content": "1. **Regular Updates**"
+    },
+    {
+      "id": "24",
+      "type": "list",
+      "content": [
+        "Keep content fresh",
+        "Maintain accurate lastmod dates",
+        "Remove obsolete URLs"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": "2. **Structure Optimization**"
+    },
+    {
+      "id": "26",
+      "type": "list",
+      "content": [
+        "Logical URL hierarchy",
+        "Consistent naming",
+        "Clear categories"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "27",
+      "type": "paragraph",
+      "content": "3. **Performance**"
+    },
+    {
+      "id": "28",
+      "type": "list",
+      "content": [
+        "Compress large sitemaps",
+        "Use sitemap index for large sites",
+        "Monitor crawl stats"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

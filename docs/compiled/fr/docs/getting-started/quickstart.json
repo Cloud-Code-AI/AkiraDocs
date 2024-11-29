@@ -1,0 +1,48 @@
+{
+  "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de démarrage rapide",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Démarrez avec Akira Docs en quelques minutes\n\nSuivez ces étapes pour commencer à utiliser Akira Docs pour vos besoins de documentation."
+    },
+    {
+      "id": "2",
+      "type": "code",
+      "content": "bash\ngit clone https://github.com/tu-org/plantilla-docs-akira\ncd plantilla-docs-akira\nnpm install\nnpm run dev",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "4",
+      "type": "callout",
+      "content": "Assurez-vous d'avoir Node.js 16 ou une version supérieure installée sur votre système.",
+      "metadata": {
+        "type": "warning",
+        "title": "Prerequisites"
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

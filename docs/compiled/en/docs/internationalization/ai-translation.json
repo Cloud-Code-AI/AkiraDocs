@@ -1,0 +1,129 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "AI Translation",
+    "Automation",
+    "Language Processing"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "AI-Powered Translation",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Guide to using AkiraDocs' AI translation capabilities."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Setup",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Configuration",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "{\n  \"translation\": {\n    \"auto_translate\": true,\n    \"provider\": \"anthropic\",\n    \"model\": \"claude-3-sonnet-20240229\",\n    \"targetLanguages\": [\"es\", \"fr\", \"de\"],\n    \"excludedPaths\": [\"_meta.json\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "API Setup",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "code",
+      "content": "ANTHROPIC_API_KEY=your_api_key",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Features",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Automatic Translation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Content translation during build",
+        "Context-aware translations",
+        "Technical term preservation",
+        "Format maintenance"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

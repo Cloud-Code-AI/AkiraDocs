@@ -1,0 +1,208 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "API Reference",
+  "keywords": [
+    "API",
+    "Documentation",
+    "Integration"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "API Documentation Guide",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Learn how to generate comprehensive API documentation using AkiraDocs."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Quick Start",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Upload API Spec",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "1. Place your OpenAPI/Swagger spec in:"
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "_contents/{language_code}/api/apiSpec.json",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "2. AkiraDocs automatically generates documentation."
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Example API Spec",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "code",
+      "content": "{\n  \"openapi\": \"3.0.0\",\n  \"info\": {\n    \"title\": \"Sample API\",\n    \"version\": \"1.0.0\"\n  },\n  \"paths\": {\n    \"/users\": {\n      \"get\": {\n        \"summary\": \"Get users\",\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Success\"\n          }\n        }\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Generated Documentation",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Automatic Features",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "list",
+      "content": [
+        "Interactive API explorer",
+        "Code samples in multiple languages",
+        "Request/response examples",
+        "Authentication documentation"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Example Output",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "19",
+      "type": "code",
+      "content": "// Example: Get Users\nconst response = await fetch('https://api.example.com/users', {\n  method: 'GET',\n  headers: {\n    'Authorization': 'Bearer YOUR_TOKEN'\n  }\n});\n\nconst users = await response.json();",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "20",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "21",
+      "type": "heading",
+      "content": "Customization",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "22",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "23",
+      "type": "heading",
+      "content": "Theme Options",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "24",
+      "type": "code",
+      "content": "{\n  \"api\": {\n    \"docs\": {\n      \"theme\": \"dark\",\n      \"syntaxHighlight\": true,\n      \"showExamples\": true\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "26",
+      "type": "heading",
+      "content": "Language Selection",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "27",
+      "type": "code",
+      "content": "{\n  \"api\": {\n    \"examples\": {\n      \"languages\": [\"javascript\", \"python\", \"curl\"]\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

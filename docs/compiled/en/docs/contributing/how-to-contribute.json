@@ -1,0 +1,276 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Contributing",
+  "keywords": [
+    "Contributing",
+    "Open Source",
+    "Development"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Contributing to AkiraDocs",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Guide to contributing to the AkiraDocs open-source project."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Getting Started",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Setup Development Environment",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "# Clone repository\ngit clone https://github.com/akiradocs/akiradocs\ncd akiradocs\n\n# Install dependencies\nnpm install\n\n# Start development server\nnpm run dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Contribution Guidelines",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Types of Contributions",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "list",
+      "content": [
+        "Bug fixes",
+        "Feature additions",
+        "Documentation improvements",
+        "Translation help",
+        "Issue reporting"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Pull Request Process",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": "1. Fork the repository\n2. Create feature branch\n3. Make changes\n4. Submit pull request"
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Commit Messages",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "code",
+      "content": "# Format\ntype(scope): description\n\n# Examples\nfeat(editor): add new block type\nfix(translation): correct language detection\ndocs(api): update authentication guide",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "18",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "19",
+      "type": "heading",
+      "content": "Development Guidelines",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "20",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "21",
+      "type": "heading",
+      "content": "Code Style",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "22",
+      "type": "list",
+      "content": [
+        "Follow existing patterns",
+        "Use TypeScript",
+        "Add comments",
+        "Write tests"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "23",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "24",
+      "type": "heading",
+      "content": "Testing",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "25",
+      "type": "code",
+      "content": "# Run tests\nnpm run test\n\n# Check types\nnpm run type-check\n\n# Lint code\nnpm run lint",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "26",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "27",
+      "type": "heading",
+      "content": "Documentation",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "28",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "29",
+      "type": "heading",
+      "content": "Update Docs",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "30",
+      "type": "paragraph",
+      "content": "1. Edit relevant files\n2. Update examples\n3. Check links\n4. Verify formatting"
+    },
+    {
+      "id": "31",
+      "type": "heading",
+      "content": "Create Examples",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "32",
+      "type": "list",
+      "content": [
+        "Clear and concise",
+        "Well-documented",
+        "Tested",
+        "Maintainable"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "33",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "34",
+      "type": "heading",
+      "content": "Getting Help",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "35",
+      "type": "list",
+      "content": [
+        "Join [Discord](https://discord.gg/zvYZukgeH2)",
+        "Check [Issues](https://github.com/Cloud-Code-AI/akiradocs/issues)",
+        "Read [Documentation](https://docs.akiradocs.com)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

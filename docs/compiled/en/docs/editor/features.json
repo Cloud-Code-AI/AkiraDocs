@@ -1,0 +1,278 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Editor Features",
+    "Blocks",
+    "Formatting"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Editor Features",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Detailed overview of AkiraDocs editor capabilities and features."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Block System",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Text Formatting",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "**Basic Formatting**",
+        "Bold, italic, underline",
+        "Strikethrough",
+        "Highlight",
+        "Code inline"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "9",
+      "type": "list",
+      "content": [
+        "**Advanced Formatting**",
+        "Custom colors",
+        "Multiple fonts",
+        "Text alignment",
+        "Indentation"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Content Blocks",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Rich Text",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "14",
+      "type": "code",
+      "content": "# Heading 1\n## Heading 2\n> Blockquote\n- Bullet list\n1. Numbered list",
+      "metadata": {
+        "language": "markdown",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Code Blocks",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "17",
+      "type": "code",
+      "content": "// Syntax highlighting\nconsole.log('Hello World');",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "18",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "19",
+      "type": "heading",
+      "content": "Media Blocks",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "20",
+      "type": "list",
+      "content": [
+        "Image upload and embedding",
+        "Video embedding",
+        "File attachments",
+        "Interactive embeds"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "22",
+      "type": "heading",
+      "content": "AI Features",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "23",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "24",
+      "type": "heading",
+      "content": "Content Enhancement",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "25",
+      "type": "list",
+      "content": [
+        "Grammar and style suggestions",
+        "Content optimization",
+        "SEO recommendations",
+        "Translation assistance"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "26",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "27",
+      "type": "heading",
+      "content": "Smart Formatting",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "28",
+      "type": "list",
+      "content": [
+        "Auto-formatting",
+        "Smart lists",
+        "Table formatting",
+        "Code block language detection"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "29",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "30",
+      "type": "heading",
+      "content": "Collaboration Features",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "31",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "32",
+      "type": "heading",
+      "content": "Version Control",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "33",
+      "type": "list",
+      "content": [
+        "Git integration",
+        "Change history",
+        "Rollback capabilities"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "34",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

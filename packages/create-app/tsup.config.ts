@@ -19,7 +19,8 @@ export default defineConfig({
   },
   async onSuccess() {
     // Copy main template
-    await copyDir('../akiradocs', './template');
+    await copyDir('../akiradocs', './template/default');
+    await copyDir('../editor', './template/editor');
 
     // Copy main README and gifs folder
     const rootDir = path.resolve(__dirname, '../..');
@@ -27,17 +28,17 @@ export default defineConfig({
     const gifsFolder = path.join(rootDir, 'gifs');
     
     // Copy main README to template
-    await copyDir(mainReadmePath, path.join('./template', 'README.md'));
-    await copyDir(mainReadmePath, path.join('./template', '.gitignore'));
+    await copyDir(mainReadmePath, path.join('./template/default', 'README.md'));
+    await copyDir(mainReadmePath, path.join('./template/default', '.gitignore'));
     
     // Copy gifs folder to template
-    await copyDir(gifsFolder, path.join('./template', 'gifs'));
+    await copyDir(gifsFolder, path.join('./template/default', 'gifs'));
 
     // Update package.json version
     const templatePackageJson = JSON.parse(
       await readFile('./package.json', 'utf-8')
     );
-    await updatePackageJsonVersion('./template', templatePackageJson.version);
+    await updatePackageJsonVersion('./template/default', templatePackageJson.version);
     await chmod('dist/index.js', 0o755);
   },
 });

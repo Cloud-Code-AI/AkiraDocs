@@ -1,0 +1,374 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Installation",
+  "keywords": [
+    "Installation",
+    "Setup",
+    "Deployment"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Detailed Installation Guide",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Complete guide to installing AkiraDocs in different environments."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Prerequisites",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": "Ensure your system meets the [requirements](../getting-started/requirements.md) before proceeding."
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Installation Methods",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "1. Local Development Setup",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "1. **Clone the Repository**"
+    },
+    {
+      "id": "10",
+      "type": "code",
+      "content": "git clone https://github.com/your-org/akira-docs-template\ncd akira-docs-template",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "2. **Install Dependencies**"
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "npm install",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": "3. **Create Environment File**"
+    },
+    {
+      "id": "14",
+      "type": "code",
+      "content": "cp .env.example .env.local",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": "4. **Configure Environment Variables**"
+    },
+    {
+      "id": "16",
+      "type": "code",
+      "content": "NEXT_PUBLIC_API_URL=your_api_url\nNEXT_PUBLIC_SITE_URL=your_site_url",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "2. Docker Installation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": "1. **Pull the Docker Image**"
+    },
+    {
+      "id": "20",
+      "type": "code",
+      "content": "docker pull akiradocs/akiradocs:latest",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "2. **Run the Container**"
+    },
+    {
+      "id": "22",
+      "type": "code",
+      "content": "docker run -p 3000:3000 akiradocs/akiradocs:latest",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "23",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "24",
+      "type": "heading",
+      "content": "3. Cloud Platform Deployment",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "26",
+      "type": "heading",
+      "content": "Vercel",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "27",
+      "type": "paragraph",
+      "content": "1. Fork the repository\n2. Connect to Vercel\n3. Configure environment variables\n4. Deploy"
+    },
+    {
+      "id": "28",
+      "type": "heading",
+      "content": "Other Platforms",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "29",
+      "type": "list",
+      "content": [
+        "AWS Amplify",
+        "Netlify",
+        "Digital Ocean",
+        "Custom server"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "30",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "31",
+      "type": "heading",
+      "content": "Post-Installation Steps",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "32",
+      "type": "paragraph",
+      "content": "1. **Verify Installation**"
+    },
+    {
+      "id": "33",
+      "type": "code",
+      "content": "npm run build\nnpm run start",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "34",
+      "type": "paragraph",
+      "content": "2. **Configure Git Integration**"
+    },
+    {
+      "id": "35",
+      "type": "code",
+      "content": "git remote add origin your-repository-url",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "36",
+      "type": "paragraph",
+      "content": "3. **Setup Content Directory**"
+    },
+    {
+      "id": "37",
+      "type": "code",
+      "content": "mkdir -p docs/_contents/en",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "38",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "39",
+      "type": "heading",
+      "content": "Environment-Specific Configurations",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "40",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "41",
+      "type": "heading",
+      "content": "Development",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "42",
+      "type": "code",
+      "content": "NODE_ENV=development\nDEBUG=true",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "43",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "44",
+      "type": "heading",
+      "content": "Production",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "45",
+      "type": "code",
+      "content": "NODE_ENV=production\nDEBUG=false",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "46",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "47",
+      "type": "heading",
+      "content": "Testing",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "48",
+      "type": "code",
+      "content": "NODE_ENV=test\nTEST_MODE=true",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "49",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "50",
+      "type": "heading",
+      "content": "Next Steps",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "51",
+      "type": "list",
+      "content": [
+        "[Configuration Guide](./configuration.md)",
+        "[Troubleshooting](./troubleshooting.md)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

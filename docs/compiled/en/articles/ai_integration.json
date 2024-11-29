@@ -46,7 +46,13 @@
     {
       "id": "6",
       "type": "list",
-      "content": "Natural language documentation generation\nCode example suggestions\nContent summarization\nGrammar and style improvements\nMulti-language support",
+      "content": [
+        "Natural language documentation generation",
+        "Code example suggestions",
+        "Content summarization",
+        "Grammar and style improvements",
+        "Multi-language support"
+      ],
       "metadata": {
         "listType": "unordered"
       }
@@ -98,7 +104,13 @@
     {
       "id": "14",
       "type": "list",
-      "content": "Provide clear context when making requests\nReview and validate AI-generated content\nUse AI suggestions as a starting point\nCombine AI assistance with human expertise\nKeep documentation style consistent",
+      "content": [
+        "Provide clear context when making requests",
+        "Review and validate AI-generated content",
+        "Use AI suggestions as a starting point",
+        "Combine AI assistance with human expertise",
+        "Keep documentation style consistent"
+      ],
       "metadata": {
         "listType": "unordered"
       }

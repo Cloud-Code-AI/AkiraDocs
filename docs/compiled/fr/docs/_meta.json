@@ -1,0 +1,16 @@
+{
+  "defaultRoute": "/docs/introduction",
+  "introduction": {
+    "title": "Introduction",
+    "path": "/docs/introduction"
+  },
+  "gettingStarted": {
+    "title": "Getting-started",
+    "items": {
+      "quickstart": {
+        "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de démarrage rapide",
+        "path": "/docs/getting-started/quickstart"
+      }
+    }
+  }
+}
