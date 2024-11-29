@@ -1,6 +1,5 @@
 [Document: docs/introduction.json]
-Learn about Akira Docs and its core features
-
+Title: Introduction
 Akira Docs is a modern documentation platform that combines the power of AI with an intuitive block-based content system. This guide will help you understand the core concepts and features.
 Key Features
 AI-powered search
@@ -12,7 +11,6 @@ Markdown support
 [Document: articles/welcome.json]
 Title: Welcome to Akira Doc
 Get started with Akira Docs - Next-gen documentation powered by AI
-Welcome to Akira Doc
 Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation.
 Key Features
 Easy to customize
@@ -34,9 +32,8 @@ Item 3
 Important: This is an important callout message.
 -------------
 [Document: articles/ai_integration.json]
-AI Assistant Integration
+Title: AI Assistant Integration
 Learn how to use Akira's built-in AI assistant for documentation enhancement
-
 Akira's AI Assistant is a powerful tool that helps developers and technical writers create, maintain, and improve documentation through natural language interactions. This guide covers the essential features and best practices for utilizing the AI assistant effectively.
 Key Features
 Natural language documentation generation
@@ -72,7 +69,6 @@ Explore our [Advanced AI Features](/advanced-ai-features) guide to learn more ab
 [Document: docs/guides/analytics.json]
 Title: Analytics Integration
 Learn how to add analytics tracking to your documentation
-Analytics Integration
 AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
 Setting up Google Analytics
 1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
@@ -122,7 +118,6 @@ This provides a complete analytics integration that's easy for users to set up a
 [Document: docs/getting-started/quickstart.json]
 Title: Quickstart Guide
 Get up and running with Akira Docs in minutes
-
 Follow these steps to start using Akira Docs for your documentation needs.
 Code example:
 bash

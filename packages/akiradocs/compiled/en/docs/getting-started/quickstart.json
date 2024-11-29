@@ -14,10 +14,15 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": "Get up and running with Akira Docs in minutes\n\nFollow these steps to start using Akira Docs for your documentation needs."
+      "content": "Get up and running with Akira Docs in minutes"
     },
     {
       "id": "2",
+      "type": "paragraph",
+      "content": "Follow these steps to start using Akira Docs for your documentation needs."
+    },
+    {
+      "id": "3",
       "type": "code",
       "content": "bash\ngit clone https://github.com/your-org/akira-docs-template\ncd akira-docs-template\nnpm install\nnpm run dev",
       "metadata": {
@@ -26,7 +31,7 @@
       }
     },
     {
-      "id": "3",
+      "id": "4",
       "type": "paragraph",
       "content": ":::warning Prerequisites\nMake sure you have Node.js 16 or higher installed on your system.\n:::"
     }
