@@ -129,7 +129,15 @@ const blockStyles = {
       label: 'Detailed',
       prompt: 'Expand the toggle content with more detailed explanations. Keep the toggle structure. Output only the toggle content.'
     }
-  ]
+  ],
+
+  apiReference: [
+    {
+      value: 'default',
+      label: 'Default',
+      prompt: 'No rewriting options available for API reference'
+    }
+  ],
 } as const;
 
 interface AIRewriteButtonProps {

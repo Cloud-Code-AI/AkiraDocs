@@ -252,38 +252,13 @@
     {
       "id": "32",
       "type": "heading",
-      "content": "Real-time Preview",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "33",
-      "type": "list",
-      "content": [
-        "Live Markdown preview",
-        "Mobile responsive preview",
-        "SEO preview"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "34",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "35",
-      "type": "heading",
       "content": "Version Control",
       "metadata": {
         "level": 3
       }
     },
     {
-      "id": "36",
+      "id": "33",
       "type": "list",
       "content": [
         "Git integration",
@@ -295,86 +270,7 @@
       }
     },
     {
-      "id": "37",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "38",
-      "type": "heading",
-      "content": "Keyboard Shortcuts",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
-      "id": "39",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "40",
-      "type": "heading",
-      "content": "Navigation",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "41",
-      "type": "code",
-      "content": "↑↓ → Move between blocks\nTab/Shift+Tab → Indent/outdent\nCmd/Ctrl + F → Find",
-      "metadata": {
-        "language": "plaintext",
-        "showLineNumbers": true
-      }
-    },
-    {
-      "id": "42",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "43",
-      "type": "heading",
-      "content": "Formatting",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "44",
-      "type": "code",
-      "content": "Cmd/Ctrl + B → Bold\nCmd/Ctrl + I → Italic\nCmd/Ctrl + K → Link\nCmd/Ctrl + E → Code block",
-      "metadata": {
-        "language": "plaintext",
-        "showLineNumbers": true
-      }
-    },
-    {
-      "id": "45",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "46",
-      "type": "heading",
-      "content": "Block Operations",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "47",
-      "type": "code",
-      "content": "/ → Create new block\nCmd/Ctrl + / → Show commands\nCmd/Ctrl + Shift + 0-6 → Heading levels",
-      "metadata": {
-        "language": "plaintext",
-        "showLineNumbers": true
-      }
-    },
-    {
-      "id": "48",
+      "id": "34",
       "type": "paragraph",
       "content": ""
     }

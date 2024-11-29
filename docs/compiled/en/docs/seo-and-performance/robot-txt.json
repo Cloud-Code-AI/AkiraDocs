@@ -1,0 +1,184 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "SEO & Performance",
+  "keywords": [
+    "SEO",
+    "Robots.txt",
+    "Crawling"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Robots.txt Configuration",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Guide to customizing and managing your robots.txt file in AkiraDocs."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Default Configuration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Basic robots.txt",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "User-agent: *\nAllow: /\nSitemap: https://yourdocs.com/sitemap.xml\n\n# Private sections\nDisallow: /admin/\nDisallow: /private/",
+      "metadata": {
+        "language": "txt",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Customization",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Configuration Options",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "{\n  \"seo\": {\n    \"robots\": {\n      \"enabled\": true,\n      \"autoGenerate\": true,\n      \"custom\": {\n        \"disallow\": [\"/internal/\", \"/draft/\"],\n        \"allow\": [\"/public/\"],\n        \"crawlDelay\": 10\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Advanced Rules",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "code",
+      "content": "# Custom crawl rate\nUser-agent: Googlebot\nCrawl-delay: 10\n\n# Allow specific bot\nUser-agent: Bingbot\nAllow: /public/\nDisallow: /private/\n\n# Block specific bot\nUser-agent: BadBot\nDisallow: /",
+      "metadata": {
+        "language": "txt",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "16",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Best Practices",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "18",
+      "type": "paragraph",
+      "content": "1. **Access Control**"
+    },
+    {
+      "id": "19",
+      "type": "list",
+      "content": [
+        "Block sensitive content",
+        "Allow public content",
+        "Manage crawl rates"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "20",
+      "type": "paragraph",
+      "content": "2. **Performance**"
+    },
+    {
+      "id": "21",
+      "type": "list",
+      "content": [
+        "Optimize crawl budget",
+        "Prevent unnecessary indexing",
+        "Monitor bot behavior"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "22",
+      "type": "paragraph",
+      "content": "3. **Maintenance**"
+    },
+    {
+      "id": "23",
+      "type": "list",
+      "content": [
+        "Regular updates",
+        "Verify syntax",
+        "Test configuration"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

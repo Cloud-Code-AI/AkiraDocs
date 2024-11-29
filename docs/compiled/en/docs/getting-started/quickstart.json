@@ -1,84 +1,182 @@
 {
-  "title": "AkiraDocs Quickstart Guide",
-  "description": "Get started with AkiraDocs in minutes with this quickstart guide",
-  "author": "AkiraDocs Team",
-  "ogImage": "/images/quickstart-banner.png",
-  "publishDate": "2024-03-20",
-  "modifiedDate": "2024-03-20",
+  "title": "Quickstart Guide",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
   "category": "Getting Started",
-  "keywords": ["quickstart", "tutorial", "getting-started"],
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
   "blocks": [
     {
       "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
       "type": "heading",
-      "content": "Creating Your First Documentation",
+      "content": "Quick Start Guide",
       "metadata": {
         "level": 1
       }
     },
     {
-      "id": "2",
-      "type": "paragraph",
-      "content": "Follow these steps to create your first documentation project with AkiraDocs."
-    },
-    {
       "id": "3",
-      "type": "heading",
-      "content": "Basic Usage",
-      "metadata": {
-        "level": 2
-      }
+      "type": "paragraph",
+      "content": "Get up and running with AkiraDocs in minutes."
     },
     {
       "id": "4",
-      "type": "list",
-      "content": "1. Create a new page\n2. Add content blocks\n3. Preview your changes\n4. Publish your documentation",
+      "type": "heading",
+      "content": "Quick Deploy",
       "metadata": {
-        "listType": "ordered"
+        "level": 2
       }
     },
     {
       "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Option 1: Deploy with Vercel",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "The fastest way to get started is using Vercel:\n\n[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCloud-Code-AI%2Fakiradocs-template)"
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Option 2: Using CLI",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "Create a new project using our CLI:"
+    },
+    {
+      "id": "10",
       "type": "code",
-      "content": "# Create a new page\nnpx akiradocs new page guides/welcome\n\n# Start the development server\nnpm run dev",
+      "content": "npx create-akiradocs@latest my-docs",
       "metadata": {
         "language": "bash",
         "showLineNumbers": true
       }
     },
     {
-      "id": "6",
+      "id": "11",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "12",
       "type": "heading",
-      "content": "Project Initialization",
+      "content": "Basic Setup Steps",
       "metadata": {
         "level": 2
       }
     },
     {
-      "id": "7",
-      "type": "callout",
-      "content": "Make sure you have completed the installation steps before proceeding with project initialization.",
-      "metadata": {
-        "type": "info",
-        "title": "Prerequisites"
-      }
+      "id": "13",
+      "type": "paragraph",
+      "content": "1. **Clone the Repository** (if not using Quick Deploy)"
     },
     {
-      "id": "8",
-      "type": "list",
-      "content": "1. Initialize your documentation structure\n2. Configure your sidebar navigation\n3. Set up your theme\n4. Add your first content",
-      "metadata": {
-        "listType": "ordered"
-      }
-    },
-    {
-      "id": "9",
+      "id": "14",
       "type": "code",
-      "content": "# Initialize your documentation\nnpx akiradocs init\n\n# Configure your project\nnpx akiradocs configure",
+      "content": "git clone https://github.com/your-org/akira-docs-template\ncd akira-docs-template",
       "metadata": {
         "language": "bash",
         "showLineNumbers": true
       }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": "2. **Install Dependencies**"
+    },
+    {
+      "id": "16",
+      "type": "code",
+      "content": "npm install\n# or\nyarn install",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "3. **Start Development Server**"
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "npm run dev\n# or\nyarn dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": "4. Open `http://localhost:3000` in your browser"
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Initial Configuration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "1. **Update Site Configuration**\nEdit `akiradocs.config.json`:"
+    },
+    {
+      "id": "22",
+      "type": "code",
+      "content": "{\n  \"site\": {\n    \"title\": \"Your Docs\",\n    \"description\": \"Your documentation description\"\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "23",
+      "type": "paragraph",
+      "content": "2. **Configure Translation** (Optional)"
+    },
+    {
+      "id": "24",
+      "type": "code",
+      "content": "{\n  \"translation\": {\n    \"auto_translate\": true,\n    \"provider\": \"anthropic\",\n    \"targetLanguages\": [\"es\", \"fr\", \"de\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": ""
     }
   ]
 }
