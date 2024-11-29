@@ -1,0 +1,82 @@
+{
+    "title": "Block-Based Editor",
+    "description": "Master Akira's intuitive block-based content editor",
+    "author": "Akira Team",
+    "publishDate": "2024-11-10",
+    "modifiedDate": "2024-11-10",
+    "category": "Features",
+    "keywords": ["Editor", "Blocks", "Content Management", "Version Control"],
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Block-Based Editor",
+        "metadata": {
+          "level": 1
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "The block-based editor is the core of Akira Docs, providing a flexible and intuitive way to create and organize documentation content."
+      },
+      {
+        "id": "3",
+        "type": "heading",
+        "content": "Available Block Types",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "4",
+        "type": "list",
+        "content": "Text blocks with rich formatting\nCode blocks with syntax highlighting\nImage and media blocks\nCallout blocks for important information\nTable blocks for structured data\nToggle lists for collapsible content\nCustom component blocks",
+        "metadata": {
+          "listType": "unordered"
+        }
+      },
+      {
+        "id": "5",
+        "type": "heading",
+        "content": "File Management",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "6",
+        "type": "paragraph",
+        "content": "Akira provides a comprehensive file management system that supports:"
+      },
+      {
+        "id": "7",
+        "type": "list",
+        "content": "Hierarchical file organization\nDrag-and-drop file uploads\nAutomatic image optimization\nFile version history\nAsset library management",
+        "metadata": {
+          "listType": "unordered"
+        }
+      },
+      {
+        "id": "8",
+        "type": "heading",
+        "content": "Content Organization",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "9",
+        "type": "paragraph",
+        "content": "Organize your documentation effectively using:"
+      },
+      {
+        "id": "10",
+        "type": "list",
+        "content": "Nested folder structures\nCustomizable navigation\nMetadata and tagging\nAutomatic table of contents\nLinked references",
+        "metadata": {
+          "listType": "unordered"
+        }
+      }
+    ]
+  }

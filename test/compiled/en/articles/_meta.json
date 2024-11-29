@@ -1,0 +1,15 @@
+{
+  "defaultRoute": "/articles/welcome",
+  "welcome": {
+    "title": "Welcome to Akira Doc",
+    "path": "/articles/welcome"
+  },
+  "template": {
+    "title": "Template",
+    "path": "/articles/template"
+  },
+  "ai_integration": {
+    "title": "Ai Integration",
+    "path": "/articles/ai_integration"
+  }
+}
