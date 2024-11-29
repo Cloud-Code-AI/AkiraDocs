@@ -84,20 +84,3 @@ AkiraDocs automatically generates a sitemap.xml file during the build process, e
   }
 }
 ```
-
-## Best Practices
-
-1. **Regular Updates**
-   - Keep content fresh
-   - Maintain accurate lastmod dates
-   - Remove obsolete URLs
-
-2. **Structure Optimization**
-   - Logical URL hierarchy
-   - Consistent naming
-   - Clear categories
-
-3. **Performance**
-   - Compress large sitemaps
-   - Use sitemap index for large sites
-   - Monitor crawl stats

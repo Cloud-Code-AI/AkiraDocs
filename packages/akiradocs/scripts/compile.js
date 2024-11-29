@@ -167,7 +167,8 @@ async function convertMarkdownToBlocks(content) {
     }
 
     if (line.trim()) {
-      currentBlock.push(line);
+      const processedLine = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      currentBlock.push(processedLine);
     } else if (currentBlock.length > 0) {
       blocks.push({
         id: String(blockId++),

@@ -44,36 +44,3 @@ Disallow: /private/
   }
 }
 ```
-
-### Advanced Rules
-```txt
-# Custom crawl rate
-User-agent: Googlebot
-Crawl-delay: 10
-
-# Allow specific bot
-User-agent: Bingbot
-Allow: /public/
-Disallow: /private/
-
-# Block specific bot
-User-agent: BadBot
-Disallow: /
-```
-
-## Best Practices
-
-1. **Access Control**
-   - Block sensitive content
-   - Allow public content
-   - Manage crawl rates
-
-2. **Performance**
-   - Optimize crawl budget
-   - Prevent unnecessary indexing
-   - Monitor bot behavior
-
-3. **Maintenance**
-   - Regular updates
-   - Verify syntax
-   - Test configuration
