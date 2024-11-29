@@ -9,6 +9,9 @@ async function convertMarkdownToBlocks(content) {
   const blocks = [];
   let currentBlock = [];
   let blockId = 1;
+  let skipNextLine = false;
+  let firstHeadingFound = false;
+  let title = '';
 
   const lines = content.split('\n');
   
@@ -17,7 +20,11 @@ async function convertMarkdownToBlocks(content) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     
-    // Handle list items
+    if (skipNextLine) {
+      skipNextLine = false;
+      continue;
+    }
+
     if (line.trim().startsWith('-')) {
       if (currentBlock.length > 0) {
         blocks.push({
@@ -30,7 +37,6 @@ async function convertMarkdownToBlocks(content) {
       
       listItems.push(line.trim().substring(1).trim());
       
-      // Check if next line is not a list item or if this is the last line
       if (i === lines.length - 1 || !lines[i + 1].trim().startsWith('-')) {
         blocks.push({
           id: String(blockId++),
@@ -45,7 +51,6 @@ async function convertMarkdownToBlocks(content) {
       continue;
     }
 
-    // If we reach here and have pending list items, add them as a block
     if (listItems.length > 0) {
       blocks.push({
         id: String(blockId++),
@@ -58,7 +63,6 @@ async function convertMarkdownToBlocks(content) {
       listItems = [];
     }
 
-    // Handle code blocks
     if (line.startsWith('```')) {
       if (currentBlock.length > 0) {
         blocks.push({
@@ -90,8 +94,17 @@ async function convertMarkdownToBlocks(content) {
       continue;
     }
 
-    // Handle headings
     if (line.startsWith('#')) {
+      if (!firstHeadingFound) {
+        const match = line.match(/^#+\s*(.*)/);
+        if (match) {
+          title = match[1].trim();
+          firstHeadingFound = true;
+          skipNextLine = true;
+          continue;
+        }
+      }
+
       if (currentBlock.length > 0) {
         blocks.push({
           id: String(blockId++),
@@ -102,7 +115,7 @@ async function convertMarkdownToBlocks(content) {
       }
 
       const match = line.match(/^#+/);
-      if (!match) continue; // Skip if no match found
+      if (!match) continue;
       
       const level = match[0].length;
       blocks.push({
@@ -111,10 +124,13 @@ async function convertMarkdownToBlocks(content) {
         content: line.slice(level).trim(),
         metadata: { level }
       });
+
+      if (level === 1) {
+        skipNextLine = true;
+      }
       continue;
     }
 
-    // Handle callouts with > [!type] syntax
     if (line.trim().startsWith('> [!')) {
       if (currentBlock.length > 0) {
         blocks.push({
@@ -131,13 +147,11 @@ async function convertMarkdownToBlocks(content) {
         let calloutContent = [];
         i++;
 
-        // Collect content until we hit a line that doesn't start with >
         while (i < lines.length && lines[i].trim().startsWith('>')) {
-          // Remove the > prefix and any single leading space
           calloutContent.push(lines[i].trim().replace(/^>\s?/, ''));
           i++;
         }
-        i--; // Step back one line since we went too far
+        i--;
 
         blocks.push({
           id: String(blockId++),
@@ -152,12 +166,19 @@ async function convertMarkdownToBlocks(content) {
       continue;
     }
 
-    // Accumulate regular paragraph content
-    currentBlock.push(line);
+    if (line.trim()) {
+      currentBlock.push(line);
+    } else if (currentBlock.length > 0) {
+      blocks.push({
+        id: String(blockId++),
+        type: 'paragraph',
+        content: currentBlock.join('\n').trim()
+      });
+      currentBlock = [];
+    }
   }
 
-  // Add any remaining content as a paragraph
-  if (currentBlock.length > 0) {
+  if (currentBlock.length > 0 && currentBlock.some(line => line.trim())) {
     blocks.push({
       id: String(blockId++),
       type: 'paragraph',
@@ -165,7 +186,7 @@ async function convertMarkdownToBlocks(content) {
     });
   }
 
-  return blocks;
+  return { title, blocks };
 }
 
 
@@ -182,13 +203,11 @@ async function updateMetaFile(folderPath, newFile) {
   const fileName = path.basename(newFile, '.json');
   const compiledContent = JSON.parse(await readFile(newFile, 'utf-8'));
   
-  // Calculate relative path from compiled directory
   const relativePath = path.relative(
     path.join(process.cwd(), 'compiled'),
     folderPath
   );
   
-  // Only set title if the entry doesn't exist in meta
   if (!meta[fileName]) {
     const humanReadableFileName = fileName
       .split('_')
@@ -199,7 +218,6 @@ async function updateMetaFile(folderPath, newFile) {
       path: path.join('/', relativePath, fileName)
     };
   } else {
-    // Update only the path, preserve the existing title
     meta[fileName].path = path.join('/', relativePath, fileName);
   }
 
@@ -208,17 +226,16 @@ async function updateMetaFile(folderPath, newFile) {
 
 async function compileMarkdownFiles() {
   try {
-    // Use path.join for the glob pattern
     const files = await glob(path.join('_contents', '**', '*.md'), { cwd: process.cwd() });
     
     for (const file of files) {
       const content = await readFile(file, 'utf-8');
       const { data: frontmatter, content: markdownContent } = matter(content);
       
-      const blocks = await convertMarkdownToBlocks(markdownContent);
+      const { title, blocks } = await convertMarkdownToBlocks(markdownContent);
       
       const compiledContent = {
-        title: frontmatter.title || '',
+        title: frontmatter.title || title || '',
         description: frontmatter.description || '',
         author: frontmatter.author || 'Anonymous',
         publishDate: frontmatter.publishDate || new Date().toISOString().split('T')[0],
@@ -228,7 +245,6 @@ async function compileMarkdownFiles() {
         blocks
       };
 
-      // Convert the path using path.join
       const compiledPath = file
         .replace(path.join('_contents'), path.join('compiled'))
         .replace('.md', '.json');
@@ -259,7 +275,6 @@ async function createMetaFilesForAllFolders() {
         const sectionPath = path.join(langPath, section);
         if (!existsSync(sectionPath)) continue;
 
-        // Initialize existingMeta and read existing meta file if it exists
         let existingMeta = {};
         const metaPath = path.join(sectionPath, '_meta.json');
         let existingDefaultRoute;
@@ -274,7 +289,6 @@ async function createMetaFilesForAllFolders() {
           ignore: '**/_meta.json'
         });
 
-        // Create nested meta structure using existing defaultRoute if available
         const meta = {
           defaultRoute: existingDefaultRoute || (section === 'docs' ? '/docs/introduction' : '/articles/welcome')
         };
@@ -285,7 +299,6 @@ async function createMetaFilesForAllFolders() {
           const content = JSON.parse(await readFile(filePath, 'utf-8'));
           const dirs = path.dirname(jsonFile).split('/').filter(d => d !== '.');
           
-          // Convert file name to camelCase for the key
           const fileKey = fileName.replace(/-/g, ' ')
             .split(' ')
             .map((word, index) => {
@@ -294,7 +307,6 @@ async function createMetaFilesForAllFolders() {
             })
             .join('');
 
-          // Create nested structure
           let current = meta;
           
           if (dirs.length > 0) {
@@ -319,7 +331,6 @@ async function createMetaFilesForAllFolders() {
             }
           }
 
-          // Check if there's an existing entry and preserve its title
           const existingEntry = findExistingEntry(existingMeta, dirs, fileKey);
           const title = existingEntry?.title || content.title || fileName.split('_')
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -331,7 +342,6 @@ async function createMetaFilesForAllFolders() {
           };
         }
 
-        // Write meta file
         const metaDataPath = path.join(sectionPath, '_meta.json');
         await writeFile(metaDataPath, JSON.stringify(meta, null, 2));
         console.log(`Created meta file: ${metaDataPath}`);
@@ -343,11 +353,9 @@ async function createMetaFilesForAllFolders() {
   }
 }
 
-// Helper function to find existing entry in nested meta structure
 function findExistingEntry(meta, dirs, fileKey) {
   let current = meta;
   
-  // Navigate through directories
   for (const dir of dirs) {
     const dirKey = dir.replace(/-/g, ' ')
       .split(' ')

@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Introduction",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
@@ -14,7 +14,7 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": "Learn about Akira Docs and its core features\n\nAkira Docs is a modern documentation platform that combines the power of AI with an intuitive block-based content system. This guide will help you understand the core concepts and features."
+      "content": "Akira Docs is a modern documentation platform that combines the power of AI with an intuitive block-based content system. This guide will help you understand the core concepts and features."
     },
     {
       "id": "2",
@@ -26,11 +26,6 @@
     },
     {
       "id": "3",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "4",
       "type": "list",
       "content": [
         "AI-powered search",
@@ -42,11 +37,6 @@
       "metadata": {
         "listType": "unordered"
       }
-    },
-    {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
     }
   ]
 }
