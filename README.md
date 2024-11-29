@@ -1,15 +1,21 @@
-# AkiraDocs
 
 <p align="center">
-  If you find AkiraDocs useful, please consider giving it a star! ⭐️<br>
-  Your support helps us continue improving the platform.
+  <h1 align="center">AkiraDocs</h1>
+</p>
+
+<p align="center">
+  <h4 align="center"><strong>Beautiful docs that write, translate, and optimize themselves</strong></h4>
 </p>
 
 <p align="center">
   <img src="gifs/star_the_repo.gif" alt="Star the Repo" width="100%">
 </p>
 
-## **Smart documentation platform with AI at its core**  
+<p align="center">
+  If you find AkiraDocs useful, please consider giving it a star! ⭐️<br>
+  Your support helps us continue improving the platform.
+</p>
+
 
 <p align="center">
   <a href="https://demo.akiradocs.ai">
@@ -21,7 +27,8 @@
 </p>
 
 ## 🚀 What is AkiraDocs?
-AkiraDocs is a modern documentation platform that combines the power of AI with an intuitive authoring experience. Whether you're a developer, content creator, or enterprise team, AkiraDocs provides the tools you need to create, manage, and share documentation effectively.
+AkiraDocs is a modern documentation platform that combines the power of AI with a Notion-like editing experience. Create, translate, and optimize your documentation automatically while maintaining complete control over the content. Perfect for teams who want to focus on their ideas rather than the complexities of documentation management.
+
 
 ## ⚡️ Quick Deploy
 Get started in seconds:
@@ -39,6 +46,11 @@ npx create-akiradocs <optional folder name>
 - **Enterprises**: Internal wikis, process documentation, knowledge bases
 
 ## ✨ Key Features
+
+### 🔍 AI-Generated SEO Optimization
+- Automatically optimize your documentation for search engines with AI-driven SEO
+- Improve discoverability and reach without manual SEO adjustments
+- AI recommendations for keywords and metadata
 
 ### 🛠 Developer-Friendly
 - Keep your existing Markdown/Git workflow
@@ -58,8 +70,8 @@ npx create-akiradocs <optional folder name>
 - Custom deployment options
 - Version control
 
-## 🌍 Going Global (Coming Soon)
-Built-in AI-powered translation:
+## 🌍 Going Global
+Built-in AI-powered translation. Just add API keys:
 ```json
 {
   "translation": {
@@ -69,6 +81,13 @@ Built-in AI-powered translation:
   }
 }
 ```
+
+### 🤖 Upcoming Features
+- **AI-Powered Documentation Generation**
+  - Automatically generate comprehensive documentation from your codebase
+  - AI-assisted content updates to keep your docs current with minimal effort
+  - Intelligent suggestions for content improvements and expansions
+
 
 ## 🔄 Easy Migration (Coming Soon)
 Import your existing docs:
