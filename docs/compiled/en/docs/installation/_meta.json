@@ -1,0 +1,14 @@
+{
+  "troubleshooting": {
+    "title": "Troubleshooting",
+    "path": "/en/docs/installation/troubleshooting"
+  },
+  "setup": {
+    "title": "Setup",
+    "path": "/en/docs/installation/setup"
+  },
+  "configuration": {
+    "title": "Configuration",
+    "path": "/en/docs/installation/configuration"
+  }
+}

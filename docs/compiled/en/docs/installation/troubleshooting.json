@@ -1,0 +1,342 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Installation",
+  "keywords": [
+    "Troubleshooting",
+    "Issues",
+    "Solutions"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Troubleshooting Guide",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Common issues and their solutions when setting up AkiraDocs."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Common Installation Issues",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Node.js Version Mismatch",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "**Problem**: Error about Node.js version compatibility"
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "Error: The engine \"node\" is incompatible with this module",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "**Solution**:\n1. Check your Node.js version:"
+    },
+    {
+      "id": "10",
+      "type": "code",
+      "content": "node --version",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "2. Install the correct version (16.x or higher)\n3. Use nvm to manage Node.js versions:"
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "nvm install 20\nnvm use 20",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Dependencies Installation Failed",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "paragraph",
+      "content": "**Problem**: npm install fails with errors\n\n**Solution**:\n1. Clear npm cache:"
+    },
+    {
+      "id": "16",
+      "type": "code",
+      "content": "npm cache clean --force",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "2. Delete node_modules and package-lock.json:"
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "rm -rf node_modules package-lock.json\nnpm install",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Build Issues",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "22",
+      "type": "heading",
+      "content": "Build Fails",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "23",
+      "type": "paragraph",
+      "content": "**Problem**: `npm run build` fails\n\n**Solution**:\n1. Check for TypeScript errors:"
+    },
+    {
+      "id": "24",
+      "type": "code",
+      "content": "npm run type-check",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": "2. Verify environment variables are set correctly\n3. Clear next.js cache:"
+    },
+    {
+      "id": "26",
+      "type": "code",
+      "content": "rm -rf .next",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "27",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "28",
+      "type": "heading",
+      "content": "Static Export Issues",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "29",
+      "type": "paragraph",
+      "content": "**Problem**: Static export fails with dynamic routes\n\n**Solution**:\n1. Configure `next.config.js`:"
+    },
+    {
+      "id": "30",
+      "type": "code",
+      "content": "module.exports = {\n  output: 'export',\n  images: {\n    unoptimized: true\n  }\n}",
+      "metadata": {
+        "language": "js",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "31",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "32",
+      "type": "heading",
+      "content": "Translation Issues",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "33",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "34",
+      "type": "heading",
+      "content": "AI Translation Not Working",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "35",
+      "type": "paragraph",
+      "content": "**Problem**: Automatic translation fails\n\n**Solution**:\n1. Verify API keys are set correctly\n2. Check translation configuration:"
+    },
+    {
+      "id": "36",
+      "type": "code",
+      "content": "{\n  \"translation\": {\n    \"auto_translate\": true,\n    \"provider\": \"anthropic\",\n    \"targetLanguages\": [\"es\", \"fr\", \"de\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "37",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "38",
+      "type": "heading",
+      "content": "Content Issues",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "39",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "40",
+      "type": "heading",
+      "content": "Content Not Updating",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "41",
+      "type": "paragraph",
+      "content": "**Problem**: Changes to content files not reflecting\n\n**Solution**:\nContent changes are built on build time. If you are using the local development server, you need to restart the server after making changes.\n1. Clear the cache:"
+    },
+    {
+      "id": "42",
+      "type": "code",
+      "content": "npm run clean",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "43",
+      "type": "paragraph",
+      "content": "2. Restart the development server\n3. Check file permissions"
+    },
+    {
+      "id": "44",
+      "type": "heading",
+      "content": "Deployment Issues",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "45",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "46",
+      "type": "heading",
+      "content": "Vercel Deployment Failed",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "47",
+      "type": "paragraph",
+      "content": "**Problem**: Deployment to Vercel fails\n\n**Solution**:\n1. Check build logs\n2. Verify environment variables are set in Vercel dashboard\n3. Ensure all dependencies are listed in package.json"
+    },
+    {
+      "id": "48",
+      "type": "heading",
+      "content": "Getting Help",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "49",
+      "type": "paragraph",
+      "content": "If you're still experiencing issues:\n\n1. Check our [GitHub Issues](https://github.com/Cloud-Code-AI/Akiradocs/issues)\n2. Join our [Discord Community](https://discord.gg/zvYZukgeH2)\n3. Contact [Support](mailto:saurav.panda@akiradocs.ai)"
+    }
+  ]
+}
