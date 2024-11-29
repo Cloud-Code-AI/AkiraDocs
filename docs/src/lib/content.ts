@@ -40,11 +40,22 @@ export function getContentBySlug(locale: string, type: string, slug: string): Po
 
 export function getAllPosts(locale: string, type: string): Post[] {
   return contentContext.keys()
-    .filter((fileName: string) => fileName !== `./${locale}/${type}/_meta.json`)
+    .filter((fileName: string) => 
+      fileName.startsWith(`./${locale}/${type}/`) && 
+      !fileName.endsWith('/_meta.json')
+    )
     .map((fileName: string) => {
-      const slug = fileName.replace(/^\.\//, '').replace(/\.json$/, '')
-      return getContentBySlug(locale, type, slug)
+      const content = contentContext(fileName)
+      return {
+        slug: fileName.replace(`./${locale}/${type}/`, '').replace('.json', ''),
+        title: content.title,
+        description: content.description,
+        author: content.author,
+        publishDate: content.publishDate,
+        // Include any other fields needed by ArticleCard
+      }
     })
+    .sort((a: any, b: any) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
 }
 
 export function getContentNavigation<T>(defaultValue: T, locale: string, type: string): T {
@@ -118,5 +129,54 @@ export function folderExists(folderPath: string): boolean {
   } catch (error) {
     console.error('Error checking folder existence:', error)
     return false
+  }
+}
+
+export function get_api_spec(): any {
+  try {
+    return contentContext('./en/api/apiSpec.json')
+  } catch (error) {
+    console.error('Error reading API spec file:', error)
+    return null
+  }
+}
+
+interface ApiNavItem {
+  title: string;
+  path: string;
+  method: string;
+  children?: ApiNavItem[];
+}
+
+export function getApiNavigation(): ApiNavItem[] {
+  try {
+    const apiSpec = get_api_spec();
+    if (!apiSpec || !apiSpec.paths) {
+      return [];
+    }
+
+    const navigation: ApiNavItem[] = [];
+
+    // Process each path in the API spec
+    Object.entries(apiSpec.paths).forEach(([path, pathData]: [string, any]) => {
+      // Process each HTTP method for the path
+      Object.entries(pathData).forEach(([method, methodData]: [string, any]) => {
+        navigation.push({
+          title: methodData.summary || `${method.toUpperCase()} ${path}`,
+          path: path,
+          method: method.toUpperCase(),
+          children: methodData.parameters?.map((param: any) => ({
+            title: param.name,
+            path: `${path}#${param.name}`,
+            method: 'PARAM'
+          })) || []
+        });
+      });
+    });
+
+    return navigation;
+  } catch (error) {
+    console.error('Error generating API navigation:', error);
+    return [];
   }
 }

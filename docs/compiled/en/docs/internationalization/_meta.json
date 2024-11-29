@@ -1,0 +1,14 @@
+{
+  "setup": {
+    "title": "Setup",
+    "path": "/en/docs/internationalization/setup"
+  },
+  "managing-translation": {
+    "title": "Managing-translation",
+    "path": "/en/docs/internationalization/managing-translation"
+  },
+  "ai-translation": {
+    "title": "Ai-translation",
+    "path": "/en/docs/internationalization/ai-translation"
+  }
+}

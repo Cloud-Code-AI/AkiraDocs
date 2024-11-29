@@ -1,0 +1,180 @@
+{
+  "title": "",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "Translation Management",
+    "Content Localization",
+    "Workflow"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Managing Translations",
+      "metadata": {
+        "level": 1
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Learn how to effectively manage and maintain translated content in AkiraDocs."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Translation Workflow",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Automatic Translation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "1. Create content in source language\n2. Enable auto-translation in config\n3. Build/deploy to generate translations\n4. Review and refine translations"
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Manual Translation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "1. Create language-specific directories\n2. Copy source content\n3. Translate manually\n4. Update metadata"
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Content Organization",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "File Structure",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "13",
+      "type": "code",
+      "content": "_contents/\n├── en/\n│   └── docs/\n│       ├── intro.md\n│       └── guide.md\n├── es/\n│   └── docs/\n│       ├── intro.md\n│       └── guide.md\n└── fr/\n    └── docs/\n        ├── intro.md\n        └── guide.md",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Translation Status Tracking",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "code",
+      "content": "{\n  \"translationStatus\": {\n    \"es\": {\n      \"completion\": \"85%\",\n      \"lastUpdated\": \"2024-11-26\",\n      \"pendingFiles\": [\"advanced/config.md\"]\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Quality Control",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": ""
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Review Process",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "1. AI Translation\n2. Human Review\n3. Technical Verification\n4. Publication"
+    },
+    {
+      "id": "22",
+      "type": "heading",
+      "content": "Version Control",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "23",
+      "type": "list",
+      "content": [
+        "Track changes across languages",
+        "Maintain synchronization",
+        "Handle updates efficiently"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "24",
+      "type": "paragraph",
+      "content": ""
+    }
+  ]
+}

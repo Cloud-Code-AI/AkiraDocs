@@ -100,7 +100,7 @@ npx akiradocs-migrate import --from=source --to=mydocs
 - [Live Demo](https://demo.akiradocs.ai)
 - [Documentation](https://docs.akiradocs.com)
 - [Discord Community](https://discord.gg/zvYZukgeH2)
-- [GitHub Discussions](https://github.com/akiradocs/discussions)
+- [GitHub Discussions](https://github.com/Cloud-Code-AI/akiradocs/discussions)
 - [Join Waitlist](https://forms.gle/KunU4BGhToH4NJ1t7) for early access
 
 ## 📄 Licensing

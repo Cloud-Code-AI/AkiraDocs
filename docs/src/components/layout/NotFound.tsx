@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
+import { Suspense } from 'react'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Bot, Loader2, RefreshCcw, Home } from "lucide-react"
@@ -79,6 +81,7 @@ export function NotFound({ redirectUrl = '/' }: { redirectUrl?: string }) {
   }, [messages, redirectUrl, router])
 
   return (
+    <Suspense fallback={<LoadingSpinner />}>
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 p-4">
       <Card className="w-full max-w-2xl">
         <CardHeader>
@@ -144,5 +147,6 @@ export function NotFound({ redirectUrl = '/' }: { redirectUrl?: string }) {
         </CardFooter>
       </Card>
     </div>
+    </Suspense>
   )
 }

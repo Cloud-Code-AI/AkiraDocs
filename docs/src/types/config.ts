@@ -49,6 +49,7 @@ interface NavItem {
   export interface SearchConfig {
     logo?: Logo;
     title?: string;
+    showTitle?: boolean;
     description?: string;
   }
   
