@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Configuration Guide",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "Configuration Guide",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "Complete guide to configuring your AkiraDocs installation."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Core Configuration",
       "metadata": {
@@ -38,12 +25,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "3",
       "type": "heading",
       "content": "Site Configuration",
       "metadata": {
@@ -51,26 +33,21 @@
       }
     },
     {
-      "id": "7",
+      "id": "4",
       "type": "paragraph",
       "content": "Edit `akiradocs.config.json`:"
     },
     {
-      "id": "8",
+      "id": "5",
       "type": "code",
-      "content": "{\n    \"site\": {\n        \"title\": \"Your Docs\",\n        \"description\": \"Your documentation description\"\n    },\n    \"branding\": {\n        \"logo\": {\n            \"path\": \"/your_logo.svg\",\n            \"width\": 120,\n            \"height\": 30,\n            \"show\": true\n        },\n        \"favicon\": {\n            \"path\": \"/favicon.png\",\n            \"show\": true\n        }\n    }\n}",
+      "content": "{\n    \"url\": \"https://docs.akiradocs.com\",\n    \"site\": {\n        \"title\": \"Your Docs\",\n        \"description\": \"Your documentation description\"\n    },\n    \"branding\": {\n        \"logo\": {\n            \"path\": \"/your_logo.svg\",\n            \"width\": 120,\n            \"height\": 30,\n            \"show\": true\n        },\n        \"favicon\": {\n            \"path\": \"/favicon.png\",\n            \"show\": true\n        }\n    }\n}",
       "metadata": {
         "language": "json",
         "showLineNumbers": true
       }
     },
     {
-      "id": "9",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "10",
+      "id": "6",
       "type": "heading",
       "content": "Navigation Setup",
       "metadata": {
@@ -78,7 +55,7 @@
       }
     },
     {
-      "id": "11",
+      "id": "7",
       "type": "code",
       "content": "{\n    \"navigation\": {\n        \"header\": {\n            \"items\": [\n                { \"label\": \"Docs\", \"href\": \"/docs\", \"icon\": \"/docs.svg\" },\n                { \"label\": \"API\", \"href\": \"/api\", \"icon\": \"/api.svg\" }\n            ]\n        }\n    }\n}",
       "metadata": {
@@ -87,12 +64,7 @@
       }
     },
     {
-      "id": "12",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "13",
+      "id": "8",
       "type": "heading",
       "content": "Internationalization",
       "metadata": {
@@ -100,12 +72,7 @@
       }
     },
     {
-      "id": "14",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "15",
+      "id": "9",
       "type": "heading",
       "content": "Language Configuration",
       "metadata": {
@@ -113,18 +80,13 @@
       }
     },
     {
-      "id": "16",
+      "id": "10",
       "type": "code",
       "content": "{\n    \"localization\": {\n        \"defaultLocale\": \"en\",\n        \"fallbackLocale\": \"en\",\n        \"locales\": [\n            {\n                \"code\": \"en\",\n                \"name\": \"English\",\n                \"flag\": \"🇺🇸\"\n            },\n            {\n                \"code\": \"es\",\n                \"name\": \"Español\",\n                \"flag\": \"🇪🇸\"\n            },\n            {\n                \"code\": \"fr\",\n                \"name\": \"Français\",\n                \"flag\": \"🇫🇷\"\n            },\n            {\n                \"code\": \"de\",\n                \"name\": \"Deutsch\",\n                \"flag\": \"🇩🇪\"\n            }\n        ]\n    },\n     \"translation\": {\n        \"auto_translate\": true,\n        \"provider\": \"anthropic\",\n        \"model\": \"claude-3-sonnet-20240229\",\n        \"targetLanguages\": [\"es\", \"fr\", \"de\"],\n        \"excludedPaths\": [\"_meta.json\"]\n    },\n}",
       "metadata": {
         "language": "json",
         "showLineNumbers": true
       }
-    },
-    {
-      "id": "17",
-      "type": "paragraph",
-      "content": ""
     }
   ]
 }

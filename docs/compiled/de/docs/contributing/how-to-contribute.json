@@ -1,0 +1,213 @@
+{
+  "title": "Beitragen zu AkiraDocs",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Contributing",
+  "keywords": [
+    "Contributing",
+    "Open Source",
+    "Development"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nLeitfaden zur Mitwirkung am Open-Source-Projekt AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Beginnend",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Konfigurieren der Entwicklungsumgebung",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "# Repository klonen\ngit clone https://github.com/Cloud-Code-AI/akiradocs\ncd akiradocs\n\n# Abhängigkeiten installieren\nnpm install\n\n# Entwicklungsserver starten\nnpm run dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nRichtlinien für Beiträge",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung auf Deutsch:\n\nArten von Beiträgen",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "Fehlerkorrekturen",
+        "Übersetzung der Funktionen",
+        "Hier ist die Übersetzung ins Deutsche:\n\nVerbesserungen an der Dokumentation",
+        "Hier ist die Übersetzung ins Deutsche:\n\nÜbersetzungshilfe",
+        "Fehlerbericht"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Prozess für Extraktionsanfragen",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "1. Gabel das Repository\n2. Erstelle einen Feature-Branch\n3. Führe Änderungen durch\n4. Sende einen Pull-Request"
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nBestätigungsnachrichten",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "code",
+      "content": "# Format\ntype(Reichweite): Beschreibung\n\n# Beispiele\nfeat(Editor): Neuen Blocktyp hinzufügen\nfix(Übersetzung): Spracherkennung korrigieren\ndocs(API): Authentifizierungsanleitung aktualisieren",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nEntwicklungsleitfäden",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Codestil",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Folgen Sie den bestehenden Mustern",
+        "Verwenden Sie TypeScript",
+        "Kommentare hinzufügen",
+        "Schreiben von Tests"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung auf Deutsch:\n\nTest",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "code",
+      "content": "# Tests ausführen\nnpm run test\n\n# Typen überprüfen\nnpm run type-check\n\n# Code linting\nnpm run lint",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nDokumentation",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Dokumente aktualisieren",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": "1. Relevante Dateien ändern\n2. Beispiele aktualisieren\n3. Links überprüfen\n4. Format überprüfen"
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Erstellen von Beispielen",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "21",
+      "type": "list",
+      "content": [
+        "Klar und prägnant",
+        "Gut dokumentiert",
+        "Hier ist die Übersetzung ins Deutsche:\n\nGetestet",
+        "Wartbar"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "22",
+      "type": "heading",
+      "content": "Hilfe erhalten",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "23",
+      "type": "list",
+      "content": [
+        "Tritt [Discord](https://discord.gg/zvYZukgeH2) bei",
+        "Überprüfen Sie die [Probleme](https://github.com/Cloud-Code-AI/akiradocs/issues)",
+        "Lesen Sie die [Dokumentation](https://docs.akiradocs.com)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

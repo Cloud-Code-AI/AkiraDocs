@@ -1,0 +1,91 @@
+{
+  "title": "KI-gestützte Übersetzung",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "AI Translation",
+    "Automation",
+    "Language Processing"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nAnleitung zur Verwendung der KI-Übersetzungsfunktionen von AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nKonfiguration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nKonfiguration",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "{\n  \"Übersetzung\": {\n    \"auto_übersetzen\": true,\n    \"Anbieter\": \"anthropic\",\n    \"Modell\": \"claude-3-sonnet-20240229\",\n    \"ZielSprachen\": [\"es\", \"fr\", \"de\"],\n    \"ausgeschlossenePfade\": [\"_meta.json\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nAPI-Konfiguration",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "code",
+      "content": "ANTHROPIC_API_KEY=der_API-Schlüssel",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Merkmale",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Automatische Übersetzung",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "list",
+      "content": [
+        "Übersetzung des Inhalts während der Kompilierung",
+        "Kontextbewusste Übersetzungen",
+        "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Formatieren beibehalten wird:\n\nBeibehaltung der Fachbegriffe",
+        "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wird:\n\nBeibehaltung der Formatierung"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Introduction to AkiraDocs",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
+      "content": "AkiraDocs is a next-generation documentation platform that combines the power of AI with an intuitive content management system. It's designed to transform your documentation workflow from days to minutes."
     },
     {
       "id": "2",
-      "type": "heading",
-      "content": "Introduction to AkiraDocs",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
-      "content": "AkiraDocs is a next-generation documentation platform that combines the power of AI with an intuitive content management system. It's designed to transform your documentation workflow from months to minutes."
-    },
-    {
-      "id": "4",
       "type": "heading",
       "content": "Why AkiraDocs?",
       "metadata": {
@@ -38,12 +25,12 @@
       }
     },
     {
-      "id": "5",
+      "id": "3",
       "type": "paragraph",
       "content": "Documentation is often a challenge for teams:"
     },
     {
-      "id": "6",
+      "id": "4",
       "type": "list",
       "content": [
         "Developers want to keep using Markdown and Git",
@@ -57,12 +44,12 @@
       }
     },
     {
-      "id": "7",
+      "id": "5",
       "type": "paragraph",
       "content": "AkiraDocs solves these challenges by providing a unified platform that brings everyone's workflow together."
     },
     {
-      "id": "8",
+      "id": "6",
       "type": "heading",
       "content": "Core Benefits",
       "metadata": {
@@ -70,31 +57,21 @@
       }
     },
     {
-      "id": "9",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "10",
+      "id": "7",
       "type": "list",
       "content": [
-        "**Universal Workflow**: Developers keep their Markdown/Git workflow while content teams get a block-based WYSIWYG editor",
-        "**AI-Powered**: Automatic content updates, translations, and optimizations",
-        "**SEO-Optimized**: Documentation that ranks well by default",
-        "**Multi-Language Support**: AI-powered translations with context awareness",
-        "**Enterprise-Ready**: SSO/SAML integration, audit logs, and custom deployment options"
+        "<strong>Universal Workflow</strong>: Developers keep their Markdown/Git workflow while content teams get a block-based WYSIWYG editor",
+        "<strong>AI-Powered</strong>: Automatic content updates, translations, and optimizations",
+        "<strong>SEO-Optimized</strong>: Documentation that ranks well by default",
+        "<strong>Multi-Language Support</strong>: AI-powered translations with context awareness",
+        "<strong>Enterprise-Ready</strong>: SSO/SAML integration, audit logs, and custom deployment options"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "11",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "12",
+      "id": "8",
       "type": "heading",
       "content": "Who Is It For?",
       "metadata": {
@@ -102,12 +79,7 @@
       }
     },
     {
-      "id": "13",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "14",
+      "id": "9",
       "type": "heading",
       "content": "Developer Documentation",
       "metadata": {
@@ -115,7 +87,7 @@
       }
     },
     {
-      "id": "15",
+      "id": "10",
       "type": "list",
       "content": [
         "API documentation",
@@ -128,12 +100,7 @@
       }
     },
     {
-      "id": "16",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "17",
+      "id": "11",
       "type": "heading",
       "content": "Product Documentation",
       "metadata": {
@@ -141,7 +108,7 @@
       }
     },
     {
-      "id": "18",
+      "id": "12",
       "type": "list",
       "content": [
         "User guides",
@@ -154,12 +121,7 @@
       }
     },
     {
-      "id": "19",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "20",
+      "id": "13",
       "type": "heading",
       "content": "Enterprise Documentation",
       "metadata": {
@@ -167,7 +129,7 @@
       }
     },
     {
-      "id": "21",
+      "id": "14",
       "type": "list",
       "content": [
         "Internal knowledge bases",
@@ -178,24 +140,6 @@
       "metadata": {
         "listType": "unordered"
       }
-    },
-    {
-      "id": "22",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "23",
-      "type": "heading",
-      "content": "Next Steps",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
-      "id": "24",
-      "type": "paragraph",
-      "content": "Ready to get started? Check out our [Quick Start Guide](./quick-start.md) or explore our [detailed features](./features.md)."
     }
   ]
 }

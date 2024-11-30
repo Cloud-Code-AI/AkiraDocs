@@ -16,7 +16,6 @@ interface AIResponseProps {
 }
 
 export function AIResponse({ response, sources, onBack }: AIResponseProps) {
-  console.debug(sources)
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

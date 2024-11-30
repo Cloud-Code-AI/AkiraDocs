@@ -1,0 +1,213 @@
+{
+  "title": "Contribuir a AkiraDocs",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Contributing",
+  "keywords": [
+    "Contributing",
+    "Open Source",
+    "Development"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Guía para contribuir al proyecto de código abierto AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Comenzando",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Configurar el Entorno de Desarrollo",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "# Clonar repositorio\ngit clone https://github.com/Cloud-Code-AI/akiradocs\ncd akiradocs\n\n# Instalar dependencias\nnpm install\n\n# Iniciar servidor de desarrollo\nnpm run dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Directrices de contribución",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Tipos de contribuciones",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "Correcciones de errores",
+        "Adiciones de funciones",
+        "Mejoras en la documentación",
+        "Ayuda de traducción",
+        "Informes de problemas"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Proceso de solicitud de extracción",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "1. Bifurcar el repositorio\n2. Crear rama de funcionalidad\n3. Realizar cambios\n4. Enviar solicitud de extracción"
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Mensajes de confirmación",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "code",
+      "content": "# Formato\ntipo(ámbito): descripción\n\n# Ejemplos\nfeat(editor): agregar nuevo tipo de bloque\nfix(traducción): corregir detección de idioma\ndocs(api): actualizar guía de autenticación",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Guías de desarrollo",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Estilo de código",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Sigue los patrones existentes",
+        "Utiliza TypeScript",
+        "Añadir comentarios",
+        "Escribir pruebas"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Prueba",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "code",
+      "content": "# Ejecutar pruebas\nnpm run test\n\n# Verificar tipos\nnpm run type-check\n\n# Lint código\nnpm run lint",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Documentación",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Actualizar Documentos",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": "1. Editar los archivos relevantes\n2. Actualizar ejemplos\n3. Verificar enlaces\n4. Verificar formato"
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Crear ejemplos",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "21",
+      "type": "list",
+      "content": [
+        "Claro y conciso",
+        "Bien documentado",
+        "Probado",
+        "Mantenible"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "22",
+      "type": "heading",
+      "content": "Obtener ayuda",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "23",
+      "type": "list",
+      "content": [
+        "Únete a [Discord](https://discord.gg/zvYZukgeH2)",
+        "Revisa [Problemas](https://github.com/Cloud-Code-AI/akiradocs/issues)",
+        "Lea [Documentación](https://docs.akiradocs.com)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

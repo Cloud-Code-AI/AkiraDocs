@@ -13,10 +13,10 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { getApiNavigation } from '@/lib/content';
 import { useAnalytics } from '@/hooks/useAnalytics';
 const buttonStyles = {
-  base: "w-full justify-start text-left font-normal rounded-lg transition-colors",
-  hover: "hover:bg-accent hover:text-accent-foreground",
-  active: "bg-accent/50 text-accent-foreground font-medium",
-  state: "data-[state=open]:bg-accent/50",
+  base: "w-full justify-start text-left font-normal rounded-lg transition-colors px-3 py-2",
+  hover: "hover:bg-accent/40 hover:text-accent-foreground",
+  active: "bg-accent text-accent-foreground font-medium",
+  state: "data-[state=open]:bg-accent/30",
 }
 
 function ErrorFallback({ error }: { error: Error }) {
@@ -33,9 +33,9 @@ export function Navigation({ locale, items }: NavigationProps) {
   
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
-        <ScrollArea className="h-full py-6 px-4">
-          <nav>
+      <aside className="w-64 bg-sidebar-background/50 text-sidebar-foreground border-r border-border/40 h-[calc(100vh-4rem)] sticky top-16 backdrop-blur-sm">
+        <ScrollArea className="h-full py-4">
+          <nav className="px-3 space-y-1">
             {Object.entries(items)
               .filter(([key]) => key !== "defaultRoute")
               .map(([key, item]) => (
@@ -71,8 +71,8 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
   return (
     <motion.div 
       className={cn(
-        "mb-1",
-        depth > 0 && "ml-4 border-l border-border pl-2"
+        "relative",
+        depth > 0 && "ml-3 border-l border-border/50 pl-3 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-border/0 before:via-border/50 before:to-border/0"
       )}
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
@@ -85,21 +85,21 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
           buttonStyles.hover,
           buttonStyles.state,
           isActive && buttonStyles.active,
-          depth > 0 && "text-sm"
+          depth > 0 && "text-sm text-muted-foreground",
+          "group"
         )}
         onClick={handleClick}
       >
         {hasChildren ? (
           <motion.div
+            className="text-muted-foreground/70 group-hover:text-muted-foreground"
             initial={false}
             animate={{ rotate: isOpen ? 90 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            <ChevronRight className="mr-2 h-4 w-4" />
+            <ChevronRight className="mr-2 h-3.5 w-3.5" />
           </motion.div>
-        ) : (
-          <FileText className="mr-2 h-4 w-4" />
-        )}
+        ) : ""}
         {item.path ? (
           <Link href={absolutePath} className="flex-1" onClick={handleClick}>
             {item.title}

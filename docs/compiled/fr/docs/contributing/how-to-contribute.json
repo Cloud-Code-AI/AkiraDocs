@@ -1,0 +1,213 @@
+{
+  "title": "Contribuer à AkiraDocs",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Contributing",
+  "keywords": [
+    "Contributing",
+    "Open Source",
+    "Development"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nGuide pour contribuer au projet de code source ouvert AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Commençant",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Configurer l'Environnement de Développement",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "# Cloner le dépôt\ngit clone https://github.com/Cloud-Code-AI/akiradocs\ncd akiradocs\n\n# Installer les dépendances\nnpm install\n\n# Démarrer le serveur de développement\nnpm run dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nLignes directrices pour contribuer",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nTypes de contributions",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "Corrections d'erreurs",
+        "Traductions des fonctions",
+        "Voici la traduction en français :\n\nAméliorations de la documentation",
+        "Voici la traduction en français :\n\nAide à la traduction",
+        "Rapports de problèmes"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Processus de demande d'extraction",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "paragraph",
+      "content": "1. Bifurquer le dépôt\n2. Créer une branche de fonctionnalité\n3. Effectuer des modifications\n4. Envoyer une demande de pull"
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nMessages de confirmation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "code",
+      "content": "# Format\ntype(portée) : description\n\n# Exemples\nfeat(éditeur) : ajouter un nouveau type de bloc\nfix(traduction) : corriger la détection de langue\ndocs(api) : mettre à jour le guide d'authentification",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nGuides de développement",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Style du code",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Suivez les modèles existants",
+        "Utilisez TypeScript",
+        "Ajouter des commentaires",
+        "Écrire des tests"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nTest",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "code",
+      "content": "# Exécuter les tests\nnpm run test\n\n# Vérifier les types\nnpm run type-check\n\n# Lint code\nnpm run lint",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nDocumentation",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Mettre à jour les documents",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": "1. Modifier les fichiers pertinents\n2. Mettre à jour les exemples\n3. Vérifier les liens\n4. Vérifier le format"
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Créer des exemples",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "21",
+      "type": "list",
+      "content": [
+        "Clair et concis",
+        "Bien documenté",
+        "Voici la traduction en français :\n\nTesté",
+        "Maintenable"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "22",
+      "type": "heading",
+      "content": "Obtenir de l'aide",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "23",
+      "type": "list",
+      "content": [
+        "Rejoins [Discord](https://discord.gg/zvYZukgeH2)",
+        "Vérifiez les [Problèmes](https://github.com/Cloud-Code-AI/akiradocs/issues)",
+        "Lisez la [Documentation](https://docs.akiradocs.com)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

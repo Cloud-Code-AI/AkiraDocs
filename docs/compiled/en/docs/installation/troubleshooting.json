@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Troubleshooting Guide",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "Troubleshooting Guide",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "Common issues and their solutions when setting up AkiraDocs."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Common Installation Issues",
       "metadata": {
@@ -38,12 +25,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "3",
       "type": "heading",
       "content": "Node.js Version Mismatch",
       "metadata": {
@@ -51,12 +33,12 @@
       }
     },
     {
-      "id": "7",
+      "id": "4",
       "type": "paragraph",
-      "content": "**Problem**: Error about Node.js version compatibility"
+      "content": "<strong>Problem</strong>: Error about Node.js version compatibility"
     },
     {
-      "id": "8",
+      "id": "5",
       "type": "code",
       "content": "Error: The engine \"node\" is incompatible with this module",
       "metadata": {
@@ -65,12 +47,12 @@
       }
     },
     {
-      "id": "9",
+      "id": "6",
       "type": "paragraph",
-      "content": "**Solution**:\n1. Check your Node.js version:"
+      "content": "<strong>Solution</strong>:\n1. Check your Node.js version:"
     },
     {
-      "id": "10",
+      "id": "7",
       "type": "code",
       "content": "node --version",
       "metadata": {
@@ -79,12 +61,12 @@
       }
     },
     {
-      "id": "11",
+      "id": "8",
       "type": "paragraph",
       "content": "2. Install the correct version (16.x or higher)\n3. Use nvm to manage Node.js versions:"
     },
     {
-      "id": "12",
+      "id": "9",
       "type": "code",
       "content": "nvm install 20\nnvm use 20",
       "metadata": {
@@ -93,12 +75,7 @@
       }
     },
     {
-      "id": "13",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "14",
+      "id": "10",
       "type": "heading",
       "content": "Dependencies Installation Failed",
       "metadata": {
@@ -106,12 +83,17 @@
       }
     },
     {
-      "id": "15",
+      "id": "11",
       "type": "paragraph",
-      "content": "**Problem**: npm install fails with errors\n\n**Solution**:\n1. Clear npm cache:"
+      "content": "<strong>Problem</strong>: npm install fails with errors"
     },
     {
-      "id": "16",
+      "id": "12",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong>:\n1. Clear npm cache:"
+    },
+    {
+      "id": "13",
       "type": "code",
       "content": "npm cache clean --force",
       "metadata": {
@@ -120,12 +102,12 @@
       }
     },
     {
-      "id": "17",
+      "id": "14",
       "type": "paragraph",
       "content": "2. Delete node_modules and package-lock.json:"
     },
     {
-      "id": "18",
+      "id": "15",
       "type": "code",
       "content": "rm -rf node_modules package-lock.json\nnpm install",
       "metadata": {
@@ -134,12 +116,7 @@
       }
     },
     {
-      "id": "19",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "20",
+      "id": "16",
       "type": "heading",
       "content": "Build Issues",
       "metadata": {
@@ -147,12 +124,7 @@
       }
     },
     {
-      "id": "21",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "22",
+      "id": "17",
       "type": "heading",
       "content": "Build Fails",
       "metadata": {
@@ -160,12 +132,17 @@
       }
     },
     {
-      "id": "23",
+      "id": "18",
       "type": "paragraph",
-      "content": "**Problem**: `npm run build` fails\n\n**Solution**:\n1. Check for TypeScript errors:"
+      "content": "<strong>Problem</strong>: `npm run build` fails"
     },
     {
-      "id": "24",
+      "id": "19",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong>:\n1. Check for TypeScript errors:"
+    },
+    {
+      "id": "20",
       "type": "code",
       "content": "npm run type-check",
       "metadata": {
@@ -174,12 +151,12 @@
       }
     },
     {
-      "id": "25",
+      "id": "21",
       "type": "paragraph",
       "content": "2. Verify environment variables are set correctly\n3. Clear next.js cache:"
     },
     {
-      "id": "26",
+      "id": "22",
       "type": "code",
       "content": "rm -rf .next",
       "metadata": {
@@ -188,12 +165,7 @@
       }
     },
     {
-      "id": "27",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "28",
+      "id": "23",
       "type": "heading",
       "content": "Static Export Issues",
       "metadata": {
@@ -201,12 +173,17 @@
       }
     },
     {
-      "id": "29",
+      "id": "24",
       "type": "paragraph",
-      "content": "**Problem**: Static export fails with dynamic routes\n\n**Solution**:\n1. Configure `next.config.js`:"
+      "content": "<strong>Problem</strong>: Static export fails with dynamic routes"
     },
     {
-      "id": "30",
+      "id": "25",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong>:\n1. Configure `next.config.js`:"
+    },
+    {
+      "id": "26",
       "type": "code",
       "content": "module.exports = {\n  output: 'export',\n  images: {\n    unoptimized: true\n  }\n}",
       "metadata": {
@@ -215,12 +192,7 @@
       }
     },
     {
-      "id": "31",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "32",
+      "id": "27",
       "type": "heading",
       "content": "Translation Issues",
       "metadata": {
@@ -228,12 +200,7 @@
       }
     },
     {
-      "id": "33",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "34",
+      "id": "28",
       "type": "heading",
       "content": "AI Translation Not Working",
       "metadata": {
@@ -241,12 +208,17 @@
       }
     },
     {
-      "id": "35",
+      "id": "29",
       "type": "paragraph",
-      "content": "**Problem**: Automatic translation fails\n\n**Solution**:\n1. Verify API keys are set correctly\n2. Check translation configuration:"
+      "content": "<strong>Problem</strong>: Automatic translation fails"
     },
     {
-      "id": "36",
+      "id": "30",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong>:\n1. Verify API keys are set correctly\n2. Check translation configuration:"
+    },
+    {
+      "id": "31",
       "type": "code",
       "content": "{\n  \"translation\": {\n    \"auto_translate\": true,\n    \"provider\": \"anthropic\",\n    \"targetLanguages\": [\"es\", \"fr\", \"de\"]\n  }\n}",
       "metadata": {
@@ -255,12 +227,7 @@
       }
     },
     {
-      "id": "37",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "38",
+      "id": "32",
       "type": "heading",
       "content": "Content Issues",
       "metadata": {
@@ -268,12 +235,7 @@
       }
     },
     {
-      "id": "39",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "40",
+      "id": "33",
       "type": "heading",
       "content": "Content Not Updating",
       "metadata": {
@@ -281,12 +243,17 @@
       }
     },
     {
-      "id": "41",
+      "id": "34",
       "type": "paragraph",
-      "content": "**Problem**: Changes to content files not reflecting\n\n**Solution**:\nContent changes are built on build time. If you are using the local development server, you need to restart the server after making changes.\n1. Clear the cache:"
+      "content": "<strong>Problem</strong>: Changes to content files not reflecting"
     },
     {
-      "id": "42",
+      "id": "35",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong>:\nContent changes are built on build time. If you are using the local development server, you need to restart the server after making changes.\n1. Clear the cache:"
+    },
+    {
+      "id": "36",
       "type": "code",
       "content": "npm run clean",
       "metadata": {
@@ -295,12 +262,12 @@
       }
     },
     {
-      "id": "43",
+      "id": "37",
       "type": "paragraph",
       "content": "2. Restart the development server\n3. Check file permissions"
     },
     {
-      "id": "44",
+      "id": "38",
       "type": "heading",
       "content": "Deployment Issues",
       "metadata": {
@@ -308,12 +275,7 @@
       }
     },
     {
-      "id": "45",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "46",
+      "id": "39",
       "type": "heading",
       "content": "Vercel Deployment Failed",
       "metadata": {
@@ -321,12 +283,17 @@
       }
     },
     {
-      "id": "47",
+      "id": "40",
       "type": "paragraph",
-      "content": "**Problem**: Deployment to Vercel fails\n\n**Solution**:\n1. Check build logs\n2. Verify environment variables are set in Vercel dashboard\n3. Ensure all dependencies are listed in package.json"
+      "content": "<strong>Problem</strong>: Deployment to Vercel fails"
     },
     {
-      "id": "48",
+      "id": "41",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong>:\n1. Check build logs\n2. Verify environment variables are set in Vercel dashboard\n3. Ensure all dependencies are listed in package.json"
+    },
+    {
+      "id": "42",
       "type": "heading",
       "content": "Getting Help",
       "metadata": {
@@ -334,9 +301,14 @@
       }
     },
     {
-      "id": "49",
+      "id": "43",
       "type": "paragraph",
-      "content": "If you're still experiencing issues:\n\n1. Check our [GitHub Issues](https://github.com/Cloud-Code-AI/Akiradocs/issues)\n2. Join our [Discord Community](https://discord.gg/zvYZukgeH2)\n3. Contact [Support](mailto:saurav.panda@akiradocs.ai)"
+      "content": "If you're still experiencing issues:"
+    },
+    {
+      "id": "44",
+      "type": "paragraph",
+      "content": "1. Check our [GitHub Issues](https://github.com/Cloud-Code-AI/Akiradocs/issues)\n2. Join our [Discord Community](https://discord.gg/zvYZukgeH2)\n3. Contact [Support](mailto:saurav.panda@akiradocs.ai)"
     }
   ]
 }

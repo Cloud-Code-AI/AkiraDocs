@@ -1,0 +1,120 @@
+{
+  "title": "Gestión de traducciones",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "Translation Management",
+    "Content Localization",
+    "Workflow"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Aprende cómo gestionar y mantener de manera efectiva el contenido traducido en AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Flujo de trabajo de traducción",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Traducción automática",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "1. Crear contenido en el idioma de origen\n2. Habilitar la traducción automática en la configuración\n3. Construir/implementar para generar traducciones\n4. Revisar y refinar las traducciones"
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Traducción manual",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "1. Crear directorios específicos para cada idioma\n2. Copiar el contenido fuente\n3. Traducir manualmente\n4. Actualizar los metadatos"
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Organización del contenido",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Estructura de archivos",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "_contenido/\n├── en/\n│   └── docs/\n│       ├── intro.md\n│       └── guía.md\n├── es/\n│   └── docs/\n│       ├── intro.md\n│       └── guía.md\n└── fr/\n    └── docs/\n        ├── intro.md\n        └── guía.md",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Control de Calidad",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Proceso de revisión",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "1. Traducción de IA\n2. Revisión humana\n3. Verificación técnica\n4. Publicación"
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Control de versiones",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Realizar un seguimiento de los cambios en varios idiomas",
+        "Mantener la sincronización",
+        "Gestionar las actualizaciones de manera eficiente"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "Analytics Integration",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Setting up Google Analytics",
       "metadata": {
@@ -38,12 +25,12 @@
       }
     },
     {
-      "id": "5",
+      "id": "3",
       "type": "paragraph",
       "content": "1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)\n2. Get your Measurement ID (starts with \"G-\")\n3. Add the ID to your `akiradocs.config.json`:"
     },
     {
-      "id": "6",
+      "id": "4",
       "type": "code",
       "content": "{\n\"analytics\": {\n\"google\": {\n\"measurementId\": \"G-XXXXXXXXXX\",\n\"enabled\": true\n},\n\"debug\": false\n}\n}",
       "metadata": {
@@ -52,12 +39,7 @@
       }
     },
     {
-      "id": "7",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "8",
+      "id": "5",
       "type": "heading",
       "content": "What's Tracked Automatically",
       "metadata": {
@@ -65,12 +47,7 @@
       }
     },
     {
-      "id": "9",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "10",
+      "id": "6",
       "type": "list",
       "content": [
         "Page views",
@@ -84,12 +61,7 @@
       }
     },
     {
-      "id": "11",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "12",
+      "id": "7",
       "type": "heading",
       "content": "Custom Event Tracking",
       "metadata": {
@@ -97,12 +69,12 @@
       }
     },
     {
-      "id": "13",
+      "id": "8",
       "type": "paragraph",
       "content": "You can track custom events using the `useAnalytics` hook:"
     },
     {
-      "id": "14",
+      "id": "9",
       "type": "code",
       "content": "import { useAnalytics } from '@/hooks/useAnalytics'\nfunction MyComponent() {\n    const { track } = useAnalytics()\n    const handleClick = () => {\n        track('doc_rating', {\n            rating: 5,\n            page: 'getting-started',\n            helpful: true\n        })\n    }\n    return <button onClick={handleClick}>This was helpful</button>\n}",
       "metadata": {
@@ -111,12 +83,7 @@
       }
     },
     {
-      "id": "15",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "16",
+      "id": "10",
       "type": "heading",
       "content": "Debug Mode",
       "metadata": {
@@ -124,12 +91,12 @@
       }
     },
     {
-      "id": "17",
+      "id": "11",
       "type": "paragraph",
       "content": "Enable debug mode to see analytics events in the console during development:"
     },
     {
-      "id": "18",
+      "id": "12",
       "type": "code",
       "content": "{\n\"analytics\": {\n\"debug\": true\n}\n}",
       "metadata": {
@@ -138,7 +105,7 @@
       }
     },
     {
-      "id": "19",
+      "id": "13",
       "type": "paragraph",
       "content": "This provides a complete analytics integration that's easy for users to set up and extend as needed."
     }

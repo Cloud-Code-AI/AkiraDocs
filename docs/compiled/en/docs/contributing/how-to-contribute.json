@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Contributing to AkiraDocs",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "Contributing to AkiraDocs",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "Guide to contributing to the AkiraDocs open-source project."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Getting Started",
       "metadata": {
@@ -38,12 +25,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "3",
       "type": "heading",
       "content": "Setup Development Environment",
       "metadata": {
@@ -51,21 +33,16 @@
       }
     },
     {
-      "id": "7",
+      "id": "4",
       "type": "code",
-      "content": "# Clone repository\ngit clone https://github.com/akiradocs/akiradocs\ncd akiradocs\n\n# Install dependencies\nnpm install\n\n# Start development server\nnpm run dev",
+      "content": "# Clone repository\ngit clone https://github.com/Cloud-Code-AI/akiradocs\ncd akiradocs\n\n# Install dependencies\nnpm install\n\n# Start development server\nnpm run dev",
       "metadata": {
         "language": "bash",
         "showLineNumbers": true
       }
     },
     {
-      "id": "8",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "9",
+      "id": "5",
       "type": "heading",
       "content": "Contribution Guidelines",
       "metadata": {
@@ -73,12 +50,7 @@
       }
     },
     {
-      "id": "10",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "11",
+      "id": "6",
       "type": "heading",
       "content": "Types of Contributions",
       "metadata": {
@@ -86,7 +58,7 @@
       }
     },
     {
-      "id": "12",
+      "id": "7",
       "type": "list",
       "content": [
         "Bug fixes",
@@ -100,12 +72,7 @@
       }
     },
     {
-      "id": "13",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "14",
+      "id": "8",
       "type": "heading",
       "content": "Pull Request Process",
       "metadata": {
@@ -113,12 +80,12 @@
       }
     },
     {
-      "id": "15",
+      "id": "9",
       "type": "paragraph",
       "content": "1. Fork the repository\n2. Create feature branch\n3. Make changes\n4. Submit pull request"
     },
     {
-      "id": "16",
+      "id": "10",
       "type": "heading",
       "content": "Commit Messages",
       "metadata": {
@@ -126,7 +93,7 @@
       }
     },
     {
-      "id": "17",
+      "id": "11",
       "type": "code",
       "content": "# Format\ntype(scope): description\n\n# Examples\nfeat(editor): add new block type\nfix(translation): correct language detection\ndocs(api): update authentication guide",
       "metadata": {
@@ -135,12 +102,7 @@
       }
     },
     {
-      "id": "18",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "19",
+      "id": "12",
       "type": "heading",
       "content": "Development Guidelines",
       "metadata": {
@@ -148,12 +110,7 @@
       }
     },
     {
-      "id": "20",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "21",
+      "id": "13",
       "type": "heading",
       "content": "Code Style",
       "metadata": {
@@ -161,7 +118,7 @@
       }
     },
     {
-      "id": "22",
+      "id": "14",
       "type": "list",
       "content": [
         "Follow existing patterns",
@@ -174,12 +131,7 @@
       }
     },
     {
-      "id": "23",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "24",
+      "id": "15",
       "type": "heading",
       "content": "Testing",
       "metadata": {
@@ -187,7 +139,7 @@
       }
     },
     {
-      "id": "25",
+      "id": "16",
       "type": "code",
       "content": "# Run tests\nnpm run test\n\n# Check types\nnpm run type-check\n\n# Lint code\nnpm run lint",
       "metadata": {
@@ -196,12 +148,7 @@
       }
     },
     {
-      "id": "26",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "27",
+      "id": "17",
       "type": "heading",
       "content": "Documentation",
       "metadata": {
@@ -209,12 +156,7 @@
       }
     },
     {
-      "id": "28",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "29",
+      "id": "18",
       "type": "heading",
       "content": "Update Docs",
       "metadata": {
@@ -222,12 +164,12 @@
       }
     },
     {
-      "id": "30",
+      "id": "19",
       "type": "paragraph",
       "content": "1. Edit relevant files\n2. Update examples\n3. Check links\n4. Verify formatting"
     },
     {
-      "id": "31",
+      "id": "20",
       "type": "heading",
       "content": "Create Examples",
       "metadata": {
@@ -235,7 +177,7 @@
       }
     },
     {
-      "id": "32",
+      "id": "21",
       "type": "list",
       "content": [
         "Clear and concise",
@@ -248,12 +190,7 @@
       }
     },
     {
-      "id": "33",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "34",
+      "id": "22",
       "type": "heading",
       "content": "Getting Help",
       "metadata": {
@@ -261,7 +198,7 @@
       }
     },
     {
-      "id": "35",
+      "id": "23",
       "type": "list",
       "content": [
         "Join [Discord](https://discord.gg/zvYZukgeH2)",

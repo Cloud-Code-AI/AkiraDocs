@@ -64,11 +64,20 @@ export function Paragraph({
     );
   }
 
-  // Non-editing mode remains the same
+  const processContent = (text: string) => {
+    return text.split(/(<strong>.*?<\/strong>)/).map((part, index) => {
+      if (part.startsWith('<strong>') && part.endsWith('</strong>')) {
+        const innerText = part.replace(/<\/?strong>/g, '');
+        return <strong key={index}>{innerText}</strong>;
+      }
+      return part;
+    });
+  };
+
   const content = typeof children === 'string' 
     ? children.split('\n').map((line, i) => (
         <React.Fragment key={i}>
-          {line}
+          {processContent(line)}
           {i < children.split('\n').length - 1 && <br />}
         </React.Fragment>
       ))

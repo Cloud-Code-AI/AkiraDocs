@@ -1,0 +1,152 @@
+{
+  "title": "Creación y organización de páginas",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Content Management",
+  "keywords": [
+    "Content Creation",
+    "Pages",
+    "Organization"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Aprende cómo crear, estructurar y organizar tus páginas de documentación en AkiraDocs. Puedes crear páginas de markdown o simplemente usar la interfaz de usuario del editor. Ten en cuenta que en la carpeta _contents solo verás el contenido de markdown creado por ti. Si usas la interfaz de usuario del Editor, el contenido se guardará en la carpeta compilada y se traducirá automáticamente a otros idiomas."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Estructura de página",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Plantilla Básica de Página",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "---\ntítulo: Tu título de página\ndescripción: Breve descripción de la página\nautor: Tu nombre\nfechaDePublicación: 2024-11-26\nfechaDeModificación: 2024-11-26\ncategoría: Nombre de categoría\npalabrasClaves:\n  - palabra clave 1\n  - palabra clave 2\n---\n\n# Título principal\n\nEl contenido comienza aquí...",
+      "metadata": {
+        "language": "markdown",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Estructura de directorios",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "code",
+      "content": "folder_name/\n├── _contents/\n│   ├── es/\n│   │   ├── getting-started/\n│   │   ├── guides/\n│   │   └── api/",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "Puedes simplemente crear páginas para el idioma predeterminado (en) y AkiraDocs las traducirá automáticamente a otros idiomas."
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Creación de nuevas páginas",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Método 1: Usando la interfaz de usuario",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "1. Haga clic en \"Nueva página\" en la barra lateral\n2. Comience a agregar contenido"
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Método 2: Creación de archivo directo",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "1. Crea un nuevo archivo `.md` en el directorio apropiado\n2. Agrega el frontmatter requerido\n3. Escribe el contenido usando Markdown\n4. Guarda y compila"
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Organización de la página",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Categorías y Etiquetas",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Utiliza categorías consistentes",
+        "Aplica las etiquetas relevantes",
+        "Organizar por tema",
+        "Crea jerarquías lógicas"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Estructura de navegación",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "Esta es generada automáticamente a partir de la estructura de carpetas. Puedes personalizarla editando el archivo `_meta.json` dentro de la carpeta compilada."
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "{\n  \"docs\": {\n    \"getting-started\": {\n      \"title\": \"Comenzando\",\n      \"items\": {\n        \"introduction\": {\n          \"title\": \"Introducción\",\n          \"path\": \"/docs/getting-started/introduction\"\n        }\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

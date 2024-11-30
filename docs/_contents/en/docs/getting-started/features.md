@@ -52,15 +52,3 @@ A comprehensive overview of AkiraDocs' core features and capabilities.
 ✓ Docusaurus
 ✓ ReadTheDocs
 ```
-
-## Feature Comparison
-
-| Feature | AkiraDocs | Traditional Docs |
-|---------|-----------|------------------|
-| Notion-like Editor | ✓ | ✗ |
-| AI Translation | ✓ | ✗ |
-| AI Search | ✓ | ✗ |
-| Auto SEO | ✓ | Partial |
-| Markdown Support | ✓ | ✓ |
-| Build Optimization | ✓ | Varies |
-

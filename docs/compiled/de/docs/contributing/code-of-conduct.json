@@ -1,0 +1,99 @@
+{
+  "title": "Verhaltenskodex",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Contributing",
+  "keywords": [
+    "Code of Conduct",
+    "Contributing"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nUnser Engagement",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Wir, als Mitglieder, Mitwirkende und Führungskräfte, verpflichten uns, dafür zu sorgen, dass die Teilnahme an unserer Gemeinschaft für alle eine Erfahrung frei von Belästigung ist, unabhängig von Alter, Körpergröße, sichtbarer oder unsichtbarer Behinderung, ethnischer Herkunft, sexuellen Merkmalen, Geschlechtsidentität und Ausdruck, Erfahrungsniveau, Bildung, sozioökonomischem Status, Nationalität, persönlichem Erscheinungsbild, Rasse, Religion oder sexueller Identität und Orientierung."
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Wir verpflichten uns, auf Weisen zu handeln und zu interagieren, die zu einer offenen, einladenden, vielfältigen, inklusiven und gesunden Gemeinschaft beitragen."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Unsere Normen",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nBeispiele für Verhaltensweisen, die zu einer positiven Umgebung beitragen:"
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "* Zeigen Sie Mitgefühl und Freundlichkeit gegenüber anderen\n* Respektieren Sie unterschiedliche Meinungen, Ansichten und Erfahrungen\n* Geben und akzeptieren Sie konstruktive Kritik mit Anmut\n* Übernehmen Sie Verantwortung und entschuldigen Sie sich bei denen, die von unseren Fehlern betroffen waren\n* Konzentrieren Sie sich darauf, was für die Gemeinschaft als Ganzes am besten ist"
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nBeispiele für inakzeptables Verhalten:"
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "* Die Verwendung von sexualisierter Sprache oder Bildern und sexuelle Aufmerksamkeit oder Anspielungen\n* Trolling, beleidigende oder anstößige Kommentare und persönliche oder politische Angriffe\n* Öffentliche oder private Belästigung\n* Die Veröffentlichung privater Informationen anderer Personen ohne deren ausdrückliche Zustimmung\n* Jedes andere Verhalten, das in einer professionellen Umgebung als unangemessen angesehen werden könnte"
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Voici la traduction en allemand :\n\nCompliance-Verantwortlichkeiten",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nGemeinschaftsleiter sind dafür verantwortlich, unsere Standards für akzeptables Verhalten zu klären und durchzusetzen, und werden angemessene und faire Korrekturmaßnahmen als Reaktion auf Verhaltensweisen ergreifen, die sie als unangemessen, bedrohlich, beleidigend oder schädlich erachten."
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Konformität",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nFälle von missbräuchlichem, belästigendem oder anderweitig inakzeptablem Verhalten können den für die Durchsetzung zuständigen Community-Verantwortlichen gemeldet werden. Alle Beschwerden werden prompt und fair geprüft und untersucht."
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung auf Deutsch:\n\nZuschreibung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Formatieren beibehalten wurde:\n\nDieser Verhaltenskodex wurde vom [Contributor Covenant](https://www.contributor-covenant.org), Version 2.0, verfügbar unter https://www.contributor-covenant.org/version/2/0/code_of_conduct.html, übernommen."
+    }
+  ]
+}

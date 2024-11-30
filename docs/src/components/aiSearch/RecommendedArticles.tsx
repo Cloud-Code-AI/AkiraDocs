@@ -26,7 +26,7 @@ export function RecommendedArticles({ articles }: RecommendedArticlesProps) {
             </div>
             <div className="mt-6 text-center">
                 <Link 
-                    href="/articles" 
+                    href="/en/articles" 
                     className="text-sm text-primary hover:text-primary/80 transition-colors duration-200"
                 >
                     View all articles →
