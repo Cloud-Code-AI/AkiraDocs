@@ -1,0 +1,314 @@
+{
+  "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de dépannage",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Installation",
+  "keywords": [
+    "Troubleshooting",
+    "Issues",
+    "Solutions"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nProblèmes courants et leurs solutions lors de la configuration d'AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nProblèmes d'installation courants",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Discordance de version de Node.js",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "<strong>Problème</strong> : Erreur concernant la compatibilité de la version de Node.js"
+    },
+    {
+      "id": "5",
+      "type": "code",
+      "content": "Erreur : Le moteur \"node\" est incompatible avec ce module",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong> :\n1. Vérifiez votre version de Node.js :"
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "nœud --version",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "2. Installez la bonne version (16.x ou supérieure)\n3. Utilisez nvm pour gérer les versions de Node.js :"
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "installer nvm 20\nutiliser nvm 20",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Échec de l'installation des dépendances",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "<strong>Problème</strong> : npm install échoue avec des erreurs"
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong> :\n1. Nettoyer le cache de npm :"
+    },
+    {
+      "id": "13",
+      "type": "code",
+      "content": "Voici la traduction en français :\n\nnpm cache clean --force",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": "2. Supprimer node_modules et package-lock.json :"
+    },
+    {
+      "id": "15",
+      "type": "code",
+      "content": "Supprimer -rf node_modules package-lock.json\nnpm installer",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Problèmes de compilation",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Erreurs de compilation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "18",
+      "type": "paragraph",
+      "content": "<strong>Problème</strong> : `npm run build` échoue"
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong> :\n1. Vérifier les erreurs de TypeScript :"
+    },
+    {
+      "id": "20",
+      "type": "code",
+      "content": "npm exécuter type-check",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "2. Vérifiez que les variables d'environnement sont correctement configurées\n3. Effacez le cache de next.js :"
+    },
+    {
+      "id": "22",
+      "type": "code",
+      "content": "Supprimer -récursif -force .suivant",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "23",
+      "type": "heading",
+      "content": "Problèmes d'exportation statique",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "24",
+      "type": "paragraph",
+      "content": "<strong>Problème</strong> : L'exportation statique échoue avec des routes dynamiques"
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong> :\n1. Configurer `next.config.js` :"
+    },
+    {
+      "id": "26",
+      "type": "code",
+      "content": "module.exports = {\n  sortie: 'exporter',\n  images: {\n    sansOptimisation: vrai\n  }\n}",
+      "metadata": {
+        "language": "js",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "27",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nProblèmes de traduction",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "28",
+      "type": "heading",
+      "content": "Traduction d'IA ne fonctionnant pas",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "29",
+      "type": "paragraph",
+      "content": "<strong>Problème</strong> : La traduction automatique échoue"
+    },
+    {
+      "id": "30",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong> :\n1. Vérifiez que les clés d'API sont configurées correctement\n2. Vérifiez la configuration de traduction :"
+    },
+    {
+      "id": "31",
+      "type": "code",
+      "content": "{\n  \"traduction\": {\n    \"auto_traduire\": true,\n    \"fournisseur\": \"anthropic\",\n    \"languesCibles\": [\"es\", \"fr\", \"de\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "32",
+      "type": "heading",
+      "content": "Problèmes de contenu",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "33",
+      "type": "heading",
+      "content": "Contenu ne se mettant pas à jour",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "34",
+      "type": "paragraph",
+      "content": "<strong>Problème</strong> : Les modifications apportées aux fichiers de contenu ne sont pas répercutées"
+    },
+    {
+      "id": "35",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong> :\nLes changements de contenu sont construits au moment de la compilation. Si vous utilisez le serveur de développement local, vous devez redémarrer le serveur après avoir effectué des modifications.\n1. Videz le cache :"
+    },
+    {
+      "id": "36",
+      "type": "code",
+      "content": "npm exécuter propre",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "37",
+      "type": "paragraph",
+      "content": "2. Redémarrer le serveur de développement\n3. Vérifier les permissions des fichiers"
+    },
+    {
+      "id": "38",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nProblèmes de mise en œuvre",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "39",
+      "type": "heading",
+      "content": "Déploiement Vercel Échoué",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "40",
+      "type": "paragraph",
+      "content": "<strong>Problème</strong> : Le déploiement sur Vercel échoue"
+    },
+    {
+      "id": "41",
+      "type": "paragraph",
+      "content": "<strong>Solution</strong> :\n1. Vérifier les journaux de compilation\n2. Vérifier que les variables d'environnement sont configurées dans le tableau de bord Vercel\n3. S'assurer que toutes les dépendances sont répertoriées dans package.json"
+    },
+    {
+      "id": "42",
+      "type": "heading",
+      "content": "Obtenir de l'aide",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "43",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nSi vous rencontrez encore des problèmes :"
+    },
+    {
+      "id": "44",
+      "type": "paragraph",
+      "content": "1. Consultez nos [GitHub Issues](https://github.com/Cloud-Code-AI/Akiradocs/issues)\n2. Rejoignez notre [Communauté Discord](https://discord.gg/zvYZukgeH2)\n3. Contactez le [Support](mailto:saurav.panda@akiradocs.ai)"
+    }
+  ]
+}

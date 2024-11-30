@@ -1,0 +1,120 @@
+{
+  "title": "Voici la traduction en français :\n\nGestion des traductions",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "Translation Management",
+    "Content Localization",
+    "Workflow"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Apprenez à gérer et à maintenir efficacement le contenu traduit dans AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nFlux de travail de traduction",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Traduction automatique",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "1. Créer du contenu dans la langue source\n2. Activer la traduction automatique dans les paramètres\n3. Construire/déployer pour générer des traductions\n4. Réviser et affiner les traductions"
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Traduction manuelle",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "1. Créer des répertoires spécifiques pour chaque langue\n2. Copier le contenu source\n3. Traduire manuellement\n4. Mettre à jour les métadonnées"
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nOrganisation du contenu",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nStructure des fichiers",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "_contenu/\n├── en/\n│   └── docs/\n│       ├── intro.md\n│       └── guide.md\n├── es/\n│   └── docs/\n│       ├── intro.md\n│       └── guide.md\n└── fr/\n    └── docs/\n        ├── intro.md\n        └── guide.md",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Contrôle de Qualité",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nProcessus de révision",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "1. Traduction par IA\n2. Révision humaine\n3. Vérification technique\n4. Publication"
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Contrôle de version",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Suivre les changements dans plusieurs langues",
+        "Voici la traduction en français :\n\nRester synchronisé",
+        "Gérer les mises à jour de manière efficace"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

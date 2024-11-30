@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Einführung in AkiraDocs",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
@@ -14,12 +14,12 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": "Entdecken Sie Akira Docs und seine Hauptfunktionen\n\nAkira Docs ist eine moderne Dokumentationsplattform, die die Leistung von KI mit einem intuitiven blockbasierten Inhaltssystem kombiniert. Dieser Leitfaden hilft Ihnen, die wichtigsten Konzepte und Funktionen zu verstehen."
+      "content": "AkiraDocs ist eine Dokumentationsplattform der neuen Generation, die die Leistungsfähigkeit von KI mit einem intuitiven Content-Management-System kombiniert. Sie wurde entwickelt, um Ihren Dokumentationsarbeitsablauf von Tagen auf Minuten zu verkürzen."
     },
     {
       "id": "2",
       "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nHauptmerkmale",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nWarum AkiraDocs?",
       "metadata": {
         "level": 2
       }
@@ -27,17 +27,17 @@
     {
       "id": "3",
       "type": "paragraph",
-      "content": ""
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nDie Dokumentation ist oft eine Herausforderung für Teams:"
     },
     {
       "id": "4",
       "type": "list",
       "content": [
-        "KI-gestützte Suche",
-        "Blockbasierte Inhaltserstellung",
-        "Anpassungsfähiges Konzept",
-        "Anpassbare Themen",
-        "Kompatibilität mit Markdown"
+        "Hier ist die Übersetzung auf Deutsch:\n\nDie Entwickler möchten weiterhin Markdown und Git verwenden",
+        "Die Content-Teams benötigen benutzerfreundliche Editoren",
+        "Hier ist die Übersetzung ins Deutsche:\n\nTechnische Redakteure kämpfen mit dem Versionsmanagement",
+        "Hier ist die Übersetzung ins Deutsche:\n\nProduktmanager haben es mit veralteter Dokumentation zu tun",
+        "Hier ist die Übersetzung ins Deutsche:\n\nUnternehmensführer brauchen bessere Analysen"
       ],
       "metadata": {
         "listType": "unordered"
@@ -46,7 +46,100 @@
     {
       "id": "5",
       "type": "paragraph",
-      "content": ""
+      "content": "AkiraDocs löst diese Herausforderungen, indem es eine einheitliche Plattform bietet, die den Arbeitsablauf aller zusammenführt."
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Formatieren beibehalten wurde:\n\nHauptvorteile",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "<strong>Universeller Workflow</strong>: Entwickler behalten ihren Markdown/Git-Workflow bei, während Content-Teams einen blockbasierten WYSIWYG-Editor erhalten",
+        "<strong>Angetrieben von KI</strong>: Automatische Inhaltsaktualisierungen, Übersetzungen und Optimierungen",
+        "<strong>Optimiert für SEO</strong>: Standardmäßig gut sortierte Dokumentation",
+        "<strong>Mehrsprachige Unterstützung</strong>: Übersetzungen mit künstlicher Intelligenz und Berücksichtigung des Kontexts",
+        "<strong>Bereit für Unternehmen</strong>: SSO/SAML-Integration, Audit-Logs und benutzerdefinierte Bereitstellungsoptionen"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Für wen ist das?",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nDokumentation für Entwickler",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "list",
+      "content": [
+        "Hier ist die Übersetzung ins Deutsche:\n\nAPI-Dokumentation",
+        "Hier ist die Übersetzung ins Deutsche:\n\nSDK-Anleitungen",
+        "Technische Spezifikationen",
+        "Hier ist die Übersetzung ins Deutsche:\n\nImplementierungsleitfäden"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nProduktdokumentation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "list",
+      "content": [
+        "Hier ist die Übersetzung ins Deutsche:\n\nBenutzerhandbücher",
+        "Hier ist die Übersetzung ins Deutsche:\n\nFunktionsdokumentation",
+        "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Formatieren beibehalten wurde:\n\nVersionshinweise",
+        "Hier ist die Übersetzung ins Deutsche:\n\nHäufig gestellte Fragen"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nUnternehmensdokumentation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Interne Wissensdatenbanken",
+        "Hier ist die Übersetzung ins Deutsche:\n\nProzessdokumentation",
+        "Hier ist die Übersetzung ins Deutsche:\n\nCompliance-Dokumentation",
+        "Hier ist die Übersetzung ins Deutsche:\n\nSchulungsmaterialien"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
     }
   ]
 }

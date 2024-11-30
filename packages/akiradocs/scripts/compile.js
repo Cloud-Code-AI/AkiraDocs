@@ -35,7 +35,8 @@ async function convertMarkdownToBlocks(content) {
         currentBlock = [];
       }
       
-      listItems.push(line.trim().substring(1).trim());
+      const processedLine = line.trim().substring(1).trim().replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      listItems.push(processedLine);
       
       if (i === lines.length - 1 || !lines[i + 1].trim().startsWith('-')) {
         blocks.push({

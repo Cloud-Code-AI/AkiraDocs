@@ -1,0 +1,116 @@
+{
+  "title": "Einrichten der Internationalisierung",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "i18n",
+    "Setup",
+    "Languages"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Konfigurieren Sie AkiraDocs für mehrere Sprachen mit KI-gestützter Übersetzungsunterstützung."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nSchnellkonfiguration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nGrundkonfiguration",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "Fügen Sie die Sprachkonfiguration zu `akiradocs.config.json` hinzu:"
+    },
+    {
+      "id": "5",
+      "type": "code",
+      "content": "{\n  \"localization\": {\n    \"defaultLocale\": \"en\",\n    \"fallbackLocale\": \"en\",\n    \"locales\": [\n      {\n        \"code\": \"en\",\n        \"name\": \"Englisch\",\n        \"flag\": \"�🇬🇧\"\n      },\n      {\n        \"code\": \"es\",\n        \"name\": \"Spanisch\",\n        \"flag\": \"🇪🇸\"\n      },\n      {\n        \"code\": \"fr\",\n        \"name\": \"Französisch\",\n        \"flag\": \"🇫🇷\"\n      }\n    ]\n  },\n  \"translation\": {\n    \"auto_translate\": true,\n    \"provider\": \"anthropic\",\n    \"targetLanguages\": [\"es\", \"fr\", \"de\"],\n    \"excludedPaths\": [\"_meta.json\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nVerzeichnisstruktur",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "docs/\n├── _contents/\n│   ├── en/           # Quellsprache\n│   │   └── docs/\n│   ├── es/           # Spanische Übersetzung\n│   │   └── docs/\n│   └── fr/           # Französische Übersetzung\n│       └── docs/",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nKonfigurationsoptionen",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Spracheinstellungen",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "list",
+      "content": [
+        "`defaultLocale`: Standardsprache des Inhalts",
+        "`fallbackLocale`: Ausweichressource, wenn die Übersetzung fehlt",
+        "`locales`: Verfügbare Spracheinstellungen"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Übersetzungsparameter",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "list",
+      "content": [
+        "`auto_translate`: Automatische Übersetzung aktivieren/deaktivieren",
+        "`fournisseur`: KI-Übersetzungsanbieter",
+        "`zielsprachen`: Sprachen, in die übersetzt werden soll",
+        "`rutasExcluidas` : Dateien, die während der Übersetzung ignoriert werden"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

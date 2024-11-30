@@ -58,51 +58,52 @@ export function TableOfContents({ publishDate, modifiedDate, author }: TableOfCo
     <div className="w-64 border-l border-border sticky top-16 h-[calc(100vh-4rem)] hidden xl:block">
       <ScrollArea className="h-full py-2 px-4">
         <nav>
-          
-          {(publishDate || modifiedDate || author) && (
-            <div className="mb-6 text-sm border-b border-border/40 pb-4">
-              {author && author !== 'Anonymous' && (
-                <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                  <span className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-                    <svg className="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="7" r="4"/>
-                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-                    </svg>
-                    {author}
-                  </span>
-                </div>
-              )}
-              
-              <div className="flex flex-col gap-1.5 text-xs text-muted-foreground/70">
-                {publishDate && (
-                  <time className="flex items-center gap-1.5" dateTime={publishDate}>
-                    <svg className="w-3.5 h-3.5 text-muted-foreground/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                      <line x1="16" y1="2" x2="16" y2="6"/>
-                      <line x1="8" y1="2" x2="8" y2="6"/>
-                      <line x1="3" y1="10" x2="21" y2="10"/>
-                    </svg>
-                    {t('common.labels.publishedAt')}: {formatDate(publishDate)}
-                  </time>
+          {(author || modifiedDate) && (
+            <>
+              <div className="mb-4 text-sm">
+                {author && author !== 'Anonymous' && (
+                  <div className="flex items-center gap-2 mb-2 p-2.5 rounded-lg bg-muted/30 backdrop-blur-sm">
+                    <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="7" r="4"/>
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-xs text-muted-foreground">Author</div>
+                      <div className="font-medium text-foreground">{author}</div>
+                    </div>
+                  </div>
                 )}
                 
-                {/* {modifiedDate && (
-                  <time className="flex items-center gap-1.5" dateTime={modifiedDate}>
-                    <svg className="w-3.5 h-3.5 text-muted-foreground/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                    </svg>
-                    {t('common.labels.updatedAt')}: {formatDate(modifiedDate)}
-                  </time>
-                )} */}
+                {modifiedDate && (
+                  <div className="flex items-center gap-2.5 p-2 rounded-md hover:bg-muted/40 transition-colors">
+                    <div className="h-6 w-6 rounded-md bg-primary/10 flex items-center justify-center">
+                      <svg className="w-3.5 h-3.5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-xs text-muted-foreground">{t('common.labels.updatedAt')}</div>
+                      <time className="text-sm font-medium text-foreground" dateTime={modifiedDate}>
+                        {formatDate(modifiedDate)}
+                      </time>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
+              <div className="h-px bg-border/60 my-4" />
+            </>
           )}
 
-          <h4 className="text-sm font-semibold mb-4 text-foreground" data-toc-ignore>
+          <h4 className="text-sm font-semibold mb-4 text-foreground flex items-center gap-2" data-toc-ignore>
+            <svg className="w-4 h-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 6h16M4 12h16M4 18h7" />
+            </svg>
             {t('common.labels.onThisPage')}
           </h4>
 
-          <ul className="space-y-2">
+          <ul className="space-y-2 ml-1">
             {headings.map((heading) => {
               const level = parseInt(heading.tagName[1]) - 2;
               return (
@@ -111,12 +112,12 @@ export function TableOfContents({ publishDate, modifiedDate, author }: TableOfCo
                     href={`#${heading.id}`}
                     onClick={(e) => handleClick(e, heading.id)}
                     className={`
-                      text-sm block py-1 transition-colors duration-200
+                      text-sm block py-1.5 transition-colors duration-200 rounded-md
                       ${level > 0 ? 'pl-' + (level * 4) : ''}
                       ${
                         activeId === heading.id
-                          ? 'text-primary font-medium'
-                          : 'text-muted-foreground hover:text-foreground'
+                          ? 'text-primary font-medium bg-primary/5'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/40'
                       }
                     `}
                   >

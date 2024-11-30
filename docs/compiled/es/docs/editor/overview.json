@@ -1,0 +1,185 @@
+{
+  "title": "Descripción general del editor",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Editor",
+    "Notion-like",
+    "Interface"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "AkiraDocs cuenta con un editor moderno similar a Notion que combina la sencillez de la edición basada en bloques con la potencia de Markdown."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Interfaz del editor",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Componentes principales",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "<strong>Barra de herramientas</strong>: Acceso rápido a opciones de formato y tipos de bloque",
+        "<strong>Área de contenido</strong>: Espacio de edición basado en bloques",
+        "<strong>Barra lateral</strong>: Navegación y estructura del documento",
+        "<strong>Paleta de comandos</strong>: Comandos rápidos (Ctrl/Cmd + P)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Estructura de Bloques",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "Cada elemento de contenido es un bloque que puede ser:"
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "Arrastrado y soltado para reorganizar",
+        "Convertido entre diferentes tipos",
+        "Duplicado o eliminado",
+        "Anidado dentro de otros bloques"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Comenzando",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Creación de contenido",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "1. Haz clic en el botón '+' o presiona '/' para agregar un nuevo bloque\n2. Elige el tipo de bloque desde el menú emergente\n3. Comienza a escribir o agrega contenido"
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Operaciones básicas",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "/ → Abrir menú de bloque\n⌘/Ctrl + P → Paleta de comandos\n⌘/Ctrl + / → Mostrar atajos de teclado\n↑↓ → Navegar entre bloques",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Tipos de bloques",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Bloques de texto",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Párrafos",
+        "Encabezados (H1-H6)",
+        "Listas (con viñetas, numeradas)",
+        "Citas",
+        "Llamadas"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Contenido Multimedia Enriquecido",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "list",
+      "content": [
+        "Imágenes",
+        "Vídeos",
+        "Incrustaciones",
+        "Archivos",
+        "Bloques de código"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Bloques especiales",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "19",
+      "type": "list",
+      "content": [
+        "Tablas (Próximamente)",
+        "Divisores",
+        "Componentes personalizados (Próximamente)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

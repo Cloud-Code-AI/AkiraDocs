@@ -1,0 +1,185 @@
+{
+  "title": "Aperçu de l'éditeur",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Editor",
+    "Notion-like",
+    "Interface"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "AkiraDocs dispose d'un éditeur moderne similaire à Notion qui combine la simplicité de l'édition basée sur des blocs avec la puissance de Markdown."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nInterface de l'éditeur",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Voici la traduction en français tout en conservant la mise en forme d'origine :\n\nComposants principaux",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "<strong>Barre d'outils</strong> : Accès rapide aux options de formatage et aux types de blocs",
+        "<strong>Zone de contenu</strong> : Espace d'édition basé sur des blocs",
+        "<strong>Barre latérale</strong> : Navigation et structure du document",
+        "<strong>Palette de commandes</strong> : Commandes rapides (Ctrl/Cmd + P)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nStructure de Blocs",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nChaque élément de contenu est un bloc qui peut être :"
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "Glisser-déposer pour réorganiser",
+        "Converti entre différents types",
+        "Dupliqué ou supprimé",
+        "Imbriqué dans d'autres blocs"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Commençant",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Création de contenu",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "1. Cliquez sur le bouton '+' ou appuyez sur '/' pour ajouter un nouveau bloc\n2. Choisissez le type de bloc dans le menu déroulant\n3. Commencez à écrire ou ajoutez du contenu"
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Opérations de base",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "/ → Ouvrir le menu du bloc\n⌘/Ctrl + P → Palette de commandes\n⌘/Ctrl + / → Afficher les raccourcis clavier\n↑↓ → Naviguer entre les blocs",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nTypes de blocs",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Blocs de texte",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Voici la traduction en français, avec le formatage d'origine conservé :\n\nParagraphes",
+        "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTitres (H1-H6)",
+        "Listes (avec puces, numérotées)",
+        "Voici la traduction en français :\n\nCitations",
+        "Voici la traduction en français :\n\nAppels"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Contenu Multimédia Enrichi",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "list",
+      "content": [
+        "Voici la traduction en français :\n\nImages",
+        "Voici la traduction en français :\n\nVidéos",
+        "Incrustations",
+        "Fichiers",
+        "Blocs de code"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Blocs spéciaux",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "19",
+      "type": "list",
+      "content": [
+        "Tableaux (Prochainement)",
+        "Diviseurs",
+        "Composants personnalisés (Bientôt disponible)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

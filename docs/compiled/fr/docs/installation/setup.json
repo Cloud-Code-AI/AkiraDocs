@@ -1,0 +1,261 @@
+{
+  "title": "Guide d'installation détaillé",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Installation",
+  "keywords": [
+    "Installation",
+    "Setup",
+    "Deployment"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nGuide complet pour installer AkiraDocs dans différents environnements."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nPrérequis",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Assurez-vous que votre système répond aux [exigences](../getting-started/requirements.md) avant de continuer."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nMéthodes d'installation",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "1. Configuration du développement local",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "1. <strong>Créer un nouveau projet</strong>"
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "npx create-akiradocs@latest mon-site-de-documentation\ncd mon-site-de-documentation",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "2. <strong>Installer les dépendances</strong>\nLes dépendances sont installées automatiquement lors de la création du projet. Si vous avez besoin de les réinstaller :"
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "npm installer",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "3. <strong>Créer un fichier d'environnement</strong>\nLe fichier d'environnement est créé automatiquement. Vous pouvez le modifier dans `.env.local`"
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "4. <strong>Démarrer le serveur de développement</strong>"
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "npm exécuter dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": "5. <strong>Mettre à jour AkiraDocs</strong>\nPour mettre à jour une installation existante vers la dernière version :"
+    },
+    {
+      "id": "14",
+      "type": "code",
+      "content": "npx create-akiradocs@latest mettre à jour",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "3. Déploiement sur la Plateforme dans le Cloud",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nVercel",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "1. Bifurquer le dépôt\n2. Se connecter à Vercel\n3. Configurer les variables d'environnement\n4. Déployer"
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Autres plateformes",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "19",
+      "type": "list",
+      "content": [
+        "AWS Amplify (Bientôt disponible)",
+        "Netlify (Prochainement)",
+        "Voici la traduction en français :\n\nDigital Ocean (Prochainement)",
+        "Serveur personnalisé (Bientôt disponible)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Étapes suivant l'installation",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "1. <strong>Vérifier l'installation</strong>"
+    },
+    {
+      "id": "22",
+      "type": "code",
+      "content": "npm exécuter build\nnpm exécuter start",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "23",
+      "type": "paragraph",
+      "content": "2. <strong>Configurer l'intégration de Git</strong>"
+    },
+    {
+      "id": "24",
+      "type": "code",
+      "content": "git remote add origin ton-dépôt-url",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": "3. <strong>Configurer le répertoire de contenu</strong>"
+    },
+    {
+      "id": "26",
+      "type": "code",
+      "content": "mkdir -p docs/_contenus/fr",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "27",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nConfigurations spécifiques à l'environnement",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "28",
+      "type": "heading",
+      "content": "Développement",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "29",
+      "type": "code",
+      "content": "NODE_ENV=développement\nDEBUG=vrai",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "30",
+      "type": "heading",
+      "content": "Voici la traduction en français tout en conservant la mise en forme d'origine :\n\nProduction",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "31",
+      "type": "code",
+      "content": "NODE_ENV=production\nDEBUG=faux",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "32",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nTest",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "33",
+      "type": "code",
+      "content": "NODE_ENV=test\nTEST_MODE=vrai",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

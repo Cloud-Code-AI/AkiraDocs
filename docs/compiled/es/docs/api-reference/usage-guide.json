@@ -1,0 +1,160 @@
+{
+  "title": "Guía de documentación de API",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "API Reference",
+  "keywords": [
+    "API",
+    "Documentation",
+    "Integration"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Aprende cómo generar documentación completa de API utilizando AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Inicio rápido",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Cargar especificación de API",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "1. Coloque su especificación OpenAPI/Swagger en:"
+    },
+    {
+      "id": "5",
+      "type": "code",
+      "content": "_contenido/{código_de_idioma}/api/apiSpec.json",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "2. AkiraDocs genera automáticamente la documentación."
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Especificación de API de ejemplo",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "{\n  \"openapi\": \"3.0.0\",\n  \"info\": {\n    \"title\": \"API de muestra\",\n    \"version\": \"1.0.0\"\n  },\n  \"paths\": {\n    \"/users\": {\n      \"get\": {\n        \"summary\": \"Obtener usuarios\",\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Éxito\"\n          }\n        }\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Documentación generada",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Características automáticas",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "list",
+      "content": [
+        "Explorador de API interactivo",
+        "Muestras de código en múltiples idiomas",
+        "Ejemplos de solicitud/respuesta",
+        "Documentación de autenticación"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Salida de ejemplo",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "13",
+      "type": "code",
+      "content": "// Ejemplo: Obtener usuarios\nconst response = await fetch('https://api.example.com/users', {\n  method: 'GET',\n  headers: {\n    'Authorization': 'Bearer TU_TOKEN'\n  }\n});\n\nconst users = await response.json();",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Personalización",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Opciones de tema",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "code",
+      "content": "{\n  \"api\": {\n    \"docs\": {\n      \"tema\": \"oscuro\",\n      \"resaltadoDeSintaxis\": true,\n      \"mostrarEjemplos\": true\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Selección de idioma",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "{\n  \"api\": {\n    \"ejemplos\": {\n      \"idiomas\": [\"javascript\", \"python\", \"curl\"]\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

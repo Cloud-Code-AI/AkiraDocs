@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Introducción a AkiraDocs",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
@@ -14,12 +14,12 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": "Conozca Akira Docs y sus funciones principales\n\nAkira Docs es una plataforma de documentación moderna que combina el poder de la IA con un intuitivo sistema de contenido basado en bloques. Esta guía le ayudará a comprender los conceptos y funciones principales."
+      "content": "AkiraDocs es una plataforma de documentación de próxima generación que combina el poder de la IA con un intuitivo sistema de gestión de contenidos. Está diseñada para transformar su flujo de trabajo de documentación de días a minutos."
     },
     {
       "id": "2",
       "type": "heading",
-      "content": "Características clave",
+      "content": "¿Por qué AkiraDocs?",
       "metadata": {
         "level": 2
       }
@@ -27,17 +27,17 @@
     {
       "id": "3",
       "type": "paragraph",
-      "content": ""
+      "content": "La documentación suele ser un desafío para los equipos:"
     },
     {
       "id": "4",
       "type": "list",
       "content": [
-        "Búsqueda impulsada por IA",
-        "Edición de contenido basada en bloques",
-        "Diseño adaptable",
-        "Temas personalizables",
-        "Compatibilidad con Markdown"
+        "Desarrolladores quieren seguir usando Markdown y Git",
+        "Los equipos de contenido necesitan editores fáciles de usar",
+        "Los redactores técnicos luchan con la gestión de versiones",
+        "Los gestores de productos se enfrentan a documentación desactualizada",
+        "Líderes empresariales necesitan mejores análisis"
       ],
       "metadata": {
         "listType": "unordered"
@@ -46,7 +46,100 @@
     {
       "id": "5",
       "type": "paragraph",
-      "content": ""
+      "content": "AkiraDocs resuelve estos desafíos al proporcionar una plataforma unificada que une el flujo de trabajo de todos."
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Beneficios principales",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "<strong>Flujo de trabajo universal</strong>: Los desarrolladores mantienen su flujo de trabajo de Markdown/Git mientras que los equipos de contenido obtienen un editor WYSIWYG basado en bloques",
+        "<strong>Impulsado por IA</strong>: Actualizaciones automáticas de contenido, traducciones y optimizaciones",
+        "<strong>Optimizado para SEO</strong>: Documentación que se clasifica bien por defecto",
+        "<strong>Soporte multilingüe</strong>: traducciones con inteligencia artificial y conciencia del contexto",
+        "<strong>Listo para empresas</strong>: integración de SSO/SAML, registros de auditoría y opciones de implementación personalizadas"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "¿Para quién es?",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Documentación para desarrolladores",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "list",
+      "content": [
+        "Documentación de la API",
+        "Guías del SDK",
+        "Especificaciones técnicas",
+        "Guías de implementación"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Documentación del producto",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "list",
+      "content": [
+        "Guías de usuario",
+        "Documentación de características",
+        "Notas de la versión",
+        "Preguntas frecuentes"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Documentación empresarial",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Bases de conocimiento internas",
+        "Documentación de procesos",
+        "Documentación de cumplimiento",
+        "Materiales de capacitación"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
     }
   ]
 }

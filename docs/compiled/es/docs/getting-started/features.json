@@ -1,0 +1,137 @@
+{
+  "title": "Características de AkiraDocs",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Una descripción general completa de las funciones y capacidades principales de AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Creación y gestión de contenido",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "list",
+      "content": [
+        "<strong>Editor similar a Notion</strong>: Interfaz intuitiva basada en bloques con vista previa en tiempo real",
+        "<strong>Soporte de Markdown</strong>: Compatibilidad nativa con Markdown y MDX",
+        "<strong>Componentes personalizados</strong>: Crea y reutiliza tus propios bloques de contenido"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Internacionalización y traducción",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "list",
+      "content": [
+        "<strong>Soporte para múltiples idiomas</strong>: Mantener la documentación en varios idiomas",
+        "<strong>Traducción impulsada por IA</strong>: Traducción de contenido automatizada y consciente del contexto",
+        "<strong>Gestión de traducciones</strong>: Herramientas integradas para administrar contenido localizado"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Búsqueda y descubrimiento",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "<strong>Búsqueda Impulsada por IA</strong>: Respuesta a preguntas en lenguaje natural con conciencia de contexto",
+        "<strong>Optimización SEO</strong>: Herramientas y optimizaciones SEO automatizadas",
+        "<strong>Indexación inteligente</strong>: Actualizaciones de índice de búsqueda en tiempo real"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Construcción y rendimiento",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "list",
+      "content": [
+        "<strong>Generación Estática</strong>: Proceso de compilación optimizado con optimización de recursos",
+        "<strong>Experiencia de desarrollador</strong>: Actualización rápida y herramientas de depuración completas",
+        "<strong>Enfoque en el rendimiento</strong>: Prácticas recomendadas integradas para la velocidad y la eficiencia"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Características empresariales (Próximamente)",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "11",
+      "type": "list",
+      "content": [
+        "<strong>Seguridad y cumplimiento</strong>: SSO, RBAC y registro de auditoría",
+        "<strong>Análisis y perspectivas</strong>: Seguimiento del uso y métricas de documentación",
+        "<strong>Colaboración de equipo</strong>: Herramientas de colaboración de grado empresarial"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Soporte de migración (próximamente)",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "code",
+      "content": "# Plataformas compatibles para una migración sencilla\n✓ Nextra\n✓ GitBook\n✓ Docusaurus\n✓ ReadTheDocs",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

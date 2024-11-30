@@ -2,7 +2,13 @@
   "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTest de billet de blog",
   "description": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nUn article de blog de test pour démontrer tous les types de blocs.",
   "author": "Anonymous",
-  "date": "2024-11-08",
+  "publishDate": "2024-11-10T00:00:00.000Z",
+  "modifiedDate": "2024-11-10T00:00:00.000Z",
+  "heroImage": {
+    "url": "/blog-hero-image.jpg",
+    "alt": "Hero image for the blog post",
+    "caption": "Optional caption for the hero image"
+  },
   "blocks": [
     {
       "id": "1",

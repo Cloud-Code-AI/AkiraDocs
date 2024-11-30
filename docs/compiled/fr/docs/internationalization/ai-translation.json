@@ -1,0 +1,91 @@
+{
+  "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTraduction alimentée par l'IA",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "AI Translation",
+    "Automation",
+    "Language Processing"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nGuide pour utiliser les capacités de traduction d'IA d'AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nConfiguration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nConfiguration",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "{\n  \"traduction\": {\n    \"auto_traduire\": true,\n    \"fournisseur\": \"anthropic\",\n    \"modèle\": \"claude-3-sonnet-20240229\",\n    \"languesCibles\": [\"es\", \"fr\", \"de\"],\n    \"cheminsExclus\": [\"_meta.json\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nConfiguration de l'API",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "code",
+      "content": "ANTHROPIC_API_KEY=ta_clé_api",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Caractéristiques",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Traduction automatique",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "list",
+      "content": [
+        "Traduction du contenu lors de la compilation",
+        "Traductions conscientes du contexte",
+        "Voici la traduction en français tout en conservant le formatage d'origine :\n\nPréservation des termes techniques",
+        "Voici la traduction en français tout en conservant le formatage d'origine :\n\nMaintien de la mise en forme"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

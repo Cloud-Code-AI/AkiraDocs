@@ -1,0 +1,99 @@
+{
+  "title": "Código de Conducta",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Contributing",
+  "keywords": [
+    "Code of Conduct",
+    "Contributing"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Nuestro Compromiso",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Nosotros, como miembros, colaboradores y líderes, nos comprometemos a hacer que la participación en nuestra comunidad sea una experiencia libre de acoso para todos, independientemente de la edad, el tamaño corporal, la discapacidad visible o invisible, la etnia, las características sexuales, la identidad y expresión de género, el nivel de experiencia, la educación, el estado socioeconómico, la nacionalidad, la apariencia personal, la raza, la religión o la identidad y orientación sexual."
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Nos comprometemos a actuar e interactuar de maneras que contribuyan a una comunidad abierta, acogedora, diversa, inclusiva y saludable."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Nuestras Normas",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": "Ejemplos de comportamiento que contribuyen a un entorno positivo:"
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "* Demostrando empatía y amabilidad hacia otras personas\n* Siendo respetuoso con las opiniones, puntos de vista y experiencias diferentes\n* Dando y aceptando con gracia las críticas constructivas\n* Aceptando la responsabilidad y disculpándose con quienes se vieron afectados por nuestros errores\n* Enfocándose en lo que es mejor para la comunidad en general"
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "Ejemplos de comportamiento inaceptable:"
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "* El uso de lenguaje o imágenes sexualizadas, y atención o insinuaciones sexuales\n* Troleo, comentarios insultantes o despectivos, y ataques personales o políticos\n* Acoso público o privado\n* Publicar información privada de otros sin permiso explícito\n* Otra conducta que razonablemente podría considerarse inapropiada en un entorno profesional"
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Responsabilidades de Cumplimiento",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "Los líderes de la comunidad son responsables de aclarar y hacer cumplir nuestros estándares de comportamiento aceptable y tomarán las medidas correctivas apropiadas y justas en respuesta a cualquier comportamiento que consideren inapropiado, amenazante, ofensivo o dañino."
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Cumplimiento",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "Instancias de comportamiento abusivo, acosador o inaceptable de otro modo pueden ser reportadas a los líderes comunitarios responsables de la aplicación. Todas las quejas serán revisadas e investigadas de manera rápida y justa."
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Atribución",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": "Este Código de Conducta está adaptado del [Contributor Covenant](https://www.contributor-covenant.org), versión 2.0, disponible en https://www.contributor-covenant.org/version/2/0/code_of_conduct.html."
+    }
+  ]
+}

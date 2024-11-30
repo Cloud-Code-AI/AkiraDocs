@@ -1,0 +1,314 @@
+{
+  "title": "Guía de solución de problemas",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Installation",
+  "keywords": [
+    "Troubleshooting",
+    "Issues",
+    "Solutions"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Problemas comunes y sus soluciones al configurar AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Problemas comunes de instalación",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Discordancia de versión de Node.js",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "<strong>Problema</strong>: Error sobre la compatibilidad de la versión de Node.js"
+    },
+    {
+      "id": "5",
+      "type": "code",
+      "content": "Error: El motor \"node\" es incompatible con este módulo",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "<strong>Solución</strong>:\n1. Comprueba tu versión de Node.js:"
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "nodo --versión",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "2. Instala la versión correcta (16.x o superior)\n3. Usa nvm para administrar las versiones de Node.js:"
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "instalar nvm 20\nusar nvm 20",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Instalación de dependencias fallida",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "<strong>Problema</strong>: npm install falla con errores"
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "<strong>Solución</strong>:\n1. Limpiar el caché de npm:"
+    },
+    {
+      "id": "13",
+      "type": "code",
+      "content": "Aquí está la traducción al español:\n\nnpm caché limpiar --fuerza",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": "2. Eliminar node_modules y package-lock.json:"
+    },
+    {
+      "id": "15",
+      "type": "code",
+      "content": "Eliminar -rf node_modules package-lock.json\nnpm instalar",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Problemas de compilación",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Fallos de compilación",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "18",
+      "type": "paragraph",
+      "content": "<strong>Problema</strong>: `npm run build` falla"
+    },
+    {
+      "id": "19",
+      "type": "paragraph",
+      "content": "<strong>Solución</strong>:\n1. Verificar errores de TypeScript:"
+    },
+    {
+      "id": "20",
+      "type": "code",
+      "content": "npm ejecutar type-check",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "2. Verificar que las variables de entorno estén configuradas correctamente\n3. Borrar el caché de next.js:"
+    },
+    {
+      "id": "22",
+      "type": "code",
+      "content": "Eliminar -recursivo -forzar .siguiente",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "23",
+      "type": "heading",
+      "content": "Problemas de exportación estática",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "24",
+      "type": "paragraph",
+      "content": "<strong>Problema</strong>: La exportación estática falla con rutas dinámicas"
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": "<strong>Solución</strong>:\n1. Configurar `next.config.js`:"
+    },
+    {
+      "id": "26",
+      "type": "code",
+      "content": "módulo.exportaciones = {\n  salida: 'exportar',\n  imágenes: {\n    sinOptimizar: verdadero\n  }\n}",
+      "metadata": {
+        "language": "js",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "27",
+      "type": "heading",
+      "content": "Problemas de traducción",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "28",
+      "type": "heading",
+      "content": "Traducción de IA no funcionando",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "29",
+      "type": "paragraph",
+      "content": "<strong>Problema</strong>: La traducción automática falla"
+    },
+    {
+      "id": "30",
+      "type": "paragraph",
+      "content": "<strong>Solución</strong>:\n1. Verifica que las claves de API estén configuradas correctamente\n2. Revisa la configuración de traducción:"
+    },
+    {
+      "id": "31",
+      "type": "code",
+      "content": "{\n  \"traducción\": {\n    \"auto_traducir\": true,\n    \"proveedor\": \"anthropic\",\n    \"lenguasObjetivo\": [\"es\", \"fr\", \"de\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "32",
+      "type": "heading",
+      "content": "Problemas de contenido",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "33",
+      "type": "heading",
+      "content": "Contenido no actualizándose",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "34",
+      "type": "paragraph",
+      "content": "<strong>Problema</strong>: Los cambios en los archivos de contenido no se reflejan"
+    },
+    {
+      "id": "35",
+      "type": "paragraph",
+      "content": "<strong>Solución</strong>:\nLos cambios de contenido se construyen en tiempo de compilación. Si está utilizando el servidor de desarrollo local, necesita reiniciar el servidor después de realizar cambios.\n1. Borrar la caché:"
+    },
+    {
+      "id": "36",
+      "type": "code",
+      "content": "npm ejecutar limpio",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "37",
+      "type": "paragraph",
+      "content": "2. Reiniciar el servidor de desarrollo\n3. Comprobar los permisos de los archivos"
+    },
+    {
+      "id": "38",
+      "type": "heading",
+      "content": "Problemas de implementación",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "39",
+      "type": "heading",
+      "content": "Despliegue de Vercel Fallido",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "40",
+      "type": "paragraph",
+      "content": "<strong>Problema</strong>: La implementación en Vercel falla"
+    },
+    {
+      "id": "41",
+      "type": "paragraph",
+      "content": "<strong>Solución</strong>:\n1. Revisar los registros de compilación\n2. Verificar que las variables de entorno estén configuradas en el panel de Vercel\n3. Asegurarse de que todas las dependencias estén listadas en package.json"
+    },
+    {
+      "id": "42",
+      "type": "heading",
+      "content": "Obtener ayuda",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "43",
+      "type": "paragraph",
+      "content": "Si aún estás experimentando problemas:"
+    },
+    {
+      "id": "44",
+      "type": "paragraph",
+      "content": "1. Consulta nuestros [GitHub Issues](https://github.com/Cloud-Code-AI/Akiradocs/issues)\n2. Únete a nuestra [Comunidad de Discord](https://discord.gg/zvYZukgeH2)\n3. Contacta con el [Soporte](mailto:saurav.panda@akiradocs.ai)"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 {
+  "url": "https://docs.akiradocs.com",
   "site": {
       "title": "Akira Docs",
       "description": "Next-gen documentation powered by AI"
@@ -73,9 +74,12 @@
   },
   "analytics": {
       "google": {
-          "measurementId": "",
-          "enabled": false
+          "measurementId": "G-GPZ4Z4QP6F",
+          "enabled": true
       },
       "debug": false
+  },
+  "features": {
+    "textToSpeech": false
   }
 }

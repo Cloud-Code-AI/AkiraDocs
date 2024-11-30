@@ -1,0 +1,261 @@
+{
+  "title": "Guía de instalación detallada",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Installation",
+  "keywords": [
+    "Installation",
+    "Setup",
+    "Deployment"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Guía completa para instalar AkiraDocs en diferentes entornos."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Requisitos previos",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Asegúrate de que tu sistema cumpla con los [requisitos](../getting-started/requirements.md) antes de continuar."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Métodos de instalación",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "1. Configuración de desarrollo local",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "1. <strong>Crear nuevo proyecto</strong>"
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "npx create-akiradocs@latest mi-sitio-de-documentación\ncd mi-sitio-de-documentación",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "2. <strong>Instalar dependencias</strong>\nLas dependencias se instalan automáticamente durante la creación del proyecto. Si necesita reinstalarlas:"
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "npm instalar",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "3. <strong>Crear archivo de entorno</strong>\nEl archivo de entorno se crea automáticamente. Puedes modificarlo en `.env.local`"
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "4. <strong>Iniciar el servidor de desarrollo</strong>"
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "npm ejecutar dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": "5. <strong>Actualizar AkiraDocs</strong>\nPara actualizar una instalación existente a la última versión:"
+    },
+    {
+      "id": "14",
+      "type": "code",
+      "content": "npx create-akiradocs@latest actualizar",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "3. Despliegue en la Plataforma en la Nube",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Vercel",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "1. Bifurcar el repositorio\n2. Conectar a Vercel\n3. Configurar variables de entorno\n4. Desplegar"
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Otras plataformas",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "19",
+      "type": "list",
+      "content": [
+        "AWS Amplify (Próximamente)",
+        "Netlify (Próximamente)",
+        "Digital Ocean (Próximamente)",
+        "Servidor personalizado (Próximamente)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "20",
+      "type": "heading",
+      "content": "Pasos posteriores a la instalación",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "21",
+      "type": "paragraph",
+      "content": "1. <strong>Verificar instalación</strong>"
+    },
+    {
+      "id": "22",
+      "type": "code",
+      "content": "npm ejecutar compilación\nnpm ejecutar inicio",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "23",
+      "type": "paragraph",
+      "content": "2. <strong>Configurar la integración de Git</strong>"
+    },
+    {
+      "id": "24",
+      "type": "code",
+      "content": "git remote add origin tu-repositorio-url",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "25",
+      "type": "paragraph",
+      "content": "3. <strong>Configurar el directorio de contenido</strong>"
+    },
+    {
+      "id": "26",
+      "type": "code",
+      "content": "mkdir -p docs/_contenidos/es",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "27",
+      "type": "heading",
+      "content": "Configuraciones específicas del entorno",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "28",
+      "type": "heading",
+      "content": "Desarrollo",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "29",
+      "type": "code",
+      "content": "NODE_ENV=desarrollo\nDEBUG=verdadero",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "30",
+      "type": "heading",
+      "content": "Producción",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "31",
+      "type": "code",
+      "content": "NODE_ENV=producción\nDEBUG=falso",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "32",
+      "type": "heading",
+      "content": "Prueba",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "33",
+      "type": "code",
+      "content": "NODE_ENV=prueba\nTEST_MODE=verdadero",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

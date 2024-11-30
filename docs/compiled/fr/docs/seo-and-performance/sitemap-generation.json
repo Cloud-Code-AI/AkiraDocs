@@ -1,0 +1,58 @@
+{
+  "title": "Génération automatique de plan du site",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "SEO & Performance",
+  "keywords": [
+    "SEO",
+    "Sitemap",
+    "XML"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Apprenez comment AkiraDocs génère et gère automatiquement le plan de votre documentation."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nDescription générale",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "AkiraDocs génère automatiquement un fichier sitemap.xml pendant le processus de compilation, assurant que les moteurs de recherche peuvent suivre efficacement votre documentation."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nStructure de la Carte du Site Générée",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Sortie d'exemple",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "code",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://yourdocs.com/</loc>\n    <lastmod>2024-11-26</lastmod>\n    <changefreq>hebdomadaire</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>https://yourdocs.com/docs/getting-started</loc>\n    <lastmod>2024-11-26</lastmod>\n    <changefreq>hebdomadaire</changefreq>\n    <priority>0.8</priority>\n  </url>\n</urlset>",
+      "metadata": {
+        "language": "xml",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

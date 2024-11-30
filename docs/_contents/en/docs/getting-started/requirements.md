@@ -20,12 +20,11 @@ Before installing AkiraDocs, ensure your environment meets the following require
 - Recommended: Latest LTS version
 
 ### System Memory
-- Minimum: 4GB RAM
-- Recommended: 8GB RAM or more
+- Minimum: 2GB RAM
+- Recommended: 4GB RAM or more
 
 ### Storage
-- Minimum: 1GB free space
-- Recommended: 5GB+ for larger documentation projects
+- Recommended: 1GB free space
 
 ## Software Dependencies
 
@@ -46,34 +45,6 @@ Before installing AkiraDocs, ensure your environment meets the following require
 - Linux (Ubuntu 20.04 or later recommended)
 
 ### IDE/Editor Support
-- VS Code (recommended)
-- WebStorm
+- VS Code (coming soon)
+- WebStorm (coming soon)
 - Any text editor with Markdown support
-
-## Network Requirements
-
-### Cloud Features
-- Stable internet connection
-- Access to npm registry
-- Access to GitHub (for version control)
-
-### Enterprise Features
-- Outbound HTTPS (443) access
-- WebSocket support
-- Custom domain (optional)
-
-## Browser Support
-
-### Desktop Browsers
-- Chrome (last 2 versions)
-- Firefox (last 2 versions)
-- Safari (last 2 versions)
-- Edge (last 2 versions)
-
-### Mobile Browsers
-- iOS Safari
-- Android Chrome
-
-## Verification
-
-Run the following command to check if your environment is ready:

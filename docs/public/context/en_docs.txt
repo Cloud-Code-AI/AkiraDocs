@@ -1,7 +1,40 @@
+[Document: docs/introduction.json]
+Title: Introduction to AkiraDocs
+AkiraDocs is a next-generation documentation platform that combines the power of AI with an intuitive content management system. It's designed to transform your documentation workflow from days to minutes.
+Why AkiraDocs?
+Documentation is often a challenge for teams:
+Developers want to keep using Markdown and Git
+Content teams need user-friendly editors
+Technical writers struggle with version management
+Product managers deal with out-of-sync documentation
+Enterprise leaders need better analytics
+AkiraDocs solves these challenges by providing a unified platform that brings everyone's workflow together.
+Core Benefits
+<strong>Universal Workflow</strong>: Developers keep their Markdown/Git workflow while content teams get a block-based WYSIWYG editor
+<strong>AI-Powered</strong>: Automatic content updates, translations, and optimizations
+<strong>SEO-Optimized</strong>: Documentation that ranks well by default
+<strong>Multi-Language Support</strong>: AI-powered translations with context awareness
+<strong>Enterprise-Ready</strong>: SSO/SAML integration, audit logs, and custom deployment options
+Who Is It For?
+Developer Documentation
+API documentation
+SDK guides
+Technical specifications
+Implementation guides
+Product Documentation
+User guides
+Feature documentation
+Release notes
+FAQs
+Enterprise Documentation
+Internal knowledge bases
+Process documentation
+Compliance documentation
+Training materials
+-------------
 [Document: articles/welcome.json]
 Title: Welcome to Akira Doc
 Get started with Akira Docs - Next-gen documentation powered by AI
-Welcome to Akira Doc
 Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation.
 Key Features
 Easy to customize
@@ -23,9 +56,8 @@ Item 3
 Important: This is an important callout message.
 -------------
 [Document: articles/ai_integration.json]
-AI Assistant Integration
+Title: AI Assistant Integration
 Learn how to use Akira's built-in AI assistant for documentation enhancement
-
 Akira's AI Assistant is a powerful tool that helps developers and technical writers create, maintain, and improve documentation through natural language interactions. This guide covers the essential features and best practices for utilizing the AI assistant effectively.
 Key Features
 Natural language documentation generation
@@ -58,59 +90,11 @@ ai_assistant:
 Next Steps
 Explore our [Advanced AI Features](/advanced-ai-features) guide to learn more about specialized use cases and integration possibilities.
 -------------
-[Document: docs/introduction.json]
-Introduction to AkiraDocs
-AkiraDocs is a next-generation documentation platform that combines the power of AI with an intuitive content management system. It's designed to transform your documentation workflow from months to minutes.
-Why AkiraDocs?
-Documentation is often a challenge for teams:
-Developers want to keep using Markdown and Git
-Content teams need user-friendly editors
-Technical writers struggle with version management
-Product managers deal with out-of-sync documentation
-Enterprise leaders need better analytics
-AkiraDocs solves these challenges by providing a unified platform that brings everyone's workflow together.
-Core Benefits
-**Universal Workflow**: Developers keep their Markdown/Git workflow while content teams get a block-based WYSIWYG editor
-**AI-Powered**: Automatic content updates, translations, and optimizations
-**SEO-Optimized**: Documentation that ranks well by default
-**Multi-Language Support**: AI-powered translations with context awareness
-**Enterprise-Ready**: SSO/SAML integration, audit logs, and custom deployment options
-Who Is It For?
-Developer Documentation
-API documentation
-SDK guides
-Technical specifications
-Implementation guides
-Product Documentation
-User guides
-Feature documentation
-Release notes
-FAQs
-Enterprise Documentation
-Internal knowledge bases
-Process documentation
-Compliance documentation
-Training materials
-Next Steps
-Ready to get started? Check out our [Quick Start Guide](./quick-start.md) or explore our [detailed features](./features.md).
--------------
 [Document: docs/seo-and-performance/sitemap-generation.json]
-Automatic Sitemap Generation
+Title: Automatic Sitemap Generation
 Learn how AkiraDocs automatically generates and manages your documentation sitemap.
 Overview
 AkiraDocs automatically generates a sitemap.xml file during the build process, ensuring search engines can efficiently crawl your documentation.
-Default Configuration
-Code example:
-{
-  "seo": {
-    "sitemap": {
-      "enabled": true,
-      "autoGenerate": true,
-      "changefreq": "weekly",
-      "priority": 0.7
-    }
-  }
-}
 Generated Sitemap Structure
 Example Output
 Code example:
@@ -129,107 +113,80 @@ Code example:
     <priority>0.8</priority>
   </url>
 </urlset>
-Customization Options
-Priority Settings
-Code example:
-{
-  "seo": {
-    "sitemap": {
-      "priorities": {
-        "home": 1.0,
-        "docs": 0.8,
-        "blog": 0.6,
-        "other": 0.5
-      }
-    }
-  }
-}
-Update Frequency
-Code example:
-{
-  "seo": {
-    "sitemap": {
-      "changefreq": {
-        "home": "daily",
-        "docs": "weekly",
-        "blog": "monthly"
-      }
-    }
-  }
-}
-Best Practices
-1. **Regular Updates**
-Keep content fresh
-Maintain accurate lastmod dates
-Remove obsolete URLs
-2. **Structure Optimization**
-Logical URL hierarchy
-Consistent naming
-Clear categories
-3. **Performance**
-Compress large sitemaps
-Use sitemap index for large sites
-Monitor crawl stats
 -------------
 [Document: docs/seo-and-performance/robot-txt.json]
-Robots.txt Configuration
-Guide to customizing and managing your robots.txt file in AkiraDocs.
+Title: Robots.txt Configuration
+The robots.txt file is automatically generated during the build process and can be found in the `public` folder of your project.
 Default Configuration
 Basic robots.txt
 Code example:
 User-agent: *
 Allow: /
-Sitemap: https://yourdocs.com/sitemap.xml
+Sitemap: https://docs.akiradocs.com/sitemap.xml
 
 # Private sections
 Disallow: /admin/
 Disallow: /private/
-Customization
-Configuration Options
+-------------
+[Document: docs/internationalization/setup.json]
+Title: Setting Up Internationalization
+Configure AkiraDocs for multiple languages with AI-powered translation support.
+Quick Setup
+Basic Configuration
+Add language settings to `akiradocs.config.json`:
 Code example:
 {
-  "seo": {
-    "robots": {
-      "enabled": true,
-      "autoGenerate": true,
-      "custom": {
-        "disallow": ["/internal/", "/draft/"],
-        "allow": ["/public/"],
-        "crawlDelay": 10
+  "localization": {
+    "defaultLocale": "en",
+    "fallbackLocale": "en",
+    "locales": [
+      {
+        "code": "en",
+        "name": "English",
+        "flag": "�🇸"
+      },
+      {
+        "code": "es",
+        "name": "Español",
+        "flag": "🇪🇸"
+      },
+      {
+        "code": "fr",
+        "name": "Français",
+        "flag": "🇫🇷"
       }
-    }
+    ]
+  },
+  "translation": {
+    "auto_translate": true,
+    "provider": "anthropic",
+    "targetLanguages": ["es", "fr", "de"],
+    "excludedPaths": ["_meta.json"]
   }
 }
-Advanced Rules
+Directory Structure
 Code example:
-# Custom crawl rate
-User-agent: Googlebot
-Crawl-delay: 10
-
-# Allow specific bot
-User-agent: Bingbot
-Allow: /public/
-Disallow: /private/
-
-# Block specific bot
-User-agent: BadBot
-Disallow: /
-Best Practices
-1. **Access Control**
-Block sensitive content
-Allow public content
-Manage crawl rates
-2. **Performance**
-Optimize crawl budget
-Prevent unnecessary indexing
-Monitor bot behavior
-3. **Maintenance**
-Regular updates
-Verify syntax
-Test configuration
+docs/
+├── _contents/
+│   ├── en/           # Source language
+│   │   └── docs/
+│   ├── es/           # Spanish translation
+│   │   └── docs/
+│   └── fr/           # French translation
+│       └── docs/
+Configuration Options
+Language Settings
+`defaultLocale`: Primary content language
+`fallbackLocale`: Fallback when translation missing
+`locales`: Available language configurations
+Translation Settings
+`auto_translate`: Enable/disable automatic translation
+`provider`: AI translation provider
+`targetLanguages`: Languages to translate into
+`excludedPaths`: Files to skip during translation
 -------------
 [Document: docs/internationalization/managing-translation.json]
-Managing Translations
+Title: Managing Translations
 Learn how to effectively manage and maintain translated content in AkiraDocs.
 Translation Workflow
 Automatic Translation
@@ -258,17 +215,6 @@ _contents/
     └── docs/
         ├── intro.md
         └── guide.md
-Translation Status Tracking
-Code example:
-{
-  "translationStatus": {
-    "es": {
-      "completion": "85%",
-      "lastUpdated": "2024-11-26",
-      "pendingFiles": ["advanced/config.md"]
-    }
-  }
-}
 Quality Control
 Review Process
 1. AI Translation
@@ -281,7 +227,7 @@ Maintain synchronization
 Handle updates efficiently
 -------------
 [Document: docs/internationalization/ai-translation.json]
-AI-Powered Translation
+Title: AI-Powered Translation
 Guide to using AkiraDocs' AI translation capabilities.
 Setup
 Configuration
@@ -306,14 +252,14 @@ Technical term preservation
 Format maintenance
 -------------
 [Document: docs/installation/troubleshooting.json]
-Troubleshooting Guide
+Title: Troubleshooting Guide
 Common issues and their solutions when setting up AkiraDocs.
 Common Installation Issues
 Node.js Version Mismatch
-**Problem**: Error about Node.js version compatibility
+<strong>Problem</strong>: Error about Node.js version compatibility
 Code example:
 Error: The engine "node" is incompatible with this module
-**Solution**:
+<strong>Solution</strong>:
 1. Check your Node.js version:
 Code example:
 node --version
@@ -323,9 +269,8 @@ Code example:
 nvm install 20
 nvm use 20
 Dependencies Installation Failed
-**Problem**: npm install fails with errors
-
-**Solution**:
+<strong>Problem</strong>: npm install fails with errors
+<strong>Solution</strong>:
 1. Clear npm cache:
 Code example:
 npm cache clean --force
@@ -335,9 +280,8 @@ rm -rf node_modules package-lock.json
 npm install
 Build Issues
 Build Fails
-**Problem**: `npm run build` fails
-
-**Solution**:
+<strong>Problem</strong>: `npm run build` fails
+<strong>Solution</strong>:
 1. Check for TypeScript errors:
 Code example:
 npm run type-check
@@ -346,9 +290,8 @@ npm run type-check
 Code example:
 rm -rf .next
 Static Export Issues
-**Problem**: Static export fails with dynamic routes
-
-**Solution**:
+<strong>Problem</strong>: Static export fails with dynamic routes
+<strong>Solution</strong>:
 1. Configure `next.config.js`:
 Code example:
 module.exports = {
@@ -359,9 +302,8 @@ module.exports = {
 }
 Translation Issues
 AI Translation Not Working
-**Problem**: Automatic translation fails
-
-**Solution**:
+<strong>Problem</strong>: Automatic translation fails
+<strong>Solution</strong>:
 1. Verify API keys are set correctly
 2. Check translation configuration:
 Code example:
@@ -374,9 +316,8 @@ Code example:
 }
 Content Issues
 Content Not Updating
-**Problem**: Changes to content files not reflecting
-
-**Solution**:
+<strong>Problem</strong>: Changes to content files not reflecting
+<strong>Solution</strong>:
 Content changes are built on build time. If you are using the local development server, you need to restart the server after making changes.
 1. Clear the cache:
 Code example:
@@ -385,47 +326,41 @@ npm run clean
 3. Check file permissions
 Deployment Issues
 Vercel Deployment Failed
-**Problem**: Deployment to Vercel fails
-
-**Solution**:
+<strong>Problem</strong>: Deployment to Vercel fails
+<strong>Solution</strong>:
 1. Check build logs
 2. Verify environment variables are set in Vercel dashboard
 3. Ensure all dependencies are listed in package.json
 Getting Help
 If you're still experiencing issues:
-
 1. Check our [GitHub Issues](https://github.com/Cloud-Code-AI/Akiradocs/issues)
 2. Join our [Discord Community](https://discord.gg/zvYZukgeH2)
 3. Contact [Support](mailto:saurav.panda@akiradocs.ai)
 -------------
 [Document: docs/installation/setup.json]
-Detailed Installation Guide
+Title: Detailed Installation Guide
 Complete guide to installing AkiraDocs in different environments.
 Prerequisites
 Ensure your system meets the [requirements](../getting-started/requirements.md) before proceeding.
 Installation Methods
 1. Local Development Setup
-1. **Clone the Repository**
+1. <strong>Create New Project</strong>
 Code example:
-git clone https://github.com/your-org/akira-docs-template
-cd akira-docs-template
-2. **Install Dependencies**
+npx create-akiradocs@latest my-docs-site
+cd my-docs-site
+2. <strong>Install Dependencies</strong>
+Dependencies are automatically installed during project creation. If you need to reinstall:
 Code example:
 npm install
-3. **Create Environment File**
+3. <strong>Create Environment File</strong>
+The environment file is created automatically. You can modify it at `.env.local`
+4. <strong>Start Development Server</strong>
 Code example:
-cp .env.example .env.local
-4. **Configure Environment Variables**
+npm run dev
+5. <strong>Update AkiraDocs</strong>
+To update an existing installation to the latest version:
 Code example:
-NEXT_PUBLIC_API_URL=your_api_url
-NEXT_PUBLIC_SITE_URL=your_site_url
-2. Docker Installation
-1. **Pull the Docker Image**
-Code example:
-docker pull akiradocs/akiradocs:latest
-2. **Run the Container**
-Code example:
-docker run -p 3000:3000 akiradocs/akiradocs:latest
+npx create-akiradocs@latest update
 3. Cloud Platform Deployment
 Vercel
 1. Fork the repository
@@ -433,19 +368,19 @@ Vercel
 3. Configure environment variables
 4. Deploy
 Other Platforms
-AWS Amplify
-Netlify
-Digital Ocean
-Custom server
+AWS Amplify (Coming Soon)
+Netlify (Coming Soon)
+Digital Ocean (Coming Soon)
+Custom server (Coming Soon)
 Post-Installation Steps
-1. **Verify Installation**
+1. <strong>Verify Installation</strong>
 Code example:
 npm run build
 npm run start
-2. **Configure Git Integration**
+2. <strong>Configure Git Integration</strong>
 Code example:
 git remote add origin your-repository-url
-3. **Setup Content Directory**
+3. <strong>Setup Content Directory</strong>
 Code example:
 mkdir -p docs/_contents/en
 Environment-Specific Configurations
@@ -461,18 +396,16 @@ Testing
 Code example:
 NODE_ENV=test
 TEST_MODE=true
-Next Steps
-[Configuration Guide](./configuration.md)
-[Troubleshooting](./troubleshooting.md)
 -------------
 [Document: docs/installation/configuration.json]
-Configuration Guide
+Title: Configuration Guide
 Complete guide to configuring your AkiraDocs installation.
 Core Configuration
 Site Configuration
 Edit `akiradocs.config.json`:
 Code example:
 {
+    "url": "https://docs.akiradocs.com",
     "site": {
         "title": "Your Docs",
         "description": "Your documentation description"
@@ -544,7 +477,6 @@ Code example:
 [Document: docs/guides/analytics.json]
 Title: Analytics Integration
 Learn how to add analytics tracking to your documentation
-Analytics Integration
 AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
 Setting up Google Analytics
 1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
@@ -591,155 +523,15 @@ Code example:
 }
 This provides a complete analytics integration that's easy for users to set up and extend as needed.
 -------------
-[Document: docs/getting-started/requirements.json]
-System Requirements
-Before installing AkiraDocs, ensure your environment meets the following requirements.
-Minimum Requirements
-Node.js
-Version: 16.x or higher
-Recommended: Latest LTS version
-System Memory
-Minimum: 4GB RAM
-Recommended: 8GB RAM or more
-Storage
-Minimum: 1GB free space
-Recommended: 5GB+ for larger documentation projects
-Software Dependencies
-Required
-Git (latest version recommended)
-npm or yarn package manager
-Modern web browser (Chrome, Firefox, Safari, Edge)
-Optional
-Docker (for containerized deployment)
-PostgreSQL (for enterprise features)
-Development Environment
-Supported Operating Systems
-macOS (10.15 or later)
-Windows 10/11
-Linux (Ubuntu 20.04 or later recommended)
-IDE/Editor Support
-VS Code (recommended)
-WebStorm
-Any text editor with Markdown support
-Network Requirements
-Cloud Features
-Stable internet connection
-Access to npm registry
-Access to GitHub (for version control)
-Enterprise Features
-Outbound HTTPS (443) access
-WebSocket support
-Custom domain (optional)
-Browser Support
-Desktop Browsers
-Chrome (last 2 versions)
-Firefox (last 2 versions)
-Safari (last 2 versions)
-Edge (last 2 versions)
-Mobile Browsers
-iOS Safari
-Android Chrome
-Verification
-Run the following command to check if your environment is ready:
--------------
-[Document: docs/getting-started/quickstart.json]
-Title: Quickstart Guide
-Quick Start Guide
-Get up and running with AkiraDocs in minutes.
-Quick Deploy
-Option 1: Deploy with Vercel
-The fastest way to get started is using Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCloud-Code-AI%2Fakiradocs-template)
-Option 2: Using CLI
-Create a new project using our CLI:
-Code example:
-npx create-akiradocs@latest my-docs
-Basic Setup Steps
-1. **Clone the Repository** (if not using Quick Deploy)
-Code example:
-git clone https://github.com/your-org/akira-docs-template
-cd akira-docs-template
-2. **Install Dependencies**
-Code example:
-npm install
-# or
-yarn install
-3. **Start Development Server**
-Code example:
-npm run dev
-# or
-yarn dev
-4. Open `http://localhost:3000` in your browser
-Initial Configuration
-1. **Update Site Configuration**
-Edit `akiradocs.config.json`:
-Code example:
-{
-  "site": {
-    "title": "Your Docs",
-    "description": "Your documentation description"
-  }
-}
-2. **Configure Translation** (Optional)
-Code example:
-{
-  "translation": {
-    "auto_translate": true,
-    "provider": "anthropic",
-    "targetLanguages": ["es", "fr", "de"]
-  }
-}
--------------
-[Document: docs/getting-started/features.json]
-AkiraDocs Features
-A comprehensive overview of AkiraDocs' core features and capabilities.
-Content Creation & Management
-**Notion-like Editor**: Intuitive block-based interface with real-time preview
-**Markdown Support**: Native Markdown and MDX compatibility
-**Custom Components**: Create and reuse your own content blocks
-Internationalization & Translation
-**Multi-Language Support**: Maintain documentation in multiple languages
-**AI-Powered Translation**: Automated, context-aware content translation
-**Translation Management**: Built-in tools for managing localized content
-Search & Discovery
-**AI-Powered Search**: Natural language question answering with context awareness
-**SEO Optimization**: Automated SEO tools and optimizations
-**Smart Indexing**: Real-time search index updates
-Build & Performance
-**Static Generation**: Optimized build process with asset optimization
-**Developer Experience**: Fast refresh and comprehensive debugging tools
-**Performance Focus**: Built-in best practices for speed and efficiency
-Enterprise Features (Coming Soon)
-**Security & Compliance**: SSO, RBAC, and audit logging
-**Analytics & Insights**: Usage tracking and documentation metrics
-**Team Collaboration**: Enterprise-grade collaboration tools
-Migration Support (Coming Soon)
-Code example:
-# Supported platforms for easy migration
-✓ Nextra
-✓ GitBook
-✓ Docusaurus
-✓ ReadTheDocs
-Feature Comparison
-| Feature | AkiraDocs | Traditional Docs |
-|---------|-----------|------------------|
-| Notion-like Editor | ✓ | ✗ |
-| AI Translation | ✓ | ✗ |
-| AI Search | ✓ | ✗ |
-| Auto SEO | ✓ | Partial |
-| Markdown Support | ✓ | ✓ |
-| Build Optimization | ✓ | Varies |
--------------
 [Document: docs/editor/overview.json]
-Editor Overview
+Title: Editor Overview
 AkiraDocs features a modern, Notion-like editor that combines the simplicity of block-based editing with the power of Markdown.
 Editor Interface
 Main Components
-**Toolbar**: Quick access to formatting options and block types
-**Content Area**: Block-based editing space
-**Sidebar**: Navigation and document structure
-**Command Palette**: Quick commands (Ctrl/Cmd + P)
+<strong>Toolbar</strong>: Quick access to formatting options and block types
+<strong>Content Area</strong>: Block-based editing space
+<strong>Sidebar</strong>: Navigation and document structure
+<strong>Command Palette</strong>: Quick commands (Ctrl/Cmd + P)
 Block Structure
 Each content element is a block that can be:
 Dragged and dropped to reorganize
@@ -776,16 +568,16 @@ Dividers
 Custom components (Coming Soon)
 -------------
 [Document: docs/editor/features.json]
-Editor Features
+Title: Editor Features
 Detailed overview of AkiraDocs editor capabilities and features.
 Block System
 Text Formatting
-**Basic Formatting**
+<strong>Basic Formatting</strong>
 Bold, italic, underline
 Strikethrough
 Highlight
 Code inline
-**Advanced Formatting**
+<strong>Advanced Formatting</strong>
 Custom colors
 Multiple fonts
 Text alignment
@@ -825,13 +617,13 @@ Change history
 Rollback capabilities
 -------------
 [Document: docs/contributing/how-to-contribute.json]
-Contributing to AkiraDocs
+Title: Contributing to AkiraDocs
 Guide to contributing to the AkiraDocs open-source project.
 Getting Started
 Setup Development Environment
 Code example:
 # Clone repository
-git clone https://github.com/akiradocs/akiradocs
+git clone https://github.com/Cloud-Code-AI/akiradocs
 cd akiradocs
 
 # Install dependencies
@@ -893,22 +685,18 @@ Check [Issues](https://github.com/Cloud-Code-AI/akiradocs/issues)
 Read [Documentation](https://docs.akiradocs.com)
 -------------
 [Document: docs/contributing/code-of-conduct.json]
-Code of Conduct
+Title: Code of Conduct
 Our Pledge
 We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
-
 We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 Our Standards
 Examples of behavior that contributes to a positive environment:
-
 * Demonstrating empathy and kindness toward other people
 * Being respectful of differing opinions, viewpoints, and experiences
 * Giving and gracefully accepting constructive feedback
 * Accepting responsibility and apologizing to those affected by our mistakes
 * Focusing on what is best for the overall community
-
 Examples of unacceptable behavior:
-
 * The use of sexualized language or imagery, and sexual attention or advances
 * Trolling, insulting or derogatory comments, and personal or political attacks
 * Public or private harassment
@@ -921,8 +709,116 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 Attribution
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 -------------
+[Document: docs/getting-started/requirements.json]
+Title: System Requirements
+Before installing AkiraDocs, ensure your environment meets the following requirements.
+Minimum Requirements
+Node.js
+Version: 16.x or higher
+Recommended: Latest LTS version
+System Memory
+Minimum: 2GB RAM
+Recommended: 4GB RAM or more
+Storage
+Recommended: 1GB free space
+Software Dependencies
+Required
+Git (latest version recommended)
+npm or yarn package manager
+Modern web browser (Chrome, Firefox, Safari, Edge)
+Optional
+Docker (for containerized deployment)
+PostgreSQL (for enterprise features)
+Development Environment
+Supported Operating Systems
+macOS (10.15 or later)
+Windows 10/11
+Linux (Ubuntu 20.04 or later recommended)
+IDE/Editor Support
+VS Code (coming soon)
+WebStorm (coming soon)
+Any text editor with Markdown support
+-------------
+[Document: docs/getting-started/quickstart.json]
+Title: Quickstart Guide
+Get up and running with AkiraDocs in minutes.
+Quick Deploy
+Option 1: Deploy with Vercel
+The fastest way to get started is using Vercel:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCloud-Code-AI%2Fakiradocs-template)
+Option 2: Using CLI
+Create a new project using our CLI:
+Code example:
+npx create-akiradocs@latest my-docs
+Basic Setup Steps
+1. <strong>Clone the Repository</strong> (if not using Quick Deploy)
+Code example:
+git clone https://github.com/your-org/akira-docs-template
+cd akira-docs-template
+2. <strong>Install Dependencies</strong>
+Code example:
+npm install
+# or
+yarn install
+3. <strong>Start Development Server</strong>
+Code example:
+npm run dev
+# or
+yarn dev
+4. Open `http://localhost:3000` in your browser
+Initial Configuration
+1. <strong>Update Site Configuration</strong>
+Edit `akiradocs.config.json`:
+Code example:
+{
+  "site": {
+    "title": "Your Docs",
+    "description": "Your documentation description"
+  }
+}
+2. <strong>Configure Translation</strong> (Optional)
+Code example:
+{
+  "translation": {
+    "auto_translate": true,
+    "provider": "anthropic",
+    "targetLanguages": ["es", "fr", "de"]
+  }
+}
+-------------
+[Document: docs/getting-started/features.json]
+Title: AkiraDocs Features
+A comprehensive overview of AkiraDocs' core features and capabilities.
+Content Creation & Management
+<strong>Notion-like Editor</strong>: Intuitive block-based interface with real-time preview
+<strong>Markdown Support</strong>: Native Markdown and MDX compatibility
+<strong>Custom Components</strong>: Create and reuse your own content blocks
+Internationalization & Translation
+<strong>Multi-Language Support</strong>: Maintain documentation in multiple languages
+<strong>AI-Powered Translation</strong>: Automated, context-aware content translation
+<strong>Translation Management</strong>: Built-in tools for managing localized content
+Search & Discovery
+<strong>AI-Powered Search</strong>: Natural language question answering with context awareness
+<strong>SEO Optimization</strong>: Automated SEO tools and optimizations
+<strong>Smart Indexing</strong>: Real-time search index updates
+Build & Performance
+<strong>Static Generation</strong>: Optimized build process with asset optimization
+<strong>Developer Experience</strong>: Fast refresh and comprehensive debugging tools
+<strong>Performance Focus</strong>: Built-in best practices for speed and efficiency
+Enterprise Features (Coming Soon)
+<strong>Security & Compliance</strong>: SSO, RBAC, and audit logging
+<strong>Analytics & Insights</strong>: Usage tracking and documentation metrics
+<strong>Team Collaboration</strong>: Enterprise-grade collaboration tools
+Migration Support (Coming Soon)
+Code example:
+# Supported platforms for easy migration
+✓ Nextra
+✓ GitBook
+✓ Docusaurus
+✓ ReadTheDocs
+-------------
 [Document: docs/content-management/creating-pages.json]
-Creating and Organizing Pages
+Title: Creating and Organizing Pages
 Learn how to create, structure, and organize your documentation pages in AkiraDocs. You can create markdown pages or just use the editor UI. Note in _contents folder, you will only see markdown content created by you. If you use Editor UI, the content will be saved in the compiled folder and will be automatically translated to other languages.
 Page Structure
 Basic Page Template
@@ -984,7 +880,7 @@ Code example:
 }
 -------------
 [Document: docs/api-reference/usage-guide.json]
-API Documentation Guide
+Title: API Documentation Guide
 Learn how to generate comprehensive API documentation using AkiraDocs.
 Quick Start
 Upload API Spec

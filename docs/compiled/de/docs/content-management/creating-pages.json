@@ -1,0 +1,152 @@
+{
+  "title": "Erstellen und Organisieren von Seiten",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Content Management",
+  "keywords": [
+    "Content Creation",
+    "Pages",
+    "Organization"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Lernen Sie, wie Sie Ihre Dokumentationsseiten in AkiraDocs erstellen, strukturieren und organisieren. Sie können Markdown-Seiten erstellen oder einfach die Benutzeroberfläche des Editors verwenden. Beachten Sie, dass Sie im Ordner _contents nur den Markdown-Inhalt sehen, den Sie erstellt haben. Wenn Sie die Benutzeroberfläche des Editors verwenden, wird der Inhalt im kompilierten Ordner gespeichert und automatisch in andere Sprachen übersetzt."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nSeitenstruktur",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Vorlage für Basisseite",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "---\ntitel: Ihre Seitentitel\nbeschreibung: Kurze Beschreibung der Seite\nautor: Ihr Name\nveröffentlichungsdatum: 2024-11-26\nletztesÄnderungsdatum: 2024-11-26\nkategorie: Name der Kategorie\nschlüsselwörter:\n  - Schlüsselwort 1\n  - Schlüsselwort 2\n---\n\n# Haupttitel\n\nDer Inhalt beginnt hier...",
+      "metadata": {
+        "language": "markdown",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nVerzeichnisstruktur",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "code",
+      "content": "dossier_nom/\n├── _contenus/\n│   ├── de/\n│   │   ├── um-loszulegen/\n│   │   ├── anleitungen/\n│   │   └── api/",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "Sie können einfach Seiten für die Standardsprache (en) erstellen und AkiraDocs wird sie automatisch in andere Sprachen übersetzen."
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Erstellen neuer Seiten",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Methode 1: Verwendung der Benutzeroberfläche",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "1. Klicken Sie auf \"Neue Seite\" in der Seitenleiste\n2. Beginnen Sie, Inhalte hinzuzufügen"
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Méthode 2: Direkte Dateierstellung",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "1. Erstellen Sie eine neue `.md`-Datei im entsprechenden Verzeichnis\n2. Fügen Sie die erforderlichen Metadaten (Frontmatter) hinzu\n3. Schreiben Sie den Inhalt mit Markdown\n4. Speichern und kompilieren Sie"
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Organisation der Seite",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nKategorien und Etiketten",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Verwenden Sie konsistente Kategorien",
+        "Wenden Sie die relevanten Etiketten an",
+        "Organisieren nach Thema",
+        "Erstellen Sie logische Hierarchien"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nNavigationsstruktur",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wird:\n\nDies wird automatisch aus der Ordnerstruktur generiert. Sie können es anpassen, indem Sie die Datei `_meta.json` im kompilierten Ordner bearbeiten."
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "{\n  \"docs\": {\n    \"getting-started\": {\n      \"title\": \"Loslegen\",\n      \"items\": {\n        \"introduction\": {\n          \"title\": \"Einführung\",\n          \"path\": \"/docs/getting-started/introduction\"\n        }\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "title": "Fonctionnalités de l'éditeur",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Editor Features",
+    "Blocks",
+    "Formatting"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nDescription détaillée des capacités et fonctions de l'éditeur AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nSystème de blocs",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nFormat du texte",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "<strong>Format de base</strong>",
+        "Gras, italique, souligné",
+        "Barré",
+        "Mettre en évidence",
+        "Code en ligne"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "list",
+      "content": [
+        "<strong>Format Avancé</strong>",
+        "Couleurs personnalisées",
+        "Voici la traduction en français :\n\nSources multiples",
+        "Alignement du texte",
+        "Indentation"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Blocs de contenu",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Texte enrichi",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "# Titre 1\n## Titre 2\n> Citation textuelle\n- Liste à puces\n1. Liste numérotée",
+      "metadata": {
+        "language": "markdown",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Blocs de code",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "10",
+      "type": "code",
+      "content": "// Mise en évidence de la syntaxe\nconsole.log('Bonjour le monde');",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Blocs de médias",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "12",
+      "type": "list",
+      "content": [
+        "Chargement et incorporation d'images",
+        "Intégration vidéo",
+        "Pièces jointes",
+        "Voici la traduction en français :\n\nIntégration interactive"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nCaractéristiques de l'IA",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nAmélioration du contenu",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Voici la traduction en français :\n\nSuggestions de grammaire et de style",
+        "Voici la traduction en français :\n\nOptimisation du contenu",
+        "Voici la traduction en français :\n\nRecommandations de SEO",
+        "Voici la traduction en français :\n\nAssistance de traduction"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nFormat intelligent",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "list",
+      "content": [
+        "Mise en forme automatique",
+        "Voici la traduction en français :\n\nListes intelligentes",
+        "Voici la traduction en français, avec le formatage d'origine conservé :\n\nFormat de tableau",
+        "Détection de langue de bloc de code"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Caractéristiques de collaboration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "19",
+      "type": "heading",
+      "content": "Contrôle de version",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "20",
+      "type": "list",
+      "content": [
+        "Intégration de Git",
+        "Voici la traduction en français :\n\nHistorique des modifications",
+        "Voici la traduction en français :\n\nCapacités de réversion"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}
