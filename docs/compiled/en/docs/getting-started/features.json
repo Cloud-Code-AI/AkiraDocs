@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "AkiraDocs Features",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "AkiraDocs Features",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "A comprehensive overview of AkiraDocs' core features and capabilities."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Content Creation & Management",
       "metadata": {
@@ -38,29 +25,19 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "3",
       "type": "list",
       "content": [
-        "**Notion-like Editor**: Intuitive block-based interface with real-time preview",
-        "**Markdown Support**: Native Markdown and MDX compatibility",
-        "**Custom Components**: Create and reuse your own content blocks"
+        "<strong>Notion-like Editor</strong>: Intuitive block-based interface with real-time preview",
+        "<strong>Markdown Support</strong>: Native Markdown and MDX compatibility",
+        "<strong>Custom Components</strong>: Create and reuse your own content blocks"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "7",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "8",
+      "id": "4",
       "type": "heading",
       "content": "Internationalization & Translation",
       "metadata": {
@@ -68,29 +45,19 @@
       }
     },
     {
-      "id": "9",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "10",
+      "id": "5",
       "type": "list",
       "content": [
-        "**Multi-Language Support**: Maintain documentation in multiple languages",
-        "**AI-Powered Translation**: Automated, context-aware content translation",
-        "**Translation Management**: Built-in tools for managing localized content"
+        "<strong>Multi-Language Support</strong>: Maintain documentation in multiple languages",
+        "<strong>AI-Powered Translation</strong>: Automated, context-aware content translation",
+        "<strong>Translation Management</strong>: Built-in tools for managing localized content"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "11",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "12",
+      "id": "6",
       "type": "heading",
       "content": "Search & Discovery",
       "metadata": {
@@ -98,29 +65,19 @@
       }
     },
     {
-      "id": "13",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "14",
+      "id": "7",
       "type": "list",
       "content": [
-        "**AI-Powered Search**: Natural language question answering with context awareness",
-        "**SEO Optimization**: Automated SEO tools and optimizations",
-        "**Smart Indexing**: Real-time search index updates"
+        "<strong>AI-Powered Search</strong>: Natural language question answering with context awareness",
+        "<strong>SEO Optimization</strong>: Automated SEO tools and optimizations",
+        "<strong>Smart Indexing</strong>: Real-time search index updates"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "15",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "16",
+      "id": "8",
       "type": "heading",
       "content": "Build & Performance",
       "metadata": {
@@ -128,29 +85,19 @@
       }
     },
     {
-      "id": "17",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "18",
+      "id": "9",
       "type": "list",
       "content": [
-        "**Static Generation**: Optimized build process with asset optimization",
-        "**Developer Experience**: Fast refresh and comprehensive debugging tools",
-        "**Performance Focus**: Built-in best practices for speed and efficiency"
+        "<strong>Static Generation</strong>: Optimized build process with asset optimization",
+        "<strong>Developer Experience</strong>: Fast refresh and comprehensive debugging tools",
+        "<strong>Performance Focus</strong>: Built-in best practices for speed and efficiency"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "19",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "20",
+      "id": "10",
       "type": "heading",
       "content": "Enterprise Features (Coming Soon)",
       "metadata": {
@@ -158,29 +105,19 @@
       }
     },
     {
-      "id": "21",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "22",
+      "id": "11",
       "type": "list",
       "content": [
-        "**Security & Compliance**: SSO, RBAC, and audit logging",
-        "**Analytics & Insights**: Usage tracking and documentation metrics",
-        "**Team Collaboration**: Enterprise-grade collaboration tools"
+        "<strong>Security & Compliance</strong>: SSO, RBAC, and audit logging",
+        "<strong>Analytics & Insights</strong>: Usage tracking and documentation metrics",
+        "<strong>Team Collaboration</strong>: Enterprise-grade collaboration tools"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "23",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "24",
+      "id": "12",
       "type": "heading",
       "content": "Migration Support (Coming Soon)",
       "metadata": {
@@ -188,36 +125,13 @@
       }
     },
     {
-      "id": "25",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "26",
+      "id": "13",
       "type": "code",
       "content": "# Supported platforms for easy migration\n✓ Nextra\n✓ GitBook\n✓ Docusaurus\n✓ ReadTheDocs",
       "metadata": {
         "language": "bash",
         "showLineNumbers": true
       }
-    },
-    {
-      "id": "27",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "28",
-      "type": "heading",
-      "content": "Feature Comparison",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
-      "id": "29",
-      "type": "paragraph",
-      "content": "| Feature | AkiraDocs | Traditional Docs |\n|---------|-----------|------------------|\n| Notion-like Editor | ✓ | ✗ |\n| AI Translation | ✓ | ✗ |\n| AI Search | ✓ | ✗ |\n| Auto SEO | ✓ | Partial |\n| Markdown Support | ✓ | ✓ |\n| Build Optimization | ✓ | Varies |"
     }
   ]
 }

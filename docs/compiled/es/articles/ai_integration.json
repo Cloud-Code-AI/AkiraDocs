@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Integración de Asistente de IA",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
@@ -15,23 +15,15 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
+      "content": "Aprende cómo utilizar el asistente de IA integrado de Akira para mejorar la documentación"
     },
     {
       "id": "2",
-      "type": "heading",
-      "content": "Integración de Asistente de IA",
-      "metadata": {
-        "level": 1
-      }
+      "type": "paragraph",
+      "content": "Aquí está la traducción al español, manteniendo el formato original:\n\nEl Asistente de IA de Akira es una poderosa herramienta que ayuda a los desarrolladores y escritores técnicos a crear, mantener y mejorar la documentación a través de interacciones en lenguaje natural. Esta guía cubre las características esenciales y las mejores prácticas para utilizar de manera efectiva el asistente de IA."
     },
     {
       "id": "3",
-      "type": "paragraph",
-      "content": "Aprende cómo utilizar el asistente de IA integrado de Akira para mejorar la documentación\n\nEl Asistente de IA de Akira es una poderosa herramienta que ayuda a los desarrolladores y escritores técnicos a crear, mantener y mejorar la documentación a través de interacciones en lenguaje natural. Esta guía cubre las características esenciales y las mejores prácticas para utilizar el asistente de IA de manera efectiva."
-    },
-    {
-      "id": "4",
       "type": "heading",
       "content": "Características clave",
       "metadata": {
@@ -39,12 +31,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "4",
       "type": "list",
       "content": [
         "Generación de documentación de lenguaje natural",
@@ -58,12 +45,7 @@
       }
     },
     {
-      "id": "7",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "8",
+      "id": "5",
       "type": "heading",
       "content": "Comenzando",
       "metadata": {
@@ -71,12 +53,12 @@
       }
     },
     {
-      "id": "9",
+      "id": "6",
       "type": "paragraph",
       "content": "El Asistente de IA se puede acceder a través del menú de comandos (Ctrl+Shift+P) o utilizando el comando `/ai` en cualquier bloque de contenido. Comprende solicitudes conscientes del contexto y puede ayudar con diversas tareas de documentación."
     },
     {
-      "id": "10",
+      "id": "7",
       "type": "heading",
       "content": "Casos de uso comunes",
       "metadata": {
@@ -84,12 +66,12 @@
       }
     },
     {
-      "id": "11",
+      "id": "8",
       "type": "paragraph",
       "content": "1. Generando ejemplos de código\n2. Explicando conceptos técnicos\n3. Reestructurando contenido\n4. Creando esquemas de documentación\n5. Traduciendo documentación"
     },
     {
-      "id": "12",
+      "id": "9",
       "type": "heading",
       "content": "Mejores Prácticas",
       "metadata": {
@@ -97,12 +79,7 @@
       }
     },
     {
-      "id": "13",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "14",
+      "id": "10",
       "type": "list",
       "content": [
         "Proporciona un contexto claro al hacer solicitudes",
@@ -116,12 +93,7 @@
       }
     },
     {
-      "id": "15",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "16",
+      "id": "11",
       "type": "heading",
       "content": "Opciones de configuración",
       "metadata": {
@@ -129,12 +101,12 @@
       }
     },
     {
-      "id": "17",
+      "id": "12",
       "type": "paragraph",
       "content": "Puedes personalizar el comportamiento del Asistente de IA a través del archivo `config.yaml`:"
     },
     {
-      "id": "18",
+      "id": "13",
       "type": "code",
       "content": "ai_assistant:\n  modelo: \"advanced-docs-v2\"\n  temperatura: 0.7\n  max_tokens: 2048\n  guía_de_estilo: \"path/to/style/guide.md\"",
       "metadata": {
@@ -143,12 +115,7 @@
       }
     },
     {
-      "id": "19",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "20",
+      "id": "14",
       "type": "heading",
       "content": "Próximos pasos",
       "metadata": {
@@ -156,7 +123,7 @@
       }
     },
     {
-      "id": "21",
+      "id": "15",
       "type": "paragraph",
       "content": "Explora nuestra guía de [Funciones Avanzadas de IA](/advanced-ai-features) para aprender más sobre casos de uso especializados y posibilidades de integración."
     }

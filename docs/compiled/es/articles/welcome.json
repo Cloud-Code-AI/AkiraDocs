@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "Bienvenido a Akira Doc",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "Bienvenido a Akira Docs, la plataforma de documentación de próxima generación impulsada por IA. Esta plantilla te ayudará a comenzar a crear tu propia documentación."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Características clave",
       "metadata": {
@@ -38,12 +25,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "3",
       "type": "list",
       "content": [
         "Fácil de personalizar",
@@ -56,9 +38,13 @@
       }
     },
     {
-      "id": "7",
-      "type": "paragraph",
-      "content": "> [!info] Primeros pasos\n> ¡Comienza personalizando esta plantilla para que coincida con las necesidades de tu proyecto!"
+      "id": "4",
+      "type": "callout",
+      "content": "¡Comienza personalizando esta plantilla para que coincida con las necesidades de tu proyecto!",
+      "metadata": {
+        "type": "info",
+        "title": "Getting Started"
+      }
     }
   ]
 }

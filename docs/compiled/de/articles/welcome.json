@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "Willkommen bei Akira Doc",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "Willkommen bei Akira Docs, der KI-gestützten Dokumentationsplattform der nächsten Generation. Dieses Modell hilft Ihnen, mit der Erstellung Ihrer eigenen Dokumentation zu beginnen."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Hier ist die Übersetzung ins Deutsche:\n\nHauptmerkmale",
       "metadata": {
@@ -38,12 +25,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "3",
       "type": "list",
       "content": [
         "Einfach zu personalisieren",
@@ -56,9 +38,13 @@
       }
     },
     {
-      "id": "7",
-      "type": "paragraph",
-      "content": "> [!info] Erste Schritte\n> Passen Sie diese Vorlage zunächst an die Bedürfnisse Ihres Projekts an!"
+      "id": "4",
+      "type": "callout",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nBeginnen Sie damit, diese Vorlage an die Bedürfnisse Ihres Projekts anzupassen!",
+      "metadata": {
+        "type": "info",
+        "title": "Getting Started"
+      }
     }
   ]
 }

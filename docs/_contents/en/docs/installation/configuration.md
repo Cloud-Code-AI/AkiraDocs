@@ -20,6 +20,7 @@ Edit `akiradocs.config.json`:
 
 ```json
 {
+    "url": "https://docs.akiradocs.com",
     "site": {
         "title": "Your Docs",
         "description": "Your documentation description"

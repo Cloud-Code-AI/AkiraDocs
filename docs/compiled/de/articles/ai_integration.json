@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "AI-Assistent-Integration",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
@@ -15,23 +15,15 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
+      "content": "Lernen Sie, den integrierten KI-Assistenten von Akira zu nutzen, um die Dokumentation zu verbessern"
     },
     {
       "id": "2",
-      "type": "heading",
-      "content": "Integration des KI-Assistenten",
-      "metadata": {
-        "level": 1
-      }
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nAkiras KI-Assistent ist ein leistungsstarkes Tool, das Entwicklern und technischen Redakteuren hilft, Dokumentationen durch natürliche Sprachinteraktionen zu erstellen, zu warten und zu verbessern. Diese Anleitung behandelt die wichtigsten Funktionen und Best Practices für die effektive Nutzung des KI-Assistenten."
     },
     {
       "id": "3",
-      "type": "paragraph",
-      "content": "Lernen Sie, den integrierten KI-Assistenten von Akira zu nutzen, um die Dokumentation zu verbessern\n\nDer KI-Assistent von Akira ist ein leistungsstarkes Tool, das Entwicklern und technischen Redakteuren hilft, Dokumentationen durch natürliche Sprachinteraktionen zu erstellen, zu pflegen und zu verbessern. Diese Anleitung behandelt die wichtigsten Funktionen und Best Practices für die effiziente Nutzung des KI-Assistenten."
-    },
-    {
-      "id": "4",
       "type": "heading",
       "content": "Hier ist die Übersetzung ins Deutsche:\n\nHauptmerkmale",
       "metadata": {
@@ -39,12 +31,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "4",
       "type": "list",
       "content": [
         "Generierung von Dokumentation in natürlicher Sprache",
@@ -58,12 +45,7 @@
       }
     },
     {
-      "id": "7",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "8",
+      "id": "5",
       "type": "heading",
       "content": "Beginnend",
       "metadata": {
@@ -71,12 +53,12 @@
       }
     },
     {
-      "id": "9",
+      "id": "6",
       "type": "paragraph",
       "content": "Hier ist die Übersetzung ins Deutsche:\n\nDer KI-Assistent kann über das Befehlsmenü (Strg+Umschlag+P) oder mit dem Befehl `/ai` in jedem Inhaltsblock aufgerufen werden. Er versteht kontextbezogene Anfragen und kann Ihnen bei verschiedenen Dokumentationsaufgaben helfen."
     },
     {
-      "id": "10",
+      "id": "7",
       "type": "heading",
       "content": "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nGängige Anwendungsfälle",
       "metadata": {
@@ -84,12 +66,12 @@
       }
     },
     {
-      "id": "11",
+      "id": "8",
       "type": "paragraph",
       "content": "1. Code-Beispiele generieren\n2. Technische Konzepte erklären\n3. Inhalte umstrukturieren\n4. Dokumentationsschemata erstellen\n5. Dokumentation übersetzen"
     },
     {
-      "id": "12",
+      "id": "9",
       "type": "heading",
       "content": "Voici la traduction en allemand, avec le formatage d'origine conservé :\n\nBeste Praktiken",
       "metadata": {
@@ -97,12 +79,7 @@
       }
     },
     {
-      "id": "13",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "14",
+      "id": "10",
       "type": "list",
       "content": [
         "Geben Sie einen klaren Kontext an, wenn Sie Anfragen formulieren",
@@ -116,12 +93,7 @@
       }
     },
     {
-      "id": "15",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "16",
+      "id": "11",
       "type": "heading",
       "content": "Hier ist die Übersetzung ins Deutsche:\n\nKonfigurationsoptionen",
       "metadata": {
@@ -129,12 +101,12 @@
       }
     },
     {
-      "id": "17",
+      "id": "12",
       "type": "paragraph",
       "content": "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nSie können das Verhalten des KI-Assistenten über die Datei `config.yaml` anpassen:"
     },
     {
-      "id": "18",
+      "id": "13",
       "type": "code",
       "content": "ai_assistant:\n  Modell: \"advanced-docs-v2\"\n  Temperatur: 0,7\n  max_tokens: 2048\n  Stilhandbuch: \"path/to/style/guide.md\"",
       "metadata": {
@@ -143,12 +115,7 @@
       }
     },
     {
-      "id": "19",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "20",
+      "id": "14",
       "type": "heading",
       "content": "Hier ist die Übersetzung ins Deutsche:\n\nNächste Schritte",
       "metadata": {
@@ -156,7 +123,7 @@
       }
     },
     {
-      "id": "21",
+      "id": "15",
       "type": "paragraph",
       "content": "Erkunden Sie unseren Leitfaden zu den [Erweiterten KI-Funktionen](/advanced-ai-features), um mehr über spezialisierte Anwendungsfälle und Integrationsmöglichkeiten zu erfahren."
     }

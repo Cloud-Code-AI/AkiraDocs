@@ -1,0 +1,179 @@
+{
+  "title": "Systemanforderungen",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Bevor Sie AkiraDocs installieren, stellen Sie sicher, dass Ihre Umgebung die folgenden Anforderungen erfüllt."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nMindestanforderungen",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Node.js\n\nNode.js",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Hier ist die Übersetzung ins Deutsche:\n\nVersion: 16.x oder höher",
+        "Empfohlen: Neueste LTS-Version"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nSystemspeicher",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "Hier ist die Übersetzung ins Deutsche:\n\nMindest-RAM: 2 GB",
+        "Empfohlen: 4 GB RAM oder mehr"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Lagerung",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "8",
+      "type": "list",
+      "content": [
+        "Empfohlen: 1 GB freier Speicherplatz"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Softwareabhängigkeiten",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nErforderlich",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "list",
+      "content": [
+        "Git (die neueste Version wird empfohlen)",
+        "Paketmanager npm oder yarn",
+        "Moderner Webbrowser (Chrome, Firefox, Safari, Edge)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Fakultativ",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "13",
+      "type": "list",
+      "content": [
+        "Docker (für die containerisierte Bereitstellung)",
+        "PostgreSQL (für Enterprise-Funktionen)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Entwicklungsumgebung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Kompatible Betriebssysteme",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "list",
+      "content": [
+        "macOS (Version 10.15 oder neuer)",
+        "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nWindows 10/11\n\nWindows 10/11",
+        "Linux (Ubuntu 20.04 oder höhere Version empfohlen)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Unterstützung für IDEs/Editoren",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "18",
+      "type": "list",
+      "content": [
+        "VS Code (bald)",
+        "WebStorm (demnächst)",
+        "Jeder Texteditor, der Markdown unterstützt"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

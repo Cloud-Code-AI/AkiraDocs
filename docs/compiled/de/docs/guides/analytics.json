@@ -1,0 +1,113 @@
+{
+  "title": "Analyseintegration",
+  "description": "Erfahren Sie, wie Sie Analysen-Tracking zu Ihrer Dokumentation hinzufügen",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Guides",
+  "keywords": [
+    "Akira Docs",
+    "Analytics",
+    "Google Analytics"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "AkiraDocs ist standardmäßig mit Google Analytics 4 (GA4) kompatibel. Diese Anleitung hilft Ihnen dabei, die Analyseerfassung für Ihre Dokumentation einzurichten."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Konfigurieren Sie Google Analytics",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "1. Erstellen Sie eine Google Analytics 4-Eigenschaft in Ihrem [Google Analytics-Konto](https://analytics.google.com/)\n2. Holen Sie sich Ihre Mess-ID (beginnt mit \"G-\")\n3. Fügen Sie die ID zu Ihrer `akiradocs.config.json` hinzu:"
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "{\n\"analytisch\": {\n\"google\": {\n\"messungsId\": \"G-XXXXXXXXXX\",\n\"aktiviert\": true\n},\n\"debugging\": false\n}\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nWas wird automatisch verfolgt?",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "Seitenansichten",
+        "Hier ist die Übersetzung ins Deutsche:\n\nNavigation zwischen den Seiten",
+        "Zeit auf der Seite",
+        "Benutzer-Spracheinstellungen",
+        "Geräteinformationen und Browser"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Nachverfolgung benutzerdefinierter Ereignisse",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung auf Deutsch:\n\nSie können benutzerdefinierte Ereignisse mit dem Hook `useAnalytics` verfolgen:"
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "importieren { useAnalytics } from '@/hooks/useAnalytics'\nfunktion MyComponent() {\n    const { track } = useAnalytics()\n    const handleClick = () => {\n        track('doc_rating', {\n            rating: 5,\n            page: 'getting-started',\n            helpful: true\n        })\n    }\n    return <button onClick={handleClick}>Das war hilfreich</button>\n}",
+      "metadata": {
+        "language": "typescript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung auf Deutsch:\n\nDebug-Modus",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "Aktivieren Sie den Debugmodus, um Analyseereignisse während der Entwicklung in der Konsole zu sehen:"
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "{\n\"analytisch\": {\n\"debuggen\": wahr\n}\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": "Dies bietet eine vollständige analytische Integration, die für Benutzer je nach Bedarf einfach zu konfigurieren und zu erweitern ist."
+    }
+  ]
+}

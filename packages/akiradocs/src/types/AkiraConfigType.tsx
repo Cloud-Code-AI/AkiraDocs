@@ -57,6 +57,10 @@ type Logo = {
       items: NavItem[];
     };
   };
+
+  type Features = {
+    textToSpeech: boolean;
+  };
   
   type AkiraDocsConfig = {
     site: Site;
@@ -67,9 +71,7 @@ type Logo = {
       socialLinks: SocialLink[];
     };
     localization: Localization;
-    features: {
-      textToSpeech: boolean;
-    };
+    features: Features;
   };
   
   export type { AkiraDocsConfig };

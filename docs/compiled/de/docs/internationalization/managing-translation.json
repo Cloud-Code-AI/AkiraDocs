@@ -1,0 +1,120 @@
+{
+  "title": "Übersetzungen verwalten",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "Translation Management",
+    "Content Localization",
+    "Workflow"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Lernen Sie, übersetzten Inhalt in AkiraDocs effizient zu verwalten und zu pflegen."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nÜbersetzungs-Workflow",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Automatische Übersetzung",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "1. Erstellen Sie Inhalte in der Ausgangssprache\n2. Aktivieren Sie die automatische Übersetzung in den Einstellungen\n3. Bauen/Bereitstellen Sie, um Übersetzungen zu generieren\n4. Überprüfen und verfeinern Sie die Übersetzungen"
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Manuelle Übersetzung",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "1. Erstellen Sie spezifische Verzeichnisse für jede Sprache\n2. Kopieren Sie den Quellinhalt\n3. Übersetzen Sie manuell\n4. Aktualisieren Sie die Metadaten"
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nInhaltsorganisation",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nDateistruktur",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "code",
+      "content": "_inhalt/\n├── de/\n│   └── docs/\n│       ├── intro.md\n│       └── anleitung.md\n├── es/\n│   └── docs/\n│       ├── intro.md\n│       └── guide.md\n└── fr/\n    └── docs/\n        ├── intro.md\n        └── guide.md",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Qualitätskontrolle",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nÜberprüfungsprozess",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "1. KI-Übersetzung\n2. Menschliche Überarbeitung\n3. Technische Überprüfung\n4. Veröffentlichung"
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Versionskontrolle",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Änderungen in mehreren Sprachen verfolgen",
+        "Hier ist die Übersetzung ins Deutsche:\n\nBleiben Sie synchronisiert",
+        "Effizientes Verwalten von Updates"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

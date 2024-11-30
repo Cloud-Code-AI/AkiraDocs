@@ -14,35 +14,146 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": "Starten Sie mit Akira Docs in wenigen Minuten\n\nFolgen Sie diesen Schritten, um mit der Verwendung von Akira Docs für Ihre Dokumentationsanforderungen zu beginnen."
+      "content": "Starten Sie in wenigen Minuten mit AkiraDocs."
     },
     {
       "id": "2",
-      "type": "code",
-      "content": "bash\ngit clone https://github.com/tu-org/plantilla-docs-akira\ncd plantilla-docs-akira\nnpm install\nnpm run dev",
+      "type": "heading",
+      "content": "Schnelle Bereitstellung",
       "metadata": {
-        "language": "plaintext",
-        "showLineNumbers": true
+        "level": 2
       }
     },
     {
       "id": "3",
-      "type": "paragraph",
-      "content": ""
+      "type": "heading",
+      "content": "Hier ist die Übersetzung auf Deutsch:\n\nOption 1: Mit Vercel implementieren",
+      "metadata": {
+        "level": 3
+      }
     },
     {
       "id": "4",
-      "type": "callout",
-      "content": "Stellen Sie sicher, dass Node.js 16 oder eine neuere Version auf Ihrem System installiert ist.",
-      "metadata": {
-        "type": "warning",
-        "title": "Prerequisites"
-      }
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nDer schnellste Weg, um loszulegen, ist die Verwendung von Vercel:"
     },
     {
       "id": "5",
       "type": "paragraph",
-      "content": ""
+      "content": "[![Mit Vercel bereitstellen](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCloud-Code-AI%2Fakiradocs-template)"
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nOption 2: Verwendung der Befehlszeilenschnittstelle",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "Erstellen Sie ein neues Projekt mit unserem CLI:"
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "npx create-akiradocs@latest mi-documentos",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nGrundlegende Konfigurationsschritte",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "1. <strong>Repository klonen</strong> (wenn Quick Deploy nicht verwendet wird)"
+    },
+    {
+      "id": "11",
+      "type": "code",
+      "content": "git clonen https://github.com/your-org/akira-docs-template\ncd akira-docs-template",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "2. <strong>Installieren Sie die Abhängigkeiten</strong>"
+    },
+    {
+      "id": "13",
+      "type": "code",
+      "content": "npm installieren\n# oder\nyarn installieren",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": "3. <strong>Starten Sie den Entwicklungsserver</strong>"
+    },
+    {
+      "id": "15",
+      "type": "code",
+      "content": "npm run dev\n# oder\nyarn dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "16",
+      "type": "paragraph",
+      "content": "4. Öffnen Sie `http://localhost:3000` in Ihrem Browser"
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nAnfängliche Konfiguration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "18",
+      "type": "paragraph",
+      "content": "1. <strong>Aktualisieren Sie die Website-Konfiguration</strong>\nBearbeiten Sie `akiradocs.config.json`:"
+    },
+    {
+      "id": "19",
+      "type": "code",
+      "content": "{\n  \"site\": {\n    \"title\": \"Ihre Dokumente\",\n    \"description\": \"Die Beschreibung Ihrer Dokumentation\"\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "20",
+      "type": "paragraph",
+      "content": "2. <strong>Übersetzung konfigurieren</strong> (Optional)"
+    },
+    {
+      "id": "21",
+      "type": "code",
+      "content": "{\n  \"Übersetzung\": {\n    \"auto_übersetzen\": true,\n    \"Anbieter\": \"anthropic\",\n    \"Zielsprachen\": [\"es\", \"fr\", \"de\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
     }
   ]
 }

@@ -1,0 +1,91 @@
+{
+  "title": "Traducción impulsada por la IA",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "AI Translation",
+    "Automation",
+    "Language Processing"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Guía para usar las capacidades de traducción de IA de AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Configuración",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Configuración",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "{\n  \"traducción\": {\n    \"auto_traducir\": true,\n    \"proveedor\": \"anthropic\",\n    \"modelo\": \"claude-3-sonnet-20240229\",\n    \"lenguasObjetivo\": [\"es\", \"fr\", \"de\"],\n    \"rutasExcluidas\": [\"_meta.json\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Configuración de la API",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "code",
+      "content": "ANTHROPIC_API_KEY=tu_clave_api",
+      "metadata": {
+        "language": "env",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Características",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Traducción automática",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "9",
+      "type": "list",
+      "content": [
+        "Traducción de contenido durante la compilación",
+        "Traducciones conscientes del contexto",
+        "Preservación de términos técnicos",
+        "Mantenimiento del formato"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

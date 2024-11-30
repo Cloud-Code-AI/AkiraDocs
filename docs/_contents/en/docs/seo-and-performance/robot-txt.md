@@ -11,7 +11,7 @@ keywords:
 
 # Robots.txt Configuration
 
-Guide to customizing and managing your robots.txt file in AkiraDocs.
+The robots.txt file is automatically generated during the build process and can be found in the `public` folder of your project.
 
 ## Default Configuration
 
@@ -19,28 +19,9 @@ Guide to customizing and managing your robots.txt file in AkiraDocs.
 ```txt
 User-agent: *
 Allow: /
-Sitemap: https://yourdocs.com/sitemap.xml
+Sitemap: https://docs.akiradocs.com/sitemap.xml
 
 # Private sections
 Disallow: /admin/
 Disallow: /private/
-```
-
-## Customization
-
-### Configuration Options
-```json
-{
-  "seo": {
-    "robots": {
-      "enabled": true,
-      "autoGenerate": true,
-      "custom": {
-        "disallow": ["/internal/", "/draft/"],
-        "allow": ["/public/"],
-        "crawlDelay": 10
-      }
-    }
-  }
-}
 ```

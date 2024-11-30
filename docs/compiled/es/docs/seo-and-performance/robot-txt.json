@@ -1,0 +1,45 @@
+{
+  "title": "Configuración de robots.txt",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "SEO & Performance",
+  "keywords": [
+    "SEO",
+    "Robots.txt",
+    "Crawling"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "El archivo robots.txt se genera automáticamente durante el proceso de compilación y se puede encontrar en la carpeta `public` de tu proyecto."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Configuración predeterminada",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "robots.txt básico\n\nUser-agent: *\nDisallow: /",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "Aquí está la traducción al español, manteniendo el formato original:\n\nUser-agent: *\nAllow: /\nSitemap: https://docs.akiradocs.com/sitemap.xml\n\n# Secciones privadas\nDisallow: /admin/\nDisallow: /private/",
+      "metadata": {
+        "language": "txt",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

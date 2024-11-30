@@ -4,19 +4,6 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
-  "seoAndPerformance": {
-    "title": "Seo-and-performance",
-    "items": {
-      "sitemapGeneration": {
-        "title": "Sitemap-generation",
-        "path": "/docs/seo-and-performance/sitemap-generation"
-      },
-      "robotTxt": {
-        "title": "Robot-txt",
-        "path": "/docs/seo-and-performance/robot-txt"
-      }
-    }
-  },
   "internationalization": {
     "title": "Internationalization",
     "items": {
@@ -51,6 +38,28 @@
       }
     }
   },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Analytics Integration",
+        "path": "/docs/guides/analytics"
+      }
+    }
+  },
+  "seoAndPerformance": {
+    "title": "Seo-and-performance",
+    "items": {
+      "sitemapGeneration": {
+        "title": "Sitemap-generation",
+        "path": "/docs/seo-and-performance/sitemap-generation"
+      },
+      "robotTxt": {
+        "title": "Robot-txt",
+        "path": "/docs/seo-and-performance/robot-txt"
+      }
+    }
+  },
   "gettingStarted": {
     "title": "Getting-started",
     "items": {
@@ -65,15 +74,6 @@
       "features": {
         "title": "Features",
         "path": "/docs/getting-started/features"
-      }
-    }
-  },
-  "guides": {
-    "title": "Guides",
-    "items": {
-      "analytics": {
-        "title": "Analytics Integration",
-        "path": "/docs/guides/analytics"
       }
     }
   },
@@ -103,21 +103,21 @@
       }
     }
   },
-  "apiReference": {
-    "title": "Api-reference",
-    "items": {
-      "usageGuide": {
-        "title": "Usage-guide",
-        "path": "/docs/api-reference/usage-guide"
-      }
-    }
-  },
   "contentManagement": {
     "title": "Content-management",
     "items": {
       "creatingPages": {
         "title": "Creating-pages",
         "path": "/docs/content-management/creating-pages"
+      }
+    }
+  },
+  "apiReference": {
+    "title": "Api-reference",
+    "items": {
+      "usageGuide": {
+        "title": "Usage-guide",
+        "path": "/docs/api-reference/usage-guide"
       }
     }
   }

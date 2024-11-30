@@ -20,7 +20,6 @@ import { NotFound } from '@/components/layout/NotFound'
 import { TextToSpeech } from '@/components/tts/TextToSpeech'
 import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
 
-
 export const runtime = 'edge'
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
@@ -39,7 +38,8 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
   if (!post) {
     return <NotFound redirectUrl={`/${locale}/${type}`} />
   }
-
+  const akiradocsConfig = getAkiradocsConfig()
+  const config = getAkiradocsConfig()
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const navigationItems = getContentNavigation({}, locale, type)
@@ -79,7 +79,9 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
                     Edit
                   </Button>
                 )}
-                {config.features?.textToSpeech && <TextToSpeech blocks={post.blocks} />}
+                {akiradocsConfig.features.textToSpeech && (
+                  <TextToSpeech blocks={post.blocks} />
+                )}
               </div>
               <MainTitle>{post.title}</MainTitle>
               <SubTitle>{post.description}</SubTitle>

@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "AI Assistant Integration",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
@@ -15,23 +15,15 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
+      "content": "Learn how to use Akira's built-in AI assistant for documentation enhancement"
     },
     {
       "id": "2",
-      "type": "heading",
-      "content": "AI Assistant Integration",
-      "metadata": {
-        "level": 1
-      }
+      "type": "paragraph",
+      "content": "Akira's AI Assistant is a powerful tool that helps developers and technical writers create, maintain, and improve documentation through natural language interactions. This guide covers the essential features and best practices for utilizing the AI assistant effectively."
     },
     {
       "id": "3",
-      "type": "paragraph",
-      "content": "Learn how to use Akira's built-in AI assistant for documentation enhancement\n\nAkira's AI Assistant is a powerful tool that helps developers and technical writers create, maintain, and improve documentation through natural language interactions. This guide covers the essential features and best practices for utilizing the AI assistant effectively."
-    },
-    {
-      "id": "4",
       "type": "heading",
       "content": "Key Features",
       "metadata": {
@@ -39,12 +31,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "4",
       "type": "list",
       "content": [
         "Natural language documentation generation",
@@ -58,12 +45,7 @@
       }
     },
     {
-      "id": "7",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "8",
+      "id": "5",
       "type": "heading",
       "content": "Getting Started",
       "metadata": {
@@ -71,12 +53,12 @@
       }
     },
     {
-      "id": "9",
+      "id": "6",
       "type": "paragraph",
       "content": "The AI Assistant can be accessed through the command palette (Ctrl+Shift+P) or by using the `/ai` command in any content block. It understands context-aware requests and can help with various documentation tasks."
     },
     {
-      "id": "10",
+      "id": "7",
       "type": "heading",
       "content": "Common Use Cases",
       "metadata": {
@@ -84,12 +66,12 @@
       }
     },
     {
-      "id": "11",
+      "id": "8",
       "type": "paragraph",
       "content": "1. Generating code examples\n2. Explaining technical concepts\n3. Restructuring content\n4. Creating documentation outlines\n5. Translating documentation"
     },
     {
-      "id": "12",
+      "id": "9",
       "type": "heading",
       "content": "Best Practices",
       "metadata": {
@@ -97,12 +79,7 @@
       }
     },
     {
-      "id": "13",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "14",
+      "id": "10",
       "type": "list",
       "content": [
         "Provide clear context when making requests",
@@ -116,12 +93,7 @@
       }
     },
     {
-      "id": "15",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "16",
+      "id": "11",
       "type": "heading",
       "content": "Configuration Options",
       "metadata": {
@@ -129,12 +101,12 @@
       }
     },
     {
-      "id": "17",
+      "id": "12",
       "type": "paragraph",
       "content": "You can customize the AI Assistant's behavior through the `config.yaml` file:"
     },
     {
-      "id": "18",
+      "id": "13",
       "type": "code",
       "content": "ai_assistant:\n  model: \"advanced-docs-v2\"\n  temperature: 0.7\n  max_tokens: 2048\n  style_guide: \"path/to/style/guide.md\"",
       "metadata": {
@@ -143,12 +115,7 @@
       }
     },
     {
-      "id": "19",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "20",
+      "id": "14",
       "type": "heading",
       "content": "Next Steps",
       "metadata": {
@@ -156,7 +123,7 @@
       }
     },
     {
-      "id": "21",
+      "id": "15",
       "type": "paragraph",
       "content": "Explore our [Advanced AI Features](/advanced-ai-features) guide to learn more about specialized use cases and integration possibilities."
     }

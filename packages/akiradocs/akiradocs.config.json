@@ -79,6 +79,6 @@
         "debug": false
     },
     "features": {
-        "textToSpeech": true
+        "textToSpeech": false
     }
 }

@@ -14,35 +14,146 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": "Démarrez avec Akira Docs en quelques minutes\n\nSuivez ces étapes pour commencer à utiliser Akira Docs pour vos besoins de documentation."
+      "content": "Démarrez avec AkiraDocs en quelques minutes."
     },
     {
       "id": "2",
-      "type": "code",
-      "content": "bash\ngit clone https://github.com/tu-org/plantilla-docs-akira\ncd plantilla-docs-akira\nnpm install\nnpm run dev",
+      "type": "heading",
+      "content": "Déploiement rapide",
       "metadata": {
-        "language": "plaintext",
-        "showLineNumbers": true
+        "level": 2
       }
     },
     {
       "id": "3",
-      "type": "paragraph",
-      "content": ""
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nOption 1 : Mettre en œuvre avec Vercel",
+      "metadata": {
+        "level": 3
+      }
     },
     {
       "id": "4",
-      "type": "callout",
-      "content": "Assurez-vous d'avoir Node.js 16 ou une version supérieure installée sur votre système.",
-      "metadata": {
-        "type": "warning",
-        "title": "Prerequisites"
-      }
+      "type": "paragraph",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nLa façon la plus rapide de commencer est d'utiliser Vercel :"
     },
     {
       "id": "5",
       "type": "paragraph",
-      "content": ""
+      "content": "[![Déployer avec Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCloud-Code-AI%2Fakiradocs-template)"
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nOption 2 : Utilisation de l'interface en ligne de commande",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "Créez un nouveau projet en utilisant notre CLI :"
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "npx create-akiradocs@latest mi-documentos",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nÉtapes de configuration de base",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "1. <strong>Cloner le dépôt</strong> (si Quick Deploy n'est pas utilisé)"
+    },
+    {
+      "id": "11",
+      "type": "code",
+      "content": "git cloner https://github.com/your-org/akira-docs-template\ncd akira-docs-template",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "2. <strong>Installer les dépendances</strong>"
+    },
+    {
+      "id": "13",
+      "type": "code",
+      "content": "npm install\n# ou\nyarn install",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": "3. <strong>Démarrer le serveur de développement</strong>"
+    },
+    {
+      "id": "15",
+      "type": "code",
+      "content": "npm run dev\n# ou\nyarn dev",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "16",
+      "type": "paragraph",
+      "content": "4. Ouvrez `http://localhost:3000` dans votre navigateur"
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nConfiguration initiale",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "18",
+      "type": "paragraph",
+      "content": "1. <strong>Mettre à jour la configuration du site</strong>\nÉditez `akiradocs.config.json` :"
+    },
+    {
+      "id": "19",
+      "type": "code",
+      "content": "{\n  \"site\": {\n    \"title\": \"Vos Documents\",\n    \"description\": \"La description de votre documentation\"\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "20",
+      "type": "paragraph",
+      "content": "2. <strong>Configurer la traduction</strong> (Facultatif)"
+    },
+    {
+      "id": "21",
+      "type": "code",
+      "content": "{\n  \"traduction\": {\n    \"auto_traduire\": true,\n    \"fournisseur\": \"anthropic\",\n    \"languesCibles\": [\"es\", \"fr\", \"de\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
     }
   ]
 }

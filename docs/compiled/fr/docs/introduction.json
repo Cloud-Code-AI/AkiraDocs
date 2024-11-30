@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Introduction à AkiraDocs",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
@@ -14,12 +14,12 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": "Découvrez Akira Docs et ses principales fonctionnalités\n\nAkira Docs est une plateforme de documentation moderne qui combine la puissance de l'IA avec un système de contenu intuitif basé sur des blocs. Ce guide vous aidera à comprendre les principaux concepts et fonctionnalités."
+      "content": "AkiraDocs est une plateforme de documentation de nouvelle génération qui combine la puissance de l'IA avec un système de gestion de contenu intuitif. Elle est conçue pour transformer votre flux de travail de documentation de jours à minutes."
     },
     {
       "id": "2",
       "type": "heading",
-      "content": "Voici la traduction en français :\n\nCaractéristiques clés",
+      "content": "Voici la traduction en français :\n\nPourquoi AkiraDocs ?",
       "metadata": {
         "level": 2
       }
@@ -27,17 +27,17 @@
     {
       "id": "3",
       "type": "paragraph",
-      "content": ""
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nLa documentation est souvent un défi pour les équipes :"
     },
     {
       "id": "4",
       "type": "list",
       "content": [
-        "Recherche propulsée par l'IA",
-        "Édition de contenu basée sur des blocs",
-        "Conception adaptable",
-        "Thèmes personnalisables",
-        "Compatibilité avec Markdown"
+        "Voici la traduction en français :\n\nLes développeurs veulent continuer à utiliser Markdown et Git",
+        "Les équipes de contenu ont besoin d'éditeurs faciles à utiliser",
+        "Voici la traduction en français :\n\nLes rédacteurs techniques luttent avec la gestion des versions",
+        "Voici la traduction en français :\n\nLes gestionnaires de produits sont confrontés à une documentation obsolète",
+        "Voici la traduction en français :\n\nLes dirigeants d'entreprise ont besoin de meilleures analyses"
       ],
       "metadata": {
         "listType": "unordered"
@@ -46,7 +46,100 @@
     {
       "id": "5",
       "type": "paragraph",
-      "content": ""
+      "content": "AkiraDocs résout ces défis en fournissant une plateforme unifiée qui réunit le flux de travail de tous."
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nPrincipaux avantages",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "<strong>Flux de travail universel</strong> : Les développeurs conservent leur flux de travail Markdown/Git tandis que les équipes de contenu obtiennent un éditeur WYSIWYG basé sur des blocs",
+        "<strong>Propulsé par l'IA</strong> : Mises à jour automatiques du contenu, traductions et optimisations",
+        "<strong>Optimisé pour le SEO</strong> : Documentation bien classée par défaut",
+        "<strong>Prise en charge multilingue</strong> : traductions avec intelligence artificielle et prise en compte du contexte",
+        "<strong>Prêt pour les entreprises</strong> : intégration SSO/SAML, journaux d'audit et options de déploiement personnalisées"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Pour qui est-ce ?",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nDocumentation pour les développeurs",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "list",
+      "content": [
+        "Voici la traduction en français :\n\nDocumentation de l'API",
+        "Voici la traduction en français :\n\nGuides du SDK",
+        "Spécifications techniques",
+        "Voici la traduction en français :\n\nGuides de mise en œuvre"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nDocumentation du produit",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "list",
+      "content": [
+        "Voici la traduction en français :\n\nGuides d'utilisation",
+        "Voici la traduction en français :\n\nDocumentation des fonctionnalités",
+        "Voici la traduction en français, avec le formatage d'origine conservé :\n\nNotes de version",
+        "Voici la traduction en français :\n\nQuestions fréquentes"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nDocumentation d'entreprise",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "14",
+      "type": "list",
+      "content": [
+        "Bases de connaissances internes",
+        "Voici la traduction en français :\n\nDocumentation des processus",
+        "Voici la traduction en français :\n\nDocumentation de conformité",
+        "Voici la traduction en français :\n\nMatériels de formation"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
     }
   ]
 }

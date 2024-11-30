@@ -1,0 +1,179 @@
+{
+  "title": "Requisitos del sistema",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Antes de instalar AkiraDocs, asegúrate de que tu entorno cumpla con los siguientes requisitos."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Requisitos mínimos",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Node.js\n\nNode.js",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Versión: 16.x o superior",
+        "Recomendado: Última versión LTS"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Memoria del sistema",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "Mínimo: 2GB de RAM",
+        "Recomendado: 4GB de RAM o más"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Almacenamiento",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "8",
+      "type": "list",
+      "content": [
+        "Recomendado: 1GB de espacio libre"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Dependencias de software",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Requerido",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "list",
+      "content": [
+        "Git (se recomienda la última versión)",
+        "gestor de paquetes npm o yarn",
+        "Navegador web moderno (Chrome, Firefox, Safari, Edge)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Opcional",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "13",
+      "type": "list",
+      "content": [
+        "Docker (para el despliegue containerizado)",
+        "PostgreSQL (para características empresariales)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Entorno de desarrollo",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Sistemas operativos compatibles",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "list",
+      "content": [
+        "macOS (10.15 o posterior)",
+        "Windows 10/11\n\nWindows 10/11",
+        "Linux (se recomienda Ubuntu 20.04 o posterior)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Soporte de IDE/Editor",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "18",
+      "type": "list",
+      "content": [
+        "VS Code (próximamente)",
+        "WebStorm (próximamente)",
+        "Cualquier editor de texto con soporte para Markdown"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

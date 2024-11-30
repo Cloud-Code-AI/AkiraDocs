@@ -17,20 +17,6 @@ Learn how AkiraDocs automatically generates and manages your documentation sitem
 
 AkiraDocs automatically generates a sitemap.xml file during the build process, ensuring search engines can efficiently crawl your documentation.
 
-### Default Configuration
-```json
-{
-  "seo": {
-    "sitemap": {
-      "enabled": true,
-      "autoGenerate": true,
-      "changefreq": "weekly",
-      "priority": 0.7
-    }
-  }
-}
-```
-
 ## Generated Sitemap Structure
 
 ### Example Output
@@ -50,37 +36,4 @@ AkiraDocs automatically generates a sitemap.xml file during the build process, e
     <priority>0.8</priority>
   </url>
 </urlset>
-```
-
-## Customization Options
-
-### Priority Settings
-```json
-{
-  "seo": {
-    "sitemap": {
-      "priorities": {
-        "home": 1.0,
-        "docs": 0.8,
-        "blog": 0.6,
-        "other": 0.5
-      }
-    }
-  }
-}
-```
-
-### Update Frequency
-```json
-{
-  "seo": {
-    "sitemap": {
-      "changefreq": {
-        "home": "daily",
-        "docs": "weekly",
-        "blog": "monthly"
-      }
-    }
-  }
-}
 ```

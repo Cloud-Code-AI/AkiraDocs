@@ -21,38 +21,30 @@ Ensure your system meets the [requirements](../getting-started/requirements.md) 
 
 ### 1. Local Development Setup
 
-1. **Clone the Repository**
+1. **Create New Project**
 ```bash
-git clone https://github.com/your-org/akira-docs-template
-cd akira-docs-template
+npx create-akiradocs@latest my-docs-site
+cd my-docs-site
 ```
 
 2. **Install Dependencies**
+Dependencies are automatically installed during project creation. If you need to reinstall:
 ```bash
 npm install
 ```
 
 3. **Create Environment File**
+The environment file is created automatically. You can modify it at `.env.local`
+
+4. **Start Development Server** 
 ```bash
-cp .env.example .env.local
+npm run dev
 ```
 
-4. **Configure Environment Variables**
-```env
-NEXT_PUBLIC_API_URL=your_api_url
-NEXT_PUBLIC_SITE_URL=your_site_url
-```
-
-### 2. Docker Installation
-
-1. **Pull the Docker Image**
+5. **Update AkiraDocs**
+To update an existing installation to the latest version:
 ```bash
-docker pull akiradocs/akiradocs:latest
-```
-
-2. **Run the Container**
-```bash
-docker run -p 3000:3000 akiradocs/akiradocs:latest
+npx create-akiradocs@latest update
 ```
 
 ### 3. Cloud Platform Deployment
@@ -64,10 +56,10 @@ docker run -p 3000:3000 akiradocs/akiradocs:latest
 4. Deploy
 
 #### Other Platforms
-- AWS Amplify
-- Netlify
-- Digital Ocean
-- Custom server
+- AWS Amplify (Coming Soon)
+- Netlify (Coming Soon)
+- Digital Ocean (Coming Soon)
+- Custom server (Coming Soon)
 
 ## Post-Installation Steps
 
@@ -106,7 +98,3 @@ DEBUG=false
 NODE_ENV=test
 TEST_MODE=true
 ```
-
-## Next Steps
-- [Configuration Guide](./configuration.md)
-- [Troubleshooting](./troubleshooting.md)

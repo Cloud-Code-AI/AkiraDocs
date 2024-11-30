@@ -99,9 +99,7 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
           >
             <ChevronRight className="mr-2 h-3.5 w-3.5" />
           </motion.div>
-        ) : (
-          <FileText className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-muted-foreground" />
-        )}
+        ) : ""}
         {item.path ? (
           <Link href={absolutePath} className="flex-1" onClick={handleClick}>
             {item.title}

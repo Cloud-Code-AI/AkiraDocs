@@ -1,0 +1,152 @@
+{
+  "title": "Voici la traduction en français :\n\nCréer et organiser des pages",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Content Management",
+  "keywords": [
+    "Content Creation",
+    "Pages",
+    "Organization"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Apprenez à créer, structurer et organiser vos pages de documentation dans AkiraDocs. Vous pouvez créer des pages markdown ou simplement utiliser l'interface utilisateur de l'éditeur. Notez que dans le dossier _contents, vous ne verrez que le contenu markdown que vous avez créé. Si vous utilisez l'interface utilisateur de l'éditeur, le contenu sera enregistré dans le dossier compilé et sera automatiquement traduit dans d'autres langues."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nStructure de page",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Modèle de Page de Base",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "code",
+      "content": "---\ntitre: Votre titre de page\ndescription: Brève description de la page\nauteur: Votre nom\ndateDePublication: 2024-11-26\ndateDerniereModification: 2024-11-26\ncategorie: Nom de la catégorie\nmotsCles:\n  - mot clé 1\n  - mot clé 2\n---\n\n# Titre principal\n\nLe contenu commence ici...",
+      "metadata": {
+        "language": "markdown",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nStructure des répertoires",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "code",
+      "content": "dossier_nom/\n├── _contenus/\n│   ├── fr/\n│   │   ├── pour-commencer/\n│   │   ├── guides/\n│   │   └── api/",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "Vous pouvez simplement créer des pages pour la langue par défaut (en) et AkiraDocs les traduira automatiquement dans d'autres langues."
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Création de nouvelles pages",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Méthode 1 : Utilisation de l'interface utilisateur",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "1. Cliquez sur \"Nouvelle page\" dans la barre latérale\n2. Commencez à ajouter du contenu"
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Méthode 2 : Création de fichier directe",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "1. Créez un nouveau fichier `.md` dans le répertoire approprié\n2. Ajoutez les métadonnées (frontmatter) requises\n3. Écrivez le contenu en utilisant Markdown\n4. Enregistrez et compilez"
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Organisation de la page",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nCatégories et Étiquettes",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Utilisez des catégories cohérentes",
+        "Appliquez les étiquettes pertinentes",
+        "Organiser par thème",
+        "Créez des hiérarchies logiques"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nStructure de navigation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "paragraph",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nCeci est généré automatiquement à partir de la structure des dossiers. Vous pouvez le personnaliser en éditant le fichier `_meta.json` dans le dossier compilé."
+    },
+    {
+      "id": "18",
+      "type": "code",
+      "content": "{\n  \"docs\": {\n    \"getting-started\": {\n      \"title\": \"Commencer\",\n      \"items\": {\n        \"introduction\": {\n          \"title\": \"Introduction\",\n          \"path\": \"/docs/getting-started/introduction\"\n        }\n      }\n    }\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

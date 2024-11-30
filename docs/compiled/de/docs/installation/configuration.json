@@ -1,0 +1,92 @@
+{
+  "title": "Konfigurationshandbuch",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Installation",
+  "keywords": [
+    "Configuration",
+    "Settings",
+    "Setup"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nVollständige Anleitung zur Einrichtung Ihrer AkiraDocs-Installation."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nHauptkonfiguration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nKonfiguration der Website",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "Ändern Sie `akiradocs.config.json`:"
+    },
+    {
+      "id": "5",
+      "type": "code",
+      "content": "{\n    \"url\": \"https://docs.akiradocs.com\",\n    \"site\": {\n        \"title\": \"Ihre Dokumente\",\n        \"description\": \"Beschreibung Ihrer Dokumentation\"\n    },\n    \"branding\": {\n        \"logo\": {\n            \"path\": \"/your_logo.svg\",\n            \"width\": 120,\n            \"height\": 30,\n            \"show\": true\n        },\n        \"favicon\": {\n            \"path\": \"/favicon.png\",\n            \"show\": true\n        }\n    }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nEinrichtung der Navigation",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "{\n    \"navigation\": {\n        \"en-tête\": {\n            \"éléments\": [\n                { \"étiquette\": \"Dokumente\", \"href\": \"/docs\", \"icône\": \"/docs.svg\" },\n                { \"étiquette\": \"API\", \"href\": \"/api\", \"icône\": \"/api.svg\" }\n            ]\n        }\n    }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nInternationalisierung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Spracheinstellungen",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "code",
+      "content": "{\n    \"localization\": {\n        \"defaultLocale\": \"en\",\n        \"fallbackLocale\": \"en\",\n        \"locales\": [\n            {\n                \"code\": \"en\",\n                \"name\": \"Englisch\",\n                \"flag\": \"🇺🇸\"\n            },\n            {\n                \"code\": \"es\",\n                \"name\": \"Spanisch\",\n                \"flag\": \"🇪🇸\"\n            },\n            {\n                \"code\": \"fr\",\n                \"name\": \"Französisch\",\n                \"flag\": \"🇫🇷\"\n            },\n            {\n                \"code\": \"de\",\n                \"name\": \"Deutsch\",\n                \"flag\": \"🇩🇪\"\n            }\n        ]\n    },\n     \"translation\": {\n        \"auto_translate\": true,\n        \"provider\": \"anthropic\",\n        \"model\": \"claude-3-sonnet-20240229\",\n        \"targetLanguages\": [\"es\", \"fr\", \"de\"],\n        \"excludedPaths\": [\"_meta.json\"]\n    },\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

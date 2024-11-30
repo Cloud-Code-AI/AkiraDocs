@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "AI-Powered Translation",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "AI-Powered Translation",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "Guide to using AkiraDocs' AI translation capabilities."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Setup",
       "metadata": {
@@ -38,12 +25,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "3",
       "type": "heading",
       "content": "Configuration",
       "metadata": {
@@ -51,7 +33,7 @@
       }
     },
     {
-      "id": "7",
+      "id": "4",
       "type": "code",
       "content": "{\n  \"translation\": {\n    \"auto_translate\": true,\n    \"provider\": \"anthropic\",\n    \"model\": \"claude-3-sonnet-20240229\",\n    \"targetLanguages\": [\"es\", \"fr\", \"de\"],\n    \"excludedPaths\": [\"_meta.json\"]\n  }\n}",
       "metadata": {
@@ -60,12 +42,7 @@
       }
     },
     {
-      "id": "8",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "9",
+      "id": "5",
       "type": "heading",
       "content": "API Setup",
       "metadata": {
@@ -73,7 +50,7 @@
       }
     },
     {
-      "id": "10",
+      "id": "6",
       "type": "code",
       "content": "ANTHROPIC_API_KEY=your_api_key",
       "metadata": {
@@ -82,12 +59,7 @@
       }
     },
     {
-      "id": "11",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "12",
+      "id": "7",
       "type": "heading",
       "content": "Features",
       "metadata": {
@@ -95,12 +67,7 @@
       }
     },
     {
-      "id": "13",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "14",
+      "id": "8",
       "type": "heading",
       "content": "Automatic Translation",
       "metadata": {
@@ -108,7 +75,7 @@
       }
     },
     {
-      "id": "15",
+      "id": "9",
       "type": "list",
       "content": [
         "Content translation during build",
@@ -119,11 +86,6 @@
       "metadata": {
         "listType": "unordered"
       }
-    },
-    {
-      "id": "16",
-      "type": "paragraph",
-      "content": ""
     }
   ]
 }

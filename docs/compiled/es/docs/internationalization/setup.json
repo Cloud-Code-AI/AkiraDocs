@@ -1,0 +1,116 @@
+{
+  "title": "Configurar la internacionalización",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Internationalization",
+  "keywords": [
+    "i18n",
+    "Setup",
+    "Languages"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Configura AkiraDocs para múltiples idiomas con soporte de traducción impulsado por IA."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Configuración rápida",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Configuración básica",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "paragraph",
+      "content": "Agregue la configuración de idioma a `akiradocs.config.json`:"
+    },
+    {
+      "id": "5",
+      "type": "code",
+      "content": "{\n  \"localization\": {\n    \"defaultLocale\": \"en\",\n    \"fallbackLocale\": \"en\",\n    \"locales\": [\n      {\n        \"code\": \"en\",\n        \"name\": \"Inglés\",\n        \"flag\": \"�🇸\"\n      },\n      {\n        \"code\": \"es\",\n        \"name\": \"Español\",\n        \"flag\": \"🇪🇸\"\n      },\n      {\n        \"code\": \"fr\",\n        \"name\": \"Francés\",\n        \"flag\": \"🇫🇷\"\n      }\n    ]\n  },\n  \"translation\": {\n    \"auto_translate\": true,\n    \"provider\": \"anthropic\",\n    \"targetLanguages\": [\"es\", \"fr\", \"de\"],\n    \"excludedPaths\": [\"_meta.json\"]\n  }\n}",
+      "metadata": {
+        "language": "json",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Estructura de directorios",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "code",
+      "content": "docs/\n├── _contents/\n│   ├── en/           # Idioma de origen\n│   │   └── docs/\n│   ├── es/           # Traducción al español\n│   │   └── docs/\n│   └── fr/           # Traducción al francés\n│       └── docs/",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Opciones de configuración",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Configuración de idioma",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
+      "type": "list",
+      "content": [
+        "`defaultLocale`: Idioma principal del contenido",
+        "`fallbackLocale`: Recurso alternativo cuando falta la traducción",
+        "`locales`: Configuraciones de idioma disponibles"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Configuración de traducción",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "list",
+      "content": [
+        "`auto_translate`: Habilitar/deshabilitar la traducción automática",
+        "`proveedor`: proveedor de traducción de IA",
+        "`idiomasDestino`: Idiomas a los que traducir",
+        "`rutasExcluidas`: Archivos que se omitirán durante la traducción"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

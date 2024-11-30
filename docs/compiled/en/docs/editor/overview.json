@@ -1,5 +1,5 @@
 {
-  "title": "",
+  "title": "Editor Overview",
   "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
@@ -14,23 +14,10 @@
     {
       "id": "1",
       "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "2",
-      "type": "heading",
-      "content": "Editor Overview",
-      "metadata": {
-        "level": 1
-      }
-    },
-    {
-      "id": "3",
-      "type": "paragraph",
       "content": "AkiraDocs features a modern, Notion-like editor that combines the simplicity of block-based editing with the power of Markdown."
     },
     {
-      "id": "4",
+      "id": "2",
       "type": "heading",
       "content": "Editor Interface",
       "metadata": {
@@ -38,12 +25,7 @@
       }
     },
     {
-      "id": "5",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "6",
+      "id": "3",
       "type": "heading",
       "content": "Main Components",
       "metadata": {
@@ -51,25 +33,20 @@
       }
     },
     {
-      "id": "7",
+      "id": "4",
       "type": "list",
       "content": [
-        "**Toolbar**: Quick access to formatting options and block types",
-        "**Content Area**: Block-based editing space",
-        "**Sidebar**: Navigation and document structure",
-        "**Command Palette**: Quick commands (Ctrl/Cmd + P)"
+        "<strong>Toolbar</strong>: Quick access to formatting options and block types",
+        "<strong>Content Area</strong>: Block-based editing space",
+        "<strong>Sidebar</strong>: Navigation and document structure",
+        "<strong>Command Palette</strong>: Quick commands (Ctrl/Cmd + P)"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "8",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "9",
+      "id": "5",
       "type": "heading",
       "content": "Block Structure",
       "metadata": {
@@ -77,12 +54,12 @@
       }
     },
     {
-      "id": "10",
+      "id": "6",
       "type": "paragraph",
       "content": "Each content element is a block that can be:"
     },
     {
-      "id": "11",
+      "id": "7",
       "type": "list",
       "content": [
         "Dragged and dropped to reorganize",
@@ -95,12 +72,7 @@
       }
     },
     {
-      "id": "12",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "13",
+      "id": "8",
       "type": "heading",
       "content": "Getting Started",
       "metadata": {
@@ -108,12 +80,7 @@
       }
     },
     {
-      "id": "14",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "15",
+      "id": "9",
       "type": "heading",
       "content": "Creating Content",
       "metadata": {
@@ -121,12 +88,12 @@
       }
     },
     {
-      "id": "16",
+      "id": "10",
       "type": "paragraph",
       "content": "1. Click the '+' button or press '/' to add a new block\n2. Choose block type from the popup menu\n3. Start typing or add content"
     },
     {
-      "id": "17",
+      "id": "11",
       "type": "heading",
       "content": "Basic Operations",
       "metadata": {
@@ -134,7 +101,7 @@
       }
     },
     {
-      "id": "18",
+      "id": "12",
       "type": "code",
       "content": "/ → Open block menu\n⌘/Ctrl + P → Command palette\n⌘/Ctrl + / → Show keyboard shortcuts\n↑↓ → Navigate between blocks",
       "metadata": {
@@ -143,12 +110,7 @@
       }
     },
     {
-      "id": "19",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "20",
+      "id": "13",
       "type": "heading",
       "content": "Block Types",
       "metadata": {
@@ -156,12 +118,7 @@
       }
     },
     {
-      "id": "21",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "22",
+      "id": "14",
       "type": "heading",
       "content": "Text Blocks",
       "metadata": {
@@ -169,7 +126,7 @@
       }
     },
     {
-      "id": "23",
+      "id": "15",
       "type": "list",
       "content": [
         "Paragraphs",
@@ -183,12 +140,7 @@
       }
     },
     {
-      "id": "24",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "25",
+      "id": "16",
       "type": "heading",
       "content": "Rich Media",
       "metadata": {
@@ -196,7 +148,7 @@
       }
     },
     {
-      "id": "26",
+      "id": "17",
       "type": "list",
       "content": [
         "Images",
@@ -210,12 +162,7 @@
       }
     },
     {
-      "id": "27",
-      "type": "paragraph",
-      "content": ""
-    },
-    {
-      "id": "28",
+      "id": "18",
       "type": "heading",
       "content": "Special Blocks",
       "metadata": {
@@ -223,7 +170,7 @@
       }
     },
     {
-      "id": "29",
+      "id": "19",
       "type": "list",
       "content": [
         "Tables (Coming Soon)",
@@ -233,11 +180,6 @@
       "metadata": {
         "listType": "unordered"
       }
-    },
-    {
-      "id": "30",
-      "type": "paragraph",
-      "content": ""
     }
   ]
 }

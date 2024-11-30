@@ -57,6 +57,10 @@ type Logo = {
       items: NavItem[];
     };
   };
+
+  type Features = {
+    textToSpeech: boolean;
+  };
   
   type SupportedProvider = 'openai' | 'anthropic' | 'google' | 'azure'
   
@@ -81,6 +85,7 @@ type Logo = {
     };
     localization: Localization;
     rewrite?: Rewrite;
+    features: Features;
   };
   
   export type { AkiraDocsConfig, SupportedProvider };

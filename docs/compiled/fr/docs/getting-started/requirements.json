@@ -1,0 +1,179 @@
+{
+  "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nConfiguration Requise",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Avant d'installer AkiraDocs, assurez-vous que votre environnement répond aux exigences suivantes."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nConfiguration minimale requise",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Node.js\n\nNode.js",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Voici la traduction en français :\n\nVersion : 16.x ou supérieure",
+        "Recommandé : Dernière version LTS"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nMémoire du système",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "Voici la traduction en français :\n\nRAM minimale : 2 Go",
+        "Recommandé : 4 Go de RAM ou plus"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Stockage",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "8",
+      "type": "list",
+      "content": [
+        "Recommandé : 1 Go d'espace libre"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Dépendances logicielles",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nRequis",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "11",
+      "type": "list",
+      "content": [
+        "Git (la dernière version est recommandée)",
+        "gestionnaire de paquets npm ou yarn",
+        "Navigateur web moderne (Chrome, Firefox, Safari, Edge)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Facultatif",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "13",
+      "type": "list",
+      "content": [
+        "Docker (pour le déploiement containerisé)",
+        "PostgreSQL (pour les fonctionnalités d'entreprise)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Environnement de développement",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "15",
+      "type": "heading",
+      "content": "Systèmes d'exploitation compatibles",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "16",
+      "type": "list",
+      "content": [
+        "macOS (10.15 ou version ultérieure)",
+        "Voici la traduction en français, avec le formatage d'origine conservé :\n\nWindows 10/11\n\nWindows 10/11",
+        "Linux (Ubuntu 20.04 ou version ultérieure recommandée)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "17",
+      "type": "heading",
+      "content": "Prise en charge des IDE/éditeurs",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "18",
+      "type": "list",
+      "content": [
+        "VS Code (bientôt)",
+        "WebStorm (bientôt)",
+        "Tout éditeur de texte prenant en charge Markdown"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}

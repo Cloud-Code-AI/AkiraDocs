@@ -1,0 +1,137 @@
+{
+  "title": "AkiraDocs Funktionen",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Getting Started",
+  "keywords": [
+    "Akira Docs",
+    "Documentation",
+    "AI"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "paragraph",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nEine vollständige allgemeine Beschreibung der Funktionen und Hauptfähigkeiten von AkiraDocs."
+    },
+    {
+      "id": "2",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nInhaltserstellung und -verwaltung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "3",
+      "type": "list",
+      "content": [
+        "<strong>Ähnlicher Editor wie Notion</strong>: Intuitive blockbasierte Oberfläche mit Echtzeit-Vorschau",
+        "<strong>Markdown-Unterstützung</strong>: Native Kompatibilität mit Markdown und MDX",
+        "<strong>Benutzerdefinierte Komponenten</strong>: Erstellen und Wiederverwenden Sie Ihre eigenen Inhaltsbereiche"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nInternationalisierung und Übersetzung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "list",
+      "content": [
+        "<strong>Mehrsprachige Unterstützung</strong>: Dokumentation in mehreren Sprachen pflegen",
+        "<strong>Von KI unterstützte Übersetzung</strong>: Kontextbewusste, automatisierte Inhaltsübersetzung",
+        "<strong>Übersetzungsverwaltung</strong>: Integrierte Tools zur Verwaltung lokalisierten Inhalts"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Voici la traduction en allemand :\n\nForschung und Entdeckung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "7",
+      "type": "list",
+      "content": [
+        "<strong>KI-gestützte Suche</strong>: Kontextbezogene Beantwortung von Fragen in natürlicher Sprache",
+        "<strong>SEO-Optimierung</strong>: Automatisierte SEO-Tools und -Optimierungen",
+        "<strong>Intelligente Indizierung</strong>: Echtzeit-Aktualisierung der Suchindizes"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "8",
+      "type": "heading",
+      "content": "Hier ist die Übersetzung ins Deutsche:\n\nKonstruktion und Leistung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "9",
+      "type": "list",
+      "content": [
+        "<strong>Statische Generierung</strong>: Optimierter Kompilierungsprozess mit Ressourcenoptimierung",
+        "<strong>Entwicklererfahrung</strong>: Schnelle Aktualisierung und umfassende Debugging-Tools",
+        "<strong>Fokus auf Leistung</strong>: Integrierte Best Practices für Geschwindigkeit und Effizienz"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Unternehmensmerkmale (Bald verfügbar)",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "11",
+      "type": "list",
+      "content": [
+        "<strong>Sicherheit und Compliance</strong>: SSO, RBAC und Audit-Protokollierung",
+        "<strong>Analyse und Perspektiven</strong>: Überwachung der Nutzung und Dokumentationsmetriken",
+        "<strong>Teamzusammenarbeit</strong>: Unternehmensweite Kollaborationswerkzeuge"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Unterstützung für die Migration (demnächst verfügbar)",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "code",
+      "content": "# Kompatible Plattformen für eine einfache Migration\n✓ Nextra\n✓ GitBook\n✓ Docusaurus\n✓ ReadTheDocs",
+      "metadata": {
+        "language": "bash",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "title": "Code de conduite",
+  "description": "",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Contributing",
+  "keywords": [
+    "Code of Conduct",
+    "Contributing"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nNotre Engagement",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Nous, en tant que membres, collaborateurs et dirigeants, nous nous engageons à faire en sorte que la participation à notre communauté soit une expérience exempte de harcèlement pour tous, indépendamment de l'âge, de la taille corporelle, du handicap visible ou invisible, de l'origine ethnique, des caractéristiques sexuelles, de l'identité et de l'expression de genre, du niveau d'expérience, de l'éducation, de la situation socio-économique, de la nationalité, de l'apparence personnelle, de la race, de la religion ou de l'identité et de l'orientation sexuelle."
+    },
+    {
+      "id": "3",
+      "type": "paragraph",
+      "content": "Nous nous engageons à agir et à interagir de manières qui contribuent à une communauté ouverte, accueillante, diversifiée, inclusive et saine."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "Nos Normes",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nExemples de comportements contribuant à un environnement positif :"
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "* Faire preuve d'empathie et de gentillesse envers les autres\n* Respecter les opinions, points de vue et expériences différents\n* Donner et accepter avec grâce les critiques constructives\n* Accepter la responsabilité et s'excuser auprès de ceux qui ont été affectés par nos erreurs\n* Se concentrer sur ce qui est le mieux pour la communauté dans son ensemble"
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nExemples de comportements inacceptables :"
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "* L'utilisation d'un langage ou d'images sexualisées, et l'attention ou les insinuations sexuelles\n* Le trolling, les commentaires insultants ou désobligeants, et les attaques personnelles ou politiques\n* Le harcèlement public ou privé\n* La publication d'informations privées d'autres personnes sans leur autorisation explicite\n* Tout autre comportement qui pourrait raisonnablement être considéré comme inapproprié dans un environnement professionnel"
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Responsabilités de Conformité",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "10",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nLes leaders communautaires sont chargés de clarifier et de faire respecter nos normes de comportement acceptable et prendront les mesures correctives appropriées et équitables en réponse à tout comportement qu'ils jugeraient inapproprié, menaçant, offensant ou nuisible."
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Conformité",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "12",
+      "type": "paragraph",
+      "content": "Voici la traduction en français :\n\nDes cas de comportement abusif, harcelant ou inacceptable d'une autre manière peuvent être signalés aux responsables communautaires chargés de l'application. Toutes les plaintes seront examinées et étudiées de manière rapide et équitable."
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Voici la traduction en français :\n\nAttribution",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "paragraph",
+      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nCe Code de Conduite est adapté du [Contributor Covenant](https://www.contributor-covenant.org), version 2.0, disponible sur https://www.contributor-covenant.org/version/2/0/code_of_conduct.html."
+    }
+  ]
+}

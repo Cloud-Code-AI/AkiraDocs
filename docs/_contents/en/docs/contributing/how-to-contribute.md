@@ -18,7 +18,7 @@ Guide to contributing to the AkiraDocs open-source project.
 ### Setup Development Environment
 ```bash
 # Clone repository
-git clone https://github.com/akiradocs/akiradocs
+git clone https://github.com/Cloud-Code-AI/akiradocs
 cd akiradocs
 
 # Install dependencies
