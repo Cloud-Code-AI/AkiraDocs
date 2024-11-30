@@ -47,11 +47,19 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="border-muted-foreground/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+            {/* Company Info - Left */}
+            <div className="text-sm text-muted-foreground">
               <span>© {currentYear} {companyName}. All rights reserved.</span>
             </div>
-            <div className="flex space-x-4 items-center">
-              <span className="text-sm text-muted-foreground pr-2">Made with <Heart className="inline-block w-4 h-4 text-red-500" /> by the Akiradocs team</span>
+
+            
+            {/* Powered by - Center */}
+            <div className="text-sm text-muted-foreground">
+              <span>Powered by <a href="https://akiradocs.ai" target="_blank" rel="noopener noreferrer"><span className="font-semibold">Akiradocs</span></a></span>
+            </div>
+
+            {/* Social Links - Right */}
+            <div className="flex space-x-4">
               {socialLinks.map((link, index) => (
                 <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Button variant="ghost" size="icon" asChild className="rounded-full bg-muted/50 hover:bg-muted transition-colors">
