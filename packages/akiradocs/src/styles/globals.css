@@ -92,3 +92,15 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Add these styles */
+pre, code {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+}
+
+/* For inline code */
+:not(pre) > code {
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+}

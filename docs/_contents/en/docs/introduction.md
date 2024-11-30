@@ -11,7 +11,7 @@ keywords:
 
 # Introduction to AkiraDocs
 
-AkiraDocs is a next-generation documentation platform that combines the power of AI with an intuitive content management system. It's designed to transform your documentation workflow from months to minutes.
+AkiraDocs is a next-generation documentation platform that combines the power of AI with an intuitive content management system. It's designed to transform your documentation workflow from days to minutes.
 
 ## Why AkiraDocs?
 
@@ -51,7 +51,3 @@ AkiraDocs solves these challenges by providing a unified platform that brings ev
 - Process documentation
 - Compliance documentation
 - Training materials
-
-## Next Steps
-
-Ready to get started? Check out our [Quick Start Guide](./quick-start.md) or explore our [detailed features](./features.md).

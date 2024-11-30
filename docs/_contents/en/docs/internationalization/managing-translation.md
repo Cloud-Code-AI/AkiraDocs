@@ -46,18 +46,6 @@ _contents/
         └── guide.md
 ```
 
-### Translation Status Tracking
-```json
-{
-  "translationStatus": {
-    "es": {
-      "completion": "85%",
-      "lastUpdated": "2024-11-26",
-      "pendingFiles": ["advanced/config.md"]
-    }
-  }
-}
-```
 
 ## Quality Control
 
