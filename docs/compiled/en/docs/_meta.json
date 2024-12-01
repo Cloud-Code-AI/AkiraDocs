@@ -4,6 +4,19 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
+  "seoAndPerformance": {
+    "title": "Seo-and-performance",
+    "items": {
+      "sitemapGeneration": {
+        "title": "Sitemap-generation",
+        "path": "/docs/seo-and-performance/sitemap-generation"
+      },
+      "robotTxt": {
+        "title": "Robot-txt",
+        "path": "/docs/seo-and-performance/robot-txt"
+      }
+    }
+  },
   "internationalization": {
     "title": "Internationalization",
     "items": {
@@ -18,6 +31,15 @@
       "aiTranslation": {
         "title": "Ai-translation",
         "path": "/docs/internationalization/ai-translation"
+      }
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Analytics Integration",
+        "path": "/docs/guides/analytics"
       }
     }
   },
@@ -38,25 +60,38 @@
       }
     }
   },
-  "guides": {
-    "title": "Guides",
+  "editor": {
+    "title": "Editor",
     "items": {
-      "analytics": {
-        "title": "Analytics Integration",
-        "path": "/docs/guides/analytics"
+      "overview": {
+        "title": "Overview",
+        "path": "/docs/editor/overview"
+      },
+      "features": {
+        "title": "Features",
+        "path": "/docs/editor/features"
       }
     }
   },
-  "seoAndPerformance": {
-    "title": "Seo-and-performance",
+  "contentManagement": {
+    "title": "Content-management",
     "items": {
-      "sitemapGeneration": {
-        "title": "Sitemap-generation",
-        "path": "/docs/seo-and-performance/sitemap-generation"
+      "creatingPages": {
+        "title": "Creating-pages",
+        "path": "/docs/content-management/creating-pages"
+      }
+    }
+  },
+  "contributing": {
+    "title": "Contributing",
+    "items": {
+      "howToContribute": {
+        "title": "How-to-contribute",
+        "path": "/docs/contributing/how-to-contribute"
       },
-      "robotTxt": {
-        "title": "Robot-txt",
-        "path": "/docs/seo-and-performance/robot-txt"
+      "codeOfConduct": {
+        "title": "Code-of-conduct",
+        "path": "/docs/contributing/code-of-conduct"
       }
     }
   },
@@ -74,41 +109,6 @@
       "features": {
         "title": "Features",
         "path": "/docs/getting-started/features"
-      }
-    }
-  },
-  "editor": {
-    "title": "Editor",
-    "items": {
-      "overview": {
-        "title": "Overview",
-        "path": "/docs/editor/overview"
-      },
-      "features": {
-        "title": "Features",
-        "path": "/docs/editor/features"
-      }
-    }
-  },
-  "contributing": {
-    "title": "Contributing",
-    "items": {
-      "howToContribute": {
-        "title": "How-to-contribute",
-        "path": "/docs/contributing/how-to-contribute"
-      },
-      "codeOfConduct": {
-        "title": "Code-of-conduct",
-        "path": "/docs/contributing/code-of-conduct"
-      }
-    }
-  },
-  "contentManagement": {
-    "title": "Content-management",
-    "items": {
-      "creatingPages": {
-        "title": "Creating-pages",
-        "path": "/docs/content-management/creating-pages"
       }
     }
   },
