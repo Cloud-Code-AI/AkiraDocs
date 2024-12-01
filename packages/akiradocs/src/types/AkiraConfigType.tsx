@@ -43,6 +43,7 @@ type Logo = {
   type Site = {
     title: string;
     description: string;
+    url: string;
   };
   
   type Branding = {

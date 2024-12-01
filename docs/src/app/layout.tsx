@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../styles/globals.css";
-import { Toaster } from "sonner"
 import { getMetadata } from "@/lib/getMetadata";
 import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes/dist/types"
-import { TranslationProvider } from '@/contexts/TranslationContext';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
-
 
 const geistSans = localFont({
   src: "../styles/fonts/GeistVF.woff",
@@ -58,9 +53,9 @@ export const metadata: Metadata = {
   },
 };
 
-function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
-}
+// Mark ThemeProvider as a Client Component
+const ThemeProvider = React.lazy(() => import('@/components/providers/ThemeProvider'));
+const ToasterProvider = React.lazy(() => import('@/components/providers/ToasterProvider'));
 
 export default function RootLayout({
   children,
@@ -73,18 +68,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider 
-          attribute="class" 
-          defaultTheme="system" 
-          enableSystem 
-          disableTransitionOnChange
-        >
-          <GoogleAnalytics />
-          <TranslationProvider>
+        <React.Suspense fallback={null}>
+          <ThemeProvider>
+            <GoogleAnalytics />
             {children}
-          </TranslationProvider>
-        </ThemeProvider>
-        <Toaster />
+            <ToasterProvider />
+          </ThemeProvider>
+        </React.Suspense>
       </body>
     </html>
   );

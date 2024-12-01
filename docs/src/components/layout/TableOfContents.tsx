@@ -3,17 +3,18 @@
 import React, { useState, useEffect } from 'react'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { formatDistanceToNow, format, parseISO, isAfter, subDays } from 'date-fns';
-import { useTranslation } from '@/hooks/useTranslation';
+import { getTranslation, locales } from '@/lib/staticTranslation';
 interface TableOfContentsProps {
   publishDate?: string;
   modifiedDate?: string;
   author?: string;
+  locale: string;
 }
 
-export function TableOfContents({ publishDate, modifiedDate, author }: TableOfContentsProps) {
+export function TableOfContents({ publishDate, modifiedDate, author, locale }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<HTMLHeadingElement[]>([]);
   const [activeId, setActiveId] = useState<string>();
-  const { t, locale } = useTranslation();
+  const t = getTranslation(locale as keyof typeof locales);
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll('h2:not([data-toc-ignore]), h3:not([data-toc-ignore]), h4:not([data-toc-ignore])'));
