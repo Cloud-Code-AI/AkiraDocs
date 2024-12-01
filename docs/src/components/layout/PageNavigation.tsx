@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from "@/components/ui/button"
-import { useTranslation } from '@/hooks/useTranslation';
+import { locales, getTranslation } from '@/lib/staticTranslation';
 interface PageNavigationProps {
   prev: { title: string; path: string } | null;
   next: { title: string; path: string } | null;
@@ -10,7 +10,7 @@ interface PageNavigationProps {
 }
 
 export function PageNavigation({ prev, next, locale }: PageNavigationProps) {
-  const { t } = useTranslation();
+  const t = getTranslation(locale as keyof typeof locales);
   return (
     <div className="flex justify-between items-center mt-16 pt-8 border-t">
       {prev ? (

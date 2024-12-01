@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useMemo, memo } from 'react'
-import { useTranslation } from '@/hooks/useTranslation'
+import { getTranslation, locales } from '@/lib/staticTranslation'
 import Link from 'next/link'
 // import Image from 'next/image'
 import { Input } from "@/components/ui/input"
@@ -24,7 +24,6 @@ import { HeaderConfig } from '@/types/config'
 import { searchContent, type SearchResult } from '@/lib/search'
 import { useDebounce } from '@/hooks/useDebounce'
 import { useClickOutside } from '@/hooks/useClickOutside'
-import type { locales } from '@/hooks/useTranslation'
 import { useAnalytics } from '@/hooks/useAnalytics'
 
 export const Header = memo(function Header({
@@ -45,8 +44,8 @@ export const Header = memo(function Header({
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
   const [showResults, setShowResults] = useState(false)
   const searchRef = useRef<HTMLDivElement>(null)
-  const { t, setLocale } = useTranslation();
   const { track } = useAnalytics()
+  const t = getTranslation(currentLocale as keyof typeof locales);
 
   useEffect(() => {
     setIsMounted(true)
@@ -58,7 +57,7 @@ export const Header = memo(function Header({
     }
   }
 
-  const handleLanguageChange = (value: keyof typeof locales) => {
+  const handleLanguageChange = (value: string) => {
     console.debug('Language change requested:', value);
     const currentPath = window.location.pathname;
     track('language_switch', {
@@ -66,7 +65,6 @@ export const Header = memo(function Header({
       to_language: value,
       page_path: currentPath
     })
-    setLocale(value);
     const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${value}`);
     console.debug('Redirecting to:', newPath);
     router.push(newPath);
