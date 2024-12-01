@@ -4,12 +4,120 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
+  "seoAndPerformance": {
+    "title": "Seo-and-performance",
+    "items": {
+      "sitemapGeneration": {
+        "title": "Generación automática de mapas del sitio",
+        "path": "/docs/seo-and-performance/sitemap-generation"
+      },
+      "robotTxt": {
+        "title": "Configuración de robots.txt",
+        "path": "/docs/seo-and-performance/robot-txt"
+      }
+    }
+  },
+  "internationalization": {
+    "title": "Internationalization",
+    "items": {
+      "setup": {
+        "title": "Configurar la internacionalización",
+        "path": "/docs/internationalization/setup"
+      },
+      "managingTranslation": {
+        "title": "Gestión de traducciones",
+        "path": "/docs/internationalization/managing-translation"
+      },
+      "aiTranslation": {
+        "title": "Traducción impulsada por la IA",
+        "path": "/docs/internationalization/ai-translation"
+      }
+    }
+  },
+  "installation": {
+    "title": "Installation",
+    "items": {
+      "troubleshooting": {
+        "title": "Guía de solución de problemas",
+        "path": "/docs/installation/troubleshooting"
+      },
+      "setup": {
+        "title": "Guía de instalación detallada",
+        "path": "/docs/installation/setup"
+      },
+      "configuration": {
+        "title": "Guía de configuración",
+        "path": "/docs/installation/configuration"
+      }
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Integración de análisis",
+        "path": "/docs/guides/analytics"
+      }
+    }
+  },
   "gettingStarted": {
     "title": "Getting-started",
     "items": {
+      "requirements": {
+        "title": "Requisitos del sistema",
+        "path": "/docs/getting-started/requirements"
+      },
       "quickstart": {
         "title": "Guía de inicio rápido",
         "path": "/docs/getting-started/quickstart"
+      },
+      "features": {
+        "title": "Características de AkiraDocs",
+        "path": "/docs/getting-started/features"
+      }
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "items": {
+      "overview": {
+        "title": "Descripción general del editor",
+        "path": "/docs/editor/overview"
+      },
+      "features": {
+        "title": "Características del editor",
+        "path": "/docs/editor/features"
+      }
+    }
+  },
+  "contentManagement": {
+    "title": "Content-management",
+    "items": {
+      "creatingPages": {
+        "title": "Creación y organización de páginas",
+        "path": "/docs/content-management/creating-pages"
+      }
+    }
+  },
+  "contributing": {
+    "title": "Contributing",
+    "items": {
+      "howToContribute": {
+        "title": "Contribuir a AkiraDocs",
+        "path": "/docs/contributing/how-to-contribute"
+      },
+      "codeOfConduct": {
+        "title": "Código de Conducta",
+        "path": "/docs/contributing/code-of-conduct"
+      }
+    }
+  },
+  "apiReference": {
+    "title": "Api-reference",
+    "items": {
+      "usageGuide": {
+        "title": "Guía de documentación de API",
+        "path": "/docs/api-reference/usage-guide"
       }
     }
   }

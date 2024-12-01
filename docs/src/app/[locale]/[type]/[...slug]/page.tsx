@@ -141,7 +141,7 @@ export default async function ContentPage({ params }: Props) {
                     key={block.id} 
                     block={{
                       ...block,
-                      content: t(block.content)
+                      content: block.content
                     }} 
                   />
                 )

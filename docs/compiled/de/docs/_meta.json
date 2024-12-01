@@ -4,12 +4,120 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
+  "seoAndPerformance": {
+    "title": "Seo-and-performance",
+    "items": {
+      "sitemapGeneration": {
+        "title": "Automatische Sitemap-Generierung",
+        "path": "/docs/seo-and-performance/sitemap-generation"
+      },
+      "robotTxt": {
+        "title": "Robots.txt-Konfiguration",
+        "path": "/docs/seo-and-performance/robot-txt"
+      }
+    }
+  },
+  "installation": {
+    "title": "Installation",
+    "items": {
+      "troubleshooting": {
+        "title": "Fehlerbehebungsanleitung",
+        "path": "/docs/installation/troubleshooting"
+      },
+      "setup": {
+        "title": "Ausführliche Installationsanleitung",
+        "path": "/docs/installation/setup"
+      },
+      "configuration": {
+        "title": "Konfigurationshandbuch",
+        "path": "/docs/installation/configuration"
+      }
+    }
+  },
   "gettingStarted": {
     "title": "Getting-started",
     "items": {
+      "requirements": {
+        "title": "Systemanforderungen",
+        "path": "/docs/getting-started/requirements"
+      },
       "quickstart": {
         "title": "Leitfaden für einen schnellen Einstieg",
         "path": "/docs/getting-started/quickstart"
+      },
+      "features": {
+        "title": "AkiraDocs Funktionen",
+        "path": "/docs/getting-started/features"
+      }
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "items": {
+      "overview": {
+        "title": "Überblick über den Editor",
+        "path": "/docs/editor/overview"
+      },
+      "features": {
+        "title": "Editormerkmale",
+        "path": "/docs/editor/features"
+      }
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Analyseintegration",
+        "path": "/docs/guides/analytics"
+      }
+    }
+  },
+  "contributing": {
+    "title": "Contributing",
+    "items": {
+      "howToContribute": {
+        "title": "Beitragen zu AkiraDocs",
+        "path": "/docs/contributing/how-to-contribute"
+      },
+      "codeOfConduct": {
+        "title": "Verhaltenskodex",
+        "path": "/docs/contributing/code-of-conduct"
+      }
+    }
+  },
+  "internationalization": {
+    "title": "Internationalization",
+    "items": {
+      "setup": {
+        "title": "Einrichten der Internationalisierung",
+        "path": "/docs/internationalization/setup"
+      },
+      "managingTranslation": {
+        "title": "Übersetzungen verwalten",
+        "path": "/docs/internationalization/managing-translation"
+      },
+      "aiTranslation": {
+        "title": "KI-gestützte Übersetzung",
+        "path": "/docs/internationalization/ai-translation"
+      }
+    }
+  },
+  "apiReference": {
+    "title": "Api-reference",
+    "items": {
+      "usageGuide": {
+        "title": "API-Dokumentationsleitfaden",
+        "path": "/docs/api-reference/usage-guide"
+      }
+    }
+  },
+  "contentManagement": {
+    "title": "Content-management",
+    "items": {
+      "creatingPages": {
+        "title": "Erstellen und Organisieren von Seiten",
+        "path": "/docs/content-management/creating-pages"
       }
     }
   }

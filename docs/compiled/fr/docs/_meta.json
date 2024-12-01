@@ -4,12 +4,120 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
+  "seoAndPerformance": {
+    "title": "Seo-and-performance",
+    "items": {
+      "sitemapGeneration": {
+        "title": "Génération automatique de plan du site",
+        "path": "/docs/seo-and-performance/sitemap-generation"
+      },
+      "robotTxt": {
+        "title": "Configuration robots.txt",
+        "path": "/docs/seo-and-performance/robot-txt"
+      }
+    }
+  },
+  "internationalization": {
+    "title": "Internationalization",
+    "items": {
+      "setup": {
+        "title": "Configurer l'internationalisation",
+        "path": "/docs/internationalization/setup"
+      },
+      "managingTranslation": {
+        "title": "Voici la traduction en français :\n\nGestion des traductions",
+        "path": "/docs/internationalization/managing-translation"
+      },
+      "aiTranslation": {
+        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTraduction alimentée par l'IA",
+        "path": "/docs/internationalization/ai-translation"
+      }
+    }
+  },
+  "installation": {
+    "title": "Installation",
+    "items": {
+      "troubleshooting": {
+        "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de dépannage",
+        "path": "/docs/installation/troubleshooting"
+      },
+      "setup": {
+        "title": "Guide d'installation détaillé",
+        "path": "/docs/installation/setup"
+      },
+      "configuration": {
+        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nGuide de configuration",
+        "path": "/docs/installation/configuration"
+      }
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Intégration des analyses",
+        "path": "/docs/guides/analytics"
+      }
+    }
+  },
   "gettingStarted": {
     "title": "Getting-started",
     "items": {
+      "requirements": {
+        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nConfiguration Requise",
+        "path": "/docs/getting-started/requirements"
+      },
       "quickstart": {
         "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de démarrage rapide",
         "path": "/docs/getting-started/quickstart"
+      },
+      "features": {
+        "title": "Fonctionnalités d'AkiraDocs",
+        "path": "/docs/getting-started/features"
+      }
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "items": {
+      "overview": {
+        "title": "Aperçu de l'éditeur",
+        "path": "/docs/editor/overview"
+      },
+      "features": {
+        "title": "Fonctionnalités de l'éditeur",
+        "path": "/docs/editor/features"
+      }
+    }
+  },
+  "contributing": {
+    "title": "Contributing",
+    "items": {
+      "howToContribute": {
+        "title": "Contribuer à AkiraDocs",
+        "path": "/docs/contributing/how-to-contribute"
+      },
+      "codeOfConduct": {
+        "title": "Code de conduite",
+        "path": "/docs/contributing/code-of-conduct"
+      }
+    }
+  },
+  "apiReference": {
+    "title": "Api-reference",
+    "items": {
+      "usageGuide": {
+        "title": "Voici la traduction en français :\n\nGuide de documentation de l'API",
+        "path": "/docs/api-reference/usage-guide"
+      }
+    }
+  },
+  "contentManagement": {
+    "title": "Content-management",
+    "items": {
+      "creatingPages": {
+        "title": "Voici la traduction en français :\n\nCréer et organiser des pages",
+        "path": "/docs/content-management/creating-pages"
       }
     }
   }
