@@ -90,44 +90,6 @@ ai_assistant:
 Next Steps
 Explore our [Advanced AI Features](/advanced-ai-features) guide to learn more about specialized use cases and integration possibilities.
 -------------
-[Document: docs/seo-and-performance/sitemap-generation.json]
-Title: Automatic Sitemap Generation
-Learn how AkiraDocs automatically generates and manages your documentation sitemap.
-Overview
-AkiraDocs automatically generates a sitemap.xml file during the build process, ensuring search engines can efficiently crawl your documentation.
-Generated Sitemap Structure
-Example Output
-Code example:
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://yourdocs.com/</loc>
-    <lastmod>2024-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://yourdocs.com/docs/getting-started</loc>
-    <lastmod>2024-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-</urlset>
--------------
-[Document: docs/seo-and-performance/robot-txt.json]
-Title: Robots.txt Configuration
-The robots.txt file is automatically generated during the build process and can be found in the `public` folder of your project.
-Default Configuration
-Basic robots.txt
-Code example:
-User-agent: *
-Allow: /
-Sitemap: https://docs.akiradocs.com/sitemap.xml
-
-# Private sections
-Disallow: /admin/
-Disallow: /private/
--------------
 [Document: docs/internationalization/setup.json]
 Title: Setting Up Internationalization
 Configure AkiraDocs for multiple languages with AI-powered translation support.
@@ -250,6 +212,93 @@ Content translation during build
 Context-aware translations
 Technical term preservation
 Format maintenance
+-------------
+[Document: docs/seo-and-performance/sitemap-generation.json]
+Title: Automatic Sitemap Generation
+Learn how AkiraDocs automatically generates and manages your documentation sitemap.
+Overview
+AkiraDocs automatically generates a sitemap.xml file during the build process, ensuring search engines can efficiently crawl your documentation.
+Generated Sitemap Structure
+Example Output
+Code example:
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://yourdocs.com/</loc>
+    <lastmod>2024-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://yourdocs.com/docs/getting-started</loc>
+    <lastmod>2024-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
+-------------
+[Document: docs/seo-and-performance/robot-txt.json]
+Title: Robots.txt Configuration
+The robots.txt file is automatically generated during the build process and can be found in the `public` folder of your project.
+Default Configuration
+Basic robots.txt
+Code example:
+User-agent: *
+Allow: /
+Sitemap: https://docs.akiradocs.com/sitemap.xml
+
+# Private sections
+Disallow: /admin/
+Disallow: /private/
+-------------
+[Document: docs/guides/analytics.json]
+Title: Analytics Integration
+Learn how to add analytics tracking to your documentation
+AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
+Setting up Google Analytics
+1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
+2. Get your Measurement ID (starts with "G-")
+3. Add the ID to your `akiradocs.config.json`:
+Code example:
+{
+"analytics": {
+"google": {
+"measurementId": "G-XXXXXXXXXX",
+"enabled": true
+},
+"debug": false
+}
+}
+What's Tracked Automatically
+Page views
+Navigation between pages
+Time on page
+User language preferences
+Device and browser information
+Custom Event Tracking
+You can track custom events using the `useAnalytics` hook:
+Code example:
+import { useAnalytics } from '@/hooks/useAnalytics'
+function MyComponent() {
+    const { track } = useAnalytics()
+    const handleClick = () => {
+        track('doc_rating', {
+            rating: 5,
+            page: 'getting-started',
+            helpful: true
+        })
+    }
+    return <button onClick={handleClick}>This was helpful</button>
+}
+Debug Mode
+Enable debug mode to see analytics events in the console during development:
+Code example:
+{
+"analytics": {
+"debug": true
+}
+}
+This provides a complete analytics integration that's easy for users to set up and extend as needed.
 -------------
 [Document: docs/installation/troubleshooting.json]
 Title: Troubleshooting Guide
@@ -474,54 +523,113 @@ Code example:
     },
 }
 -------------
-[Document: docs/guides/analytics.json]
-Title: Analytics Integration
-Learn how to add analytics tracking to your documentation
-AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
-Setting up Google Analytics
-1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
-2. Get your Measurement ID (starts with "G-")
-3. Add the ID to your `akiradocs.config.json`:
+[Document: docs/getting-started/requirements.json]
+Title: System Requirements
+Before installing AkiraDocs, ensure your environment meets the following requirements.
+Minimum Requirements
+Node.js
+Version: 16.x or higher
+Recommended: Latest LTS version
+System Memory
+Minimum: 2GB RAM
+Recommended: 4GB RAM or more
+Storage
+Recommended: 1GB free space
+Software Dependencies
+Required
+Git (latest version recommended)
+npm or yarn package manager
+Modern web browser (Chrome, Firefox, Safari, Edge)
+Optional
+Docker (for containerized deployment)
+PostgreSQL (for enterprise features)
+Development Environment
+Supported Operating Systems
+macOS (10.15 or later)
+Windows 10/11
+Linux (Ubuntu 20.04 or later recommended)
+IDE/Editor Support
+VS Code (coming soon)
+WebStorm (coming soon)
+Any text editor with Markdown support
+-------------
+[Document: docs/getting-started/quickstart.json]
+Title: Quickstart Guide
+Get up and running with AkiraDocs in minutes.
+Quick Deploy
+Option 1: Deploy with Vercel
+The fastest way to get started is using Vercel:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCloud-Code-AI%2Fakiradocs-template)
+Option 2: Using CLI
+Create a new project using our CLI:
+Code example:
+npx create-akiradocs@latest my-docs
+Basic Setup Steps
+1. <strong>Clone the Repository</strong> (if not using Quick Deploy)
+Code example:
+git clone https://github.com/your-org/akira-docs-template
+cd akira-docs-template
+2. <strong>Install Dependencies</strong>
+Code example:
+npm install
+# or
+yarn install
+3. <strong>Start Development Server</strong>
+Code example:
+npm run dev
+# or
+yarn dev
+4. Open `http://localhost:3000` in your browser
+Initial Configuration
+1. <strong>Update Site Configuration</strong>
+Edit `akiradocs.config.json`:
 Code example:
 {
-"analytics": {
-"google": {
-"measurementId": "G-XXXXXXXXXX",
-"enabled": true
-},
-"debug": false
+  "site": {
+    "title": "Your Docs",
+    "description": "Your documentation description"
+  }
 }
-}
-What's Tracked Automatically
-Page views
-Navigation between pages
-Time on page
-User language preferences
-Device and browser information
-Custom Event Tracking
-You can track custom events using the `useAnalytics` hook:
-Code example:
-import { useAnalytics } from '@/hooks/useAnalytics'
-function MyComponent() {
-    const { track } = useAnalytics()
-    const handleClick = () => {
-        track('doc_rating', {
-            rating: 5,
-            page: 'getting-started',
-            helpful: true
-        })
-    }
-    return <button onClick={handleClick}>This was helpful</button>
-}
-Debug Mode
-Enable debug mode to see analytics events in the console during development:
+2. <strong>Configure Translation</strong> (Optional)
 Code example:
 {
-"analytics": {
-"debug": true
+  "translation": {
+    "auto_translate": true,
+    "provider": "anthropic",
+    "targetLanguages": ["es", "fr", "de"]
+  }
 }
-}
-This provides a complete analytics integration that's easy for users to set up and extend as needed.
+-------------
+[Document: docs/getting-started/features.json]
+Title: AkiraDocs Features
+A comprehensive overview of AkiraDocs' core features and capabilities.
+Content Creation & Management
+<strong>Notion-like Editor</strong>: Intuitive block-based interface with real-time preview
+<strong>Markdown Support</strong>: Native Markdown and MDX compatibility
+<strong>Custom Components</strong>: Create and reuse your own content blocks
+Internationalization & Translation
+<strong>Multi-Language Support</strong>: Maintain documentation in multiple languages
+<strong>AI-Powered Translation</strong>: Automated, context-aware content translation
+<strong>Translation Management</strong>: Built-in tools for managing localized content
+Search & Discovery
+<strong>AI-Powered Search</strong>: Natural language question answering with context awareness
+<strong>SEO Optimization</strong>: Automated SEO tools and optimizations
+<strong>Smart Indexing</strong>: Real-time search index updates
+Build & Performance
+<strong>Static Generation</strong>: Optimized build process with asset optimization
+<strong>Developer Experience</strong>: Fast refresh and comprehensive debugging tools
+<strong>Performance Focus</strong>: Built-in best practices for speed and efficiency
+Enterprise Features (Coming Soon)
+<strong>Security & Compliance</strong>: SSO, RBAC, and audit logging
+<strong>Analytics & Insights</strong>: Usage tracking and documentation metrics
+<strong>Team Collaboration</strong>: Enterprise-grade collaboration tools
+Migration Support (Coming Soon)
+Code example:
+# Supported platforms for easy migration
+✓ Nextra
+✓ GitBook
+✓ Docusaurus
+✓ ReadTheDocs
 -------------
 [Document: docs/editor/overview.json]
 Title: Editor Overview
@@ -708,114 +816,6 @@ Enforcement
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement. All complaints will be reviewed and investigated promptly and fairly.
 Attribution
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
--------------
-[Document: docs/getting-started/requirements.json]
-Title: System Requirements
-Before installing AkiraDocs, ensure your environment meets the following requirements.
-Minimum Requirements
-Node.js
-Version: 16.x or higher
-Recommended: Latest LTS version
-System Memory
-Minimum: 2GB RAM
-Recommended: 4GB RAM or more
-Storage
-Recommended: 1GB free space
-Software Dependencies
-Required
-Git (latest version recommended)
-npm or yarn package manager
-Modern web browser (Chrome, Firefox, Safari, Edge)
-Optional
-Docker (for containerized deployment)
-PostgreSQL (for enterprise features)
-Development Environment
-Supported Operating Systems
-macOS (10.15 or later)
-Windows 10/11
-Linux (Ubuntu 20.04 or later recommended)
-IDE/Editor Support
-VS Code (coming soon)
-WebStorm (coming soon)
-Any text editor with Markdown support
--------------
-[Document: docs/getting-started/quickstart.json]
-Title: Quickstart Guide
-Get up and running with AkiraDocs in minutes.
-Quick Deploy
-Option 1: Deploy with Vercel
-The fastest way to get started is using Vercel:
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCloud-Code-AI%2Fakiradocs-template)
-Option 2: Using CLI
-Create a new project using our CLI:
-Code example:
-npx create-akiradocs@latest my-docs
-Basic Setup Steps
-1. <strong>Clone the Repository</strong> (if not using Quick Deploy)
-Code example:
-git clone https://github.com/your-org/akira-docs-template
-cd akira-docs-template
-2. <strong>Install Dependencies</strong>
-Code example:
-npm install
-# or
-yarn install
-3. <strong>Start Development Server</strong>
-Code example:
-npm run dev
-# or
-yarn dev
-4. Open `http://localhost:3000` in your browser
-Initial Configuration
-1. <strong>Update Site Configuration</strong>
-Edit `akiradocs.config.json`:
-Code example:
-{
-  "site": {
-    "title": "Your Docs",
-    "description": "Your documentation description"
-  }
-}
-2. <strong>Configure Translation</strong> (Optional)
-Code example:
-{
-  "translation": {
-    "auto_translate": true,
-    "provider": "anthropic",
-    "targetLanguages": ["es", "fr", "de"]
-  }
-}
--------------
-[Document: docs/getting-started/features.json]
-Title: AkiraDocs Features
-A comprehensive overview of AkiraDocs' core features and capabilities.
-Content Creation & Management
-<strong>Notion-like Editor</strong>: Intuitive block-based interface with real-time preview
-<strong>Markdown Support</strong>: Native Markdown and MDX compatibility
-<strong>Custom Components</strong>: Create and reuse your own content blocks
-Internationalization & Translation
-<strong>Multi-Language Support</strong>: Maintain documentation in multiple languages
-<strong>AI-Powered Translation</strong>: Automated, context-aware content translation
-<strong>Translation Management</strong>: Built-in tools for managing localized content
-Search & Discovery
-<strong>AI-Powered Search</strong>: Natural language question answering with context awareness
-<strong>SEO Optimization</strong>: Automated SEO tools and optimizations
-<strong>Smart Indexing</strong>: Real-time search index updates
-Build & Performance
-<strong>Static Generation</strong>: Optimized build process with asset optimization
-<strong>Developer Experience</strong>: Fast refresh and comprehensive debugging tools
-<strong>Performance Focus</strong>: Built-in best practices for speed and efficiency
-Enterprise Features (Coming Soon)
-<strong>Security & Compliance</strong>: SSO, RBAC, and audit logging
-<strong>Analytics & Insights</strong>: Usage tracking and documentation metrics
-<strong>Team Collaboration</strong>: Enterprise-grade collaboration tools
-Migration Support (Coming Soon)
-Code example:
-# Supported platforms for easy migration
-✓ Nextra
-✓ GitBook
-✓ Docusaurus
-✓ ReadTheDocs
 -------------
 [Document: docs/content-management/creating-pages.json]
 Title: Creating and Organizing Pages

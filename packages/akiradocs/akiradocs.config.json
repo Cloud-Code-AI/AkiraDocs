@@ -1,7 +1,9 @@
 {
+
     "site": {
         "title": "Akira Docs",
-        "description": "Next-gen documentation powered by AI"
+        "description": "Next-gen documentation powered by AI",
+        "url": "https://docs.akiradocs.com"
     },
     "branding": {
         "logo": {

@@ -4,6 +4,12 @@
 </p>
 
 <p align="center">
+  <a href="https://discord.gg/zvYZukgeH2">
+    <img src="https://img.shields.io/badge/Join_Our_Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" alt="Join Our Discord">
+  </a>
+</p>
+
+<p align="center">
   <h4 align="center"><strong>Beautiful docs that write, translate, and optimize themselves</strong></h4>
 </p>
 
@@ -40,6 +46,8 @@ Or via CLI:
 npx create-akiradocs <optional folder name>
 ```
 
+![AkiraDocs installation](gifs/install_akiradocs.gif)
+
 ## 🎯 Perfect For
 - **Developers**: API docs, SDK guides, implementation examples
 - **Product Teams**: User guides, release notes, tutorials
@@ -47,8 +55,23 @@ npx create-akiradocs <optional folder name>
 
 ## ✨ Key Features
 
+### Notion-like Editor
+Intuitive block-based interface with real-time preview
+
+![AkiraDocs editor](gifs/akiradocs_editor.gif)
+
+### AI-Powered Content Generation
+Automatically enhance your content with AI
+
+![AkiraDocs AI](gifs/ai_rewrites.gif)
+
+### Translation
+Translate your content to multiple languages with AI
+
+![AkiraDocs Translation](gifs/translate.gif)
+
 ### 🔍 AI-Generated SEO Optimization
-- Automatically optimize your documentation for search engines with AI-driven SEO
+Automatically optimize your documentation for search engines with AI-driven SEO
 - Improve discoverability and reach without manual SEO adjustments
 - AI recommendations for keywords and metadata
 
@@ -64,11 +87,6 @@ npx create-akiradocs <optional folder name>
 - Rich media support
 - Reusable content blocks
 
-### 🏢 Enterprise-Ready
-- SSO/SAML integration
-- Audit logs
-- Custom deployment options
-- Version control
 
 ## 🌍 Going Global
 Built-in AI-powered translation. Just add API keys:

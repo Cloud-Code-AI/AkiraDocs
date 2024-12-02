@@ -73,6 +73,7 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
         </HeadingTitle>
       );
     case 'list':
+      console.log( 'block', block,block.content)
       return (
         <List 
           {...commonProps}
@@ -80,7 +81,6 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
           listType={block.metadata?.listType || 'unordered'} 
           isEditing={isEditing}
           onUpdate={(content) => {
-            // Ensure we're passing a plain string, not an array
             onUpdate?.(block.id, content);
           }}
         />

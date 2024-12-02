@@ -39,29 +39,19 @@ async function convertMarkdownToBlocks(content) {
       listItems.push(processedLine);
       
       if (i === lines.length - 1 || !lines[i + 1].trim().startsWith('-')) {
-        blocks.push({
-          id: String(blockId++),
-          type: 'list',
-          content: listItems,
-          metadata: {
-            listType: 'unordered'
-          }
-        });
-        listItems = [];
+        if (listItems.length > 0) {
+          blocks.push({
+            id: String(blockId++),
+            type: 'list',
+            content: listItems,
+            metadata: {
+              listType: 'unordered'
+            }
+          });
+          listItems = [];
+        }
       }
       continue;
-    }
-
-    if (listItems.length > 0) {
-      blocks.push({
-        id: String(blockId++),
-        type: 'list',
-        content: listItems,
-        metadata: {
-          listType: 'unordered'
-        }
-      });
-      listItems = [];
     }
 
     if (line.startsWith('```')) {

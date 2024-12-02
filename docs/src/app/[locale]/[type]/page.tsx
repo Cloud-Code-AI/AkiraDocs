@@ -1,65 +1,62 @@
-'use client'
-
-import React from 'react'
+import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getAllPosts, getRecentContent } from '@/lib/content'
-import { NotFound } from '@/components/layout/NotFound'
-import { SEO } from '@/components/layout/SEO'
 import { getHeaderConfig } from '@/lib/headerConfig'
-import { Header } from '@/components/layout/Header'
-import { getFooterConfig } from '@/lib/footerConfig'
-import { Footer } from '@/components/layout/Footer'
-import { ArticleCard } from '@/components/layout/ArticleCard'
-import { Post } from '@/types/Block'
 
-export const runtime = 'edge'
+type Props = {
+  params: Promise<{
+    locale: string;
+    type: string;
+  }>;
+}
 
-export default function Page({ params }: { params: Promise<{ locale: string, type: string }> }) {
-  const resolvedParams = React.use(params)
-  const locale = resolvedParams.locale || ''
-  const type = resolvedParams.type || ''
+export const dynamic = 'force-static';
+
+export async function generateStaticParams() {
+  const locales = ['en', 'es', 'fr']; 
+  const types = ['docs', 'api', 'articles'];
+  const params: { locale: string, type: string }[] = [];
+
+  locales.forEach(locale => {
+    types.forEach(type => {
+      params.push({ locale, type });
+    });
+  });
+
+  return params;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+  const { locale, type } = resolvedParams;
   const headerConfig = getHeaderConfig();
-  const footerConfig = getFooterConfig();
+
+  return {
+    title: `${type.charAt(0).toUpperCase() + type.slice(1)} - ${headerConfig.title}`,
+    description: `Browse our latest ${type}`,
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/${type}`,
+      languages: {
+        'en': `${process.env.NEXT_PUBLIC_SITE_URL}/en/${type}`,
+        'es': `${process.env.NEXT_PUBLIC_SITE_URL}/es/${type}`,
+        'fr': `${process.env.NEXT_PUBLIC_SITE_URL}/fr/${type}`,
+      }
+    }
+  }
+}
+
+export default async function Page({ params }: Props) {
+  const resolvedParams = await Promise.resolve(params);
+  const { locale, type } = resolvedParams;
   
-  if (type === 'articles') {
-    const articles = getAllPosts(locale, 'articles')
-    return (
-      <div className="flex flex-col min-h-screen">
-        <SEO
-          title={`Articles - ${headerConfig.title}`}
-          description="Browse our latest articles"
-          canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/articles`}
-        />
-        <Header {...headerConfig} currentLocale={locale} />
-        <div className="flex flex-grow">
-          <div className="flex-1 p-6 w-full">
-            <h1 className="text-3xl font-bold mb-6">Articles</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {articles?.map((article: Post) => (
-                <ArticleCard
-                  key={article.slug}
-                  title={article.title}
-                  description={article.description}
-                  author={article.author}
-                  publishDate={article.publishDate}
-                  slug={article.slug || ''}
-                  locale={locale}
-                  type={type}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-        <Footer {...footerConfig} />
-      </div>
-    )
-  }
-
-  const recentContent = getRecentContent(`${locale}/${type}`)
+  // Get the first/default content for this type
+  const recentContent = getRecentContent(`${locale}/${type}`);
+  
   if (recentContent) {
-    const redirectUrl = `/${locale}/${type}/${recentContent.slug.replace(`${type}/`, '')}`
-    redirect(redirectUrl)
+    const redirectUrl = `/${locale}/${type}/${recentContent.slug.replace(`${type}/`, '')}`;
+    redirect(redirectUrl);
   }
 
-  return <NotFound redirectUrl={`/`} />
+  // Fallback redirect if no content found
+  redirect(`/${locale}`);
 }
