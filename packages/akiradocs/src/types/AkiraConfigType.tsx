@@ -61,6 +61,20 @@ type Logo = {
   type Features = {
     textToSpeech: boolean;
   };
+
+
+type SupportedProvider = 'openai' | 'anthropic' | 'google' | 'azure'
+
+type RewriteSettings = {
+  model?: string;
+  temperature?: number;
+  azureDeploymentName?: string;
+}
+
+type Rewrite = {
+  provider: SupportedProvider;
+  settings?: RewriteSettings;
+}
   
   type AkiraDocsConfig = {
     site: Site;
@@ -72,6 +86,7 @@ type Logo = {
     };
     localization: Localization;
     features: Features;
+    rewrite?: Rewrite;
   };
   
-  export type { AkiraDocsConfig };
+  export type { AkiraDocsConfig, SupportedProvider };

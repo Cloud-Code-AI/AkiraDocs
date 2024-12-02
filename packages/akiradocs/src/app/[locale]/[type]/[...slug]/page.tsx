@@ -30,7 +30,6 @@ const PostContainer = ({ children }: { children: React.ReactNode }) => (
 
 export default function ContentPage({ params }: { params: Promise<{ locale: string, type: string, slug: string[] }> }) {
   const resolvedParams = React.use(params)
-  const config = getAkiradocsConfig()
   const locale = resolvedParams.locale
   const type = resolvedParams.type
   const slug = resolvedParams.slug?.length ? resolvedParams.slug.join('/') : ''
@@ -39,7 +38,6 @@ export default function ContentPage({ params }: { params: Promise<{ locale: stri
     return <NotFound redirectUrl={`/${locale}/${type}`} />
   }
   const akiradocsConfig = getAkiradocsConfig()
-  const config = getAkiradocsConfig()
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
   const navigationItems = getContentNavigation({}, locale, type)

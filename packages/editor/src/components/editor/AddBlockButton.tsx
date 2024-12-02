@@ -49,7 +49,6 @@ export const AddBlockButton = forwardRef<
   HTMLButtonElement,
   AddBlockButtonProps
 >(({ onAddBlock, onChangeType, mode, isActive, onOpenChange, type, open }, ref) => {
-  console.debug(isActive)
   const [searchTerm, setSearchTerm] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
 
