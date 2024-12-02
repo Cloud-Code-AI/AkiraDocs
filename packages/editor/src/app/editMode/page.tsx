@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Folder, File, Plus, X, ChevronRight, ChevronDown, Trash2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { fetchAllContent } from '@/src/lib/getContents'
+import { ThemeToggle } from "@/components/ui/ThemeToggle"
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:3001'
 
@@ -408,9 +409,12 @@ export default function ImprovedFileTreeUI() {
 
   return (
     <div className="p-6 bg-background min-h-screen text-foreground">
-      <h1 className="text-3xl font-bold mb-6 text-foreground">
-        Project Explorer
-      </h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold text-foreground">
+          Project Explorer
+        </h1>
+        <ThemeToggle />
+      </div>
       <div className="bg-card rounded-lg shadow-xl p-6 border">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
