@@ -177,6 +177,17 @@ export function List({
     styles?.underline && 'underline'
   );
 
+  // Add the processContent function
+  const processContent = (text: string) => {
+    return text.split(/(<strong>.*?<\/strong>)/).map((part, index) => {
+      if (part.startsWith('<strong>') && part.endsWith('</strong>')) {
+        const innerText = part.replace(/<\/?strong>/g, '');
+        return <strong key={index}>{innerText}</strong>;
+      }
+      return part;
+    });
+  };
+
   if (showEditingView) {
     return (
       <div 
@@ -231,7 +242,7 @@ export function List({
       >
         {items.map((item, index) => (
           <li key={index} className="mb-1">
-            {item}
+            {processContent(item)}
           </li>
         ))}
       </ListComponent>

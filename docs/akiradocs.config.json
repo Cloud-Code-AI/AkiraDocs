@@ -78,6 +78,13 @@
           "enabled": true
       },
       "debug": false
+    },
+  "rewrite": {
+      "provider": "anthropic",
+      "settings": {
+          "model": "claude-3-sonnet-20240229",
+          "temperature": 0.7
+      }
   },
   "features": {
     "textToSpeech": false

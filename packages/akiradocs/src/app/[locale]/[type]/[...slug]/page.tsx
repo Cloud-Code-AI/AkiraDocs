@@ -13,7 +13,7 @@ import { PageNavigation } from '@/components/layout/PageNavigation'
 import { MainTitle, SubTitle } from '@/components/blocks/HeadingBlock'
 import { SEO } from '@/components/layout/SEO'
 import { NotFound } from '@/components/layout/NotFound'
-// import { TextToSpeech } from '@/components/tts/TextToSpeech'
+import { TextToSpeech } from '@/components/tts/TextToSpeech'
 import { getAkiradocsConfig } from "@/lib/getAkiradocsConfig";
 import { getTranslation } from '@/lib/staticTranslation';
 import { ClientSideControls } from '@/components/layout/ClientSideControl';
@@ -99,7 +99,6 @@ export default async function ContentPage({ params }: Props) {
   if (!post) {
     return <NotFound redirectUrl={`/${locale}/${type}`} />;
   }
-
   const akiradocsConfig = getAkiradocsConfig();
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();

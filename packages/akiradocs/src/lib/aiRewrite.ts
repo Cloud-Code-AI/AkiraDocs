@@ -1,10 +1,14 @@
 import { BlockType } from '@/types/Block'
+import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
+import { isAzureProvider } from '@/lib/AIConfig'
 
 export async function rewriteBlockContent(
   content: string, 
   blockType: BlockType, 
   style: string
 ): Promise<string> {
+  const config = getAkiradocsConfig()
+  
   const response = await fetch('/api/rewrite', {
     method: 'POST',
     headers: {
@@ -14,6 +18,11 @@ export async function rewriteBlockContent(
       content,
       blockType,
       style,
+      provider: config.rewrite?.provider || 'openai',
+      settings: {
+        ...config.rewrite?.settings,
+        isAzure: isAzureProvider()
+      }
     }),
   })
 

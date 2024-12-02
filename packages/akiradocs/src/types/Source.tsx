@@ -1,4 +1,4 @@
 export interface Source {
-    title: string;
-    url: string;
-  }
+  title: string;
+  url: string;
+}

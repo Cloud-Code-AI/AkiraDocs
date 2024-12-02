@@ -1,6 +1,7 @@
-import config from '../../akiradocs.config.json';
-import { AkiraDocsConfig } from '@/types/AkiraConfigType';
+import config from '../../akiradocs.config.json' assert { type: 'json' };
+import { AkiraDocsConfig, SupportedProvider } from '@/types/AkiraConfigType';
 
 export function getAkiradocsConfig(): AkiraDocsConfig {
-    return config;
+    // Cast the entire config to AkiraDocsConfig since we know it matches the shape
+    return config as AkiraDocsConfig;
 }

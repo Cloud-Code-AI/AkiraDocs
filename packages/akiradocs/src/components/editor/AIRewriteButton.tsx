@@ -4,6 +4,7 @@ import { Wand2 } from 'lucide-react'
 import { useState } from 'react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { BlockType } from '@/types/Block'
+import { toast } from 'sonner'
 
 const blockStyles = {
   article: [
@@ -130,7 +131,7 @@ const blockStyles = {
       prompt: 'Expand the toggle content with more detailed explanations. Keep the toggle structure. Output only the toggle content.'
     }
   ],
-
+  
   apiReference: [
     {
       value: 'default',
@@ -155,6 +156,18 @@ export function AIRewriteButton({ onRewrite, blockType, isRewriting }: AIRewrite
   const getBlockStyles = (blockType: BlockType) => {
     return blockStyles[blockType] || blockStyles['paragraph'];
   };
+
+  const handleRewrite = async () => {
+    try {
+      await onRewrite(style)
+    } catch (error) {
+      if (error instanceof Error && error.message.toLowerCase().includes('API key')) {
+        toast.error(error.message)
+      } else {
+        toast.error('Failed to rewrite content')
+      }
+    }
+  }
 
   return (
     <Popover>
@@ -184,7 +197,7 @@ export function AIRewriteButton({ onRewrite, blockType, isRewriting }: AIRewrite
           </Select>
           <Button 
             className="w-full" 
-            onClick={() => onRewrite(style)}
+            onClick={handleRewrite}
             disabled={isRewriting}
           >
             {isRewriting ? 'Rewriting...' : 'Rewrite'}

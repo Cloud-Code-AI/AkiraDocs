@@ -9,53 +9,54 @@ declare var require: {
 const contentContext = require.context(`../../compiled/`, true, /\.json$/)
 
 export function getContentBySlug(locale: string, type: string, slug: string): Post | null {
-
-  let normalizedSlug: string
-  if (slug.includes(`compiled/${locale}/${type}`)) {
-    normalizedSlug = slug.split('/').slice(3).join('/') || ''
-  } else {
-    normalizedSlug = slug || ''
-  }
   try {
-      if (normalizedSlug === '') {
-        // Get all articles and sort by date to find the latest
-        if (type === 'articles') {
-          const articles = getAllPosts(locale, type)
-          const sortedArticles = articles.sort((a, b) =>
-            new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-          )
-          if (sortedArticles.length > 0) {
-            return sortedArticles[0]
-        }
-      }
-
+    // Construct the exact path we're looking for
+    const filePath = `./${locale}/${type}/${slug}.json`;
+    
+    // Check if the file exists in our context
+    if (!contentContext.keys().includes(filePath)) {
+      console.warn(`File not found: ${filePath}`);
+      return null;
     }
-    return contentContext(`./${locale}/${type}/${normalizedSlug}.json`)
 
+    // Load the content
+    const content = contentContext(filePath);
+    return {
+      ...content,
+      slug
+    };
   } catch (error) {
-    console.error(`Error reading file: ${normalizedSlug}.json`, error)
-    return null
+    console.error(`Error reading file: ${locale}/${type}/${slug}.json`, error);
+    return null;
   }
 }
 
 export function getAllPosts(locale: string, type: string): Post[] {
-  return contentContext.keys()
-    .filter((fileName: string) => 
-      fileName.startsWith(`./${locale}/${type}/`) && 
-      !fileName.endsWith('/_meta.json')
-    )
+  const posts = contentContext.keys()
+    .filter((fileName: string) => {
+      // Only include files that match the exact locale and type path
+      const pattern = new RegExp(`^\./${locale}/${type}/[^/]+\.json$`);
+      return pattern.test(fileName) && !fileName.endsWith('/_meta.json');
+    })
     .map((fileName: string) => {
-      const content = contentContext(fileName)
-      return {
-        slug: fileName.replace(`./${locale}/${type}/`, '').replace('.json', ''),
-        title: content.title,
-        description: content.description,
-        author: content.author,
-        publishDate: content.publishDate,
-        // Include any other fields needed by ArticleCard
+      try {
+        // Load the content directly using the full path
+        const content = contentContext(fileName);
+        const slug = fileName
+          .replace(`\./${locale}/${type}/`, '')
+          .replace(/\.json$/, '');
+        return {
+          ...content,
+          slug
+        };
+      } catch (error) {
+        console.error(`Error loading content for ${fileName}:`, error);
+        return null;
       }
     })
-    .sort((a: any, b: any) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+    .filter((post: unknown): post is Post => post !== null);
+
+  return posts;
 }
 
 export function getContentNavigation<T>(defaultValue: T, locale: string, type: string): T {
@@ -131,7 +132,6 @@ export function folderExists(folderPath: string): boolean {
     return false
   }
 }
-
 export function get_api_spec(): any {
   try {
     return contentContext('./en/api/apiSpec.json')

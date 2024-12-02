@@ -8,7 +8,7 @@ import { Folder, File, Plus, X, ChevronRight, ChevronDown, Trash2 } from "lucide
 import { motion, AnimatePresence } from "framer-motion"
 import { fetchAllContent } from '@/src/lib/getContents'
 
-const API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:8000'
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:3001'
 
 type FileNode = {
   id: string
