@@ -6,7 +6,7 @@ export type BlockType =
   | 'list' 
   | 'blockquote' 
   | 'divider' 
-  // | 'table'
+  | 'table'
   // | 'toggleList' 
   // | 'checkList' 
   // | 'video' 

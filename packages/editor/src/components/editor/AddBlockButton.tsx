@@ -14,7 +14,7 @@ import {
   Image,
   List,
   Minus,
-  // Table,
+  Table,
   Quote,
   // ToggleLeft,
   // CheckSquare,
@@ -49,6 +49,7 @@ export const AddBlockButton = forwardRef<
   HTMLButtonElement,
   AddBlockButtonProps
 >(({ onAddBlock, onChangeType, mode, isActive, onOpenChange, type, open }, ref) => {
+  console.debug(isActive)
   const [searchTerm, setSearchTerm] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
 
@@ -65,7 +66,7 @@ export const AddBlockButton = forwardRef<
     { type: 'code', icon: <Code size={18} />, label: 'Code', description: 'Capture a code snippet.', group: 'Basic' },
     { type: 'image', icon: <Image size={18} />, label: 'Image', description: 'Upload or embed with a link.', group: 'Media' },
     { type: 'divider', icon: <Minus size={18} />, label: 'Divider', description: 'Visually divide your page.', group: 'Basic' },
-    // { type: 'table', icon: <Table size={18} />, label: 'Table', description: 'Add a table to your page.', group: 'Advanced' },
+    { type: 'table', icon: <Table size={18} />, label: 'Table', description: 'Add a table to your page.', group: 'Advanced' },
     { type: 'blockquote', icon: <Quote size={18} />, label: 'Quote', description: 'Capture a quote.', group: 'Basic' },
     // { type: 'toggleList', icon: <ToggleLeft size={18} />, label: 'Toggle', description: 'Toggleable content.', group: 'Advanced' },
     // { type: 'checkList', icon: <CheckSquare size={18} />, label: 'To-do list', description: 'Track tasks with a to-do list.', group: 'Basic' },

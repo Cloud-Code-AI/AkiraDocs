@@ -18,6 +18,7 @@ import { Callout } from "@/components/blocks/CalloutBlock"
 import { cn } from '@/lib/utils'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ImageBlock } from "@/components/blocks/ImageBlock"
+import { Table } from '@/components/blocks/TableBlock'
 
 interface ImageBlockContent {
   url: string;
@@ -119,20 +120,19 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
           onUpdate={(content) => onUpdate?.(block.id, content)}
         />
       );
-    // case 'table':
-    //   return <Table headers={block.metadata?.headers || []} rows={block.metadata?.rows || []} {...commonProps} />;
-    // case 'toggleList':
-    //   return <ToggleList items={block.metadata?.items || []} {...commonProps} />;
-    // case 'checkList':
-    //   return <CheckList items={block.metadata?.checkedItems || []} {...commonProps} />;
-    // case 'video':
-    //   return <Video src={block.content} caption={block.metadata?.caption} {...commonProps} />;
-    // case 'audio':
-    //   return <Audio src={block.content} caption={block.metadata?.caption} {...commonProps} />;
-    // case 'file':
-    //   return <File url={block.content} name={block.metadata?.name || ''} {...commonProps} />;
-    // case 'emoji':
-    //   return <Emoji symbol={block.content} label={block.metadata?.label} {...commonProps} />;
+    case 'table':
+      return (
+        <Table
+          headers={block.metadata?.headers || ['Column 1', 'Column 2']}
+          rows={block.metadata?.rows || [['', '']]}
+          isEditing={isEditing}
+          onChange={(headers, rows) => {
+            onUpdate?.(block.id, JSON.stringify({ headers, rows }));
+          }}
+          align={block.metadata?.align}
+          styles={block.metadata?.styles}
+        />
+      );
     case 'callout':
       return (
         <Callout 

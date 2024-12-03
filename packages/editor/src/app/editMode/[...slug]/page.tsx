@@ -138,6 +138,13 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
       newBlock.content = '[]'
     }
 
+    if (newBlock.type === 'table') {
+      newBlock.metadata = {
+        headers: ['Column 1', 'Column 2'],
+        rows: [['', '']]
+      }
+    }
+
     if (afterId === 'new') {
       setBlocks([newBlock])
     } else {
@@ -156,6 +163,14 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
             return { ...block, content: JSON.stringify(Array.isArray(parsed) ? parsed : [parsed]) }
           } catch {
             return { ...block, content: JSON.stringify([content]) }
+          }
+        }
+        if (block.type === 'table') {
+          try {
+            const { headers, rows } = JSON.parse(content);
+            return { ...block, metadata: { ...block.metadata, headers, rows } };
+          } catch {
+            return block;
           }
         }
         return { ...block, content }
