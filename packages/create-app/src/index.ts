@@ -155,6 +155,16 @@ async function copyEditor(targetDir: string) {
   }
 }
 
+async function isEditorInstalled(targetDir: string) {
+  try {
+    const editorDir = path.join(targetDir, 'editor');
+    await readFile(path.join(editorDir, 'package.json'), 'utf-8');
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 async function main() {
   const packageJsonPath = path.resolve(__dirname, '../package.json');
   const packageJson = await readJson(packageJsonPath);
@@ -235,6 +245,31 @@ async function main() {
       try {
         const templateDir = path.join(__dirname, '../template/default');
         await updateDir(templateDir, '.');
+
+        // Check if editor is installed
+        if (await isEditorInstalled('.')) {
+          spinner.text = 'Updating editor files...';
+          const editorCopied = await copyEditor('.');
+          
+          if (editorCopied) {
+            await updateEditorDependencies('.');
+
+            // Update package.json scripts
+            const pkgJsonPath = path.join('.', 'package.json');
+            const pkgJson = JSON.parse(await readFile(pkgJsonPath, 'utf-8'));
+            pkgJson.scripts = {
+              ...pkgJson.scripts,
+              'dev:editor': 'cd editor && npm run dev',
+              'dev:docs': 'npm run dev',
+              'dev:all': 'concurrently "npm run dev:docs" "npm run dev:editor"',
+            };
+            pkgJson.devDependencies = {
+              ...pkgJson.devDependencies,
+              'concurrently': '^8.0.0',
+            };
+            await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
+          }
+        }
 
         spinner.succeed(chalk.green('Project updated successfully!'));
         console.log('\nNext steps:');
