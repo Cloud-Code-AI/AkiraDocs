@@ -17,6 +17,23 @@
       }
     }
   },
+  "internationalization": {
+    "title": "Internationalization",
+    "items": {
+      "setup": {
+        "title": "Einrichten der Internationalisierung",
+        "path": "/docs/internationalization/setup"
+      },
+      "managingTranslation": {
+        "title": "Übersetzungen verwalten",
+        "path": "/docs/internationalization/managing-translation"
+      },
+      "aiTranslation": {
+        "title": "KI-gestützte Übersetzung",
+        "path": "/docs/internationalization/ai-translation"
+      }
+    }
+  },
   "installation": {
     "title": "Installation",
     "items": {
@@ -31,6 +48,15 @@
       "configuration": {
         "title": "Konfigurationshandbuch",
         "path": "/docs/installation/configuration"
+      }
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Analyseintegration",
+        "path": "/docs/guides/analytics"
       }
     }
   },
@@ -51,28 +77,6 @@
       }
     }
   },
-  "editor": {
-    "title": "Editor",
-    "items": {
-      "overview": {
-        "title": "Überblick über den Editor",
-        "path": "/docs/editor/overview"
-      },
-      "features": {
-        "title": "Editormerkmale",
-        "path": "/docs/editor/features"
-      }
-    }
-  },
-  "guides": {
-    "title": "Guides",
-    "items": {
-      "analytics": {
-        "title": "Analyseintegration",
-        "path": "/docs/guides/analytics"
-      }
-    }
-  },
   "contributing": {
     "title": "Contributing",
     "items": {
@@ -86,29 +90,16 @@
       }
     }
   },
-  "internationalization": {
-    "title": "Internationalization",
+  "editor": {
+    "title": "Editor",
     "items": {
-      "setup": {
-        "title": "Einrichten der Internationalisierung",
-        "path": "/docs/internationalization/setup"
+      "overview": {
+        "title": "Überblick über den Editor",
+        "path": "/docs/editor/overview"
       },
-      "managingTranslation": {
-        "title": "Übersetzungen verwalten",
-        "path": "/docs/internationalization/managing-translation"
-      },
-      "aiTranslation": {
-        "title": "KI-gestützte Übersetzung",
-        "path": "/docs/internationalization/ai-translation"
-      }
-    }
-  },
-  "apiReference": {
-    "title": "Api-reference",
-    "items": {
-      "usageGuide": {
-        "title": "API-Dokumentationsleitfaden",
-        "path": "/docs/api-reference/usage-guide"
+      "features": {
+        "title": "Editormerkmale",
+        "path": "/docs/editor/features"
       }
     }
   },
@@ -118,6 +109,15 @@
       "creatingPages": {
         "title": "Erstellen und Organisieren von Seiten",
         "path": "/docs/content-management/creating-pages"
+      }
+    }
+  },
+  "apiReference": {
+    "title": "Api-reference",
+    "items": {
+      "usageGuide": {
+        "title": "API-Dokumentationsleitfaden",
+        "path": "/docs/api-reference/usage-guide"
       }
     }
   }

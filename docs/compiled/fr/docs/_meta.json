@@ -17,23 +17,6 @@
       }
     }
   },
-  "internationalization": {
-    "title": "Internationalization",
-    "items": {
-      "setup": {
-        "title": "Configurer l'internationalisation",
-        "path": "/docs/internationalization/setup"
-      },
-      "managingTranslation": {
-        "title": "Voici la traduction en français :\n\nGestion des traductions",
-        "path": "/docs/internationalization/managing-translation"
-      },
-      "aiTranslation": {
-        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTraduction alimentée par l'IA",
-        "path": "/docs/internationalization/ai-translation"
-      }
-    }
-  },
   "installation": {
     "title": "Installation",
     "items": {
@@ -48,6 +31,23 @@
       "configuration": {
         "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nGuide de configuration",
         "path": "/docs/installation/configuration"
+      }
+    }
+  },
+  "internationalization": {
+    "title": "Internationalization",
+    "items": {
+      "setup": {
+        "title": "Configurer l'internationalisation",
+        "path": "/docs/internationalization/setup"
+      },
+      "managingTranslation": {
+        "title": "Voici la traduction en français :\n\nGestion des traductions",
+        "path": "/docs/internationalization/managing-translation"
+      },
+      "aiTranslation": {
+        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTraduction alimentée par l'IA",
+        "path": "/docs/internationalization/ai-translation"
       }
     }
   },
@@ -103,21 +103,21 @@
       }
     }
   },
-  "apiReference": {
-    "title": "Api-reference",
-    "items": {
-      "usageGuide": {
-        "title": "Voici la traduction en français :\n\nGuide de documentation de l'API",
-        "path": "/docs/api-reference/usage-guide"
-      }
-    }
-  },
   "contentManagement": {
     "title": "Content-management",
     "items": {
       "creatingPages": {
         "title": "Voici la traduction en français :\n\nCréer et organiser des pages",
         "path": "/docs/content-management/creating-pages"
+      }
+    }
+  },
+  "apiReference": {
+    "title": "Api-reference",
+    "items": {
+      "usageGuide": {
+        "title": "Voici la traduction en français :\n\nGuide de documentation de l'API",
+        "path": "/docs/api-reference/usage-guide"
       }
     }
   }

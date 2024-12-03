@@ -162,14 +162,14 @@ npx create-akiradocs@latest mydocs
 
 - [Discord Community](https://discord.gg/akiradocs)
 - [GitHub Discussions](https://github.com/akiradocs/discussions)
-- [Documentation](https://docs.akiradocs.com)
-- [Enterprise Support (Coming Q1 2025)](https://akiradocs.com/enterprise)
+- [Documentation](https://docs.akiradocs.ai)
+- [Enterprise Support (Coming Q1 2025)](https://akiradocs.ai/enterprise)
 
 ---
 <div align="center">
 
-**[Get Started](https://docs.akiradocs.com/quickstart)** • 
-**[Live Demo](https://demo.akiradocs.com)** • 
-**[Enterprise Trial](https://akiradocs.com/enterprise)** (Coming Q1 2025)
+**[Get Started](https://docs.akiradocs.ai/quickstart)** • 
+**[Live Demo](https://demo.akiradocs.ai)** • 
+**[Enterprise Trial](https://akiradocs.ai/enterprise)** (Coming Q1 2025)
 
 </div>

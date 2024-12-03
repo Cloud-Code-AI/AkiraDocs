@@ -90,15 +90,6 @@
       }
     }
   },
-  "contentManagement": {
-    "title": "Content-management",
-    "items": {
-      "creatingPages": {
-        "title": "Creación y organización de páginas",
-        "path": "/docs/content-management/creating-pages"
-      }
-    }
-  },
   "contributing": {
     "title": "Contributing",
     "items": {
@@ -109,6 +100,15 @@
       "codeOfConduct": {
         "title": "Código de Conducta",
         "path": "/docs/contributing/code-of-conduct"
+      }
+    }
+  },
+  "contentManagement": {
+    "title": "Content-management",
+    "items": {
+      "creatingPages": {
+        "title": "Creación y organización de páginas",
+        "path": "/docs/content-management/creating-pages"
       }
     }
   },
