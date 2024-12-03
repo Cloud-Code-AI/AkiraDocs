@@ -68,7 +68,7 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
       const content = {
         title,
         description: subtitle,
-        author: "Anonymous", // You might want to make this dynamic
+        author: "Anonymous",
         date: new Date().toISOString().split('T')[0],
         blocks
       }
@@ -79,12 +79,44 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
         body: JSON.stringify({ path: filePath, content })
       })
 
-      console.log('Saving file:', {
-        path: filePath,
-        content: content
-      })
-
       if (!response.ok) throw new Error('Failed to save file')
+
+      // Update root metadata with the new title
+      const rootMetaPath = filePath.split("/").slice(0, 2).join("/") + "/_meta.json"
+      const rootMetaResponse = await fetch(`/api/files?path=${encodeURIComponent(rootMetaPath)}`)
+      
+      if (rootMetaResponse.ok) {
+        const rootMeta = await rootMetaResponse.json()
+        const pathParts = filePath.split('/')
+        let currentSection = rootMeta
+        
+        // Navigate to the correct section
+        for (let i = 1; i < pathParts.length - 1; i++) {
+          const section = pathParts[i]
+          if (i === 1) continue // Skip first section (docs/articles)
+          
+          if (currentSection[section] && currentSection[section].items) {
+            currentSection = currentSection[section].items
+          }
+        }
+
+        // Update the title in metadata
+        const fileName = pathParts[pathParts.length - 1].replace('.json', '')
+        if (currentSection[fileName]) {
+          currentSection[fileName].title = title // Use the title from the saved content
+        }
+
+        // Save the updated metadata
+        await fetch('/api/files', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            path: rootMetaPath,
+            content: rootMeta
+          })
+        })
+      }
+
       toast.success('Changes saved successfully')
     } catch (error) {
       console.error('Error saving file:', error)
