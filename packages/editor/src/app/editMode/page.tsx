@@ -33,6 +33,21 @@ const getNodeFullPath = (tree: FileNode[], nodeId: string, parentPath: string = 
   return null
 }
 
+interface MetaItem {
+  title: string
+  path?: string
+  items?: Record<string, MetaItem>
+}
+
+interface FolderMeta {
+  [key: string]: MetaItem
+}
+
+interface RootMeta {
+  defaultRoute?: string
+  [key: string]: MetaItem | string | undefined
+}
+
 export default function ImprovedFileTreeUI() {
   const [fileTree, setFileTree] = useState<FileNode[]>([])
   const router = useRouter()
@@ -107,92 +122,118 @@ export default function ImprovedFileTreeUI() {
 
     if (newItemType === 'file') {
       try {
-        // First, try to get or create the immediate parent folder's metadata
-        const metaPath = `${parentPath}/_meta.json`
-        const metaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(metaPath)}`, {
-          method: 'GET'
-        });
-
-        let existingMeta = {};
-        if (!metaResponse.ok) {
-          // Create a new meta file if it doesn't exist
-          await fetch(`${API_URL}/api/files`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              path: metaPath,
-              content: {}
-            })
-          });
-        } else {
-          existingMeta = await metaResponse.json();
+        // Get the language and section from the path
+        const pathParts = parentPath.split('/')
+        const language = pathParts[0] // e.g. 'en'
+        const section = pathParts[1] // e.g. 'docs'
+        
+        // Create default content for the new file
+        const fileId = newItemName.replace('.json', '')
+        const defaultContent = {
+          title: fileId.split('_')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' '),
+          description: "",
+          author: "Anonymous",
+          publishDate: new Date().toISOString(),
+          modifiedDate: new Date().toISOString(),
+          blocks: []
         }
 
-        const newFileId = newItemName.replace('.json', '');
-        
-        // Update the immediate parent's metadata
-        const updatedMeta = {
-          ...existingMeta,
-          [newFileId]: {
-            title: newFileId.charAt(0).toUpperCase() + newFileId.slice(1),
-            path: `${parentPath}/${newFileId}`
-          }
-        };
-
-        // Save the updated metadata
-        const updateMetaResponse = await fetch(`${API_URL}/api/files`, {
+        // Create the new file
+        const fileResponse = await fetch(`${API_URL}/api/files`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            path: metaPath,
-            content: updatedMeta
+            path: fullPath,
+            content: defaultContent
           })
         })
 
-        // Now handle the root metadata update
-        const rootMetaPath = parentPath.split("/").slice(0, 2).join("/") + "/_meta.json"
+        if (!fileResponse.ok) throw new Error('Failed to create file')
+
+        // Update folder level _meta.json
+        const folderMetaPath = `${parentPath}/_meta.json`
+        let folderMeta: FolderMeta = {}
+        
+        try {
+          const folderMetaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(folderMetaPath)}`)
+          if (folderMetaResponse.ok) {
+            folderMeta = await folderMetaResponse.json()
+          }
+        } catch (error) {
+          console.log('No existing folder meta found')
+        }
+
+        // Add the new file to folder meta
+        folderMeta[fileId] = {
+          title: defaultContent.title,
+          path: `/${section}/${pathParts.slice(2).join('/')}/${fileId}`
+        }
+
+        // Save folder meta
+        await fetch(`${API_URL}/api/files`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            path: folderMetaPath,
+            content: folderMeta
+          })
+        })
+
+        // Update root level _meta.json
+        const rootMetaPath = `${language}/${section}/_meta.json`
         const rootMetaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(rootMetaPath)}`)
         
         if (rootMetaResponse.ok) {
-          const rootMeta = await rootMetaResponse.json()
+          const rootMeta = await rootMetaResponse.json() as RootMeta
           
-          // Parse the parent path to determine the section
-          const pathParts = parentPath.split('/')
+          // Navigate through the path to find the right section
           let currentSection = rootMeta
-          
-          // Start from index 1 to skip 'en'
-          for (let i = 1; i < pathParts.length; i++) {
-            const section = pathParts[i]
+          for (let i = 2; i < pathParts.length; i++) {
+            const part = pathParts[i]
             
-            // Skip the first section (docs, articles, etc) as it's the root
-            if (i === 1) {
-              continue
-            }
-            
-            // For subsequent parts, navigate through existing structure or create if needed
-            if (!currentSection[section]) {
-              currentSection[section] = {
-                title: section,
+            // Convert path to camelCase for section key
+            const sectionKey = part.replace(/-/g, ' ')
+              .split(' ')
+              .map((word, index) => {
+                const capitalized = word.charAt(0).toUpperCase() + word.slice(1)
+                return index === 0 ? capitalized.toLowerCase() : capitalized
+              })
+              .join('')
+
+            // Create section if it doesn't exist
+            if (!currentSection[sectionKey]) {
+              const newSection: MetaItem = {
+                title: part.split('-')
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(' '),
                 items: {}
               }
+              currentSection[sectionKey] = newSection
             }
             
-            // Move to the items object for the next iteration
-            currentSection = currentSection[section].items
+            // Move to items object for next iteration
+            const section = currentSection[sectionKey] as MetaItem
+            const items = section?.items
+            if (!items) {
+              currentSection[sectionKey] = {
+                ...section,
+                items: {}
+              }
+              currentSection = currentSection[sectionKey].items!
+            } else {
+              currentSection = items
+            }
           }
 
-          // Add the new file entry to the appropriate section
-          const newFileId = newItemName.replace('.json', '')
-          currentSection[newFileId] = {
-            title: newFileId,
-            path: "/" + fullPath.split("/").slice(1).join("/").replace('.json', '')
+          // Add the new file entry
+          currentSection[fileId] = {
+            title: defaultContent.title,
+            path: `/${section}/${pathParts.slice(2).join('/')}/${fileId}`
           }
 
-          // Save the updated root metadata
+          // Save updated root meta
           await fetch(`${API_URL}/api/files`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -203,37 +244,13 @@ export default function ImprovedFileTreeUI() {
           })
         }
 
-        // Create the new file with default content
-        const defaultContent = {
-          id: newFileId,
-          title: "New Article",
-          description: "Add your description here",
-          author: "Anonymous",
-          date: new Date().toISOString().split('T')[0],
-          blocks: []
-        }
-
-        // Create the new file
-        const fileResponse = await fetch(`${API_URL}/api/files`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            path: fullPath,
-            content: defaultContent
-          })
-        });
-        
-        if (!fileResponse.ok) {
-          throw new Error('Failed to create file');
-        }
       } catch (error) {
-        console.error('Error creating file or updating metadata:', error);
-        return;
+        console.error('Error creating file or updating metadata:', error)
+        return
       }
     }
 
+    // Update the file tree UI
     const updatedTree = addItemToTree(fileTree, newItemParent, newItem)
     setFileTree(updatedTree)
 
@@ -410,74 +427,129 @@ export default function ImprovedFileTreeUI() {
   }
 
   const deleteItem = async (nodeId: string, nodeName: string, nodeType: 'file' | 'folder') => {
-    // Add confirmation dialog
-    const confirmMessage = `Are you sure you want to delete this ${nodeType}${nodeType === 'folder' ? ' and all its contents' : ''}?`
-    if (!confirm(confirmMessage)) {
-      return
-    }
-
-    // Get the full path of the node
-    const fullPath = getNodeFullPath(fileTree, nodeId)
-    if (!fullPath) {
-      console.error('Could not find full path for node')
-      return
-    }
-
     try {
+      // Get the full path of the node
+      const fullPath = getNodeFullPath(fileTree, nodeId)
+      if (!fullPath) {
+        console.error('Could not find full path for node')
+        return
+      }
+
+      // Confirmation dialog
+      const confirmMessage = `Are you sure you want to delete this ${nodeType}${nodeType === 'folder' ? ' and all its contents' : ''}?`
+      if (!confirm(confirmMessage)) {
+        return
+      }
+
+      const pathParts = fullPath.split('/')
+      const language = pathParts[0] // e.g. 'en'
+      const section = pathParts[1] // e.g. 'docs'
+      const fileId = nodeName.replace('.json', '')
+
       // Delete the file/folder first
-      const response = await fetch('/api/files', {
+      const response = await fetch(`${API_URL}/api/files`, {
         method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           path: fullPath,
           type: nodeType
         })
-      });
+      })
 
       if (!response.ok) {
-        throw new Error('Failed to delete item');
+        throw new Error('Failed to delete item')
       }
 
-      // Update root metadata
-      const rootMetaPath = fullPath.split("/").slice(0, 2).join("/") + "/_meta.json"
-      const rootMetaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(rootMetaPath)}`)
-      
-      if (rootMetaResponse.ok) {
-        const rootMeta = await rootMetaResponse.json()
-        const pathParts = fullPath.split('/')
-        let currentSection = rootMeta
-        
-        // Traverse the nested structure to find the correct location
-        for (let i = 1; i < pathParts.length - 1; i++) {
-          const section = pathParts[i]
-          if (currentSection[section] && currentSection[section].items) {
-            currentSection = currentSection[section].items
+      if (nodeType === 'file') {
+        // Update folder level _meta.json
+        const folderMetaPath = `${pathParts.slice(0, -1).join('/')}/_meta.json`
+        try {
+          const folderMetaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(folderMetaPath)}`)
+          if (folderMetaResponse.ok) {
+            const folderMeta: FolderMeta = await folderMetaResponse.json()
+            
+            // Remove the file from folder meta
+            delete folderMeta[fileId]
+
+            // Save updated folder meta
+            await fetch(`${API_URL}/api/files`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                path: folderMetaPath,
+                content: folderMeta
+              })
+            })
           }
+        } catch (error) {
+          console.log('No folder meta found or error updating it:', error)
         }
 
-        // Remove the item from its parent section
-        const itemName = pathParts[pathParts.length - 1].replace('.json', '')
-        delete currentSection[itemName]
+        // Update root level _meta.json
+        const rootMetaPath = `${language}/${section}/_meta.json`
+        const rootMetaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(rootMetaPath)}`)
+        
+        if (rootMetaResponse.ok) {
+          const rootMeta = await rootMetaResponse.json() as RootMeta
+          
+          let currentSection = rootMeta
+          let parent = null
+          
+          for (let i = 2; i < pathParts.length - 1; i++) {
+            const part = pathParts[i]
+            
+            const sectionKey = part.replace(/-/g, ' ')
+              .split(' ')
+              .map((word, index) => {
+                const capitalized = word.charAt(0).toUpperCase() + word.slice(1)
+                return index === 0 ? capitalized.toLowerCase() : capitalized
+              })
+              .join('')
 
-        // Save the updated root metadata
-        await fetch(`${API_URL}/api/files`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            path: rootMetaPath,
-            content: rootMeta
+            const section = currentSection[sectionKey] as MetaItem
+            if (!section || !section.items) {
+              console.error('Section not found in root meta:', sectionKey)
+              return
+            }
+
+            parent = currentSection
+            currentSection = section.items
+          }
+
+          // Remove the file entry
+          delete currentSection[fileId]
+
+          // If section is empty and not root level, remove the section
+          if (parent && Object.keys(currentSection).length === 0) {
+            const lastPart = pathParts[pathParts.length - 2]
+            const lastSectionKey = lastPart.replace(/-/g, ' ')
+              .split(' ')
+              .map((word, index) => {
+                const capitalized = word.charAt(0).toUpperCase() + word.slice(1)
+                return index === 0 ? capitalized.toLowerCase() : capitalized
+              })
+              .join('')
+            delete parent[lastSectionKey]
+          }
+
+          // Save updated root meta
+          await fetch(`${API_URL}/api/files`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              path: rootMetaPath,
+              content: rootMeta
+            })
           })
-        })
+        }
       }
 
-      // Update the file tree
-      const updatedTree = deleteItemFromTree(fileTree, nodeId);
-      setFileTree(updatedTree);
+      // Update the file tree UI
+      const updatedTree = deleteItemFromTree(fileTree, nodeId)
+      setFileTree(updatedTree)
 
     } catch (error) {
-      console.error('Error deleting item:', error);
+      console.error('Error deleting item:', error)
     }
   }
 
