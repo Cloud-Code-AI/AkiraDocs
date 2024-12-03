@@ -107,7 +107,7 @@ export default function ImprovedFileTreeUI() {
 
     if (newItemType === 'file') {
       try {
-        // First, read the existing metadata
+        // First, update the immediate parent folder's metadata
         const metaPath = `${parentPath}/_meta.json`
         const metaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(metaPath)}`, {
           method: 'GET'
@@ -120,12 +120,12 @@ export default function ImprovedFileTreeUI() {
         const existingMeta = await metaResponse.json();
         const newFileId = newItemName.replace('.json', '');
         
-        // Update the metadata with the new file entry
+        // Update the immediate parent's metadata
         const updatedMeta = {
           ...existingMeta,
           [newFileId]: {
             title: newFileId,
-            path: `/articles/${newFileId}`
+            path: `${parentPath}/${newFileId}`
           }
         };
 
@@ -139,10 +139,47 @@ export default function ImprovedFileTreeUI() {
             path: metaPath,
             content: updatedMeta
           })
-        });
+        })
 
-        if (!updateMetaResponse.ok) {
-          throw new Error('Failed to update metadata');
+        // Now handle the root metadata update
+        const rootMetaPath = parentPath.split("/").slice(0, 2).join("/") + "/_meta.json"
+        const rootMetaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(rootMetaPath)}`)
+        
+        if (rootMetaResponse.ok) {
+          const rootMeta = await rootMetaResponse.json()
+          
+          // Parse the parent path to determine the section
+          const pathParts = parentPath.split('/')
+          let currentSection = rootMeta
+          
+          // Traverse the nested structure to find the correct location
+          for (let i = 1; i < pathParts.length; i++) {
+            const section = pathParts[i]
+            if (currentSection[section]) {
+              if (currentSection[section].items) {
+                currentSection = currentSection[section].items
+              } else {
+                currentSection[section].items = {}
+                currentSection = currentSection[section].items
+              }
+            }
+          }
+
+          // Add the new file entry to the appropriate section
+          currentSection[newFileId] = {
+            title: newFileId,
+            path: fullPath.split("/").slice(1).join("/")
+          }
+
+          // Save the updated root metadata
+          await fetch(`${API_URL}/api/files`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              path: rootMetaPath,
+              content: rootMeta
+            })
+          })
         }
 
         // Create the new file with default content
