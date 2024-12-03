@@ -63,3 +63,33 @@ jobs:
         repository: ${{ github.repository_owner }}/akiradocs-template
         event-type: update-template
         client-payload: '{"ref": "${{ github.ref }}","sha": "${{ github.sha }}","version": "${{ steps.get-version.outputs.version }}"}'
+
+  publish-npm:
+    needs: trigger-update
+    if: needs.trigger-update.outputs.version_changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Package
+        working-directory: packages/create-app
+        run: npm run build
+
+      - name: Publish to NPM
+        working-directory: packages/create-app
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
