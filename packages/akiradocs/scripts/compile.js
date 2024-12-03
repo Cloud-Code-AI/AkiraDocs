@@ -345,8 +345,10 @@ async function createMetaFilesForAllFolders() {
         }
 
         const metaDataPath = path.join(sectionPath, '_meta.json');
-        await writeFile(metaDataPath, JSON.stringify(meta, null, 2));
-        console.log(`Created meta file: ${metaDataPath}`);
+        if (!existsSync(metaDataPath)) {
+          await writeFile(metaDataPath, JSON.stringify(meta, null, 2));
+          console.log(`Created meta file: ${metaDataPath}`);
+        }
       }
     }
   } catch (error) {
