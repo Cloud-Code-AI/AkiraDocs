@@ -41,7 +41,8 @@ export function HeadingTitle({ id, level, children, align = 'left', styles, isEd
           `font-bold mb-2 py-4 ${sizeClasses[level as keyof typeof sizeClasses]} ${alignClass}`,
           'focus:outline-none rounded-md',
           styles?.italic && 'italic',
-          styles?.underline && 'underline'
+          styles?.underline && 'underline',
+          'max-w-4xl break-words',
         )}
       >
         {children}
@@ -53,7 +54,8 @@ export function HeadingTitle({ id, level, children, align = 'left', styles, isEd
     <Tag id={id} className={cn(
       `font-bold mb-2 py-4 ${sizeClasses[level as keyof typeof sizeClasses]} ${alignClass}`,
       styles?.italic && 'italic',
-      styles?.underline && 'underline'
+      styles?.underline && 'underline',
+      'max-w-4xl break-words',
     )}>
       {children}
     </Tag>
@@ -73,7 +75,8 @@ export function MainTitle({ id, children, align = 'left', styles }: MainTitlePro
     <h1 id={id} className={cn(
       `text-4xl font-bold text-foreground mb-1 py-1 ${alignClass}`,
       styles?.italic && 'italic',
-      styles?.underline && 'underline'
+      styles?.underline && 'underline',
+      'max-w-4xl break-words',
     )}>
       {children}
     </h1>
@@ -94,7 +97,8 @@ export function SubTitle({ id, children, align = 'left', styles }: SubTitleProps
     <p id={id} className={cn(
       `text-xl font-bold text-foreground mb-1 py-1 ${alignClass}`,
       styles?.italic && 'italic',
-      styles?.underline && 'underline'
+      styles?.underline && 'underline',
+      'max-w-4xl break-words',
     )}>
       {children}
     </p>
