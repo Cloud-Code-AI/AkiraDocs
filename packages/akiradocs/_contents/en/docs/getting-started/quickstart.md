@@ -11,7 +11,6 @@ keywords:
 ---
 
 # Quickstart Guide
-
 Get up and running with Akira Docs in minutes
 
 Follow these steps to start using Akira Docs for your documentation needs.
@@ -24,7 +23,7 @@ npm install
 npm run dev
 ```
 
-:::warning Prerequisites
-Make sure you have Node.js 16 or higher installed on your system.
-:::
+> [!warning]
+> Make sure you have Node.js 16 or higher installed on your system.
+
 
