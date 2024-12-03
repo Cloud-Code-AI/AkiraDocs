@@ -107,24 +107,36 @@ export default function ImprovedFileTreeUI() {
 
     if (newItemType === 'file') {
       try {
-        // First, update the immediate parent folder's metadata
+        // First, try to get or create the immediate parent folder's metadata
         const metaPath = `${parentPath}/_meta.json`
         const metaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(metaPath)}`, {
           method: 'GET'
         });
 
+        let existingMeta = {};
         if (!metaResponse.ok) {
-          throw new Error('Failed to read metadata');
+          // Create a new meta file if it doesn't exist
+          await fetch(`${API_URL}/api/files`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              path: metaPath,
+              content: {}
+            })
+          });
+        } else {
+          existingMeta = await metaResponse.json();
         }
 
-        const existingMeta = await metaResponse.json();
         const newFileId = newItemName.replace('.json', '');
         
         // Update the immediate parent's metadata
         const updatedMeta = {
           ...existingMeta,
           [newFileId]: {
-            title: newFileId,
+            title: newFileId.charAt(0).toUpperCase() + newFileId.slice(1),
             path: `${parentPath}/${newFileId}`
           }
         };
@@ -152,23 +164,32 @@ export default function ImprovedFileTreeUI() {
           const pathParts = parentPath.split('/')
           let currentSection = rootMeta
           
-          // Traverse the nested structure to find the correct location
+          // Start from index 1 to skip 'en'
           for (let i = 1; i < pathParts.length; i++) {
             const section = pathParts[i]
-            if (currentSection[section]) {
-              if (currentSection[section].items) {
-                currentSection = currentSection[section].items
-              } else {
-                currentSection[section].items = {}
-                currentSection = currentSection[section].items
+            
+            // Skip the first section (docs, articles, etc) as it's the root
+            if (i === 1) {
+              continue
+            }
+            
+            // For subsequent parts, navigate through existing structure or create if needed
+            if (!currentSection[section]) {
+              currentSection[section] = {
+                title: section,
+                items: {}
               }
             }
+            
+            // Move to the items object for the next iteration
+            currentSection = currentSection[section].items
           }
 
           // Add the new file entry to the appropriate section
+          const newFileId = newItemName.replace('.json', '')
           currentSection[newFileId] = {
             title: newFileId,
-            path: fullPath.split("/").slice(1).join("/")
+            path: "/" + fullPath.split("/").slice(1).join("/").replace('.json', '')
           }
 
           // Save the updated root metadata
@@ -403,13 +424,14 @@ export default function ImprovedFileTreeUI() {
     }
 
     try {
+      // Delete the file/folder first
       const response = await fetch('/api/files', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          path: fullPath,  // Use the full path instead of just the node name
+          path: fullPath,
           type: nodeType
         })
       });
@@ -418,7 +440,39 @@ export default function ImprovedFileTreeUI() {
         throw new Error('Failed to delete item');
       }
 
-      // Update the file tree by filtering out the deleted item
+      // Update root metadata
+      const rootMetaPath = fullPath.split("/").slice(0, 2).join("/") + "/_meta.json"
+      const rootMetaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(rootMetaPath)}`)
+      
+      if (rootMetaResponse.ok) {
+        const rootMeta = await rootMetaResponse.json()
+        const pathParts = fullPath.split('/')
+        let currentSection = rootMeta
+        
+        // Traverse the nested structure to find the correct location
+        for (let i = 1; i < pathParts.length - 1; i++) {
+          const section = pathParts[i]
+          if (currentSection[section] && currentSection[section].items) {
+            currentSection = currentSection[section].items
+          }
+        }
+
+        // Remove the item from its parent section
+        const itemName = pathParts[pathParts.length - 1].replace('.json', '')
+        delete currentSection[itemName]
+
+        // Save the updated root metadata
+        await fetch(`${API_URL}/api/files`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            path: rootMetaPath,
+            content: rootMeta
+          })
+        })
+      }
+
+      // Update the file tree
       const updatedTree = deleteItemFromTree(fileTree, nodeId);
       setFileTree(updatedTree);
 
