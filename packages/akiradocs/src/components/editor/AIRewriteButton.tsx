@@ -143,6 +143,25 @@ const blockStyles = {
       label: 'Detailed',
       prompt: 'Rewrite this table to add more detailed information and context. Output only the table data with added details.'
     }
+  ],
+  video: [
+    {
+      value: 'descriptive',
+      label: 'Descriptive',
+      prompt: 'Rewrite the video caption to be more descriptive and engaging.'
+    },
+    {
+      value: 'concise',
+      label: 'Concise',
+      prompt: 'Rewrite the video caption to be more concise and clear.'
+    }
+  ],
+  apiReference: [
+    {
+      value: 'descriptive',
+      label: 'Descriptive',
+      prompt: 'Rewrite the API reference to be more descriptive and engaging.'
+    }
   ]
 } as const;
 

@@ -30,7 +30,7 @@ interface BlockFormatToolbarProps {
   onLanguageChange?: (language: string) => void
   onFilenameChange?: (filename: string) => void
   onShowLineNumbersChange?: (show: boolean) => void
-  showCodeControls?: boolean
+  showCodeControls?: boolean;
   showImageControls?: boolean;
   imageContent?: {
     url: string;
@@ -54,6 +54,18 @@ interface BlockFormatToolbarProps {
   onAiRewrite?: (style: string) => Promise<void>
   isAiRewriting?: boolean
   blockType?: BlockType
+  showVideoControls?: boolean;
+  videoContent?: {
+    url: string;
+    caption?: string;
+    alignment?: 'left' | 'center' | 'right';
+    size?: 'small' | 'medium' | 'large' | 'full';
+  };
+  onVideoMetadataChange?: (metadata: Partial<{
+    caption: string;
+    alignment: 'left' | 'center' | 'right';
+    size: 'small' | 'medium' | 'large' | 'full';
+  }>) => void;
 }
 
 export function BlockFormatToolbar({ 
@@ -91,6 +103,9 @@ export function BlockFormatToolbar({
   onAiRewrite,
   isAiRewriting,
   blockType,
+  showVideoControls = false,
+  videoContent,
+  onVideoMetadataChange,
 }: BlockFormatToolbarProps) {
   return (
     <div className={cn(
@@ -282,10 +297,40 @@ export function BlockFormatToolbar({
           />
         </>
       )}
+
+      {showVideoControls && (
+        <>
+          <Separator orientation="vertical" className="mx-0.5 h-7" />
+          
+          <Input
+            value={videoContent?.caption || ''}
+            onChange={(e) => onVideoMetadataChange?.({ caption: e.target.value })}
+            placeholder="Caption"
+            className="h-7 w-32 text-xs"
+          />
+          
+          <Select 
+            value={videoContent?.size || 'medium'}
+            onValueChange={(value) => onVideoMetadataChange?.({ 
+              size: value as 'small' | 'medium' | 'large' | 'full' 
+            })}
+          >
+            <SelectTrigger className="h-7 w-20">
+              <SelectValue placeholder="Size" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="small">Small</SelectItem>
+              <SelectItem value="medium">Medium</SelectItem>
+              <SelectItem value="large">Large</SelectItem>
+              <SelectItem value="full">Full width</SelectItem>
+            </SelectContent>
+          </Select>
+        </>
+      )}
        <Separator orientation="vertical" className="mx-0.5 h-7" />
           
-          {/* Only show AI rewrite button if not an image block */}
-          {!showImageControls && (
+          {/* Only show AI rewrite button if not an image or video block */}
+          {!showImageControls && !showVideoControls && (
             <div className="ml-auto">
               <AIRewriteButton
                 blockType={blockType || 'paragraph'}

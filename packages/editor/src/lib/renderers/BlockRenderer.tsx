@@ -19,6 +19,7 @@ import { cn } from '@/lib/utils'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ImageBlock } from "@/components/blocks/ImageBlock"
 import { Table } from '@/components/blocks/TableBlock'
+import { VideoBlock } from "@/components/blocks/VideoBlock"
 
 interface ImageBlockContent {
   url: string;
@@ -147,6 +148,37 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
       );
     case 'divider':
       return <Divider {...commonProps} />;
+    case 'video':
+      const videoContent = (() => {
+        try {
+          return typeof block.content === 'string'
+            ? JSON.parse(block.content)
+            : block.content;
+        } catch {
+          return {
+            url: block.content,
+            caption: '',
+            alignment: 'center',
+            size: 'medium'
+          };
+        }
+      })();
+      
+      return (
+        <VideoBlock
+          {...commonProps}
+          content={block.content}
+          id={block.id}
+          metadata={{
+            ...block.metadata,
+            caption: videoContent.caption,
+            alignment: videoContent.alignment,
+            size: videoContent.size
+          }}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
     default:
       return null
   }

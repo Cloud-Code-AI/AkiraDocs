@@ -195,6 +195,30 @@ export function SortableBlock({
 
   const [isRewriting, setIsRewriting] = useState(false)
 
+  const getVideoContent = () => {
+    if (!block.content) {
+      return {
+        url: '',
+        caption: '',
+        alignment: 'center',
+        size: 'medium'
+      }
+    }
+
+    try {
+      return typeof block.content === 'string' 
+        ? JSON.parse(block.content)
+        : block.content
+    } catch {
+      return {
+        url: block.content,
+        caption: '',
+        alignment: 'center',
+        size: 'medium'
+      }
+    }
+  }
+
   return showPreview ? (
     <BlockRenderer block={block} />
   ) : (
@@ -267,7 +291,13 @@ export function SortableBlock({
             <BlockFormatToolbar
               isVisible={isFocused}
               styles={block.metadata?.styles}
-              align={block.type === 'image' ? getImageContent().alignment : block.metadata?.align}
+              align={
+                block.type === 'image' 
+                  ? getImageContent().alignment 
+                  : block.type === 'video'
+                  ? getVideoContent().alignment
+                  : block.metadata?.align
+              }
               level={block.metadata?.level || 1}
               showLevelSelect={block.type === 'heading'}
               listType={block.metadata?.listType || 'unordered'}
@@ -287,8 +317,15 @@ export function SortableBlock({
                   const currentContent = getImageContent();
                   const updatedContent = {
                     ...currentContent,
-                    alignment: newAlign,  // For the image container alignment
-                    position: newAlign,   // For the image position within container
+                    alignment: newAlign,
+                    position: newAlign,
+                  };
+                  updateBlock(block.id, JSON.stringify(updatedContent));
+                } else if (block.type === 'video') {
+                  const currentContent = getVideoContent();
+                  const updatedContent = {
+                    ...currentContent,
+                    alignment: newAlign,
                   };
                   updateBlock(block.id, JSON.stringify(updatedContent));
                 } else {
@@ -368,6 +405,45 @@ export function SortableBlock({
                 }
               }}
               isAiRewriting={isRewriting}
+              showVideoControls={block.type === 'video'}
+              videoContent={block.type === 'video' ? (() => {
+                try {
+                  return typeof block.content === 'string' 
+                    ? JSON.parse(block.content)
+                    : block.content;
+                } catch {
+                  return {
+                    url: block.content,
+                    caption: '',
+                    alignment: 'center',
+                    size: 'medium'
+                  };
+                }
+              })() : undefined}
+              onVideoMetadataChange={(metadata) => {
+                if (block.type === 'video') {
+                  const currentContent = (() => {
+                    try {
+                      return typeof block.content === 'string'
+                        ? JSON.parse(block.content)
+                        : block.content;
+                    } catch {
+                      return {
+                        url: block.content,
+                        caption: '',
+                        alignment: 'center',
+                        size: 'medium'
+                      };
+                    }
+                  })();
+                  
+                  const updatedContent = {
+                    ...currentContent,
+                    ...metadata
+                  };
+                  updateBlock(block.id, JSON.stringify(updatedContent));
+                }
+              }}
             />
           )}
           <BlockRenderer 
