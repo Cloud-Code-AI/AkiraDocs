@@ -76,16 +76,16 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
 
       await Promise.all(
         blocks
-          .filter(block => block.type === 'image')
+          .filter(block => block.type === 'image' || block.type === 'video')
           .map(async (block) => {
             try {
-              const imageContent = JSON.parse(block.content)
-              const filename = imageContent.url.split('/').pop()
+              const content = JSON.parse(block.content)
+              const filename = content.url.split('/').pop()
               if (filename) {
                 await moveImageToRoot(filename)
               }
             } catch (error) {
-              console.error('Error processing image:', error)
+              console.error('Error processing file:', error)
             }
           })
       )
@@ -164,16 +164,16 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
 
   const deleteBlock = async (id: string) => {
     const block = blocks.find(b => b.id === id)
-    if (block?.type === 'image') {
+    if (block?.type === 'image' || block?.type === 'video') {
       try {
-        const imageContent = JSON.parse(block.content)
-        const filename = imageContent.url.split('/').pop()
+        const content = JSON.parse(block.content)
+        const filename = content.url.split('/').pop()
         if (filename) {
           await deleteImageFromPublic(filename)
           setDeletedImages(prev => [...prev, filename])
         }
       } catch (error) {
-        console.error('Error deleting image:', error)
+        console.error('Error deleting file:', error)
       }
     }
     setBlocks(blocks.filter(block => block.id !== id))

@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { VideoIcon, Pause, Play } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
+import { saveVideoToPublic } from '@/lib/fileUtils'
 
 interface VideoBlockProps {
   content: string
@@ -66,16 +67,20 @@ export function VideoBlock({ content, id, onUpdate, isEditing, metadata }: Video
     const file = e.target.files?.[0]
     if (!file) return
 
-    const url = URL.createObjectURL(file)
-    
-    const videoContent = JSON.stringify({
-      url,
-      caption: metadata?.caption,
-      alignment: metadata?.alignment || 'center',
-      size: metadata?.size || 'medium'
-    })
+    try {
+      const filename = await saveVideoToPublic(file)
+      
+      const videoContent = JSON.stringify({
+        url: `/${filename}`,
+        caption: metadata?.caption,
+        alignment: metadata?.alignment || 'center',
+        size: metadata?.size || 'medium'
+      })
 
-    onUpdate?.(videoContent)
+      onUpdate?.(videoContent)
+    } catch (error) {
+      console.error('Failed to upload video:', error)
+    }
   }
 
   const parseVideoContent = (content: string) => {
