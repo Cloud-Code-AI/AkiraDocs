@@ -11,6 +11,7 @@ import { DndContext, DragEndEvent, MouseSensor, TouchSensor, useSensor, useSenso
 import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { SortableBlock } from '@/components/blocks/SortableBlock'
 import { SEO } from '@/components/layout/SEO'
+import { deleteImageFromPublic, moveImageToRoot } from '@/lib/fileUtils'
 
 type Block = {
   id: string
@@ -29,7 +30,7 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
   const [activeChangeTypeId, setActiveChangeTypeId] = useState<string | null>(null)
-
+  const [deletedImages, setDeletedImages] = useState<string[]>([])
 
   useEffect(() => {
     const loadFileContent = async () => {
@@ -65,6 +66,30 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
 
     setIsSaving(true)
     try {
+      await Promise.all(
+        deletedImages.map(filename => 
+          fetch(`/api/upload/delete-from-root?filename=${encodeURIComponent(filename)}`, {
+            method: 'DELETE'
+          })
+        )
+      )
+
+      await Promise.all(
+        blocks
+          .filter(block => block.type === 'image')
+          .map(async (block) => {
+            try {
+              const imageContent = JSON.parse(block.content)
+              const filename = imageContent.url.split('/').pop()
+              if (filename) {
+                await moveImageToRoot(filename)
+              }
+            } catch (error) {
+              console.error('Error processing image:', error)
+            }
+          })
+      )
+
       const content = {
         title,
         description: subtitle,
@@ -80,43 +105,8 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
       })
 
       if (!response.ok) throw new Error('Failed to save file')
-
-      // Update root metadata with the new title
-      const rootMetaPath = filePath.split("/").slice(0, 2).join("/") + "/_meta.json"
-      const rootMetaResponse = await fetch(`/api/files?path=${encodeURIComponent(rootMetaPath)}`)
       
-      if (rootMetaResponse.ok) {
-        const rootMeta = await rootMetaResponse.json()
-        const pathParts = filePath.split('/')
-        let currentSection = rootMeta
-        
-        // Navigate to the correct section
-        for (let i = 1; i < pathParts.length - 1; i++) {
-          const section = pathParts[i]
-          if (i === 1) continue // Skip first section (docs/articles)
-          
-          if (currentSection[section] && currentSection[section].items) {
-            currentSection = currentSection[section].items
-          }
-        }
-
-        // Update the title in metadata
-        const fileName = pathParts[pathParts.length - 1].replace('.json', '')
-        if (currentSection[fileName]) {
-          currentSection[fileName].title = title // Use the title from the saved content
-        }
-
-        // Save the updated metadata
-        await fetch('/api/files', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            path: rootMetaPath,
-            content: rootMeta
-          })
-        })
-      }
-
+      setDeletedImages([])
       toast.success('Changes saved successfully')
     } catch (error) {
       console.error('Error saving file:', error)
@@ -132,10 +122,6 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
       type: 'paragraph',
       content: '',
       metadata: {}
-    }
-
-    if (newBlock.type === 'list') {
-      newBlock.content = '[]'
     }
 
     if (newBlock.type === 'table') {
@@ -157,14 +143,6 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
   const updateBlock = (id: string, content: string) => {
     setBlocks(blocks.map(block => {
       if (block.id === id) {
-        if (block.type === 'list') {
-          try {
-            const parsed = JSON.parse(content)
-            return { ...block, content: JSON.stringify(Array.isArray(parsed) ? parsed : [parsed]) }
-          } catch {
-            return { ...block, content: JSON.stringify([content]) }
-          }
-        }
         if (block.type === 'table') {
           try {
             const { headers, rows } = JSON.parse(content);
@@ -184,7 +162,20 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
     setActiveChangeTypeId(null)
   }
 
-  const deleteBlock = (id: string) => {
+  const deleteBlock = async (id: string) => {
+    const block = blocks.find(b => b.id === id)
+    if (block?.type === 'image') {
+      try {
+        const imageContent = JSON.parse(block.content)
+        const filename = imageContent.url.split('/').pop()
+        if (filename) {
+          await deleteImageFromPublic(filename)
+          setDeletedImages(prev => [...prev, filename])
+        }
+      } catch (error) {
+        console.error('Error deleting image:', error)
+      }
+    }
     setBlocks(blocks.filter(block => block.id !== id))
   }
 
