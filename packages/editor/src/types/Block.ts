@@ -8,7 +8,7 @@ export type BlockType =
   | 'divider' 
   | 'table'
   // | 'toggleList' 
-  // | 'checkList' 
+  | 'checkList' 
   | 'video' 
   | 'audio' 
   | 'file' 

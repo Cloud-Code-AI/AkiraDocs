@@ -175,6 +175,18 @@ const blockStyles = {
       prompt: 'Rewrite the file caption to be more descriptive and engaging.'
     }
   ],
+  checkList: [
+    {
+      value: 'descriptive',
+      label: 'Descriptive',
+      prompt: 'Rewrite the checklist to be more descriptive and engaging.'
+    },
+    {
+      value: 'concise',
+      label: 'Concise',
+      prompt: 'Rewrite the checklist to be more concise and clear.'
+    }
+  ],
   apiReference: [
     {
       value: 'descriptive',

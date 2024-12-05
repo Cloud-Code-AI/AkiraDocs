@@ -28,6 +28,7 @@ import {
   Video,
   Music,
   File,
+  CheckSquare,
 } from 'lucide-react'
 
 interface AddBlockButtonProps {
@@ -81,6 +82,7 @@ export const AddBlockButton = forwardRef<
     { type: 'video', icon: <Video size={18} />, label: 'Video', description: 'Upload or embed a video.', group: 'Media' },
     { type: 'audio', icon: <Music size={18} />, label: 'Audio', description: 'Embed audio content.', group: 'Media' },
     { type: 'file', icon: <File size={18} />, label: 'File', description: 'Upload or link to a file.', group: 'Media' },
+    { type: 'checkList', icon: <CheckSquare size={18} />, label: 'To-do list', description: 'Track tasks with a to-do list.', group: 'Basic' },
   ]
 
   const filteredOptions = blockOptions.filter((option) =>

@@ -131,6 +131,10 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
       }
     }
 
+    if (newBlock.type === 'checkList') {
+      newBlock.content = JSON.stringify([{ text: '', checked: false }]);
+    }
+
     if (afterId === 'new') {
       setBlocks([newBlock])
     } else {

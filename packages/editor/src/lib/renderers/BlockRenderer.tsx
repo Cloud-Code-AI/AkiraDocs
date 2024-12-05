@@ -9,7 +9,7 @@ import { CodeBlock } from "@/components/blocks/CodeBlock"
 // import { Image } from '../blocks/Image'
 // import { Table } from '../blocks/Table'
 // import { ToggleList } from '../blocks/ToggleList'
-// import { CheckList } from '../blocks/CheckList'
+import { CheckList } from "@/components/blocks/CheckListBlock"
 // import { Video } from '../blocks/Video'
 // import { Audio } from '../blocks/Audio'
 // import { File } from '../blocks/File'
@@ -217,6 +217,15 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
           content={block.content}
           id={block.id}
           metadata={block.metadata}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
+    case 'checkList':
+      return (
+        <CheckList
+          {...commonProps}
+          content={block.content}
           isEditing={isEditing}
           onUpdate={(content) => onUpdate?.(block.id, content)}
         />
