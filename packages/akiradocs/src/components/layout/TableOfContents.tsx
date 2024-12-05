@@ -57,11 +57,11 @@ export function TableOfContents({ publishDate, modifiedDate, author, locale }: T
 
   return (
     <div className="w-64 border-l border-border sticky top-16 h-[calc(100vh-4rem)] hidden xl:block">
-      <ScrollArea className="h-full py-2 px-4">
-        <nav>
+      <ScrollArea className="h-full py-6 px-4">
+        <nav className="space-y-2">
           {(author || modifiedDate) && (
             <>
-              <div className="mb-4 text-sm">
+              <div className="mb-6">
                 {author && author !== 'Anonymous' && (
                   <div className="flex items-center gap-2 mb-2 p-2.5 rounded-lg bg-muted/30 backdrop-blur-sm">
                     <div className="h-7 w-7 rounded-full bg-primary/10 flex items-center justify-center">
@@ -104,7 +104,7 @@ export function TableOfContents({ publishDate, modifiedDate, author, locale }: T
             {t('common.labels.onThisPage')}
           </h4>
 
-          <ul className="space-y-2 ml-1">
+          <ul className="space-y-2">
             {headings.map((heading) => {
               const level = parseInt(heading.tagName[1]) - 2;
               return (
@@ -113,8 +113,8 @@ export function TableOfContents({ publishDate, modifiedDate, author, locale }: T
                     href={`#${heading.id}`}
                     onClick={(e) => handleClick(e, heading.id)}
                     className={`
-                      text-sm block py-1.5 transition-colors duration-200 rounded-md
-                      ${level > 0 ? 'pl-' + (level * 4) : ''}
+                      text-sm block px-3 py-2 transition-colors duration-200 rounded-md
+                      ${level > 0 ? 'pl-' + (level * 4 + 3) : ''}
                       ${
                         activeId === heading.id
                           ? 'text-primary font-medium bg-primary/5'
