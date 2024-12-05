@@ -92,4 +92,26 @@ export async function saveAudioToPublic(file: File): Promise<string> {
     console.error('Error uploading file:', error)
     throw error
   }
+}
+
+export async function saveFileToPublic(file: File): Promise<string> {
+  const formData = new FormData()
+  formData.append('file', file)
+
+  try {
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    })
+
+    if (!response.ok) {
+      throw new Error('Failed to upload file')
+    }
+
+    const data = await response.json()
+    return data.filename
+  } catch (error) {
+    console.error('Error uploading file:', error)
+    throw error
+  }
 } 

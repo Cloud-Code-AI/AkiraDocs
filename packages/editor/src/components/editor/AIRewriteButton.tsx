@@ -168,6 +168,13 @@ const blockStyles = {
       prompt: 'Rewrite the audio caption to be more concise and clear.'
     }
   ],
+  file: [
+    {
+      value: 'descriptive',
+      label: 'Descriptive',
+      prompt: 'Rewrite the file caption to be more descriptive and engaging.'
+    }
+  ],
   apiReference: [
     {
       value: 'descriptive',

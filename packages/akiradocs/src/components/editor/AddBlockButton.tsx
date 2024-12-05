@@ -27,6 +27,7 @@ import {
   // Search,
   Video,
   Music,
+  File,
 } from 'lucide-react'
 
 interface AddBlockButtonProps {
@@ -79,6 +80,7 @@ export const AddBlockButton = forwardRef<
     { type: 'callout', icon: <AlertCircle size={18} />, label: 'Callout', description: 'Make writing stand out.', group: 'Advanced' },
     { type: 'video', icon: <Video size={18} />, label: 'Video', description: 'Upload or embed a video.', group: 'Media' },
     { type: 'audio', icon: <Music size={18} />, label: 'Audio', description: 'Embed audio content.', group: 'Media' },
+    { type: 'file', icon: <File size={18} />, label: 'File', description: 'Upload or link to a file.', group: 'Media' },
   ]
 
   const filteredOptions = blockOptions.filter((option) =>

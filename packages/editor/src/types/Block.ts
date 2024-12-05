@@ -11,7 +11,7 @@ export type BlockType =
   // | 'checkList' 
   | 'video' 
   | 'audio' 
-  // | 'file' 
+  | 'file' 
   // | 'emoji'
   | 'callout'
   | 'apiReference';

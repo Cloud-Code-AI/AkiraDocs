@@ -21,6 +21,7 @@ import { ImageBlock } from "@/components/blocks/ImageBlock"
 import { Table } from '@/components/blocks/TableBlock'
 import { VideoBlock } from "@/components/blocks/VideoBlock"
 import { AudioBlock } from "@/components/blocks/AudioBlock"
+import { FileBlock } from "@/components/blocks/FileBlock"
 
 interface ImageBlockContent {
   url: string;
@@ -205,6 +206,17 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
             caption: audioContent.caption,
             alignment: audioContent.alignment
           }}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
+    case 'file':
+      return (
+        <FileBlock
+          {...commonProps}
+          content={block.content}
+          id={block.id}
+          metadata={block.metadata}
           isEditing={isEditing}
           onUpdate={(content) => onUpdate?.(block.id, content)}
         />

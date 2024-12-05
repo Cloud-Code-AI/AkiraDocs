@@ -120,6 +120,10 @@ export function BlockFormatToolbar({
   audioContent,
   onAudioMetadataChange,
 }: BlockFormatToolbarProps) {
+  if (blockType === 'file') {
+    return null;
+  }
+
   return (
     <div className={cn(
       "absolute -top-10 left-1/2 -translate-x-1/2 z-50",
@@ -357,7 +361,7 @@ export function BlockFormatToolbar({
      
       
       {/* Only show AI rewrite button if not a media block */}
-      {!showImageControls && !showVideoControls && !showAudioControls && (
+      {!showImageControls && !showVideoControls && !showAudioControls && showCalloutControls && (
         <>
           <Separator orientation="vertical" className="mx-0.5 h-7" />
           <div className="ml-auto">

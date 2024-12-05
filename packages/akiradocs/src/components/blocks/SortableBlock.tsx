@@ -246,6 +246,28 @@ export function SortableBlock({
     }
   }
 
+  const getFileContent = () => {
+    if (!block.content) {
+      return {
+        url: '',
+        name: '',
+        fileType: ''
+      }
+    }
+
+    try {
+      return typeof block.content === 'string' 
+        ? JSON.parse(block.content)
+        : block.content
+    } catch {
+      return {
+        url: block.content,
+        name: '',
+        fileType: ''
+      }
+    }
+  }
+
   return showPreview ? (
     <BlockRenderer block={block} />
   ) : (
