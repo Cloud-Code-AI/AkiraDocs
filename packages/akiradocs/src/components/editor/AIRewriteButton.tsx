@@ -156,6 +156,18 @@ const blockStyles = {
       prompt: 'Rewrite the video caption to be more concise and clear.'
     }
   ],
+  audio: [
+    {
+      value: 'descriptive',
+      label: 'Descriptive',
+      prompt: 'Rewrite the audio caption to be more descriptive and engaging.'
+    },
+    {
+      value: 'concise',
+      label: 'Concise',
+      prompt: 'Rewrite the audio caption to be more concise and clear.'
+    }
+  ],
   apiReference: [
     {
       value: 'descriptive',

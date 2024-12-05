@@ -10,13 +10,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
     }
 
+    // Validate file type
+    if (!file.type.startsWith('image/') && 
+        !file.type.startsWith('video/') && 
+        !file.type.startsWith('audio/')) {
+      return NextResponse.json(
+        { error: 'File must be an image, video, or audio file' }, 
+        { status: 400 }
+      )
+    }
+
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
     // Generate a unique filename
-    const uniqueFilename = `${Date.now()}-${file.name}`
+    const uniqueFilename = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
 
-    // Save only to editor's public folder
+    // Save to editor's public folder
     const editorPublicPath = path.join(process.cwd(), 'public', uniqueFilename)
     await writeFile(editorPublicPath, buffer)
 

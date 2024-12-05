@@ -66,6 +66,16 @@ interface BlockFormatToolbarProps {
     alignment: 'left' | 'center' | 'right';
     size: 'small' | 'medium' | 'large' | 'full';
   }>) => void;
+  showAudioControls?: boolean;
+  audioContent?: {
+    url: string;
+    caption?: string;
+    alignment?: 'left' | 'center' | 'right';
+  };
+  onAudioMetadataChange?: (metadata: Partial<{
+    caption: string;
+    alignment: 'left' | 'center' | 'right';
+  }>) => void;
 }
 
 export function BlockFormatToolbar({ 
@@ -106,6 +116,9 @@ export function BlockFormatToolbar({
   showVideoControls = false,
   videoContent,
   onVideoMetadataChange,
+  showAudioControls = false,
+  audioContent,
+  onAudioMetadataChange,
 }: BlockFormatToolbarProps) {
   return (
     <div className={cn(
@@ -327,18 +340,35 @@ export function BlockFormatToolbar({
           </Select>
         </>
       )}
-       <Separator orientation="vertical" className="mx-0.5 h-7" />
+
+      {showAudioControls && (
+        <>
+          <Separator orientation="vertical" className="mx-0.5 h-7" />
           
-          {/* Only show AI rewrite button if not an image or video block */}
-          {!showImageControls && !showVideoControls && (
-            <div className="ml-auto">
-              <AIRewriteButton
-                blockType={blockType || 'paragraph'}
-                onRewrite={onAiRewrite || (async () => {})}
-                isRewriting={isAiRewriting}
-              />
-            </div>
-          )}
+          <Input
+            value={audioContent?.caption || ''}
+            onChange={(e) => onAudioMetadataChange?.({ caption: e.target.value })}
+            placeholder="Caption"
+            className="h-7 w-32 text-xs"
+          />
+        </>
+      )}
+
+     
+      
+      {/* Only show AI rewrite button if not a media block */}
+      {!showImageControls && !showVideoControls && !showAudioControls && (
+        <>
+          <Separator orientation="vertical" className="mx-0.5 h-7" />
+          <div className="ml-auto">
+            <AIRewriteButton
+              blockType={blockType || 'paragraph'}
+              onRewrite={onAiRewrite || (async () => {})}
+              isRewriting={isAiRewriting}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

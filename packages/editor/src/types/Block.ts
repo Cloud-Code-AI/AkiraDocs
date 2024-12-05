@@ -10,7 +10,7 @@ export type BlockType =
   // | 'toggleList' 
   // | 'checkList' 
   | 'video' 
-  // | 'audio' 
+  | 'audio' 
   // | 'file' 
   // | 'emoji'
   | 'callout'

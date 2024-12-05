@@ -55,6 +55,11 @@ interface ImageBlockContent {
   size?: 'small' | 'medium' | 'large' | 'full'
 }
 
+interface AudioBlockContent {
+  url: string;
+  caption?: string;
+  alignment?: 'left' | 'center' | 'right';
+}
 
 export function SortableBlock({
   block,
@@ -219,6 +224,28 @@ export function SortableBlock({
     }
   }
 
+  const getAudioContent = () => {
+    if (!block.content) {
+      return {
+        url: '',
+        caption: '',
+        alignment: 'center'
+      }
+    }
+
+    try {
+      return typeof block.content === 'string' 
+        ? JSON.parse(block.content)
+        : block.content;
+    } catch {
+      return {
+        url: block.content,
+        caption: '',
+        alignment: 'center'
+      };
+    }
+  }
+
   return showPreview ? (
     <BlockRenderer block={block} />
   ) : (
@@ -296,6 +323,8 @@ export function SortableBlock({
                   ? getImageContent().alignment 
                   : block.type === 'video'
                   ? getVideoContent().alignment
+                  : block.type === 'audio'
+                  ? getAudioContent().alignment
                   : block.metadata?.align
               }
               level={block.metadata?.level || 1}
@@ -323,6 +352,13 @@ export function SortableBlock({
                   updateBlock(block.id, JSON.stringify(updatedContent));
                 } else if (block.type === 'video') {
                   const currentContent = getVideoContent();
+                  const updatedContent = {
+                    ...currentContent,
+                    alignment: newAlign,
+                  };
+                  updateBlock(block.id, JSON.stringify(updatedContent));
+                } else if (block.type === 'audio') {
+                  const currentContent = getAudioContent();
                   const updatedContent = {
                     ...currentContent,
                     alignment: newAlign,
@@ -437,6 +473,18 @@ export function SortableBlock({
                     }
                   })();
                   
+                  const updatedContent = {
+                    ...currentContent,
+                    ...metadata
+                  };
+                  updateBlock(block.id, JSON.stringify(updatedContent));
+                }
+              }}
+              showAudioControls={block.type === 'audio'}
+              audioContent={block.type === 'audio' ? getAudioContent() : undefined}
+              onAudioMetadataChange={(metadata) => {
+                if (block.type === 'audio') {
+                  const currentContent = getAudioContent();
                   const updatedContent = {
                     ...currentContent,
                     ...metadata

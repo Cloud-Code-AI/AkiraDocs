@@ -76,7 +76,7 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
 
       await Promise.all(
         blocks
-          .filter(block => block.type === 'image' || block.type === 'video')
+          .filter(block => block.type === 'image' || block.type === 'video' || block.type === 'audio')
           .map(async (block) => {
             try {
               const content = JSON.parse(block.content)
@@ -164,7 +164,7 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
 
   const deleteBlock = async (id: string) => {
     const block = blocks.find(b => b.id === id)
-    if (block?.type === 'image' || block?.type === 'video') {
+    if (block?.type === 'image' || block?.type === 'video' || block?.type === 'audio') {
       try {
         const content = JSON.parse(block.content)
         const filename = content.url.split('/').pop()
