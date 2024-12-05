@@ -17,23 +17,6 @@
       }
     }
   },
-  "installation": {
-    "title": "Installation",
-    "items": {
-      "troubleshooting": {
-        "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de dépannage",
-        "path": "/docs/installation/troubleshooting"
-      },
-      "setup": {
-        "title": "Guide d'installation détaillé",
-        "path": "/docs/installation/setup"
-      },
-      "configuration": {
-        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nGuide de configuration",
-        "path": "/docs/installation/configuration"
-      }
-    }
-  },
   "internationalization": {
     "title": "Internationalization",
     "items": {
@@ -60,6 +43,23 @@
       }
     }
   },
+  "installation": {
+    "title": "Installation",
+    "items": {
+      "troubleshooting": {
+        "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de dépannage",
+        "path": "/docs/installation/troubleshooting"
+      },
+      "setup": {
+        "title": "Guide d'installation détaillé",
+        "path": "/docs/installation/setup"
+      },
+      "configuration": {
+        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nGuide de configuration",
+        "path": "/docs/installation/configuration"
+      }
+    }
+  },
   "gettingStarted": {
     "title": "Getting-started",
     "items": {
@@ -77,19 +77,6 @@
       }
     }
   },
-  "editor": {
-    "title": "Editor",
-    "items": {
-      "overview": {
-        "title": "Aperçu de l'éditeur",
-        "path": "/docs/editor/overview"
-      },
-      "features": {
-        "title": "Fonctionnalités de l'éditeur",
-        "path": "/docs/editor/features"
-      }
-    }
-  },
   "contributing": {
     "title": "Contributing",
     "items": {
@@ -103,12 +90,16 @@
       }
     }
   },
-  "contentManagement": {
-    "title": "Content-management",
+  "editor": {
+    "title": "Editor",
     "items": {
-      "creatingPages": {
-        "title": "Voici la traduction en français :\n\nCréer et organiser des pages",
-        "path": "/docs/content-management/creating-pages"
+      "overview": {
+        "title": "Aperçu de l'éditeur",
+        "path": "/docs/editor/overview"
+      },
+      "features": {
+        "title": "Fonctionnalités de l'éditeur",
+        "path": "/docs/editor/features"
       }
     }
   },
@@ -118,6 +109,15 @@
       "usageGuide": {
         "title": "Voici la traduction en français :\n\nGuide de documentation de l'API",
         "path": "/docs/api-reference/usage-guide"
+      }
+    }
+  },
+  "contentManagement": {
+    "title": "Content-management",
+    "items": {
+      "creatingPages": {
+        "title": "Voici la traduction en français :\n\nCréer et organiser des pages",
+        "path": "/docs/content-management/creating-pages"
       }
     }
   }

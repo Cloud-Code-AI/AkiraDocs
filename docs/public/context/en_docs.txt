@@ -251,6 +251,229 @@ Context-aware translations
 Technical term preservation
 Format maintenance
 -------------
+[Document: docs/installation/troubleshooting.json]
+Title: Troubleshooting Guide
+Common issues and their solutions when setting up AkiraDocs.
+Common Installation Issues
+Node.js Version Mismatch
+<strong>Problem</strong>: Error about Node.js version compatibility
+Code example:
+Error: The engine "node" is incompatible with this module
+<strong>Solution</strong>:
+1. Check your Node.js version:
+Code example:
+node --version
+2. Install the correct version (16.x or higher)
+3. Use nvm to manage Node.js versions:
+Code example:
+nvm install 20
+nvm use 20
+Dependencies Installation Failed
+<strong>Problem</strong>: npm install fails with errors
+<strong>Solution</strong>:
+1. Clear npm cache:
+Code example:
+npm cache clean --force
+2. Delete node_modules and package-lock.json:
+Code example:
+rm -rf node_modules package-lock.json
+npm install
+Build Issues
+Build Fails
+<strong>Problem</strong>: `npm run build` fails
+<strong>Solution</strong>:
+1. Check for TypeScript errors:
+Code example:
+npm run type-check
+2. Verify environment variables are set correctly
+3. Clear next.js cache:
+Code example:
+rm -rf .next
+Static Export Issues
+<strong>Problem</strong>: Static export fails with dynamic routes
+<strong>Solution</strong>:
+1. Configure `next.config.js`:
+Code example:
+module.exports = {
+  output: 'export',
+  images: {
+    unoptimized: true
+  }
+}
+Translation Issues
+AI Translation Not Working
+<strong>Problem</strong>: Automatic translation fails
+<strong>Solution</strong>:
+1. Verify API keys are set correctly
+2. Check translation configuration:
+Code example:
+{
+  "translation": {
+    "auto_translate": true,
+    "provider": "anthropic",
+    "targetLanguages": ["es", "fr", "de"]
+  }
+}
+Content Issues
+Content Not Updating
+<strong>Problem</strong>: Changes to content files not reflecting
+<strong>Solution</strong>:
+Content changes are built on build time. If you are using the local development server, you need to restart the server after making changes.
+1. Clear the cache:
+Code example:
+npm run clean
+2. Restart the development server
+3. Check file permissions
+Deployment Issues
+Vercel Deployment Failed
+<strong>Problem</strong>: Deployment to Vercel fails
+<strong>Solution</strong>:
+1. Check build logs
+2. Verify environment variables are set in Vercel dashboard
+3. Ensure all dependencies are listed in package.json
+Getting Help
+If you're still experiencing issues:
+1. Check our [GitHub Issues](https://github.com/Cloud-Code-AI/Akiradocs/issues)
+2. Join our [Discord Community](https://discord.gg/zvYZukgeH2)
+3. Contact [Support](mailto:saurav.panda@akiradocs.ai)
+-------------
+[Document: docs/installation/setup.json]
+Title: Detailed Installation Guide
+Complete guide to installing AkiraDocs in different environments.
+Prerequisites
+Ensure your system meets the [requirements](../getting-started/requirements.md) before proceeding.
+Installation Methods
+1. Local Development Setup
+1. <strong>Create New Project</strong>
+Code example:
+npx create-akiradocs@latest my-docs-site
+cd my-docs-site
+2. <strong>Install Dependencies</strong>
+Dependencies are automatically installed during project creation. If you need to reinstall:
+Code example:
+npm install
+3. <strong>Create Environment File</strong>
+The environment file is created automatically. You can modify it at `.env.local`
+4. <strong>Start Development Server</strong>
+Code example:
+npm run dev
+5. <strong>Update AkiraDocs</strong>
+To update an existing installation to the latest version:
+Code example:
+npx create-akiradocs@latest update
+3. Cloud Platform Deployment
+Vercel
+1. Fork the repository
+2. Connect to Vercel
+3. Configure environment variables
+4. Deploy
+Other Platforms
+AWS Amplify (Coming Soon)
+Netlify (Coming Soon)
+Digital Ocean (Coming Soon)
+Custom server (Coming Soon)
+Post-Installation Steps
+1. <strong>Verify Installation</strong>
+Code example:
+npm run build
+npm run start
+2. <strong>Configure Git Integration</strong>
+Code example:
+git remote add origin your-repository-url
+3. <strong>Setup Content Directory</strong>
+Code example:
+mkdir -p docs/_contents/en
+Environment-Specific Configurations
+Development
+Code example:
+NODE_ENV=development
+DEBUG=true
+Production
+Code example:
+NODE_ENV=production
+DEBUG=false
+Testing
+Code example:
+NODE_ENV=test
+TEST_MODE=true
+-------------
+[Document: docs/installation/configuration.json]
+Title: Configuration Guide
+Complete guide to configuring your AkiraDocs installation.
+Core Configuration
+Site Configuration
+Edit `akiradocs.config.json`:
+Code example:
+{
+    "url": "https://docs.akiradocs.com",
+    "site": {
+        "title": "Your Docs",
+        "description": "Your documentation description"
+    },
+    "branding": {
+        "logo": {
+            "path": "/your_logo.svg",
+            "width": 120,
+            "height": 30,
+            "show": true
+        },
+        "favicon": {
+            "path": "/favicon.png",
+            "show": true
+        }
+    }
+}
+Navigation Setup
+Code example:
+{
+    "navigation": {
+        "header": {
+            "items": [
+                { "label": "Docs", "href": "/docs", "icon": "/docs.svg" },
+                { "label": "API", "href": "/api", "icon": "/api.svg" }
+            ]
+        }
+    }
+}
+Internationalization
+Language Configuration
+Code example:
+{
+    "localization": {
+        "defaultLocale": "en",
+        "fallbackLocale": "en",
+        "locales": [
+            {
+                "code": "en",
+                "name": "English",
+                "flag": "🇺🇸"
+            },
+            {
+                "code": "es",
+                "name": "Español",
+                "flag": "🇪🇸"
+            },
+            {
+                "code": "fr",
+                "name": "Français",
+                "flag": "🇫🇷"
+            },
+            {
+                "code": "de",
+                "name": "Deutsch",
+                "flag": "🇩🇪"
+            }
+        ]
+    },
+     "translation": {
+        "auto_translate": true,
+        "provider": "anthropic",
+        "model": "claude-3-sonnet-20240229",
+        "targetLanguages": ["es", "fr", "de"],
+        "excludedPaths": ["_meta.json"]
+    },
+}
+-------------
 [Document: docs/guides/analytics.json]
 Title: Analytics Integration
 Learn how to add analytics tracking to your documentation
@@ -501,228 +724,98 @@ Git integration
 Change history
 Rollback capabilities
 -------------
-[Document: docs/installation/troubleshooting.json]
-Title: Troubleshooting Guide
-Common issues and their solutions when setting up AkiraDocs.
-Common Installation Issues
-Node.js Version Mismatch
-<strong>Problem</strong>: Error about Node.js version compatibility
+[Document: docs/contributing/how-to-contribute.json]
+Title: Contributing to AkiraDocs
+Guide to contributing to the AkiraDocs open-source project.
+Getting Started
+Setup Development Environment
 Code example:
-Error: The engine "node" is incompatible with this module
-<strong>Solution</strong>:
-1. Check your Node.js version:
-Code example:
-node --version
-2. Install the correct version (16.x or higher)
-3. Use nvm to manage Node.js versions:
-Code example:
-nvm install 20
-nvm use 20
-Dependencies Installation Failed
-<strong>Problem</strong>: npm install fails with errors
-<strong>Solution</strong>:
-1. Clear npm cache:
-Code example:
-npm cache clean --force
-2. Delete node_modules and package-lock.json:
-Code example:
-rm -rf node_modules package-lock.json
+# Clone repository
+git clone https://github.com/Cloud-Code-AI/akiradocs
+cd akiradocs
+
+# Install dependencies
 npm install
-Build Issues
-Build Fails
-<strong>Problem</strong>: `npm run build` fails
-<strong>Solution</strong>:
-1. Check for TypeScript errors:
-Code example:
-npm run type-check
-2. Verify environment variables are set correctly
-3. Clear next.js cache:
-Code example:
-rm -rf .next
-Static Export Issues
-<strong>Problem</strong>: Static export fails with dynamic routes
-<strong>Solution</strong>:
-1. Configure `next.config.js`:
-Code example:
-module.exports = {
-  output: 'export',
-  images: {
-    unoptimized: true
-  }
-}
-Translation Issues
-AI Translation Not Working
-<strong>Problem</strong>: Automatic translation fails
-<strong>Solution</strong>:
-1. Verify API keys are set correctly
-2. Check translation configuration:
-Code example:
-{
-  "translation": {
-    "auto_translate": true,
-    "provider": "anthropic",
-    "targetLanguages": ["es", "fr", "de"]
-  }
-}
-Content Issues
-Content Not Updating
-<strong>Problem</strong>: Changes to content files not reflecting
-<strong>Solution</strong>:
-Content changes are built on build time. If you are using the local development server, you need to restart the server after making changes.
-1. Clear the cache:
-Code example:
-npm run clean
-2. Restart the development server
-3. Check file permissions
-Deployment Issues
-Vercel Deployment Failed
-<strong>Problem</strong>: Deployment to Vercel fails
-<strong>Solution</strong>:
-1. Check build logs
-2. Verify environment variables are set in Vercel dashboard
-3. Ensure all dependencies are listed in package.json
-Getting Help
-If you're still experiencing issues:
-1. Check our [GitHub Issues](https://github.com/Cloud-Code-AI/Akiradocs/issues)
-2. Join our [Discord Community](https://discord.gg/zvYZukgeH2)
-3. Contact [Support](mailto:saurav.panda@akiradocs.ai)
--------------
-[Document: docs/installation/setup.json]
-Title: Detailed Installation Guide
-Complete guide to installing AkiraDocs in different environments.
-Prerequisites
-Ensure your system meets the [requirements](../getting-started/requirements.md) before proceeding.
-Installation Methods
-1. Local Development Setup
-1. <strong>Create New Project</strong>
-Code example:
-npx create-akiradocs@latest my-docs-site
-cd my-docs-site
-2. <strong>Install Dependencies</strong>
-Dependencies are automatically installed during project creation. If you need to reinstall:
-Code example:
-npm install
-3. <strong>Create Environment File</strong>
-The environment file is created automatically. You can modify it at `.env.local`
-4. <strong>Start Development Server</strong>
-Code example:
+
+# Start development server
 npm run dev
-5. <strong>Update AkiraDocs</strong>
-To update an existing installation to the latest version:
-Code example:
-npx create-akiradocs@latest update
-3. Cloud Platform Deployment
-Vercel
+Contribution Guidelines
+Types of Contributions
+Bug fixes
+Feature additions
+Documentation improvements
+Translation help
+Issue reporting
+Pull Request Process
 1. Fork the repository
-2. Connect to Vercel
-3. Configure environment variables
-4. Deploy
-Other Platforms
-AWS Amplify (Coming Soon)
-Netlify (Coming Soon)
-Digital Ocean (Coming Soon)
-Custom server (Coming Soon)
-Post-Installation Steps
-1. <strong>Verify Installation</strong>
+2. Create feature branch
+3. Make changes
+4. Submit pull request
+Commit Messages
 Code example:
-npm run build
-npm run start
-2. <strong>Configure Git Integration</strong>
-Code example:
-git remote add origin your-repository-url
-3. <strong>Setup Content Directory</strong>
-Code example:
-mkdir -p docs/_contents/en
-Environment-Specific Configurations
-Development
-Code example:
-NODE_ENV=development
-DEBUG=true
-Production
-Code example:
-NODE_ENV=production
-DEBUG=false
+# Format
+type(scope): description
+
+# Examples
+feat(editor): add new block type
+fix(translation): correct language detection
+docs(api): update authentication guide
+Development Guidelines
+Code Style
+Follow existing patterns
+Use TypeScript
+Add comments
+Write tests
 Testing
 Code example:
-NODE_ENV=test
-TEST_MODE=true
+# Run tests
+npm run test
+
+# Check types
+npm run type-check
+
+# Lint code
+npm run lint
+Documentation
+Update Docs
+1. Edit relevant files
+2. Update examples
+3. Check links
+4. Verify formatting
+Create Examples
+Clear and concise
+Well-documented
+Tested
+Maintainable
+Getting Help
+Join [Discord](https://discord.gg/zvYZukgeH2)
+Check [Issues](https://github.com/Cloud-Code-AI/akiradocs/issues)
+Read [Documentation](https://docs.akiradocs.com)
 -------------
-[Document: docs/installation/configuration.json]
-Title: Configuration Guide
-Complete guide to configuring your AkiraDocs installation.
-Core Configuration
-Site Configuration
-Edit `akiradocs.config.json`:
-Code example:
-{
-    "url": "https://docs.akiradocs.com",
-    "site": {
-        "title": "Your Docs",
-        "description": "Your documentation description"
-    },
-    "branding": {
-        "logo": {
-            "path": "/your_logo.svg",
-            "width": 120,
-            "height": 30,
-            "show": true
-        },
-        "favicon": {
-            "path": "/favicon.png",
-            "show": true
-        }
-    }
-}
-Navigation Setup
-Code example:
-{
-    "navigation": {
-        "header": {
-            "items": [
-                { "label": "Docs", "href": "/docs", "icon": "/docs.svg" },
-                { "label": "API", "href": "/api", "icon": "/api.svg" }
-            ]
-        }
-    }
-}
-Internationalization
-Language Configuration
-Code example:
-{
-    "localization": {
-        "defaultLocale": "en",
-        "fallbackLocale": "en",
-        "locales": [
-            {
-                "code": "en",
-                "name": "English",
-                "flag": "🇺🇸"
-            },
-            {
-                "code": "es",
-                "name": "Español",
-                "flag": "🇪🇸"
-            },
-            {
-                "code": "fr",
-                "name": "Français",
-                "flag": "🇫🇷"
-            },
-            {
-                "code": "de",
-                "name": "Deutsch",
-                "flag": "🇩🇪"
-            }
-        ]
-    },
-     "translation": {
-        "auto_translate": true,
-        "provider": "anthropic",
-        "model": "claude-3-sonnet-20240229",
-        "targetLanguages": ["es", "fr", "de"],
-        "excludedPaths": ["_meta.json"]
-    },
-}
+[Document: docs/contributing/code-of-conduct.json]
+Title: Code of Conduct
+Our Pledge
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+Our Standards
+Examples of behavior that contributes to a positive environment:
+* Demonstrating empathy and kindness toward other people
+* Being respectful of differing opinions, viewpoints, and experiences
+* Giving and gracefully accepting constructive feedback
+* Accepting responsibility and apologizing to those affected by our mistakes
+* Focusing on what is best for the overall community
+Examples of unacceptable behavior:
+* The use of sexualized language or imagery, and sexual attention or advances
+* Trolling, insulting or derogatory comments, and personal or political attacks
+* Public or private harassment
+* Publishing others' private information without explicit permission
+* Other conduct which could reasonably be considered inappropriate in a professional setting
+Enforcement Responsibilities
+Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
+Enforcement
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement. All complaints will be reviewed and investigated promptly and fairly.
+Attribution
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 -------------
 [Document: docs/content-management/creating-pages.json]
 Title: Creating and Organizing Pages
@@ -854,97 +947,4 @@ Code example:
     }
   }
 }
--------------
-[Document: docs/contributing/how-to-contribute.json]
-Title: Contributing to AkiraDocs
-Guide to contributing to the AkiraDocs open-source project.
-Getting Started
-Setup Development Environment
-Code example:
-# Clone repository
-git clone https://github.com/Cloud-Code-AI/akiradocs
-cd akiradocs
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-Contribution Guidelines
-Types of Contributions
-Bug fixes
-Feature additions
-Documentation improvements
-Translation help
-Issue reporting
-Pull Request Process
-1. Fork the repository
-2. Create feature branch
-3. Make changes
-4. Submit pull request
-Commit Messages
-Code example:
-# Format
-type(scope): description
-
-# Examples
-feat(editor): add new block type
-fix(translation): correct language detection
-docs(api): update authentication guide
-Development Guidelines
-Code Style
-Follow existing patterns
-Use TypeScript
-Add comments
-Write tests
-Testing
-Code example:
-# Run tests
-npm run test
-
-# Check types
-npm run type-check
-
-# Lint code
-npm run lint
-Documentation
-Update Docs
-1. Edit relevant files
-2. Update examples
-3. Check links
-4. Verify formatting
-Create Examples
-Clear and concise
-Well-documented
-Tested
-Maintainable
-Getting Help
-Join [Discord](https://discord.gg/zvYZukgeH2)
-Check [Issues](https://github.com/Cloud-Code-AI/akiradocs/issues)
-Read [Documentation](https://docs.akiradocs.com)
--------------
-[Document: docs/contributing/code-of-conduct.json]
-Title: Code of Conduct
-Our Pledge
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
-Our Standards
-Examples of behavior that contributes to a positive environment:
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes
-* Focusing on what is best for the overall community
-Examples of unacceptable behavior:
-* The use of sexualized language or imagery, and sexual attention or advances
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a professional setting
-Enforcement Responsibilities
-Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
-Enforcement
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement. All complaints will be reviewed and investigated promptly and fairly.
-Attribution
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 -------------
