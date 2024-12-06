@@ -283,36 +283,38 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
             setSubtitle={setSubtitle}
             showPreview={showPreview}
           />
-          <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-            <SortableContext items={blocks} strategy={verticalListSortingStrategy}>
-              {blocks.map((block) => (
-                <SortableBlock
-                  key={block.id}
-                  block={block}
-                  updateBlock={updateBlock}
-                  changeBlockType={changeBlockType}
-                  addBlock={addBlock}
-                  deleteBlock={deleteBlock}
-                  showPreview={showPreview}
-                  isChangeTypeActive={activeChangeTypeId === block.id}
-                  setActiveChangeTypeId={setActiveChangeTypeId}
-                  updateBlockMetadata={updateBlockMetadata}
-                />
-              ))}
-            </SortableContext>
-          </DndContext>
-          {blocks.length === 0 && !showPreview && (
-            <div className="flex justify-center my-8">
-              <Button
-                onClick={() => addBlock('new')}
-                variant="outline"
-                className="flex items-center gap-2"
-              >
-                <Plus size={16} />
-                Add Block
-              </Button>
-            </div>
-          )}
+          <div className='mt-6'>
+            <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
+              <SortableContext items={blocks} strategy={verticalListSortingStrategy}>
+                {blocks.map((block) => (
+                  <SortableBlock
+                    key={block.id}
+                    block={block}
+                    updateBlock={updateBlock}
+                    changeBlockType={changeBlockType}
+                    addBlock={addBlock}
+                    deleteBlock={deleteBlock}
+                    showPreview={showPreview}
+                    isChangeTypeActive={activeChangeTypeId === block.id}
+                    setActiveChangeTypeId={setActiveChangeTypeId}
+                    updateBlockMetadata={updateBlockMetadata}
+                  />
+                ))}
+              </SortableContext>
+            </DndContext>
+            {blocks.length === 0 && !showPreview && (
+              <div className="flex justify-center my-8">
+                <Button
+                  onClick={() => addBlock('new')}
+                  variant="outline"
+                  className="flex items-center gap-2"
+                >
+                  <Plus size={16} />
+                  Add Block
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
