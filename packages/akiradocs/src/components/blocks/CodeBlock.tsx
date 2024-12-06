@@ -79,8 +79,8 @@ export function CodeBlock({
         {copied ? <Check size={16} /> : <Copy size={16} />}
       </button>
 
-      <div className="relative">
-        <div className="pointer-events-none">
+      <div className="relative min-h-[55px]">
+        <div className="pointer-events-none h-full">
           <SyntaxHighlighter
             language={language}
             style={oneDark}
@@ -88,7 +88,8 @@ export function CodeBlock({
             customStyle={{
               margin: 0,
               padding: '1rem',
-              borderRadius: filename ? '0' : '0.5rem'
+              borderRadius: filename ? '0' : '0.5rem',
+              height: '100%'
             }}
           >
             {code}
@@ -114,13 +115,13 @@ export function CodeBlock({
             
             onUpdate?.(content);
           }}
-          className="absolute inset-0 m-0 whitespace-pre-wrap bg-[#282c34] focus:bg-[#282c34] focus:opacity-100 opacity-0 focus:outline-none"
+          className="absolute inset-0 m-0 whitespace-pre-wrap bg-[#282c34] focus:bg-[#282c34] focus:opacity-100 opacity-0 focus:outline-none h-full"
           style={{
             ...oneDark['pre[class*="language-"]'],
             ...oneDark['code[class*="language-"]'],
             padding: '1rem',
             margin: 0,
-            lineHeight: 'inherit',
+            lineHeight: 'inherit'
           }}
           dangerouslySetInnerHTML={{ __html: code.replace(/\n/g, '<br>') }}
         />

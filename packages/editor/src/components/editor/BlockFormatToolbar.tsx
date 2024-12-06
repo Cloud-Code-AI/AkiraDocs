@@ -133,7 +133,7 @@ export function BlockFormatToolbar({
       "bg-popover border shadow-md rounded-md",
       className
     )}>
-      {!showImageControls && (
+      {!showImageControls && !showCodeControls && !showVideoControls && !showAudioControls && blockType !== 'table' && (
         <>
           <ToggleGroup 
             type="multiple" 
@@ -147,9 +147,11 @@ export function BlockFormatToolbar({
             }}
             className="flex gap-0.5"
           >
-            <ToggleGroupItem value="bold" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
-              <Bold className="h-3.5 w-3.5" />
-            </ToggleGroupItem>
+            {blockType !== 'heading' && (
+              <ToggleGroupItem value="bold" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
+                <Bold className="h-3.5 w-3.5" />
+              </ToggleGroupItem>
+            )}
             <ToggleGroupItem value="italic" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
               <Italic className="h-3.5 w-3.5" />
             </ToggleGroupItem>
@@ -157,26 +159,26 @@ export function BlockFormatToolbar({
               <Underline className="h-3.5 w-3.5" />
             </ToggleGroupItem>
           </ToggleGroup>
-          <Separator orientation="vertical" className="mx-0.5 h-7" />
+          {blockType !== 'blockquote' && blockType !== 'list' && blockType !== 'checkList' && <Separator orientation="vertical" className="mx-0.5 h-7" />}
         </>
       )}
 
-      <ToggleGroup type="single" value={align} onValueChange={(value) => value && onAlignChange(value as 'left' | 'center' | 'right')} className="flex gap-0.5">
-        <ToggleGroupItem value="left" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
-          <AlignLeft className="h-3.5 w-3.5" />
+      {!showCodeControls && !showCalloutControls && blockType !== 'blockquote' && blockType !== 'list' && blockType !== 'checkList' && blockType !== 'table' && (
+        <ToggleGroup type="single" value={align} onValueChange={(value) => value && onAlignChange(value as 'left' | 'center' | 'right')} className="flex gap-0.5">
+          <ToggleGroupItem value="left" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
+            <AlignLeft className="h-3.5 w-3.5" />
         </ToggleGroupItem>
         <ToggleGroupItem value="center" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
           <AlignCenter className="h-3.5 w-3.5" />
         </ToggleGroupItem>
         <ToggleGroupItem value="right" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
           <AlignRight className="h-3.5 w-3.5" />
-        </ToggleGroupItem>
-      </ToggleGroup>
+          </ToggleGroupItem>
+        </ToggleGroup>
+      )}
 
       {showCodeControls && (
         <>
-          <Separator orientation="vertical" className="mx-0.5 h-7" />
-          
           <Input
             value={language}
             onChange={(e) => onLanguageChange?.(e.target.value)}
@@ -360,7 +362,7 @@ export function BlockFormatToolbar({
 
       {!showImageControls && !showVideoControls && !showAudioControls && (
         <>
-          <Separator orientation="vertical" className="mx-0.5 h-7" />
+          {!showCalloutControls && blockType !== 'table' && <Separator orientation="vertical" className="mx-0.5 h-7" />}
           <div className="ml-auto">
             <AIRewriteButton
               blockType={blockType || 'paragraph'}
