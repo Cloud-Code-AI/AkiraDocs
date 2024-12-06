@@ -96,8 +96,7 @@ export function TextToSpeech({ blocks }: TextToSpeechProps) {
                   ? JSON.parse(block.content)
                   : block.content;
                 const caption = imageContent.caption ? `: ${imageContent.caption}` : '';
-                const alt = imageContent.alt ? ` showing ${imageContent.alt}` : '';
-                return `Image ${alt} ${caption}. `;
+                return `Image for ${caption}. `;
               } catch {
                 return 'Image. ';
               }
@@ -113,9 +112,6 @@ export function TextToSpeech({ blocks }: TextToSpeechProps) {
             case 'file':
               const fileName = block.metadata?.filename || 'file';
               return `Downloadable file called ${fileName}. `;
-            
-            case 'emoji':
-              return '';
             
             case 'callout':
               const type = block.metadata?.type || 'info';
