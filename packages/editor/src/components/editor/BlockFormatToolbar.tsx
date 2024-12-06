@@ -358,10 +358,7 @@ export function BlockFormatToolbar({
         </>
       )}
 
-     
-      
-      {/* Only show AI rewrite button if not a media block */}
-      {!showImageControls && !showVideoControls && !showAudioControls && showCalloutControls && (
+      {!showImageControls && !showVideoControls && !showAudioControls && (
         <>
           <Separator orientation="vertical" className="mx-0.5 h-7" />
           <div className="ml-auto">
