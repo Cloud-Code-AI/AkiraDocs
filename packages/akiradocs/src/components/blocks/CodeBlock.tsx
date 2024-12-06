@@ -35,7 +35,7 @@ export function CodeBlock({
 
   if (!isEditing) {
     return (
-      <div id={id} className={`relative group rounded-lg overflow-hidden py-1 ${alignClass}`}>
+      <div id={id} className={`relative group rounded-lg overflow-hidden py-1 mb-6 ${alignClass}`}>
         {filename && (
           <div className="bg-secondary px-4 py-2 text-sm text-secondary-foreground">
             {filename}
@@ -65,7 +65,7 @@ export function CodeBlock({
   }
 
   return (
-    <div id={id} className={`relative group rounded-lg overflow-hidden py-1 ${alignClass}`}>
+    <div id={id} className={`relative group rounded-lg overflow-hidden py-1 mb-6 ${alignClass}`}>
       {filename && (
         <div className="bg-secondary px-4 py-2 text-sm text-secondary-foreground">
           {filename}

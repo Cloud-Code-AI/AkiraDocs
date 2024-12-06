@@ -40,7 +40,7 @@ export function Blockquote({ id, children, align = 'left', styles, isEditing, on
 
   if (isEditing) {
     return (
-      <div className={cn("border-l-4 border-border pl-4 text-muted-foreground", alignClass)}>
+      <div className={cn("border-l-4 border-border pl-4 py-1 mb-6 text-muted-foreground", alignClass)}>
         <textarea
           ref={textareaRef}
           value={children as string}
@@ -63,7 +63,7 @@ export function Blockquote({ id, children, align = 'left', styles, isEditing, on
     <blockquote 
       id={id} 
       className={cn(
-        "border-l-4 border-border pl-4 text-muted-foreground",
+        "border-l-4 border-border pl-4 py-1 mb-6 text-muted-foreground",
         alignClass,
         commonStyles
       )}

@@ -66,7 +66,7 @@ export function Table({ id, headers, rows, align = 'left', styles, isEditing = f
   return (
     <div
       id={id}
-      className={`py-1 ${alignClass} relative group`}
+      className={`py-1 mb-6 ${alignClass} relative group`}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       tabIndex={0}

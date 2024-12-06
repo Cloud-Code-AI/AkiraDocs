@@ -97,7 +97,7 @@ export function ImageBlock({ content, id, onUpdate, isEditing, metadata }: Image
   return (
     <figure 
       className={cn(
-        "my-4 relative group",
+        "py-1 mb-6 relative group",
         imageContent.alignment === 'left' && "text-left",
         imageContent.alignment === 'center' && "text-center",
         imageContent.alignment === 'right' && "text-right",

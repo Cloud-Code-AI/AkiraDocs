@@ -74,7 +74,7 @@ export function CheckList({
     return (
       <div 
         ref={containerRef}
-        className={cn("space-y-2", alignClass)}
+        className={cn("space-y-2 py-1 mb-6", alignClass)}
         onBlur={(e) => {
           if (!containerRef.current?.contains(e.relatedTarget as Node)) {
             setIsActive(false);
@@ -113,7 +113,7 @@ export function CheckList({
       className={cn("cursor-text focus:outline-none", alignClass)}
       tabIndex={0}
     >
-      <ul className={cn("space-y-2", textStyles)}>
+      <ul className={cn("space-y-2 py-1 mb-6", textStyles)}>
         {items.map((item, index) => (
           <li key={index} className="flex items-center gap-2">
             <Checkbox

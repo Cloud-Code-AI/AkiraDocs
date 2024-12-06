@@ -275,7 +275,7 @@ export function SortableBlock({
       ref={setNodeRef}
       style={style}
       className={cn(
-        'group relative',
+        'mt-6 group relative',
         isDragging && 'z-50 bg-background/50 backdrop-blur-sm'
       )}
       onFocus={handleFocus}

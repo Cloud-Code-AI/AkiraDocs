@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Music, Pause, Play } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
-import { saveAudioToPublic } from '@/lib/fileUtils'
 
 interface AudioBlockProps {
   content: string
@@ -65,26 +64,6 @@ export function AudioBlock({ content, id, onUpdate, isEditing, metadata }: Audio
     }
   }, [])
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.stopPropagation()
-    const file = e.target.files?.[0]
-    if (!file) return
-
-    try {
-      const filename = await saveAudioToPublic(file, content) 
-      
-      const audioContent = JSON.stringify({
-        url: `/${filename}`,
-        caption: metadata?.caption,
-        alignment: metadata?.alignment || 'center'
-      })
-
-      onUpdate?.(audioContent)
-    } catch (error) {
-      console.error('Failed to upload audio:', error)
-    }
-  }
-
   const parseAudioContent = (content: string): AudioBlockContent => {
     try {
       return typeof content === 'string' ? JSON.parse(content) : content
@@ -104,7 +83,6 @@ export function AudioBlock({ content, id, onUpdate, isEditing, metadata }: Audio
         id={`audio-upload-${id}`}
         className="hidden"
         accept="audio/*"
-        onChange={handleFileUpload}
       />
       <div className="flex flex-col items-center gap-2">
         <Button
@@ -139,7 +117,7 @@ export function AudioBlock({ content, id, onUpdate, isEditing, metadata }: Audio
   return (
     <figure 
       className={cn(
-        "my-4 relative group",
+        "py-1 mb-6 relative group",
         "flex flex-col",
         alignment === 'left' && "items-start",
         alignment === 'center' && "items-center",
@@ -170,7 +148,6 @@ export function AudioBlock({ content, id, onUpdate, isEditing, metadata }: Audio
               id={`audio-change-${id}`}
               className="hidden"
               accept="audio/*"
-              onChange={handleFileUpload}
             />
             <Button
               variant="secondary"

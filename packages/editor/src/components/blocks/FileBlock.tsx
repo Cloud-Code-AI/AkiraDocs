@@ -13,7 +13,6 @@ import {
   File as FileIcon
 } from 'lucide-react'
 import { useState } from 'react'
-import { saveFileToPublic } from '@/lib/fileUtils'
 
 interface FileBlockProps {
   content: string
@@ -61,27 +60,6 @@ const formatFileType = (fileType: string) => {
 export function FileBlock({ content, id, onUpdate, isEditing, metadata }: FileBlockProps) {
   const [isHovered, setIsHovered] = useState(false)
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.stopPropagation()
-    const file = e.target.files?.[0]
-    if (!file) return
-
-    try {
-      const filename = await saveFileToPublic(file, content)
-      
-      const fileContent = JSON.stringify({
-        url: `/${filename}`,
-        name: file.name,
-        fileType: file.type,
-        size: file.size
-      })
-
-      onUpdate?.(fileContent)
-    } catch (error) {
-      console.error('Failed to upload file:', error)
-    }
-  }
-
   const parseFileContent = (content: string) => {
     try {
       return typeof content === 'string' ? JSON.parse(content) : content
@@ -101,7 +79,6 @@ export function FileBlock({ content, id, onUpdate, isEditing, metadata }: FileBl
         type="file"
         id={`file-upload-${id}`}
         className="hidden"
-        onChange={handleFileUpload}
       />
       <div className="flex flex-col items-center gap-2">
         <Button
@@ -136,7 +113,7 @@ export function FileBlock({ content, id, onUpdate, isEditing, metadata }: FileBl
   return (
     <div 
       className={cn(
-        "my-4 relative group"
+        "py-1 mb-6 relative group"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -171,7 +148,6 @@ export function FileBlock({ content, id, onUpdate, isEditing, metadata }: FileBl
               type="file"
               id={`file-change-${id}`}
               className="hidden"
-              onChange={handleFileUpload}
             />
             <Button
               variant="default"

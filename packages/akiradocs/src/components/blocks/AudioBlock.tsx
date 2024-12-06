@@ -117,7 +117,7 @@ export function AudioBlock({ content, id, onUpdate, isEditing, metadata }: Audio
   return (
     <figure 
       className={cn(
-        "my-4 relative group",
+        "py-1 mb-6 relative group",
         "flex flex-col",
         alignment === 'left' && "items-start",
         alignment === 'center' && "items-center",

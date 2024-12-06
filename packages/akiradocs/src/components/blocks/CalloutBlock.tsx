@@ -47,7 +47,7 @@ export function Callout({ id, type, title, children, align = 'left', styles, isE
 
   return (
     <Alert className={cn(
-      'flex flex-col sm:flex-row items-start gap-4 p-4 my-4 rounded-lg border-2',
+      'flex flex-col sm:flex-row items-start gap-4 p-4 mb-7 mt-1 rounded-lg border-2',
       className,
       {
         'text-left': align === 'left',

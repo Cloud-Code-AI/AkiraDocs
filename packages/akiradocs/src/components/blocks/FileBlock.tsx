@@ -113,7 +113,7 @@ export function FileBlock({ content, id, onUpdate, isEditing, metadata }: FileBl
   return (
     <div 
       className={cn(
-        "my-4 relative group"
+        "py-1 mb-6 relative group"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
