@@ -67,7 +67,7 @@ export function FileBlock({ content, id, onUpdate, isEditing, metadata }: FileBl
     if (!file) return
 
     try {
-      const filename = await saveFileToPublic(file)
+      const filename = await saveFileToPublic(file, content)
       
       const fileContent = JSON.stringify({
         url: `/${filename}`,

@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Music, Pause, Play } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
-import { saveImageToPublic } from '@/lib/fileUtils'
+import { saveAudioToPublic } from '@/lib/fileUtils'
 
 interface AudioBlockProps {
   content: string
@@ -71,7 +71,7 @@ export function AudioBlock({ content, id, onUpdate, isEditing, metadata }: Audio
     if (!file) return
 
     try {
-      const filename = await saveImageToPublic(file)
+      const filename = await saveAudioToPublic(file, content) 
       
       const audioContent = JSON.stringify({
         url: `/${filename}`,

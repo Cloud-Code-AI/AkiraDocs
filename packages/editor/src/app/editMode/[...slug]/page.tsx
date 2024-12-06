@@ -66,6 +66,7 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
 
     setIsSaving(true)
     try {
+      // Delete files that were explicitly marked for deletion
       await Promise.all(
         deletedImages.map(filename => 
           fetch(`/api/upload/delete-from-root?filename=${encodeURIComponent(filename)}`, {
@@ -74,20 +75,53 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
         )
       )
 
-      await Promise.all(
-        blocks
-          .filter(block => block.type === 'image' || block.type === 'video' || block.type === 'audio' || block.type === 'file')
-          .map(async (block) => {
+      // Get all current media files from blocks
+      const currentFiles = blocks
+        .filter(block => block.type === 'image' || block.type === 'video' || block.type === 'audio' || block.type === 'file')
+        .map(block => {
+          try {
+            const content = JSON.parse(block.content)
+            return content.url.split('/').pop()
+          } catch {
+            return block.content.split('/').pop()
+          }
+        })
+        .filter(Boolean)
+
+      // Fetch the current article to compare files
+      const response = await fetch(`/api/files?path=${encodeURIComponent(filePath)}`)
+      if (response.ok) {
+        const data = await response.json()
+        const oldFiles = data.blocks
+          ?.filter((block: Block) => block.type === 'image' || block.type === 'video' || block.type === 'audio' || block.type === 'file')
+          .map((block: Block) => {
             try {
               const content = JSON.parse(block.content)
-              const filename = content.url.split('/').pop()
-              if (filename) {
-                await moveImageToRoot(filename)
-              }
-            } catch (error) {
-              console.error('Error processing file:', error)
+              return content.url.split('/').pop()
+            } catch {
+              return block.content.split('/').pop()
             }
           })
+          .filter(Boolean) || []
+
+        // Delete files that are no longer used
+        const filesToDelete = oldFiles.filter((file: string) => !currentFiles.includes(file))
+        await Promise.all(
+          filesToDelete.map((filename: string) =>
+            fetch(`/api/upload/delete-from-root?filename=${encodeURIComponent(filename)}`, {
+              method: 'DELETE'
+            })
+          )
+        )
+      }
+
+      // Move current files to root
+      await Promise.all(
+        currentFiles.map(filename =>
+          fetch(`/api/upload/move-to-root?filename=${encodeURIComponent(filename)}`, {
+            method: 'POST'
+          })
+        )
       )
 
       const content = {
@@ -98,13 +132,13 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
         blocks
       }
 
-      const response = await fetch('/api/files', {
+      const saveResponse = await fetch('/api/files', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ path: filePath, content })
       })
 
-      if (!response.ok) throw new Error('Failed to save file')
+      if (!saveResponse.ok) throw new Error('Failed to save file')
       
       setDeletedImages([])
       toast.success('Changes saved successfully')

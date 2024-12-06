@@ -1,4 +1,15 @@
-export async function saveImageToPublic(file: File): Promise<string> {
+export async function saveImageToPublic(file: File, oldContent?: string): Promise<string> {
+  if (oldContent) {
+    const oldFilename = extractFilenameFromContent(oldContent)
+    if (oldFilename) {
+      try {
+        await deleteImageFromPublic(oldFilename)
+      } catch (error) {
+        console.error('Error deleting old file:', error)
+      }
+    }
+  }
+
   const formData = new FormData()
   formData.append('file', file)
 
@@ -50,7 +61,18 @@ export async function moveImageToRoot(filename: string): Promise<void> {
   }
 }
 
-export async function saveVideoToPublic(file: File): Promise<string> {
+export async function saveVideoToPublic(file: File, oldContent?: string): Promise<string> {
+  if (oldContent) {
+    const oldFilename = extractFilenameFromContent(oldContent)
+    if (oldFilename) {
+      try {
+        await deleteImageFromPublic(oldFilename)
+      } catch (error) {
+        console.error('Error deleting old file:', error)
+      }
+    }
+  }
+
   const formData = new FormData()
   formData.append('file', file)
 
@@ -72,7 +94,18 @@ export async function saveVideoToPublic(file: File): Promise<string> {
   }
 }
 
-export async function saveAudioToPublic(file: File): Promise<string> {
+export async function saveAudioToPublic(file: File, oldContent?: string): Promise<string> {
+  if (oldContent) {
+    const oldFilename = extractFilenameFromContent(oldContent)
+    if (oldFilename) {
+      try {
+        await deleteImageFromPublic(oldFilename)
+      } catch (error) {
+        console.error('Error deleting old file:', error)
+      }
+    }
+  }
+
   const formData = new FormData()
   formData.append('file', file)
 
@@ -94,7 +127,18 @@ export async function saveAudioToPublic(file: File): Promise<string> {
   }
 }
 
-export async function saveFileToPublic(file: File): Promise<string> {
+export async function saveFileToPublic(file: File, oldContent?: string): Promise<string> {
+  if (oldContent) {
+    const oldFilename = extractFilenameFromContent(oldContent)
+    if (oldFilename) {
+      try {
+        await deleteImageFromPublic(oldFilename)
+      } catch (error) {
+        console.error('Error deleting old file:', error)
+      }
+    }
+  }
+
   const formData = new FormData()
   formData.append('file', file)
 
@@ -114,4 +158,17 @@ export async function saveFileToPublic(file: File): Promise<string> {
     console.error('Error uploading file:', error)
     throw error
   }
-} 
+}
+
+export function extractFilenameFromContent(content: string): string | null {
+  try {
+    const parsed = JSON.parse(content)
+    if (parsed.url) {
+      return parsed.url.split('/').pop() || null
+    }
+  } catch {
+    // If content is a direct URL
+    return content.split('/').pop() || null
+  }
+  return null
+}

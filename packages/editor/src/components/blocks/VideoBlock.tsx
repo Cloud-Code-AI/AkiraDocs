@@ -68,7 +68,7 @@ export function VideoBlock({ content, id, onUpdate, isEditing, metadata }: Video
     if (!file) return
 
     try {
-      const filename = await saveVideoToPublic(file)
+      const filename = await saveVideoToPublic(file, content)
       
       const videoContent = JSON.stringify({
         url: `/${filename}`,

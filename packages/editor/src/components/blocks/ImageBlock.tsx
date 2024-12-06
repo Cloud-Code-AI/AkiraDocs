@@ -28,7 +28,7 @@ export function ImageBlock({ content, id, onUpdate, isEditing, metadata }: Image
     if (!file) return
 
     try {
-      const filename = await saveImageToPublic(file)
+      const filename = await saveImageToPublic(file, content)
       
       const imageContent = JSON.stringify({
         url: `/${filename}`,
