@@ -1,13 +1,3 @@
-[Document: docs/introduction.json]
-Title: Introduction
-<strong>Akira Docs</strong> is a modern documentation platform that combines the power of AI with an intuitive block-based content system. This guide will help you understand the core concepts and features.
-Key Features
-AI-powered search
-Block-based content editing
-Responsive design
-Customizable themes
-Markdown support
--------------
 [Document: articles/welcome.json]
 Title: Welcome to Akira Doc
 Get started with Akira Docs - Next-gen documentation powered by AI
@@ -66,6 +56,16 @@ ai_assistant:
 Next Steps
 Explore our [Advanced AI Features](/advanced-ai-features) guide to learn more about specialized use cases and integration possibilities.
 -------------
+[Document: docs/introduction.json]
+Title: Introduction
+<strong>Akira Docs</strong> is a modern documentation platform that combines the power of AI with an intuitive block-based content system. This guide will help you understand the core concepts and features.
+Key Features
+AI-powered search
+Block-based content editing
+Responsive design
+Customizable themes
+Markdown support
+-------------
 [Document: docs/guides/analytics.json]
 Title: Analytics Integration
 Learn how to add analytics tracking to your documentation
@@ -117,7 +117,6 @@ This provides a complete analytics integration that's easy for users to set up a
 -------------
 [Document: docs/getting-started/quickstart.json]
 Title: Quickstart Guide
-Get up and running with Akira Docs in minutes
 Follow these steps to start using Akira Docs for your documentation needs.
 Code example:
 bash
@@ -125,7 +124,5 @@ git clone https://github.com/your-org/akira-docs-template
 cd akira-docs-template
 npm install
 npm run dev
-:::warning Prerequisites
-Make sure you have Node.js 16 or higher installed on your system.
-:::
+Warning: Make sure you have Node.js 16 or higher installed on your system.
 -------------

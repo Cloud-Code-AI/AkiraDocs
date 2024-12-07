@@ -60,23 +60,6 @@
       }
     }
   },
-  "gettingStarted": {
-    "title": "Getting-started",
-    "items": {
-      "requirements": {
-        "title": "Requisitos del sistema",
-        "path": "/docs/getting-started/requirements"
-      },
-      "quickstart": {
-        "title": "Guía de inicio rápido",
-        "path": "/docs/getting-started/quickstart"
-      },
-      "features": {
-        "title": "Características de AkiraDocs",
-        "path": "/docs/getting-started/features"
-      }
-    }
-  },
   "editor": {
     "title": "Editor",
     "items": {
@@ -118,6 +101,23 @@
       "usageGuide": {
         "title": "Guía de documentación de API",
         "path": "/docs/api-reference/usage-guide"
+      }
+    }
+  },
+  "gettingStarted": {
+    "title": "Getting-started",
+    "items": {
+      "requirements": {
+        "title": "Requisitos del sistema",
+        "path": "/docs/getting-started/requirements"
+      },
+      "quickstart": {
+        "title": "Guía de inicio rápido",
+        "path": "/docs/getting-started/quickstart"
+      },
+      "features": {
+        "title": "Características de AkiraDocs",
+        "path": "/docs/getting-started/features"
       }
     }
   }

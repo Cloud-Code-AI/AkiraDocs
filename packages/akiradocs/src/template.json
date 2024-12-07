@@ -3,10 +3,13 @@
   "description": "A test blog post to demonstrate all block types.",
   "author": "Anonymous",
   "ogImage": "/og-image.png",
+  "ogImageDescription": "A test blog post to demonstrate all block types.",
   "publishDate": "2024-10-29",
   "modifiedDate": "2024-10-29",
   "category": "Test Category",
   "keywords": ["test", "blog", "post"],
+  "file_slug": "test-blog-post",
+  "section": "Features/Automations",
   "blocks": [
     {
       "id": "1",

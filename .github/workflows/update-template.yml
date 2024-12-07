@@ -10,6 +10,8 @@ on:
 jobs:
   trigger-update:
     runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.check-release.outputs.skip }}
     permissions:
       contents: write
       actions: write
@@ -66,7 +68,7 @@ jobs:
 
   publish-npm:
     needs: trigger-update
-    if: needs.trigger-update.outputs.version_changed == 'true'
+    if: needs.trigger-update.outputs.skip != 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read

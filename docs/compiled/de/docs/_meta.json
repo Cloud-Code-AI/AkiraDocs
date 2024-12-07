@@ -17,23 +17,6 @@
       }
     }
   },
-  "internationalization": {
-    "title": "Internationalization",
-    "items": {
-      "setup": {
-        "title": "Einrichten der Internationalisierung",
-        "path": "/docs/internationalization/setup"
-      },
-      "managingTranslation": {
-        "title": "Übersetzungen verwalten",
-        "path": "/docs/internationalization/managing-translation"
-      },
-      "aiTranslation": {
-        "title": "KI-gestützte Übersetzung",
-        "path": "/docs/internationalization/ai-translation"
-      }
-    }
-  },
   "installation": {
     "title": "Installation",
     "items": {
@@ -51,12 +34,55 @@
       }
     }
   },
+  "internationalization": {
+    "title": "Internationalization",
+    "items": {
+      "setup": {
+        "title": "Einrichten der Internationalisierung",
+        "path": "/docs/internationalization/setup"
+      },
+      "managingTranslation": {
+        "title": "Übersetzungen verwalten",
+        "path": "/docs/internationalization/managing-translation"
+      },
+      "aiTranslation": {
+        "title": "KI-gestützte Übersetzung",
+        "path": "/docs/internationalization/ai-translation"
+      }
+    }
+  },
   "guides": {
     "title": "Guides",
     "items": {
       "analytics": {
         "title": "Analyseintegration",
         "path": "/docs/guides/analytics"
+      }
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "items": {
+      "overview": {
+        "title": "Überblick über den Editor",
+        "path": "/docs/editor/overview"
+      },
+      "features": {
+        "title": "Editormerkmale",
+        "path": "/docs/editor/features"
+      }
+    }
+  },
+  "contributing": {
+    "title": "Contributing",
+    "items": {
+      "howToContribute": {
+        "title": "Beitragen zu AkiraDocs",
+        "path": "/docs/contributing/how-to-contribute"
+      },
+      "codeOfConduct": {
+        "title": "Verhaltenskodex",
+        "path": "/docs/contributing/code-of-conduct"
       }
     }
   },
@@ -74,32 +100,6 @@
       "features": {
         "title": "AkiraDocs Funktionen",
         "path": "/docs/getting-started/features"
-      }
-    }
-  },
-  "contributing": {
-    "title": "Contributing",
-    "items": {
-      "howToContribute": {
-        "title": "Beitragen zu AkiraDocs",
-        "path": "/docs/contributing/how-to-contribute"
-      },
-      "codeOfConduct": {
-        "title": "Verhaltenskodex",
-        "path": "/docs/contributing/code-of-conduct"
-      }
-    }
-  },
-  "editor": {
-    "title": "Editor",
-    "items": {
-      "overview": {
-        "title": "Überblick über den Editor",
-        "path": "/docs/editor/overview"
-      },
-      "features": {
-        "title": "Editormerkmale",
-        "path": "/docs/editor/features"
       }
     }
   },
