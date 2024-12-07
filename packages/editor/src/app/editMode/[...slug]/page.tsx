@@ -10,7 +10,6 @@ import { TitleBar } from '@/components/layout/TitleBar'
 import { DndContext, DragEndEvent, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { SortableBlock } from '@/components/blocks/SortableBlock'
-import { SEO } from '@/components/layout/SEO'
 import { deleteImageFromPublic, moveImageToRoot } from '@/lib/fileUtils'
 
 type Block = {
@@ -266,11 +265,6 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
     <div className="min-h-screen bg-background">
 
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <SEO 
-          title={`${title} | Editor`}
-          description={subtitle}
-          noIndex={true}
-        />
         <TitleBar
           onSave={handleSave}
           isSaving={isSaving}

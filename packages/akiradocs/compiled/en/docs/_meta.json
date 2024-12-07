@@ -2,7 +2,7 @@
   "defaultRoute": "/docs/introduction",
   "introduction": {
     "title": "Introduction",
-    "path": "/docs/introduction"
+    "path": "/en/docs/introduction"
   },
   "guides": {
     "title": "Guides",
