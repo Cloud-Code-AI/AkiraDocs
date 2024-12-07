@@ -84,7 +84,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
-        run: npm install
+        working-directory: packages/create-app
+        run: |
+          npm install
+          npm install -g tsup
 
       - name: Build Package
         working-directory: packages/create-app
