@@ -234,7 +234,7 @@ export function List({
       <ListComponent
         id={id}
         className={cn(
-          "pl-8 py-1",
+          "pl-8 py-1 mb-6",
           listStyleClass,
           alignmentClasses,
           textStyles

@@ -30,7 +30,7 @@ interface BlockFormatToolbarProps {
   onLanguageChange?: (language: string) => void
   onFilenameChange?: (filename: string) => void
   onShowLineNumbersChange?: (show: boolean) => void
-  showCodeControls?: boolean
+  showCodeControls?: boolean;
   showImageControls?: boolean;
   imageContent?: {
     url: string;
@@ -54,6 +54,28 @@ interface BlockFormatToolbarProps {
   onAiRewrite?: (style: string) => Promise<void>
   isAiRewriting?: boolean
   blockType?: BlockType
+  showVideoControls?: boolean;
+  videoContent?: {
+    url: string;
+    caption?: string;
+    alignment?: 'left' | 'center' | 'right';
+    size?: 'small' | 'medium' | 'large' | 'full';
+  };
+  onVideoMetadataChange?: (metadata: Partial<{
+    caption: string;
+    alignment: 'left' | 'center' | 'right';
+    size: 'small' | 'medium' | 'large' | 'full';
+  }>) => void;
+  showAudioControls?: boolean;
+  audioContent?: {
+    url: string;
+    caption?: string;
+    alignment?: 'left' | 'center' | 'right';
+  };
+  onAudioMetadataChange?: (metadata: Partial<{
+    caption: string;
+    alignment: 'left' | 'center' | 'right';
+  }>) => void;
 }
 
 export function BlockFormatToolbar({ 
@@ -91,7 +113,17 @@ export function BlockFormatToolbar({
   onAiRewrite,
   isAiRewriting,
   blockType,
+  showVideoControls = false,
+  videoContent,
+  onVideoMetadataChange,
+  showAudioControls = false,
+  audioContent,
+  onAudioMetadataChange,
 }: BlockFormatToolbarProps) {
+  if (blockType === 'file') {
+    return null;
+  }
+
   return (
     <div className={cn(
       "absolute -top-10 left-1/2 -translate-x-1/2 z-50",
@@ -101,7 +133,7 @@ export function BlockFormatToolbar({
       "bg-popover border shadow-md rounded-md",
       className
     )}>
-      {!showImageControls && (
+      {!showImageControls && !showCodeControls && !showVideoControls && !showAudioControls && blockType !== 'table' && (
         <>
           <ToggleGroup 
             type="multiple" 
@@ -115,9 +147,11 @@ export function BlockFormatToolbar({
             }}
             className="flex gap-0.5"
           >
-            <ToggleGroupItem value="bold" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
-              <Bold className="h-3.5 w-3.5" />
-            </ToggleGroupItem>
+            {blockType !== 'heading' && (
+              <ToggleGroupItem value="bold" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
+                <Bold className="h-3.5 w-3.5" />
+              </ToggleGroupItem>
+            )}
             <ToggleGroupItem value="italic" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
               <Italic className="h-3.5 w-3.5" />
             </ToggleGroupItem>
@@ -125,26 +159,26 @@ export function BlockFormatToolbar({
               <Underline className="h-3.5 w-3.5" />
             </ToggleGroupItem>
           </ToggleGroup>
-          <Separator orientation="vertical" className="mx-0.5 h-7" />
+          {blockType !== 'blockquote' && blockType !== 'list' && blockType !== 'checkList' && <Separator orientation="vertical" className="mx-0.5 h-7" />}
         </>
       )}
 
-      <ToggleGroup type="single" value={align} onValueChange={(value) => value && onAlignChange(value as 'left' | 'center' | 'right')} className="flex gap-0.5">
-        <ToggleGroupItem value="left" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
-          <AlignLeft className="h-3.5 w-3.5" />
+      {!showCodeControls && !showCalloutControls && blockType !== 'blockquote' && blockType !== 'list' && blockType !== 'checkList' && blockType !== 'table' && (
+        <ToggleGroup type="single" value={align} onValueChange={(value) => value && onAlignChange(value as 'left' | 'center' | 'right')} className="flex gap-0.5">
+          <ToggleGroupItem value="left" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
+            <AlignLeft className="h-3.5 w-3.5" />
         </ToggleGroupItem>
         <ToggleGroupItem value="center" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
           <AlignCenter className="h-3.5 w-3.5" />
         </ToggleGroupItem>
         <ToggleGroupItem value="right" size="sm" className="h-7 w-7 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground">
           <AlignRight className="h-3.5 w-3.5" />
-        </ToggleGroupItem>
-      </ToggleGroup>
+          </ToggleGroupItem>
+        </ToggleGroup>
+      )}
 
       {showCodeControls && (
         <>
-          <Separator orientation="vertical" className="mx-0.5 h-7" />
-          
           <Input
             value={language}
             onChange={(e) => onLanguageChange?.(e.target.value)}
@@ -282,18 +316,62 @@ export function BlockFormatToolbar({
           />
         </>
       )}
-       <Separator orientation="vertical" className="mx-0.5 h-7" />
+
+      {showVideoControls && (
+        <>
+          <Separator orientation="vertical" className="mx-0.5 h-7" />
           
-          {/* Only show AI rewrite button if not an image block */}
-          {!showImageControls && (
-            <div className="ml-auto">
-              <AIRewriteButton
-                blockType={blockType || 'paragraph'}
-                onRewrite={onAiRewrite || (async () => {})}
-                isRewriting={isAiRewriting}
-              />
-            </div>
-          )}
+          <Input
+            value={videoContent?.caption || ''}
+            onChange={(e) => onVideoMetadataChange?.({ caption: e.target.value })}
+            placeholder="Caption"
+            className="h-7 w-32 text-xs"
+          />
+          
+          <Select 
+            value={videoContent?.size || 'medium'}
+            onValueChange={(value) => onVideoMetadataChange?.({ 
+              size: value as 'small' | 'medium' | 'large' | 'full' 
+            })}
+          >
+            <SelectTrigger className="h-7 w-20">
+              <SelectValue placeholder="Size" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="small">Small</SelectItem>
+              <SelectItem value="medium">Medium</SelectItem>
+              <SelectItem value="large">Large</SelectItem>
+              <SelectItem value="full">Full width</SelectItem>
+            </SelectContent>
+          </Select>
+        </>
+      )}
+
+      {showAudioControls && (
+        <>
+          <Separator orientation="vertical" className="mx-0.5 h-7" />
+          
+          <Input
+            value={audioContent?.caption || ''}
+            onChange={(e) => onAudioMetadataChange?.({ caption: e.target.value })}
+            placeholder="Caption"
+            className="h-7 w-32 text-xs"
+          />
+        </>
+      )}
+
+      {!showImageControls && !showVideoControls && !showAudioControls && (
+        <>
+          {!showCalloutControls && blockType !== 'table' && <Separator orientation="vertical" className="mx-0.5 h-7" />}
+          <div className="ml-auto">
+            <AIRewriteButton
+              blockType={blockType || 'paragraph'}
+              onRewrite={onAiRewrite || (async () => {})}
+              isRewriting={isAiRewriting}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

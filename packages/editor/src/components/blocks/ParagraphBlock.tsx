@@ -58,7 +58,8 @@ export function Paragraph({
           align === 'right' && 'text-right',
           styles.bold && 'font-bold',
           styles.italic && 'italic',
-          styles.underline && 'underline'
+          styles.underline && 'underline',
+          'max-w-4xl break-words',
         )}
       />
     );
@@ -90,7 +91,8 @@ export function Paragraph({
       align === 'right' && 'text-right',
       styles.bold && 'font-bold',
       styles.italic && 'italic',
-      styles.underline && 'underline'
+      styles.underline && 'underline',
+      'max-w-4xl break-words',
     )}>
       {content}
     </p>

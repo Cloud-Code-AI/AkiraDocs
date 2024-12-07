@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ImagePlus } from 'lucide-react'
 import { useState } from 'react'
+import { saveImageToPublic } from '@/lib/fileUtils'
 
 interface ImageBlockProps {
   content: string
@@ -26,17 +27,21 @@ export function ImageBlock({ content, id, onUpdate, isEditing, metadata }: Image
     const file = e.target.files?.[0]
     if (!file) return
 
-    const url = URL.createObjectURL(file)
-    
-    const imageContent = JSON.stringify({
-      url,
-      alt: metadata?.alt || file.name,
-      caption: metadata?.caption,
-      alignment: metadata?.alignment || 'center',
-      size: metadata?.size || 'medium'
-    })
+    try {
+      const filename = await saveImageToPublic(file, content)
+      
+      const imageContent = JSON.stringify({
+        url: `/${filename}`,
+        alt: metadata?.alt || file.name,
+        caption: metadata?.caption,
+        alignment: metadata?.alignment || 'center',
+        size: metadata?.size || 'medium'
+      })
 
-    onUpdate?.(imageContent)
+      onUpdate?.(imageContent)
+    } catch (error) {
+      console.error('Failed to upload image:', error)
+    }
   }
 
   // Helper function to parse content
@@ -97,7 +102,7 @@ export function ImageBlock({ content, id, onUpdate, isEditing, metadata }: Image
   return (
     <figure 
       className={cn(
-        "my-4 relative group",
+        "py-1 mb-6 relative group",
         imageContent.alignment === 'left' && "text-left",
         imageContent.alignment === 'center' && "text-center",
         imageContent.alignment === 'right' && "text-right",

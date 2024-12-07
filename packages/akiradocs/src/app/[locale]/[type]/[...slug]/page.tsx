@@ -134,17 +134,19 @@ export default async function ContentPage({ params }: Props) {
               </div>
               <MainTitle>{t(post.title)}</MainTitle>
               <SubTitle>{t(post.description)}</SubTitle>
-              {post.blocks.map((block) => (
-                block.content !== post.title && (
+              <div className="mt-6">
+                {post.blocks.map((block) => (
+                  block.content !== post.title && (
                   <BlockRenderer 
                     key={block.id} 
                     block={{
                       ...block,
                       content: block.content
-                    }} 
-                  />
-                )
-              ))}
+                      }} 
+                    />
+                  )
+                ))}
+              </div>
               <PageNavigation prev={prev} next={next} locale={locale} />
             </div>
           </PostContainer>
