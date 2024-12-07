@@ -21,24 +21,6 @@ interface ImageBlockProps {
 export function ImageBlock({ content, id, onUpdate, isEditing, metadata }: ImageBlockProps) {
   const [isHovered, setIsHovered] = useState(false)
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.stopPropagation()
-    const file = e.target.files?.[0]
-    if (!file) return
-
-    const url = URL.createObjectURL(file)
-    
-    const imageContent = JSON.stringify({
-      url,
-      alt: metadata?.alt || file.name,
-      caption: metadata?.caption,
-      alignment: metadata?.alignment || 'center',
-      size: metadata?.size || 'medium'
-    })
-
-    onUpdate?.(imageContent)
-  }
-
   // Helper function to parse content
   const parseImageContent = (content: string) => {
     try {
@@ -63,7 +45,6 @@ export function ImageBlock({ content, id, onUpdate, isEditing, metadata }: Image
         id={`image-upload-${id}`}
         className="hidden"
         accept="image/*"
-        onChange={handleFileUpload}
       />
       <div className="flex flex-col items-center gap-2">
         <Button
@@ -127,7 +108,6 @@ export function ImageBlock({ content, id, onUpdate, isEditing, metadata }: Image
               id={`image-change-${id}`}
               className="hidden"
               accept="image/*"
-              onChange={handleFileUpload}
             />
             <Button
               variant="secondary"

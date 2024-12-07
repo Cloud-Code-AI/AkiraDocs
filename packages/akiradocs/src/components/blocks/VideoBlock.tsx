@@ -61,22 +61,6 @@ export function VideoBlock({ content, id, onUpdate, isEditing, metadata }: Video
     }
   }, [])
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.stopPropagation()
-    const file = e.target.files?.[0]
-    if (!file) return
-
-    const url = URL.createObjectURL(file)
-    
-    const videoContent = JSON.stringify({
-      url,
-      caption: metadata?.caption,
-      alignment: metadata?.alignment || 'center',
-      size: metadata?.size || 'medium'
-    })
-
-    onUpdate?.(videoContent)
-  }
 
   const parseVideoContent = (content: string) => {
     try {
@@ -113,7 +97,6 @@ export function VideoBlock({ content, id, onUpdate, isEditing, metadata }: Video
         id={`video-upload-${id}`}
         className="hidden"
         accept="video/*"
-        onChange={handleFileUpload}
       />
       <div className="flex flex-col items-center gap-2">
         <Button
@@ -180,7 +163,6 @@ export function VideoBlock({ content, id, onUpdate, isEditing, metadata }: Video
               id={`video-change-${id}`}
               className="hidden"
               accept="video/*"
-              onChange={handleFileUpload}
             />
             <Button
               variant="secondary"
