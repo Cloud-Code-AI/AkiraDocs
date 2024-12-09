@@ -95,11 +95,32 @@ async function convertMarkdownToBlocks(content) {
       continue;
     }
 
+    if (line.trim() === '***') {
+      if (currentBlock.length > 0) {
+        blocks.push({
+          id: String(blockId++),
+          type: 'paragraph',
+          content: currentBlock.join('\n').trim()
+        });
+        currentBlock = [];
+      }
+
+      blocks.push({
+        id: String(blockId++),
+        type: 'divider',
+        content: ''
+      });
+      continue;
+    }
+
     if (line.startsWith('#')) {
       if (!firstHeadingFound) {
         const match = line.match(/^#+\s*(.*)/);
         if (match) {
           title = match[1].trim();
+          if (title.includes('**')) {
+            title = `<strong>${title.replace(/\*\*/g, '')}</strong>`;
+          }
           firstHeadingFound = true;
           skipNextLine = true;
           continue;
@@ -119,10 +140,16 @@ async function convertMarkdownToBlocks(content) {
       if (!match) continue;
       
       const level = match[0].length;
+      let content = line.slice(level).trim();
+      
+      if (content.includes('**')) {
+        content = `<strong>${content.replace(/\*\*/g, '')}</strong>`;
+      }
+
       blocks.push({
         id: String(blockId++),
         type: 'heading',
-        content: line.slice(level).trim(),
+        content: content,
         metadata: { level }
       });
 

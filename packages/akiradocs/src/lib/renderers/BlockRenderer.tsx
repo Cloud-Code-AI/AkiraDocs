@@ -64,16 +64,20 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
         </Paragraph>
       );
     case 'heading':
+      const hasStrong = block.content.includes('<strong>');
       return (
         <HeadingTitle
           {...commonProps}
           level={block.metadata?.level || 1}
           align={block.metadata?.align}
-          styles={block.metadata?.styles}
+          styles={{
+            ...block.metadata?.styles,
+            bold: hasStrong ? true : false
+          }}
           isEditing={isEditing}
           onUpdate={(content) => onUpdate?.(block.id, content)}
         >
-          {block.content}
+          {hasStrong ? block.content.replace(/<\/?strong>/g, '') : block.content}
         </HeadingTitle>
       );
     case 'list':
