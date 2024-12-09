@@ -28,7 +28,7 @@ type Logo = {
     icon: string;
   };
   
-  type Locale = {
+  export type Locale = {
     code: string;
     name: string;
     flag: string;
@@ -62,19 +62,20 @@ type Logo = {
   type Features = {
     textToSpeech: boolean;
   };
-  
-  type SupportedProvider = 'openai' | 'anthropic' | 'google' | 'azure'
-  
-  type RewriteSettings = {
-    model?: string;
-    temperature?: number;
-    azureDeploymentName?: string;
-  }
-  
-  type Rewrite = {
-    provider: SupportedProvider;
-    settings?: RewriteSettings;
-  }
+
+
+type SupportedProvider = 'openai' | 'anthropic' | 'google' | 'azure'
+
+type RewriteSettings = {
+  model?: string;
+  temperature?: number;
+  azureDeploymentName?: string;
+}
+
+type Rewrite = {
+  provider: SupportedProvider;
+  settings?: RewriteSettings;
+}
   
   type AkiraDocsConfig = {
     site: Site;
@@ -85,8 +86,8 @@ type Logo = {
       socialLinks: SocialLink[];
     };
     localization: Localization;
-    rewrite?: Rewrite;
     features: Features;
+    rewrite?: Rewrite;
   };
   
   export type { AkiraDocsConfig, SupportedProvider };

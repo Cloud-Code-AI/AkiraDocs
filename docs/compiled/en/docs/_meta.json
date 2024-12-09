@@ -34,12 +34,20 @@
       }
     }
   },
-  "guides": {
-    "title": "Guides",
+  "installation": {
+    "title": "Installation",
     "items": {
-      "analytics": {
-        "title": "Analytics Integration",
-        "path": "/docs/guides/analytics"
+      "troubleshooting": {
+        "title": "Troubleshooting",
+        "path": "/docs/installation/troubleshooting"
+      },
+      "setup": {
+        "title": "Setup",
+        "path": "/docs/installation/setup"
+      },
+      "configuration": {
+        "title": "Configuration",
+        "path": "/docs/installation/configuration"
       }
     }
   },
@@ -60,20 +68,12 @@
       }
     }
   },
-  "installation": {
-    "title": "Installation",
+  "guides": {
+    "title": "Guides",
     "items": {
-      "troubleshooting": {
-        "title": "Troubleshooting",
-        "path": "/docs/installation/troubleshooting"
-      },
-      "setup": {
-        "title": "Setup",
-        "path": "/docs/installation/setup"
-      },
-      "configuration": {
-        "title": "Configuration",
-        "path": "/docs/installation/configuration"
+      "analytics": {
+        "title": "Analytics Integration",
+        "path": "/docs/guides/analytics"
       }
     }
   },

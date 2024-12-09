@@ -51,6 +51,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="text-sm text-muted-foreground">
               <span>© {currentYear} {companyName}. All rights reserved.</span>
             </div>
+
             
             {/* Powered by - Center */}
             <div className="text-sm text-muted-foreground">

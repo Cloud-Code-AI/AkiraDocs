@@ -77,19 +77,6 @@
       }
     }
   },
-  "contributing": {
-    "title": "Contributing",
-    "items": {
-      "howToContribute": {
-        "title": "Contribuer à AkiraDocs",
-        "path": "/docs/contributing/how-to-contribute"
-      },
-      "codeOfConduct": {
-        "title": "Code de conduite",
-        "path": "/docs/contributing/code-of-conduct"
-      }
-    }
-  },
   "editor": {
     "title": "Editor",
     "items": {
@@ -103,12 +90,16 @@
       }
     }
   },
-  "apiReference": {
-    "title": "Api-reference",
+  "contributing": {
+    "title": "Contributing",
     "items": {
-      "usageGuide": {
-        "title": "Voici la traduction en français :\n\nGuide de documentation de l'API",
-        "path": "/docs/api-reference/usage-guide"
+      "howToContribute": {
+        "title": "Contribuer à AkiraDocs",
+        "path": "/docs/contributing/how-to-contribute"
+      },
+      "codeOfConduct": {
+        "title": "Code de conduite",
+        "path": "/docs/contributing/code-of-conduct"
       }
     }
   },
@@ -118,6 +109,15 @@
       "creatingPages": {
         "title": "Voici la traduction en français :\n\nCréer et organiser des pages",
         "path": "/docs/content-management/creating-pages"
+      }
+    }
+  },
+  "apiReference": {
+    "title": "Api-reference",
+    "items": {
+      "usageGuide": {
+        "title": "Voici la traduction en français :\n\nGuide de documentation de l'API",
+        "path": "/docs/api-reference/usage-guide"
       }
     }
   }
