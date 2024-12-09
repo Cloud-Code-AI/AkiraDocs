@@ -28,7 +28,7 @@ type Logo = {
     icon: string;
   };
   
-  type Locale = {
+  export type Locale = {
     code: string;
     name: string;
     flag: string;
