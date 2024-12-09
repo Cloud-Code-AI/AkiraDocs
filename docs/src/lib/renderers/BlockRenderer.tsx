@@ -9,7 +9,7 @@ import { CodeBlock } from "@/components/blocks/CodeBlock"
 // import { Image } from '../blocks/Image'
 // import { Table } from '../blocks/Table'
 // import { ToggleList } from '../blocks/ToggleList'
-// import { CheckList } from '../blocks/CheckList'
+import { CheckList } from "@/components/blocks/CheckListBlock"
 // import { Video } from '../blocks/Video'
 // import { Audio } from '../blocks/Audio'
 // import { File } from '../blocks/File'
@@ -18,6 +18,10 @@ import { Callout } from "@/components/blocks/CalloutBlock"
 import { cn } from '@/lib/utils'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ImageBlock } from "@/components/blocks/ImageBlock"
+import { Table } from '@/components/blocks/TableBlock'
+import { VideoBlock } from "@/components/blocks/VideoBlock"
+import { AudioBlock } from "@/components/blocks/AudioBlock"
+import { FileBlock } from "@/components/blocks/FileBlock"
 
 interface ImageBlockContent {
   url: string;
@@ -60,20 +64,23 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
         </Paragraph>
       );
     case 'heading':
+      const hasStrong = block.content.includes('<strong>');
       return (
         <HeadingTitle
           {...commonProps}
           level={block.metadata?.level || 1}
           align={block.metadata?.align}
-          styles={block.metadata?.styles}
+          styles={{
+            ...block.metadata?.styles,
+            bold: hasStrong ? true : false
+          }}
           isEditing={isEditing}
           onUpdate={(content) => onUpdate?.(block.id, content)}
         >
-          {block.content}
+          {hasStrong ? block.content.replace(/<\/?strong>/g, '') : block.content}
         </HeadingTitle>
       );
     case 'list':
-      console.log( 'block', block,block.content)
       return (
         <List 
           {...commonProps}
@@ -81,6 +88,7 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
           listType={block.metadata?.listType || 'unordered'} 
           isEditing={isEditing}
           onUpdate={(content) => {
+            // Ensure we're passing a plain string, not an array
             onUpdate?.(block.id, content);
           }}
         />
@@ -119,20 +127,19 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
           onUpdate={(content) => onUpdate?.(block.id, content)}
         />
       );
-    // case 'table':
-    //   return <Table headers={block.metadata?.headers || []} rows={block.metadata?.rows || []} {...commonProps} />;
-    // case 'toggleList':
-    //   return <ToggleList items={block.metadata?.items || []} {...commonProps} />;
-    // case 'checkList':
-    //   return <CheckList items={block.metadata?.checkedItems || []} {...commonProps} />;
-    // case 'video':
-    //   return <Video src={block.content} caption={block.metadata?.caption} {...commonProps} />;
-    // case 'audio':
-    //   return <Audio src={block.content} caption={block.metadata?.caption} {...commonProps} />;
-    // case 'file':
-    //   return <File url={block.content} name={block.metadata?.name || ''} {...commonProps} />;
-    // case 'emoji':
-    //   return <Emoji symbol={block.content} label={block.metadata?.label} {...commonProps} />;
+    case 'table':
+      return (
+        <Table
+          headers={block.metadata?.headers || ['Column 1', 'Column 2']}
+          rows={block.metadata?.rows || [['', '']]}
+          isEditing={isEditing}
+          onChange={(headers, rows) => {
+            onUpdate?.(block.id, JSON.stringify({ headers, rows }));
+          }}
+          align={block.metadata?.align}
+          styles={block.metadata?.styles}
+        />
+      );
     case 'callout':
       return (
         <Callout 
@@ -147,6 +154,86 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
       );
     case 'divider':
       return <Divider {...commonProps} />;
+    case 'video':
+      const videoContent = (() => {
+        try {
+          return typeof block.content === 'string'
+            ? JSON.parse(block.content)
+            : block.content;
+        } catch {
+          return {
+            url: block.content,
+            caption: '',
+            alignment: 'center',
+            size: 'medium'
+          };
+        }
+      })();
+      
+      return (
+        <VideoBlock
+          {...commonProps}
+          content={block.content}
+          id={block.id}
+          metadata={{
+            ...block.metadata,
+            caption: videoContent.caption,
+            alignment: videoContent.alignment,
+            size: videoContent.size
+          }}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
+    case 'audio':
+      const audioContent = (() => {
+        try {
+          return typeof block.content === 'string'
+            ? JSON.parse(block.content)
+            : block.content;
+        } catch {
+          return {
+            url: block.content,
+            caption: '',
+            alignment: 'center'
+          };
+        }
+      })();
+      
+      return (
+        <AudioBlock
+          {...commonProps}
+          content={block.content}
+          id={block.id}
+          metadata={{
+            ...block.metadata,
+            caption: audioContent.caption,
+            alignment: audioContent.alignment
+          }}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
+    case 'file':
+      return (
+        <FileBlock
+          {...commonProps}
+          content={block.content}
+          id={block.id}
+          metadata={block.metadata}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
+    case 'checkList':
+      return (
+        <CheckList
+          {...commonProps}
+          content={block.content}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
     default:
       return null
   }

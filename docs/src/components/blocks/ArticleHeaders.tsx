@@ -26,13 +26,13 @@ export function ArticleHeaders({ title, setTitle, subtitle, setSubtitle, showPre
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Article title"
-        className="text-4xl font-bold mb-4 border-none px-0"
+        className="text-4xl font-bold mb-4 border-none px-0 max-w-4xl break-words"
       />
       <Input
         value={subtitle}
         onChange={(e) => setSubtitle(e.target.value)}
         placeholder="Add a subtitle"
-        className="text-xl mb-4 border-none px-0"
+        className="text-xl mb-4 border-none px-0 max-w-4xl break-words"
       />
     </>
   )

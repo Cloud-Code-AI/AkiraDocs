@@ -17,23 +17,6 @@
       }
     }
   },
-  "installation": {
-    "title": "Installation",
-    "items": {
-      "troubleshooting": {
-        "title": "Fehlerbehebungsanleitung",
-        "path": "/docs/installation/troubleshooting"
-      },
-      "setup": {
-        "title": "Ausführliche Installationsanleitung",
-        "path": "/docs/installation/setup"
-      },
-      "configuration": {
-        "title": "Konfigurationshandbuch",
-        "path": "/docs/installation/configuration"
-      }
-    }
-  },
   "internationalization": {
     "title": "Internationalization",
     "items": {
@@ -48,6 +31,23 @@
       "aiTranslation": {
         "title": "KI-gestützte Übersetzung",
         "path": "/docs/internationalization/ai-translation"
+      }
+    }
+  },
+  "installation": {
+    "title": "Installation",
+    "items": {
+      "troubleshooting": {
+        "title": "Fehlerbehebungsanleitung",
+        "path": "/docs/installation/troubleshooting"
+      },
+      "setup": {
+        "title": "Ausführliche Installationsanleitung",
+        "path": "/docs/installation/setup"
+      },
+      "configuration": {
+        "title": "Konfigurationshandbuch",
+        "path": "/docs/installation/configuration"
       }
     }
   },
@@ -86,23 +86,6 @@
       }
     }
   },
-  "gettingStarted": {
-    "title": "Getting-started",
-    "items": {
-      "requirements": {
-        "title": "Systemanforderungen",
-        "path": "/docs/getting-started/requirements"
-      },
-      "quickstart": {
-        "title": "Leitfaden für einen schnellen Einstieg",
-        "path": "/docs/getting-started/quickstart"
-      },
-      "features": {
-        "title": "AkiraDocs Funktionen",
-        "path": "/docs/getting-started/features"
-      }
-    }
-  },
   "contentManagement": {
     "title": "Content-management",
     "items": {
@@ -118,6 +101,23 @@
       "usageGuide": {
         "title": "API-Dokumentationsleitfaden",
         "path": "/docs/api-reference/usage-guide"
+      }
+    }
+  },
+  "gettingStarted": {
+    "title": "Getting-started",
+    "items": {
+      "requirements": {
+        "title": "Systemanforderungen",
+        "path": "/docs/getting-started/requirements"
+      },
+      "quickstart": {
+        "title": "Leitfaden für einen schnellen Einstieg",
+        "path": "/docs/getting-started/quickstart"
+      },
+      "features": {
+        "title": "AkiraDocs Funktionen",
+        "path": "/docs/getting-started/features"
       }
     }
   }

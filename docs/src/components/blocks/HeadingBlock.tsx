@@ -40,6 +40,7 @@ export function HeadingTitle({ id, level, children, align = 'left', styles, isEd
         className={cn(
           `font-bold mb-2 py-4 ${sizeClasses[level as keyof typeof sizeClasses]} ${alignClass}`,
           'focus:outline-none rounded-md',
+          'max-w-4xl break-words',
           styles?.italic && 'italic',
           styles?.underline && 'underline'
         )}
@@ -53,7 +54,8 @@ export function HeadingTitle({ id, level, children, align = 'left', styles, isEd
     <Tag id={id} className={cn(
       `font-bold mb-2 py-4 ${sizeClasses[level as keyof typeof sizeClasses]} ${alignClass}`,
       styles?.italic && 'italic',
-      styles?.underline && 'underline'
+      styles?.underline && 'underline',
+      'max-w-4xl break-words',
     )}>
       {children}
     </Tag>

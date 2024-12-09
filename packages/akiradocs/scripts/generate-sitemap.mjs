@@ -1,9 +1,10 @@
 // Basic sitemap generator example
-import { writeFileSync } from 'fs';
+import { writeFileSync, readFileSync } from 'fs';
 import { globSync } from 'glob';
-import path from 'path';
 
-const BASE_URL = 'https://your-domain.com';  // Replace with your actual domain
+// Read config file and parse JSON
+const config = JSON.parse(readFileSync('./akiradocs.config.json', 'utf8'));
+const BASE_URL = config.site.url;  // Get URL from config
 
 const pages = globSync('compiled/**/*.json')
   .map(file => {

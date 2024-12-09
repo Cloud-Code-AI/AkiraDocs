@@ -14,7 +14,7 @@ import {
   Image,
   List,
   Minus,
-  // Table,
+  Table,
   Quote,
   // ToggleLeft,
   // CheckSquare,
@@ -25,6 +25,10 @@ import {
   AlertCircle,
   Plus,
   // Search,
+  Video,
+  Music,
+  File,
+  CheckSquare,
 } from 'lucide-react'
 
 interface AddBlockButtonProps {
@@ -49,6 +53,7 @@ export const AddBlockButton = forwardRef<
   HTMLButtonElement,
   AddBlockButtonProps
 >(({ onAddBlock, onChangeType, mode, isActive, onOpenChange, type, open }, ref) => {
+  console.debug(isActive)
   const [searchTerm, setSearchTerm] = useState('')
   const searchInputRef = useRef<HTMLInputElement>(null)
 
@@ -65,7 +70,7 @@ export const AddBlockButton = forwardRef<
     { type: 'code', icon: <Code size={18} />, label: 'Code', description: 'Capture a code snippet.', group: 'Basic' },
     { type: 'image', icon: <Image size={18} />, label: 'Image', description: 'Upload or embed with a link.', group: 'Media' },
     { type: 'divider', icon: <Minus size={18} />, label: 'Divider', description: 'Visually divide your page.', group: 'Basic' },
-    // { type: 'table', icon: <Table size={18} />, label: 'Table', description: 'Add a table to your page.', group: 'Advanced' },
+    { type: 'table', icon: <Table size={18} />, label: 'Table', description: 'Add a table to your page.', group: 'Advanced' },
     { type: 'blockquote', icon: <Quote size={18} />, label: 'Quote', description: 'Capture a quote.', group: 'Basic' },
     // { type: 'toggleList', icon: <ToggleLeft size={18} />, label: 'Toggle', description: 'Toggleable content.', group: 'Advanced' },
     // { type: 'checkList', icon: <CheckSquare size={18} />, label: 'To-do list', description: 'Track tasks with a to-do list.', group: 'Basic' },
@@ -74,6 +79,10 @@ export const AddBlockButton = forwardRef<
     // { type: 'file', icon: <File size={18} />, label: 'File', description: 'Upload or link to a file.', group: 'Media' },
     // { type: 'emoji', icon: <Smile size={18} />, label: 'Emoji', description: 'Add an emoji to your page.', group: 'Basic' },
     { type: 'callout', icon: <AlertCircle size={18} />, label: 'Callout', description: 'Make writing stand out.', group: 'Advanced' },
+    { type: 'video', icon: <Video size={18} />, label: 'Video', description: 'Upload or embed a video.', group: 'Media' },
+    { type: 'audio', icon: <Music size={18} />, label: 'Audio', description: 'Embed audio content.', group: 'Media' },
+    { type: 'file', icon: <File size={18} />, label: 'File', description: 'Upload or link to a file.', group: 'Media' },
+    { type: 'checkList', icon: <CheckSquare size={18} />, label: 'To-do list', description: 'Track tasks with a to-do list.', group: 'Basic' },
   ]
 
   const filteredOptions = blockOptions.filter((option) =>

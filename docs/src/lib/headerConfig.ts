@@ -2,7 +2,6 @@ import { getAkiradocsConfig } from "./getAkiradocsConfig";
 import { HeaderConfig } from "../types/config";
 export function getHeaderConfig(): HeaderConfig {
   const config = getAkiradocsConfig();
-  const navItems = [...config.navigation.header.items];
 
   // Check if API spec exists
   // if (folderExists('en/api')) {
@@ -18,7 +17,8 @@ export function getHeaderConfig(): HeaderConfig {
     logo: config.branding.logo,
     title: config.site.title,
     showSearch: true,
-    navItems: navItems,
+    searchPlaceholder: config.navigation.header.searchPlaceholder,
+    navItems: config.navigation.header.items,
     socialLinks: config.footer?.socialLinks,
     languages: config.localization,
     currentLocale: config.localization.defaultLocale,
