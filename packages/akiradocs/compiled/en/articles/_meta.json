@@ -2,7 +2,7 @@
   "defaultRoute": "/articles/welcome",
   "welcome": {
     "title": "Welcome to Akira Doc",
-    "path": "/en/articles/welcome"
+    "path": "/articles/welcome"
   },
   "template": {
     "title": "Test Blog Post",
@@ -10,6 +10,6 @@
   },
   "ai_integration": {
     "title": "Ai Integration",
-    "path": "/en/articles/ai_integration"
+    "path": "/articles/ai_integration"
   }
 }

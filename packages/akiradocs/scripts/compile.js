@@ -242,12 +242,15 @@ async function updateMetaFile(folderPath, newFile) {
       .split('_')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
+    
+    const pathWithoutLang = relativePath.split(path.sep).slice(1).join(path.sep);
     meta[fileName] = {
       title: compiledContent.title || humanReadableFileName,
-      path: path.join('/', relativePath, fileName)
+      path: path.join('/', pathWithoutLang, fileName)
     };
   } else {
-    meta[fileName].path = path.join('/', relativePath, fileName);
+    const pathWithoutLang = relativePath.split(path.sep).slice(1).join(path.sep);
+    meta[fileName].path = path.join('/', pathWithoutLang, fileName);
   }
 
   await writeFile(metaPath, JSON.stringify(meta, null, 2));
@@ -281,7 +284,7 @@ async function compileMarkdownFiles() {
       await mkdir(path.dirname(compiledPath), { recursive: true });
       await writeFile(compiledPath, JSON.stringify(compiledContent, null, 2));
       
-      await updateMetaFile(path.dirname(compiledPath), compiledPath);
+      // await updateMetaFile(path.dirname(compiledPath), compiledPath);
       
       console.log(`Compiled ${file} -> ${compiledPath}`);
     }
@@ -315,7 +318,7 @@ async function createMetaFilesForAllFolders() {
 
         const jsonFiles = await glob('**/*.json', { 
           cwd: sectionPath,
-          ignore: '**/_meta.json'
+          ignore: ['**/_meta.json']
         });
 
         const meta = {
@@ -326,7 +329,7 @@ async function createMetaFilesForAllFolders() {
           const fileName = path.basename(jsonFile, '.json');
           const filePath = path.join(sectionPath, jsonFile);
           const content = JSON.parse(await readFile(filePath, 'utf-8'));
-          const dirs = path.dirname(jsonFile).split('/').filter(d => d !== '.');
+          const dirs = path.dirname(jsonFile).split(path.sep).filter(d => d !== '.');
           
           const fileKey = fileName.replace(/-/g, ' ')
             .split(' ')
@@ -371,11 +374,8 @@ async function createMetaFilesForAllFolders() {
           };
         }
 
-        const metaDataPath = path.join(sectionPath, '_meta.json');
-        if (!existsSync(metaDataPath)) {
-          await writeFile(metaDataPath, JSON.stringify(meta, null, 2));
-          console.log(`Created meta file: ${metaDataPath}`);
-        }
+        await writeFile(metaPath, JSON.stringify(meta, null, 2));
+        console.log(`Created/Updated meta file: ${metaPath}`);
       }
     }
   } catch (error) {
