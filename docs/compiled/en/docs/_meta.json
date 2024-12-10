@@ -4,55 +4,8 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
-  "seoAndPerformance": {
-    "title": "Seo-and-performance",
-    "items": {
-      "sitemapGeneration": {
-        "title": "Sitemap-generation",
-        "path": "/docs/seo-and-performance/sitemap-generation"
-      },
-      "robotTxt": {
-        "title": "Robot-txt",
-        "path": "/docs/seo-and-performance/robot-txt"
-      }
-    }
-  },
-  "internationalization": {
-    "title": "Internationalization",
-    "items": {
-      "setup": {
-        "title": "Setup",
-        "path": "/docs/internationalization/setup"
-      },
-      "managingTranslation": {
-        "title": "Managing-translation",
-        "path": "/docs/internationalization/managing-translation"
-      },
-      "aiTranslation": {
-        "title": "Ai-translation",
-        "path": "/docs/internationalization/ai-translation"
-      }
-    }
-  },
-  "installation": {
-    "title": "Installation",
-    "items": {
-      "troubleshooting": {
-        "title": "Troubleshooting",
-        "path": "/docs/installation/troubleshooting"
-      },
-      "setup": {
-        "title": "Setup",
-        "path": "/docs/installation/setup"
-      },
-      "configuration": {
-        "title": "Configuration",
-        "path": "/docs/installation/configuration"
-      }
-    }
-  },
   "gettingStarted": {
-    "title": "Getting-started",
+    "title": "Getting Started",
     "items": {
       "requirements": {
         "title": "Requirements",
@@ -68,12 +21,29 @@
       }
     }
   },
-  "guides": {
-    "title": "Guides",
+  "installation": {
+    "title": "Installation",
     "items": {
-      "analytics": {
-        "title": "Analytics Integration",
-        "path": "/docs/guides/analytics"
+      "setup": {
+        "title": "Setup",
+        "path": "/docs/installation/setup"
+      },
+      "configuration": {
+        "title": "Configuration",
+        "path": "/docs/installation/configuration"
+      },
+      "troubleshooting": {
+        "title": "Troubleshooting",
+        "path": "/docs/installation/troubleshooting"
+      }
+    }
+  },
+  "contentManagement": {
+    "title": "Content Management",
+    "items": {
+      "creatingPages": {
+        "title": "Creating Pages",
+        "path": "/docs/content-management/creating-pages"
       }
     }
   },
@@ -90,34 +60,64 @@
       }
     }
   },
-  "contributing": {
-    "title": "Contributing",
+  "internationalization": {
+    "title": "Internationalization",
     "items": {
-      "howToContribute": {
-        "title": "How-to-contribute",
-        "path": "/docs/contributing/how-to-contribute"
+      "setup": {
+        "title": "Setup",
+        "path": "/docs/internationalization/setup"
       },
-      "codeOfConduct": {
-        "title": "Code-of-conduct",
-        "path": "/docs/contributing/code-of-conduct"
+      "managingTranslation": {
+        "title": "Managing Translation",
+        "path": "/docs/internationalization/managing-translation"
+      },
+      "aiTranslation": {
+        "title": "AI Translation",
+        "path": "/docs/internationalization/ai-translation"
       }
     }
   },
-  "contentManagement": {
-    "title": "Content-management",
+  "seoAndPerformance": {
+    "title": "SEO and Performance",
     "items": {
-      "creatingPages": {
-        "title": "Creating-pages",
-        "path": "/docs/content-management/creating-pages"
+      "sitemapGeneration": {
+        "title": "Sitemap Generation",
+        "path": "/docs/seo-and-performance/sitemap-generation"
+      },
+      "robotTxt": {
+        "title": "Robot.txt",
+        "path": "/docs/seo-and-performance/robot-txt"
       }
     }
   },
   "apiReference": {
-    "title": "Api-reference",
+    "title": "API Reference",
     "items": {
       "usageGuide": {
-        "title": "Usage-guide",
+        "title": "Usage Guide",
         "path": "/docs/api-reference/usage-guide"
+      }
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Analytics Integration",
+        "path": "/docs/guides/analytics"
+      }
+    }
+  },
+  "contributing": {
+    "title": "Contributing",
+    "items": {
+      "howToContribute": {
+        "title": "How to Contribute",
+        "path": "/docs/contributing/how-to-contribute"
+      },
+      "codeOfConduct": {
+        "title": "Code of Conduct",
+        "path": "/docs/contributing/code-of-conduct"
       }
     }
   }

@@ -4,16 +4,59 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
-  "seoAndPerformance": {
-    "title": "Seo-and-performance",
+  "gettingStarted": {
+    "title": "Getting-started",
     "items": {
-      "sitemapGeneration": {
-        "title": "Generación automática de mapas del sitio",
-        "path": "/docs/seo-and-performance/sitemap-generation"
+      "requirements": {
+        "title": "Requisitos del sistema",
+        "path": "/docs/getting-started/requirements"
       },
-      "robotTxt": {
-        "title": "Configuración de robots.txt",
-        "path": "/docs/seo-and-performance/robot-txt"
+      "quickstart": {
+        "title": "Guía de inicio rápido",
+        "path": "/docs/getting-started/quickstart"
+      },
+      "features": {
+        "title": "Características de AkiraDocs",
+        "path": "/docs/getting-started/features"
+      }
+    }
+  },
+  "installation": {
+    "title": "Installation",
+    "items": {
+      "setup": {
+        "title": "Guía de instalación detallada",
+        "path": "/docs/installation/setup"
+      },
+      "configuration": {
+        "title": "Guía de configuración",
+        "path": "/docs/installation/configuration"
+      },
+      "troubleshooting": {
+        "title": "Guía de solución de problemas",
+        "path": "/docs/installation/troubleshooting"
+      }
+    }
+  },
+  "contentManagement": {
+    "title": "Content-management",
+    "items": {
+      "creatingPages": {
+        "title": "Creación y organización de páginas",
+        "path": "/docs/content-management/creating-pages"
+      }
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "items": {
+      "overview": {
+        "title": "Descripción general del editor",
+        "path": "/docs/editor/overview"
+      },
+      "features": {
+        "title": "Características del editor",
+        "path": "/docs/editor/features"
       }
     }
   },
@@ -34,37 +77,25 @@
       }
     }
   },
-  "installation": {
-    "title": "Installation",
+  "seoAndPerformance": {
+    "title": "Seo-and-performance",
     "items": {
-      "troubleshooting": {
-        "title": "Guía de solución de problemas",
-        "path": "/docs/installation/troubleshooting"
+      "sitemapGeneration": {
+        "title": "Generación automática de mapas del sitio",
+        "path": "/docs/seo-and-performance/sitemap-generation"
       },
-      "setup": {
-        "title": "Guía de instalación detallada",
-        "path": "/docs/installation/setup"
-      },
-      "configuration": {
-        "title": "Guía de configuración",
-        "path": "/docs/installation/configuration"
+      "robotTxt": {
+        "title": "Configuración de robots.txt",
+        "path": "/docs/seo-and-performance/robot-txt"
       }
     }
   },
-  "gettingStarted": {
-    "title": "Getting-started",
+  "apiReference": {
+    "title": "Api-reference",
     "items": {
-      "requirements": {
-        "title": "Requisitos del sistema",
-        "path": "/docs/getting-started/requirements"
-      },
-      "quickstart": {
-        "title": "Guía de inicio rápido",
-        "path": "/docs/getting-started/quickstart"
-      },
-      "features": {
-        "title": "Características de AkiraDocs",
-        "path": "/docs/getting-started/features"
+      "usageGuide": {
+        "title": "Guía de documentación de API",
+        "path": "/docs/api-reference/usage-guide"
       }
     }
   },
@@ -74,19 +105,6 @@
       "analytics": {
         "title": "Integración de análisis",
         "path": "/docs/guides/analytics"
-      }
-    }
-  },
-  "editor": {
-    "title": "Editor",
-    "items": {
-      "overview": {
-        "title": "Descripción general del editor",
-        "path": "/docs/editor/overview"
-      },
-      "features": {
-        "title": "Características del editor",
-        "path": "/docs/editor/features"
       }
     }
   },
@@ -100,24 +118,6 @@
       "codeOfConduct": {
         "title": "Código de Conducta",
         "path": "/docs/contributing/code-of-conduct"
-      }
-    }
-  },
-  "contentManagement": {
-    "title": "Content-management",
-    "items": {
-      "creatingPages": {
-        "title": "Creación y organización de páginas",
-        "path": "/docs/content-management/creating-pages"
-      }
-    }
-  },
-  "apiReference": {
-    "title": "Api-reference",
-    "items": {
-      "usageGuide": {
-        "title": "Guía de documentación de API",
-        "path": "/docs/api-reference/usage-guide"
       }
     }
   }
