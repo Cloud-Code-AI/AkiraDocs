@@ -17,7 +17,7 @@ export function TableOfContents({ publishDate, modifiedDate, author, locale }: T
   const t = getTranslation(locale as keyof typeof locales);
 
   useEffect(() => {
-    const elements = Array.from(containerRef.current.querySelectorAll('h2:not([data-toc-ignore]), h3:not([data-toc-ignore]), h4:not([data-toc-ignore]), h5:not([data-toc-ignore])'));
+    const elements = Array.from(document.querySelectorAll('h2:not([data-toc-ignore]), h3:not([data-toc-ignore]), h4:not([data-toc-ignore]), h5:not([data-toc-ignore])'));
     setHeadings(elements as HTMLHeadingElement[]);
 
     const observer = new IntersectionObserver(
