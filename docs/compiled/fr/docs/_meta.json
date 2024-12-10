@@ -4,76 +4,46 @@
     "title": "Introduction",
     "path": "/docs/introduction"
   },
-  "seoAndPerformance": {
-    "title": "Seo-and-performance",
+  "gettingStarted": {
+    "title": "Getting-started",
     "items": {
-      "sitemapGeneration": {
-        "title": "Génération automatique de plan du site",
-        "path": "/docs/seo-and-performance/sitemap-generation"
+      "requirements": {
+        "title": "Configuration Requise",
+        "path": "/docs/getting-started/requirements"
       },
-      "robotTxt": {
-        "title": "Configuration robots.txt",
-        "path": "/docs/seo-and-performance/robot-txt"
-      }
-    }
-  },
-  "internationalization": {
-    "title": "Internationalization",
-    "items": {
-      "setup": {
-        "title": "Configurer l'internationalisation",
-        "path": "/docs/internationalization/setup"
+      "quickstart": {
+        "title": "Guide de démarrage rapide",
+        "path": "/docs/getting-started/quickstart"
       },
-      "managingTranslation": {
-        "title": "Voici la traduction en français :\n\nGestion des traductions",
-        "path": "/docs/internationalization/managing-translation"
-      },
-      "aiTranslation": {
-        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTraduction alimentée par l'IA",
-        "path": "/docs/internationalization/ai-translation"
-      }
-    }
-  },
-  "guides": {
-    "title": "Guides",
-    "items": {
-      "analytics": {
-        "title": "Intégration des analyses",
-        "path": "/docs/guides/analytics"
+      "features": {
+        "title": "Fonctionnalités d'AkiraDocs",
+        "path": "/docs/getting-started/features"
       }
     }
   },
   "installation": {
     "title": "Installation",
     "items": {
-      "troubleshooting": {
-        "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de dépannage",
-        "path": "/docs/installation/troubleshooting"
-      },
       "setup": {
         "title": "Guide d'installation détaillé",
         "path": "/docs/installation/setup"
       },
       "configuration": {
-        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nGuide de configuration",
+        "title": "Guide de configuration",
         "path": "/docs/installation/configuration"
+      },
+      "troubleshooting": {
+        "title": "Guide de dépannage",
+        "path": "/docs/installation/troubleshooting"
       }
     }
   },
-  "gettingStarted": {
-    "title": "Getting-started",
+  "contentManagement": {
+    "title": "Content-management",
     "items": {
-      "requirements": {
-        "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nConfiguration Requise",
-        "path": "/docs/getting-started/requirements"
-      },
-      "quickstart": {
-        "title": "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nGuide de démarrage rapide",
-        "path": "/docs/getting-started/quickstart"
-      },
-      "features": {
-        "title": "Fonctionnalités d'AkiraDocs",
-        "path": "/docs/getting-started/features"
+      "creatingPages": {
+        "title": "Créer et organiser des pages",
+        "path": "/docs/content-management/creating-pages"
       }
     }
   },
@@ -90,6 +60,54 @@
       }
     }
   },
+  "internationalization": {
+    "title": "Internationalization",
+    "items": {
+      "setup": {
+        "title": "Configurer l'internationalisation",
+        "path": "/docs/internationalization/setup"
+      },
+      "managingTranslation": {
+        "title": "Gestion des traductions",
+        "path": "/docs/internationalization/managing-translation"
+      },
+      "aiTranslation": {
+        "title": "Traduction alimentée par l'IA",
+        "path": "/docs/internationalization/ai-translation"
+      }
+    }
+  },
+  "seoAndPerformance": {
+    "title": "Seo-and-performance",
+    "items": {
+      "sitemapGeneration": {
+        "title": "Génération automatique de plan du site",
+        "path": "/docs/seo-and-performance/sitemap-generation"
+      },
+      "robotTxt": {
+        "title": "Configuration robots.txt",
+        "path": "/docs/seo-and-performance/robot-txt"
+      }
+    }
+  },
+  "apiReference": {
+    "title": "Api-reference",
+    "items": {
+      "usageGuide": {
+        "title": "Guide de documentation de l'API",
+        "path": "/docs/api-reference/usage-guide"
+      }
+    }
+  },
+  "guides": {
+    "title": "Guides",
+    "items": {
+      "analytics": {
+        "title": "Intégration des analyses",
+        "path": "/docs/guides/analytics"
+      }
+    }
+  },
   "contributing": {
     "title": "Contributing",
     "items": {
@@ -100,24 +118,6 @@
       "codeOfConduct": {
         "title": "Code de conduite",
         "path": "/docs/contributing/code-of-conduct"
-      }
-    }
-  },
-  "contentManagement": {
-    "title": "Content-management",
-    "items": {
-      "creatingPages": {
-        "title": "Voici la traduction en français :\n\nCréer et organiser des pages",
-        "path": "/docs/content-management/creating-pages"
-      }
-    }
-  },
-  "apiReference": {
-    "title": "Api-reference",
-    "items": {
-      "usageGuide": {
-        "title": "Voici la traduction en français :\n\nGuide de documentation de l'API",
-        "path": "/docs/api-reference/usage-guide"
       }
     }
   }
