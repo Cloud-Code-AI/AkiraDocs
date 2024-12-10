@@ -474,55 +474,6 @@ Code example:
     },
 }
 -------------
-[Document: docs/guides/analytics.json]
-Title: Analytics Integration
-Learn how to add analytics tracking to your documentation
-AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
-Setting up Google Analytics
-1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
-2. Get your Measurement ID (starts with "G-")
-3. Add the ID to your `akiradocs.config.json`:
-Code example:
-{
-"analytics": {
-"google": {
-"measurementId": "G-XXXXXXXXXX",
-"enabled": true
-},
-"debug": false
-}
-}
-What's Tracked Automatically
-Page views
-Navigation between pages
-Time on page
-User language preferences
-Device and browser information
-Custom Event Tracking
-You can track custom events using the `useAnalytics` hook:
-Code example:
-import { useAnalytics } from '@/hooks/useAnalytics'
-function MyComponent() {
-    const { track } = useAnalytics()
-    const handleClick = () => {
-        track('doc_rating', {
-            rating: 5,
-            page: 'getting-started',
-            helpful: true
-        })
-    }
-    return <button onClick={handleClick}>This was helpful</button>
-}
-Debug Mode
-Enable debug mode to see analytics events in the console during development:
-Code example:
-{
-"analytics": {
-"debug": true
-}
-}
-This provides a complete analytics integration that's easy for users to set up and extend as needed.
--------------
 [Document: docs/getting-started/requirements.json]
 Title: System Requirements
 Before installing AkiraDocs, ensure your environment meets the following requirements.
@@ -631,98 +582,54 @@ Code example:
 ✓ Docusaurus
 ✓ ReadTheDocs
 -------------
-[Document: docs/editor/overview.json]
-Title: Editor Overview
-AkiraDocs features a modern, Notion-like editor that combines the simplicity of block-based editing with the power of Markdown.
-Editor Interface
-Main Components
-<strong>Toolbar</strong>: Quick access to formatting options and block types
-<strong>Content Area</strong>: Block-based editing space
-<strong>Sidebar</strong>: Navigation and document structure
-<strong>Command Palette</strong>: Quick commands (Ctrl/Cmd + P)
-Block Structure
-Each content element is a block that can be:
-Dragged and dropped to reorganize
-Converted between different types
-Duplicated or deleted
-Nested within other blocks
-Getting Started
-Creating Content
-1. Click the '+' button or press '/' to add a new block
-2. Choose block type from the popup menu
-3. Start typing or add content
-Basic Operations
+[Document: docs/guides/analytics.json]
+Title: Analytics Integration
+Learn how to add analytics tracking to your documentation
+AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
+Setting up Google Analytics
+1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
+2. Get your Measurement ID (starts with "G-")
+3. Add the ID to your `akiradocs.config.json`:
 Code example:
-/ → Open block menu
-⌘/Ctrl + P → Command palette
-⌘/Ctrl + / → Show keyboard shortcuts
-↑↓ → Navigate between blocks
-Block Types
-Text Blocks
-Paragraphs
-Headings (H1-H6)
-Lists (Bulleted, Numbered)
-Quotes
-Callouts
-Rich Media
-Images
-Videos
-Embeds
-Files
-Code blocks
-Special Blocks
-Tables (Coming Soon)
-Dividers
-Custom components (Coming Soon)
--------------
-[Document: docs/editor/features.json]
-Title: Editor Features
-Detailed overview of AkiraDocs editor capabilities and features.
-Block System
-Text Formatting
-<strong>Basic Formatting</strong>
-Bold, italic, underline
-Strikethrough
-Highlight
-Code inline
-<strong>Advanced Formatting</strong>
-Custom colors
-Multiple fonts
-Text alignment
-Indentation
-Content Blocks
-Rich Text
+{
+"analytics": {
+"google": {
+"measurementId": "G-XXXXXXXXXX",
+"enabled": true
+},
+"debug": false
+}
+}
+What's Tracked Automatically
+Page views
+Navigation between pages
+Time on page
+User language preferences
+Device and browser information
+Custom Event Tracking
+You can track custom events using the `useAnalytics` hook:
 Code example:
-# Heading 1
-## Heading 2
-> Blockquote
-- Bullet list
-1. Numbered list
-Code Blocks
+import { useAnalytics } from '@/hooks/useAnalytics'
+function MyComponent() {
+    const { track } = useAnalytics()
+    const handleClick = () => {
+        track('doc_rating', {
+            rating: 5,
+            page: 'getting-started',
+            helpful: true
+        })
+    }
+    return <button onClick={handleClick}>This was helpful</button>
+}
+Debug Mode
+Enable debug mode to see analytics events in the console during development:
 Code example:
-// Syntax highlighting
-console.log('Hello World');
-Media Blocks
-Image upload and embedding
-Video embedding
-File attachments
-Interactive embeds
-AI Features
-Content Enhancement
-Grammar and style suggestions
-Content optimization
-SEO recommendations
-Translation assistance
-Smart Formatting
-Auto-formatting
-Smart lists
-Table formatting
-Code block language detection
-Collaboration Features
-Version Control
-Git integration
-Change history
-Rollback capabilities
+{
+"analytics": {
+"debug": true
+}
+}
+This provides a complete analytics integration that's easy for users to set up and extend as needed.
 -------------
 [Document: docs/contributing/how-to-contribute.json]
 Title: Contributing to AkiraDocs
@@ -816,6 +723,99 @@ Enforcement
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement. All complaints will be reviewed and investigated promptly and fairly.
 Attribution
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
+-------------
+[Document: docs/editor/overview.json]
+Title: Editor Overview
+AkiraDocs features a modern, Notion-like editor that combines the simplicity of block-based editing with the power of Markdown.
+Editor Interface
+Main Components
+<strong>Toolbar</strong>: Quick access to formatting options and block types
+<strong>Content Area</strong>: Block-based editing space
+<strong>Sidebar</strong>: Navigation and document structure
+<strong>Command Palette</strong>: Quick commands (Ctrl/Cmd + P)
+Block Structure
+Each content element is a block that can be:
+Dragged and dropped to reorganize
+Converted between different types
+Duplicated or deleted
+Nested within other blocks
+Getting Started
+Creating Content
+1. Click the '+' button or press '/' to add a new block
+2. Choose block type from the popup menu
+3. Start typing or add content
+Basic Operations
+Code example:
+/ → Open block menu
+⌘/Ctrl + P → Command palette
+⌘/Ctrl + / → Show keyboard shortcuts
+↑↓ → Navigate between blocks
+Block Types
+Text Blocks
+Paragraphs
+Headings (H1-H6)
+Lists (Bulleted, Numbered)
+Quotes
+Callouts
+Rich Media
+Images
+Videos
+Embeds
+Files
+Code blocks
+Special Blocks
+Tables (Coming Soon)
+Dividers
+Custom components (Coming Soon)
+-------------
+[Document: docs/editor/features.json]
+Title: Editor Features
+Detailed overview of AkiraDocs editor capabilities and features.
+Block System
+Text Formatting
+<strong>Basic Formatting</strong>
+Bold, italic, underline
+Strikethrough
+Highlight
+Code inline
+<strong>Advanced Formatting</strong>
+Custom colors
+Multiple fonts
+Text alignment
+Indentation
+Content Blocks
+Rich Text
+Code example:
+# Heading 1
+## Heading 2
+> Blockquote
+- Bullet list
+1. Numbered list
+Code Blocks
+Code example:
+// Syntax highlighting
+console.log('Hello World');
+Media Blocks
+Image upload and embedding
+Video embedding
+File attachments
+Interactive embeds
+AI Features
+Content Enhancement
+Grammar and style suggestions
+Content optimization
+SEO recommendations
+Translation assistance
+Smart Formatting
+Auto-formatting
+Smart lists
+Table formatting
+Code block language detection
+Collaboration Features
+Version Control
+Git integration
+Change history
+Rollback capabilities
 -------------
 [Document: docs/content-management/creating-pages.json]
 Title: Creating and Organizing Pages
