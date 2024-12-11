@@ -69,11 +69,9 @@ export default function Home() {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
-    setSources([]) // Reset sources
+    setSources([])
     
     try {
-      const startEngineTime = performance.now();
-      
       const contextResponse = await fetch('/context/en_docs.txt');
       if (!contextResponse.ok) {
         throw new Error(`Failed to fetch context: ${contextResponse.status}`);
@@ -81,67 +79,64 @@ export default function Home() {
       const contextData = await contextResponse.text();
       const docsContext = contextData;
 
-      // Initialize MLC Engine
       const engine = await CreateMLCEngine(
         "Llama-3.2-1B-Instruct-q4f16_1-MLC",
-        { 
-          initProgressCallback: (progress: any) => console.log(progress) 
+        { initProgressCallback: (progress: any) => console.log(progress)
         },
         {
           context_window_size: 100000,
         }
       );
-      
-      const engineLoadTime = performance.now() - startEngineTime;
-      console.log(`Engine initialization took: ${engineLoadTime.toFixed(2)}ms`);
 
-      // Prepare messages for the chat with context
       const messages = [
         { 
-            role: "system", 
-            content: `You are a technical documentation assistant specialized in providing accurate, concise answers based on the official documentation. 
-            Your responses should be:
-            1. Direct and to the point
-            2. Based strictly on the provided documentation context
-            3. Include relevant code examples when available
-            4. Written in a technical but clear style
-    
-            Documentation context: ${docsContext}`
+          role: "system", 
+          content: `You are a technical documentation assistant specialized in providing accurate, concise answers based on the official documentation. 
+          Your responses should be:
+          1. Direct and to the point
+          2. Based strictly on the provided documentation context
+          3. Include relevant code examples when available
+          4. Written in a technical but clear style
+
+          Documentation context: ${docsContext}`
         },
         { 
-            role: "user", 
-            content: `Answer the following question using only the provided documentation context. 
-            Question: ${query}
-            Requirements for your response:
-            1. If the answer isn't clearly supported by the documentation and you cant find relevant information in the documentation, say \"I don't have enough information to answer this question accurately.\"
-            2. Strictly adhere to the documentation context; do not make assumptions or provide additional commentary.
-            3. Include short code snippets if relevant.
-            4. Only answer questions related to the Documentation Context.
-            5. Be concise and to the point.
-            After your answer, if you used any sources from the documentation, list them in this format:
-            -------------
-            Sources:
-             - <title> (<path>)
-             Example: 
-             Sources:
-              - Welcome to Akira Docs (articles/welcome.json)`
+          role: "user", 
+          content: `Answer the following question using only the provided documentation context. 
+          Question: ${query}
+
+          Requirements for your response:
+          1. If the answer isn't clearly supported by the documentation, say "I don't have enough information to answer this question accurately."
+          2. Don't make assumptions or provide information not found in the documentation
+          3. If relevant, include short code snippets to illustrate your answer.
+          4. Only answer questions related to the Documentaion Context.
+          5. Try to be concise and to the point.
+          
+          After your answer, if you used any sources from the documentation, list them in this format:
+          -------------
+          Sources:
+          - <title> (<path>)` 
         }
-    ];
-    
+      ];
 
-      console.log(messages)
+      console.log("messages", messages)
 
-      const startChatTime = performance.now();
-      // Get response from MLC chatbot
-      const reply = await engine.chat.completions.create({ messages: messages as ChatCompletionMessageParam[] });
-      const chatCompletionTime = performance.now() - startChatTime;
-      console.log(`Chat completion took: ${chatCompletionTime.toFixed(2)}ms`);
+      const chunks = await engine.chat.completions.create({ 
+        messages: messages as ChatCompletionMessageParam[],
+        stream: true,
+        stream_options: { include_usage: true }
+      });
+
+      let aiContent = "";
+      for await (const chunk of chunks) {
+        const newContent = chunk.choices[0]?.delta.content || "";
+        aiContent += newContent;
+        // Update the response in real-time
+        setAiResponse(aiContent);
+      }
       
-      const aiContent = reply.choices[0].message.content || '';
-      console.log("Response aiContent", aiContent)
-      // Extract sources and clean response
+      // Extract sources after the full response is received
       const { cleanResponse, sources } = extractSources(aiContent);
-      
       setAiResponse(cleanResponse);
       setSources(sources);
       
