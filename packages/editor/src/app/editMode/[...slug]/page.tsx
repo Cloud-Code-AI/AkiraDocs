@@ -173,6 +173,18 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
       newBlock.content = JSON.stringify([{ text: '', checked: false }]);
     }
 
+    if (newBlock.type === 'button') {
+      newBlock.content = 'Click me'
+      newBlock.metadata = {
+        buttonUrl: '#',
+        buttonStyle: {
+          variant: 'default',
+          size: 'default',
+          radius: 'md'
+        }
+      }
+    }
+
     if (afterId === 'new') {
       setBlocks([newBlock])
     } else {

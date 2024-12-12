@@ -16,20 +16,14 @@ import {
   Minus,
   Table,
   Quote,
-  // ToggleLeft,
-  // CheckSquare,
-  // Video,
-  // Music,
-  // File,
-  // Smile,
   AlertCircle,
   Plus,
-  // Search,
   Video,
   Music,
   File,
   CheckSquare,
   ArrowUpDown,
+  Link2,
 } from 'lucide-react'
 
 interface AddBlockButtonProps {
@@ -85,6 +79,7 @@ export const AddBlockButton = forwardRef<
     { type: 'file', icon: <File size={18} />, label: 'File', description: 'Upload or link to a file.', group: 'Media' },
     { type: 'checkList', icon: <CheckSquare size={18} />, label: 'To-do list', description: 'Track tasks with a to-do list.', group: 'Basic' },
     { type: 'spacer', icon: <ArrowUpDown size={18} />, label: 'Spacing', description: 'Add vertical space between blocks.', group: 'Basic' },
+    { type: 'button', icon: <Link2 size={18} />, label: 'Button', description: 'Add a clickable button with link.', group: 'Basic' },
   ]
 
   const filteredOptions = blockOptions.filter((option) =>

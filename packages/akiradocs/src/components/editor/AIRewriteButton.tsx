@@ -194,6 +194,18 @@ const blockStyles = {
       prompt: 'Rewrite the API reference to be more descriptive and engaging.'
     }
   ],
+  button: [
+    {
+      value: 'descriptive',
+      label: 'Descriptive',
+      prompt: 'Rewrite the button text to be more descriptive and engaging.'
+    },
+    {
+      value: 'concise',
+      label: 'Concise',
+      prompt: 'Rewrite the button text to be more concise and clear.'
+    }
+  ],
   spacer: [
     {
       value: 'default',

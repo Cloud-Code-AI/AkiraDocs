@@ -6,23 +6,15 @@ import { List } from "@/components/blocks/ListBlock"
 import { Blockquote } from "@/components/blocks/BlockquoteBlock"
 import { Divider } from "@/components/blocks/DividerBlock"
 import { CodeBlock } from "@/components/blocks/CodeBlock"
-// import { Image } from '../blocks/Image'
-// import { Table } from '../blocks/Table'
-// import { ToggleList } from '../blocks/ToggleList'
 import { CheckList } from "@/components/blocks/CheckListBlock"
-// import { Video } from '../blocks/Video'
-// import { Audio } from '../blocks/Audio'
-// import { File } from '../blocks/File'
-// import { Emoji } from '../blocks/Emoji'
 import { Callout } from "@/components/blocks/CalloutBlock"
-import { cn } from '@/lib/utils'
-import { ErrorBoundary } from 'react-error-boundary'
 import { ImageBlock } from "@/components/blocks/ImageBlock"
 import { Table } from '@/components/blocks/TableBlock'
 import { VideoBlock } from "@/components/blocks/VideoBlock"
 import { AudioBlock } from "@/components/blocks/AudioBlock"
 import { FileBlock } from "@/components/blocks/FileBlock"
 import { SpacerBlock } from "@/components/blocks/SpacerBlock"
+import { ButtonBlock } from "@/components/blocks/ButtonBlock"
 
 interface ImageBlockContent {
   url: string;
@@ -237,6 +229,16 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
           size={block.content as 'small' | 'medium' | 'large' | 'xlarge'}
           isEditing={isEditing}
           onUpdate={(size) => onUpdate?.(block.id, size)}
+        />
+      );
+    case 'button':
+      return (
+        <ButtonBlock
+          content={block.content}
+          metadata={block.metadata}
+          isEditing={isEditing}
+          onUpdate={(content) => onUpdate?.(block.id, content)}
+          align={block.metadata?.align}
         />
       );
     default:

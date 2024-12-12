@@ -14,7 +14,8 @@ export type BlockType =
   | 'file' 
   | 'callout'
   | 'spacer'
-  | 'apiReference';
+  | 'apiReference'
+  | 'button';
 
 export interface Block {
   id: string;
@@ -44,6 +45,12 @@ export interface Block {
       align?: 'left' | 'center' | 'right'; // For alignment
     type?: 'info' | 'warning' | 'success' | 'error'; // For callouts
     title?: string; // For callouts
+    buttonUrl?: string;
+    buttonStyle?: {
+      variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+      size?: 'default' | 'sm' | 'lg';
+      radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+    };
   };
 }
 
