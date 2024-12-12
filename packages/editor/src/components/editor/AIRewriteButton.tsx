@@ -193,6 +193,13 @@ const blockStyles = {
       label: 'Descriptive',
       prompt: 'Rewrite the API reference to be more descriptive and engaging.'
     }
+  ],
+  spacer: [
+    {
+      value: 'default',
+      label: 'Default',
+      prompt: 'No rewriting options available for spacer'
+    }
   ]
 } as const;
 
@@ -213,6 +220,10 @@ export function AIRewriteButton({ onRewrite, blockType, isRewriting }: AIRewrite
   };
 
   const handleRewrite = async () => {
+    if (blockType === 'spacer') {
+      return;
+    }
+
     try {
       await onRewrite(style)
     } catch (error) {
@@ -222,6 +233,10 @@ export function AIRewriteButton({ onRewrite, blockType, isRewriting }: AIRewrite
         toast.error('Failed to rewrite content')
       }
     }
+  }
+
+  if (blockType === 'spacer') {
+    return null;
   }
 
   return (

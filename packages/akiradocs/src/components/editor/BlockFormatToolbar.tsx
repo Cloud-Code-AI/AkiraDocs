@@ -120,7 +120,7 @@ export function BlockFormatToolbar({
   audioContent,
   onAudioMetadataChange,
 }: BlockFormatToolbarProps) {
-  if (blockType === 'file') {
+  if (blockType === 'file' || blockType === 'spacer') {
     return null;
   }
 

@@ -12,8 +12,8 @@ export type BlockType =
   | 'video' 
   | 'audio' 
   | 'file' 
-  // | 'emoji'
   | 'callout'
+  | 'spacer'
   | 'apiReference';
 
 export interface Block {

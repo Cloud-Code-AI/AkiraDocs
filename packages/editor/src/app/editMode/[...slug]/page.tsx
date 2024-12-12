@@ -157,6 +157,11 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
       metadata: {}
     }
 
+    // Add default content for spacer blocks
+    if (newBlock.type === 'spacer') {
+      newBlock.content = 'medium'
+    }
+
     if (newBlock.type === 'table') {
       newBlock.metadata = {
         headers: ['Column 1', 'Column 2'],

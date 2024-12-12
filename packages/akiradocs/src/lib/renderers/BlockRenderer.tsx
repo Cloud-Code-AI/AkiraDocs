@@ -22,6 +22,7 @@ import { Table } from '@/components/blocks/TableBlock'
 import { VideoBlock } from "@/components/blocks/VideoBlock"
 import { AudioBlock } from "@/components/blocks/AudioBlock"
 import { FileBlock } from "@/components/blocks/FileBlock"
+import { SpacerBlock } from "@/components/blocks/SpacerBlock"
 
 interface ImageBlockContent {
   url: string;
@@ -232,6 +233,14 @@ export function BlockRenderer({ block, isEditing, onUpdate }: BlockRendererProps
           content={block.content}
           isEditing={isEditing}
           onUpdate={(content) => onUpdate?.(block.id, content)}
+        />
+      );
+    case 'spacer':
+      return (
+        <SpacerBlock
+          size={block.content as 'small' | 'medium' | 'large' | 'xlarge'}
+          isEditing={isEditing}
+          onUpdate={(size) => onUpdate?.(block.id, size)}
         />
       );
     default:
