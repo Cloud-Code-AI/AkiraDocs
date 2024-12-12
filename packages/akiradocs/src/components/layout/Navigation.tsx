@@ -133,8 +133,8 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
 
 NavItem.displayName = 'NavItem'
 
-export function ApiSidebar() {
-  const navigation = getApiNavigation();
+export async function ApiSidebar() {
+  const navigation = await getApiNavigation();
   
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>

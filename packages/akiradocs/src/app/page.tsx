@@ -19,7 +19,7 @@ export async function generateMetadata() {
 export default async function DocPage() {
   const config = getAkiradocsConfig()
   const defaultLocale = config.localization.defaultLocale
-  const recentContent = getRecentContent(`${defaultLocale}/docs`)
+  const recentContent = await getRecentContent(`${defaultLocale}/docs`)
 
   if (recentContent) {
     const redirectUrl = `/${defaultLocale}/docs/${recentContent.slug.replace('docs/', '')}`

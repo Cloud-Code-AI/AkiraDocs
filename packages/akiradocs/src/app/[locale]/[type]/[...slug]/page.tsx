@@ -13,14 +13,13 @@ import { PageNavigation } from '@/components/layout/PageNavigation'
 import { MainTitle, SubTitle } from '@/components/blocks/HeadingBlock'
 import { SEO } from '@/components/layout/SEO'
 import { NotFound } from '@/components/layout/NotFound'
-import { TextToSpeech } from '@/components/tts/TextToSpeech'
 import { getAkiradocsConfig } from "@/lib/getAkiradocsConfig";
 import { getTranslation } from '@/lib/staticTranslation';
 import { ClientSideControls } from '@/components/layout/ClientSideControl';
 import { Metadata } from 'next'
 
-// export const runtime = 'edge'
-export const dynamic = 'force-static';
+export const runtime = 'edge'
+// export const dynamic = 'force-static';
 
 const PostContainer = ({ children }: { children: React.ReactNode }) => (
   <div className="flex-1 min-w-0 px-8 py-6 mx-4 font-sans leading-relaxed relative">
@@ -36,33 +35,33 @@ type Props = {
   }>;
 }
 
-export async function generateStaticParams() {
-  const locales = ['en', 'es', 'fr']; 
-  const types = ['docs', 'api', 'articles'];
-  const allSlugs: { locale: string, type: string, slug: string[] }[] = [];
+// export async function generateStaticParams() {
+//   const locales = ['en', 'es', 'fr']; 
+//   const types = ['docs', 'api', 'articles'];
+//   const allSlugs: { locale: string, type: string, slug: string[] }[] = [];
 
-  locales.forEach(locale => {
-    types.forEach(type => {
-      const navigationItems = getContentNavigation({}, locale, type);
-      if (Array.isArray(navigationItems)) {
-        navigationItems.forEach(item => {
-          if (item.slug) {
-            allSlugs.push({ locale, type, slug: item.slug.split('/') });
-          }
-        });
-      }
-    });
-  });
+//   locales.forEach(locale => {
+//     types.forEach(type => {
+//       const navigationItems = getContentNavigation({}, locale, type);
+//       if (Array.isArray(navigationItems)) {
+//         navigationItems.forEach(item => {
+//           if (item.slug) {
+//             allSlugs.push({ locale, type, slug: item.slug.split('/') });
+//           }
+//         });
+//       }
+//     });
+//   });
 
-  return allSlugs;
-}
+//   return allSlugs;
+// }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await Promise.resolve(params);
   const { locale, type, slug: slugArray } = resolvedParams;
   
   const slug = slugArray.length ? slugArray.join('/') : '';
-  const post = getContentBySlug(locale, type, slug);
+  const post = await getContentBySlug(locale, type, slug);
   const t = getTranslation(locale as 'en' | 'es' | 'fr');
   const akiradocsConfig = getAkiradocsConfig();
 
@@ -94,15 +93,14 @@ export default async function ContentPage({ params }: Props) {
   const t = getTranslation(locale as 'en' | 'es' | 'de');
   
   const slug = slugArray.length ? slugArray.join('/') : '';
-  const post = getContentBySlug(locale, type, slug);
-
+  const post = await getContentBySlug(locale, type, slug);
   if (!post) {
     return <NotFound redirectUrl={`/${locale}/${type}`} />;
   }
   const akiradocsConfig = getAkiradocsConfig();
   const headerConfig = getHeaderConfig();
   const footerConfig = getFooterConfig();
-  const navigationItems = getContentNavigation({}, locale, type);
+  const navigationItems = await getContentNavigation({}, locale, type);
   const { prev, next } = getNextPrevPages(navigationItems, `/${type}/${slug}`);
   const pageTitle = t(post.title) || t('common.documentation');
   const pageDescription = t(post.description) || t('common.documentationContent');
