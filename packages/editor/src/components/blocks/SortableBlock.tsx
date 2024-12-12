@@ -35,6 +35,12 @@ interface SortableBlockProps {
       align?: 'left' | 'center' | 'right'
       type?: 'info' | 'warning' | 'success' | 'error'
       title?: string
+      buttonUrl?: string
+      buttonStyle?: {
+        variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
+        size?: 'default' | 'sm' | 'lg'
+        radius?: 'none' | 'sm' | 'md' | 'lg' | 'full'
+      }
     }
   }
   updateBlock: (id: string, content: string) => void
@@ -513,6 +519,21 @@ export function SortableBlock({
                   };
                   updateBlock(block.id, JSON.stringify(updatedContent));
                 }
+              }}
+              showButtonControls={block.type === 'button'}
+              buttonMetadata={{
+                url: block.metadata?.buttonUrl,
+                style: block.metadata?.buttonStyle
+              }}
+              onButtonMetadataChange={(metadata) => {
+                updateBlockMetadata(block.id, {
+                  ...block.metadata,
+                  buttonUrl: metadata.buttonUrl,
+                  buttonStyle: {
+                    ...block.metadata?.buttonStyle,
+                    ...metadata.buttonStyle
+                  }
+                })
               }}
             />
           )}

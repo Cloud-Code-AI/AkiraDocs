@@ -157,6 +157,11 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
       metadata: {}
     }
 
+    // Add default content for spacer blocks
+    if (newBlock.type === 'spacer') {
+      newBlock.content = 'medium'
+    }
+
     if (newBlock.type === 'table') {
       newBlock.metadata = {
         headers: ['Column 1', 'Column 2'],
@@ -166,6 +171,18 @@ export default function ArticleEditorContent({ params }: { params: Promise<{ slu
 
     if (newBlock.type === 'checkList') {
       newBlock.content = JSON.stringify([{ text: '', checked: false }]);
+    }
+
+    if (newBlock.type === 'button') {
+      newBlock.content = 'Click me'
+      newBlock.metadata = {
+        buttonUrl: '#',
+        buttonStyle: {
+          variant: 'default',
+          size: 'default',
+          radius: 'md'
+        }
+      }
     }
 
     if (afterId === 'new') {
