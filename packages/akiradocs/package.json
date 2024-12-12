@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "translate": "npm run compile && node scripts/translate.js",
-    "compile": "node scripts/compile.js",
+    "compile": "node scripts/compile.js && npm run generate-manifest",
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
     "dev": "npm run compile && set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=true && next dev",
     "build": "npm run compile && npm run generate-sitemap && set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=false && next build",
