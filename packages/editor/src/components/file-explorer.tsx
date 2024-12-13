@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import {
   Folder,
   File,
-  Plus,
+  Check,
   X,
   ChevronRight,
   ChevronDown,
@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fetchAllContent } from '@/lib/getContents';
+import { FileExplorerContextMenu } from '@/components/context-menu';
 
 type FileNode = {
   id: string;
@@ -27,7 +28,7 @@ interface FileExplorerProps {
 }
 
 const API_URL =
-  process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:8000';
+  process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://localhost:3001';
 
 // Add this function to track the full path of each node
 const getNodeFullPath = (
@@ -116,52 +117,18 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
 
     const fullPath = `${parentPath}/${newItemName}`;
 
-    if (newItemType === 'file') {
-      try {
-        // First, read the existing metadata
-        const metaPath = `${parentPath}/_meta.json`;
-        const metaResponse = await fetch(
-          `${API_URL}/api/files?path=${encodeURIComponent(metaPath)}`,
-          {
-            method: 'GET',
-          }
-        );
+    try {
+      console.log('Creating new item:', {
+        parentPath,
+        fullPath,
+        itemType: newItemType,
+        itemName: newItemName,
+      });
 
-        if (!metaResponse.ok) {
-          throw new Error('Failed to read metadata');
-        }
-
-        const existingMeta = await metaResponse.json();
-        const newFileId = newItemName.replace('.json', '');
-
-        // Update the metadata with the new file entry
-        const updatedMeta = {
-          ...existingMeta,
-          [newFileId]: {
-            title: newFileId,
-            path: `/articles/${newFileId}`,
-          },
-        };
-
-        // Save the updated metadata
-        const updateMetaResponse = await fetch(`${API_URL}/api/files`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            path: metaPath,
-            content: updatedMeta,
-          }),
-        });
-
-        if (!updateMetaResponse.ok) {
-          throw new Error('Failed to update metadata');
-        }
-
+      if (newItemType === 'file') {
         // Create the new file with default content
         const defaultContent = {
-          id: newFileId,
+          id: newItemName.replace('.json', ''),
           title: 'New Article',
           description: 'Add your description here',
           author: 'Anonymous',
@@ -169,7 +136,6 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
           blocks: [],
         };
 
-        // Create the new file
         const fileResponse = await fetch(`${API_URL}/api/files`, {
           method: 'POST',
           headers: {
@@ -182,22 +148,99 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
         });
 
         if (!fileResponse.ok) {
-          throw new Error('Failed to create file');
+          const errorText = await fileResponse.text();
+          console.error('File creation failed:', errorText);
+          throw new Error(`Failed to create file: ${errorText}`);
         }
-      } catch (error) {
-        console.error('Error creating file or updating metadata:', error);
-        return;
+
+        // Update metadata
+        await updateMetadata(parentPath, newItemName, defaultContent.title);
+      } else if (newItemType === 'folder') {
+        // Create new folder
+        const folderResponse = await fetch(`${API_URL}/api/files`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            path: fullPath,
+            type: 'folder',
+          }),
+        });
+
+        if (!folderResponse.ok) {
+          throw new Error('Failed to create folder');
+        }
+      }
+
+      // Update the file tree UI
+      const updatedTree = addItemToTree(fileTree, newItemParent, newItem);
+      setFileTree(updatedTree);
+
+      if (newItemType === 'folder') {
+        setExpandedFolders((prev) => new Set(prev).add(newItem.id));
+      }
+
+      cancelNewItem();
+    } catch (error) {
+      console.error('addNewItem: Error creating item:', error);
+    }
+  };
+
+  /////////1
+  const updateMetadata = async (
+    parentPath: string,
+    newFileName: string,
+    newFileTitle: string
+  ) => {
+    const metaPath = `${parentPath}/_meta.json`;
+    try {
+      const metaResponse = await fetch(
+        `${API_URL}/api/files?path=${encodeURIComponent(metaPath)}`,
+        {
+          method: 'GET',
+        }
+      );
+
+      if (!metaResponse.ok) {
+        throw new Error('Failed to read metadata');
+      }
+
+      const existingMeta = await metaResponse.json();
+      const newFileId = newFileName.replace('.json', '');
+
+      // Update the metadata with the new file entry
+      const updatedMeta = {
+        ...existingMeta,
+        [newFileId]: {
+          title: newFileTitle,
+          path: `/articles/${newFileId}`,
+        },
+      };
+
+      // Save the updated metadata
+      const updateMetaResponse = await fetch(`${API_URL}/api/files`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          path: metaPath,
+          content: updatedMeta,
+        }),
+      });
+
+      if (!updateMetaResponse.ok) {
+        throw new Error('Failed to update metadata');
+      }
+    } catch (error) {
+      console.error('Error updating metadata:', error);
+      if (error instanceof Error) {
+        /////////2
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
       }
     }
-
-    const updatedTree = addItemToTree(fileTree, newItemParent, newItem);
-    setFileTree(updatedTree);
-
-    if (newItemType === 'folder') {
-      setExpandedFolders((prev) => new Set(prev).add(newItem.id));
-    }
-
-    cancelNewItem();
   };
 
   const addItemToTree = (
@@ -227,83 +270,59 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
 
   const renderFileTree = (nodes: FileNode[], level: number = 0) => {
     return (
-      <ul
-        className={`space-y-1 ${
-          level > 0 ? 'border-l border-border ml-4 pl-4' : ''
-        }`}
-      >
+      <ul className={`space-y-1 ${level > 0 ? 'ml-4 pl-4' : ''}`}>
         {nodes.map((node) => (
           <li key={node.id} className="relative">
-            <div className="flex items-center justify-between py-1">
-              <div className="flex items-center flex-grow">
-                {node.type === 'folder' && (
-                  <button
-                    onClick={() => toggleFolder(node.id)}
-                    className="mr-1 focus:outline-none"
-                    aria-label={
-                      expandedFolders.has(node.id)
-                        ? 'Collapse folder'
-                        : 'Expand folder'
+            <FileExplorerContextMenu
+              onNewFile={() => startNewItem(node.id, 'file')}
+              onNewFolder={() => startNewItem(node.id, 'folder')}
+              onDelete={() => deleteItem(node.id, node.name, node.type)}
+              isFolder={node.type === 'folder'}
+            >
+              <div className="flex items-center justify-between py-1">
+                <div className="flex items-center flex-grow">
+                  {node.type === 'folder' && (
+                    <button
+                      onClick={() => toggleFolder(node.id)}
+                      className="mr-1 focus:outline-none"
+                      aria-label={
+                        expandedFolders.has(node.id)
+                          ? 'Collapse folder'
+                          : 'Expand folder'
+                      }
+                    >
+                      {expandedFolders.has(node.id) ? (
+                        <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                      )}
+                    </button>
+                  )}
+                  {/* Icons for folder and files */}
+                  <div className="h-4 w-4 mr-1">
+                    {node.type === 'folder' ? (
+                      <Folder className="h-4 w-4 text-muted-foreground" />
+                    ) : (
+                      <File className="h-4 w-4 text-muted-foreground" />
+                    )}
+                  </div>
+                  <span
+                    className={`text-sm ${
+                      node.type === 'folder' ? 'font-semibold' : ''
+                    } text-foreground hover:text-primary transition-colors duration-200 cursor-pointer`}
+                    onClick={() =>
+                      node.type === 'file'
+                        ? handleFileClick(node)
+                        : toggleFolder(node.id)
                     }
                   >
-                    {expandedFolders.has(node.id) ? (
-                      <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                    ) : (
-                      <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                    )}
-                  </button>
-                )}
-                <div className="h-4 w-4 mr-1">
-                  {node.type === 'folder' ? (
-                    <Folder className="h-4 w-4 text-muted-foreground" />
-                  ) : (
-                    <File className="h-4 w-4 text-muted-foreground" />
-                  )}
+                    {node.type === 'file'
+                      ? node.name.split('.').slice(0, -1).join('.')
+                      : node.name}
+                  </span>
                 </div>
-                <span
-                  className={`text-sm ${
-                    node.type === 'folder' ? 'font-semibold' : ''
-                  } text-foreground hover:text-primary transition-colors duration-200 cursor-pointer`}
-                  onClick={() =>
-                    node.type === 'file'
-                      ? handleFileClick(node)
-                      : toggleFolder(node.id)
-                  }
-                >
-                  {node.name}
-                </span>
               </div>
-              <div className="flex items-center space-x-2">
-                {node.type === 'folder' && (
-                  <>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="h-6 w-6 p-0 hover:bg-accent"
-                      onClick={() => startNewItem(node.id, 'file')}
-                    >
-                      <File className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="h-6 w-6 p-0 hover:bg-accent"
-                      onClick={() => startNewItem(node.id, 'folder')}
-                    >
-                      <Folder className="h-4 w-4" />
-                    </Button>
-                  </>
-                )}
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="h-6 w-6 p-0 hover:bg-destructive/10 hover:text-destructive"
-                  onClick={() => deleteItem(node.id, node.name, node.type)}
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
+            </FileExplorerContextMenu>
             {node.type === 'folder' && node.children && (
               <AnimatePresence>
                 {expandedFolders.has(node.id) && (
@@ -335,7 +354,7 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
                   size="sm"
                   className="ml-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground"
                 >
-                  <Plus className="w-4 h-4" />
+                  <Check className="w-4 h-4" />
                 </Button>
                 <Button
                   onClick={cancelNewItem}
@@ -463,19 +482,18 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
   // }
 
   return (
-    <div className="p-6 bg-background min-h-screen text-foreground">
+    <div className="px-8 py-8 bg-background min-h-screen text-foreground">
       <h1 className="text-3xl font-bold mb-6 text-foreground">
         Project Explorer
       </h1>
-      <div className="bg-card rounded-lg shadow-xl p-6 border">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {renderFileTree(fileTree)}
-        </motion.div>
-      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {renderFileTree(fileTree)}
+      </motion.div>
     </div>
   );
 }
