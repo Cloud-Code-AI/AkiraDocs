@@ -173,16 +173,37 @@ async function main() {
 
   cli
     .command('[directory]', 'Create a new Akira Docs site')
-    .action(async (directory: string = '.') => {
+    .option('--yes', 'Skip prompts and use default values')
+    .action(async (directory: string = '.', options: { yes?: boolean }) => {
       try {
-        const editorResponse = await enquirer.prompt<{ includeEditor: boolean }>({
-          type: 'confirm',
-          name: 'includeEditor',
-          message: 'Would you like to include the local editor? (Recommended for development)',
-          initial: true,
-        });
+        let editorResponse;
+        let configAnswers;
 
-        const configAnswers = await promptConfigQuestions();
+        if (options.yes) {
+          // Use default values without prompting
+          editorResponse = { includeEditor: true };
+          configAnswers = {
+            siteTitle: 'My Documentation',
+            siteDescription: 'Documentation powered by Akira Docs',
+            companyName: 'My Company',
+            githubUrl: '',
+            twitterUrl: '',
+            linkedinUrl: '',
+            enableAnalytics: false,
+            googleAnalyticsId: '',
+            enableAutoTranslate: false
+          };
+        } else {
+          // Existing prompt flow
+          editorResponse = await enquirer.prompt<{ includeEditor: boolean }>({
+            type: 'confirm',
+            name: 'includeEditor',
+            message: 'Would you like to include the local editor? (Recommended for development)',
+            initial: true,
+          });
+
+          configAnswers = await promptConfigQuestions();
+        }
 
         const spinner = ora('Creating project...').start();
 
