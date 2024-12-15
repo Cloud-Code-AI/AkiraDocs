@@ -116,7 +116,7 @@ export function TableOfContents({ publishDate, modifiedDate, author, locale }: T
                 5: 'ml-15', // h6
               }[level] || '';
 
-              console.log(heading.textContent, level, indentClass);
+              // console.log(heading.textContent, level, indentClass);
               return (
                 <li key={heading.id}>
                   <a
