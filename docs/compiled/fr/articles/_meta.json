@@ -4,10 +4,6 @@
     "title": "Bienvenue sur Akira Doc",
     "path": "/articles/welcome"
   },
-  "template": {
-    "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTest de billet de blog",
-    "path": "/articles/template"
-  },
   "ai_integration": {
     "title": "Ai Integration",
     "path": "/articles/ai_integration"
