@@ -21,6 +21,7 @@ interface ConfigAnswers {
   googleAnalyticsId?: string;
   enableAnalytics: boolean;
   enableAutoTranslate: boolean;
+  apiReference: boolean;
 }
 
 async function promptConfigQuestions() {
@@ -178,10 +179,11 @@ async function main() {
       try {
         let editorResponse;
         let configAnswers;
-
+        let apiReferenceResponse;
         if (options.yes) {
           // Use default values without prompting
           editorResponse = { includeEditor: true };
+          apiReferenceResponse = { includeApiReference: false };
           configAnswers = {
             siteTitle: 'My Documentation',
             siteDescription: 'Documentation powered by Akira Docs',
@@ -191,7 +193,8 @@ async function main() {
             linkedinUrl: '',
             enableAnalytics: false,
             googleAnalyticsId: '',
-            enableAutoTranslate: false
+            enableAutoTranslate: false,
+            apiReference: false
           };
         } else {
           // Existing prompt flow
@@ -200,6 +203,13 @@ async function main() {
             name: 'includeEditor',
             message: 'Would you like to include the local editor? (Recommended for development)',
             initial: true,
+          });
+
+          apiReferenceResponse = await enquirer.prompt<{ includeApiReference: boolean }>({
+            type: 'confirm',
+            name: 'includeApiReference',
+            message: 'Would you like to include the API reference template?',
+            initial: false,
           });
 
           configAnswers = await promptConfigQuestions();
@@ -233,6 +243,10 @@ async function main() {
             };
             await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
           }
+        }
+
+        if (apiReferenceResponse.includeApiReference) {
+          await copyDir(path.join(targetDir+'/src/app/apiReference', '../template/apiReference'), targetDir);
         }
 
         spinner.succeed(chalk.green('Project created successfully!'));

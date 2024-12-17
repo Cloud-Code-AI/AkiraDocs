@@ -21,6 +21,7 @@ export default defineConfig({
     // Copy main template
     await copyDir('../akiradocs', './template/default');
     await copyDir('../editor', './template/editor');
+    await copyDir('../apiReference', './template/apiReference');
 
     // Copy main README and gifs folder
     const rootDir = path.resolve(__dirname, '../..');
