@@ -21,6 +21,7 @@ interface ConfigAnswers {
   googleAnalyticsId?: string;
   enableAnalytics: boolean;
   enableAutoTranslate: boolean;
+  apiReference: boolean;
 }
 
 async function promptConfigQuestions() {
@@ -173,16 +174,46 @@ async function main() {
 
   cli
     .command('[directory]', 'Create a new Akira Docs site')
-    .action(async (directory: string = '.') => {
+    .option('--yes', 'Skip prompts and use default values')
+    .action(async (directory: string = '.', options: { yes?: boolean }) => {
       try {
-        const editorResponse = await enquirer.prompt<{ includeEditor: boolean }>({
-          type: 'confirm',
-          name: 'includeEditor',
-          message: 'Would you like to include the local editor? (Recommended for development)',
-          initial: true,
-        });
+        let editorResponse;
+        let configAnswers;
+        let apiReferenceResponse;
+        if (options.yes) {
+          // Use default values without prompting
+          editorResponse = { includeEditor: true };
+          apiReferenceResponse = { includeApiReference: false };
+          configAnswers = {
+            siteTitle: 'My Documentation',
+            siteDescription: 'Documentation powered by Akira Docs',
+            companyName: 'My Company',
+            githubUrl: '',
+            twitterUrl: '',
+            linkedinUrl: '',
+            enableAnalytics: false,
+            googleAnalyticsId: '',
+            enableAutoTranslate: false,
+            apiReference: false
+          };
+        } else {
+          // Existing prompt flow
+          editorResponse = await enquirer.prompt<{ includeEditor: boolean }>({
+            type: 'confirm',
+            name: 'includeEditor',
+            message: 'Would you like to include the local editor? (Recommended for development)',
+            initial: true,
+          });
 
-        const configAnswers = await promptConfigQuestions();
+          apiReferenceResponse = await enquirer.prompt<{ includeApiReference: boolean }>({
+            type: 'confirm',
+            name: 'includeApiReference',
+            message: 'Would you like to include the API reference template?',
+            initial: false,
+          });
+
+          configAnswers = await promptConfigQuestions();
+        }
 
         const spinner = ora('Creating project...').start();
 
@@ -212,6 +243,10 @@ async function main() {
             };
             await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
           }
+        }
+
+        if (apiReferenceResponse.includeApiReference) {
+          await copyDir(path.join(targetDir+'/src/app/apiReference', '../template/apiReference'), targetDir);
         }
 
         spinner.succeed(chalk.green('Project created successfully!'));

@@ -69,10 +69,9 @@ export default function Home() {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
-    setSources([]) // Reset sources
+    setSources([])
     
     try {
-      // Updated fetch path to use absolute URL
       const contextResponse = await fetch('/context/en_docs.txt');
       if (!contextResponse.ok) {
         throw new Error(`Failed to fetch context: ${contextResponse.status}`);
@@ -80,15 +79,15 @@ export default function Home() {
       const contextData = await contextResponse.text();
       const docsContext = contextData;
 
-      // Initialize MLC Engine
       const engine = await CreateMLCEngine(
         "Llama-3.2-1B-Instruct-q4f16_1-MLC",
-        { 
-          initProgressCallback: (progress: any) => console.log(progress) 
+        { initProgressCallback: (progress: any) => console.log(progress)
+        },
+        {
+          context_window_size: 100000,
         }
       );
 
-      // Prepare messages for the chat with context
       const messages = [
         { 
           role: "system", 
@@ -120,15 +119,24 @@ export default function Home() {
         }
       ];
 
-      console.log(messages)
+      console.log("messages", messages)
 
-      // Get response from MLC chatbot
-      const reply = await engine.chat.completions.create({ messages: messages as ChatCompletionMessageParam[] });
-      const aiContent = reply.choices[0].message.content || '';
+      const chunks = await engine.chat.completions.create({ 
+        messages: messages as ChatCompletionMessageParam[],
+        stream: true,
+        stream_options: { include_usage: true }
+      });
+
+      let aiContent = "";
+      for await (const chunk of chunks) {
+        const newContent = chunk.choices[0]?.delta.content || "";
+        aiContent += newContent;
+        // Update the response in real-time
+        setAiResponse(aiContent);
+      }
       
-      // Extract sources and clean response
+      // Extract sources after the full response is received
       const { cleanResponse, sources } = extractSources(aiContent);
-      
       setAiResponse(cleanResponse);
       setSources(sources);
       

@@ -49,18 +49,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+function formatRedirectUrl(locale: string, type: string, slug: string): string {
+  // Remove leading/trailing slashes
+  const cleanSlug = slug.replace(/^\/+|\/+$/g, '');
+  
+  // Check if slug already contains locale and/or type
+  const parts = cleanSlug.split('/');
+  const slugWithoutLocaleAndType = parts
+    .filter(part => part !== locale && part !== type)
+    .join('/');
+  
+  return `/${locale}/${type}/${slugWithoutLocaleAndType}`;
+}
+
 export default async function Page({ params }: Props) {
   const resolvedParams = await Promise.resolve(params);
   const { locale, type } = resolvedParams;
   
   // Get the first/default content for this type
-  const recentContent = getRecentContent(`${locale}/${type}`);
+  const recentContent = await getRecentContent(`${locale}/${type}`);
   
   if (recentContent) {
-    const redirectUrl = `/${locale}/${type}/${recentContent.slug.replace(`${type}/`, '')}`;
+    const redirectUrl = formatRedirectUrl(locale, type, recentContent.slug);
     redirect(redirectUrl);
   }
 
   // Fallback redirect if no content found
+  // console.log("redirecting to", `/${locale}`);
   redirect(`/${locale}`);
 }
+

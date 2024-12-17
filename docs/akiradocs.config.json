@@ -27,7 +27,7 @@
               { "label": "navigation.menu.aiSearch", "href": "/aiSearch", "icon": "/sparkles.svg", "show": true },
               { "label": "navigation.menu.docs", "href": "/en/docs", "icon": "/legacy.svg", "show": true },
               { "label": "navigation.menu.articles", "href": "/en/articles", "icon": "/articles.svg", "show": true },
-              { "label": "navigation.menu.apiReference", "href": "/apiReference", "icon": "/api.svg", "show": true }
+              { "label": "navigation.menu.apiReference", "href": "/apiReference", "icon": "/api.svg", "show": false }
           ]
       }
   },

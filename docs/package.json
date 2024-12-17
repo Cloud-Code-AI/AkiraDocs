@@ -1,16 +1,17 @@
 {
   "name": "akiradocs",
-  "version": "1.0.44",
+  "version": "1.0.47",
   "private": true,
   "scripts": {
     "translate": "npm run compile && node scripts/translate.js",
-    "compile": "node scripts/compile.js",
+    "compile": "node scripts/compile.js && npm run generate-manifest",
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
     "dev": "npm run compile && set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=true && next dev",
     "build": "npm run compile && npm run generate-sitemap && set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=false && next build",
     "start": "set NEXT_PUBLIC_AKIRADOCS_EDIT_MODE=false && next start",
     "lint": "next lint",
-    "migrate-gitbook": "node scripts/migrations/gitbook.js"
+    "migrate-gitbook": "node scripts/migrations/gitbook.js",
+    "generate-manifest": "node scripts/generate-manifest.js"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.0.1",
