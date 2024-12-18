@@ -15,7 +15,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { fetchAllContent } from "@/lib/getContents";
 import { FileExplorerContextMenu } from "@/components/context-menu";
 import { LanguageSelector } from "./language-selector";
-import { InsertionPointContextMenu } from "./insertion-point-context-menu";
 import { InsertionPoint } from "./insertion-point";
 import * as React from "react";
 
