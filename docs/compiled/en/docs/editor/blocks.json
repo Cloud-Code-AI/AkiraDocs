@@ -1,0 +1,78 @@
+{
+  "title": "Block Types",
+  "description": "Comprehensive guide to all available block types in the editor",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Blocks",
+    "Content Types",
+    "Editor Components"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Text Blocks",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": [
+        "<strong>Paragraph</strong>: Basic text content with rich formatting",
+        "<strong>Heading</strong>: Six levels of headers (H1-H6)",
+        "<strong>List</strong>: Ordered and unordered lists",
+        "<strong>Quote</strong>: Blockquotes for citations",
+        "<strong>Code</strong>: Syntax-highlighted code blocks"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Media Blocks",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "<strong>Image</strong>: Support for images with captions",
+        "<strong>Video</strong>: Embedded video player",
+        "<strong>Audio</strong>: Audio player with controls",
+        "<strong>File</strong>: File attachments and downloads"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Interactive Blocks",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "<strong>Button</strong>: Clickable buttons with custom actions",
+        "<strong>Checklist</strong>: Interactive task lists",
+        "<strong>Table</strong>: Structured data presentation"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+} 

@@ -1,71 +1,74 @@
 {
   "title": "Überblick über den Editor",
-  "description": "",
+  "description": "Ein umfassender Überblick über den blockbasierten Editor von AkiraDocs",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
   "modifiedDate": "2024-11-26T00:00:00.000Z",
   "category": "Editor",
   "keywords": [
     "Editor",
-    "Notion-like",
-    "Interface"
+    "Blockbasiert",
+    "Überblick",
+    "Einführung"
   ],
   "blocks": [
     {
       "id": "1",
       "type": "paragraph",
-      "content": "AkiraDocs verfügt über einen modernen Editor ähnlich wie Notion, der die Einfachheit der blockbasierten Bearbeitung mit der Leistungsfähigkeit von Markdown kombiniert."
+      "content": "AkiraDocs verfügt über einen modernen, blockbasierten Editor, der die Einfachheit der visuellen Bearbeitung mit der Leistungsfähigkeit von Markdown kombiniert. Er wurde sowohl für Entwickler als auch für Content-Ersteller entwickelt und bietet eine flexible und intuitive Möglichkeit, Dokumentation zu erstellen und zu verwalten."
     },
     {
       "id": "2",
       "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nEditor-Oberfläche",
+      "content": "Hauptfunktionen",
       "metadata": {
         "level": 2
       }
     },
     {
       "id": "3",
-      "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche, wobei die ursprüngliche Formatierung beibehalten wird:\n\nHauptkomponenten",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "4",
       "type": "list",
       "content": [
-        "<strong>Werkzeugleiste</strong>: Schnellzugriff auf Formatierungsoptionen und Blockarten",
-        "<strong>Inhaltsbereich</strong>: Blockbasierter Bearbeitungsbereich",
-        "<strong>Seitenleiste</strong>: Navigation und Dokumentstruktur",
-        "<strong>Befehlspalette</strong>: Schnellbefehle (Ctrl/Cmd + P)"
+        "Blockbasierte Bearbeitung mit Drag-and-Drop-Unterstützung",
+        "Umfangreiche Textformatierung mit Markdown-Unterstützung",
+        "Echtzeit-Kollaborationsfunktionen",
+        "Erweiterbares Block-System",
+        "Integrierte Versionskontrolle",
+        "KI-gestützte Inhaltsunterstützung"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "5",
+      "id": "4",
       "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nBlockstruktur",
+      "content": "Systemarchitektur",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": "Der Editor basiert auf einem modernen Stack mit React und Next.js und verfügt über eine modulare Architektur, die die Aufgaben zwischen Blockverwaltung, Inhaltsverarbeitung und UI-Komponenten trennt."
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Kernkomponenten",
       "metadata": {
         "level": 3
       }
     },
     {
-      "id": "6",
-      "type": "paragraph",
-      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wird:\n\nJedes Inhaltselement ist ein Block, der sein kann:"
-    },
-    {
       "id": "7",
       "type": "list",
       "content": [
-        "Ziehen und Ablegen zum Neuanordnen",
-        "Konvertieren zwischen verschiedenen Typen",
-        "Dupliziert oder gelöscht",
-        "Eingebettet in andere Blöcke"
+        "<strong>Block-Manager</strong>: Verwaltet die Erstellung, Löschung und Anordnung von Blöcken",
+        "<strong>Content-Editor</strong>: Verwaltet Texteingabe und Formatierung",
+        "<strong>Dateisystem</strong>: Behandelt die Persistenz von Inhalten und Dateiverwaltung",
+        "<strong>UI-Komponenten</strong>: Stellt die Benutzeroberflächen-Elemente bereit"
       ],
       "metadata": {
         "listType": "unordered"
@@ -74,112 +77,15 @@
     {
       "id": "8",
       "type": "heading",
-      "content": "Beginnend",
+      "content": "Erste Schritte",
       "metadata": {
         "level": 2
       }
     },
     {
       "id": "9",
-      "type": "heading",
-      "content": "Inhaltserstellung",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "10",
       "type": "paragraph",
-      "content": "1. Klicken Sie auf die Schaltfläche '+' oder drücken Sie '/', um einen neuen Block hinzuzufügen\n2. Wählen Sie den Blocktyp im Dropdown-Menü aus\n3. Beginnen Sie mit dem Schreiben oder fügen Sie Inhalte ein"
-    },
-    {
-      "id": "11",
-      "type": "heading",
-      "content": "Grundlegende Operationen",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "12",
-      "type": "code",
-      "content": "/ → Menü des Blocks öffnen\n⌘/Ctrl + P → Befehlspalette\n⌘/Ctrl + / → Tastenkombinationen anzeigen\n↑↓ → Zwischen Blöcken navigieren",
-      "metadata": {
-        "language": "plaintext",
-        "showLineNumbers": true
-      }
-    },
-    {
-      "id": "13",
-      "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nArten von Blöcken",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
-      "id": "14",
-      "type": "heading",
-      "content": "Textblöcke",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "15",
-      "type": "list",
-      "content": [
-        "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nAbsätze",
-        "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Formatieren beibehalten wurde:\n\nÜberschriften (H1-H6)",
-        "Listen (mit Aufzählungszeichen, nummeriert)",
-        "Hier ist die Übersetzung ins Deutsche:\n\nZitate",
-        "Hier ist die Übersetzung ins Deutsche:\n\nAnrufe"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "16",
-      "type": "heading",
-      "content": "Reichhaltiger Multimediainhalt",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "17",
-      "type": "list",
-      "content": [
-        "Hier ist die Übersetzung auf Deutsch:\n\nBilder",
-        "Hier ist die Übersetzung ins Deutsche:\n\nVideos",
-        "Inkrustationen",
-        "Dateien",
-        "Codeblocken"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "18",
-      "type": "heading",
-      "content": "Spezialblöcke",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "19",
-      "type": "list",
-      "content": [
-        "Tableaux (Demnächst)",
-        "Teiler",
-        "Benutzerdefinierte Komponenten (Bald verfügbar)"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
+      "content": "Um den Editor zu verwenden, stellen Sie sicher, dass Node.js 18+ installiert ist. Der Editor ist standardmäßig in AkiraDocs-Installationen enthalten. Detaillierte Einrichtungsanweisungen finden Sie in der Anleitung für erste Schritte."
     }
   ]
 }

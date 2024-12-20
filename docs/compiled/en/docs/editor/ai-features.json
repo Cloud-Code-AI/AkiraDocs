@@ -1,0 +1,88 @@
+{
+  "title": "AI Features",
+  "description": "Explore the AI-powered capabilities of the AkiraDocs editor",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "AI",
+    "Machine Learning",
+    "Content Generation",
+    "Smart Features"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "AI Providers",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": [
+        "<strong>OpenAI</strong>: GPT-4 and GPT-3.5 integration",
+        "<strong>Anthropic</strong>: Claude integration",
+        "<strong>Custom Models</strong>: Support for self-hosted models",
+        "<strong>API Configuration</strong>: Flexible provider setup"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Content Enhancement",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Automatic grammar and style correction",
+        "Content summarization",
+        "Text expansion and elaboration",
+        "Tone adjustment and rewriting"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Translation Support",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "Built-in AI translation capabilities support content localization across multiple languages while maintaining context and technical accuracy."
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Configuration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "// AI Feature Configuration\n{\n  \"aiProviders\": {\n    \"openai\": {\n      \"apiKey\": \"your-api-key\",\n      \"model\": \"gpt-4\"\n    },\n    \"anthropic\": {\n      \"apiKey\": \"your-api-key\",\n      \"model\": \"claude-2\"\n    }\n  }\n}",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    }
+  ]
+} 

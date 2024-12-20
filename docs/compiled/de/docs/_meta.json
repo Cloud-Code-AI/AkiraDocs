@@ -51,12 +51,24 @@
     "title": "Editor",
     "items": {
       "overview": {
-        "title": "Überblick über den Editor",
-        "path": "/docs/editor/overview"
+        "title": "Überblick",
+        "path": "/de/docs/editor/overview"
+      },
+      "getting-started": {
+        "title": "Erste Schritte",
+        "path": "/de/docs/editor/getting-started"
+      },
+      "blocks": {
+        "title": "Blocktypen",
+        "path": "/de/docs/editor/blocks"
       },
       "features": {
-        "title": "Editormerkmale",
-        "path": "/docs/editor/features"
+        "title": "Funktionen",
+        "path": "/de/docs/editor/features"
+      },
+      "ai-features": {
+        "title": "KI-Funktionen",
+        "path": "/de/docs/editor/ai-features"
       }
     }
   },

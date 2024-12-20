@@ -1,0 +1,88 @@
+{
+  "title": "KI-Funktionen",
+  "description": "Entdecken Sie die KI-gestützten Funktionen des AkiraDocs-Editors",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "KI",
+    "Maschinelles Lernen",
+    "Inhaltsgenerierung",
+    "Intelligente Funktionen"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "KI-Anbieter",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": [
+        "<strong>OpenAI</strong>: GPT-4 und GPT-3.5 Integration",
+        "<strong>Anthropic</strong>: Claude Integration",
+        "<strong>Eigene Modelle</strong>: Unterstützung für selbst gehostete Modelle",
+        "<strong>API-Konfiguration</strong>: Flexible Anbieter-Einrichtung"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Inhaltsverbesserung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Automatische Grammatik- und Stilkorrektur",
+        "Inhaltszusammenfassung",
+        "Texterweiterung und -ausarbeitung",
+        "Tonanpassung und Umschreibung"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Übersetzungsunterstützung",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "Integrierte KI-Übersetzungsfunktionen unterstützen die Lokalisierung von Inhalten in mehreren Sprachen unter Beibehaltung von Kontext und technischer Genauigkeit."
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Konfiguration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "// KI-Funktionskonfiguration\n{\n  \"aiProviders\": {\n    \"openai\": {\n      \"apiKey\": \"ihr-api-schlüssel\",\n      \"model\": \"gpt-4\"\n    },\n    \"anthropic\": {\n      \"apiKey\": \"ihr-api-schlüssel\",\n      \"model\": \"claude-2\"\n    }\n  }\n}",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    }
+  ]
+}

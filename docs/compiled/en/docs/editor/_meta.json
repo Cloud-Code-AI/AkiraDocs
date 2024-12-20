@@ -3,8 +3,20 @@
     "title": "Overview",
     "path": "/en/docs/editor/overview"
   },
+  "getting-started": {
+    "title": "Getting Started",
+    "path": "/en/docs/editor/getting-started"
+  },
+  "blocks": {
+    "title": "Block Types",
+    "path": "/en/docs/editor/blocks"
+  },
   "features": {
     "title": "Features",
     "path": "/en/docs/editor/features"
+  },
+  "ai-features": {
+    "title": "AI Features",
+    "path": "/en/docs/editor/ai-features"
   }
 }

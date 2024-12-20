@@ -1,50 +1,111 @@
 {
-  "title": "Welcome to Akira Doc",
-  "description": "Get started with Akira Docs - Next-gen documentation powered by AI",
-  "author": "Anonymous",
+  "title": "Welcome to Cloud Code AI: Building the Future of AI-Powered Documentation",
+  "description": "Join us on our journey to revolutionizing customer experience with advanced AI documentation tools.",
+  "author": "Cloud Code AI Team",
   "publishDate": "2024-11-10T00:00:00.000Z",
   "modifiedDate": "2024-11-10T00:00:00.000Z",
-  "category": "Getting Started",
+  "category": "Company Blog",
   "keywords": [
-    "Akira Docs",
-    "Documentation",
-    "AI"
+    "Cloud Code AI",
+    "AI Documentation",
+    "Customer Experience",
+    "AI DevOps"
   ],
   "blocks": [
     {
       "id": "1",
       "type": "paragraph",
-      "content": "Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation."
+      "content": "At Cloud Code AI, our mission is to harness the power of artificial intelligence to transform the way developers and organizations operate. Our journey began with the ambitious goal of building an AI DevOps engineer, <strong>Kaizen</strong>, designed to streamline and automate complex development operations. You can explore <strong>Kaizen</strong> at [git.new/kaizen](https://git.new/cloudcodeai)."
     },
     {
       "id": "2",
       "type": "heading",
-      "content": "Key Features",
+      "content": "Our Evolution",
       "metadata": {
         "level": 2
       }
     },
     {
       "id": "3",
+      "type": "paragraph",
+      "content": "While our initial focus on creating an AI-driven DevOps engineer laid a strong foundation, we recognized the immense potential in enhancing customer experience through intelligent documentation. This insight led us to pivot and develop an AI-powered documentation tool, <strong>Akiradocs</strong>. Discover <strong>Akiradocs</strong> at [git.new/akiradocs](https://git.new/akiradocs)."
+    },
+    {
+      "id": "4",
+      "type": "heading",
+      "content": "What We're Building",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "5",
+      "type": "paragraph",
+      "content": "Our current project, <strong>Akiradocs</strong>, is an AI-powered documentation tool designed to simplify and enhance the creation, management, and utilization of documentation. By leveraging AI, we aim to provide:"
+    },
+    {
+      "id": "6",
       "type": "list",
       "content": [
-        "Easy to customize",
-        "AI-powered search",
-        "Block-based content system",
-        "Responsive design"
+        "<strong>Smart Content Generation:</strong> Automatically generate high-quality documentation based on your project details.",
+        "<strong>AI-Powered Search:</strong> Enable intuitive and intelligent search capabilities to help users find the information they need quickly.",
+        "<strong>Personalized User Experience:</strong> Tailor the documentation experience to individual user needs, making information more accessible and actionable.",
+        "<strong>Seamless Integration:</strong> Easily integrate with your existing tools and workflows to ensure a smooth and efficient documentation process."
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "4",
-      "type": "callout",
-      "content": "Start by customizing this template to match your project's needs!",
+      "id": "7",
+      "type": "heading",
+      "content": "Future Innovations",
       "metadata": {
-        "type": "info",
-        "title": "Getting Started"
+        "level": 2
       }
+    },
+    {
+      "id": "8",
+      "type": "paragraph",
+      "content": "We're excited about the future of documentation, and we're working on groundbreaking features:"
+    },
+    {
+      "id": "9",
+      "type": "list",
+      "content": [
+        "<strong>Automated Documentation Generation:</strong> Using advanced AI to automatically create comprehensive documentation from your codebase, ensuring your docs stay in sync with your code.",
+        "<strong>Documentation Quality Scoring:</strong> Implementing an intelligent scoring system that evaluates and helps improve documentation quality, completeness, and clarity.",
+        "<strong>LLM Knowledge Integration:</strong> Developing a revolutionary approach for Large Language Models to learn and understand software systems through documentation, making AI assistance more accurate and context-aware."
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "10",
+      "type": "heading",
+      "content": "Our Vision",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "11",
+      "type": "paragraph",
+      "content": "At Cloud Code AI, we are committed to improving customer experience by making documentation more accessible, interactive, and intelligent. Our AI-driven approach ensures that both developers and end-users can interact with documentation more efficiently, leading to better product understanding and satisfaction."
+    },
+    {
+      "id": "12",
+      "type": "heading",
+      "content": "Get Started",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "13",
+      "type": "paragraph",
+      "content": "We invite you to join us on this exciting journey. Whether you're a developer looking for smarter documentation tools or an organization aiming to enhance your customer experience, Cloud Code AI has the solutions you need. Stay tuned for updates, and feel free to reach out to our team for more information."
     }
   ]
 }
