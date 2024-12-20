@@ -40,7 +40,7 @@
     {
       "id": "4",
       "type": "image",
-      "content": "/test_image.png",
+      "content": "/akiradocs_logo.svg",
       "metadata": {
         "alt": "Test Image",
         "caption": "This is a test image",
@@ -51,7 +51,11 @@
     {
       "id": "5",
       "type": "list",
-      "content": ["ITEM 1", "ITEM 2", "ITEM 3"],
+      "content": [
+        "Item 1",
+        "Item 2",
+        "Item 3"
+      ],
       "metadata": {
         "listType": "unordered"
       }
@@ -89,40 +93,19 @@
     },
     {
       "id": "9",
-      "type": "toggleList",
-      "content": "",
+      "type": "checkList",
+      "content": "[{\"text\":\"Check Item 1\",\"checked\":true},{\"text\":\"Check Item 2\",\"checked\":false}]",
       "metadata": {
-        "items": [
-          {
-            "title": "Toggle Item 1",
-            "content": "Content for toggle item 1"
-          },
-          {
-            "title": "Toggle Item 2",
-            "content": "Content for toggle item 2"
-          }
-        ]
+        "align": "left",
+        "styles": {
+          "bold": false,
+          "italic": false,
+          "underline": false
+        }
       }
     },
     {
       "id": "10",
-      "type": "checkList",
-      "content": "",
-      "metadata": {
-        "checkedItems": [
-          {
-            "text": "Check Item 1",
-            "checked": true
-          },
-          {
-            "text": "Check Item 2",
-            "checked": false
-          }
-        ]
-      }
-    },
-    {
-      "id": "11",
       "type": "video",
       "content": "/test_video.mp4",
       "metadata": {
@@ -130,7 +113,7 @@
       }
     },
     {
-      "id": "12",
+      "id": "11",
       "type": "audio",
       "content": "/test_audio.mp3",
       "metadata": {
@@ -138,7 +121,7 @@
       }
     },
     {
-      "id": "13",
+      "id": "12",
       "type": "file",
       "content": "/test_document.pdf",
       "metadata": {
@@ -146,20 +129,30 @@
       }
     },
     {
-      "id": "14",
-      "type": "emoji",
-      "content": "😊",
-      "metadata": {
-        "label": "smiling face"
-      }
-    },
-    {
-      "id": "15",
+      "id": "13",
       "type": "callout",
       "content": "This is an important callout message.",
       "metadata": {
         "type": "info",
         "title": "Important"
+      }
+    },
+    {
+      "id": "14",
+      "type": "spacer",
+      "content": "large",
+      "metadata": {}
+    },
+    {
+      "id": "15",
+      "type": "button",
+      "content": "Visit AkiraDocs",
+      "metadata": {
+        "buttonUrl": "https://akiradocs.ai",
+        "buttonStyle": {
+          "size": "lg",
+          "radius": "full"
+        }
       }
     }
   ]
