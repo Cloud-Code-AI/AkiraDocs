@@ -1,13 +1,13 @@
 {
-  "title": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nTest de billet de blog",
-  "description": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nUn article de blog de test pour démontrer tous les types de blocs.",
+  "title": "Test de billet de blog",
+  "description": "Un article de blog de test pour démontrer tous les types de blocs.",
   "author": "Anonymous",
   "date": "2024-11-08",
   "blocks": [
     {
       "id": "1",
       "type": "heading",
-      "content": "Voici la traduction en français tout en conservant le formatage d'origine :\n\nEn-tête d'exemple Exemple1",
+      "content": "En-tête d'exemple",
       "metadata": {
         "level": 1,
         "styles": {
@@ -19,7 +19,7 @@
     {
       "id": "2",
       "type": "paragraph",
-      "content": "Voici la traduction en français, avec le formatage d'origine conservé :\n\nCe paragraphe fait partie de l'entrée de test du blog. Il démontre le bloc de paragraphe."
+      "content": "Ce paragraphe fait partie de l'entrée de test du blog. Il démontre le bloc de paragraphe."
     },
     {
       "id": "3",
@@ -45,9 +45,9 @@
       "id": "5",
       "type": "list",
       "content": [
-        "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nArticle 1",
-        "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nArticle 2",
-        "Voici la traduction en français, en conservant la mise en forme d'origine :\n\nArticle 3"
+        "Article 1",
+        "Article 2",
+        "Article 3"
       ],
       "metadata": {
         "listType": "unordered"
@@ -86,40 +86,19 @@
     },
     {
       "id": "9",
-      "type": "toggleList",
-      "content": "",
+      "type": "checkList",
+      "content": "[{\"text\":\"Check Item 1\",\"checked\":true},{\"text\":\"Check Item 2\",\"checked\":false}]",
       "metadata": {
-        "items": [
-          {
-            "title": "Toggle Item 1",
-            "content": "Content for toggle item 1"
-          },
-          {
-            "title": "Toggle Item 2",
-            "content": "Content for toggle item 2"
-          }
-        ]
+        "align": "left",
+        "styles": {
+          "bold": false,
+          "italic": false,
+          "underline": false
+        }
       }
     },
     {
       "id": "10",
-      "type": "checkList",
-      "content": "",
-      "metadata": {
-        "checkedItems": [
-          {
-            "text": "Check Item 1",
-            "checked": true
-          },
-          {
-            "text": "Check Item 2",
-            "checked": false
-          }
-        ]
-      }
-    },
-    {
-      "id": "11",
       "type": "video",
       "content": "/vidéo_de_test.mp4",
       "metadata": {
@@ -127,7 +106,7 @@
       }
     },
     {
-      "id": "12",
+      "id": "11",
       "type": "audio",
       "content": "/audio_de_test.mp3",
       "metadata": {
@@ -135,7 +114,7 @@
       }
     },
     {
-      "id": "13",
+      "id": "12",
       "type": "file",
       "content": "/document_de_test.pdf",
       "metadata": {
@@ -143,20 +122,30 @@
       }
     },
     {
-      "id": "14",
-      "type": "emoji",
-      "content": "😊",
-      "metadata": {
-        "label": "smiling face"
-      }
-    },
-    {
-      "id": "15",
+      "id": "13",
       "type": "callout",
       "content": "Voici un message d'avertissement important.",
       "metadata": {
         "type": "info",
         "title": "Important"
+      }
+    },
+    {
+      "id": "14",
+      "type": "spacer",
+      "content": "large",
+      "metadata": {}
+    },
+    {
+      "id": "15",
+      "type": "button",
+      "content": "Visiter AkiraDocs",
+      "metadata": {
+        "buttonUrl": "https://akiradocs.ai",
+        "buttonStyle": {
+          "size": "lg",
+          "radius": "full"
+        }
       }
     }
   ]
