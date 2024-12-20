@@ -1,0 +1,70 @@
+{
+  "title": "Erste Schritte mit dem Editor",
+  "description": "Lernen Sie, wie Sie den AkiraDocs-Editor effektiv nutzen können",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Erste Schritte",
+    "Tutorial",
+    "Einrichtung",
+    "Grundlegende Nutzung"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Schnellstart",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Der Einstieg in den AkiraDocs-Editor ist unkompliziert. Diese Anleitung führt Sie durch die grundlegende Einrichtung und erste Nutzung."
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Grundlegende Funktionen",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Klicken Sie auf den '+'-Button, um einen neuen Block hinzuzufügen",
+        "Ziehen Sie Blöcke, um sie neu anzuordnen",
+        "Nutzen Sie die Werkzeugleiste zur Textformatierung"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Tastaturkürzel",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "6",
+      "type": "heading",
+      "content": "Ihr erstes Dokument erstellen",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "7",
+      "type": "paragraph",
+      "content": "1. Klicken Sie auf 'Neue Datei' in der Seitenleiste\n2. Fügen Sie einen Titel und eine Beschreibung hinzu\n3. Fügen Sie Blöcke mit dem '+'-Button oder dem '/'-Befehl hinzu\n4. Nutzen Sie Drag & Drop, um Ihre Inhalte zu organisieren\n5. Speichern Sie Ihre Arbeit mit dem Speichern-Button"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Tipos de bloques",
+  "description": "Guía completa de todos los tipos de bloques disponibles en el editor",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Bloques",
+    "Tipos de contenido",
+    "Componentes del editor"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Bloques de texto",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": [
+        "<strong>Párrafo</strong>: Contenido de texto básico con formato enriquecido",
+        "<strong>Encabezado</strong>: Seis niveles de encabezados (H1-H6)",
+        "<strong>Lista</strong>: Listas ordenadas y no ordenadas",
+        "<strong>Cita</strong>: Bloques de citas para citaciones",
+        "<strong>Código</strong>: Bloques de código con resaltado de sintaxis"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Bloques de medios",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "<strong>Imagen</strong>: Soporte para imágenes con leyendas",
+        "<strong>Video</strong>: Reproductor de video integrado",
+        "<strong>Audio</strong>: Reproductor de audio con controles",
+        "<strong>Archivo</strong>: Archivos adjuntos y descargas"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Bloques interactivos",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "<strong>Botón</strong>: Botones clicables con acciones personalizadas",
+        "<strong>Lista de verificación</strong>: Listas de tareas interactivas",
+        "<strong>Tabla</strong>: Presentación de datos estructurados"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+} 

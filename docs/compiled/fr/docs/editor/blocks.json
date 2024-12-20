@@ -1,0 +1,78 @@
+{
+  "title": "Types de blocs",
+  "description": "Guide complet de tous les types de blocs disponibles dans l'éditeur",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Blocs",
+    "Types de contenu",
+    "Composants de l'éditeur"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Blocs de texte",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": [
+        "<strong>Paragraphe</strong> : Contenu texte de base avec formatage riche",
+        "<strong>Titre</strong> : Six niveaux de titres (H1-H6)",
+        "<strong>Liste</strong> : Listes ordonnées et non ordonnées",
+        "<strong>Citation</strong> : Blocs de citation pour les références",
+        "<strong>Code</strong> : Blocs de code avec coloration syntaxique"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Blocs médias",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "<strong>Image</strong> : Support pour les images avec légendes",
+        "<strong>Vidéo</strong> : Lecteur vidéo intégré",
+        "<strong>Audio</strong> : Lecteur audio avec contrôles",
+        "<strong>Fichier</strong> : Pièces jointes et téléchargements"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Blocs interactifs",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "<strong>Bouton</strong> : Boutons cliquables avec actions personnalisées",
+        "<strong>Liste de contrôle</strong> : Listes de tâches interactives",
+        "<strong>Tableau</strong> : Présentation de données structurées"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+} 

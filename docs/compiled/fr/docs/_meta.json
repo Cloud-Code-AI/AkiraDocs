@@ -54,9 +54,21 @@
         "title": "Aperçu de l'éditeur",
         "path": "/docs/editor/overview"
       },
+      "getting-started": {
+        "title": "Premiers pas",
+        "path": "/docs/editor/getting-started"
+      },
+      "blocks": {
+        "title": "Types de blocs",
+        "path": "/docs/editor/blocks"
+      },
       "features": {
-        "title": "Fonctionnalités de l'éditeur",
+        "title": "Fonctionnalités",
         "path": "/docs/editor/features"
+      },
+      "ai-features": {
+        "title": "Fonctionnalités d'IA",
+        "path": "/docs/editor/ai-features"
       }
     }
   },

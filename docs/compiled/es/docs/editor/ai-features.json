@@ -1,0 +1,88 @@
+{
+  "title": "Características de IA",
+  "description": "Explore las capacidades impulsadas por IA del editor AkiraDocs",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "IA",
+    "Aprendizaje automático",
+    "Generación de contenido",
+    "Características inteligentes"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Proveedores de IA",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": [
+        "<strong>OpenAI</strong>: Integración con GPT-4 y GPT-3.5",
+        "<strong>Anthropic</strong>: Integración con Claude",
+        "<strong>Modelos personalizados</strong>: Soporte para modelos autoalojados",
+        "<strong>Configuración de API</strong>: Configuración flexible de proveedores"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Mejora de contenido",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Corrección automática de gramática y estilo",
+        "Resumen de contenido",
+        "Expansión y elaboración de texto",
+        "Ajuste de tono y reescritura"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Soporte de traducción",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "Las capacidades de traducción por IA integradas admiten la localización de contenido en varios idiomas mientras mantienen el contexto y la precisión técnica."
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Configuración",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "// Configuración de características de IA\n{\n  \"aiProviders\": {\n    \"openai\": {\n      \"apiKey\": \"su-clave-api\",\n      \"model\": \"gpt-4\"\n    },\n    \"anthropic\": {\n      \"apiKey\": \"su-clave-api\",\n      \"model\": \"claude-2\"\n    }\n  }\n}",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    }
+  ]
+} 

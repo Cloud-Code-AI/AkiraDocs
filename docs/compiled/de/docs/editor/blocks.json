@@ -1,0 +1,78 @@
+{
+  "title": "Block-Typen",
+  "description": "Umfassender Leitfaden zu allen verfügbaren Block-Typen im Editor",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "Blöcke",
+    "Inhaltstypen",
+    "Editor-Komponenten"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Text-Blöcke",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": [
+        "<strong>Absatz</strong>: Grundlegender Text mit umfangreicher Formatierung",
+        "<strong>Überschrift</strong>: Sechs Ebenen von Überschriften (H1-H6)",
+        "<strong>Liste</strong>: Geordnete und ungeordnete Listen",
+        "<strong>Zitat</strong>: Blockzitate für Zitierungen",
+        "<strong>Code</strong>: Syntax-hervorgehobene Code-Blöcke"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Medien-Blöcke",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "<strong>Bild</strong>: Unterstützung für Bilder mit Beschriftungen",
+        "<strong>Video</strong>: Eingebetteter Video-Player",
+        "<strong>Audio</strong>: Audio-Player mit Steuerungselementen",
+        "<strong>Datei</strong>: Dateianhänge und Downloads"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Interaktive Blöcke",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "list",
+      "content": [
+        "<strong>Button</strong>: Klickbare Schaltflächen mit benutzerdefinierten Aktionen",
+        "<strong>Checkliste</strong>: Interaktive Aufgabenlisten",
+        "<strong>Tabelle</strong>: Strukturierte Datenpräsentation"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    }
+  ]
+}
