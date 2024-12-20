@@ -52,23 +52,23 @@
     "items": {
       "overview": {
         "title": "Überblick",
-        "path": "/de/docs/editor/overview"
+        "path": "/docs/editor/overview"
       },
       "getting-started": {
         "title": "Erste Schritte",
-        "path": "/de/docs/editor/getting-started"
+        "path": "/docs/editor/getting-started"
       },
       "blocks": {
         "title": "Blocktypen",
-        "path": "/de/docs/editor/blocks"
+        "path": "/docs/editor/blocks"
       },
       "features": {
         "title": "Funktionen",
-        "path": "/de/docs/editor/features"
+        "path": "/docs/editor/features"
       },
       "ai-features": {
         "title": "KI-Funktionen",
-        "path": "/de/docs/editor/ai-features"
+        "path": "/docs/editor/ai-features"
       }
     }
   },

@@ -1,0 +1,88 @@
+{
+  "title": "Fonctionnalités d'IA",
+  "description": "Découvrez les capacités alimentées par l'IA de l'éditeur AkiraDocs",
+  "author": "Akira Team",
+  "publishDate": "2024-11-26T00:00:00.000Z",
+  "modifiedDate": "2024-11-26T00:00:00.000Z",
+  "category": "Editor",
+  "keywords": [
+    "IA",
+    "Apprentissage automatique",
+    "Génération de contenu",
+    "Fonctionnalités intelligentes"
+  ],
+  "blocks": [
+    {
+      "id": "1",
+      "type": "heading",
+      "content": "Fournisseurs d'IA",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "2",
+      "type": "list",
+      "content": [
+        "<strong>OpenAI</strong> : Intégration GPT-4 et GPT-3.5",
+        "<strong>Anthropic</strong> : Intégration Claude",
+        "<strong>Modèles personnalisés</strong> : Support pour les modèles auto-hébergés",
+        "<strong>Configuration API</strong> : Configuration flexible des fournisseurs"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "3",
+      "type": "heading",
+      "content": "Amélioration du contenu",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "4",
+      "type": "list",
+      "content": [
+        "Correction automatique de la grammaire et du style",
+        "Résumé du contenu",
+        "Expansion et élaboration du texte",
+        "Ajustement du ton et réécriture"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "5",
+      "type": "heading",
+      "content": "Support de traduction",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "6",
+      "type": "paragraph",
+      "content": "Les capacités de traduction IA intégrées prennent en charge la localisation du contenu dans plusieurs langues tout en maintenant le contexte et la précision technique."
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Configuration",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "// Configuration des fonctionnalités IA\n{\n  \"aiProviders\": {\n    \"openai\": {\n      \"apiKey\": \"votre-clé-api\",\n      \"model\": \"gpt-4\"\n    },\n    \"anthropic\": {\n      \"apiKey\": \"votre-clé-api\",\n      \"model\": \"claude-2\"\n    }\n  }\n}",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    }
+  ]
+} 
