@@ -25,12 +25,23 @@ type FileNode = {
   children?: FileNode[];
 };
 
+interface MetaItem {
+  title: string
+  path?: string
+  items?: Record<string, MetaItem>
+}
+
 interface FileExplorerProps {
   onFileSelect: (path: string) => void;
 }
 
+interface RootMeta {
+  defaultRoute?: string
+  [key: string]: MetaItem | string | undefined
+}
+
 const API_URL =
-  process.env.NEXT_PUBLIC_BACKEND_API_URL || "http://localhost:8000";
+  process.env.NEXT_PUBLIC_BACKEND_API_URL || "http://localhost:3001";
 
 const getNodeFullPath = (
   tree: FileNode[],
@@ -142,18 +153,20 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
     const fullPath = `${parentPath}/${newItemName}`;
 
     try {
-      console.log("Creating new item:", {
-        parentPath,
-        fullPath,
-        itemType: newItemType,
-        itemName: newItemName,
-      });
-
       if (newItemType === "file") {
-        const defaultContent = {
-          id: newItemName.replace(".json", ""),
-          title: "New Article",
-          description: "Add your description here",
+         // Get the language and section from the path
+         const pathParts = parentPath.split('/')
+         const language = pathParts[0] // e.g. 'en'
+         const section = pathParts[1] // e.g. 'docs'
+         
+         // Create default content for the new file
+         const fileId = newItemName.replace('.json', '')
+         const defaultContent = {
+          id: fileId,
+          title: fileId.split('_')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' '),
+          description: "",
           author: "Anonymous",
           date: new Date().toISOString().split("T")[0],
           blocks: [],
@@ -177,7 +190,7 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
           throw new Error(`Failed to create file: ${errorText}`);
         }
 
-        await updateMetadata(parentPath, newItemName, defaultContent.title);
+        await updateMetadata(language, section, pathParts, fileId, defaultContent);
       } else if (newItemType === "folder") {
         const folderResponse = await fetch(`${API_URL}/api/files`, {
           method: "POST",
@@ -211,54 +224,77 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
   };
 
   const updateMetadata = async (
-    parentPath: string,
-    newFileName: string,
-    newFileTitle: string
+    language: string,
+    section: string,
+    pathParts: string[],
+    fileId: string,
+    defaultContent: any
   ) => {
-    const metaPath = `${parentPath}/_meta.json`;
+
     try {
-      const metaResponse = await fetch(
-        `${API_URL}/api/files?path=${encodeURIComponent(metaPath)}`,
-        {
-          method: "GET",
+      const rootMetaPath = `${language}/${section}/_meta.json`;
+      const rootMetaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(rootMetaPath)}`)
+
+    if (rootMetaResponse.ok) {
+      const rootMeta = await rootMetaResponse.json() as RootMeta
+    
+       // Navigate through the path to find the right section
+       let currentSection = rootMeta
+       for (let i = 2; i < pathParts.length; i++) {
+         const part = pathParts[i]
+         
+         // Convert path to camelCase for section key
+         const sectionKey = part.replace(/-/g, ' ')
+           .split(' ')
+           .map((word, index) => {
+             const capitalized = word.charAt(0).toUpperCase() + word.slice(1)
+             return index === 0 ? capitalized.toLowerCase() : capitalized
+           })
+           .join('')
+
+         // Create section if it doesn't exist
+         if (!currentSection[sectionKey]) {
+           const newSection: MetaItem = {
+             title: part.split('-')
+               .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+               .join(' '),
+             items: {}
+           }
+           currentSection[sectionKey] = newSection
+         }
+         
+         // Move to items object for next iteration
+         const section = currentSection[sectionKey] as MetaItem
+         const items = section?.items
+         if (!items) {
+           currentSection[sectionKey] = {
+             ...section,
+             items: {}
+           }
+           currentSection = currentSection[sectionKey].items!
+         } else {
+           currentSection = items
+         }
+       }
+
+       // Add the new file entry
+       currentSection[fileId] = {
+          title: defaultContent.title,
+          path: `/${section}/${pathParts.slice(2).join('/')}${pathParts.slice(2).length > 0 ? '/' : ''}${fileId}`
         }
-      );
 
-      if (!metaResponse.ok) {
-        throw new Error("Failed to read metadata");
-      }
-
-      const existingMeta = await metaResponse.json();
-      const newFileId = newFileName.replace(".json", "");
-
-      const updatedMeta = {
-        ...existingMeta,
-        [newFileId]: {
-          title: newFileTitle,
-          path: `/articles/${newFileId}`,
-        },
-      };
-
-      const updateMetaResponse = await fetch(`${API_URL}/api/files`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          path: metaPath,
-          content: updatedMeta,
-        }),
-      });
-
-      if (!updateMetaResponse.ok) {
-        throw new Error("Failed to update metadata");
+        // Save updated root meta
+        await fetch(`${API_URL}/api/files`, {
+          method: 'POST', 
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            path: rootMetaPath,
+            content: rootMeta
+          })
+        })
       }
     } catch (error) {
       console.error("Error updating metadata:", error);
-      if (error instanceof Error) {
-        console.error("Error message:", error.message);
-        console.error("Error stack:", error.stack);
-      }
     }
   };
 
@@ -300,7 +336,7 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
     return [];
   };
 
-  const renderFileTree = (nodes: FileNode[], level: number = 0) => {
+  const renderFileTree = (nodes: FileNode[], level: number = 0, parentId?: string) => {
     return (
       <ul className={`space-y-1 ${level > 0 ? "ml-4 pl-4" : ""}`}>
         {nodes.map((node, index) => (
@@ -311,6 +347,12 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
                 onNewFolder={() => startNewItem(node.id, "folder")}
                 onDelete={() => deleteItem(node.id, node.name, node.type)}
                 isFolder={node.type === "folder"}
+                disableDelete={
+                  node.type === "folder" && (
+                    level === 0 || // Language folders (en, es, etc)
+                    (level === 1 && ["docs", "articles", "api"].includes(node.name)) // Protected subfolders
+                  )
+                }
               >
                 <div className="flex items-center justify-between py-1">
                   <div className="flex items-center flex-grow">
@@ -365,7 +407,7 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
                       transition={{ duration: 0.2 }}
                     >
                       <div className="mt-1">
-                        {renderFileTree(node.children, level + 1)}
+                        {renderFileTree(node.children, level + 1, node.id)}
                       </div>
                     </motion.div>
                   )}
@@ -400,8 +442,8 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
               )}
             </li>
             <InsertionPoint
-              onNewFile={() => startNewItem(node.id, "file")}
-              onNewFolder={() => startNewItem(node.id, "folder")}
+              onNewFile={() => startNewItem(parentId || node.id, "file")}
+              onNewFolder={() => startNewItem(parentId || node.id, "folder")}
             />
           </React.Fragment>
         ))}
@@ -474,7 +516,8 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
     }
 
     try {
-      const response = await fetch("/api/files", {
+      // Delete the file/folder
+      const response = await fetch(`${API_URL}/api/files`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -489,6 +532,55 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
         throw new Error("Failed to delete item");
       }
 
+      // Update metadata
+      const pathParts = fullPath.split('/');
+      const language = pathParts[0];
+      const section = pathParts[1];
+      const fileId = nodeName.replace('.json', '');
+
+      // Get current metadata
+      const rootMetaPath = `${language}/${section}/_meta.json`;
+      const metaResponse = await fetch(`${API_URL}/api/files?path=${encodeURIComponent(rootMetaPath)}`);
+
+      if (metaResponse.ok) {
+        const rootMeta = await metaResponse.json() as RootMeta;
+
+        // Navigate through the path to find the right section
+        let currentSection = rootMeta;
+        for (let i = 2; i < pathParts.length - 1; i++) {
+          const part = pathParts[i];
+          
+          // Convert path to camelCase for section key
+          const sectionKey = part.replace(/-/g, ' ')
+            .split(' ')
+            .map((word, index) => {
+              const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+              return index === 0 ? capitalized.toLowerCase() : capitalized;
+            })
+            .join('');
+
+          if (currentSection[sectionKey] && (currentSection[sectionKey] as MetaItem).items) {
+            currentSection = (currentSection[sectionKey] as MetaItem).items!;
+          }
+        }
+
+        // Remove the entry
+        if (nodeType === 'file' && currentSection[fileId]) {
+          delete currentSection[fileId];
+
+          // Save updated metadata
+          await fetch(`${API_URL}/api/files`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              path: rootMetaPath,
+              content: rootMeta
+            })
+          });
+        }
+      }
+
+      // Update the file tree state
       const updatedTree = deleteItemFromTree(fileTree, nodeId);
       setFileTree(updatedTree);
     } catch (error) {
@@ -528,3 +620,4 @@ export default function FileExplorer({ onFileSelect }: FileExplorerProps) {
     </div>
   );
 }
+

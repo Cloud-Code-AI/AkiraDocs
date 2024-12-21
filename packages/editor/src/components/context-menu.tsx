@@ -13,6 +13,7 @@ interface FileExplorerContextMenuProps {
   onNewFolder: () => void;
   onDelete: () => void;
   isFolder: boolean;
+  disableDelete?: boolean;
 }
 
 export function FileExplorerContextMenu({
@@ -21,6 +22,7 @@ export function FileExplorerContextMenu({
   onNewFolder,
   onDelete,
   isFolder,
+  disableDelete = false,
 }: FileExplorerContextMenuProps) {
   return (
     <ContextMenu>
@@ -38,11 +40,14 @@ export function FileExplorerContextMenu({
             </ContextMenuItem>
           </>
         )}
-        <ContextMenuItem onSelect={onDelete} className="text-red-600">
-          <Trash2 className="mr-2 h-4 w-4" />
-          Delete
-        </ContextMenuItem>
+        {!disableDelete && (
+          <ContextMenuItem onSelect={onDelete} className="text-red-600">
+            <Trash2 className="mr-2 h-4 w-4" />
+            Delete
+          </ContextMenuItem>
+        )}
       </ContextMenuContent>
     </ContextMenu>
   );
 }
+
