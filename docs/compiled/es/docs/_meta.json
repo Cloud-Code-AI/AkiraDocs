@@ -69,6 +69,14 @@
       "ai-features": {
         "title": "Características de IA",
         "path": "/docs/editor/ai-features"
+      },
+      "gettingStarted": {
+        "title": "Comenzando con el editor",
+        "path": "/docs/editor/getting-started"
+      },
+      "aiFeatures": {
+        "title": "Características de IA",
+        "path": "/docs/editor/ai-features"
       }
     }
   },

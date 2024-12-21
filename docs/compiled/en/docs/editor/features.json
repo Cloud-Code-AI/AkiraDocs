@@ -1,46 +1,46 @@
 {
   "title": "Editor Features",
-  "description": "Detailed overview of AkiraDocs editor capabilities and features",
+  "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
   "modifiedDate": "2024-11-26T00:00:00.000Z",
   "category": "Editor",
   "keywords": [
-    "Features",
-    "Capabilities",
-    "Editor Functions",
-    "Tools"
+    "Editor Features",
+    "Blocks",
+    "Formatting"
   ],
   "blocks": [
     {
       "id": "1",
+      "type": "paragraph",
+      "content": "Detailed overview of AkiraDocs editor capabilities and features."
+    },
+    {
+      "id": "2",
       "type": "heading",
-      "content": "Drag and Drop",
+      "content": "Block System",
       "metadata": {
         "level": 2
       }
     },
     {
-      "id": "2",
-      "type": "paragraph",
-      "content": "The editor features a powerful drag-and-drop system powered by dnd-kit, allowing intuitive block reordering and organization. Simply click and drag any block to reposition it within your document."
-    },
-    {
       "id": "3",
       "type": "heading",
-      "content": "File Management",
+      "content": "Text Formatting",
       "metadata": {
-        "level": 2
+        "level": 3
       }
     },
     {
       "id": "4",
       "type": "list",
       "content": [
-        "Automatic file saving and versioning",
-        "Image optimization and management",
-        "File upload support for various media types",
-        "Integrated file browser and explorer"
+        "<strong>Basic Formatting</strong>",
+        "Bold, italic, underline",
+        "Strikethrough",
+        "Highlight",
+        "Code inline"
       ],
       "metadata": {
         "listType": "unordered"
@@ -48,16 +48,158 @@
     },
     {
       "id": "5",
+      "type": "list",
+      "content": [
+        "<strong>Advanced Formatting</strong>",
+        "Custom colors",
+        "Multiple fonts",
+        "Text alignment",
+        "Indentation"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "6",
       "type": "heading",
-      "content": "Real-time Collaboration",
+      "content": "Content Blocks",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "7",
+      "type": "heading",
+      "content": "Rich Text",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "8",
+      "type": "code",
+      "content": "# Heading 1\n## Heading 2\n> Blockquote\n- Bullet list\n1. Numbered list",
+      "metadata": {
+        "language": "markdown",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "9",
+      "type": "heading",
+      "content": "Code Blocks",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "10",
+      "type": "code",
+      "content": "// Syntax highlighting\nconsole.log('Hello World');",
+      "metadata": {
+        "language": "javascript",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Media Blocks",
+      "metadata": {
+        "level": 4
+      }
+    },
+    {
+      "id": "12",
+      "type": "list",
+      "content": [
+        "Image upload and embedding",
+        "Video embedding",
+        "File attachments",
+        "Interactive embeds"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "AI Features",
       "metadata": {
         "level": 2
       }
     },
     {
-      "id": "6",
-      "type": "paragraph",
-      "content": "Multiple users can work on the same document simultaneously, with real-time updates and conflict resolution. Changes are automatically synchronized across all connected clients."
+      "id": "14",
+      "type": "heading",
+      "content": "Content Enhancement",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Grammar and style suggestions",
+        "Content optimization",
+        "SEO recommendations",
+        "Translation assistance"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Smart Formatting",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "list",
+      "content": [
+        "Auto-formatting",
+        "Smart lists",
+        "Table formatting",
+        "Code block language detection"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Collaboration Features",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "19",
+      "type": "heading",
+      "content": "Version Control",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "20",
+      "type": "list",
+      "content": [
+        "Git integration",
+        "Change history",
+        "Rollback capabilities"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
     }
   ]
 }

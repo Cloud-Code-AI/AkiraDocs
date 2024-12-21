@@ -33,27 +33,134 @@ Compliance documentation
 Training materials
 -------------
 [Document: articles/welcome.json]
-Title: Welcome to Akira Doc
-Get started with Akira Docs - Next-gen documentation powered by AI
-Welcome to Akira Docs, the next-generation documentation platform powered by AI. This template will help you get started with creating your own documentation.
-Key Features
-Easy to customize
-AI-powered search
-Block-based content system
-Responsive design
-Getting Started: Start by customizing this template to match your project's needs!
+Title: Welcome to Cloud Code AI: Building the Future of AI-Powered Documentation
+Join us on our journey to revolutionizing customer experience with advanced AI documentation tools.
+At Cloud Code AI, our mission is to harness the power of artificial intelligence to transform the way developers and organizations operate. Our journey began with the ambitious goal of building an AI DevOps engineer, <strong>Kaizen</strong>, designed to streamline and automate complex development operations. You can explore <strong>Kaizen</strong> at [git.new/kaizen](https://git.new/cloudcodeai).
+Our Evolution
+While our initial focus on creating an AI-driven DevOps engineer laid a strong foundation, we recognized the immense potential in enhancing customer experience through intelligent documentation. This insight led us to pivot and develop an AI-powered documentation tool, <strong>Akiradocs</strong>. Discover <strong>Akiradocs</strong> at [git.new/akiradocs](https://git.new/akiradocs).
+What We're Building
+Our current project, <strong>Akiradocs</strong>, is an AI-powered documentation tool designed to simplify and enhance the creation, management, and utilization of documentation. By leveraging AI, we aim to provide:
+<strong>Smart Content Generation:</strong> Automatically generate high-quality documentation based on your project details.
+<strong>AI-Powered Search:</strong> Enable intuitive and intelligent search capabilities to help users find the information they need quickly.
+<strong>Personalized User Experience:</strong> Tailor the documentation experience to individual user needs, making information more accessible and actionable.
+<strong>Seamless Integration:</strong> Easily integrate with your existing tools and workflows to ensure a smooth and efficient documentation process.
+Future Innovations
+We're excited about the future of documentation, and we're working on groundbreaking features:
+<strong>Automated Documentation Generation:</strong> Using advanced AI to automatically create comprehensive documentation from your codebase, ensuring your docs stay in sync with your code.
+<strong>Documentation Quality Scoring:</strong> Implementing an intelligent scoring system that evaluates and helps improve documentation quality, completeness, and clarity.
+<strong>LLM Knowledge Integration:</strong> Developing a revolutionary approach for Large Language Models to learn and understand software systems through documentation, making AI assistance more accurate and context-aware.
+Our Vision
+At Cloud Code AI, we are committed to improving customer experience by making documentation more accessible, interactive, and intelligent. Our AI-driven approach ensures that both developers and end-users can interact with documentation more efficiently, leading to better product understanding and satisfaction.
+Get Started
+We invite you to join us on this exciting journey. Whether you're a developer looking for smarter documentation tools or an organization aiming to enhance your customer experience, Cloud Code AI has the solutions you need. Stay tuned for updates, and feel free to reach out to our team for more information.
 -------------
-[Document: articles/template.json]
-Title: Test Blog Post
-A test blog post to demonstrate all block types.
-Example Heading Sample1
-This paragraph is part of the test blog post. It demonstrates the paragraph block.
-Code example:
-console.log('Testing all blocks');
-Item 1
-Item 2
-Item 3
-Important: This is an important callout message.
+[Document: articles/importance_of_documentation.json]
+Title: The Critical Importance of Documentation in Modern Software Development
+Explore why documentation is crucial for software success, customer experience, and AI development in today's tech landscape.
+Having spent years building developer tools, I've witnessed firsthand how documentation can make or break a software project. It's fascinating how often we prioritize shipping features while pushing documentation to "we'll do it later." But here's the thing - that "later" often comes at a much higher cost than we imagine.
+The Real Pain of Poor Documentation
+I remember joining a startup where tribal knowledge was the norm. What should have been a two-week onboarding turned into months of piecing together how things worked. This isn't just my story - I've heard similar experiences from countless developers. Here's what we're all dealing with:
+The Daily Developer Struggle
+We spend nearly a third of our time just trying to understand existing code
+New team members feel lost and overwhelmed
+That quick fix? It takes hours because nobody documented the gotchas
+The Customer's Perspective
+I've been on both sides of this - as a developer and as a user. When documentation is poor:
+Users get frustrated and simply give up
+Support teams get flooded with basic questions
+Customer success becomes more about firefighting than growth
+Users churn because they can't unlock your product's full potential
+The Hidden Costs of Poor Documentation
+Developer Time and Resources
+Engineers spend up to 30% of their time searching for information or trying to understand code
+Onboarding new team members takes significantly longer without proper documentation
+Technical debt accumulates as tribal knowledge becomes the primary source of information
+Customer Experience Impact
+Users abandon products due to confusion and frustration
+Support tickets increase, raising operational costs
+Customer success teams struggle to provide accurate assistance
+Higher churn rates due to poor user experience
+AI and Machine Learning Challenges
+LLMs trained on outdated or incorrect documentation spread misinformation
+AI assistants struggle to provide accurate, context-aware help
+The gap between code reality and documentation widens as software evolves
+Documentation as a Growth Driver
+Enhanced Customer Experience
+Clear documentation reduces friction in user adoption
+Self-service support becomes more effective
+Users feel more confident and empowered
+Higher customer satisfaction and retention rates
+SEO and Brand Authority
+Well-documented products rank better in search results
+Documentation pages serve as valuable content marketing
+Establishes thought leadership in the industry
+Builds trust with potential customers
+Open Source Success
+Quality documentation attracts more contributors
+Increases project adoption and community engagement
+Makes your project more discoverable
+Facilitates collaboration across time zones
+The AI Documentation Challenge
+Current Problems
+AI models learning from outdated or incorrect documentation
+Inability to verify the accuracy of AI-generated responses
+Disconnect between documentation and actual code implementation
+Difficulty in maintaining up-to-date documentation
+Future Solutions
+AI-powered documentation generation and validation
+Real-time documentation updates based on code changes
+Automated quality scoring and improvement suggestions
+Enhanced search and discovery through AI understanding
+Best Practices for Modern Documentation
+Structure and Organization
+Clear hierarchy and navigation
+Consistent formatting and style
+Version control and change tracking
+Regular audits and updates
+Content Quality
+Code examples and use cases
+Step-by-step tutorials
+Troubleshooting guides
+API reference documentation
+User-Centric Approach
+Different documentation levels for various user types
+Interactive examples and playgrounds
+Feedback mechanisms
+Community contribution guidelines
+The Business Case for Documentation
+ROI Metrics
+Reduced support costs
+Faster user onboarding
+Improved team productivity
+Higher customer satisfaction scores
+Competitive Advantage
+Better market positioning
+Increased user trust
+Faster product adoption
+Strong community engagement
+Why We Built Akiradocs
+After experiencing these documentation challenges repeatedly, we created Akiradocs as an alternative to existing solutions like Nextra. While Nextra provides a solid foundation for documentation sites, we wanted to go further. With Akiradocs, you get:
+<strong>AI-Powered Documentation:</strong> Not just a static site generator, but an intelligent system that helps you create, maintain, and improve your docs
+<strong>Real-Time Validation:</strong> Catch outdated or incorrect documentation before your users do
+<strong>Smart Search and Discovery:</strong> Help users find exactly what they need, when they need it
+<strong>Automated Quality Checks:</strong> Get suggestions for improving your documentation's clarity and completeness
+<strong>Simple Migration:</strong> Easy transition from Nextra or other documentation platforms
+The Future of Documentation
+Having worked with various documentation tools and seen their limitations, I'm excited about where we're heading. Imagine documentation that:
+Updates itself as your code evolves
+Learns from how users interact with it
+Provides different levels of detail based on user expertise
+Serves as a reliable knowledge source for AI models
+Conclusion
+Documentation is not just a technical necessity but a strategic asset that impacts every aspect of software success. As AI continues to reshape the technology landscape, the importance of accurate, up-to-date documentation becomes even more critical. Investing in documentation today means building a stronger foundation for tomorrow's success.
+Getting Started
+I've been through the documentation improvement journey multiple times, and here's what I've learned works best:
+1. Start with an honest audit of your current docs
+2. Focus on your users' biggest pain points first
+3. Build a sustainable documentation culture
+4. Use tools like Akiradocs to automate and improve
+5. Keep measuring and iterating
+Remember, great documentation isn't about perfection - it's about continuous improvement. Start where you are, use the tools available, and keep making it better. Your future self (and your users) will thank you.
 -------------
 [Document: articles/ai_integration.json]
 Title: AI Assistant Integration
@@ -250,6 +357,55 @@ Content translation during build
 Context-aware translations
 Technical term preservation
 Format maintenance
+-------------
+[Document: docs/guides/analytics.json]
+Title: Analytics Integration
+Learn how to add analytics tracking to your documentation
+AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
+Setting up Google Analytics
+1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
+2. Get your Measurement ID (starts with "G-")
+3. Add the ID to your `akiradocs.config.json`:
+Code example:
+{
+"analytics": {
+"google": {
+"measurementId": "G-XXXXXXXXXX",
+"enabled": true
+},
+"debug": false
+}
+}
+What's Tracked Automatically
+Page views
+Navigation between pages
+Time on page
+User language preferences
+Device and browser information
+Custom Event Tracking
+You can track custom events using the `useAnalytics` hook:
+Code example:
+import { useAnalytics } from '@/hooks/useAnalytics'
+function MyComponent() {
+    const { track } = useAnalytics()
+    const handleClick = () => {
+        track('doc_rating', {
+            rating: 5,
+            page: 'getting-started',
+            helpful: true
+        })
+    }
+    return <button onClick={handleClick}>This was helpful</button>
+}
+Debug Mode
+Enable debug mode to see analytics events in the console during development:
+Code example:
+{
+"analytics": {
+"debug": true
+}
+}
+This provides a complete analytics integration that's easy for users to set up and extend as needed.
 -------------
 [Document: docs/installation/troubleshooting.json]
 Title: Troubleshooting Guide
@@ -474,55 +630,6 @@ Code example:
     },
 }
 -------------
-[Document: docs/guides/analytics.json]
-Title: Analytics Integration
-Learn how to add analytics tracking to your documentation
-AkiraDocs supports Google Analytics 4 (GA4) out of the box. This guide will help you set up analytics tracking for your documentation.
-Setting up Google Analytics
-1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
-2. Get your Measurement ID (starts with "G-")
-3. Add the ID to your `akiradocs.config.json`:
-Code example:
-{
-"analytics": {
-"google": {
-"measurementId": "G-XXXXXXXXXX",
-"enabled": true
-},
-"debug": false
-}
-}
-What's Tracked Automatically
-Page views
-Navigation between pages
-Time on page
-User language preferences
-Device and browser information
-Custom Event Tracking
-You can track custom events using the `useAnalytics` hook:
-Code example:
-import { useAnalytics } from '@/hooks/useAnalytics'
-function MyComponent() {
-    const { track } = useAnalytics()
-    const handleClick = () => {
-        track('doc_rating', {
-            rating: 5,
-            page: 'getting-started',
-            helpful: true
-        })
-    }
-    return <button onClick={handleClick}>This was helpful</button>
-}
-Debug Mode
-Enable debug mode to see analytics events in the console during development:
-Code example:
-{
-"analytics": {
-"debug": true
-}
-}
-This provides a complete analytics integration that's easy for users to set up and extend as needed.
--------------
 [Document: docs/getting-started/requirements.json]
 Title: System Requirements
 Before installing AkiraDocs, ensure your environment meets the following requirements.
@@ -675,6 +782,23 @@ Tables (Coming Soon)
 Dividers
 Custom components (Coming Soon)
 -------------
+[Document: docs/editor/getting-started.json]
+Title: Getting Started with the Editor
+Learn how to start using the AkiraDocs editor effectively
+Quick Start
+Getting started with the AkiraDocs editor is straightforward. This guide will walk you through the basic setup and initial usage.
+Basic Operations
+Click the '+' button to add a new block
+Drag blocks to reorder them
+Use the toolbar for text formatting
+Keyboard Shortcuts
+Creating Your First Document
+1. Click 'New File' in the sidebar
+2. Add a title and description
+3. Start adding blocks using the '+' button or '/' command
+4. Use drag and drop to organize your content
+5. Save your work using the save button
+-------------
 [Document: docs/editor/features.json]
 Title: Editor Features
 Detailed overview of AkiraDocs editor capabilities and features.
@@ -723,6 +847,56 @@ Version Control
 Git integration
 Change history
 Rollback capabilities
+-------------
+[Document: docs/editor/blocks.json]
+Title: Block Types
+Comprehensive guide to all available block types in the editor
+Text Blocks
+<strong>Paragraph</strong>: Basic text content with rich formatting
+<strong>Heading</strong>: Six levels of headers (H1-H6)
+<strong>List</strong>: Ordered and unordered lists
+<strong>Quote</strong>: Blockquotes for citations
+<strong>Code</strong>: Syntax-highlighted code blocks
+Media Blocks
+<strong>Image</strong>: Support for images with captions
+<strong>Video</strong>: Embedded video player
+<strong>Audio</strong>: Audio player with controls
+<strong>File</strong>: File attachments and downloads
+Interactive Blocks
+<strong>Button</strong>: Clickable buttons with custom actions
+<strong>Checklist</strong>: Interactive task lists
+<strong>Table</strong>: Structured data presentation
+-------------
+[Document: docs/editor/ai-features.json]
+Title: AI Features
+Explore the AI-powered capabilities of the AkiraDocs editor
+AI Providers
+<strong>OpenAI</strong>: GPT-4 and GPT-3.5 integration
+<strong>Anthropic</strong>: Claude integration
+<strong>Custom Models</strong>: Support for self-hosted models
+<strong>API Configuration</strong>: Flexible provider setup
+Content Enhancement
+Automatic grammar and style correction
+Content summarization
+Text expansion and elaboration
+Tone adjustment and rewriting
+Translation Support
+Built-in AI translation capabilities support content localization across multiple languages while maintaining context and technical accuracy.
+Configuration
+Code example:
+// AI Feature Configuration
+{
+  "aiProviders": {
+    "openai": {
+      "apiKey": "your-api-key",
+      "model": "gpt-4"
+    },
+    "anthropic": {
+      "apiKey": "your-api-key",
+      "model": "claude-2"
+    }
+  }
+}
 -------------
 [Document: docs/contributing/how-to-contribute.json]
 Title: Contributing to AkiraDocs
