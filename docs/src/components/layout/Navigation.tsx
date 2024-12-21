@@ -13,7 +13,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { getApiNavigation } from '@/lib/content';
 import { useAnalytics } from '@/hooks/useAnalytics';
 const buttonStyles = {
-  base: "w-full justify-start text-left font-normal rounded-lg transition-all px-3 py-2",
+  base: "w-full justify-start text-left font-normal rounded-lg transition-all px-3 py-2 whitespace-normal",
   hover: "hover:bg-accent/40 hover:text-accent-foreground",
   active: "bg-gradient-to-r from-accent to-accent/80 text-accent-foreground font-medium shadow-md translate-x-1",
   state: "data-[state=open]:bg-accent/30",
@@ -118,14 +118,14 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
           </motion.div>
         ) : ""}
         {item.path ? (
-          <Link href={absolutePath} className="flex-1" onClick={handleClick}>
+          <Link href={absolutePath} className="flex-1 break-words" onClick={handleClick}>
             {item.title}
           </Link>
         ) : (
-          <span className="flex-1">{item.title}</span>
+          <span className="flex-1 break-words">{item.title}</span>
         )}
         {item.badge && (
-          <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-accent text-accent-foreground">
+          <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-accent text-accent-foreground shrink-0">
             {item.badge}
           </span>
         )}

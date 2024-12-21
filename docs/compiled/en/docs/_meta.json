@@ -69,6 +69,14 @@
       "ai-features": {
         "title": "AI Features",
         "path": "/docs/editor/ai-features"
+      },
+      "gettingStarted": {
+        "title": "Getting Started with the Editor",
+        "path": "/docs/editor/getting-started"
+      },
+      "aiFeatures": {
+        "title": "AI Features",
+        "path": "/docs/editor/ai-features"
       }
     }
   },

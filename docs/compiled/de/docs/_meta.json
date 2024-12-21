@@ -69,6 +69,14 @@
       "ai-features": {
         "title": "KI-Funktionen",
         "path": "/docs/editor/ai-features"
+      },
+      "gettingStarted": {
+        "title": "Erste Schritte mit dem Editor",
+        "path": "/docs/editor/getting-started"
+      },
+      "aiFeatures": {
+        "title": "KI-Funktionen",
+        "path": "/docs/editor/ai-features"
       }
     }
   },

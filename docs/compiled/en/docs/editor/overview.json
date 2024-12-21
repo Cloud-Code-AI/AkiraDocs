@@ -1,74 +1,71 @@
 {
   "title": "Editor Overview",
-  "description": "A comprehensive overview of the AkiraDocs block-based editor",
+  "description": "",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
   "modifiedDate": "2024-11-26T00:00:00.000Z",
   "category": "Editor",
   "keywords": [
     "Editor",
-    "Block-based",
-    "Overview",
-    "Introduction"
+    "Notion-like",
+    "Interface"
   ],
   "blocks": [
     {
       "id": "1",
       "type": "paragraph",
-      "content": "AkiraDocs features a modern, block-based editor that combines the simplicity of visual editing with the power of Markdown. Built for both developers and content creators, it offers a flexible and intuitive way to create and manage documentation."
+      "content": "AkiraDocs features a modern, Notion-like editor that combines the simplicity of block-based editing with the power of Markdown."
     },
     {
       "id": "2",
       "type": "heading",
-      "content": "Key Features",
+      "content": "Editor Interface",
       "metadata": {
         "level": 2
       }
     },
     {
       "id": "3",
+      "type": "heading",
+      "content": "Main Components",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "4",
       "type": "list",
       "content": [
-        "Block-based editing with drag-and-drop support",
-        "Rich text formatting with Markdown support",
-        "Real-time collaboration capabilities",
-        "Extensible block system",
-        "Built-in version control",
-        "AI-powered content assistance"
+        "<strong>Toolbar</strong>: Quick access to formatting options and block types",
+        "<strong>Content Area</strong>: Block-based editing space",
+        "<strong>Sidebar</strong>: Navigation and document structure",
+        "<strong>Command Palette</strong>: Quick commands (Ctrl/Cmd + P)"
       ],
       "metadata": {
         "listType": "unordered"
       }
     },
     {
-      "id": "4",
-      "type": "heading",
-      "content": "System Architecture",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
       "id": "5",
-      "type": "paragraph",
-      "content": "The editor is built on a modern stack using React and Next.js, with a modular architecture that separates concerns between block management, content handling, and UI components."
-    },
-    {
-      "id": "6",
       "type": "heading",
-      "content": "Core Components",
+      "content": "Block Structure",
       "metadata": {
         "level": 3
       }
     },
     {
+      "id": "6",
+      "type": "paragraph",
+      "content": "Each content element is a block that can be:"
+    },
+    {
       "id": "7",
       "type": "list",
       "content": [
-        "<strong>Block Manager</strong>: Handles block creation, deletion, and ordering",
-        "<strong>Content Editor</strong>: Manages text input and formatting",
-        "<strong>File System</strong>: Handles content persistence and file management",
-        "<strong>UI Components</strong>: Provides the user interface elements"
+        "Dragged and dropped to reorganize",
+        "Converted between different types",
+        "Duplicated or deleted",
+        "Nested within other blocks"
       ],
       "metadata": {
         "listType": "unordered"
@@ -84,8 +81,105 @@
     },
     {
       "id": "9",
+      "type": "heading",
+      "content": "Creating Content",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "10",
       "type": "paragraph",
-      "content": "To begin using the editor, ensure you have Node.js 18+ installed. The editor is included by default in AkiraDocs installations. For detailed setup instructions, see the Getting Started guide."
+      "content": "1. Click the '+' button or press '/' to add a new block\n2. Choose block type from the popup menu\n3. Start typing or add content"
+    },
+    {
+      "id": "11",
+      "type": "heading",
+      "content": "Basic Operations",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "12",
+      "type": "code",
+      "content": "/ → Open block menu\n⌘/Ctrl + P → Command palette\n⌘/Ctrl + / → Show keyboard shortcuts\n↑↓ → Navigate between blocks",
+      "metadata": {
+        "language": "plaintext",
+        "showLineNumbers": true
+      }
+    },
+    {
+      "id": "13",
+      "type": "heading",
+      "content": "Block Types",
+      "metadata": {
+        "level": 2
+      }
+    },
+    {
+      "id": "14",
+      "type": "heading",
+      "content": "Text Blocks",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "15",
+      "type": "list",
+      "content": [
+        "Paragraphs",
+        "Headings (H1-H6)",
+        "Lists (Bulleted, Numbered)",
+        "Quotes",
+        "Callouts"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "16",
+      "type": "heading",
+      "content": "Rich Media",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "17",
+      "type": "list",
+      "content": [
+        "Images",
+        "Videos",
+        "Embeds",
+        "Files",
+        "Code blocks"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
+    },
+    {
+      "id": "18",
+      "type": "heading",
+      "content": "Special Blocks",
+      "metadata": {
+        "level": 3
+      }
+    },
+    {
+      "id": "19",
+      "type": "list",
+      "content": [
+        "Tables (Coming Soon)",
+        "Dividers",
+        "Custom components (Coming Soon)"
+      ],
+      "metadata": {
+        "listType": "unordered"
+      }
     }
   ]
 }
