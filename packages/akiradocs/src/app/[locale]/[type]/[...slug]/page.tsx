@@ -113,7 +113,7 @@ export default async function ContentPage({ params }: Props) {
         description={pageDescription}
         canonical={canonicalUrl}
       />
-      <Header {...headerConfig} currentLocale={locale} />
+      <Header {...headerConfig} currentLocale={locale} currentType={`${locale}/${type}`}/>
       <div className="flex flex-grow">
         <Navigation key={type} locale={locale} items={navigationItems} />
         <div className="flex-1 flex py-4 w-full">

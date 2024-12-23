@@ -312,7 +312,7 @@ export default function Page() {
     <Suspense fallback={<LoadingSpinner />}>
 
     <div className="flex flex-col min-h-screen">
-      <Header {...headerConfig} currentLocale={locale} />
+      <Header {...headerConfig} currentLocale={locale} currentType={`en/apiReference`}/>
       <div className="flex flex-1">
         <ApiSidebar />
         <main className="flex-1 h-full overflow-y-auto pt-6 px-6">
