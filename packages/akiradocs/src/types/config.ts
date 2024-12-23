@@ -39,6 +39,7 @@ interface NavItem {
       }[];
     };
     currentLocale?: string;
+    currentType?: string;
   }
   
   export interface FooterConfig {

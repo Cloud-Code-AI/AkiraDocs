@@ -15,6 +15,8 @@ import { getAkiradocsConfig } from '@/lib/getAkiradocsConfig'
 import { ChatCompletionMessageParam, CreateMLCEngine } from "@mlc-ai/web-llm";
 import { Source } from '@/types/Source'
 import AILoader from '@/components/aiSearch/AILoader'
+import { getHeaderConfig } from '@/lib/headerConfig'
+import { Header } from '@/components/layout/Header'
 
 export default function Home() {
   const [query, setQuery] = useState('')
@@ -23,6 +25,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null)
   const recommendedArticles = getRecommendedArticles()
   const searchConfig = getSearchConfig()
+  const headerConfig = getHeaderConfig()
   const config = getAkiradocsConfig()
   const [sources, setSources] = useState<Source[]>([])
 
@@ -160,7 +163,10 @@ export default function Home() {
   }
 
   return (
+    <div className="flex flex-col min-h-screen">
+      <Header {...headerConfig} currentLocale={`en`} currentType={`aiSearch`}/>
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      
       <div className="max-w-4xl mx-auto">
         <SearchHeader 
           logo={searchConfig.logo}
@@ -200,6 +206,7 @@ export default function Home() {
           )}
         </AnimatePresence>
       </div>
+    </div>
     </div>
   )
 }

@@ -22,7 +22,7 @@ Getting Started: Start by customizing this template to match your project's need
 [Document: articles/template.json]
 Title: Test Blog Post
 A test blog post to demonstrate all block types.
-Example Heading Sample1
+Example Heading
 This paragraph is part of the test blog post. It demonstrates the paragraph block.
 Code example:
 console.log('Testing all blocks');
