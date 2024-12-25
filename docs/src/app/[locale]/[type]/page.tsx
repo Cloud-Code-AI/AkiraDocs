@@ -75,7 +75,7 @@ export default async function Page({ params }: Props) {
   }
 
   // Fallback redirect if no content found
-  console.log("redirecting to", `/${locale}`);
+  // console.log("redirecting to", `/${locale}`);
   redirect(`/${locale}`);
 }
 

@@ -76,6 +76,23 @@ interface BlockFormatToolbarProps {
     caption: string;
     alignment: 'left' | 'center' | 'right';
   }>) => void;
+  showButtonControls?: boolean;
+  buttonMetadata?: {
+    url?: string;
+    style?: {
+      variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+      size?: 'default' | 'sm' | 'lg';   
+      radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+    };
+  };
+  onButtonMetadataChange?: (metadata: Partial<{
+    buttonUrl: string;
+    buttonStyle: {
+      variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+      size?: 'default' | 'sm' | 'lg';
+      radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+    };
+  }>) => void;
 }
 
 export function BlockFormatToolbar({ 
@@ -119,8 +136,11 @@ export function BlockFormatToolbar({
   showAudioControls = false,
   audioContent,
   onAudioMetadataChange,
+  showButtonControls = false,
+  buttonMetadata,
+  onButtonMetadataChange,
 }: BlockFormatToolbarProps) {
-  if (blockType === 'file') {
+  if (blockType === 'file' || blockType === 'spacer') {
     return null;
   }
 
@@ -133,7 +153,7 @@ export function BlockFormatToolbar({
       "bg-popover border shadow-md rounded-md",
       className
     )}>
-      {!showImageControls && !showCodeControls && !showVideoControls && !showAudioControls && blockType !== 'table' && (
+      {!showImageControls && !showCodeControls && !showVideoControls && !showAudioControls && !showButtonControls && blockType !== 'table' && (
         <>
           <ToggleGroup 
             type="multiple" 
@@ -357,6 +377,81 @@ export function BlockFormatToolbar({
             placeholder="Caption"
             className="h-7 w-32 text-xs"
           />
+        </>
+      )}
+
+      {showButtonControls && (
+        <>
+          <Separator orientation="vertical" className="mx-0.5 h-7" />
+          
+          <Input
+            value={buttonMetadata?.url || ''}
+            onChange={(e) => onButtonMetadataChange?.({ buttonUrl: e.target.value })}
+            placeholder="URL"
+            className="h-7 w-32 text-xs"
+          />
+          
+          <Select 
+            value={buttonMetadata?.style?.variant || 'default'}
+            onValueChange={(value) => onButtonMetadataChange?.({ 
+              buttonStyle: { 
+                ...buttonMetadata?.style,
+                variant: value as any
+              } 
+            })}
+          >
+            <SelectTrigger className="h-7 w-24">
+              <SelectValue placeholder="Style" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="default">Default</SelectItem>
+              <SelectItem value="destructive">Destructive</SelectItem>
+              <SelectItem value="outline">Outline</SelectItem>
+              <SelectItem value="secondary">Secondary</SelectItem>
+              <SelectItem value="ghost">Ghost</SelectItem>
+              <SelectItem value="link">Link</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select 
+            value={buttonMetadata?.style?.size || 'default'}
+            onValueChange={(value) => onButtonMetadataChange?.({ 
+              buttonStyle: { 
+                ...buttonMetadata?.style,
+                size: value as any
+              } 
+            })}
+          >
+            <SelectTrigger className="h-7 w-20">
+              <SelectValue placeholder="Size" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="default">Default</SelectItem>
+              <SelectItem value="sm">Small</SelectItem>
+              <SelectItem value="lg">Large</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select 
+            value={buttonMetadata?.style?.radius || 'md'}
+            onValueChange={(value) => onButtonMetadataChange?.({ 
+              buttonStyle: { 
+                ...buttonMetadata?.style,
+                radius: value as any
+              } 
+            })}
+          >
+            <SelectTrigger className="h-7 w-20">
+              <SelectValue placeholder="Radius" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">Square</SelectItem>
+              <SelectItem value="sm">Small</SelectItem>
+              <SelectItem value="md">Medium</SelectItem>
+              <SelectItem value="lg">Large</SelectItem>
+              <SelectItem value="full">Pill</SelectItem>
+            </SelectContent>
+          </Select>
         </>
       )}
 
