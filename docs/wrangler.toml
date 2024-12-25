@@ -1,0 +1,16 @@
+name = "akiradocs"
+
+pages_build_output_dir = ".next"
+
+[build]
+command = "npx @cloudflare/next-on-pages@1"
+
+
+[vars]
+NODE_VERSION = "18.8.0"
+
+compatibility_flags = ["nodejs_compat"]
+
+
+[env.production]
+NODE_ENV = "production"

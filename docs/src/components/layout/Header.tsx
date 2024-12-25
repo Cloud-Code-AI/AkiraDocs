@@ -34,7 +34,8 @@ export const Header = memo(function Header({
   navItems,
   socialLinks,
   languages,
-  currentLocale = 'en'
+  currentLocale = 'en',
+  currentType = 'docs'
 }: HeaderConfig) {
   const [isMounted, setIsMounted] = useState(false)
   const { theme, setTheme } = useTheme()
@@ -104,31 +105,36 @@ export const Header = memo(function Header({
 
   // Memoize the navigation items
   const navigationItems = useMemo(() => {
-    return navItems?.filter((item) => item.show).map((item, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ delay: index * 0.1 }}
-      >
-        <Link
-          href={item.href}
-          className={`group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md
-          ${pathname === item.href
-              ? 'text-foreground bg-muted'
-              : 'text-muted-foreground hover:text-foreground'
-            }`}
+    return navItems?.filter((item) => item.show).map((item, index) => {
+      // Check if the current nav item matches the page type
+      const isActive = currentType ? item.href.includes(`/${currentType}`) : pathname === item.href;
+      
+      return (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ delay: index * 0.1 }}
         >
-          {t(item.label as string)}
-          <span
-            className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
-            ${pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
-          />
-        </Link>
-      </motion.div>
-    ))
-  }, [navItems, pathname])
+          <Link
+            href={item.href}
+            className={`group relative flex items-center gap-x-2 text-sm font-medium transition-colors px-3 py-2 rounded-md
+            ${isActive
+                ? 'text-foreground bg-muted'
+                : 'text-muted-foreground hover:text-foreground'
+              }`}
+          >
+            {t(item.label as string)}
+            <span
+              className={`absolute inset-x-0 -bottom-px h-0.5 bg-primary transition-transform duration-150 ease-in-out
+              ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
+            />
+          </Link>
+        </motion.div>
+      );
+    });
+  }, [navItems, pathname, currentType]);
 
   return (
     <motion.header
