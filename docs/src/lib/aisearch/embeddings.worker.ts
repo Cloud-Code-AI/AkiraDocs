@@ -1,14 +1,13 @@
-import { pipeline } from "@huggingface/transformers";
+import { pipeline, ProgressCallback, type PipelineType } from "@huggingface/transformers";
 
 class EmbeddingPipelineSingleton {
-    static task = 'feature-extraction';
+    static task: PipelineType = 'feature-extraction';
     static model = 'Xenova/gte-small';
-    static instance = null;
+    static instance: Promise<any> | null = null;
 
-    static async getInstance(progress_callback = null) {
+    static async getInstance(progress_callback: ProgressCallback | null = null) {
         this.instance ??= pipeline(this.task, this.model, { 
-            progress_callback,
-            quantized: true 
+            progress_callback: progress_callback ?? undefined
         });
         return this.instance;
     }

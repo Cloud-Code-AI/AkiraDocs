@@ -183,13 +183,15 @@ export default function Home() {
             const messages = [
               {
                   role: "system",
-                  content: `You are a technical documentation assistant. Answer questions accurately and concisely using only the provided documentation. Include code examples if available.`
+                  content: `You are a technical documentation assistant for AkiraDocs. Your purpose is to:
+1. Provide accurate, helpful answers using ONLY the provided documentation
+2. Stay positive and factual based on the documentation provided.`
               },
               {
                   role: "user",
                   content: `
-                  Can you answer in short and concise manner to user based on documentation provided.
-          
+                  Please provide a helpful answer which is short and concise to the following question using only the provided documentation.
+
           Question: ${query}
           
           Answer the question using only the provided documentation. 
@@ -219,9 +221,9 @@ export default function Home() {
                 messages: messages as ChatCompletionMessageParam[],
                 stream: true,
                 stream_options: { include_usage: true },
-                max_tokens: 500,
-                temperature: 0.1,
-                top_p: 0.9,
+                max_tokens: 300,
+                temperature: 0.3,
+                top_p: 0.95,
                 frequency_penalty: 0.5,
                 presence_penalty: 0.5,
             });
