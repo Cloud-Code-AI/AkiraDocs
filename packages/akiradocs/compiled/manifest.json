@@ -37,6 +37,7 @@
     "fr/articles/welcome.json",
     "fr/docs/_meta.json",
     "fr/docs/getting-started/quickstart.json",
-    "fr/docs/introduction.json"
+    "fr/docs/introduction.json",
+    "manifest.json"
   ]
 }
