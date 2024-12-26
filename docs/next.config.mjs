@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 // import MillionLint from "@million/lint";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
     webpack: (config) => {
@@ -7,11 +11,15 @@ const nextConfig = {
         test: /\.json$/,
         type: 'json',
       });
+      
       config.resolve.alias = {
         ...config.resolve.alias,
         "sharp$": false,
         "onnxruntime-node$": false,
       }
+
+      config.resolve.alias['@huggingface/transformers'] = path.resolve(__dirname, 'node_modules/@huggingface/transformers');
+
       return config
     },
     experimental: {
