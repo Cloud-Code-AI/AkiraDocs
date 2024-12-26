@@ -91,9 +91,14 @@ export default function Home() {
         setIsLoading(true)
         setError(null)
         setSources([])
-
+        
+        const startTime = performance.now() // Add timing start
+        
         try {
             const embeddings = await handleGenerateEmbedding(query);
+            const embeddingTime = performance.now() // Track embedding time
+            console.log(`Time taken for embedding generation: ${(embeddingTime - startTime) / 1000}s`)
+
             console.log("Embeddings:", embeddings)
             if (embeddings.length === 0) {
                 throw new Error("No embeddings generated");
@@ -112,37 +117,38 @@ export default function Home() {
                     context_window_size: 100000,
                 }
             );
+            const engineLoadTime = performance.now() // Track engine load time
+            console.log(`Time taken for engine initialization: ${(engineLoadTime - embeddingTime) / 1000}s`)
 
             const messages = [
-                { 
-                    role: "system", 
-                    content: `You are a technical documentation assistant specialized in providing accurate, concise answers based on the official documentation. 
-Your responses should be:
-1. Direct and to the point
-2. Based strictly on the provided documentation context
-3. Include relevant code examples when available
-4. Written in a technical but clear style
+              {
+                  role: "system",
+                  content: `You are a technical documentation assistant. Answer questions accurately and concisely using only the provided documentation. Include code examples if available.`
+              },
+              {
+                  role: "user",
+                  content: `
+                  Can you answer in short and concise manner to user based on documentation provided.
+          
+          Question: ${query}
+          
+          Answer the question using only the provided documentation. 
+          
+          If the answer isn't in the documentation, say: "I cannot answer this question from the given documentation."
+          
+          Do not make assumptions or add information not in the documentation.
+          
+          If relevant, include short code snippets.
 
-Documentation context: ${docsContext}`
-                },
-                { 
-                    role: "user", 
-                    content: `Answer the following question using only the provided documentation context. 
-Question: ${query}
-
-Requirements for your response:
-1. If the answer isn't clearly supported by the documentation, say "I don't have enough information to answer this question accurately."
-2. Don't make assumptions or provide information not found in the documentation
-3. If relevant, include short code snippets to illustrate your answer.
-4. Only answer questions related to the Documentation Context.
-5. Try to be concise and to the point.
-              
-After your answer, if you used any sources from the documentation, list them in this format:
--------------
-Sources:
-- <title> (<path>)` 
-                }
-            ];
+          Ensure the final output is in markdown format.
+          
+          Sources (if used):
+          - <title> (<path>)
+          
+          Documentation: ${docsContext}
+          `
+              }
+          ];
 
             console.log("Messages:", messages)
 
@@ -156,10 +162,12 @@ Sources:
             for await (const chunk of chunks) {
                 const newContent = chunk.choices[0]?.delta.content || "";
                 aiContent += newContent;
-                // Update the response in real-time
                 setAiResponse(aiContent);
             }
-            console.log("AI Content:", aiContent)
+
+            const endTime = performance.now() // Track total time
+            console.log(`Total time taken for AI search: ${(endTime - startTime) / 1000}s`)
+
             // Extract sources after the full response is received
             const { cleanResponse, sources } = extractSources(aiContent);
             setAiResponse(cleanResponse);
