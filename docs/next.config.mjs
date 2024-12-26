@@ -6,8 +6,16 @@ const nextConfig = {
       config.module.rules.push({
         test: /\.json$/,
         type: 'json',
-      })
+      });
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        "sharp$": false,
+        "onnxruntime-node$": false,
+      }
       return config
+    },
+    experimental: {
+      esmExternals: true // Enable ES modules
     },
     // i18n: {
     //   locales: ['en', 'es', 'fr', 'de'],
