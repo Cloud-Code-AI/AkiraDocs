@@ -19,6 +19,7 @@ import { getHeaderConfig } from '@/lib/headerConfig'
 import { Header } from '@/components/layout/Header'
 import { generateEmbedding } from '@/lib/aisearch/embeddings'
 import { getDbWorker } from '@/lib/aisearch/dbWorker'
+import { ExternalLink } from 'lucide-react'
 
 function cosineSimilarity(a: number[], b: number[]): number {
     if (a.some(isNaN) || b.some(isNaN)) {
@@ -263,8 +264,25 @@ export default function Home() {
     return (
         <div className="flex flex-col min-h-screen">
             <Header {...headerConfig} currentLocale={`en`} currentType={`aiSearch`}/>
+            <div className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-950 dark:to-purple-950 text-gray-800 dark:text-gray-200 py-3 transition-all duration-300 ease-in-out">
+                <div className="mx-auto flex items-center justify-center">
+                    <div className="flex items-center space-x-3">
+                        <span className="text-sm" aria-hidden="true">⭐</span>
+                        <p className="text-md font-medium">
+                        Enjoying our AI-powered documentation platform? Support us with a star on{' '}
+                        <Link 
+                            href="https://github.com/Cloud-Code-AI/AkiraDocs" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline underline-offset-2 hover:text-blue-600 dark:hover:text-blue-400 inline-flex items-center transition-colors duration-200"
+                        >
+                            GitHub <ExternalLink className="h-3 w-3 ml-1" />
+                        </Link>
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-                
                 <div className="max-w-4xl mx-auto">
                     <SearchHeader 
                         logo={searchConfig.logo}
