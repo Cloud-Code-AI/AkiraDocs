@@ -18,7 +18,7 @@ import AILoader from '@/components/aiSearch/AILoader'
 import { getHeaderConfig } from '@/lib/headerConfig'
 import { Header } from '@/components/layout/Header'
 import { generateEmbedding } from '@/lib/aisearch/embeddings'
-
+import { getDbWorker } from '@/lib/aisearch/dbWorker'
 
 function cosineSimilarity(a: number[], b: number[]): number {
     const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
@@ -38,7 +38,6 @@ export default function Home() {
     const config = getAkiradocsConfig()
     const [sources, setSources] = useState<Source[]>([])
     const [result, setResult] = useState<number[]>([])
-
     const handleGenerateEmbedding = useCallback(async (text: string) => {
         try {
             setIsLoading(true);
@@ -100,21 +99,80 @@ export default function Home() {
         setError(null)
         setSources([])
         
-        const startTime = performance.now() // Add timing start
+        const startTime = performance.now()
         
         try {
             // Generate embedding for the query
             const embeddings = await handleGenerateEmbedding(query);
-            const embeddingTime = performance.now() // Track embedding time
-            console.log(`Time taken for embedding generation: ${(embeddingTime - startTime) / 1000}s`)
 
-            const contextResponse = await fetch('/context/en_docs.txt');
-            if (!contextResponse.ok) {
-                throw new Error(`Failed to fetch context: ${contextResponse.status}`);
-            }
-            const contextData = await contextResponse.text();
-            const docsContext = contextData;
+            // Get database worker
+            const worker = await getDbWorker();
 
+            // SQL query for similarity search
+            const similarityQuery = `
+                WITH similarity AS (
+                    SELECT 
+                        path,
+                        content,
+                        (
+                            WITH RECURSIVE
+                                embedding_values(value, rest) AS (
+                                    SELECT '', json($embedding) || ',' 
+                                    UNION ALL
+                                    SELECT 
+                                        substr(rest, 0, instr(rest, ',')),
+                                        substr(rest, instr(rest, ',') + 1)
+                                    FROM embedding_values 
+                                    WHERE rest <> ''
+                                ),
+                                doc_values(value, rest) AS (
+                                    SELECT '', embedding || ',' 
+                                    UNION ALL
+                                    SELECT 
+                                        substr(rest, 0, instr(rest, ',')),
+                                        substr(rest, instr(rest, ',') + 1)
+                                    FROM doc_values 
+                                    WHERE rest <> ''
+                                )
+                            SELECT 
+                                SUM(CAST(ev.value AS FLOAT) * CAST(dv.value AS FLOAT)) /
+                                (SQRT(SUM(CAST(ev.value AS FLOAT) * CAST(ev.value AS FLOAT))) * 
+                                 SQRT(SUM(CAST(dv.value AS FLOAT) * CAST(dv.value AS FLOAT))))
+                            FROM embedding_values ev
+                            JOIN doc_values dv ON 1=1
+                            WHERE ev.value <> '' AND dv.value <> ''
+                        ) as similarity_score
+                    FROM documents
+                    WHERE embedding IS NOT NULL
+                )
+                SELECT path, content, similarity_score
+                FROM similarity
+                WHERE similarity_score > 0
+                ORDER BY similarity_score DESC
+                LIMIT 5
+            `;
+
+            // const similarityQuery = `
+            //     SELECT *
+            //     FROM documents
+            //     WHERE embedding IS NOT NULL
+            //     LIMIT 5
+            // `;
+
+            const results = await worker.db.query(
+                similarityQuery
+            );
+
+            console.log("RAG top 5 results:", results)
+
+            // Combine relevant documents into context
+            const docsContext = results
+                .map((doc: any) => `
+                    Source: ${doc.path}
+                    ${doc.content}
+                    ---
+                `)
+                .join('\n');
 
             const engine = await CreateMLCEngine(
                 "Llama-3.2-1B-Instruct-q4f16_1-MLC",
@@ -123,8 +181,9 @@ export default function Home() {
                     context_window_size: 20000,
                 }
             );
+
             const engineLoadTime = performance.now() // Track engine load time
-            console.log(`Time taken for engine initialization: ${(engineLoadTime - embeddingTime) / 1000}s`)
+            console.log(`Time taken for engine initialization: ${(engineLoadTime - startTime) / 1000}s`)
 
             const messages = [
               {
@@ -185,17 +244,9 @@ export default function Home() {
             setSources(sources);
             
         } catch (error) {
-          console.error('Error during AI search:', error);
-            
-          // Check for WebGPU error
-          if (error instanceof Error && error.name === 'WebGPUNotAvailableError') {
-              setError('WebGPU is not yet supported on this browser. Please try using another browser.');
-          } else {
-              setError('Sorry, there was an error processing your request.');
-          }
-          setAiResponse('');
-          setError(error instanceof Error ? error.message : 'An error occurred');
-      } finally {
+            console.error('Search error:', error);
+            setError(error instanceof Error ? error.message : 'An error occurred');
+        } finally {
             setIsLoading(false);
         }
     }
