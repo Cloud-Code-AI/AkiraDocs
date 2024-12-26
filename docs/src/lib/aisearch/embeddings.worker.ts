@@ -2,7 +2,7 @@ import { pipeline, ProgressCallback, type PipelineType } from "@huggingface/tran
 
 class EmbeddingPipelineSingleton {
     static task: PipelineType = 'feature-extraction';
-    static model = 'Xenova/gte-small';
+    static model = 'sauravpanda/gte-small-onnx';
     static instance: Promise<any> | null = null;
 
     static async getInstance(progress_callback: ProgressCallback | null = null) {

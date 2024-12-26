@@ -48,7 +48,7 @@ export default function Home() {
     const handleGenerateEmbedding = useCallback(async (text: string) => {
         try {
             setIsLoading(true);
-            console.log("Loading model for embedding");
+            // console.log("Loading model for embedding");
             const embedding = await generateEmbedding(text, (progress) => {});
             return embedding;
         } catch (error) {
@@ -110,7 +110,7 @@ export default function Home() {
         try {
             // Generate embedding for the query
             const queryEmbedding = await handleGenerateEmbedding(query);
-            console.log("Query embedding:", queryEmbedding)
+            // console.log("Query embedding:", queryEmbedding)
             // Get database worker
             const worker = await getDbWorker();
 
@@ -169,7 +169,10 @@ export default function Home() {
 
             const engine = await CreateMLCEngine(
                 "Llama-3.2-1B-Instruct-q4f16_1-MLC",
-                { initProgressCallback: (progress: any) => console.log(progress) },
+                { initProgressCallback: (progress: any) => {
+                    console.log(progress)
+                    setLoaderText(`Loading the AI model ${Math.round(progress.progress * 100)}% ...`)
+                } },
                 {
                     context_window_size: 20000,
                 }
@@ -215,7 +218,7 @@ export default function Home() {
               }
           ];
 
-            console.log("Messages:", messages)
+            // console.log("Messages:", messages)
 
             const chunks = await engine.chat.completions.create({ 
                 messages: messages as ChatCompletionMessageParam[],
