@@ -1,6 +1,6 @@
 {
   "name": "akiradocs",
-  "version": "1.0.52",
+  "version": "1.0.53",
   "private": true,
   "scripts": {
     "translate": "npm run compile && node scripts/translate.js",
