@@ -21,6 +21,13 @@ import { generateEmbedding } from '@/lib/aisearch/embeddings'
 import { getDbWorker } from '@/lib/aisearch/dbWorker'
 
 function cosineSimilarity(a: number[], b: number[]): number {
+    if (a.some(isNaN) || b.some(isNaN)) {
+        console.error("NaN values detected in vectors:");
+        console.error("Vector A NaN indices:", a.map((val, i) => isNaN(val) ? i : null).filter(x => x !== null));
+        console.error("Vector B NaN indices:", b.map((val, i) => isNaN(val) ? i : null).filter(x => x !== null));
+        throw new Error("Invalid vectors containing NaN values");
+    }
+    
     const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
     const magnitudeA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
     const magnitudeB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
@@ -42,9 +49,7 @@ export default function Home() {
         try {
             setIsLoading(true);
             console.log("Loading model for embedding");
-            const embedding = await generateEmbedding(text, (progress) => {
-                console.log(`Progress: ${progress.progress}%`);
-            });
+            const embedding = await generateEmbedding(text, (progress) => {});
             return embedding;
         } catch (error) {
             console.error('Error generating embedding:', error);
@@ -103,70 +108,54 @@ export default function Home() {
         
         try {
             // Generate embedding for the query
-            const embeddings = await handleGenerateEmbedding(query);
-
+            const queryEmbedding = await handleGenerateEmbedding(query);
+            console.log("Query embedding:", queryEmbedding)
             // Get database worker
             const worker = await getDbWorker();
 
-            // SQL query for similarity search
-            const similarityQuery = `
-                WITH similarity AS (
-                    SELECT 
-                        path,
-                        content,
-                        (
-                            WITH RECURSIVE
-                                embedding_values(value, rest) AS (
-                                    SELECT '', json($embedding) || ',' 
-                                    UNION ALL
-                                    SELECT 
-                                        substr(rest, 0, instr(rest, ',')),
-                                        substr(rest, instr(rest, ',') + 1)
-                                    FROM embedding_values 
-                                    WHERE rest <> ''
-                                ),
-                                doc_values(value, rest) AS (
-                                    SELECT '', embedding || ',' 
-                                    UNION ALL
-                                    SELECT 
-                                        substr(rest, 0, instr(rest, ',')),
-                                        substr(rest, instr(rest, ',') + 1)
-                                    FROM doc_values 
-                                    WHERE rest <> ''
-                                )
-                            SELECT 
-                                SUM(CAST(ev.value AS FLOAT) * CAST(dv.value AS FLOAT)) /
-                                (SQRT(SUM(CAST(ev.value AS FLOAT) * CAST(ev.value AS FLOAT))) * 
-                                 SQRT(SUM(CAST(dv.value AS FLOAT) * CAST(dv.value AS FLOAT))))
-                            FROM embedding_values ev
-                            JOIN doc_values dv ON 1=1
-                            WHERE ev.value <> '' AND dv.value <> ''
-                        ) as similarity_score
-                    FROM documents
-                    WHERE embedding IS NOT NULL
-                )
-                SELECT path, content, similarity_score
-                FROM similarity
-                WHERE similarity_score > 0
-                ORDER BY similarity_score DESC
-                LIMIT 5
-            `;
+            // Get all documents
+            const allDocs = await worker.db.query(`
+                SELECT path, content, embedding
+                FROM documents
+                WHERE embedding IS NOT NULL
+            `);
 
-            // const similarityQuery = `
-            //     SELECT *
-            //     FROM documents
-            //     WHERE embedding IS NOT NULL
-            //     LIMIT 5
-            // `;
+            // Calculate similarity scores and filter results
+            const similarityThreshold = 0.5;
+            const scoredDocs = allDocs
+                .map((doc: any) => {
+                    // Clean the embedding string and parse it
+                    const cleanEmbeddingStr = doc.embedding.replace(/[\[\]]/g, ''); // Remove square brackets
+                    const embeddingArray = cleanEmbeddingStr
+                        .split(',')
+                        .map((val: string) => {
+                            const parsed = parseFloat(val.trim());
+                            if (isNaN(parsed)) {
+                                console.error(`Invalid embedding value found: "${val}"`);
+                            }
+                            return parsed;
+                        });
+                    
+                    return {
+                        ...doc,
+                        similarity_score: cosineSimilarity(queryEmbedding, embeddingArray)
+                    };
+                })
+                .filter((doc: any) => doc.similarity_score > similarityThreshold)
+                .sort((a: any, b: any) => b.similarity_score - a.similarity_score)
+                .slice(0, 5);
 
-            const results = await worker.db.query(
-                similarityQuery
-            );
+            console.log("RAG top 5 results:", scoredDocs);
 
-            console.log("RAG top 5 results:", results)
+            // If no relevant documents found, return early
+            if (scoredDocs.length === 0) {
+                setAiResponse("I cannot answer this question from the given documentation. The available content doesn't seem relevant enough to provide a accurate answer.");
+                setIsLoading(false);
+                return;
+            }
 
             // Combine relevant documents into context
-            const docsContext = results
+            const docsContext = scoredDocs
                 .map((doc: any) => `
                     Source: ${doc.path}
                     ${doc.content}
