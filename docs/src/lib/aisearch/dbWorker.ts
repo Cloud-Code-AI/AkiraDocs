@@ -1,4 +1,5 @@
 import { createDbWorker } from "sql.js-httpvfs";
+import { SplitFileConfig } from "sql.js-httpvfs/dist/sqlite.worker";
 
 let dbInstance: any = null;
 
@@ -14,8 +15,8 @@ export async function getDbWorker() {
         import.meta.url
     );
 
-    const config = {
-        from: "inline",
+    const config: SplitFileConfig = {
+        from: "inline" as const,
         config: {
             serverMode: "full",
             requestChunkSize: 4096,
