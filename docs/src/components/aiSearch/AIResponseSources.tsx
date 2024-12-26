@@ -12,7 +12,7 @@ export function AIResponseSources({ sources }: AIResponseSourcesProps) {
                 {sources.map((source, index) => (
                     <li key={index}>
                         <a
-                            href={source.url}
+                            href={`${window.location.origin}/en/${source.url.replace('*%20', '')}?utm_source=akiradocs`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"

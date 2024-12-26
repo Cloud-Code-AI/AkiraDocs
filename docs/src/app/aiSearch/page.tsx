@@ -37,6 +37,7 @@ function cosineSimilarity(a: number[], b: number[]): number {
 export default function Home() {
     const [query, setQuery] = useState('')
     const [aiResponse, setAiResponse] = useState('')
+    const [loaderText, setLoaderText] = useState('Loading database ...')
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const recommendedArticles = getRecommendedArticles()
@@ -44,7 +45,6 @@ export default function Home() {
     const headerConfig = getHeaderConfig()
     const config = getAkiradocsConfig()
     const [sources, setSources] = useState<Source[]>([])
-    const [result, setResult] = useState<number[]>([])
     const handleGenerateEmbedding = useCallback(async (text: string) => {
         try {
             setIsLoading(true);
@@ -54,8 +54,9 @@ export default function Home() {
         } catch (error) {
             console.error('Error generating embedding:', error);
             throw error;
-        } finally {
-            setIsLoading(false);
+        }
+        finally {
+          setLoaderText('Searching database for relevant information ...')
         }
     }, []);
 
@@ -154,12 +155,15 @@ export default function Home() {
                 return;
             }
 
+            setLoaderText('Loading the AI model ...')
+
             // Combine relevant documents into context
             const docsContext = scoredDocs
                 .map((doc: any) => `
                     Source: ${doc.path}
+                    --- Content ---
                     ${doc.content}
-                    ---
+                    --- End of Content ---
                 `)
                 .join('\n');
 
@@ -171,9 +175,11 @@ export default function Home() {
                 }
             );
 
+
+
             const engineLoadTime = performance.now() // Track engine load time
             console.log(`Time taken for engine initialization: ${(engineLoadTime - startTime) / 1000}s`)
-
+            setLoaderText('Processing information and generating AI response ...')
             const messages = [
               {
                   role: "system",
@@ -187,19 +193,22 @@ export default function Home() {
           Question: ${query}
           
           Answer the question using only the provided documentation. 
-          
-          If the answer isn't in the documentation, say: "I cannot answer this question from the given documentation."
-          
+                    
           Do not make assumptions or add information not in the documentation.
           
-          If relevant, include short code snippets.
+          If relevant, include short code snippets. Only add code snippets if it is helpful to the question.
 
-          Ensure the final output is in markdown format.
+          Dont add any notes or comments to the answer.
+
+          Make sure the question is answered properly avoiding unnecessary information.
+
+          Ensure the final output is in markdown format. Make sure it pretty and clean.
           
           Sources (if used):
           - <title> (<path>)
           
-          Documentation: ${docsContext}
+          Here is the documentation, only answer based on this information: 
+          ${docsContext}
           `
               }
           ];
@@ -210,8 +219,8 @@ export default function Home() {
                 messages: messages as ChatCompletionMessageParam[],
                 stream: true,
                 stream_options: { include_usage: true },
-                max_tokens: 1000,
-                temperature: 0.3,
+                max_tokens: 500,
+                temperature: 0.1,
                 top_p: 0.9,
                 frequency_penalty: 0.5,
                 presence_penalty: 0.5,
@@ -221,17 +230,19 @@ export default function Home() {
             for await (const chunk of chunks) {
                 const newContent = chunk.choices[0]?.delta.content || "";
                 aiContent += newContent;
-                setAiResponse(aiContent);
+                
+                // Process partial content for streaming
+                const { cleanResponse } = extractSources(aiContent);
+                setAiResponse(cleanResponse);
             }
+
+            // Only extract and set sources after streaming is complete
+            const { sources } = extractSources(aiContent);
+            setSources(sources);
 
             const endTime = performance.now() // Track total time
             console.log(`Total time taken for AI search: ${(endTime - startTime) / 1000}s`)
 
-            // Extract sources after the full response is received
-            const { cleanResponse, sources } = extractSources(aiContent);
-            setAiResponse(cleanResponse);
-            setSources(sources);
-            
         } catch (error) {
             console.error('Search error:', error);
             setError(error instanceof Error ? error.message : 'An error occurred');
@@ -269,7 +280,7 @@ export default function Home() {
                             <div className="flex flex-col justify-center items-center space-y-4 py-12">
                                 <AILoader />
                                 <p className="text-muted-foreground text-sm animate-pulse">
-                                    Loading AI response...
+                                    {loaderText}
                                 </p>
                             </div>
                         ) : error ? (
