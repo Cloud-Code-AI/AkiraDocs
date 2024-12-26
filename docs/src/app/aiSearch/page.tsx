@@ -19,6 +19,14 @@ import { getHeaderConfig } from '@/lib/headerConfig'
 import { Header } from '@/components/layout/Header'
 import { generateEmbedding } from '@/lib/aisearch/embeddings'
 
+
+function cosineSimilarity(a: number[], b: number[]): number {
+    const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
+    const magnitudeA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+    const magnitudeB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+    return dotProduct / (magnitudeA * magnitudeB);
+}
+
 export default function Home() {
     const [query, setQuery] = useState('')
     const [aiResponse, setAiResponse] = useState('')
@@ -95,14 +103,11 @@ export default function Home() {
         const startTime = performance.now() // Add timing start
         
         try {
+            // Generate embedding for the query
             const embeddings = await handleGenerateEmbedding(query);
             const embeddingTime = performance.now() // Track embedding time
             console.log(`Time taken for embedding generation: ${(embeddingTime - startTime) / 1000}s`)
 
-            console.log("Embeddings:", embeddings)
-            if (embeddings.length === 0) {
-                throw new Error("No embeddings generated");
-            }
             const contextResponse = await fetch('/context/en_docs.txt');
             if (!contextResponse.ok) {
                 throw new Error(`Failed to fetch context: ${contextResponse.status}`);
@@ -110,11 +115,12 @@ export default function Home() {
             const contextData = await contextResponse.text();
             const docsContext = contextData;
 
+
             const engine = await CreateMLCEngine(
                 "Llama-3.2-1B-Instruct-q4f16_1-MLC",
                 { initProgressCallback: (progress: any) => console.log(progress) },
                 {
-                    context_window_size: 100000,
+                    context_window_size: 20000,
                 }
             );
             const engineLoadTime = performance.now() // Track engine load time
@@ -155,7 +161,12 @@ export default function Home() {
             const chunks = await engine.chat.completions.create({ 
                 messages: messages as ChatCompletionMessageParam[],
                 stream: true,
-                stream_options: { include_usage: true }
+                stream_options: { include_usage: true },
+                max_tokens: 1000,
+                temperature: 0.3,
+                top_p: 0.9,
+                frequency_penalty: 0.5,
+                presence_penalty: 0.5,
             });
 
             let aiContent = "";
@@ -174,17 +185,18 @@ export default function Home() {
             setSources(sources);
             
         } catch (error) {
-            console.error('Error during AI search:', error);
+          console.error('Error during AI search:', error);
             
-            // Check for WebGPU error
-            if (error instanceof Error && error.name === 'WebGPUNotAvailableError') {
-                setError('WebGPU is not yet supported on this browser. Please try using another browser.');
-            } else {
-                setError('Sorry, there was an error processing your request.');
-            }
-            setAiResponse('');
-        } finally {
-            setIsLoading(false)
+          // Check for WebGPU error
+          if (error instanceof Error && error.name === 'WebGPUNotAvailableError') {
+              setError('WebGPU is not yet supported on this browser. Please try using another browser.');
+          } else {
+              setError('Sorry, there was an error processing your request.');
+          }
+          setAiResponse('');
+          setError(error instanceof Error ? error.message : 'An error occurred');
+      } finally {
+            setIsLoading(false);
         }
     }
 
