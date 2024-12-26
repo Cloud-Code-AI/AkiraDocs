@@ -227,7 +227,7 @@ export default function Home() {
         messages: messages as ChatCompletionMessageParam[],
         stream: true,
                 stream_options: { include_usage: true },
-                max_tokens: 300,
+                max_tokens: 500,
                 temperature: 0.7,
                 top_p: 0.95,
                 frequency_penalty: 0.5,
