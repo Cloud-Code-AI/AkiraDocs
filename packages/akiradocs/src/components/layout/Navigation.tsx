@@ -13,9 +13,9 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { getApiNavigation } from '@/lib/content';
 import { useAnalytics } from '@/hooks/useAnalytics';
 const buttonStyles = {
-  base: "w-full justify-start text-left font-normal rounded-lg transition-all px-3 py-2 whitespace-normal",
+  base: "w-full justify-start text-left font-normal rounded-lg transition-all px-1.5 py-1 whitespace-normal break-words",
   hover: "hover:bg-accent/40 hover:text-accent-foreground",
-  active: "bg-gradient-to-r from-accent to-accent/80 text-accent-foreground font-medium shadow-md translate-x-1",
+  active: "w-full bg-gradient-to-r from-accent to-accent/80 text-accent-foreground font-medium shadow-md translate-x-1 px-1.5 py-1 break-words",
   state: "data-[state=open]:bg-accent/30",
 }
 
@@ -88,7 +88,7 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
     <motion.div 
       ref={itemRef}
       className={cn(
-        "relative",
+        "relative mb-1",
         depth > 0 && "ml-3 border-l border-border/50 pl-3 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-border/0 before:via-border/50 before:to-border/0"
       )}
       initial={{ opacity: 0, x: -20 }}
@@ -103,29 +103,34 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
           buttonStyles.state,
           isActive && buttonStyles.active,
           depth > 0 && "text-sm text-muted-foreground",
-          "group"
+          "group flex items-start gap-2",
+          "min-h-[2.5rem] h-auto"
         )}
         onClick={handleClick}
       >
-        {hasChildren ? (
+        {hasChildren && (
           <motion.div
-            className="text-muted-foreground/70 group-hover:text-muted-foreground"
+            className="text-muted-foreground/70 group-hover:text-muted-foreground shrink-0 mt-1"
             initial={false}
             animate={{ rotate: isOpen ? 90 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            <ChevronRight className="mr-2 h-3.5 w-3.5" />
+            <ChevronRight className="h-3.5 w-3.5" />
           </motion.div>
-        ) : ""}
+        )}
         {item.path ? (
-          <Link href={absolutePath} className="flex-1 break-words" onClick={handleClick}>
-            {item.title}
+          <Link 
+            href={absolutePath} 
+            className="flex-1 leading-tight py-0.5"
+            onClick={handleClick}
+          >
+            <span className="inline-block">{item.title}</span>
           </Link>
         ) : (
-          <span className="flex-1 break-words">{item.title}</span>
+          <span className="flex-1 leading-tight py-0.5 inline-block">{item.title}</span>
         )}
         {item.badge && (
-          <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-accent text-accent-foreground shrink-0">
+          <span className="px-2 py-0.5 text-xs rounded-full bg-accent text-accent-foreground shrink-0 self-start mt-1">
             {item.badge}
           </span>
         )}
@@ -137,6 +142,7 @@ const NavItem = React.memo(({ locale, item, pathname, depth = 0 }: NavItemProps)
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="mt-1"
           >
             {Object.entries(item.items!).map(([key, child]) => (
               <NavItem locale={locale} key={key} item={child} pathname={pathname} depth={depth + 1} />
