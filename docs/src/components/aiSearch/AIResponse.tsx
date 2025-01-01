@@ -8,12 +8,27 @@ import { AIResponseActions } from "./AIResponseActions"
 import { AIResponseSources } from "./AIResponseSources"
 import ReactMarkdown from 'react-markdown'
 import { Source } from "@/types/Source"
+import { memo } from 'react'
 
 interface AIResponseProps {
   response: string
   sources: Source[]
   onBack: () => void
 }
+
+// Memoize the markdown component to prevent unnecessary re-renders
+const MemoizedMarkdown = memo(({ content }: { content: string }) => (
+  <ReactMarkdown
+    components={{
+      pre({ children }) {
+        return <div className="not-prose">{children}</div>
+      }
+    }}
+  >
+    {content}
+  </ReactMarkdown>
+))
+MemoizedMarkdown.displayName = 'MemoizedMarkdown'
 
 export function AIResponse({ response, sources, onBack }: AIResponseProps) {
   return (
@@ -35,8 +50,21 @@ export function AIResponse({ response, sources, onBack }: AIResponseProps) {
           </Button>
         </CardHeader>
         <CardContent className="pt-6">
-        <div className="prose dark:prose-invert max-w-none">
-            <ReactMarkdown>{response}</ReactMarkdown>
+          <div className="prose dark:prose-invert max-w-none
+            prose-headings:font-semibold
+            prose-h1:text-xl prose-h1:mt-8 prose-h1:mb-4
+            prose-h2:text-lg prose-h2:mt-6 prose-h2:mb-3
+            prose-p:my-4 prose-p:leading-relaxed
+            prose-ul:space-y-2 prose-ul:list-disc prose-ul:pl-6
+            prose-ol:space-y-2 prose-ol:list-decimal prose-ol:pl-6
+            prose-li:pl-2
+            [&_pre]:bg-secondary [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:my-4
+            [&_code:not(pre_code)]:bg-secondary [&_code:not(pre_code)]:px-1.5 [&_code:not(pre_code)]:py-0.5 [&_code:not(pre_code)]:rounded-sm
+            [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:rounded-none
+            [&>*:first-child]:mt-0
+            [&>p>strong]:block [&>p>strong]:mt-8 [&>p>strong]:mb-4 [&>p>strong]:text-lg
+            [&>p:has(>strong:only-child)]:m-0">
+            <MemoizedMarkdown content={response} />
           </div>
         </CardContent>
         <CardFooter className="flex flex-col items-start space-y-4">

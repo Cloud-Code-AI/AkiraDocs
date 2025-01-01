@@ -1,6 +1,33 @@
 const fs = require('fs/promises');
 const path = require('path');
 const { glob } = require('glob');
+const sqlite3 = require('better-sqlite3');
+
+class EmbeddingPipeline {
+  static task = 'feature-extraction';
+  static model = 'sauravpanda/gte-small-onnx';
+  static instance = null;
+
+  static async getInstance(progress_callback = null) {
+    if (this.instance === null) {
+      // Optionally set cache directory
+      const { pipeline, env } = await import('@xenova/transformers');
+      this.instance = await pipeline(this.task, this.model, { progress_callback });
+    }
+    return this.instance;
+  }
+}
+
+async function generateEmbedding(text) {
+  try {
+    const extractor = await EmbeddingPipeline.getInstance();
+    const output = await extractor(text, { pooling: 'mean', normalize: true });
+    return Array.from(output.data);
+  } catch (error) {
+    console.error('Error generating embedding:', error);
+    return null;
+  }
+}
 
 async function extractTextFromBlocks(blocks) {
   if (!Array.isArray(blocks)) {
@@ -67,26 +94,47 @@ async function main() {
     const contextDir = path.join(process.cwd(), 'public', 'context');
     await fs.mkdir(contextDir, { recursive: true });
     
+    const dbPath = path.join(contextDir, 'docs.db');
+    const db = sqlite3(dbPath);
+    
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS documents (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        path TEXT NOT NULL,
+        content TEXT NOT NULL,
+        embedding BLOB,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+    
+    // Initialize the embedding model once
+    console.log('Initializing embedding model...');
+    // const extractor = await pipeline('feature-extraction', 'sauravpanda/gte-small-onnx');
+    
     const enDocsDir = path.join(process.cwd(), 'compiled', 'en');
     const docFiles = await glob('**/*.json', { 
       cwd: enDocsDir,
       ignore: '**/_meta.json'
     });
     
-    let combinedContent = [];
+    db.prepare('DELETE FROM documents').run();
+    const insert = db.prepare('INSERT INTO documents (path, content, embedding) VALUES (?, ?, ?)');
+    
+    console.log('Processing documents and generating embeddings...');
     
     for (const file of docFiles) {
       const fullPath = path.join(enDocsDir, file);
       const content = await processDocFile(fullPath);
       if (content) {
-        combinedContent.push(`[Document: ${file}]\n${content}\n-------------`);
+        const embedding = await generateEmbedding(content);
+        insert.run(file, content, embedding ? JSON.stringify(embedding) : null);
+        console.log(`Processed: ${file}`);
       }
     }
     
-    const outputPath = path.join(contextDir, 'en_docs.txt');
-    await fs.writeFile(outputPath, combinedContent.join('\n'));
-    
-    console.log('Documentation context has been extracted successfully!');
+    db.exec(`CREATE INDEX IF NOT EXISTS idx_embedding ON documents(embedding)`);
+    console.log('Documentation context and embeddings have been stored in SQLite database!');
+    db.close();
   } catch (error) {
     console.error('Error processing documentation:', error);
     process.exit(1);

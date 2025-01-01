@@ -1,46 +1,46 @@
 {
-  "title": "Editormerkmale",
-  "description": "",
+  "title": "Editor-Funktionen",
+  "description": "Detaillierte Übersicht über die Funktionen und Möglichkeiten des AkiraDocs-Editors",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
   "modifiedDate": "2024-11-26T00:00:00.000Z",
   "category": "Editor",
   "keywords": [
-    "Editor Features",
-    "Blocks",
-    "Formatting"
+    "Funktionen",
+    "Fähigkeiten",
+    "Editor-Funktionen",
+    "Werkzeuge"
   ],
   "blocks": [
     {
       "id": "1",
-      "type": "paragraph",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nDetaillierte Beschreibung der Fähigkeiten und Funktionen des AkiraDocs-Editors."
-    },
-    {
-      "id": "2",
       "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nBlocksystem",
+      "content": "Drag and Drop",
       "metadata": {
         "level": 2
       }
     },
     {
+      "id": "2",
+      "type": "paragraph",
+      "content": "Der Editor verfügt über ein leistungsstarkes Drag-and-Drop-System, das von dnd-kit unterstützt wird und eine intuitive Neuanordnung und Organisation von Blöcken ermöglicht. Klicken und ziehen Sie einfach einen beliebigen Block, um ihn innerhalb Ihres Dokuments neu zu positionieren."
+    },
+    {
       "id": "3",
       "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nTextformat",
+      "content": "Dateiverwaltung",
       "metadata": {
-        "level": 3
+        "level": 2
       }
     },
     {
       "id": "4",
       "type": "list",
       "content": [
-        "<strong>Basisformat</strong>",
-        "Fett, kursiv, unterstrichen",
-        "Barré",
-        "Hervorheben",
-        "Code online"
+        "Automatische Dateispeicherung und Versionierung",
+        "Bildoptimierung und -verwaltung",
+        "Datei-Upload-Unterstützung für verschiedene Medientypen",
+        "Integrierter Dateibrowser und Explorer"
       ],
       "metadata": {
         "listType": "unordered"
@@ -48,158 +48,16 @@
     },
     {
       "id": "5",
-      "type": "list",
-      "content": [
-        "<strong>Fortgeschrittenes Format</strong>",
-        "Benutzerdefinierte Farben",
-        "Hier ist die Übersetzung auf Deutsch:\n\nMehrere Quellen",
-        "Textausrichtung",
-        "Einrückung"
-      ],
+      "type": "heading",
+      "content": "Echtzeit-Zusammenarbeit",
       "metadata": {
-        "listType": "unordered"
+        "level": 2
       }
     },
     {
       "id": "6",
-      "type": "heading",
-      "content": "Inhaltsbereiche",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "7",
-      "type": "heading",
-      "content": "Angereicherter Text",
-      "metadata": {
-        "level": 4
-      }
-    },
-    {
-      "id": "8",
-      "type": "code",
-      "content": "# Titel 1\n## Titel 2\n> Textzitat\n- Aufzählungszeichen\n1. Nummerierte Liste",
-      "metadata": {
-        "language": "markdown",
-        "showLineNumbers": true
-      }
-    },
-    {
-      "id": "9",
-      "type": "heading",
-      "content": "Codeblocken",
-      "metadata": {
-        "level": 4
-      }
-    },
-    {
-      "id": "10",
-      "type": "code",
-      "content": "// Hervorhebung der Syntax\nconsole.log('Hallo Welt');",
-      "metadata": {
-        "language": "javascript",
-        "showLineNumbers": true
-      }
-    },
-    {
-      "id": "11",
-      "type": "heading",
-      "content": "Medienblöcke",
-      "metadata": {
-        "level": 4
-      }
-    },
-    {
-      "id": "12",
-      "type": "list",
-      "content": [
-        "Laden und Einbinden von Bildern",
-        "Videointegration",
-        "Anlagen",
-        "Hier ist die Übersetzung ins Deutsche:\n\nInteraktive Integration"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "13",
-      "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nKI-Merkmale",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
-      "id": "14",
-      "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nVerbesserung des Inhalts",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "15",
-      "type": "list",
-      "content": [
-        "Hier ist die Übersetzung ins Deutsche:\n\nVorschläge zur Grammatik und zum Stil",
-        "Hier ist die Übersetzung ins Deutsche:\n\nOptimierung des Inhalts",
-        "Hier ist die Übersetzung ins Deutsche:\n\nSEO-Empfehlungen",
-        "Hier ist die Übersetzung ins Deutsche:\n\nÜbersetzungshilfe"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "16",
-      "type": "heading",
-      "content": "Hier ist die Übersetzung ins Deutsche:\n\nIntelligentes Format",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "17",
-      "type": "list",
-      "content": [
-        "Automatische Formatierung",
-        "Hier ist die Übersetzung ins Deutsche:\n\nIntelligente Listen",
-        "Hier ist die Übersetzung ins Deutsche, wobei das ursprüngliche Format beibehalten wurde:\n\nTabellenformat",
-        "Erkennung der Codeblocksprache"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "18",
-      "type": "heading",
-      "content": "Merkmale der Zusammenarbeit",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
-      "id": "19",
-      "type": "heading",
-      "content": "Versionskontrolle",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "20",
-      "type": "list",
-      "content": [
-        "Integrieren von Git",
-        "Hier ist die Übersetzung ins Deutsche:\n\nÄnderungsverlauf",
-        "Hier ist die Übersetzung ins Deutsche:\n\nRückgängigmachungsfähigkeiten"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
+      "type": "paragraph",
+      "content": "Mehrere Benutzer können gleichzeitig am selben Dokument arbeiten, mit Echtzeit-Updates und Konfliktlösung. Änderungen werden automatisch über alle verbundenen Clients synchronisiert."
     }
   ]
 }

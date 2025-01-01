@@ -4,7 +4,7 @@ import { Post } from '@/types/Block'
 async function getJsonContent(path: string) {
   try {
     // Dynamic import for JSON files
-    console.log(path)
+    // console.log(path)
     const content = await import(`../../compiled/${path}`);
     return content.default;
   } catch (error) {
@@ -61,7 +61,7 @@ export async function getContentNavigation<T>(defaultValue: T, locale: string, t
   try {
     const navigationFile = `${locale}/${type}/_meta.json`
     const navigation = await getJsonContent(navigationFile)
-    console.log(navigation)
+    // console.log(navigation)
     return navigation
   } catch (error) {
     console.warn(`Failed to read ${type} _meta.json file. Using default value.`)
@@ -131,7 +131,7 @@ interface ApiNavItem {
 export async function getApiNavigation(): Promise<ApiNavItem[]> {
   try {
     const apiSpec = await get_api_spec();
-    console.log("apiSpec", apiSpec)
+    // console.log("apiSpec", apiSpec)
     if (!apiSpec || !apiSpec.paths) {
       return [];
     }

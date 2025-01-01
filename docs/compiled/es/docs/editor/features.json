@@ -1,46 +1,46 @@
 {
   "title": "Características del editor",
-  "description": "",
+  "description": "Descripción detallada de las capacidades y características del editor AkiraDocs",
   "author": "Akira Team",
   "publishDate": "2024-11-26T00:00:00.000Z",
   "modifiedDate": "2024-11-26T00:00:00.000Z",
   "category": "Editor",
   "keywords": [
-    "Editor Features",
-    "Blocks",
-    "Formatting"
+    "Características",
+    "Capacidades",
+    "Funciones del editor",
+    "Herramientas"
   ],
   "blocks": [
     {
       "id": "1",
-      "type": "paragraph",
-      "content": "Descripción detallada de las capacidades y funciones del editor AkiraDocs."
-    },
-    {
-      "id": "2",
       "type": "heading",
-      "content": "Sistema de bloques",
+      "content": "Arrastrar y soltar",
       "metadata": {
         "level": 2
       }
     },
     {
+      "id": "2",
+      "type": "paragraph",
+      "content": "El editor cuenta con un potente sistema de arrastrar y soltar impulsado por dnd-kit, permitiendo la reordenación y organización intuitiva de bloques. Simplemente haga clic y arrastre cualquier bloque para reposicionarlo dentro de su documento."
+    },
+    {
       "id": "3",
       "type": "heading",
-      "content": "Formato de texto",
+      "content": "Gestión de archivos",
       "metadata": {
-        "level": 3
+        "level": 2
       }
     },
     {
       "id": "4",
       "type": "list",
       "content": [
-        "<strong>Formato Básico</strong>",
-        "Negrita, cursiva, subrayado",
-        "Tachado",
-        "Resaltar",
-        "Código en línea"
+        "Guardado automático de archivos y control de versiones",
+        "Optimización y gestión de imágenes",
+        "Soporte para carga de archivos de diversos tipos de medios",
+        "Explorador de archivos integrado"
       ],
       "metadata": {
         "listType": "unordered"
@@ -48,158 +48,16 @@
     },
     {
       "id": "5",
-      "type": "list",
-      "content": [
-        "<strong>Formato Avanzado</strong>",
-        "Colores personalizados",
-        "Múltiples fuentes",
-        "Alineación de texto",
-        "Sangría"
-      ],
+      "type": "heading",
+      "content": "Colaboración en tiempo real",
       "metadata": {
-        "listType": "unordered"
+        "level": 2
       }
     },
     {
       "id": "6",
-      "type": "heading",
-      "content": "Bloques de contenido",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "7",
-      "type": "heading",
-      "content": "Texto enriquecido",
-      "metadata": {
-        "level": 4
-      }
-    },
-    {
-      "id": "8",
-      "type": "code",
-      "content": "# Encabezado 1\n## Encabezado 2\n> Cita textual\n- Lista de viñetas\n1. Lista numerada",
-      "metadata": {
-        "language": "markdown",
-        "showLineNumbers": true
-      }
-    },
-    {
-      "id": "9",
-      "type": "heading",
-      "content": "Bloques de código",
-      "metadata": {
-        "level": 4
-      }
-    },
-    {
-      "id": "10",
-      "type": "code",
-      "content": "// Resaltado de sintaxis\nconsole.log('Hola Mundo');",
-      "metadata": {
-        "language": "javascript",
-        "showLineNumbers": true
-      }
-    },
-    {
-      "id": "11",
-      "type": "heading",
-      "content": "Bloques de medios",
-      "metadata": {
-        "level": 4
-      }
-    },
-    {
-      "id": "12",
-      "type": "list",
-      "content": [
-        "Carga e incrustación de imágenes",
-        "Incrustación de video",
-        "Archivos adjuntos",
-        "Integración interactiva"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "13",
-      "type": "heading",
-      "content": "Características de la IA",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
-      "id": "14",
-      "type": "heading",
-      "content": "Mejora de contenido",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "15",
-      "type": "list",
-      "content": [
-        "Sugerencias de gramática y estilo",
-        "Optimización de contenido",
-        "Recomendaciones de SEO",
-        "Asistencia de traducción"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "16",
-      "type": "heading",
-      "content": "Formato inteligente",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "17",
-      "type": "list",
-      "content": [
-        "Formato automático",
-        "Listas inteligentes",
-        "Formato de tabla",
-        "Detección de lenguaje de bloque de código"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
-    },
-    {
-      "id": "18",
-      "type": "heading",
-      "content": "Características de colaboración",
-      "metadata": {
-        "level": 2
-      }
-    },
-    {
-      "id": "19",
-      "type": "heading",
-      "content": "Control de versiones",
-      "metadata": {
-        "level": 3
-      }
-    },
-    {
-      "id": "20",
-      "type": "list",
-      "content": [
-        "Integración de Git",
-        "Historial de cambios",
-        "Capacidades de reversión"
-      ],
-      "metadata": {
-        "listType": "unordered"
-      }
+      "type": "paragraph",
+      "content": "Múltiples usuarios pueden trabajar en el mismo documento simultáneamente, con actualizaciones en tiempo real y resolución de conflictos. Los cambios se sincronizan automáticamente en todos los clientes conectados."
     }
   ]
 }

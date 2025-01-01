@@ -54,9 +54,29 @@
         "title": "Overview",
         "path": "/docs/editor/overview"
       },
+      "getting-started": {
+        "title": "Getting Started",
+        "path": "/docs/editor/getting-started"
+      },
+      "blocks": {
+        "title": "Block Types",
+        "path": "/docs/editor/blocks"
+      },
       "features": {
         "title": "Features",
         "path": "/docs/editor/features"
+      },
+      "ai-features": {
+        "title": "AI Features",
+        "path": "/docs/editor/ai-features"
+      },
+      "gettingStarted": {
+        "title": "Getting Started with the Editor",
+        "path": "/docs/editor/getting-started"
+      },
+      "aiFeatures": {
+        "title": "AI Features",
+        "path": "/docs/editor/ai-features"
       }
     }
   },

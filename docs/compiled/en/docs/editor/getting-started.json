@@ -1,0 +1,70 @@
+{
+    "title": "Getting Started with the Editor",
+    "description": "Learn how to start using the AkiraDocs editor effectively",
+    "author": "Akira Team",
+    "publishDate": "2024-11-26T00:00:00.000Z",
+    "modifiedDate": "2024-11-26T00:00:00.000Z",
+    "category": "Editor",
+    "keywords": [
+      "Getting Started",
+      "Tutorial",
+      "Setup",
+      "Basic Usage"
+    ],
+    "blocks": [
+      {
+        "id": "1",
+        "type": "heading",
+        "content": "Quick Start",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "2",
+        "type": "paragraph",
+        "content": "Getting started with the AkiraDocs editor is straightforward. This guide will walk you through the basic setup and initial usage."
+      },
+      {
+        "id": "3",
+        "type": "heading",
+        "content": "Basic Operations",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "4",
+        "type": "list",
+        "content": [
+          "Click the '+' button to add a new block",
+          "Drag blocks to reorder them",
+          "Use the toolbar for text formatting"
+        ],
+        "metadata": {
+          "listType": "unordered"
+        }
+      },
+      {
+        "id": "5",
+        "type": "heading",
+        "content": "Keyboard Shortcuts",
+        "metadata": {
+          "level": 3
+        }
+      },
+      {
+        "id": "6",
+        "type": "heading",
+        "content": "Creating Your First Document",
+        "metadata": {
+          "level": 2
+        }
+      },
+      {
+        "id": "7",
+        "type": "paragraph",
+        "content": "1. Click 'New File' in the sidebar\n2. Add a title and description\n3. Start adding blocks using the '+' button or '/' command\n4. Use drag and drop to organize your content\n5. Save your work using the save button"
+      }
+    ]
+  }
