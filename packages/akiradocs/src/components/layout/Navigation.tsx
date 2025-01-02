@@ -33,7 +33,7 @@ export function Navigation({ locale, items }: NavigationProps) {
   
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <aside className="w-64 bg-sidebar-background/50 text-sidebar-foreground border-r border-border/40 h-[calc(100vh-4rem)] sticky top-16 backdrop-blur-sm overflow-hidden">
+      <aside className="w-[20%] bg-sidebar-background/50 text-sidebar-foreground border-r border-border/40 h-[calc(100vh-4rem)] sticky top-16 backdrop-blur-sm overflow-hidden">
         <ScrollArea className="h-full py-6 px-4">
           <nav className="space-y-2">
             {Object.entries(items)
@@ -161,7 +161,7 @@ export async function ApiSidebar() {
   
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <aside className="w-64 bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
+      <aside className="w-[20%] bg-sidebar-background text-sidebar-foreground border-r h-[calc(100vh-4rem)] sticky top-16 shadow-sm">
         <ScrollArea className="h-full py-6 px-4">
           <nav className="space-y-2">
             {navigation.map((item, index) => (
